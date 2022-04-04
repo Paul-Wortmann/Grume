@@ -47,6 +47,9 @@ void cUIManager::terminate(void)
         // delete menus
         delete [] m_menu;
         m_menu = nullptr;
+        
+        // Reset menu count
+        m_numMenu = 0;
     }
 }
 
