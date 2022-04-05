@@ -115,16 +115,19 @@ void gPhysicsResolution_circle_circle(float &_vx1, float &_vy1, float &_px1, flo
 
     float t = 0.5f;
 
+    // Static body 1
     if (_static1)
     {
         _vx2 *= -1;
         _vy2 *= -1;
     }
+    // Static body 2
     else if (_static2)
     {
         _vx1 *= -1;
         _vy1 *= -1;
     }
+    // Both dynamic bodies
     else
     {
         t = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
@@ -139,6 +142,7 @@ void gPhysicsResolution_circle_circle(float &_vx1, float &_vy1, float &_px1, flo
         _vy2 = t * -sp + v2s * -spp;
     }
 
+    // Static body 1
     if (_static1)
     {
         _px1 = opx1;
@@ -146,6 +150,8 @@ void gPhysicsResolution_circle_circle(float &_vx1, float &_vy1, float &_px1, flo
         _vx1 = ovx1;
         _vy1 = ovy1;
     }
+
+    // Static body 2
     if (_static2)
     {
         _px2 = opx2;
