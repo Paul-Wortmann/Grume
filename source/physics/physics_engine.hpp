@@ -44,9 +44,7 @@ class cPhysicsEngine
 
         // Entity management
         sEntity*               m_entityHead = nullptr;
-
         tcQueue<sPhysicsEvent> m_event      = {};
-
 };
 
 #endif //PHYSICS_ENGINE_HPP
