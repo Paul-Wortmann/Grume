@@ -22,19 +22,14 @@
  * @date 2011-11-11
  */
 
-#ifndef FONT_MANAGER_HPP
-#define FONT_MANAGER_HPP
+#include "font_manager.hpp"
 
-#include "../core/includes.hpp"
-
-std::uint32_t  initialize(const std::string &_fileName)
+std::uint32_t cFontManager::initialize(const std::string &_fileName)
 {
     return EXIT_SUCCESS;
 }
 
-void           terminate(void)
+void cFontManager::terminate(void)
 {
     
 }
-
-#endif //FONT_MANAGER_HPP
