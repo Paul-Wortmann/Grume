@@ -38,6 +38,9 @@ class cFontManager
         std::string    m_fileName   = "aileron_001.otf";
         char*          m_fontBuffer = nullptr;
         stbtt_fontinfo m_fontInfo   = {};
+        
+        void m_convertAlphaToRGBA(const std::uint32_t &_width, const std::uint32_t &_height, unsigned char* &_imageBuffer);
+        void m_fontToImage(const std::string &_string, const float &_pixelSize);
 };
 
 #endif //FONT_MANAGER_HPP
