@@ -35,6 +35,9 @@ class cFontManager
 
     protected:
     private:
+        std::string    m_fileName   = "aileron_001.otf";
+        char*          m_fontBuffer = nullptr;
+        stbtt_fontinfo m_fontInfo   = {};
 };
 
 #endif //FONT_MANAGER_HPP

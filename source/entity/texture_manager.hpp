@@ -26,6 +26,7 @@
 
 #include "../core/includes.hpp"
 #include "entity_texture.hpp"
+#include "font_manager.hpp"
 
 class cTextureManager : public tcLinkedList<sEntityTexture>
 {
@@ -41,6 +42,8 @@ class cTextureManager : public tcLinkedList<sEntityTexture>
     protected:
 
     private:
+        cFontManager m_fontManager = {};
+        
         void freeData(sEntityTexture*& _pointer) override;
         unsigned char* m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, const unsigned char* _image);
         std::vector<unsigned char> m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, std::vector<unsigned char> _image);
