@@ -156,7 +156,7 @@ std::uint32_t cFontManager::initialize(const std::string &_fileName)
     if (fileStream.fail())
     {
         std::cout << "Failed to load file: " << m_fileName << std::endl;
-        //gLogWrite(LOG_ERROR, "Error - Failed to open file: " + m_fileName + " error : " + std::strerror(errno), __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_ERROR, "Error - Failed to open file: " + m_fileName + " error : " + std::strerror(errno), __FILE__, __LINE__, __FUNCTION__);
         return EXIT_FAILURE;
     }
     fileStream.seekg(0, std::ios::end);
