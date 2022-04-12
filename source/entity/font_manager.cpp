@@ -57,6 +57,9 @@ void cFontManager::m_convertAlphaToRGBA(const std::uint32_t &_width, const std::
             _imageBuffer[(i * format) + 2] = (inputImageBuffer[i] * _b) / 255;
             _imageBuffer[(i * format) + 3] = inputImageBuffer[i];
     }
+    
+    //clean up
+    delete[] inputImageBuffer;
 }
 
 void cFontManager::m_fontToImage(const std::string &_string, const float &_pixelSize)
