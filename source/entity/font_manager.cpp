@@ -144,7 +144,7 @@ void cFontManager::m_fontToImage(const std::string &_string, const float &_pixel
 
     m_convertAlphaToRGBA(bitmap_w, bitmap_h, bitmap);
     // Save the bitmap data to the 1-channel png image
-    stbi_write_png("STB.png", bitmap_w, bitmap_h, 4, bitmap, bitmap_w * 4);
+    //stbi_write_png("STB.png", bitmap_w, bitmap_h, 4, bitmap, bitmap_w * 4);
 
     free(bitmap);
 }
