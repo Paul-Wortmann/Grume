@@ -178,7 +178,7 @@ std::uint32_t cFontManager::initialize(const std::string &_fileName)
     }
 
     // test
-    m_fontToImage("0.", 256);
+    //m_fontToImage("0.", 256);
     //std::cout << "Initialized font: " << m_fileName << std::endl;
 
     return EXIT_SUCCESS;
