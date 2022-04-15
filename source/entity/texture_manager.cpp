@@ -259,3 +259,8 @@ std::vector<unsigned char> cTextureManager::m_flipImage(const std::uint32_t &_wi
     // return flipped image
     return image;
 }
+
+sEntityTexture* cTextureManager::textureFont(const std::string &_text)
+{
+    //m_fontManager.
+}

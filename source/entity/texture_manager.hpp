@@ -38,6 +38,7 @@ class cTextureManager : public tcLinkedList<sEntityTexture>
         void            freeIcon(GLFWimage *&_image);
         sEntityTexture* loadPNG(const std::string &_fileName); // lodepng - load
         void            savePNG(const std::string &_fileName); // lodepng - save
+        sEntityTexture* textureFont(const std::string &_text); // Font manager generate font
 
     protected:
 
