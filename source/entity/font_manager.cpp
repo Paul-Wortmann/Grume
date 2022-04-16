@@ -62,13 +62,20 @@ void cFontManager::m_convertAlphaToRGBA(const std::uint32_t &_width, const std::
     delete[] inputImageBuffer;
 }
 
-void cFontManager::m_fontToImage(const std::string &_string, const float &_pixelSize)
+void cFontManager::m_fontToImage(const std::string &_string, std::uint32_t &_width, std::uint32_t &_height, unsigned char* &_imageBuffer)
 {
+    // if bitmap data, free first
+    if (_imageBuffer != nullptr)
+    {
+        delete[] _imageBuffer;
+        _imageBuffer = nullptr;
+    }
+    
     std::uint32_t numChar = _string.length();
     std::cout << "Num char: " << numChar << std::endl;
 
     // Calculate font scaling
-    float scale = stbtt_ScaleForPixelHeight(&m_fontInfo, _pixelSize); // scale = pixels / (ascent - descent)
+    float scale = stbtt_ScaleForPixelHeight(&m_fontInfo, m_pixelSize); // scale = pixels / (ascent - descent)
 
     // Calculate image width
     std::uint32_t width = 0;
@@ -81,13 +88,13 @@ void cFontManager::m_fontToImage(const std::string &_string, const float &_pixel
     }
 
     // create a bitmap image
-    std::uint32_t bitmap_w = width * scale; // Width of bitmap
-    std::uint32_t bitmap_h = _pixelSize; // Height of bitmap
+    _width = width * scale; // Width of bitmap
+    _height = m_pixelSize; // Height of bitmap
 
-    std::cout << "bitmap_w: " << bitmap_w << std::endl;
-    std::cout << "bitmap_h: " << bitmap_h << std::endl;
+    std::cout << "_width: " << _width << std::endl;
+    std::cout << "_height: " << _height << std::endl;
 
-    unsigned char *bitmap = new unsigned char[bitmap_w * bitmap_h];
+    _imageBuffer = new unsigned char[_width * _height];
 
     // Get the measurement in the vertical direction
     // ascent: The height of the font from the baseline to the top;
@@ -125,8 +132,8 @@ void cFontManager::m_fontToImage(const std::string &_string, const float &_pixel
         int y = ascent + c_y1;
 
         // Render character
-        int byteOffset = x + roundf(leftSideBearing * scale) + (y * bitmap_w);
-        stbtt_MakeCodepointBitmap(&m_fontInfo, bitmap + byteOffset, c_x2 - c_x1, c_y2 - c_y1, bitmap_w, scale, scale, _string[i]);
+        int byteOffset = x + roundf(leftSideBearing * scale) + (y * _width);
+        stbtt_MakeCodepointBitmap(&m_fontInfo, _imageBuffer + byteOffset, c_x2 - c_x1, c_y2 - c_y1, _width, scale, scale, _string[i]);
 
         // Adjust x
         x += roundf(advanceWidth * scale);
@@ -137,16 +144,16 @@ void cFontManager::m_fontToImage(const std::string &_string, const float &_pixel
         x += roundf(kern * scale);
     }
 
-    //write_raw("raw.txt", bitmap_w, bitmap_h, bitmap);
+    //write_raw("raw.txt", _width, _height, _imageBuffer);
 
     //stbi_write_png_compression_level = 0;    // defaults to 8; set to higher for more compression
     //stbi_write_force_png_filter      = 4;
 
-    m_convertAlphaToRGBA(bitmap_w, bitmap_h, bitmap);
+    m_convertAlphaToRGBA(_width, _height, _imageBuffer);
     // Save the bitmap data to the 1-channel png image
-    //stbi_write_png("STB.png", bitmap_w, bitmap_h, 4, bitmap, bitmap_w * 4);
+    //stbi_write_png("STB.png", _width, _height, 4, _imageBuffer, _width * 4);
 
-    free(bitmap);
+    //free(bitmap);
 }
 
 std::uint32_t cFontManager::initialize(const std::string &_fileName)

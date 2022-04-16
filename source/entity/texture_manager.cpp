@@ -262,5 +262,41 @@ std::vector<unsigned char> cTextureManager::m_flipImage(const std::uint32_t &_wi
 
 sEntityTexture* cTextureManager::textureFont(const std::string &_text)
 {
-    //m_fontManager.
+    // Generate image
+    std::uint32_t  width  = 0;
+    std::uint32_t  height = 0;
+    unsigned char* imageBuffer = nullptr;
+    m_fontManager.generateImage(_text, width, height, imageBuffer);
+    
+    // Assume  RGBA
+    std::uint32_t format = GL_RGBA;
+    
+    // Create the texture
+    if (imageBuffer != nullptr)
+    {
+        sEntityTexture* texture = getNew();
+        texture->fileName = _text;
+        glGenTextures(1, &texture->ID);
+        glBindTexture(GL_TEXTURE_2D, texture->ID);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, imageBuffer);
+        glGenerateMipmap(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        
+        // clean up
+        if (imageBuffer != nullptr)
+        {
+            delete[] imageBuffer;
+            imageBuffer = nullptr;
+        }
+
+        // Return the texture
+        return texture;
+    }
+    
+    // Failed to load
+    return nullptr;
 }
