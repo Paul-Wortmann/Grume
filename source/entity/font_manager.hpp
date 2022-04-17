@@ -27,15 +27,33 @@
 
 #include "../core/includes.hpp"
 
+struct sFontCharacter
+{
+    glm::ivec2     size    = glm::ivec2(0, 0);
+    glm::ivec2     bearing = glm::ivec2(0, 0);
+    std::uint32_t  advance = 0;
+    unsigned char* bitmap  = nullptr;
+};
+
 class cFontManager
 {
     public:
         std::uint32_t  initialize(const std::string &_fileName);
         void           terminate(void);
+        sFontCharacter getFontCharacter(const char &_char) { return m_characters[_char]; };
+        std::uint32_t  initializeFont(void);
+
+        // cruft
         void           generateImage(const std::string &_string, std::uint32_t &_width, std::uint32_t &_height, unsigned char* &_imageBuffer) { m_fontToImage(_string, _width, _height, _imageBuffer); }
 
     protected:
     private:
+        std::map<char, sFontCharacter> m_characters;
+        void          m_generateGlyphs(void);
+        std::uint32_t m_fontPixelSize = 96;
+
+
+        // cruft
         std::string    m_fileName   = "aileron_001.otf";
         char*          m_fontBuffer = nullptr;
         stbtt_fontinfo m_fontInfo   = {};
