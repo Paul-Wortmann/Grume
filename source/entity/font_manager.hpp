@@ -43,24 +43,13 @@ class cFontManager
         sFontCharacter getFontCharacter(const char &_char) { return m_characters[_char]; };
         std::uint32_t  initializeFont(void);
 
-        // cruft
-        void           generateImage(const std::string &_string, std::uint32_t &_width, std::uint32_t &_height, unsigned char* &_imageBuffer) { m_fontToImage(_string, _width, _height, _imageBuffer); }
-
     protected:
     private:
         std::map<char, sFontCharacter> m_characters;
-        void          m_generateGlyphs(void);
-        std::uint32_t m_fontPixelSize = 96;
-
-
-        // cruft
-        std::string    m_fileName   = "aileron_001.otf";
-        char*          m_fontBuffer = nullptr;
-        stbtt_fontinfo m_fontInfo   = {};
-        std::uint32_t  m_pixelSize  = 96;
-        
-        void m_convertAlphaToRGBA(const std::uint32_t &_width, const std::uint32_t &_height, unsigned char* &_imageBuffer);
-        void m_fontToImage(const std::string &_string, std::uint32_t &_width, std::uint32_t &_height, unsigned char* &_imageBuffer);
+        void           m_generateGlyphs(void);
+        std::uint32_t  m_fontPixelScale = 128;
+        stbtt_fontinfo m_fontInfo       = {};
+        char*          m_fontBuffer     = nullptr;
 };
 
 #endif //FONT_MANAGER_HPP

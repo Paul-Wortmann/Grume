@@ -266,7 +266,7 @@ sEntityTexture* cTextureManager::textureFont(const std::string &_text)
     std::uint32_t  width  = 0;
     std::uint32_t  height = 0;
     unsigned char* imageBuffer = nullptr;
-    m_fontManager.generateImage(_text, width, height, imageBuffer);
+    //m_fontManager.generateImage(_text, width, height, imageBuffer);
     
     // Assume  RGBA
     std::uint32_t format = GL_RGBA;

@@ -24,149 +24,13 @@
 
 #include "font_manager.hpp"
 
-void cFontManager::m_convertAlphaToRGBA(const std::uint32_t &_width, const std::uint32_t &_height, unsigned char* &_imageBuffer)
-{
-    std::uint32_t _r = 255;
-    std::uint32_t _g = 127;
-    std::uint32_t _b = 127;
-
-    // Early exit
-    if (_imageBuffer == nullptr)
-        return;
-
-    // GL_RGBA = 4 bytes
-    const std::uint32_t format = 4;
-
-    // Save the image data
-    const std::uint32_t oldSize = _width * _height;
-    unsigned char* inputImageBuffer = new unsigned char[oldSize];
-    for (std::uint32_t i = 0; i < oldSize; ++i)
-    {
-        inputImageBuffer[i] = _imageBuffer[i];
-    }
-
-    // Resize the image buffer
-    delete[] _imageBuffer;
-    _imageBuffer = new unsigned char[oldSize * format];
-
-    // Write the new data
-    for (std::uint32_t i = 0; i < oldSize; ++i)
-    {
-            _imageBuffer[(i * format) + 0] = (inputImageBuffer[i] * _r) / 255;
-            _imageBuffer[(i * format) + 1] = (inputImageBuffer[i] * _g) / 255;
-            _imageBuffer[(i * format) + 2] = (inputImageBuffer[i] * _b) / 255;
-            _imageBuffer[(i * format) + 3] = inputImageBuffer[i];
-    }
-    
-    //clean up
-    delete[] inputImageBuffer;
-}
-
-void cFontManager::m_fontToImage(const std::string &_string, std::uint32_t &_width, std::uint32_t &_height, unsigned char* &_imageBuffer)
-{
-    // if bitmap data, free first
-    if (_imageBuffer != nullptr)
-    {
-        delete[] _imageBuffer;
-        _imageBuffer = nullptr;
-    }
-    
-    std::uint32_t numChar = _string.length();
-    std::cout << "Num char: " << numChar << std::endl;
-
-    // Calculate font scaling
-    float scale = stbtt_ScaleForPixelHeight(&m_fontInfo, m_pixelSize); // scale = pixels / (ascent - descent)
-
-    // Calculate image width
-    std::uint32_t width = 0;
-    for (std::uint32_t i = 0; i < numChar; ++i)
-    {
-        int advanceWidth = 0;
-        int leftSideBearing = 0;
-        stbtt_GetCodepointHMetrics(&m_fontInfo, _string[i], &advanceWidth, &leftSideBearing);
-        width += advanceWidth;
-    }
-
-    // create a bitmap image
-    _width = width * scale; // Width of bitmap
-    _height = m_pixelSize; // Height of bitmap
-
-    std::cout << "_width: " << _width << std::endl;
-    std::cout << "_height: " << _height << std::endl;
-
-    _imageBuffer = new unsigned char[_width * _height];
-
-    // Get the measurement in the vertical direction
-    // ascent: The height of the font from the baseline to the top;
-    // descent: The height from baseline to bottom is usually negative;
-    // lineGap: The distance between two fonts;
-    // The line spacing is: ascent - descent + lineGap.
-
-    int ascent = 0;
-    int descent = 0;
-    int lineGap = 0;
-    stbtt_GetFontVMetrics(&m_fontInfo, &ascent, &descent, &lineGap);
-
-    // Adjust word height according to zoom
-    ascent = roundf(ascent * scale);
-    descent = roundf(descent * scale);
-
-    int x = 0; /*x of bitmap*/
-
-    // Cyclic loading of each character in _string
-    for (std::uint32_t i = 0; i < numChar; ++i)
-    {
-        // Get the measurement in the horizontal direction
-        // advanceWidth: Word width;
-        // leftSideBearing: Left side position;
-
-        int advanceWidth = 0;
-        int leftSideBearing = 0;
-        stbtt_GetCodepointHMetrics(&m_fontInfo, _string[i], &advanceWidth, &leftSideBearing);
-
-        // Gets the border of a character
-        int c_x1, c_y1, c_x2, c_y2;
-        stbtt_GetCodepointBitmapBox(&m_fontInfo, _string[i], scale, scale, &c_x1, &c_y1, &c_x2, &c_y2);
-
-        // Calculate the y of the bitmap (different characters have different heights)
-        int y = ascent + c_y1;
-
-        // Render character
-        int byteOffset = x + roundf(leftSideBearing * scale) + (y * _width);
-        stbtt_MakeCodepointBitmap(&m_fontInfo, _imageBuffer + byteOffset, c_x2 - c_x1, c_y2 - c_y1, _width, scale, scale, _string[i]);
-
-        // Adjust x
-        x += roundf(advanceWidth * scale);
-
-        // kerning
-        int kern;
-        kern = stbtt_GetCodepointKernAdvance(&m_fontInfo, _string[i], _string[i + 1]);
-        x += roundf(kern * scale);
-    }
-
-    //write_raw("raw.txt", _width, _height, _imageBuffer);
-
-    //stbi_write_png_compression_level = 0;    // defaults to 8; set to higher for more compression
-    //stbi_write_force_png_filter      = 4;
-
-    m_convertAlphaToRGBA(_width, _height, _imageBuffer);
-    // Save the bitmap data to the 1-channel png image
-    //stbi_write_png("STB.png", _width, _height, 4, _imageBuffer, _width * 4);
-
-    //free(bitmap);
-}
-
 std::uint32_t cFontManager::initialize(const std::string &_fileName)
 {
-    // Store font file name
-    m_fileName = _fileName;
-    
     // Read font file into memory buffer
-    std::fstream fileStream(std::string(FILE_PATH_FONT) + m_fileName.c_str(), std::ios::in | std::ios::binary);
+    std::fstream fileStream(std::string(FILE_PATH_FONT) + _fileName.c_str(), std::ios::in | std::ios::binary);
     if (fileStream.fail())
     {
-        std::cout << "Failed to load file: " << m_fileName << std::endl;
-        gLogWrite(LOG_ERROR, "Error - Failed to open file: " + m_fileName + " error : " + std::strerror(errno), __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_ERROR, "Error - Failed to open file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
         return EXIT_FAILURE;
     }
     fileStream.seekg(0, std::ios::end);
@@ -177,25 +41,83 @@ std::uint32_t cFontManager::initialize(const std::string &_fileName)
     fileStream.read(m_fontBuffer, file_size);
     fileStream.close();
 
+    // Error code
+    std::uint32_t error_code = {};
+
     // Initialize the font
-    if (!stbtt_InitFont(&m_fontInfo, (unsigned char*)m_fontBuffer, 0))
+    error_code = stbtt_InitFont(&m_fontInfo, (unsigned char*)m_fontBuffer, 0);
+    if (error_code != 1)
     {
-        std::cout << "Failed to initialize font: " << m_fileName << std::endl;
+        // Free the font data buffer if it exists
+        if (m_fontBuffer != nullptr)
+        {
+            delete[] m_fontBuffer;
+            m_fontBuffer = nullptr;
+        }
+
+        // Log error
+        gLogWrite(LOG_ERROR, "Failed to initialize STB font Library: " + std::to_string(error_code), __FILE__, __LINE__, __FUNCTION__);
         return EXIT_FAILURE;
     }
 
-    // test
-    //m_fontToImage("0.", 256);
-    //std::cout << "Initialized font: " << m_fileName << std::endl;
-
+    // Return successfully
     return EXIT_SUCCESS;
 }
 
 void cFontManager::terminate(void)
 {
+    // Free the opengl texture IDs.
+    for (std::map<char, sFontCharacter>::const_iterator it = m_characters.begin(); it != m_characters.end(); it++)
+    {
+        delete[] m_characters[it->first].bitmap;
+    }
+
+    // Free the font data buffer if it exists
     if (m_fontBuffer != nullptr)
     {
         delete[] m_fontBuffer;
         m_fontBuffer = nullptr;
+    }
+}
+
+std::uint32_t  cFontManager::initializeFont(void)
+{
+    // Generate textures
+    m_generateGlyphs();
+    return EXIT_SUCCESS;
+}
+
+void cFontManager::m_generateGlyphs(void)
+{
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
+
+    for (std::uint32_t c = 0; c < 128; c++)
+    {
+        // Load character glyph into a temporary buffer
+        sFontCharacter character;
+        unsigned char* tempBitmap = stbtt_GetCodepointBitmap(&m_fontInfo, 0, stbtt_ScaleForPixelHeight(&m_fontInfo, m_fontPixelScale),
+                                                    c, &character.size.x, &character.size.y, &character.bearing.x, &character.bearing.y);
+
+        // Create the bitmap buffer
+        character.bitmap = new unsigned char[character.size.x * character.size.y];
+
+        // Vertically flip the bitmap data
+        for (std::uint32_t y = 0; y < character.size.y; ++y)
+        {
+            for (std::uint32_t x = 0; x < character.size.x; ++x)
+            {
+                character.bitmap[((character.size.y - 1 - y) * character.size.x) + x] = tempBitmap[(y * character.size.x) + x];
+            }
+        }
+
+        // Store character for later use
+        m_characters.insert(std::pair<char, sFontCharacter>(c, character));
+
+        // Free temporary bitmap buffer
+        if (tempBitmap != nullptr)
+        {
+            delete[] tempBitmap;
+            tempBitmap = nullptr;
+        }
     }
 }
