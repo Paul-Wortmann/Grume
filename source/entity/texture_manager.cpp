@@ -26,6 +26,7 @@
 void cTextureManager::initialize(void)
 {
     m_fontManager.initialize("aileron_001.otf");
+    m_fontManager.initializeFont();
 }
 
 void cTextureManager::terminate(void)
