@@ -29,7 +29,7 @@
 
 struct sEntityMovement
 {
-    sMapPath        mapPath;
+    sMapPath        mapPath         = {};
         
     // Movement
     float           movementSpeed   = 0.125f;

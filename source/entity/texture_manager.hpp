@@ -31,8 +31,8 @@
 class cTextureManager : public tcLinkedList<sEntityTexture>
 {
     public:
-        void initialize(void);
-        void terminate(void);
+        void            initialize(void);
+        void            terminate(void);
         sEntityTexture* load(const std::string &_fileName);     // stb_image
         GLFWimage*      loadIcon(const std::string &_fileName); // stb_image
         void            freeIcon(GLFWimage *&_image);
@@ -45,8 +45,8 @@ class cTextureManager : public tcLinkedList<sEntityTexture>
     private:
         cFontManager m_fontManager = {};
         
-        void freeData(sEntityTexture*& _pointer) override;
-        unsigned char* m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, const unsigned char* _image);
+        void                       freeData(sEntityTexture*& _pointer) override;
+        unsigned char*             m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, const unsigned char* _image);
         std::vector<unsigned char> m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, std::vector<unsigned char> _image);
 
 };

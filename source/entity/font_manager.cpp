@@ -96,7 +96,7 @@ void cFontManager::m_generateGlyphs(void)
         // Load character glyph into a temporary buffer
         sFontCharacter character;
         unsigned char* tempBitmap = stbtt_GetCodepointBitmap(&m_fontInfo, 0, stbtt_ScaleForPixelHeight(&m_fontInfo, m_fontPixelScale),
-                                                    c, &character.size.x, &character.size.y, &character.bearing.x, &character.bearing.y);
+                                                             c, &character.size.x, &character.size.y, &character.bearing.x, &character.bearing.y);
 
         // Create the bitmap buffer
         character.bitmap = new unsigned char[character.size.x * character.size.y];
