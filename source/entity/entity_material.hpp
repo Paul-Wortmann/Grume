@@ -34,10 +34,10 @@ struct sEntityMaterial
     std::uint32_t    UID  = 0;
 
     // Data
-    sEntityTexture*  diffuse;
-    sEntityTexture*  normal;
-    sEntityTexture*  specular;
-    sEntityTexture*  emissive;
+    sEntityTexture*  diffuse   = nullptr;
+    sEntityTexture*  normal    = nullptr;
+    sEntityTexture*  specular  = nullptr;
+    sEntityTexture*  emissive  = nullptr;
     float            shininess = 32.0f;
 };
 
