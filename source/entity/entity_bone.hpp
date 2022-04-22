@@ -30,7 +30,7 @@ struct sEntityBone
 {
     std::int32_t ID               = -1;
     std::int32_t parentID         = -1;
-    std::string  name             = "";
+    std::string  name             = {};
     glm::mat4    transformNode    = glm::mat4(1); // node transformation matrix
     glm::mat4    transformPose    = glm::mat4(1); // inverse bind pose matrix
     glm::mat4    transformFinal   = glm::mat4(1); // the final animated transform
