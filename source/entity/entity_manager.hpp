@@ -75,7 +75,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         cAudioManager*   m_audioManager = nullptr;
         cGameDatabase*   m_gameDatabase = nullptr;
         sMap*            m_mapPointer   = nullptr;
-        cModelManager    m_modelManager;
+        cModelManager    m_modelManager = {};
 };
 
 #endif //ENTITY_MANAGER_HPP
