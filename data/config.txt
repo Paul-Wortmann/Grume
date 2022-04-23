@@ -7,13 +7,13 @@
     <graphics>
         <resolution_w>800</resolution_w>
         <resolution_h>600</resolution_h>
-        <fullscreen>0</fullscreen>
-        <basic_renderer>1</basic_renderer>
+        <fullscreen>1</fullscreen>
+        <basic_renderer>0</basic_renderer>
     </graphics>
     <audio>
-        <volume_master>100</volume_master>
-        <volume_music>100</volume_music>
-        <volume_sfx>100</volume_sfx>
+        <volume_master>82</volume_master>
+        <volume_music>56</volume_music>
+        <volume_sfx>65</volume_sfx>
     </audio>
 </config>
 

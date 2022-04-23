@@ -298,6 +298,8 @@ typedef   signed int    int32;
 
 #ifndef TRUE
 #define TRUE 1
+#endif
+#ifndef FALSE
 #define FALSE 0
 #endif
 
@@ -327,7 +329,8 @@ typedef float codetype;
 
 typedef struct
 {
-   int dimensions, entries;
+   int    dimensions;
+   int    entries;
    uint8 *codeword_lengths;
    float  minimum_value;
    float  delta_value;
