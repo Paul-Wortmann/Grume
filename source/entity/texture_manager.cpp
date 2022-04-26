@@ -158,9 +158,9 @@ void cTextureManager::freeIcon(GLFWimage *&_image)
 sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
 {
     std::vector<unsigned char> image;
-    uint32 width  = 0;
-    uint32 height = 0;
-    uint32 error = lodepng::decode(image, width, height, (std::string(FILE_PATH_TEXTURE)+_fileName).c_str());
+    std::uint32_t width  = 0;
+    std::uint32_t height = 0;
+    std::uint32_t error = lodepng::decode(image, width, height, (std::string(FILE_PATH_TEXTURE)+_fileName).c_str());
     if (error == 0) // No error
     {
         // Flip the image data

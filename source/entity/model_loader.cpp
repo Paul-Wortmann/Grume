@@ -110,7 +110,7 @@ void cModelManager::m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, s
         // vertex data
         _model->mesh[meshNum].numVertex = _mesh->mNumVertices;
         _model->mesh[meshNum].vertex = new sEntityVertex[_model->mesh[meshNum].numVertex];
-        for (uint32 i = 0; i < _model->mesh[meshNum].numVertex; ++i)
+        for (std::uint32_t i = 0; i < _model->mesh[meshNum].numVertex; ++i)
         {
             if (_mesh->HasPositions())
             {
@@ -146,18 +146,18 @@ void cModelManager::m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, s
         if (_mesh->HasFaces())
         {
             //get the face count of the assimp mesh
-            uint32 faceCount = 0;
-            for (uint32 i = 0; i < _mesh->mNumFaces; ++i)
+            std::uint32_t faceCount = 0;
+            for (std::uint32_t i = 0; i < _mesh->mNumFaces; ++i)
             {
                 faceCount += _mesh->mFaces[i].mNumIndices;
             }
             // load the assimp face data into the model mesh index struct
             _model->mesh[meshNum].numIndex = faceCount;
-            _model->mesh[meshNum].index = new uint32[_model->mesh[meshNum].numIndex];
-            uint32 indexNum = 0;
-            for (uint32 i = 0; i < _mesh->mNumFaces; ++i)
+            _model->mesh[meshNum].index = new std::uint32_t[_model->mesh[meshNum].numIndex];
+            std::uint32_t indexNum = 0;
+            for (std::uint32_t i = 0; i < _mesh->mNumFaces; ++i)
             {
-                for (uint32 j = 0; j < _mesh->mFaces[i].mNumIndices ; ++j)
+                for (std::uint32_t j = 0; j < _mesh->mFaces[i].mNumIndices ; ++j)
                 {
                     _model->mesh[meshNum].index[indexNum + j] = _mesh->mFaces[i].mIndices[j];
                 }
@@ -204,13 +204,13 @@ void cModelManager::m_processNode(const aiScene*& _scene, const aiNode* _node, s
     if (_node != nullptr)
     {
         // process this nodes meshes
-        for (uint32 i = 0; i < _node->mNumMeshes; ++i)
+        for (std::uint32_t i = 0; i < _node->mNumMeshes; ++i)
         {
             m_processMesh(_scene, _scene->mMeshes[_node->mMeshes[i]] , _model);
         }
 
         // recursivly process child nodes
-        for (uint32 i = 0; i < _node->mNumChildren; ++i)
+        for (std::uint32_t i = 0; i < _node->mNumChildren; ++i)
         {
             m_processNode(_scene, _node->mChildren[i] , _model);
         }

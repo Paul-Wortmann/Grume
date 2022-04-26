@@ -40,7 +40,7 @@ void cGraphicsEngineShader::use(void)
 }
 
 // Load a shader from file
-uint32 cGraphicsEngineShader::load(const std::string &_fileName)
+std::uint32_t cGraphicsEngineShader::load(const std::string &_fileName)
 {
     if(m_shaderID != 0)
     {
