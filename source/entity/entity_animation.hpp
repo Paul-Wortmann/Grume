@@ -28,20 +28,20 @@
 
 struct sAnimationVecKey
 {
-    double                time              = 0;
-    glm::vec3             vector            = {};
+    double                time               = 0;
+    glm::vec3             vector             = {};
 };
 
 struct sAnimationQuatKey
 {
-    double                time              = 0;
-    glm::quat             quat              = {};
+    double                time               = 0;
+    glm::quat             quat               = {};
 };
 
 struct sAnimationMeshKey
 {
-    double                time              = 0;
-    std::uint32_t         value             = {};
+    double                time               = 0;
+    std::uint32_t         value              = {};
 };
 
 struct sAnimationChannel

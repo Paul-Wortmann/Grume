@@ -52,7 +52,7 @@ struct sAudioBuffer
 
     // Data
     std::uint32_t ID         = 0; // OpenAl ID
-    std::string   name       = "";
+    std::string   name       = {};
 };
 
 struct sAudioSource

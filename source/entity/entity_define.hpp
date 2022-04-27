@@ -60,7 +60,7 @@ struct sEntity
     std::uint32_t       UID                  = 0;
 
     // Infomation
-    std::string         name                 = "";
+    std::string         name                 = {};
     bool                enabled              = true;
     eEntityType         type                 = eEntityType::entityTypeStatic;
     eEntityOwner        owner                = eEntityOwner::ownerNone;
