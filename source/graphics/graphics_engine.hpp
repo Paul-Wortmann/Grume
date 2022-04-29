@@ -111,7 +111,7 @@ class cGraphicsEngine
 
         GLFWwindow*        m_window             = nullptr;
         bool               m_windowClosed       = false;
-        std::string        m_windowTitle        = "Grume";
+        const std::string  m_windowTitle        = "Grume";
         std::uint32_t      m_window_w           = 0;
         std::uint32_t      m_window_h           = 0;
         float              m_aspectRatio        = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);

@@ -28,13 +28,13 @@
 
 struct sMapFloorSpritesheet
 {
-    std::string name     = "";
-    std::string fileName = "";
+    std::string name     = {};
+    std::string fileName = {};
 };
 
 struct sMapMusicTag
 {
-    std::string name     = "";
+    std::string name     = {};
 };
 
 struct sMusicTrack
@@ -44,8 +44,8 @@ struct sMusicTrack
 
 struct sMapWallSet
 {
-    std::string name     = "";
-    std::string fileName = "";
+    std::string name     = {};
+    std::string fileName = {};
 
     // Wide walls
     //sEntity**     wall_wp       = nullptr; // Pillar
@@ -87,8 +87,8 @@ struct sMapBiome
     std::uint32_t UID        = 0;
 
     // General information
-    std::string   name       = "";
-    std::string   fileName   = "";
+    std::string   name       = {};
+    std::string   fileName   = {};
 
     // Data
     sMapMusicTag  MusicTag   = {};

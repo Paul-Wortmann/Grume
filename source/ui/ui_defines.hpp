@@ -66,7 +66,7 @@ struct sUIComponent
     std::uint32_t      UID           = 0;
 
     // Infomation
-    std::string        name          = "";
+    std::string        name          = {};
     bool               enabled       = false;
     eComponentFunction function      = eComponentFunction::componentFunctionNone;
     eComponentState    state         = eComponentState::componentNormal;
@@ -92,7 +92,7 @@ struct sUIMenu
     sUIComponent*      component     = nullptr;
 
     // Infomation
-    std::string        name          = "";
+    std::string        name          = {};
     bool               enabled       = false;
 
     // Base
