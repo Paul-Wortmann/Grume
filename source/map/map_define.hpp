@@ -106,7 +106,7 @@ struct sMapPortal
 struct sMapObject
 {
     std::uint32_t tile       = 0;
-    std::string   name       = "";
+    std::string   name       = {};
     float         scale      = 0.0f;
     float         yRot       = 0.0f;
     std::uint32_t obstacle   = 0;
@@ -114,7 +114,7 @@ struct sMapObject
 
 struct sMapDebris
 {
-    std::string   name       = "";
+    std::string   name       = {};
     float         scaleMax   = 0.0f;
     float         scaleMin   = 0.0f;
     std::uint32_t prevalence = 0;
@@ -123,7 +123,7 @@ struct sMapDebris
 
 struct sMapNPCMob
 {
-    std::string   name       = "";
+    std::string   name       = {};
     float         scaleMax   = 0.0f;
     float         scaleMin   = 0.0f;
     std::uint32_t prevalence = 0;
@@ -132,7 +132,7 @@ struct sMapNPCMob
 struct sMapNPC
 {
     std::uint32_t tile       = 0;
-    std::string   name       = "";
+    std::string   name       = {};
     std::uint32_t index      = 0;
     float         scale      = 0.0f;
     float         yRot       = 0.0f;
@@ -145,14 +145,14 @@ struct sMap
     std::uint32_t  UID               = 0;
 
     // Infomation
-    std::string    name              = "";
-    std::string    fileName          = "";
+    std::string    name              = {};
+    std::string    fileName          = {};
     float          terrainHeight     = -1.0f; // Default == -1.0f
 
     // Music
     bool           musicDefined      = false;
-    std::string    musicFileName     = "";
-    std::string    musicTagName      = "";
+    std::string    musicFileName     = {};
+    std::string    musicTagName      = {};
     std::uint32_t  musicNumber       = 0;
 
     // Player start information
