@@ -88,9 +88,9 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
             // Get the object entity file name
             tObjectDataString += "    ";
             std::uint64_t tObjectDataStringLength = tObjectDataString.length();
-            std::string   tObjectFileName     = "";
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            std::string   tObjectFileName         = {};
+            std::uint32_t tStringNum              = 0;
+            std::string   tString                 = {};
             if (tObjectDataStringLength > 6)
             {
                 for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)
@@ -185,15 +185,15 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             std::string   tObjectString = xmlMapFile.getString("<object>", i + 1);
             tObjectString += "    ";
             std::uint64_t tObjectStringLength = tObjectString.length();
-            std::uint32_t tObjectTileNum  = 0;
-            std::string   tObjectName     = "";
-            std::uint32_t tObjectIndex    = 0;
-            float         tObjectScale    = 0.0;
-            float         tObjectRotation = 0.0;
-            std::uint32_t tObjectObstacle = 0;
-            std::uint32_t tObjectTrigger  = 0;
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            std::uint32_t tObjectTileNum      = 0;
+            std::string   tObjectName         = {};
+            std::uint32_t tObjectIndex        = 0;
+            float         tObjectScale        = 0.0;
+            float         tObjectRotation     = 0.0;
+            std::uint32_t tObjectObstacle     = 0;
+            std::uint32_t tObjectTrigger      = 0;
+            std::uint32_t tStringNum          = 0;
+            std::string   tString             = {};
             
             if (tObjectStringLength > 6)
             {
@@ -275,9 +275,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 // Get the object entity file name
                 tObjectDataString += "    ";
                 std::uint64_t tObjectDataStringLength = tObjectDataString.length();
-                std::string   tObjectFileName    = "";
-                std::uint32_t tStringNumFileName = 0;
-                std::string   tStringFileName    = "";
+                std::string   tObjectFileName         = {};
+                std::uint32_t tStringNumFileName      = 0;
+                std::string   tStringFileName         = {};
                 if (tObjectDataStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)
@@ -438,9 +438,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                     // Get the object entity file name
                                     objectDataString += "    ";
                                     std::uint64_t tObjectDataStringLength = objectDataString.length();
-                                    std::string   tObjectFileName         = "";
+                                    std::string   tObjectFileName         = {};
                                     std::uint32_t tStringNum              = 0;
-                                    std::string   tString                 = "";
+                                    std::string   tString                 = {};
                                     if (tObjectDataStringLength > 6)
                                     {
                                         for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)

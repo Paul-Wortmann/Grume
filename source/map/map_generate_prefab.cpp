@@ -36,7 +36,7 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
             std::uint32_t roomType   = 0;
             std::uint32_t roomWidth  = 0;
             std::uint32_t roomHeight = 0;
-            std::string   fileName   = "";
+            std::string   fileName   = {};
         };
         
         // Get the data from the XML file
@@ -44,11 +44,11 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
         sPrefabData* tPrefabData = new sPrefabData[prefabCount];
         for (std::uint32_t p = 0; p < prefabCount; ++p)
         {
-            std::string tPrefabString = xmlMapPrefabDatabaseFile.getString("<prefab>", p + 1);
+            std::string tPrefabString         = xmlMapPrefabDatabaseFile.getString("<prefab>", p + 1);
             tPrefabString += "    ";
             std::uint64_t tPrefabStringLength = tPrefabString.length();
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            std::uint32_t tStringNum          = 0;
+            std::string   tString             = {};
             if (tPrefabStringLength > 6)
             {
                 for (std::uint64_t j = 0; j < tPrefabStringLength; ++j)
@@ -197,12 +197,12 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
             std::string   tObjectString = xmlMapPrefabFile.getString("<object>", i + 1);
             tObjectString += "    ";
             std::uint64_t tObjectStringLength = tObjectString.length();
-            std::uint32_t tObjectTileNum  = 0;
-            std::string   tObjectName     = "";
-            std::uint32_t tObjectIndex    = 0;
-            std::uint32_t tObjectObstacle = 0;
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            std::uint32_t tObjectTileNum      = 0;
+            std::string   tObjectName         = {};
+            std::uint32_t tObjectIndex        = 0;
+            std::uint32_t tObjectObstacle     = 0;
+            std::uint32_t tStringNum          = 0;
+            std::string   tString             = {};
             if (tObjectStringLength > 6)
             {
                 float tObjectScale    = 0.0;

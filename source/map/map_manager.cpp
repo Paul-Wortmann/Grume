@@ -316,7 +316,7 @@ void cMapManager::load(const std::string &_fileName)
         }
 
         // Load music data from map file
-        std::string   tKeyName     = "";
+        std::string   tKeyName     = {};
         std::uint32_t tTrackNumber = 0;
 
         // Parse the music string if it was specified
@@ -328,8 +328,8 @@ void cMapManager::load(const std::string &_fileName)
             musicString += "    ";
             std::uint64_t tMusicStringLength = musicString.length();
             
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            std::uint32_t tStringNum         = 0;
+            std::string   tString            = {};
             if (tMusicStringLength > 6)
             {
                 for (std::uint64_t i = 0; i < tMusicStringLength; ++i)
@@ -537,16 +537,16 @@ void cMapManager::load(const std::string &_fileName)
             for (std::uint32_t i = 0; i < m_currentMap->objectCount; ++i)
             {
                 // Load the data from the map file
-                std::string tObjectString = xmlMapFile.getString("<object>", i + 1);
+                std::string tObjectString         = xmlMapFile.getString("<object>", i + 1);
                 tObjectString += "    ";
                 std::uint64_t tObjectStringLength = tObjectString.length();
-                std::uint32_t tObjectTileNum   = 0;
-                std::string   tObjectName      = "";
-                float         tObjectScale     = 0.0f;
-                float         tObjectRotation  = 0.0f;
-                std::uint32_t tObjectObstacle  = 0;
-                std::uint32_t tStringNum = 0;
-                std::string   tString = "";
+                std::uint32_t tObjectTileNum      = 0;
+                std::string   tObjectName         = {};
+                float         tObjectScale        = 0.0f;
+                float         tObjectRotation     = 0.0f;
+                std::uint32_t tObjectObstacle     = 0;
+                std::uint32_t tStringNum          = 0;
+                std::string   tString             = {};
                 if (tObjectStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tObjectStringLength; ++j)
@@ -600,18 +600,18 @@ void cMapManager::load(const std::string &_fileName)
             for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
             {
                 // Load the data from the map file
-                std::string tDebrisString = xmlMapFile.getString("<debris>", i + 1);
+                std::string tDebrisString         = xmlMapFile.getString("<debris>", i + 1);
                 tDebrisString += "    ";
                 std::uint64_t tDebrisStringLength = tDebrisString.length();
 
-                std::string   tDebrisName       = "";
-                float         tDebrisScaleMax   = 0.0f;
-                float         tDebrisScaleMin   = 0.0f;
-                std::uint32_t tDebrisPrevalence = 0;
-                std::uint32_t tDebrisObstacle   = 0;
+                std::string   tDebrisName         = {};
+                float         tDebrisScaleMax     = 0.0f;
+                float         tDebrisScaleMin     = 0.0f;
+                std::uint32_t tDebrisPrevalence   = 0;
+                std::uint32_t tDebrisObstacle     = 0;
 
-                std::uint32_t tStringNum = 0;
-                std::string   tString = "";
+                std::uint32_t tStringNum          = 0;
+                std::string   tString             = {};
                 if (tDebrisStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tDebrisStringLength; ++j)
@@ -665,17 +665,17 @@ void cMapManager::load(const std::string &_fileName)
             for (std::uint32_t i = 0; i < m_currentMap->npcMobCount; ++i)
             {
                 // Load the data from the map file
-                std::string tNPCMobString = xmlMapFile.getString("<npc_mob>", i + 1);
+                std::string tNPCMobString         = xmlMapFile.getString("<npc_mob>", i + 1);
                 tNPCMobString += "    ";
                 std::uint64_t tNPCMobStringLength = tNPCMobString.length();
 
-                std::string   tNPCMobName       = "";
-                float         tNPCMobScaleMax   = 0.0f;
-                float         tNPCMobScaleMin   = 0.0f;
-                std::uint32_t tNPCMobPrevalence = 0;
+                std::string   tNPCMobName         = {};
+                float         tNPCMobScaleMax     = 0.0f;
+                float         tNPCMobScaleMin     = 0.0f;
+                std::uint32_t tNPCMobPrevalence   = 0;
 
-                std::uint32_t tStringNum = 0;
-                std::string   tString = "";
+                std::uint32_t tStringNum          = 0;
+                std::string   tString             = {};
                 if (tNPCMobStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tNPCMobStringLength; ++j)
@@ -724,18 +724,18 @@ void cMapManager::load(const std::string &_fileName)
             for (std::uint32_t i = 0; i < m_currentMap->npcCount; ++i)
             {
                 // Load the data from the map file
-                std::string tNPCString = xmlMapFile.getString("<npc>", i + 1);
+                std::string tNPCString         = xmlMapFile.getString("<npc>", i + 1);
                 tNPCString += "    ";
                 std::uint64_t tNPCStringLength = tNPCString.length();
 
-                std::uint32_t tNPCTile     = 0;
-                std::string   tNPCName     = "";
-                std::uint32_t tNPCIndex    = 0;
-                float         tNPCScale    = 0.0f;
-                float         tNPCRotation = 0.0f;
+                std::uint32_t tNPCTile         = 0;
+                std::string   tNPCName         = {};
+                std::uint32_t tNPCIndex        = 0;
+                float         tNPCScale        = 0.0f;
+                float         tNPCRotation     = 0.0f;
         
-                std::uint32_t tStringNum = 0;
-                std::string   tString = "";
+                std::uint32_t tStringNum       = 0;
+                std::string   tString          = {};
                 if (tNPCStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tNPCStringLength; ++j)
@@ -863,14 +863,14 @@ void cMapManager::load(const std::string &_fileName)
             for (std::uint32_t i = 0; i < roomTypeSetCount; ++i)
             {
                 // Load the data from the map file
-                std::string troomTypeSetString = xmlMapFile.getString("<room_type_set>", i + 1);
+                std::string troomTypeSetString         = xmlMapFile.getString("<room_type_set>", i + 1);
                 troomTypeSetString += "    ";
                 std::uint64_t troomTypeSetStringLength = troomTypeSetString.length();
-                std::uint32_t tRoomTile   = 0;
-                std::uint32_t tRoomType   = 0;
-                std::int32_t  tRoomIgnore = 0;
-                std::uint32_t tStringNum  = 0;
-                std::string   tString     = "";
+                std::uint32_t tRoomTile                = 0;
+                std::uint32_t tRoomType                = 0;
+                std::int32_t  tRoomIgnore              = 0;
+                std::uint32_t tStringNum               = 0;
+                std::string   tString                  = {};
                 if (troomTypeSetStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < troomTypeSetStringLength; ++j)

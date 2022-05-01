@@ -133,7 +133,7 @@ void cGameEngine::game_load(const std::uint32_t &_slotNum)
             std::string tmapData = xmlSaveGameFile.getString("<map>", 1 + i);
             tmapData += "    ";
             std::uint64_t tmapDataLength = tmapData.length();
-            std::string   tmapName       = "";
+            std::string   tmapName       = {};
             std::uint32_t tmapSeed       = 0;
             std::uint32_t tStringNum = 0;
             std::string tString = "";

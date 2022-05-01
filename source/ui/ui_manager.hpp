@@ -69,7 +69,7 @@ class cUIManager
         eComponentFunction  m_uiEvent           = eComponentFunction::componentFunctionNone;
         
         // member pointer handles
-        cEntityManager* m_entityManager = nullptr;
+        cEntityManager*     m_entityManager     = nullptr;
 
         // internal member functions
         void m_freeAll(void);

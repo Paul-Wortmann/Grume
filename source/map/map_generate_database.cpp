@@ -42,9 +42,9 @@ std::string gGetFileName(cXML &_xmlFile, const std::string &_name, const std::ui
     // Second parse the string from the database
     tDataString += "    ";
     std::uint64_t tDataStringLength = tDataString.length();
-    std::string   tFileName         = "";
+    std::string   tFileName         = {};
     std::uint32_t tStringNum        = 0;
-    std::string   tString           = "";
+    std::string   tString           = {};
     if (tDataStringLength > 6)
     {
         for (std::uint64_t j = 0; j < tDataStringLength; ++j)

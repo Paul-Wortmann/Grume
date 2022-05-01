@@ -56,13 +56,13 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             tNPCString += "    ";
             std::uint64_t tNPCStringLength = tNPCString.length();
             std::uint32_t tNPCTileNum  = 0;
-            std::string   tNPCName     = "";
+            std::string   tNPCName     = {};
             std::uint32_t tNPCIndex    = 0;
             float         tNPCScale    = 0.0;
             float         tNPCRotation = 0.0;
             std::uint32_t tNPCEnemy    = 0;
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            std::uint32_t tStringNum   = 0;
+            std::string   tString      = {};
             if (tNPCStringLength > 6)
             {
                 for (std::uint64_t j = 0; j < tNPCStringLength; ++j)
@@ -125,9 +125,9 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 // Get the npc entity file name
                 tNPCDataString += "    ";
                 std::uint64_t tNPCDataStringLength = tNPCDataString.length();
-                std::string   tNPCFileName       = "";
+                std::string   tNPCFileName       = {};
                 std::uint32_t tStringNumFileName = 0;
-                std::string   tStringFileName    = "";
+                std::string   tStringFileName    = {};
                 if (tNPCDataStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tNPCDataStringLength; ++j)
@@ -200,7 +200,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             // Create a data structure for the mob information
             struct sMob
             {
-                std::string   npcName    = "";
+                std::string   npcName    = {};
                 float         scaleMin   = 0.0;
                 float         scaleMax   = 0.0;
                 std::uint32_t prevalence = 0;
@@ -279,9 +279,9 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                     // Get the npc entity file name
                                     npcDataString += "    ";
                                     std::uint64_t tNPCDataStringLength = npcDataString.length();
-                                    std::string   tNPCFileName         = "";
+                                    std::string   tNPCFileName         = {};
                                     std::uint32_t tStringNum           = 0;
-                                    std::string   tString              = "";
+                                    std::string   tString              = {};
                                     if (tNPCDataStringLength > 6)
                                     {
                                         for (std::uint64_t j = 0; j < tNPCDataStringLength; ++j)
