@@ -32,11 +32,13 @@ struct sMapFloorSpritesheet
     std::string fileName = {};
 };
 
+// Music type
 struct sMapMusicTag
 {
     std::string name     = {};
 };
 
+// Music number
 struct sMusicTrack
 {
     std::uint32_t no     = 0; // Default == 0 (random)
