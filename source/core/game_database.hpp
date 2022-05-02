@@ -31,7 +31,7 @@
 
 struct sGameDatabaseData
 {
-    std::string fileName = "";
+    std::string fileName = {};
 };
 
 class cGameDatabase

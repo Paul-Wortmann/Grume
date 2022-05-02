@@ -71,19 +71,20 @@ class cGameEngine
        
         // game_engine.cpp
         std::uint32_t initialize(const std::uint32_t &_argc, char** _argv);
-        void   terminate(void);
-        void   process(void);
+        void          terminate(void);
+        void          process(void);
 
         // game_new.cpp
-        void game_new(void);
+        void          game_new(void);
 
         // game_load.cpp
-        void game_load(void);
-        void game_load(const std::uint32_t &_slotNum);
+        void          game_load(void);
+        void          game_load(const std::uint32_t &_slotNum);
 
         // game_save.cpp
-        void game_save(const std::uint32_t &_slotNum);
+        void          game_save(const std::uint32_t &_slotNum);
         
+        // Entity pointers
         sEntity* m_entityHead = nullptr;
         sEntity* m_entityTemp = nullptr;
 };
