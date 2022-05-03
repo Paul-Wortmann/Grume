@@ -116,10 +116,10 @@ void cNPCManager::process(const float &_dt)
                     // Attack
                     //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
 
-                    m_entityTemp->ai->attack_counter += _dt;
-                    if (m_entityTemp->ai->attack_counter > m_entityTemp->ai->attack_frequency)
+                    m_entityTemp->ai->attackCounter += _dt;
+                    if (m_entityTemp->ai->attackCounter > m_entityTemp->ai->attackFrequency)
                     {
-                        m_entityTemp->ai->attack_counter = 0.0f;
+                        m_entityTemp->ai->attackCounter = 0.0f;
                         
                         // Inflict damage on the player
                         // **** this should be based on NPC strength and player defense, etc...

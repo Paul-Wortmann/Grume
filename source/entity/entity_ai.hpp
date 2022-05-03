@@ -72,8 +72,8 @@ struct sEntityAI
     std::uint32_t   lastKnownPlayerTile = 0;
     
     // Attack
-    std::uint32_t   attack_frequency    = 32;
-    std::uint32_t   attack_counter      = 0;
+    std::uint32_t   attackFrequency     = 32;
+    std::uint32_t   attackCounter       = 0;
     
     // Enums
     eEntityAttack   attack   = eEntityAttack::entityAttackAgressive;

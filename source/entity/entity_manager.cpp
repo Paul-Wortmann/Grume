@@ -393,8 +393,8 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->ai                   = new sEntityAI;
             _entity->ai->distanceAttack   = xmlEntityFile.getFloat("<attack_distance>");
             _entity->ai->distanceMove     = xmlEntityFile.getFloat("<move_distance>");
-            _entity->ai->attack_frequency = xmlEntityFile.getInteger("<attack_frequency>");
-            _entity->ai->attack_counter   = _entity->ai->attack_frequency;
+            _entity->ai->attackFrequency  = xmlEntityFile.getInteger("<attack_frequency>");
+            _entity->ai->attackCounter    = _entity->ai->attackFrequency;
         }
         
         // Load Interaction data
