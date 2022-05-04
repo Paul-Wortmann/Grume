@@ -25,9 +25,9 @@
 #define MODEL_MANAGER_HPP
 
 #include "assimp_to_glm.hpp"
-#include "entity_model.hpp"
 #include "entity_material.hpp"
 #include "entity_mesh.hpp"
+#include "entity_model.hpp"
 #include "entity_texture.hpp"
 #include "material_manager.hpp"
 #include "../core/includes.hpp"
