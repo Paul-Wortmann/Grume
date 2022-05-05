@@ -105,7 +105,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
         // Perimeter --------------------------------------------------------------------------------------------
         // Corner [0,0]
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-        tEntity->owner = eEntityOwner::ownerMap;
+        tEntity->owner = eEntityOwner::entityOwnerMap;
         tEntity->type  = eEntityType::entityTypeWall;
         tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
@@ -114,7 +114,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
 
         // Corner [max,0]
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-        tEntity->owner = eEntityOwner::ownerMap;
+        tEntity->owner = eEntityOwner::entityOwnerMap;
         tEntity->type  = eEntityType::entityTypeWall;
         tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
@@ -123,7 +123,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
 
         // Corner [max,max]
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-        tEntity->owner = eEntityOwner::ownerMap;
+        tEntity->owner = eEntityOwner::entityOwnerMap;
         tEntity->type  = eEntityType::entityTypeWall;
         tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
@@ -132,7 +132,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
 
         // Corner [0,max]
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-        tEntity->owner = eEntityOwner::ownerMap;
+        tEntity->owner = eEntityOwner::entityOwnerMap;
         tEntity->type  = eEntityType::entityTypeWall;
         tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -148,13 +148,13 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
             if (m_isDWall(_map, t + _map->width))
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             else
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_wd_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
@@ -168,13 +168,13 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
             if (m_isDWall(_map, t - _map->width))
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             else
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_wd_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
@@ -192,13 +192,13 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
             if (m_isDWall(_map, t + 1))
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             else
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_wd_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
@@ -211,13 +211,13 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
             if (m_isDWall(_map, t - 1))
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             else
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_wd_entity>", 1));
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
             tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
@@ -247,7 +247,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                         (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wt_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                     }
 
@@ -261,7 +261,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wp_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                     }
                     // Double sided
@@ -274,7 +274,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wd_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                     }
@@ -287,7 +287,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wd_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                     }
@@ -302,7 +302,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                     }
@@ -315,7 +315,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                     }
@@ -328,7 +328,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                     }
@@ -341,7 +341,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                     }
@@ -356,7 +356,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_we_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                     }
@@ -369,7 +369,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_we_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                     }
@@ -382,7 +382,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_we_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                     }
@@ -395,7 +395,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_we_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                     }
@@ -410,7 +410,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                     }
@@ -423,7 +423,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                     }
@@ -436,7 +436,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isFlat(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                     }
@@ -449,7 +449,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                              (m_isDWall(_map, t - _map->width)))
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                         tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                     }
@@ -458,7 +458,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                     else
                     {
                         tEntity = m_entityManager->load(xmlFile.getString("<wall_wp_entity>", 1));
-                        tEntity->owner = eEntityOwner::ownerMap;
+                        tEntity->owner = eEntityOwner::entityOwnerMap;
                         tEntity->type  = eEntityType::entityTypeWall;
                     }
 */
@@ -577,7 +577,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_3tus_entity>", 1 + (rand() % wall_3tus_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -624,7 +624,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_3tds_entity>", 1 + (rand() % wall_3tds_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -677,7 +677,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2tus_entity>", 1 + (rand() % wall_2tus_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -717,7 +717,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2tds_entity>", 1 + (rand() % wall_2tds_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -767,7 +767,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2tus_entity>", 1 + (rand() % wall_2tus_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
@@ -807,7 +807,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2tds_entity>", 1 + (rand() % wall_2tds_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
@@ -853,7 +853,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_1tus_entity>", 1 + (rand() % wall_1tus_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -886,7 +886,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_1tds_entity>", 1 + (rand() % wall_1tds_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -910,7 +910,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             tEntity = m_entityManager->load(xmlFile.getString("<wall_1tc_entity>", 1 + (rand() % wall_1tc_count)));
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -922,7 +922,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             tEntity = m_entityManager->load(xmlFile.getString("<wall_1tc_entity>", 1 + (rand() % wall_1tc_count)));
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
@@ -934,7 +934,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             tEntity = m_entityManager->load(xmlFile.getString("<wall_1tc_entity>", 1 + (rand() % wall_1tc_count)));
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
@@ -946,7 +946,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             tEntity = m_entityManager->load(xmlFile.getString("<wall_1tc_entity>", 1 + (rand() % wall_1tc_count)));
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
@@ -976,7 +976,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             }
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -1003,7 +1003,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             }
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
@@ -1034,7 +1034,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             }
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
@@ -1061,7 +1061,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             }
             if (tEntity != nullptr)
             {
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
@@ -1101,7 +1101,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_3td_entity>", 1 + (rand() % wall_3td_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -1132,7 +1132,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_3td_entity>", 1 + (rand() % wall_3td_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
@@ -1175,7 +1175,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2td_entity>", 1 + (rand() % wall_2td_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
@@ -1200,7 +1200,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2td_entity>", 1 + (rand() % wall_2td_count)));
                             if (tEntity != nullptr)
                             {
-                                tEntity->owner = eEntityOwner::ownerMap;
+                                tEntity->owner = eEntityOwner::entityOwnerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
                                 tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
@@ -1244,7 +1244,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1263,7 +1263,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }
@@ -1284,7 +1284,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1303,7 +1303,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                         }
@@ -1322,7 +1322,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                         }
@@ -1342,7 +1342,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }
@@ -1363,7 +1363,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1382,7 +1382,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }
@@ -1412,7 +1412,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                         }
                     }
@@ -1431,7 +1431,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                         }
                     }
@@ -1451,7 +1451,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }
@@ -1470,7 +1470,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1491,7 +1491,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }
@@ -1510,7 +1510,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1529,7 +1529,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                         }
@@ -1548,7 +1548,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                         }
@@ -1568,7 +1568,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1587,7 +1587,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                         }
@@ -1606,7 +1606,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                         }
@@ -1625,7 +1625,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }
@@ -1645,7 +1645,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                         }
@@ -1664,7 +1664,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                         }
@@ -1683,7 +1683,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                         }
@@ -1702,7 +1702,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                         }
                         if (tEntity != nullptr)
                         {
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeWall;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                         }

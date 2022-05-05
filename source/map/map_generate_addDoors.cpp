@@ -95,7 +95,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t + 1].base = eTileBase::tileFloorNoGo;
                             _map->tile[t - 1].base = eTileBase::tileFloorNoGo;
 
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
                             tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
@@ -159,7 +159,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t + _map->width].base = eTileBase::tileFloorNoGo;
                             _map->tile[t - _map->width].base = eTileBase::tileFloorNoGo;
 
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
                             tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
@@ -235,7 +235,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t].base     = eTileBase::tileFloorNoGo;
                             _map->tile[t + 1].base = eTileBase::tileFloorNoGo;
 
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
                             tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->position.x += tp;
@@ -294,7 +294,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t].base     = eTileBase::tileFloorNoGo;
                             _map->tile[t + _map->width].base = eTileBase::tileFloorNoGo;
 
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
                             tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->position.z += tp;
@@ -363,7 +363,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             // Set base tile to relevant collision enum
                             _map->tile[t].base     = eTileBase::tileFloorNoGo;
 
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
                             tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
@@ -412,7 +412,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             // Set base tile to relevant collision enum
                             _map->tile[t].base     = eTileBase::tileFloorNoGo;
 
-                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->owner = eEntityOwner::entityOwnerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
                             tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);

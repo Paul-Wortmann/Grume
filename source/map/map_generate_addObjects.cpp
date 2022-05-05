@@ -126,7 +126,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
                 tEntity->tile = _tn;
 
                 m_addCollisionData(_map, tEntity, _tn, _yr);
-                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->owner = eEntityOwner::entityOwnerMap;
                 tEntity->type  = eEntityType::entityTypeObject;
                 tEntity->position += glm::vec3(static_cast<float>(w) + tp - static_cast<float>(xo), y_pos, static_cast<float>(h) + tp - static_cast<float>(yo));
                 if ((_s > 1.00001f) || (_s < 0.99999f))
@@ -313,7 +313,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                     tEntity->tile = tObjectTileNum;
 
                     m_addCollisionData(_map, tEntity, tObjectTileNum, tObjectRotation);
-                    tEntity->owner = eEntityOwner::ownerMap;
+                    tEntity->owner = eEntityOwner::entityOwnerMap;
                     tEntity->type  = eEntityType::entityTypeObject;
                     tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                     if ((tObjectScale > 1.00001f) || (tObjectScale < 0.99999f))
@@ -474,7 +474,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                         tEntity->tile = t;
 
                                         m_addCollisionData(_map, tEntity, t, 0.0);
-                                        tEntity->owner = eEntityOwner::ownerMap;
+                                        tEntity->owner = eEntityOwner::entityOwnerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                         std::uint32_t  randAngle = rand() % 360;

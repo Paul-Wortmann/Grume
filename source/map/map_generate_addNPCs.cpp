@@ -163,7 +163,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                     tEntity->tile = tNPCTileNum;
 
                     _map->tile[tNPCTileNum].npc = tEntity->UID;
-                    tEntity->owner = eEntityOwner::ownerMap;
+                    tEntity->owner = eEntityOwner::entityOwnerMap;
                     tEntity->type  = (tNPCEnemy == 0) ? eEntityType::entityTypeNPC : eEntityType::entityTypeNPCmob;
                     tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                     if ((tNPCScale > 1.00001f) || (tNPCScale < 0.99999f))
@@ -317,7 +317,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                         tEntity->tile = t;
 
                                         _map->tile[t].npc = tEntity->UID;
-                                        tEntity->owner = eEntityOwner::ownerMap;
+                                        tEntity->owner = eEntityOwner::entityOwnerMap;
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
                                         tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                         tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);

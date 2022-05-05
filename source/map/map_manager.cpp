@@ -935,7 +935,7 @@ void cMapManager::load(const std::string &_fileName)
         // Generate floor model
         m_currentMap->floor        = m_entityManager->getNew();
         m_currentMap->floor->name  = "Generated map floor.";
-        m_currentMap->floor->owner = eEntityOwner::ownerMap;
+        m_currentMap->floor->owner = eEntityOwner::entityOwnerMap;
         m_currentMap->floor->model = m_generateFloor(m_currentMap);
 
         // Create a model matrix
@@ -982,7 +982,7 @@ void cMapManager::unload(void)
     // Free all entities associated with the map
     for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
     {
-        if (entity->owner == eEntityOwner::ownerMap)
+        if (entity->owner == eEntityOwner::entityOwnerMap)
         {
             m_entityManager->freeEntityData(entity);
             m_entityManager->remove(entity);

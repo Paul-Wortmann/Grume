@@ -46,7 +46,7 @@ sEntityModel* cEntityManager::getNewModel(void)
 
 void cEntityManager::freeData(sEntity*& _pointer)
 {
-    _pointer->owner = eEntityOwner::ownerNone;
+    _pointer->owner = eEntityOwner::entityOwnerNone;
     _pointer->name = "";
 
     // These are freed by their respective managers

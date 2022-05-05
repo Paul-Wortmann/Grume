@@ -40,7 +40,7 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
     {
         gLogWrite(LOG_INFO, "Loading player: " + m_player->name, __FILE__, __LINE__, __FUNCTION__);
 
-        m_player->owner = eEntityOwner::ownerNone;
+        m_player->owner = eEntityOwner::entityOwnerNone;
         m_player->type  = eEntityType::entityTypeOther;
 
         // Load the biome sound database file

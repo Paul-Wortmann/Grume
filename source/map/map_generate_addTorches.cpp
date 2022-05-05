@@ -94,14 +94,14 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
                                 //_map->tile[tEntity_2->tile].base     = eTileBase::tileFloorNoGo;
 
                                 // Torch 1 placement
-                                tEntity_1->owner = eEntityOwner::ownerMap;
+                                tEntity_1->owner = eEntityOwner::entityOwnerMap;
                                 tEntity_1->type  = eEntityType::entityTypeObject;
                                 tEntity_1->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h + 1) + tp - yo);
                                 tEntity_1->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity_1);
 
                                 // Torch 2 placement
-                                tEntity_2->owner = eEntityOwner::ownerMap;
+                                tEntity_2->owner = eEntityOwner::entityOwnerMap;
                                 tEntity_2->type  = eEntityType::entityTypeObject;
                                 tEntity_2->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h - 1) + tp - yo);
                                 tEntity_2->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
@@ -137,14 +137,14 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
                                 //_map->tile[tEntity_2->tile].base     = eTileBase::tileFloorNoGo;
 
                                 // Torch 1 placement
-                                tEntity_1->owner = eEntityOwner::ownerMap;
+                                tEntity_1->owner = eEntityOwner::entityOwnerMap;
                                 tEntity_1->type  = eEntityType::entityTypeObject;
                                 tEntity_1->position += glm::vec3(static_cast<float>(w + 1) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity_1->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity_1);
 
                                 // Torch 2 placement
-                                tEntity_2->owner = eEntityOwner::ownerMap;
+                                tEntity_2->owner = eEntityOwner::entityOwnerMap;
                                 tEntity_2->type  = eEntityType::entityTypeObject;
                                 tEntity_2->position += glm::vec3(static_cast<float>(w - 1) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity_2->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);

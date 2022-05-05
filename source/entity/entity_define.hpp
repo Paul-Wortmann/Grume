@@ -37,9 +37,9 @@
 
 enum eEntityOwner: std::uint16_t
 {
-    ownerNone = 0,
-    ownerUI   = 1,
-    ownerMap  = 2
+    entityOwnerNone     = 0,
+    entityOwnerUI       = 1,
+    entityOwnerMap      = 2
 };
 
 enum eEntityType: std::uint16_t
@@ -63,7 +63,7 @@ struct sEntity
     std::string         name                 = {};
     bool                enabled              = true;
     eEntityType         type                 = eEntityType::entityTypeStatic;
-    eEntityOwner        owner                = eEntityOwner::ownerNone;
+    eEntityOwner        owner                = eEntityOwner::entityOwnerNone;
     std::uint32_t       tile                 = 0; // Current tile
 
     // Base
