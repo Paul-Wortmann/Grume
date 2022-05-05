@@ -28,53 +28,53 @@
 
 struct sCharacterSkillLevel
 {
-    std::uint32_t        current             = 0;           // Current skill level
-    std::uint32_t        max                 = 10;          // Max skill level
+    std::uint32_t         current             = 0;          // Current skill level
+    std::uint32_t         max                 = 10;         // Max skill level
 
-    std::uint64_t        exp                 = 0;           // Current skill experience
-    std::uint64_t        expNext             = 1024;        // Experience for next level
-    float                expMultiplier       = 1.5f;        // Experience multiplier
-    std::uint64_t        expMax              = UINT64_MAX;  // Max skill experence
+    std::uint64_t         exp                 = 0;          // Current skill experience
+    std::uint64_t         expNext             = 1024;       // Experience for next level
+    float                 expMultiplier       = 1.5f;       // Experience multiplier
+    std::uint64_t         expMax              = UINT64_MAX; // Max skill experence
 };
 
 
 struct sCharacterSkillAttack
 {
-    std::uint32_t        damage              = 10;     // Maximum damage
-    float                damageMultiplier    = 1.5f;   // Damage multiplier
-    std::uint32_t        duration            = 2000;   // Duration in miliseconds
-    float                durationMultiplier  = 1.1f;   // Duration multiplier
-    float                aoe                 = 1.0f;   // Radius for area of effect
-    float                aoeMultiplier       = 1.25f;  // AOE multiplier
-    std::uint32_t        numProjectiles      = 1;      // Duration in miliseconds
-    float                numProFloat         = 1.0f;   // Number of projectiles float value
-    float                numProMultiplier    = 1.5f;   // Number of projectiles multiplier
+    std::uint32_t         damage              = 10;     // Maximum damage
+    float                 damageMultiplier    = 1.5f;   // Damage multiplier
+    std::uint32_t         duration            = 2000;   // Duration in miliseconds
+    float                 durationMultiplier  = 1.1f;   // Duration multiplier
+    float                 aoe                 = 1.0f;   // Radius for area of effect
+    float                 aoeMultiplier       = 1.25f;  // AOE multiplier
+    std::uint32_t         numProjectiles      = 1;      // Duration in miliseconds
+    float                 numProFloat         = 1.0f;   // Number of projectiles float value
+    float                 numProMultiplier    = 1.5f;   // Number of projectiles multiplier
 
-    bool                 enabled             = false;       // Available to the character
-    sCharacterSkillLevel level               = {};          // Skill level struct
+    bool                  enabled             = false;  // Available to the character
+    sCharacterSkillLevel  level               = {};     // Skill level struct
 };
 
 struct sCharacterSkillDefend
 {
-    std::uint32_t        duration            = 10000;  // Duration in miliseconds
-    float                durationMultiplier  = 1.1f;   // Duration multiplier
-    float                aoe                 = 1.0f;   // Radius for area of effect
-    float                aoeMultiplier       = 1.25f;  // AOE multiplier
+    std::uint32_t         duration            = 10000;  // Duration in miliseconds
+    float                 durationMultiplier  = 1.1f;   // Duration multiplier
+    float                 aoe                 = 1.0f;   // Radius for area of effect
+    float                 aoeMultiplier       = 1.25f;  // AOE multiplier
 
-    bool                 enabled             = false;       // Available to the character
-    sCharacterSkillLevel level               = {};          // Skill level struct
+    bool                  enabled             = false;  // Available to the character
+    sCharacterSkillLevel  level               = {};     // Skill level struct
 };
 
 struct sEntityCharSkill // Character skills
 {
     // Pysical - Meele - Attack skills
-    sCharacterSkillAttack   earthquake      = {};
+    sCharacterSkillAttack earthquake          = {};
 
     // Magic - Fire - Attack skills
-    sCharacterSkillAttack   fireBall        = {};
+    sCharacterSkillAttack fireBall            = {};
     
     // Magic - Forcefield - Defence skills
-    sCharacterSkillDefend   forceField      = {};
+    sCharacterSkillDefend forceField          = {};
 };
 
 #endif // ENTITY_CHARACTER_SKILL_HPP

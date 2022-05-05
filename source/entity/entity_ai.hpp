@@ -28,10 +28,10 @@
 
 enum class eEntityClass : std::uint16_t 
 { 
-    entityClassNone   = 0, // None
-    entityClassMeele  = 1, // Meele
-    entityClassMage   = 2, // Mage
-    entityClassRanged = 3  // Ranged
+    entityClassNone       = 0, // None
+    entityClassMeele      = 1, // Meele
+    entityClassMage       = 2, // Mage
+    entityClassRanged     = 3  // Ranged
 };
 
 enum class eEntityAttack : std::uint16_t 
@@ -43,25 +43,25 @@ enum class eEntityAttack : std::uint16_t
 
 enum class eEntityDefence : std::uint16_t 
 { 
-    entityDefenceNone   = 0, // None
-    entityDefenceShield = 1  // Shield
+    entityDefenceNone     = 0, // None
+    entityDefenceShield   = 1  // Shield
 };
 
 enum class eEntityMovement : std::uint16_t 
 { 
-    entityMovementNone   = 0, // None
-    entityMovementCharge = 1, // Charge
-    entityMovementFlee   = 2, // Flee
-    entityMovementCircle = 3, // Circle
-    entityMovementAvoid  = 4  // Avoid
+    entityMovementNone    = 0, // None
+    entityMovementCharge  = 1, // Charge
+    entityMovementFlee    = 2, // Flee
+    entityMovementCircle  = 3, // Circle
+    entityMovementAvoid   = 4  // Avoid
 };
 
 enum class eEntitySocial : std::uint16_t 
 { 
-    entitySocialNone   = 0, // None
-    entitySocialSwarm  = 1, // Swarm 
-    entitySocialLead   = 2, // Lead
-    entitySocialFollow = 3  // Follow
+    entitySocialNone      = 0, // None
+    entitySocialSwarm     = 1, // Swarm 
+    entitySocialLead      = 2, // Lead
+    entitySocialFollow    = 3  // Follow
 };
 
 struct sEntityAI

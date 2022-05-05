@@ -91,7 +91,7 @@ class cMapManager : public tcLinkedList<sMap>
         bool              m_loadRequest     = false;
 
         const float y_pos = -1.0f;       // Map floor position on the y axis
-        const float tp    = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+        const float tp    = 1.0f / 2.0f; // Tile center positioning ( half model dimention)
 
         // map_manager.cpp
         void          freeData(sMap*& _map) override;
