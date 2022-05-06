@@ -28,15 +28,15 @@
 
 enum eEntityInteractionType: std::uint16_t
 {
-    InteractionTypeToggle     = 0,
-    InteractionTypeSet        = 1,
-    InteractionTypeActivate   = 2
+    interactionTypeToggle     = 0,
+    interactionTypeSet        = 1,
+    interactionTypeActivate   = 2
 };
 
 struct sEntityInteraction
 {
     // 0 = toggle states; 1 = set state
-    eEntityInteractionType type     = eEntityInteractionType::InteractionTypeToggle;
+    eEntityInteractionType type     = eEntityInteractionType::interactionTypeToggle;
     std::uint32_t          data_1   = 0;
     std::uint32_t          data_2   = 0;
     float                  distance = 4; // Maximum interaction radius

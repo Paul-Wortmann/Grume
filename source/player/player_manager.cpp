@@ -175,12 +175,12 @@ void cPlayerManager::process(const float &_dt)
                     if ((entity->interaction != nullptr) && (distanceToTileSqr <= entity->interaction->distance))
                     {
                         // Toggle states
-                        if (entity->interaction->type == eEntityInteractionType::InteractionTypeToggle)
+                        if (entity->interaction->type == eEntityInteractionType::interactionTypeToggle)
                         {
                             m_entityManager->toggleState(entity->UID, entity->interaction->data_1, entity->interaction->data_2);
                         }
                         // Set state
-                        else if (entity->interaction->type == eEntityInteractionType::InteractionTypeSet)
+                        else if (entity->interaction->type == eEntityInteractionType::interactionTypeSet)
                         {
                             m_entityManager->setState(entity->UID, entity->interaction->data_1);
                         }
@@ -200,12 +200,12 @@ void cPlayerManager::process(const float &_dt)
                                         if ((tEntity->interaction != nullptr) && (distanceToTileSqr <= tEntity->interaction->distance))
                                         {
                                             // Toggle states
-                                            if (tEntity->interaction->type == eEntityInteractionType::InteractionTypeToggle)
+                                            if (tEntity->interaction->type == eEntityInteractionType::interactionTypeToggle)
                                             {
                                                 m_entityManager->toggleState(tEntity->UID, tEntity->interaction->data_1, tEntity->interaction->data_2);
                                             }
                                             // Set state
-                                            else if (tEntity->interaction->type == eEntityInteractionType::InteractionTypeSet)
+                                            else if (tEntity->interaction->type == eEntityInteractionType::interactionTypeSet)
                                             {
                                                 m_entityManager->setState(tEntity->UID, tEntity->interaction->data_1);
                                             }
