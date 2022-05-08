@@ -29,10 +29,10 @@
 
 struct sFontCharacter
 {
-    glm::ivec2     size    = glm::ivec2(0, 0);
-    glm::ivec2     bearing = glm::ivec2(0, 0);
-    std::uint32_t  advance = 0;
-    unsigned char* bitmap  = nullptr;
+    glm::ivec2         size    = glm::ivec2(0, 0);
+    glm::ivec2         bearing = glm::ivec2(0, 0);
+    std::uint32_t      advance = 0;
+    unsigned char*     bitmap  = nullptr;
 };
 
 class cFontManager

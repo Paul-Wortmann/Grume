@@ -39,7 +39,7 @@ class cGraphicsEngine
 {
     public:
         // Constructors
-        cGraphicsEngine(void) = default;
+        cGraphicsEngine(void)  = default;
         ~cGraphicsEngine(void) = default;
 
         // Member functions

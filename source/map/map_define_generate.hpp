@@ -26,26 +26,26 @@
 
 enum class eAlgorithm : std::uint16_t
 {
-    algorithm_C1  = 0, // Cave generation algorithm 1
-    algorithm_C2  = 1, // Cave generation algorithm 2
-    algorithm_D1  = 2, // Dungeon generation algorithm 1
-    algorithm_D2  = 3, // Dungeon generation algorithm 2
-    algorithm_M1  = 4, // Maze generation algorithm 1
-    algorithm_T1  = 5  // Town generation algorithm 1
+    algorithm_C1   = 0, // Cave generation algorithm 1
+    algorithm_C2   = 1, // Cave generation algorithm 2
+    algorithm_D1   = 2, // Dungeon generation algorithm 1
+    algorithm_D2   = 3, // Dungeon generation algorithm 2
+    algorithm_M1   = 4, // Maze generation algorithm 1
+    algorithm_T1   = 5  // Town generation algorithm 1
 };
 
 enum class eConnectAlgo : std::uint16_t // Connectivity algorithm
 { 
-    algorithm_SL  = 0, // Straight Line
-    algorithm_ND  = 1, // Ninety Degree angle lines
-    algorithm_DW  = 2  // Drunken Walk
+    algorithm_SL   = 0, // Straight Line
+    algorithm_ND   = 1, // Ninety Degree angle lines
+    algorithm_DW   = 2  // Drunken Walk
 };
 
 enum class eRoomShape : std::uint16_t // Room shape
 { 
-    shapeRandom  = 0, // Random
-    shapeCircle  = 1, // Circle
-    shapeSquare  = 2  // Square
+    shapeRandom    = 0, // Random
+    shapeCircle    = 1, // Circle
+    shapeSquare    = 2  // Square
 };
 
 enum class eDirectionBias : std::int16_t // Direction bias

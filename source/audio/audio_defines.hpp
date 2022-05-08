@@ -47,28 +47,28 @@ struct sAudioData
 struct sAudioBuffer
 {
     // Linked list
-    sAudioBuffer* next       = nullptr;
-    std::uint32_t UID        = 0;
+    sAudioBuffer* next           = nullptr;
+    std::uint32_t UID            = 0;
 
     // Data
-    std::uint32_t ID         = 0; // OpenAl ID
-    std::string   name       = {};
+    std::uint32_t ID             = 0; // OpenAl ID
+    std::string   name           = {};
 };
 
 struct sAudioSource
 {
     // Linked list
-    sAudioSource* next       = nullptr;
-    std::uint32_t UID        = 0;
+    sAudioSource* next           = nullptr;
+    std::uint32_t UID            = 0;
 
     // Data
-    std::uint32_t ID         = 0; // OpenAl ID
-    std::int32_t  state      = 0;
-    float         pitch      = 1.0f;
-    float         gain       = 1.0f; // Volume
-    bool          looping    = false;
-    glm::vec3     position   = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3     velocity   = glm::vec3(0.0f, 0.0f, 0.0f);
+    std::uint32_t ID             = 0; // OpenAl ID
+    std::int32_t  state          = 0;
+    float         pitch          = 1.0f;
+    float         gain           = 1.0f; // Volume
+    bool          looping        = false;
+    glm::vec3     position       = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     velocity       = glm::vec3(0.0f, 0.0f, 0.0f);
 };
 
 #endif //AUDIO_DEFINES_HPP
