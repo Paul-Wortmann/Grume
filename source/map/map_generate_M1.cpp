@@ -170,11 +170,19 @@ void cMapManager::m_genM1_internal(sMap*& _map)
             }
         }
     }
+    
+    // Find and initialize rooms
     m_mapInitRooms(_map);
+    
     // set unmodifiable tiles.
     for (std::uint32_t i = 0; i < _map->height; i++)
+    {
         for (std::uint32_t j = 0; j < _map->width; j++)
+        {
             _map->tile[(i * _map->width) + j].processed = ((i == 0) || (i == (_map->height-1)) || (j == 0) || (j == (_map->width-1)) || (_map->tile[(i * _map->width) + j].base != eTileBase::tileWall));
+        }
+    }
+    
     // maze.
     std::uint32_t  randBase = 25;
     eDirectionBias direction = _map->genData.directionBias;
@@ -203,6 +211,7 @@ void cMapManager::m_genM1_internal(sMap*& _map)
     _map->tile[nextTile].base = eTileBase::tileFloor;
     _map->tile[nextTile].processed = true;
     m_genM1_maze(_map, nextTile);
+    
     // connect rooms
     for (std::uint32_t i = 0; i < _map->roomCount; i++)
     {
@@ -270,6 +279,7 @@ void cMapManager::m_generateMap_M1(sMap*& _map)
     // Generate a perimeter wall
     m_mapGeneratePerimeterWall(_map);
 
+    // Generate the internal structure
     if (_map->tile != nullptr)
     {
         if (_map->genData.seed != 0)
