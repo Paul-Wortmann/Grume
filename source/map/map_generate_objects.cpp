@@ -25,6 +25,8 @@
 
 void cMapManager::m_generateMap_objects(sMap*& _map)
 {
+    // Get biome objects from database
+    
     for (std::uint32_t h = 1; h < _map->height-1; ++h)
     {
         for (std::uint32_t w = 1; w < _map->width-1; ++w)
@@ -46,5 +48,4 @@ void cMapManager::m_generateMap_objects(sMap*& _map)
             }
         }
     }
-
 }

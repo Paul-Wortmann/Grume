@@ -25,5 +25,28 @@
 
 void cMapManager::m_generateMap_npcs(sMap*& _map)
 {
+    // Get biome npcs from database
+    
+    for (std::uint32_t h = 1; h < _map->height-1; ++h)
+    {
+        for (std::uint32_t w = 1; w < _map->width-1; ++w)
+        {
+            std::uint32_t t = (h * _map->width) + w;
+            if ((_map->tile[t].object == 0) && (_map->tile[t].base == eTileBase::tileFloor))
+            {
+                // WARNING!!!! This should be based on the biome npcs
+                /*
+                if ((rand() % 200) == 0)
+                {
+                    _map->tile[t].npc = 0;
+                }
+                else if ((rand() % 1000) == 0)
+                {
+                    _map->tile[t].npc = 0;
+                }
+                */
+            }
+        }
+    }
 
 }
