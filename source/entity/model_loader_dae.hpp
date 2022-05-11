@@ -21,14 +21,13 @@
  * @date 2011-11-11
  */
 
-#ifndef GRAPHICS_ENGINE_DEBUG_HPP
-#define GRAPHICS_ENGINE_DEBUG_HPP
+#ifndef MODEL_LOADER_DAE_HPP
+#define MODEL_LOADER_DAE_HPP
 
+#include "entity_mesh.hpp"
+#include "entity_model.hpp"
 #include "../core/includes.hpp"
 
-void checkOpenGL(void);
+sEntityModel* loadModelDAE(const std::string &_fileName);
 
-std::string getOpenGLErrorString(std::uint32_t _errorCode);
-void checkOpenGLFrameBuffer(void);
-
-#endif // GRAPHICS_ENGINE_DEBUG_HPP
+#endif // MODEL_LOADER_DAE_HPP

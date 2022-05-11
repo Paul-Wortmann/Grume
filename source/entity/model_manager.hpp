@@ -30,6 +30,10 @@
 #include "entity_model.hpp"
 #include "entity_texture.hpp"
 #include "material_manager.hpp"
+
+#include "model_loader_dae.hpp"
+#include "model_loader_obj.hpp"
+
 #include "../core/includes.hpp"
 #include "../graphics/graphics_engine_defines.hpp"
 #include "../utils/file_utils.hpp"
