@@ -25,7 +25,22 @@
 
 sEntityModel* loadModelDAE(const std::string &_fileName)
 {
-    
+    // Check if the file exists
+    if (fileExists(FILE_PATH_MODEL+_fileName))
+    {
+        // Open file
+        
+        
+        
+        // return data
+    }
+    else
+    {
+        // File not found
+        gLogWrite(LOG_ERROR, "Failed to open file: " + std::string(FILE_PATH_MODEL) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        return nullptr;
+    }
+    return nullptr;
 }
 
 
