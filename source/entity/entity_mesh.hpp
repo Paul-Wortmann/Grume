@@ -41,6 +41,7 @@ struct sEntityMesh
     std::uint32_t      IBO          = 0;
     
     // Data
+    std::string        name         = {};
     std::uint32_t      numVertex    = 0;
     sEntityVertex*     vertex       = nullptr;
     sEntityVertexBone* vertexBone   = nullptr;
