@@ -111,18 +111,22 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
                         }
 
                     }
+                    // vertex position data found
                     else if ((lineData[0] == 'v') && (lineData[1] == ' '))
                     {
                         object[objectIndex].numVertex++;
                     }
+                    // vertex normal data found
                     else if ((lineData[0] == 'v') && (lineData[1] == 'n') && (lineData[2] == ' '))
                     {
                         object[objectIndex].numNormal++;
                     }
+                    // vertex texture coord data found
                     else if ((lineData[0] == 'v') && (lineData[1] == 't') && (lineData[2] == ' '))
                     {
                         object[objectIndex].numTexcrd++;
                     }
+                    // face data found
                     else if ((lineData[0] == 'f') && (lineData[1] == ' '))
                     {
                         std::uint32_t spaceCount = 0;
@@ -167,6 +171,7 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
                 lineDataLength = lineData.length();
                 if (lineDataLength > 4)
                 {
+                    // object data
                     if ((lineData[0] == 'o') && (lineData[1] == ' '))
                     {
                         // Insure objectIndex is only incremented after the first object
@@ -184,6 +189,7 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
                         normalIndex = 0;
                         texcrdIndex = 0;
                     }
+                    // vertex position data
                     else if ((lineData[0] == 'v') && (lineData[1] == ' '))
                     {
                         std::string   tempData = "";
@@ -206,6 +212,7 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
                             }
                         }
                     }
+                    // vertex normal data
                     else if ((lineData[0] == 'v') && (lineData[1] == 'n') && (lineData[2] == ' '))
                     {
                         std::string   tempData = "";
@@ -228,6 +235,7 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
                             }
                         }
                     }
+                    // vertex texture data
                     else if ((lineData[0] == 'v') && (lineData[1] == 't') && (lineData[2] == ' '))
                     {
                         std::string   tempData = "";
@@ -443,6 +451,8 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
                         else
                         {
                             gLogWrite(LOG_ERROR, "Mesh has a surface with more than 4 vertices: " + std::string(FILE_PATH_MODEL) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+                            // Although this is reported as an error, code could be added to handled such surfaces,
+                            // however it would be better for the 3D model to have triangle or quad surfaces
                         }
                     }
                 }
