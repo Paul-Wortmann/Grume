@@ -28,6 +28,9 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
     // Check if the file exists
     if (fileExists(FILE_PATH_MODEL+_fileName))
     {
+        // Data structure returning model
+        sEntityModel* tModel = nullptr;
+
         // Open file
         std::ifstream objFile (FILE_PATH_MODEL+_fileName, std::ios::binary);
         if(objFile.is_open())
@@ -266,7 +269,7 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
             objFile.seekg(std::ios::beg);
 
             // Allocate memory for model
-            sEntityModel* tModel = new sEntityModel;
+            tModel = new sEntityModel;
             tModel->fileName = _fileName;
 
             tModel->numMesh = objectCount;
@@ -485,8 +488,9 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
         {
             gLogWrite(LOG_ERROR, "Failed to open file: " + std::string(FILE_PATH_MODEL) + _fileName, __FILE__, __LINE__, __FUNCTION__);
         }
-        // return data
         
+        // return data
+        return tModel;
     }
     else
     {
