@@ -45,6 +45,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
         void             initialize(void);
         void             terminate(void);
         sEntityModel*    load(const std::string &_fileName);
+        sEntityModel*    loadOBJ(const std::string &_fileName) { return loadModelOBJ(_fileName); }
         sEntityMaterial* loadMaterial(const std::string &_fileName);
         sEntityTexture*  loadTexture(const std::string &_fileName);
         GLFWimage*       loadIcon(const std::string &_fileName);
