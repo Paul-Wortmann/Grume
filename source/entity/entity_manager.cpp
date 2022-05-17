@@ -395,6 +395,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->ai->distanceMove     = xmlEntityFile.getFloat("<move_distance>");
             _entity->ai->attackFrequency  = xmlEntityFile.getInteger("<attack_frequency>");
             _entity->ai->attackCounter    = _entity->ai->attackFrequency;
+            _entity->ai->spawnTile        = m_positionToTile(_entity->position);
         }
         
         // Load Interaction data
@@ -626,6 +627,31 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
         }
     }
 }
+
+
+std::uint32_t cEntityManager::m_positionToTile(glm::vec3 _position)
+{
+    // Width and height offset, used to center the walls
+    float xo = static_cast<float>(m_mapPointer->width)  / 2.0f;
+    float zo = static_cast<float>(m_mapPointer->height) / 2.0f;
+    float tp = 0.0f;//1.0f / 2.0f; // tile center positioning (half tile dimention)
+
+    std::uint32_t x = static_cast<std::uint32_t>(_position.x + xo - tp);
+    std::uint32_t z = static_cast<std::uint32_t>(_position.z + zo - tp);
+    return (z * m_mapPointer->width) + x;
+};
+
+glm::vec3 cEntityManager::m_tileToPosition(std::uint32_t _tile)
+{ 
+    // Width and height offset, used to center the walls
+    float xo = static_cast<float>(m_mapPointer->width)  / 2.0f;
+    float zo = static_cast<float>(m_mapPointer->height) / 2.0f;
+    float tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+
+    float x = static_cast<float>(_tile % m_mapPointer->width) - xo + tp;
+    float z = static_cast<float>(_tile / m_mapPointer->width) - zo + tp;
+    return glm::vec3(x, m_mapPointer->terrainHeight, z);
+};
 
 sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
 {

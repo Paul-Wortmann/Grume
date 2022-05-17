@@ -451,8 +451,10 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                                                                             aiProcess_FixInfacingNormals |
                                                                             aiProcess_FindInvalidData |
                                                                             aiProcess_ValidateDataStructure);
+        // Check for scene data, and proceed
         if (scene != nullptr)
         {
+            // Check for root node and no error flags, then proceed
             if ((scene->mFlags == 0) || (scene->mRootNode != nullptr))
             {
                 sEntityModel* tModel = new sEntityModel;
@@ -467,6 +469,7 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                 m_loadBones(tModel, scene);
                 if (tModel->numBones > 128)
                 {
+                    // bone limit due to limit set in opengl shaders
                     gLogWrite(LOG_WARNING, "3D model has too many bones: " + std::to_string(tModel->numBones), __FILE__, __LINE__, __FUNCTION__);
                 }
                 if (m_boneMap.size() > 0)
@@ -481,18 +484,21 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
             }
             else
             {
+                // No root node
                 gLogWrite(LOG_ERROR, "Assimp: " + std::string(importer.GetErrorString()), __FILE__, __LINE__, __FUNCTION__);
                 return nullptr;
             }
         }
         else
         {
+            // No scene data
             gLogWrite(LOG_ERROR, "Assimp: " + std::string(importer.GetErrorString()), __FILE__, __LINE__, __FUNCTION__);
             return nullptr;
         }
     }
     else
     {
+        // File could not be opened
         gLogWrite(LOG_ERROR, "Failed to open file: " + std::string(FILE_PATH_MODEL) + _fileName, __FILE__, __LINE__, __FUNCTION__);
         return nullptr;
     }

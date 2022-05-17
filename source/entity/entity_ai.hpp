@@ -70,6 +70,7 @@ struct sEntityAI
     float           distanceAttack      = 1.0f;
     float           distanceMove        = 5.0f;
     std::uint32_t   lastKnownPlayerTile = 0;
+    std::uint32_t   spawnTile           = 0;
     
     // Attack
     std::uint32_t   attackFrequency     = 32;

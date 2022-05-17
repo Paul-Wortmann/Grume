@@ -70,6 +70,8 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             m_playSound(sEntity*& _entity, const std::uint32_t& _state);
         void             m_setAnimationState(sEntity*& _entity, const std::uint32_t& _state);
         void             m_setTileState(sEntity*& _entity, const std::uint32_t& _state);
+        std::uint32_t    m_positionToTile(glm::vec3 _position);
+        glm::vec3        m_tileToPosition(std::uint32_t _tile);
         sEntity*         m_UIDtoEntity(const std::uint32_t& _UID);
 
         cAudioManager*   m_audioManager = nullptr;
