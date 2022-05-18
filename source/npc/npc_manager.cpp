@@ -241,6 +241,27 @@ void cNPCManager::process(const float &_dt)
                     }
                 }
                 
+                // If the player is not in range, 
+                // first move to the last known player tile,
+                // then move back to ones spawn tile.
+                else if (m_entityTemp->movement->mapPath.currentTile != m_entityTemp->ai->lastKnownPlayerTile)
+                {
+                    // set target
+                    
+                    // process move
+                    
+                }
+                
+                else if (m_entityTemp->movement->mapPath.currentTile == m_entityTemp->ai->lastKnownPlayerTile)
+                {
+                    // set target
+                    
+                    // process move
+                    
+                }
+                
+                // *** we should decouple the pathing and move code...
+                
                 // Idle
                 else
                 {
