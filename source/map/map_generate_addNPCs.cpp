@@ -180,6 +180,12 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                         tEntity->movement->mapPath.currentTile = tNPCTileNum;
                     }
 
+                    // AI
+                    if (tEntity->ai != nullptr)
+                    {
+                        tEntity->ai->spawnTile = tNPCTileNum;
+                    }
+
                     // Load audio file names
                     if (tEntity->stateCount > 0)
                     {
@@ -327,6 +333,12 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                         if (tEntity->movement != nullptr)
                                         {
                                             tEntity->movement->mapPath.currentTile = t;
+                                        }
+                                        
+                                        // AI
+                                        if (tEntity->ai != nullptr)
+                                        {
+                                            tEntity->ai->spawnTile = t;
                                         }
                                         
                                         // Load audio file names

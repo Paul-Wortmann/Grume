@@ -178,27 +178,40 @@ void cNPCManager::process(const float &_dt)
                 // If the player is not in range, 
                 // first move to the last known player tile,
                 // then move back to ones spawn tile.
-                else if (m_entityTemp->movement->mapPath.currentTile != m_entityTemp->ai->lastKnownPlayerTile)
+                else if ((m_entityTemp->movement->mapPath.currentTile == m_entityTemp->ai->lastKnownPlayerTile) &&
+                         (m_entityTemp->movement->pathing == false))
                 {
-                    // set target
+                    // Current tile
+                    m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
+                    m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+
+                    m_entityTemp->movement->mapPath.destinationTile = m_entityTemp->ai->spawnTile;
+                    gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
+                    if (m_entityTemp->movement->mapPath.pathLength > 0)
+                    {
+                        m_entityTemp->movement->mapPath.currentPosition = 0;
+                        m_entityTemp->movement->pathing = true;
+
+                        // Set move animation
+                        m_entityManager->setState(m_entityTemp->UID, "move");
+                    }
                     
-                    // process move
-                    
-                }
-                
-                else if (m_entityTemp->movement->mapPath.currentTile == m_entityTemp->ai->lastKnownPlayerTile)
-                {
-                    // set target
-                    
-                    // process move
-                    
+                    // if path invalid, cancle pathing
+                    m_entityTemp->movement->moved = false;
+                    if (m_entityTemp->movement->mapPath.pathLength == 0)
+                    {
+                        m_entityTemp->movement->pathing = false;
+                    }
                 }
                 
                 // Idle
                 else
                 {
                     // Set idle animation
-                    m_entityManager->setState(m_entityTemp->UID, "idle");
+                    if (m_entityTemp->movement->pathing == false)
+                    {
+                        m_entityManager->setState(m_entityTemp->UID, "idle");
+                    }
                 }
                 
                 // Move if pathing active
