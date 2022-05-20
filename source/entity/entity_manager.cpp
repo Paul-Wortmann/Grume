@@ -72,6 +72,22 @@ void cEntityManager::freeData(sEntity*& _pointer)
     // AI
     if (_pointer->ai != nullptr)
     {
+        // Patrol
+        if (_pointer->ai->patrol)
+        {
+            // Waypoint
+            if (_pointer->ai->patrol->waypoint)
+            {
+                delete[] _pointer->ai->patrol->waypoint;
+                _pointer->ai->patrol->waypoint = nullptr;
+            }
+            
+            // Patrol
+            delete _pointer->ai->patrol;
+            _pointer->ai->patrol = nullptr;
+        }
+        
+        // AI
         delete _pointer->ai;
         _pointer->ai = nullptr;
     }

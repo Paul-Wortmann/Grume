@@ -64,6 +64,13 @@ enum class eEntitySocial : std::uint16_t
     entitySocialFollow    = 3  // Follow
 };
 
+struct sEntityAIPatrol
+{
+    std::uint32_t  waypointCount   = 0;
+    std::uint32_t  waypointCurrent = 0;
+    std::uint32_t *waypoint        = nullptr;
+};
+
 struct sEntityAI
 {
     // Characteristics
@@ -71,6 +78,10 @@ struct sEntityAI
     float           distanceMove        = 5.0f;
     std::uint32_t   lastKnownPlayerTile = 0;
     std::uint32_t   spawnTile           = 0;
+    
+    // Movement
+    sEntityAIPatrol *patrol             = nullptr; // patrol a series of waypoints
+    std::uint32_t    followID           = 0;       // 0 == none, else entity ID to follow
     
     // Attack
     std::uint32_t   attackFrequency     = 32;
