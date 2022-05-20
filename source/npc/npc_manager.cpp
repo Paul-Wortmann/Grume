@@ -78,23 +78,6 @@ void cNPCManager::process(const float &_dt)
                 {
                     m_entityTemp->character->attributes.mana.current = m_entityTemp->character->attributes.mana.max;
                 }
-
-            }
-            
-            // Turn to face the player
-            float angle = static_cast<float>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
-
-            if (m_entityTemp->rotationAxis.x != 0)
-            {
-                m_entityTemp->rotation.x = m_entityTemp->rotationOffset.x + (angle * m_entityTemp->rotationAxis.x);
-            }
-            else if (m_entityTemp->rotationAxis.y != 0)
-            {
-                m_entityTemp->rotation.y = m_entityTemp->rotationOffset.y + (angle * m_entityTemp->rotationAxis.y);
-            }
-            else if (m_entityTemp->rotationAxis.z != 0)
-            {
-                m_entityTemp->rotation.z = m_entityTemp->rotationOffset.z + (angle * m_entityTemp->rotationAxis.z);
             }
             
             // Check if player is visable, if so continue
@@ -104,6 +87,9 @@ void cNPCManager::process(const float &_dt)
             
             if ((m_entityTemp->ai != nullptr) && visable)
             {
+                // Direction angle to face
+                float faceDirection = 0.0f;
+                
                 // Calculate the distance to the player
                 float distancetoPlayer2 = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
                                             (m_entityTemp->position.x - m_entityPlayer->position.x)) +
@@ -113,6 +99,9 @@ void cNPCManager::process(const float &_dt)
                 // Check if player is in attack range, if so attack
                 if (distancetoPlayer2 < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack))
                 {
+                    // Direction angle to face: player
+                    faceDirection = static_cast<float>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
+
                     // Attack
                     //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
 
@@ -228,6 +217,9 @@ void cNPCManager::process(const float &_dt)
                     m_entityTemp->movement->mapPath.currentTile = m_entityTemp->movement->mapPath.path[m_entityTemp->movement->mapPath.currentPosition];
                     glm::vec3 currentTilePos = m_tileToPosition(m_entityTemp->movement->mapPath.currentTile);
                     
+                    // Direction angle to face: tile
+                    faceDirection = static_cast<float>(atan2(m_entityTemp->position.z - currentTilePos.z, m_entityTemp->position.x - currentTilePos.x));
+
                     // Get the distance to the destination tile
                     float   distanceToTileSqr = ((entityPos.x - currentTilePos.x) * (entityPos.x - currentTilePos.x)) + ((entityPos.z - currentTilePos.z) * (entityPos.z - currentTilePos.z));
                     
@@ -280,6 +272,20 @@ void cNPCManager::process(const float &_dt)
                     m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
                     m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
                     m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = m_entityTemp->UID;
+                }
+                
+                // Turn to face the direction of interest
+                if (m_entityTemp->rotationAxis.x != 0)
+                {
+                    m_entityTemp->rotation.x = m_entityTemp->rotationOffset.x + (faceDirection * m_entityTemp->rotationAxis.x);
+                }
+                else if (m_entityTemp->rotationAxis.y != 0)
+                {
+                    m_entityTemp->rotation.y = m_entityTemp->rotationOffset.y + (faceDirection * m_entityTemp->rotationAxis.y);
+                }
+                else if (m_entityTemp->rotationAxis.z != 0)
+                {
+                    m_entityTemp->rotation.z = m_entityTemp->rotationOffset.z + (faceDirection * m_entityTemp->rotationAxis.z);
                 }
                 
             }
