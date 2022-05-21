@@ -26,7 +26,16 @@
 /// bool gLineOfSight(sMap*& _map, const std::uint32_t& _x1, const std::uint32_t& _y1, const std::uint32_t& _x2, const std::uint32_t& _y2)
 bool gLineOfSight(sMap*& _map, const std::uint32_t& _x1, const std::uint32_t& _y1, const std::uint32_t& _x2, const std::uint32_t& _y2)
 {
+    // Calculate distance
     std::uint32_t distance = std::max(std::abs(static_cast<std::int32_t>(_x1 - _x2)), std::abs(static_cast<std::int32_t>(_y1 - _y2)));
+    
+    // If distance = 0 return early
+    if (distance == 0)
+    {
+        return true;
+    }
+    
+    // Check for collisions
     for (std::uint32_t i = 1; i < distance - 1; ++i)
     {
         // interpolate between (x1,y1) and (x2,y2)
@@ -37,7 +46,7 @@ bool gLineOfSight(sMap*& _map, const std::uint32_t& _x1, const std::uint32_t& _y
         std::uint32_t y = std::uint32_t(_y2 * (1.0 - dt) + _y1 * dt);
 
         // now check tile (x,y)
-        if (_map->tile[(y * _map->width) + x].base != eTileBase::tileWall)
+        if (_map->tile[(y * _map->width) + x].base == eTileBase::tileWall)
         {
             return false;
         }

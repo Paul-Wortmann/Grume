@@ -80,13 +80,12 @@ void cNPCManager::process(const float &_dt)
                 }
             }
             
-            // Check if player is visable, if so continue
-            
-            // *** visable should be the result of an actual visability check
-            bool visable = (1 == 1);
-            
-            if ((m_entityTemp->ai != nullptr) && visable)
+            // Proceed if entity has an AI compinent
+            if (m_entityTemp->ai != nullptr)
             {
+                // Check if player is visable
+                bool visable = gLineOfSight(m_mapPointer, m_positionToTile(m_entityPlayer->position), m_positionToTile(m_entityTemp->position));
+
                 // Direction angle to face
                 float faceDirection = 0.0f;
                 
@@ -133,8 +132,8 @@ void cNPCManager::process(const float &_dt)
                     }
                 }
                 
-                // Check if player is in move range, if so continue
-                else if (distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))
+                // Check if player is in move range and viasble, path to player
+                else if (((distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))) && (visable == true))
                 {
                     // If the player has moved, path to the new player position
                     if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
@@ -156,14 +155,27 @@ void cNPCManager::process(const float &_dt)
                         }
                     }
                     
-                    // if path invalid, cancle pathing
+                    // if path invalid, cancel pathing
                     m_entityTemp->movement->moved = false;
                     if (m_entityTemp->movement->mapPath.pathLength == 0)
                     {
+                        m_entityTemp->movement->mapPath.currentPosition = 0;
                         m_entityTemp->movement->pathing = false;
                     }
                 }
                 
+                // Check if player is in move range and not viasble, path to last known player position
+                else if (((distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))) && (visable == false))
+                {
+                    // Continue with current objective
+                    // if path invalid, cancel pathing
+                    m_entityTemp->movement->moved = false;
+                    m_entityTemp->movement->mapPath.currentTile = m_entityTemp->ai->lastKnownPlayerTile;
+                    m_entityTemp->movement->mapPath.pathLength = 0;
+                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                    m_entityTemp->movement->pathing = false;
+                }
+
                 // If the player is not in range, 
                 // first move to the last known player tile,
                 // then move back to ones spawn tile.
@@ -185,7 +197,7 @@ void cNPCManager::process(const float &_dt)
                         m_entityManager->setState(m_entityTemp->UID, "move");
                     }
                     
-                    // if path invalid, cancle pathing
+                    // if path invalid, cancel pathing
                     m_entityTemp->movement->moved = false;
                     if (m_entityTemp->movement->mapPath.pathLength == 0)
                     {
