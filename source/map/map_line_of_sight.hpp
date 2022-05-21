@@ -1,0 +1,36 @@
+/**
+ * Copyright (C) Paul Wortmann
+ * This file is part of "Grume"
+ *
+ * "Grume" is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 2 only.
+ *
+ * "Grume" is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with "Grume" If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.com
+ * @license GPL V2
+ * @date 2011-11-11
+ */
+
+#ifndef MAP_LINE_OF_SIGHT_HPP
+#define MAP_LINE_OF_SIGHT_HPP
+
+#include "../core/includes.hpp"
+
+#include "map_define.hpp"
+#include "map_path_define.hpp"
+
+bool gLineOfSight(sMap*& _map, const std::uint32_t& _x1, const std::uint32_t& _y1, const std::uint32_t& _x2, const std::uint32_t& _y2);
+bool gLineOfSight(sMap*& _map, const std::uint32_t& _t1, const std::uint32_t& _t2);
+
+#endif //MAP_LINE_OF_SIGHT_HPP
+

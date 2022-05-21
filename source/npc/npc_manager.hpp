@@ -29,6 +29,7 @@
 #include "../entity/entity_manager.hpp"
 #include "../map/map_define.hpp"
 #include "../map/map_path_a_star.hpp"
+#include "../map/map_line_of_sight.hpp"
 
 class cNPCManager
 {
