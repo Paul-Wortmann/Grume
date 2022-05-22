@@ -63,7 +63,7 @@ void cNPCManager::process(const float &_dt)
     {
         if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob) && (m_entityTemp->terminate == false))
         {
-            // Health mana regen
+            // Health + mana regen
             {
                 // Health
                 m_entityTemp->character->attributes.health.current += m_entityTemp->character->attributes.health.regen;
@@ -86,132 +86,57 @@ void cNPCManager::process(const float &_dt)
                 // Direction angle to face
                 float faceDirection = 0.0f;
                 
-                // Calculate the distance to the player
-                float distancetoPlayer2 = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
-                                            (m_entityTemp->position.x - m_entityPlayer->position.x)) +
-                                           ((m_entityTemp->position.z - m_entityPlayer->position.z) * 
-                                            (m_entityTemp->position.z - m_entityPlayer->position.z)));
+                // Calculate the distance to the player squared
+                float distancetoPlayerSqr = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
+                                              (m_entityTemp->position.x - m_entityPlayer->position.x)) +
+                                             ((m_entityTemp->position.z - m_entityPlayer->position.z) * 
+                                              (m_entityTemp->position.z - m_entityPlayer->position.z)));
                 
-                bool inRangeAttack = (distancetoPlayer2 < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack));
-                bool inRangePursue = (distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove));
-                bool playerVisable = false;
+                bool inRangeAttack = (distancetoPlayerSqr < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack));
+                bool inRangePursue = (distancetoPlayerSqr < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove));
+                bool playerVisable = gLineOfSight(m_mapPointer, m_positionToTile(m_entityPlayer->position), m_positionToTile(m_entityTemp->position));
                 
-                // Check if player is visable (Only check if in pursue range)
-                if (inRangePursue)
-                {
-                    playerVisable = gLineOfSight(m_mapPointer, m_positionToTile(m_entityPlayer->position), m_positionToTile(m_entityTemp->position));
-                }
+                // -------------------- Determine State ---------------------
                 
                 // Check if player is in attack range, if so attack
-                if (inRangeAttack)
+                if (inRangeAttack == true)
                 {
-                    // Direction angle to face: player
-                    faceDirection = static_cast<float>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
-
-                    // Attack
-                    //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
-
-                    m_entityTemp->ai->attackCounter += _dt;
-                    if (m_entityTemp->ai->attackCounter > m_entityTemp->ai->attackFrequency)
-                    {
-                        m_entityTemp->ai->attackCounter = 0.0f;
-                        
-                        // Inflict damage on the player
-                        // **** this should be based on NPC strength and player defense, etc...
-                        
-                        float damage = m_entityTemp->character->attributes.damagePhysical.base / 2.0f;
-                        m_entityPlayer->character->attributes.health.current -= damage;
-
-                        // Player death
-                        if (m_entityPlayer->character->attributes.health.current <= 0)
-                        {
-                            m_entityPlayer->character->attributes.health.current = 0;
-                        }
-
-                        // Set attack state
-                        m_entityManager->setState(m_entityTemp->UID, "attack");
-                        m_entityManager->activateState(m_entityPlayer->UID, "gethit");
-                    }
-                    else
-                    {
-                        // Set move state
-                        m_entityManager->setState(m_entityTemp->UID, "idle");
-                    }
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateAttack;
+                }
+                // Player has moved out of attack range
+                else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateAttack) && (inRangeAttack == false))
+                {
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
                 }
                 
-                // Check if player is in move range and viasble, path to player
+                // Check if player is in move range and visable, path to player
                 else if ((inRangePursue) && (playerVisable == true))
                 {
-                    // If the player has moved, path to the new player position
-                    if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
-                    {
-                        // Current tile
-                        m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
-                        m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
-
-                        m_entityTemp->ai->lastKnownPlayerTile = m_entityPlayer->movement->mapPath.currentTile;
-                        m_entityTemp->movement->mapPath.destinationTile = m_entityPlayer->movement->mapPath.currentTile;
-                        gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
-                        if (m_entityTemp->movement->mapPath.pathLength > 0)
-                        {
-                            m_entityTemp->movement->mapPath.currentPosition = 0;
-                            m_entityTemp->movement->pathing = true;
-
-                            // Set move animation
-                            m_entityManager->setState(m_entityTemp->UID, "move");
-                        }
-                    }
-                    
-                    // if path invalid, cancel pathing
-                    m_entityTemp->movement->moved = false;
-                    if (m_entityTemp->movement->mapPath.pathLength == 0)
-                    {
-                        m_entityTemp->movement->mapPath.currentPosition = 0;
-                        m_entityTemp->movement->pathing = false;
-                    }
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStatePersue;
                 }
                 
                 // Check if player is in move range and not viasble, path to last known player position
-                else if ((inRangePursue) && (playerVisable == false))
+                else if ((inRangePursue) && (playerVisable == false) && (m_entityTemp->ai->state == eEntityAIState::entityAIStatePersue))
                 {
-                    // Continue with current objective
-                    // if path invalid, cancel pathing
-                    m_entityTemp->movement->moved = false;
-                    m_entityTemp->movement->mapPath.currentTile = m_entityTemp->ai->lastKnownPlayerTile;
-                    m_entityTemp->movement->mapPath.pathLength = 0;
-                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                    m_entityTemp->movement->mapPath.destinationTile = m_entityTemp->ai->lastKnownPlayerTile;
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateGoToTile;
                     m_entityTemp->movement->pathing = false;
                 }
 
-                // If the player is not in range, 
-                // first move to the last known player tile,
-                // then move back to ones spawn tile.
-                else if ((m_entityTemp->movement->mapPath.currentTile == m_entityTemp->ai->lastKnownPlayerTile) &&
-                         (m_entityTemp->movement->pathing == false))
+                // We have reached the last known player tile and not found the player, return to spawn tile
+                else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateGoToTile) && m_entityTemp->movement->pathing == false)
                 {
-                    // Current tile
-                    m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
-                    m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
-
-                    m_entityTemp->movement->mapPath.destinationTile = m_entityTemp->ai->spawnTile;
-                    gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
-                    if (m_entityTemp->movement->mapPath.pathLength > 0)
-                    {
-                        m_entityTemp->movement->mapPath.currentPosition = 0;
-                        m_entityTemp->movement->pathing = true;
-
-                        // Set move animation
-                        m_entityManager->setState(m_entityTemp->UID, "move");
-                    }
-                    
-                    // if path invalid, cancel pathing
-                    m_entityTemp->movement->moved = false;
-                    if (m_entityTemp->movement->mapPath.pathLength == 0)
-                    {
-                        m_entityTemp->movement->pathing = false;
-                    }
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateReturn;
+                    m_entityTemp->movement->pathing = false;
                 }
-                
+
+                // We have reached the spawn tile, and have nothing to do, stop
+                else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateReturn) && m_entityTemp->movement->pathing == false)
+                {
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                    m_entityTemp->movement->pathing = false;
+                }
+
                 // Idle
                 else
                 {
@@ -221,6 +146,154 @@ void cNPCManager::process(const float &_dt)
                         m_entityManager->setState(m_entityTemp->UID, "idle");
                     }
                 }
+
+                // -------------------- Process State ---------------------
+
+                // Process AI based on state
+                switch (m_entityTemp->ai->state)
+                {
+                    // Attack state:
+                    case eEntityAIState::entityAIStateAttack:
+                        // Direction angle to face: player
+                        faceDirection = static_cast<float>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
+
+                        // Attack
+                        //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
+
+                        m_entityTemp->ai->attackCounter += _dt;
+                        if (m_entityTemp->ai->attackCounter > m_entityTemp->ai->attackFrequency)
+                        {
+                            m_entityTemp->ai->attackCounter = 0.0f;
+                            
+                            // Inflict damage on the player
+                            // **** this should be based on NPC strength and player defense, etc...
+                            
+                            float damage = m_entityTemp->character->attributes.damagePhysical.base / 2.0f;
+                            m_entityPlayer->character->attributes.health.current -= damage;
+
+                            // Player death
+                            if (m_entityPlayer->character->attributes.health.current <= 0)
+                            {
+                                m_entityPlayer->character->attributes.health.current = 0;
+                            }
+
+                            // Set attack state
+                            m_entityManager->setState(m_entityTemp->UID, "attack");
+                            m_entityManager->activateState(m_entityPlayer->UID, "gethit");
+                        }
+                        else
+                        {
+                            // Set move state
+                            m_entityManager->setState(m_entityTemp->UID, "idle");
+                        }
+                    break;
+                    
+                    // Flee state
+                    case eEntityAIState::entityAIStateFlee:
+                    break;
+                    
+                    // Patrol state
+                    case eEntityAIState::entityAIStatePatrol:
+                    break;
+                    
+                    // Persue state
+                    case eEntityAIState::entityAIStatePersue:
+                        // If the player has moved, path to the new player position
+                        if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
+                        {
+                            // Current tile
+                            m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
+                            m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+
+                            m_entityTemp->ai->lastKnownPlayerTile = m_entityPlayer->movement->mapPath.currentTile;
+                            m_entityTemp->movement->mapPath.destinationTile = m_entityPlayer->movement->mapPath.currentTile;
+                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
+                            if (m_entityTemp->movement->mapPath.pathLength > 0)
+                            {
+                                m_entityTemp->movement->mapPath.currentPosition = 0;
+                                m_entityTemp->movement->pathing = true;
+
+                                // Set move animation
+                                m_entityManager->setState(m_entityTemp->UID, "move");
+                            }
+                        }
+                        
+                        // if path invalid or finished, cancel pathing
+                        m_entityTemp->movement->moved = false;
+                        if (m_entityTemp->movement->mapPath.pathLength == 0)
+                        {
+                            m_entityTemp->movement->mapPath.currentPosition = 0;
+                            m_entityTemp->movement->pathing = false;
+                        }
+                    break;
+                    
+                    // Go to tile state
+                    case eEntityAIState::entityAIStateGoToTile:
+                        // Only calculate a path if not already pathing
+                        if (m_entityTemp->movement->pathing == false)
+                        {
+                            // Current tile
+                            m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
+                            m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+                            
+                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
+                            if (m_entityTemp->movement->mapPath.pathLength > 0)
+                            {
+                                m_entityTemp->movement->mapPath.currentPosition = 0;
+                                m_entityTemp->movement->pathing = true;
+
+                                // Set move animation
+                                m_entityManager->setState(m_entityTemp->UID, "move");
+                            }
+                        }
+                        
+                        // if path invalid or finished, cancel pathing
+                        m_entityTemp->movement->moved = false;
+                        if (m_entityTemp->movement->mapPath.pathLength == 0)
+                        {
+                            m_entityTemp->movement->mapPath.currentPosition = 0;
+                            m_entityTemp->movement->pathing = false;
+                        }
+                    break;
+                    
+                    // Return state
+                    case eEntityAIState::entityAIStateReturn:
+                        // Only calculate a path if not already pathing
+                        if (m_entityTemp->movement->pathing == false)
+                        {
+                            // Current tile
+                            m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
+                            m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+                            
+                            m_entityTemp->movement->mapPath.destinationTile = m_entityTemp->ai->spawnTile;
+                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
+                            if (m_entityTemp->movement->mapPath.pathLength > 0)
+                            {
+                                m_entityTemp->movement->mapPath.currentPosition = 0;
+                                m_entityTemp->movement->pathing = true;
+
+                                // Set move animation
+                                m_entityManager->setState(m_entityTemp->UID, "move");
+                            }
+                        }
+                        
+                        // if path invalid or finished, cancel pathing
+                        m_entityTemp->movement->moved = false;
+                        if (m_entityTemp->movement->mapPath.pathLength == 0)
+                        {
+                            m_entityTemp->movement->mapPath.currentPosition = 0;
+                            m_entityTemp->movement->pathing = false;
+                            m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                        }
+                    break;
+                    
+                    // No state
+                    case eEntityAIState::entityAIStateNone:
+                    default:
+                    break;
+                }
+                
+                // -------------------- post state processes -----------------------
                 
                 // Move if pathing active
                 if (m_entityTemp->movement->pathing)

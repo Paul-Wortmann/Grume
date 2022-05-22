@@ -71,7 +71,8 @@ enum class eEntityAIState : std::uint16_t
     entityAIStateFlee       = 2, // Flee
     entityAIStatePersue     = 3, // Persue player / leader npc
     entityAIStatePatrol     = 4, // Patrol
-    entityAIStateReturn     = 5  // Return to spawn tile
+    entityAIStateGoToTile   = 5, // Go to tile
+    entityAIStateReturn     = 6  // Return to spawn tile
 };
 
 struct sEntityAIPatrol
