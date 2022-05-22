@@ -64,6 +64,16 @@ enum class eEntitySocial : std::uint16_t
     entitySocialFollow    = 3  // Follow
 };
 
+enum class eEntityAIState : std::uint16_t 
+{ 
+    entityAIStateNone       = 0, // None
+    entityAIStateAttack     = 1, // Attack
+    entityAIStateFlee       = 2, // Flee
+    entityAIStatePersue     = 3, // Persue player / leader npc
+    entityAIStatePatrol     = 4, // Patrol
+    entityAIStateReturn     = 5  // Return to spawn tile
+};
+
 struct sEntityAIPatrol
 {
     std::uint32_t  waypointCount   = 0;
@@ -73,6 +83,9 @@ struct sEntityAIPatrol
 
 struct sEntityAI
 {
+    // State
+    eEntityAIState  state               = eEntityAIState::entityAIStateNone;
+
     // Characteristics
     float           distanceAttack      = 1.0f;
     float           distanceMove        = 5.0f;

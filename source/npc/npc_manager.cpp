@@ -83,9 +83,6 @@ void cNPCManager::process(const float &_dt)
             // Proceed if entity has an AI compinent
             if (m_entityTemp->ai != nullptr)
             {
-                // Check if player is visable
-                bool visable = gLineOfSight(m_mapPointer, m_positionToTile(m_entityPlayer->position), m_positionToTile(m_entityTemp->position));
-
                 // Direction angle to face
                 float faceDirection = 0.0f;
                 
@@ -95,8 +92,18 @@ void cNPCManager::process(const float &_dt)
                                            ((m_entityTemp->position.z - m_entityPlayer->position.z) * 
                                             (m_entityTemp->position.z - m_entityPlayer->position.z)));
                 
+                bool inRangeAttack = (distancetoPlayer2 < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack));
+                bool inRangePursue = (distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove));
+                bool playerVisable = false;
+                
+                // Check if player is visable (Only check if in pursue range)
+                if (inRangePursue)
+                {
+                    playerVisable = gLineOfSight(m_mapPointer, m_positionToTile(m_entityPlayer->position), m_positionToTile(m_entityTemp->position));
+                }
+                
                 // Check if player is in attack range, if so attack
-                if (distancetoPlayer2 < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack))
+                if (inRangeAttack)
                 {
                     // Direction angle to face: player
                     faceDirection = static_cast<float>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
@@ -133,7 +140,7 @@ void cNPCManager::process(const float &_dt)
                 }
                 
                 // Check if player is in move range and viasble, path to player
-                else if (((distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))) && (visable == true))
+                else if ((inRangePursue) && (playerVisable == true))
                 {
                     // If the player has moved, path to the new player position
                     if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
@@ -165,7 +172,7 @@ void cNPCManager::process(const float &_dt)
                 }
                 
                 // Check if player is in move range and not viasble, path to last known player position
-                else if (((distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))) && (visable == false))
+                else if ((inRangePursue) && (playerVisable == false))
                 {
                     // Continue with current objective
                     // if path invalid, cancel pathing
