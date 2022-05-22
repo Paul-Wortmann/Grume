@@ -98,8 +98,33 @@ void cNPCManager::process(const float &_dt)
                 
                 // -------------------- Determine State ---------------------
                 
-                // Check if player is in attack range, if so attack
-                if (inRangeAttack == true)
+                // If health is too low, use health spell or flee
+                if (m_entityTemp->character->attributes.health.current < (0.10f * m_entityTemp->character->attributes.health.max))
+                {
+                    // if mana > health spell mana need, heal
+                    if (1 == 0)
+                    {
+                        
+                    }
+                    
+                    // else flee
+                    else
+                    {
+                        // A better idea would be to choose a random tile in a radius from current tile
+                        m_entityTemp->movement->mapPath.destinationTile = m_entityTemp->ai->spawnTile;
+                        m_entityTemp->ai->state = eEntityAIState::entityAIStateFlee;
+                        m_entityTemp->movement->pathing = false;
+                    }
+                }
+                
+                // Finished fleeing
+                else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateFlee) && (m_entityTemp->movement->pathing == false))
+                {
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                }
+                
+                // Attack player if in range
+                else if (inRangeAttack == true)
                 {
                     m_entityTemp->ai->state = eEntityAIState::entityAIStateAttack;
                 }
