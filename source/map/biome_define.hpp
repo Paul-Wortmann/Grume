@@ -93,9 +93,9 @@ struct sMapBiome
     std::string   fileName   = {};
 
     // Data
-    sMapMusicTag  MusicTag   = {};
-    sMusicTrack   MusicTrack = {};
-    sMapWallSet   WallSet    = {};
+    sMapMusicTag  musicTag   = {};
+    sMusicTrack   musicTrack = {};
+    sMapWallSet   wallSet    = {};
 
     // Map floor spritesheet
     sMapFloorSpritesheet floorSpritesheet = {};

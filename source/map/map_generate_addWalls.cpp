@@ -91,7 +91,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
 
     // Load the map wall biome file
     cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
+    xmlFile.load(FILE_PATH_BIOME + _map->biome->wallSet.fileName);
     
     // Only contine if we can load the biome wallset file
     if (xmlFile.lineCount() > 0)
@@ -503,7 +503,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
     
     // Load the biome wallset file
     cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
+    xmlFile.load(FILE_PATH_BIOME + _map->biome->wallSet.fileName);
     
     // Only contine if we can load the biome wallset file
     if (xmlFile.lineCount() > 0)

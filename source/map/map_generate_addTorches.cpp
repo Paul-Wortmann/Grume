@@ -34,7 +34,7 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
     
     // Load the biome wallset file (includes torches)
     cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
+    xmlFile.load(FILE_PATH_BIOME + _map->biome->wallSet.fileName);
     
     // Only contine if we can load the biome wallset file
     if (xmlFile.lineCount() > 0)

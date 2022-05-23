@@ -34,7 +34,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
     
     // Load the biome wallset file (includes doors)
     cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
+    xmlFile.load(FILE_PATH_BIOME + _map->biome->wallSet.fileName);
     
     // Load the biome sound database file
     cXML xmlSoundFile;
