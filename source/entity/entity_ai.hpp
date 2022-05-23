@@ -69,7 +69,7 @@ enum class eEntityAIState : std::uint16_t
     entityAIStateNone       = 0, // None
     entityAIStateAttack     = 1, // Attack
     entityAIStateFlee       = 2, // Flee
-    entityAIStatePersue     = 3, // Persue player / leader npc
+    entityAIStatePursue     = 3, // Pursue player / leader npc
     entityAIStatePatrol     = 4, // Patrol
     entityAIStateGoToTile   = 5, // Go to tile
     entityAIStateReturn     = 6  // Return to spawn tile

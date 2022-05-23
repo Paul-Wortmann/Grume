@@ -27,7 +27,6 @@
 #include "../core/includes.hpp"
 
 #include "map_define.hpp"
-#include "map_path_define.hpp"
 
 bool gLineOfSight(sMap*& _map, const std::uint32_t& _x1, const std::uint32_t& _y1, const std::uint32_t& _x2, const std::uint32_t& _y2);
 bool gLineOfSight(sMap*& _map, const std::uint32_t& _t1, const std::uint32_t& _t2);

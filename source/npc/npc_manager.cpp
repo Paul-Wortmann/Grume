@@ -137,11 +137,11 @@ void cNPCManager::process(const float &_dt)
                 // Check if player is in move range and visable, path to player
                 else if ((inRangePursue) && (playerVisable == true))
                 {
-                    m_entityTemp->ai->state = eEntityAIState::entityAIStatePersue;
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStatePursue;
                 }
                 
                 // Check if player is in move range and not viasble, path to last known player position
-                else if ((inRangePursue) && (playerVisable == false) && (m_entityTemp->ai->state == eEntityAIState::entityAIStatePersue))
+                else if ((inRangePursue) && (playerVisable == false) && (m_entityTemp->ai->state == eEntityAIState::entityAIStatePursue))
                 {
                     m_entityTemp->movement->mapPath.destinationTile = m_entityTemp->ai->lastKnownPlayerTile;
                     m_entityTemp->ai->state = eEntityAIState::entityAIStateGoToTile;
@@ -221,8 +221,8 @@ void cNPCManager::process(const float &_dt)
                     case eEntityAIState::entityAIStatePatrol:
                     break;
                     
-                    // Persue state
-                    case eEntityAIState::entityAIStatePersue:
+                    // Pursue state
+                    case eEntityAIState::entityAIStatePursue:
                         // If the player has moved, path to the new player position
                         if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
                         {

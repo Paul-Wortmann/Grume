@@ -644,7 +644,6 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
     }
 }
 
-
 std::uint32_t cEntityManager::m_positionToTile(glm::vec3 _position)
 {
     // Width and height offset, used to center the walls
