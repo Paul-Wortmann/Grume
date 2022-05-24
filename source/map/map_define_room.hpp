@@ -26,18 +26,18 @@
 
 enum class eMapRoomType : std::uint16_t 
 { 
-    roomTypeNone         =  0, // None / empty
-    roomTypeCell         =  1, // Prison Cell
-    roomTypeSecret       =  2, // Secret room
-    roomTypeStairwell    =  3, // Stairwell
-    roomTypeStore        =  4, // Store
-    roomTypeBlacksmith   =  5, // Blacksmith
-    roomTypeCanteen      =  6, // Canteen
-    roomTypeStorage      =  7, // Storage room
-    roomTypeLibrary      =  8, // Library
-    roomTypeAlchemyLab   =  9, // Alchemy Lab
-    roomTypeLaboratory   = 10, // Laboratory
-    roomTypeTorture      = 11  // Torture Chamber
+    roomTypeNone          =  0, // None / empty
+    roomTypeCell          =  1, // Prison Cell
+    roomTypeSecret        =  2, // Secret room
+    roomTypeStairwell     =  3, // Stairwell
+    roomTypeStore         =  4, // Store
+    roomTypeBlacksmith    =  5, // Blacksmith
+    roomTypeCanteen       =  6, // Canteen
+    roomTypeStorage       =  7, // Storage room
+    roomTypeLibrary       =  8, // Library
+    roomTypeAlchemyLab    =  9, // Alchemy Lab
+    roomTypeLaboratory    = 10, // Laboratory
+    roomTypeTorture       = 11  // Torture Chamber
 };
 
 struct sMapRoom

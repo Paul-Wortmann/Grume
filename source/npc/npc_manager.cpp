@@ -56,6 +56,54 @@ glm::vec3 cNPCManager::m_tileToPosition(std::uint32_t _tile)
     return glm::vec3(x, m_mapPointer->terrainHeight, z);
 };
 
+void cNPCManager::m_generateWaypoints(sEntity*& _entity)
+{
+    // If no AI component, exit
+    if (_entity->ai == nullptr)
+        return;
+
+    // If no patrol node, create it
+    if (_entity->ai->patrol == nullptr)
+    {
+        _entity->ai->patrol = new sEntityAIPatrol;
+    }
+
+    // First delete old waypoints if they exist
+    if (_entity->ai->patrol->waypoint != nullptr)
+    {
+        delete[] _entity->ai->patrol->waypoint;
+        _entity->ai->patrol->waypoint = nullptr;
+        _entity->ai->patrol->waypointCount = 0;
+        _entity->ai->patrol->waypointCurrent = 0;
+    }
+    
+    // random number of waypoints 2 - 5
+    _entity->ai->patrol->waypointCount = 2 + (rand() % 3);
+    _entity->ai->patrol->waypoint = new std::uint32_t[_entity->ai->patrol->waypointCount];
+
+    const float PI = 3.14159265f;
+
+    // Calculate angle between waypoints
+    float angle = (360.0f / _entity->ai->patrol->waypointCount);
+    
+    // Convert to radians
+    angle = angle * (PI / 180.0);
+    
+    for (std::uint32_t i = 0; i < _entity->ai->patrol->waypointCount; ++i)
+    {
+        // random radius 10 - 20 tiles
+        float radius = 10 + (rand() % 10);
+
+        // Generate each point on the circle
+        std::uint32_t x = radius * cos(angle * i);
+        std::uint32_t y = radius * sin(angle * i);
+
+        // store result
+        _entity->ai->patrol->waypoint[i] = (y * m_mapPointer->width) + x;
+    }
+};
+
+
 void cNPCManager::process(const float &_dt)
 {
     // Entities

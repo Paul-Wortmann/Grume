@@ -56,6 +56,7 @@ class cNPCManager
 
         std::uint32_t   m_positionToTile(glm::vec3 _position);
         glm::vec3       m_tileToPosition(std::uint32_t _tile);
+        void            m_generateWaypoints(sEntity*& _entity);
 };
 
 #endif //NPC_MANAGER_HPP
