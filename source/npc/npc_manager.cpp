@@ -168,7 +168,7 @@ void cNPCManager::process(const float &_dt)
                 // Finished fleeing
                 else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateFlee) && (m_entityTemp->movement->pathing == false))
                 {
-                    m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                 }
                 
                 // Attack player if in range
@@ -179,7 +179,7 @@ void cNPCManager::process(const float &_dt)
                 // Player has moved out of attack range
                 else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateAttack) && (inRangeAttack == false))
                 {
-                    m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                 }
                 
                 // Check if player is in move range and visable, path to player
@@ -206,7 +206,7 @@ void cNPCManager::process(const float &_dt)
                 // We have reached the spawn tile, and have nothing to do, stop
                 else if ((m_entityTemp->ai->state == eEntityAIState::entityAIStateReturn) && m_entityTemp->movement->pathing == false)
                 {
-                    m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                     m_entityTemp->movement->pathing = false;
                 }
 
@@ -356,12 +356,12 @@ void cNPCManager::process(const float &_dt)
                         {
                             m_entityTemp->movement->mapPath.currentPosition = 0;
                             m_entityTemp->movement->pathing = false;
-                            m_entityTemp->ai->state = eEntityAIState::entityAIStateNone;
+                            m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                         }
                     break;
                     
-                    // No state
-                    case eEntityAIState::entityAIStateNone:
+                    // No state: Idle
+                    case eEntityAIState::entityAIStateIdle:
                     default:
                     break;
                 }

@@ -66,7 +66,7 @@ enum class eEntitySocial : std::uint16_t
 
 enum class eEntityAIState : std::uint16_t 
 { 
-    entityAIStateNone       = 0, // None
+    entityAIStateIdle       = 0, // Idle
     entityAIStateAttack     = 1, // Attack
     entityAIStateFlee       = 2, // Flee
     entityAIStatePursue     = 3, // Pursue player / leader npc
@@ -85,7 +85,7 @@ struct sEntityAIPatrol
 struct sEntityAI
 {
     // State
-    eEntityAIState  state               = eEntityAIState::entityAIStateNone;
+    eEntityAIState  state               = eEntityAIState::entityAIStateIdle;
 
     // Characteristics
     float           distanceAttack      = 1.0f;
