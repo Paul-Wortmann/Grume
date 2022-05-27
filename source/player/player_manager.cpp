@@ -158,9 +158,9 @@ void cPlayerManager::process(const float &_dt)
         glm::vec3 entityTilePos = tileToPosition(m_mouseTile);
         
         // Get the distance to the destination tile
-        float   distanceToTileSqr = ((playerPos.x - entityTilePos.x) * (playerPos.x - entityTilePos.x)) + ((playerPos.z - entityTilePos.z) * (playerPos.z - entityTilePos.z));
+        float distanceToTileSqr = ((playerPos.x - entityTilePos.x) * (playerPos.x - entityTilePos.x)) + ((playerPos.z - entityTilePos.z) * (playerPos.z - entityTilePos.z));
         
-        bool      moveToEntity = false;
+        bool moveToEntity = false;
         
         // If click object
         if (m_mapPointer->tile[m_mouseTile].object != 0)
@@ -401,7 +401,7 @@ void cPlayerManager::process(const float &_dt)
         glm::vec3     currentTilePos = tileToPosition(currentTile);
         
         // Get the distance to the destination tile
-        float   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
+        float distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
         
         // if not center, move towards tile center
         if (distanceToTileSqr > (m_player->movement->movementSpeed + m_player->movement->movementBias))
