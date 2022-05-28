@@ -26,13 +26,13 @@
 sEntityModel* loadModelOBJ(const std::string &_fileName)
 {
     // Check if the file exists
-    if (fileExists(FILE_PATH_MODEL+_fileName))
+    if (fileExists(FILE_PATH_MODEL + _fileName))
     {
         // Data structure returning model
         sEntityModel* tModel = nullptr;
 
         // Open file
-        std::ifstream objFile (FILE_PATH_MODEL+_fileName, std::ios::binary);
+        std::ifstream objFile (FILE_PATH_MODEL + _fileName, std::ios::binary);
         if(objFile.is_open())
         {
             // Hold a line of data read from the file

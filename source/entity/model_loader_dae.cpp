@@ -26,13 +26,26 @@
 sEntityModel* loadModelDAE(const std::string &_fileName)
 {
     // Check if the file exists
-    if (fileExists(FILE_PATH_MODEL+_fileName))
+    if (fileExists(FILE_PATH_MODEL + _fileName))
     {
+        // Data structure returning model
+        sEntityModel* tModel = nullptr;
+
         // Open file
-        
-        
+        std::ifstream daeFile (FILE_PATH_MODEL + _fileName, std::ios::binary);
+        if(daeFile.is_open())
+        {
+
+            // Close the file
+            daeFile.close();
+        }
+        else
+        {
+            gLogWrite(LOG_ERROR, "Failed to open file: " + std::string(FILE_PATH_MODEL) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        }
         
         // return data
+        return tModel;
     }
     else
     {
