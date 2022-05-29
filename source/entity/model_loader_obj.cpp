@@ -501,4 +501,8 @@ sEntityModel* loadModelOBJ(const std::string &_fileName)
     return nullptr;
 }
 
+void saveModelOBJ(const std::string &_fileName, const sEntityModel*& _model)
+{
+    
+}
 

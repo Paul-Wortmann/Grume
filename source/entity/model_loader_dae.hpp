@@ -29,5 +29,6 @@
 #include "../core/includes.hpp"
 
 sEntityModel* loadModelDAE(const std::string &_fileName);
+void          saveModelDAE(const std::string &_fileName, const sEntityModel*& _model);
 
 #endif // MODEL_LOADER_DAE_HPP

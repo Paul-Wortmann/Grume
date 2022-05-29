@@ -29,5 +29,6 @@
 #include "../core/includes.hpp"
 
 sEntityModel* loadModelOBJ(const std::string &_fileName);
+void          saveModelOBJ(const std::string &_fileName, const sEntityModel*& _model);
 
 #endif // MODEL_LOADER_OBJ_HPP

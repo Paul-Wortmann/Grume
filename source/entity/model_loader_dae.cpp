@@ -57,3 +57,9 @@ sEntityModel* loadModelDAE(const std::string &_fileName)
 }
 
 
+void saveModelDAE(const std::string &_fileName, const sEntityModel*& _model)
+{
+    
+}
+
+
