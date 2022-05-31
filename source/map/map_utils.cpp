@@ -58,80 +58,152 @@ std::uint32_t gDistanceTiles(sMap*& _map, const std::uint32_t &_tile1, const std
     return dx + dy;
 }
 
+std::uint32_t gIsClearTile(sMap*& _map, const std::uint32_t &_tile)
+{
+    return ((_map->tile[_tile].npc == 0) &&
+           ((_map->tile[_tile].base == eTileBase::tileFloor) ||
+            (_map->tile[_tile].base == eTileBase::tileFloorPath)));
+}
+
 std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_sTile, const std::uint32_t &_dTile)
 {
     // First check destination tile
-    if (_map->tile[_dTile].npc != 0)
-        return (_dTile);
-
-    std::uint32_t closetTile     = _dTile;
-    std::uint32_t closetDistance = UINT32_MAX;
-    std::uint32_t tDistance = {};
-    std::uint32_t tTile     = {};
-
-    tTile = _dTile + 1;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
+    if (gIsClearTile(_map, _dTile))
     {
-        closetDistance = tDistance;
-        closetTile = tTile;
+        return _dTile;
+    }
+    else
+    {
+        std::uint32_t closetTile     = _dTile;
+        std::uint32_t closetDistance = UINT32_MAX;
+        std::uint32_t tDistance      = {};
+        std::uint32_t tTile          = {};
+
+        tTile = _dTile + 1;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile - 1;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile + _map->width;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile + _map->width + 1;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile + _map->width - 1;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile - _map->width;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile - _map->width + 1;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        tTile = _dTile - _map->width - 1;
+        tDistance = gDistanceTiles(_map, _sTile, tTile);
+        if ((tDistance < closetDistance) && (gIsClearTile(_map, tTile)))
+        {
+            closetDistance = tDistance;
+            closetTile = tTile;
+        }
+
+        return closetTile;
     }
 
-    tTile = _dTile - 1;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
+    // If no free tile is found, return the original tile.
+    return _dTile;
+}
+
+std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_tile)
+{
+    // First try to use the position provided
+    if (gIsClearTile(_map, _tile))
     {
-        closetDistance = tDistance;
-        closetTile = tTile;
+        return _tile;
+    }
+    else
+    {
+        // Initial tile position
+        std::uint32_t tile_x = _tile % _map->width;
+        std::uint32_t tile_y = _tile / _map->width;
+
+        // Max iterations
+        std::uint32_t iterations = (_map->width > _map->height) ? _map->width : _map->height;
+
+        // Second try random placement
+        std::uint32_t radius = 1;
+        for (std::uint32_t i = 0; i < iterations; ++i)
+        {
+            std::uint32_t rand_x = (rand() % (radius * 2) - radius) + tile_x + 1;
+            std::uint32_t rand_y = (rand() % (radius * 2) - radius) + tile_y + 1;
+
+            if (rand_x > _map->width - 2)
+                rand_x = _map->width - 2;
+            if (rand_y > _map->height - 2)
+                rand_y = _map->height - 2;
+
+            std::uint32_t tTile = (rand_y * _map->width) + rand_x;
+            if (gIsClearTile(_map, tTile))
+                return tTile;
+
+            radius++;
+        }
+
+        // Third a very iterative approach
+        for (std::uint32_t radius = 1; radius < iterations; ++radius)
+        {
+            std::uint32_t tile_xStart = tile_x - radius;
+            std::uint32_t tile_yStart = tile_y - radius;
+            std::uint32_t tile_xEnd = ((tile_x + radius) > _map->width) ? _map->width : (tile_x + radius);
+            std::uint32_t tile_yEnd = ((tile_y + radius) > _map->height) ? _map->height : (tile_y + radius);
+            for (std::uint32_t y = tile_yStart; y < tile_yEnd; ++y)
+            {
+                for (std::uint32_t x = tile_xStart; x < tile_xEnd; ++x)
+                {
+                    std::uint32_t tTile = (y * _map->width) + x;
+                    if (gIsClearTile(_map, tTile))
+                        return tTile;
+                }
+            }
+        }
     }
 
-    tTile = _dTile + _map->width;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
-    {
-        closetDistance = tDistance;
-        closetTile = tTile;
-    }
-
-    tTile = _dTile + _map->width + 1;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
-    {
-        closetDistance = tDistance;
-        closetTile = tTile;
-    }
-
-    tTile = _dTile + _map->width - 1;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
-    {
-        closetDistance = tDistance;
-        closetTile = tTile;
-    }
-
-    tTile = _dTile - _map->width;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
-    {
-        closetDistance = tDistance;
-        closetTile = tTile;
-    }
-
-    tTile = _dTile - _map->width + 1;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
-    {
-        closetDistance = tDistance;
-        closetTile = tTile;
-    }
-
-    tTile = _dTile - _map->width - 1;
-    tDistance = gDistanceTiles(_map, _sTile, tTile);
-    if (tDistance < closetDistance)
-    {
-        closetDistance = tDistance;
-        closetTile = tTile;
-    }
-
-    return closetTile;
+    // If no free tile is found, return the original tile.
+    return _tile;
 }

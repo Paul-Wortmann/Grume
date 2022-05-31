@@ -30,8 +30,9 @@
 std::uint32_t gMapPositionToTile(sMap*& _map, const glm::vec3 &_position);
 glm::vec3     gMapTileToPosition(sMap*& _map, const std::uint32_t &_tile);
 std::uint32_t gDistanceTiles(sMap*& _map, const std::uint32_t &_tile1, const std::uint32_t &_tile2);
+std::uint32_t gIsClearTile(sMap*& _map, const std::uint32_t &_tile);
 std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_sTile, const std::uint32_t &_dTile);
-
+std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_tile);
 
 #endif //MAP_UTILS_HPP
 
