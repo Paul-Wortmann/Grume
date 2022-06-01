@@ -180,8 +180,9 @@ std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_tile)
 
             std::uint32_t tTile = (rand_y * _map->width) + rand_x;
             if (gIsClearTile(_map, tTile))
+            {
                 return tTile;
-
+            }
             radius++;
         }
 
@@ -198,7 +199,9 @@ std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_tile)
                 {
                     std::uint32_t tTile = (y * _map->width) + x;
                     if (gIsClearTile(_map, tTile))
+                    {
                         return tTile;
+                    }
                 }
             }
         }
