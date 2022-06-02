@@ -70,7 +70,7 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
         tBiome->wallSet.fileName          = xmlFile.getString ("<wall_set>");
         tBiome->floorSpritesheet.fileName = xmlFile.getString ("<floor_spritesheet>");
 
-        m_load_wallSet(tBiome);
+        //m_load_wallSet(tBiome);
 
         // Clean up
         xmlFile.free();
@@ -78,7 +78,7 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
     }
     return nullptr;
 }
-
+/*
 void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
 {
     cXML xmlFile;
@@ -106,3 +106,4 @@ void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
         xmlFile.free();
     }
 }
+*/

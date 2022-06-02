@@ -48,7 +48,7 @@ struct sMapWallSet
 {
     std::string name     = {};
     std::string fileName = {};
-
+/*
     // Wide walls
     //sEntity**     wall_wp       = nullptr; // Pillar
     std::uint32_t wall_wp_count = 0; // Pillar
@@ -80,6 +80,7 @@ struct sMapWallSet
     std::uint32_t wall_td_count = 0; // Doorway single
     //sEntity**     wall_tl       = nullptr; // Doorway large
     std::uint32_t wall_tl_count = 0; // Doorway large
+*/
 };
 
 struct sMapBiome

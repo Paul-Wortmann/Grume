@@ -42,7 +42,7 @@ class cBiomeManager : public tcLinkedList<sMapBiome>
         void            freeData(sMapBiome*& _biome) override;
 
         // Wall set load
-        void            m_load_wallSet(sMapBiome*& _biome);
+        //void            m_load_wallSet(sMapBiome*& _biome);
 };
 
 #endif // BIOME_MANAGER_HPP
