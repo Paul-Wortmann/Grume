@@ -88,54 +88,54 @@ enum class eMapEventType : std::uint32_t
 
 struct sMapEvent
 {
-    eMapEventType type                 = eMapEventType::eventTypeNone; // Default == eMapEventType::eventTypeNone
-    std::uint32_t tile                 = 0; // The tile that triggers the event, default == 0
-    std::uint32_t data_1               = 0; // Default == 0
-    std::uint32_t data_2               = 0; // Default == 0
-    std::uint32_t data_3               = 0; // Default == 0
-    bool          triggered            = false; // Default == false
+    eMapEventType  type                = eMapEventType::eventTypeNone; // Default == eMapEventType::eventTypeNone
+    std::uint32_t  tile                = 0; // The tile that triggers the event, default == 0
+    std::uint32_t  data_1              = 0; // Default == 0
+    std::uint32_t  data_2              = 0; // Default == 0
+    std::uint32_t  data_3              = 0; // Default == 0
+    bool           triggered           = false; // Default == false
 };
 
 struct sMapPortal
 {
-    std::uint32_t portalNo             = 0;
-    std::uint32_t tile                 = 0;
-    float         direction            = 0.0f; // Direction player should face
+    std::uint32_t  portalNo            = 0;
+    std::uint32_t  tile                = 0;
+    float          direction           = 0.0f; // Direction player should face
 };
 
 struct sMapObject
 {
-    std::uint32_t tile                 = 0;
-    std::string   name                 = {};
-    float         scale                = 0.0f;
-    float         yRot                 = 0.0f;
-    std::uint32_t obstacle             = 0;
+    std::uint32_t  tile                = 0;
+    std::string    name                = {};
+    float          scale               = 0.0f;
+    float          yRot                = 0.0f;
+    std::uint32_t  obstacle            = 0;
 };
 
 struct sMapDebris
 {
-    std::string   name                 = {};
-    float         scaleMax             = 0.0f;
-    float         scaleMin             = 0.0f;
-    std::uint32_t prevalence           = 0;
-    std::uint32_t obstacle             = 0;
+    std::string    name                = {};
+    float          scaleMax            = 0.0f;
+    float          scaleMin            = 0.0f;
+    std::uint32_t  prevalence          = 0;
+    std::uint32_t  obstacle            = 0;
 };
 
 struct sMapNPCMob
 {
-    std::string   name                 = {};
-    float         scaleMax             = 0.0f;
-    float         scaleMin             = 0.0f;
-    std::uint32_t prevalence           = 0;
+    std::string    name                = {};
+    float          scaleMax            = 0.0f;
+    float          scaleMin            = 0.0f;
+    std::uint32_t  prevalence          = 0;
 };
 
 struct sMapNPC
 {
-    std::uint32_t tile                 = 0;
-    std::string   name                 = {};
-    std::uint32_t index                = 0;
-    float         scale                = 0.0f;
-    float         yRot                 = 0.0f;
+    std::uint32_t  tile                = 0;
+    std::string    name                = {};
+    std::uint32_t  index               = 0;
+    float          scale               = 0.0f;
+    float          yRot                = 0.0f;
 };
 
 struct sMap

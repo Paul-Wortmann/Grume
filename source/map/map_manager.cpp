@@ -372,7 +372,7 @@ void cMapManager::load(const std::string &_fileName)
             if (xmlMusicFile.lineCount() > 0)
             {
                 std::uint32_t trackCount = xmlMusicFile.getInstanceCount(xmlKey);
-                m_currentMap->musicNumber = m_currentMap->biome->musicTrack.no;
+                m_currentMap->musicNumber = m_currentMap->biome->musicTrack.number;
                 
                 // Use map defined music track number if defined
                 if (m_currentMap->musicDefined)

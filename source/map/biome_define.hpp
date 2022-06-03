@@ -41,7 +41,7 @@ struct sMapMusicTag
 // Music number
 struct sMusicTrack
 {
-    std::uint32_t no     = 0; // Default == 0 (random)
+    std::uint32_t number = 0; // Default == 0 (random)
 };
 
 struct sMapWallSet

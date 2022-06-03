@@ -66,7 +66,7 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
 
         // Data
         tBiome->musicTag.name             = xmlFile.getString ("<music_tag>");
-        tBiome->musicTrack.no             = xmlFile.getInteger("<music_track>");
+        tBiome->musicTrack.number         = xmlFile.getInteger("<music_track>");
         tBiome->wallSet.fileName          = xmlFile.getString ("<wall_set>");
         tBiome->floorSpritesheet.fileName = xmlFile.getString ("<floor_spritesheet>");
 

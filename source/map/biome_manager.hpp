@@ -40,9 +40,6 @@ class cBiomeManager : public tcLinkedList<sMapBiome>
     private:
         cEntityManager* entityManager = nullptr;
         void            freeData(sMapBiome*& _biome) override;
-
-        // Wall set load
-        //void            m_load_wallSet(sMapBiome*& _biome);
 };
 
 #endif // BIOME_MANAGER_HPP
