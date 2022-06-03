@@ -70,40 +70,9 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
         tBiome->wallSet.fileName          = xmlFile.getString ("<wall_set>");
         tBiome->floorSpritesheet.fileName = xmlFile.getString ("<floor_spritesheet>");
 
-        //m_load_wallSet(tBiome);
-
         // Clean up
         xmlFile.free();
         return tBiome;
     }
     return nullptr;
 }
-/*
-void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
-{
-    cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _biome->wallSet.fileName);
-    if (xmlFile.lineCount() > 0)
-    {
-        // Get the data from the XML file
-        _biome->wallSet.name          = xmlFile.getString("<name>");
-        _biome->wallSet.wall_wp_count = xmlFile.getInteger("<wall_wp_count>");
-        _biome->wallSet.wall_we_count = xmlFile.getInteger("<wall_we_count>");
-        _biome->wallSet.wall_ws_count = xmlFile.getInteger("<wall_ws_count>");
-        _biome->wallSet.wall_wd_count = xmlFile.getInteger("<wall_wd_count>");
-        _biome->wallSet.wall_wc_count = xmlFile.getInteger("<wall_wc_count>");
-        _biome->wallSet.wall_wt_count = xmlFile.getInteger("<wall_wt_count>");
-        _biome->wallSet.wall_tp_count = xmlFile.getInteger("<wall_tp_count>");
-        _biome->wallSet.wall_te_count = xmlFile.getInteger("<wall_te_count>");
-        _biome->wallSet.wall_ts_count = xmlFile.getInteger("<wall_ts_count>");
-        _biome->wallSet.wall_tc_count = xmlFile.getInteger("<wall_tc_count>");
-        _biome->wallSet.wall_tt_count = xmlFile.getInteger("<wall_tt_count>");
-        _biome->wallSet.wall_tx_count = xmlFile.getInteger("<wall_tx_count>");
-        _biome->wallSet.wall_td_count = xmlFile.getInteger("<wall_td_count>");
-        _biome->wallSet.wall_tl_count = xmlFile.getInteger("<wall_tl_count>");
-
-        // Clean up
-        xmlFile.free();
-    }
-}
-*/
