@@ -38,7 +38,7 @@ void cPhysicsEngine::process(const float &_dt)
     {
         if ((entity_1->physics != nullptr) && (entity_1->physics->bodyType == eBodyType::dynamicBody))
         {
-            for (sEntity* entity_2 = entity_1; entity_2 != nullptr; entity_2 = entity_2->next)
+            for (sEntity* entity_2 = entity_1->next; entity_2 != nullptr; entity_2 = entity_2->next)
             {
                 if ((entity_2->physics != nullptr) && (entity_1 != entity_2))
                 {
