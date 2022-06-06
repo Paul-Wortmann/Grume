@@ -366,10 +366,11 @@ std::uint32_t cGraphicsEngine::initialize(void)
                 m_p2_initialize();
                 m_p3_initialize();
             }
-            m_p4_initialize();
+            //m_p4_initialize();
             m_pui_initialize();
             m_pls_initialize();
             
+            /*
             // Initialize particle engine
             m_particleEngine.initialize();
             
@@ -390,6 +391,7 @@ std::uint32_t cGraphicsEngine::initialize(void)
                 
                 m_particleEngine.addParticle(tParticle);
             }
+            */
         }
         else
         {
@@ -410,7 +412,7 @@ std::uint32_t cGraphicsEngine::initialize(void)
 void cGraphicsEngine::terminate(void)
 {
     // Particle engine
-    m_particleEngine.terminate();
+    //m_particleEngine.terminate();
 
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
@@ -446,7 +448,7 @@ void cGraphicsEngine::terminate(void)
         m_p2_terminate();
         m_p3_terminate();
     }
-    m_p4_terminate();
+    //m_p4_terminate();
     m_pui_terminate();
     m_pls_terminate();
 
@@ -537,7 +539,7 @@ void cGraphicsEngine::process(const float &_dt)
     m_camera.process(_dt);
     
     // Particle Engine
-    m_particleEngine.process(_dt);
+    //m_particleEngine.process(_dt);
 
     if (m_loadRender)
     {
@@ -564,7 +566,7 @@ void cGraphicsEngine::process(const float &_dt)
         }
 
         // 4th render pass: Particles
-        m_p4_render();
+        //m_p4_render();
 
         // UI render pass: last stage
         m_pui_render();
