@@ -21,20 +21,11 @@
  * @date 2020-04-23
  */
 
-#ifndef LIB_MATH_HPP
-#define LIB_MATH_HPP
+#ifndef LIB_MATH_UTILS_HPP
+#define LIB_MATH_UTILS_HPP
 
-#include "libMath_conversion.hpp"
 #include "libMath_defines.hpp"
-#include "libMath_includes.hpp"
-#include "libMath_matrix.hpp"
-#include "libMath_plane.hpp"
-#include "libMath_points.hpp"
-#include "libMath_quaternion.hpp"
-#include "libMath_transform.hpp"
-#include "libMath_utils.hpp"
-#include "libMath_vector.hpp"
-#include "libMath_version.hpp"
 
-#endif //LIB_MATH_HPP
 
+
+#endif // LIB_MATH_UTILS_HPP

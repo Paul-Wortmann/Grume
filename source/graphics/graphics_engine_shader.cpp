@@ -229,7 +229,7 @@ std::uint32_t cGraphicsEngineShader::getUniformLocation(const std::string &_name
     return glGetUniformLocation(m_shaderID, _name.c_str());
 }
 
-// Get an atribute location from the shader
+// Get an attribute location from the shader
 std::uint32_t cGraphicsEngineShader::getAttribLocation(const std::string &_name)
 {
     return glGetAttribLocation(m_shaderID, _name.c_str());
