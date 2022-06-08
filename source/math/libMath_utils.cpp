@@ -22,3 +22,32 @@
  */
 
 #include "libMath_utils.hpp"
+
+uint32 fibonacci(uint32 _n)
+{
+    if (_n == 1)
+        return 0;
+    if (_n == 2)
+        return 1;
+
+    uint32 t1 = 0;
+    uint32 t2 = 1;
+    uint32 sum = 0;
+    for (uint32 i = 3; i <= _n; ++i)
+    {
+        sum = t1 + t2;
+        t1 = t2;
+        t2 = sum;
+    }
+    return sum;
+}
+
+uint32 factorial(uint32 _n)
+{
+    uint32 product = 1;
+    for(uint32 i = 1; i <= _n; ++i)
+    {    
+      product = product * i;
+    }
+    return product;
+}

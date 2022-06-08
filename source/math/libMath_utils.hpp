@@ -26,6 +26,7 @@
 
 #include "libMath_defines.hpp"
 
-
+uint32 fibonacci(uint32 _n);
+uint32 factorial(uint32 _n);
 
 #endif // LIB_MATH_UTILS_HPP
