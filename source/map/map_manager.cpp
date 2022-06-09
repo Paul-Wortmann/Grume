@@ -360,7 +360,7 @@ void cMapManager::load(const std::string &_fileName)
         {
             cXML xmlMusicFile;
             xmlMusicFile.load(FILE_PATH_DATABASE + m_gameDatabase->music.fileName);
-            m_currentMap->musicTagName = m_currentMap->biome->musicTag.name;
+            m_currentMap->musicTagName = m_currentMap->biome->mapMusic.name;
             // Use map defined music tag if defined
             if (m_currentMap->musicDefined)
             {
@@ -372,7 +372,7 @@ void cMapManager::load(const std::string &_fileName)
             if (xmlMusicFile.lineCount() > 0)
             {
                 std::uint32_t trackCount = xmlMusicFile.getInstanceCount(xmlKey);
-                m_currentMap->musicNumber = m_currentMap->biome->musicTrack.number;
+                m_currentMap->musicNumber = m_currentMap->biome->mapMusic.number;
                 
                 // Use map defined music track number if defined
                 if (m_currentMap->musicDefined)

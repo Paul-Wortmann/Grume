@@ -32,16 +32,11 @@ struct sMapFloorSpritesheet
     std::string fileName = {};
 };
 
-// Music type
-struct sMapMusicTag
+// Map music
+struct sMapMusic
 {
-    std::string name     = {};
-};
-
-// Music number
-struct sMusicTrack
-{
-    std::uint32_t number = 0; // Default == 0 (random)
+    std::string   name   = {}; // Tag
+    std::uint32_t number = 0;  // Track, Default == 0 (random)
 };
 
 struct sMapWallSet
@@ -61,8 +56,7 @@ struct sMapBiome
     std::string   fileName   = {};
 
     // Data
-    sMapMusicTag  musicTag   = {};
-    sMusicTrack   musicTrack = {};
+    sMapMusic     mapMusic   = {};
     sMapWallSet   wallSet    = {};
 
     // Map floor spritesheet
