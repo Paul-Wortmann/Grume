@@ -33,9 +33,9 @@ static bool _pathAStileOK(sMap*& _map, std::uint32_t _tile)
     }
 
     // check tile data
-    if (!((_map->tile[_tile].base == eTileBase::tileFloor)
-       || (_map->tile[_tile].base == eTileBase::tileDoorway)
-       || (_map->tile[_tile].base == eTileBase::tileFloorPath)))
+    if (!((_map->tile[_tile].base == eTileBase::tileFloor) ||
+          (_map->tile[_tile].base == eTileBase::tileDoorway) ||
+          (_map->tile[_tile].base == eTileBase::tileFloorPath)))
     {
         return false;
     }
