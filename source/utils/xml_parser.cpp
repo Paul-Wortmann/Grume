@@ -189,7 +189,7 @@ std::int32_t cXML::getInteger(const std::string &_key, const std::uint32_t _inst
     return std::stoi(value);
 }
 
-uint64 cXML::getUInteger64(const std::string &_key, const std::uint32_t _instance)
+std::uint64_t cXML::getUInteger64(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);
     if (value.length() < 1)
