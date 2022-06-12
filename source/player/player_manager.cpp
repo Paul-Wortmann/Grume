@@ -394,6 +394,7 @@ void cPlayerManager::process(const float &_dt)
         
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_player->movement->moved = true;
+        
         glm::vec3     playerPos      = m_player->position;
         glm::vec3     playerPrevPos  = m_player->position;
         glm::vec3     playerRot      = m_player->rotation;
