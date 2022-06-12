@@ -29,9 +29,9 @@ static bool _isFloor(sMap*& _map, std::uint32_t _tile)
 {
     bool returnValue = false;
 
-    if ((_map->tile[_tile].base == eTileBase::tileFloor)
-     || (_map->tile[_tile].base == eTileBase::tileDoorway)
-     || (_map->tile[_tile].base == eTileBase::tileFloorNoGo))
+    if ((_map->tile[_tile].base == eTileBase::tileFloor) ||
+        (_map->tile[_tile].base == eTileBase::tileDoorway) ||
+        (_map->tile[_tile].base == eTileBase::tileFloorNoGo))
     {
         returnValue = true;
     }
@@ -44,8 +44,8 @@ static bool _isPath(sMap*& _map, std::uint32_t _tile)
 {
     bool returnValue = false;
 
-    if ((_map->tile[_tile].base == eTileBase::tileFloorPath)
-     || (_map->tile[_tile].base == eTileBase::tilePathNoGo))
+    if ((_map->tile[_tile].base == eTileBase::tileFloorPath) ||
+        (_map->tile[_tile].base == eTileBase::tilePathNoGo))
     {
         returnValue = true;
     }
