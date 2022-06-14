@@ -26,11 +26,12 @@
 void cNPCManager::initialize(cEntityManager* _entityManager)
 {
     m_entityManager = _entityManager;
+    m_npcDialog.initialize();
 }
 
 void cNPCManager::terminate(void)
 {
-
+    m_npcDialog.terminate();
 }
 
 std::uint32_t cNPCManager::m_positionToTile(glm::vec3 _position)

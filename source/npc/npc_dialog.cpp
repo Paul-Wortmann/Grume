@@ -38,3 +38,7 @@ void cNPCDialog::process(const float &_dt)
     
 }
 
+void cNPCDialog::load(const std::string &_fileName)
+{
+    
+}

@@ -33,6 +33,7 @@ class cNPCDialog
     public:
         void     initialize(void);
         void     terminate(void);
+        void     load(const std::string &_fileName);
         void     process(const float &_dt);
 
     protected:
