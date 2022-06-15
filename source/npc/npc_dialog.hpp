@@ -28,6 +28,19 @@
 #include "../core/game_database.hpp"
 #include "../entity/entity_manager.hpp"
 
+struct sDialogResponse
+{
+    std::string   text   = {};
+    std::uint32_t effect = 0;
+};
+
+struct sDialogText
+{
+    std::string      text        = {};
+    std::uint32_t    numResponse = 0;
+    sDialogResponse* response    = nullptr;
+};
+
 class cNPCDialog
 {
     public:
