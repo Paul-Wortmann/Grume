@@ -28,10 +28,27 @@
 #include "../core/game_database.hpp"
 #include "../entity/entity_manager.hpp"
 
+enum class eDialogEffectType : std::uint16_t 
+{
+    effectNone       = 0, // None
+    effectGiveEXP    = 1, // Give EXP
+    effectTakeEXP    = 2, // Take EXP
+    effectGiveGold   = 3, // Give gold
+    effectTakeGold   = 4, // Take gold
+    effectGiveHealth = 5, // Give health
+    effectTakeHealth = 6  // Take health
+};
+
 struct sDialogResponse
 {
-    std::string   text   = {};
-    std::uint32_t effect = 0;
+    std::string        text              = {};
+    std::uint32_t      nextNode          = 0;
+
+    // Effect
+    std::uint32_t      numEffect         = 0;
+    eDialogEffectType* effectType        = nullptr;
+    bool*              enabledEffects    = nullptr;
+    bool*              repeatableEffects = nullptr;
 };
 
 struct sDialogText
@@ -39,6 +56,19 @@ struct sDialogText
     std::string      text        = {};
     std::uint32_t    numResponse = 0;
     sDialogResponse* response    = nullptr;
+};
+
+struct sDialogTree
+{
+    // ID
+    std::uint32_t nodeID  = 0;
+
+    // Node
+    std::uint32_t numNode = 0;
+    sDialogTree*  node    = nullptr;
+    
+    // Data
+    sDialogText*  dialog  = nullptr;
 };
 
 class cNPCDialog
@@ -52,9 +82,10 @@ class cNPCDialog
     protected:
 
     private:
-        sEntity*        m_entityHead    = nullptr;
-        sEntity*        m_entityTemp    = nullptr;
-        sEntity*        m_entityPlayer  = nullptr;
+        std::uint32_t numDialogTree = 0;
+        sDialogTree*  dialogTree    = nullptr;
+
+        void          m_freeData(void);
 };
 
 #endif //NPC_DIALOG_HPP

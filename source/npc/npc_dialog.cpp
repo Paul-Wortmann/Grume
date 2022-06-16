@@ -30,15 +30,20 @@ void cNPCDialog::initialize(void)
 
 void cNPCDialog::terminate(void)
 {
-    
+    m_freeData();
 }
 
-void cNPCDialog::process(const float &_dt)
+void cNPCDialog::m_freeData(void)
 {
     
 }
 
 void cNPCDialog::load(const std::string &_fileName)
+{
+    
+}
+
+void cNPCDialog::process(const float &_dt)
 {
     
 }
