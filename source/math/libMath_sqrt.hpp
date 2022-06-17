@@ -28,6 +28,7 @@
 #include "libMath_includes.hpp"
 
 double Q_rsqrt(double _number);
+float  Q_rsqrt(float _number);
 double rsqrt(double _x);
 
 #endif // LIB_MATH_SQRT_HPP
