@@ -28,6 +28,7 @@
 #include "entity_ai.hpp"
 #include "entity_character.hpp"
 #include "entity_collision.hpp"
+#include "entity_dialog.hpp"
 #include "entity_interaction.hpp"
 #include "entity_material.hpp"
 #include "entity_model.hpp"
@@ -106,6 +107,9 @@ struct sEntity
     
     // Character - player
     sEntityCharacter*   character            = nullptr;
+    
+    // Dialog
+    sEntityDialog*      dialog               = nullptr;
     
     // Interaction
     sEntityInteraction* interaction          = nullptr;
