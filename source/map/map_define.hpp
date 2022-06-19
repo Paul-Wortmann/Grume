@@ -25,6 +25,7 @@
 #define MAP_DEFINE_HPP
 
 #include "biome_define.hpp"
+#include "map_define_condition.hpp"
 #include "map_define_generate.hpp"
 #include "map_define_room.hpp"
 #include "../core/includes.hpp"
@@ -180,6 +181,10 @@ struct sMap
 
     // Biome
     sMapBiome*     biome               = nullptr;
+    
+    // Map conditions
+    std::uint32_t  conditionCount      = 0;
+    sMapCondition* condition           = nullptr;
     
     // Map events
     std::uint32_t  eventCount          = 0;
