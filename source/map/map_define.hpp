@@ -26,6 +26,7 @@
 
 #include "biome_define.hpp"
 #include "map_define_condition.hpp"
+#include "map_define_event.hpp"
 #include "map_define_generate.hpp"
 #include "map_define_room.hpp"
 #include "../core/includes.hpp"
@@ -75,26 +76,6 @@ struct sMapTile
     std::uint32_t object               = 0; // Default == 0
     std::uint32_t npc                  = 0; // Default == 0, else the UID of an npc
     std::uint32_t room                 = 0; // Default == 0
-};
-
-enum class eMapEventType : std::uint32_t 
-{
-    eventTypeNone                      = 0, // None
-    eventTypeWarp                      = 1, // Warp to map
-    eventTypeEntitySet                 = 2, // Set entity state
-    eventTypeEntityToggle              = 3, // Toggle entity state
-    eventTypeEntitySpawn               = 4, // Spawn entity
-    eventTypeTriggerTile               = 5  // Trigger tile
-};
-
-struct sMapEvent
-{
-    eMapEventType  type                = eMapEventType::eventTypeNone; // Default == eMapEventType::eventTypeNone
-    std::uint32_t  tile                = 0; // The tile that triggers the event, default == 0
-    std::uint32_t  data_1              = 0; // Default == 0
-    std::uint32_t  data_2              = 0; // Default == 0
-    std::uint32_t  data_3              = 0; // Default == 0
-    bool           triggered           = false; // Default == false
 };
 
 struct sMapPortal

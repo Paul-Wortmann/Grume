@@ -21,12 +21,12 @@
  * @date 2011-11-11
  */
 
-#ifndef MAP_DEFINE_CONDITIONS_HPP
-#define MAP_DEFINE_CONDITIONS_HPP
+#ifndef MAP_DEFINE_CONDITION_HPP
+#define MAP_DEFINE_CONDITION_HPP
 
 struct sMapCondition
 {
     bool triggered = false;
 };
 
-#endif // MAP_DEFINE_CONDITIONS_HPP
+#endif // MAP_DEFINE_CONDITION_HPP
