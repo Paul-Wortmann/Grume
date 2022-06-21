@@ -28,6 +28,7 @@
 #include "map_define_condition.hpp"
 #include "map_define_event.hpp"
 #include "map_define_generate.hpp"
+#include "map_define_portal.hpp"
 #include "map_define_room.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
@@ -76,13 +77,6 @@ struct sMapTile
     std::uint32_t object               = 0; // Default == 0
     std::uint32_t npc                  = 0; // Default == 0, else the UID of an npc
     std::uint32_t room                 = 0; // Default == 0
-};
-
-struct sMapPortal
-{
-    std::uint32_t  portalNo            = 0;
-    std::uint32_t  tile                = 0;
-    float          direction           = 0.0f; // Direction player should face
 };
 
 struct sMapObject
