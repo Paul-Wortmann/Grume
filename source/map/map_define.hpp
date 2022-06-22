@@ -28,6 +28,7 @@
 #include "map_define_condition.hpp"
 #include "map_define_event.hpp"
 #include "map_define_generate.hpp"
+#include "map_define_object.hpp"
 #include "map_define_portal.hpp"
 #include "map_define_room.hpp"
 #include "../core/includes.hpp"
@@ -77,15 +78,6 @@ struct sMapTile
     std::uint32_t object               = 0; // Default == 0
     std::uint32_t npc                  = 0; // Default == 0, else the UID of an npc
     std::uint32_t room                 = 0; // Default == 0
-};
-
-struct sMapObject
-{
-    std::uint32_t  tile                = 0;
-    std::string    name                = {};
-    float          scale               = 0.0f;
-    float          yRot                = 0.0f;
-    std::uint32_t  obstacle            = 0;
 };
 
 struct sMapDebris
