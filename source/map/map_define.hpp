@@ -26,8 +26,10 @@
 
 #include "biome_define.hpp"
 #include "map_define_condition.hpp"
+#include "map_define_debris.hpp"
 #include "map_define_event.hpp"
 #include "map_define_generate.hpp"
+#include "map_define_npc.hpp"
 #include "map_define_object.hpp"
 #include "map_define_portal.hpp"
 #include "map_define_room.hpp"
@@ -80,30 +82,12 @@ struct sMapTile
     std::uint32_t room                 = 0; // Default == 0
 };
 
-struct sMapDebris
-{
-    std::string    name                = {};
-    float          scaleMax            = 0.0f;
-    float          scaleMin            = 0.0f;
-    std::uint32_t  prevalence          = 0;
-    std::uint32_t  obstacle            = 0;
-};
-
 struct sMapNPCMob
 {
     std::string    name                = {};
     float          scaleMax            = 0.0f;
     float          scaleMin            = 0.0f;
     std::uint32_t  prevalence          = 0;
-};
-
-struct sMapNPC
-{
-    std::uint32_t  tile                = 0;
-    std::string    name                = {};
-    std::uint32_t  index               = 0;
-    float          scale               = 0.0f;
-    float          yRot                = 0.0f;
 };
 
 struct sMap
