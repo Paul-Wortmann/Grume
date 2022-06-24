@@ -34,54 +34,10 @@
 #include "map_define_object.hpp"
 #include "map_define_portal.hpp"
 #include "map_define_room.hpp"
+#include "map_define_sprite_tile.hpp"
+#include "map_define_tile.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
-
-// These are the dimentions, in sprites, used for the floor texture.
-#define FLOOR_SPRITESHEET_WIDTH  4
-#define FLOOR_SPRITESHEET_HEIGHT 4
-    
-enum class eSpriteType : std::uint16_t 
-{ 
-    tileNone                           = 0, // None
-    tileFloor                          = 1, // Floor tile
-    tilePath                           = 2, // Path  tile
-    tilePathLine                       = 3, // Path  tile -> Line
-    tilePathOuter                      = 4, // Path  tile -> Corner, Outer
-    tilePathInner                      = 5, // Path  tile -> Corner, Inner
-};
-
-struct sMapSpriteTile
-{
-    eSpriteType   type                 = eSpriteType::tileFloor; // Default == eSpriteType::tileFloor
-    std::uint32_t processed            = 0; // Default == 0
-    std::uint32_t spriteNumX           = 0; // Default == 0
-    std::uint32_t spriteNumY           = 0; // Default == 0
-    std::uint32_t rotation             = 0; // Default == 0 (0 -> 0 degrees, 1 -> 90 degrees, 2 -> 180 degrees, 3 -> 270 degrees)
-};
-
-enum class eTileBase : std::uint16_t 
-{ 
-    tileNone                           = 0,
-    tileFloor                          = 1,
-    tileWall                           = 2,
-    tileDoorway                        = 3,
-    tileWallShort                      = 4,
-    tileFloorPath                      = 5,
-    tileFloorNoGo                      = 6,
-    tilePathNoGo                       = 7,
-    tileLiquid                         = 8,
-    tileIgnore                         = 9  // Used for prefab loading
-};
-
-struct sMapTile
-{
-    std::uint32_t processed            = 0; // Default == 0
-    eTileBase     base                 = eTileBase::tileNone; // Default == eTileBase::tileNone
-    std::uint32_t object               = 0; // Default == 0
-    std::uint32_t npc                  = 0; // Default == 0, else the UID of an npc
-    std::uint32_t room                 = 0; // Default == 0
-};
 
 struct sMap
 {
