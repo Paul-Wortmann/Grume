@@ -30,6 +30,7 @@
 #include "map_define_event.hpp"
 #include "map_define_generate.hpp"
 #include "map_define_npc.hpp"
+#include "map_define_npc_mob.hpp"
 #include "map_define_object.hpp"
 #include "map_define_portal.hpp"
 #include "map_define_room.hpp"
@@ -80,14 +81,6 @@ struct sMapTile
     std::uint32_t object               = 0; // Default == 0
     std::uint32_t npc                  = 0; // Default == 0, else the UID of an npc
     std::uint32_t room                 = 0; // Default == 0
-};
-
-struct sMapNPCMob
-{
-    std::string    name                = {};
-    float          scaleMax            = 0.0f;
-    float          scaleMin            = 0.0f;
-    std::uint32_t  prevalence          = 0;
 };
 
 struct sMap
