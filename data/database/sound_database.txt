@@ -199,6 +199,13 @@
         <sound>monster_3 monster/monster_3/monster_3_009.ogg<sound>
         <sound>monster_3 monster/monster_3/monster_3_010.ogg<sound>
 
+        <sound>monster_4 monster/monster_4/monster_4_001.ogg<sound>
+        <sound>monster_4 monster/monster_4/monster_4_002.ogg<sound>
+        <sound>monster_4 monster/monster_4/monster_4_003.ogg<sound>
+        <sound>monster_4 monster/monster_4/monster_4_004.ogg<sound>
+        <sound>monster_4 monster/monster_4/monster_4_005.ogg<sound>
+        <sound>monster_4 monster/monster_4/monster_4_006.ogg<sound>
+
         <sound>object object/door_1_001.ogg</sound>
         <sound>object object/door_1_002.ogg</sound>
         <sound>object object/gate_1_001.ogg</sound>
