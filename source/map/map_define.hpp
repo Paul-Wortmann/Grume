@@ -33,6 +33,7 @@
 #include "map_define_npc_mob.hpp"
 #include "map_define_object.hpp"
 #include "map_define_portal.hpp"
+#include "map_define_prefab.hpp"
 #include "map_define_room.hpp"
 #include "map_define_sprite_tile.hpp"
 #include "map_define_tile.hpp"
@@ -113,23 +114,6 @@ struct sMap
     // Map NPCs
     std::uint32_t  npcCount            = 0;
     sMapNPC*       npc                 = nullptr;
-};
-
-struct sMapPrefab
-{
-    // Tile
-    std::uint32_t  width               = 0;
-    std::uint32_t  height              = 0;
-    std::uint32_t  numTiles            = 0;
-    sMapTile*      tile                = nullptr;
-
-    // Map events
-    std::uint32_t  eventCount          = 0;
-    sMapEvent*     event               = nullptr;
-    
-    // Map portals
-    std::uint32_t  portalCount         = 0;
-    sMapPortal*    portal              = nullptr;
 };
 
 #endif //MAP_DEFINE_HPP
