@@ -206,6 +206,25 @@
         <sound>monster_4 monster/monster_4/monster_4_005.ogg<sound>
         <sound>monster_4 monster/monster_4/monster_4_006.ogg<sound>
 
+        <sound>monster_5 monster/monster_5/monster_5_001.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_002.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_003.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_004.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_005.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_006.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_007.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_008.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_009.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_010.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_011.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_012.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_013.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_014.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_015.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_016.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_017.ogg<sound>
+        <sound>monster_5 monster/monster_5/monster_5_018.ogg<sound>
+
         <sound>object object/door_1_001.ogg</sound>
         <sound>object object/door_1_002.ogg</sound>
         <sound>object object/gate_1_001.ogg</sound>
