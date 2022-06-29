@@ -46,6 +46,7 @@ class cXML
         glm::vec3     getVec3(const std::string &_key, const std::uint32_t _instance = 1);
         glm::vec2     getVec2(const std::string &_key, const std::uint32_t _instance = 1);
         glm::ivec3    getIvec3(const std::string &_key, const std::uint32_t _instance = 1);
+        glm::ivec2    getIVec2(const std::string &_key, const std::uint32_t  _instance = 1);
         
     protected:
 

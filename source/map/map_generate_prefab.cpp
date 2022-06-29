@@ -42,6 +42,7 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
         // Get the data from the XML file
         std::uint32_t prefabCount = xmlMapPrefabDatabaseFile.getInstanceCount("<prefab>");
         sPrefabData* tPrefabData = new sPrefabData[prefabCount];
+        
         for (std::uint32_t p = 0; p < prefabCount; ++p)
         {
             std::string tPrefabString         = xmlMapPrefabDatabaseFile.getString("<prefab>", p + 1);

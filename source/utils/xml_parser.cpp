@@ -380,3 +380,46 @@ glm::ivec3  cXML::getIvec3(const std::string &_key, const std::uint32_t _instanc
     }
     return rVec;
 }
+
+glm::ivec2  cXML::getIVec2(const std::string &_key, const std::uint32_t _instance)
+{
+    std::uint32_t instanceCount = 0;
+    glm::ivec2 rVec;
+    for (std::size_t i = 0; i < m_lineCount; ++i)
+    {
+        if (m_line[i].find(_key) != std::string::npos)
+        {
+            instanceCount++;
+            if (instanceCount == _instance)
+            {
+                std::string v[2];
+                std::uint16_t pos = 0;
+                std::size_t start = m_line[i].find(_key) + _key.length();
+                for(std::size_t j = start; j < m_line[i].length(); ++j)
+                {
+                    if (m_line[i][j] == '<')
+                    {
+                        j = m_line[i].length();
+                    }
+                    else
+                    {
+                        if (m_line[i][j] != '>')
+                        {
+                            if (m_line[i][j] == ' ')
+                            {
+                                pos++;
+                            }
+                            else
+                            {
+                                v[pos] += m_line[i][j];
+                            }
+                        }
+                    }
+                }
+                rVec = glm::ivec2(std::stoi(v[0]), std::stoi(v[1]));
+                return rVec;
+            }
+        }
+    }
+    return rVec;
+}
