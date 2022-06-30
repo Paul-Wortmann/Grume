@@ -858,7 +858,7 @@ void cMapManager::load(const std::string &_fileName)
             // Identify rooms (no discard)
             m_mapInitRoomsND(m_currentMap);
             
-            // If room types specifid in file, apply them
+            // If room types specified in file, apply them
             std::uint32_t roomTypeSetCount = xmlMapFile.getInstanceCount("<room_type_set>");
             for (std::uint32_t i = 0; i < roomTypeSetCount; ++i)
             {
