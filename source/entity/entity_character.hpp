@@ -43,6 +43,7 @@ struct sCharacterLevel
 
 struct sEntityCharacter
 {
+    std::uint64_t     gold       = 0;
     sCharacterLevel   level      = {};
     sEntityCharAttrib attributes = {};
     sEntityCharSkill  skills     = {};

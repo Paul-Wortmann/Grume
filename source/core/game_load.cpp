@@ -90,6 +90,10 @@ void cGameEngine::game_load(const std::uint32_t &_slotNum)
         // Player
         sEntity* player = playerManager.getPlayerEntity();
         
+        // Gold
+        player->character->gold = xmlSaveGameFile.getUInteger64("<gold>");
+
+        
         // Experience + level
         player->character->level.current = xmlSaveGameFile.getInteger("<level_current>");
         player->character->level.exp     = xmlSaveGameFile.getUInteger64("<exp_current>");

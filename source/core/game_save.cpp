@@ -65,6 +65,10 @@ void cGameEngine::game_save(const std::uint32_t &_slotNum)
         saveFile << "<player>" << std::endl;
         indent_level++;
         
+        // Gold
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<gold>" << player->character->gold << "</gold>" << std::endl;
+
         // Level and experience
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "<level_current>" << player->character->level.current << "</level_current>" << std::endl;
