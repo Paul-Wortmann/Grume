@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>dead_tree_1_001</name>
-    <diffuse>objects/dead_tree_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>objects/dead_tree_1_001_n.png</normal>
-    <specular>objects/dead_tree_1_001_s.png</specular>
-</material>

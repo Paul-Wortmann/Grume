@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>two_handed_axe_1_001</name>
-    <diffuse>weapons/two_handed_axe_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>weapons/two_handed_axe_1_001_n.png</normal>
-    <specular>weapons/two_handed_axe_1_001_s.png</specular>
-</material>

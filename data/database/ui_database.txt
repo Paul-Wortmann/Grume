@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding= "UTF-8"?>
-<ui_database>
-    <ui_components>
-        <ui_component>0 hud_1_001.txt</map>
-
-    </ui_components>
-</ui_database>

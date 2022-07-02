@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>wood_fire_1_001</name>
-    <diffuse>objects/wood_fire_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>objects/wood_fire_1_001_n.png</normal>
-    <specular>objects/wood_fire_1_001_s.png</specular>
-</material>

@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>gibs_1_001</name>
-    <diffuse>objects/gibs_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>objects/gibs_1_001_n.png</normal>
-    <specular>objects/gibs_1_001_s.png</specular>
-</material>

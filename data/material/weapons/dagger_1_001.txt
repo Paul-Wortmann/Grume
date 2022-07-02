@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>dagger_1_001</name>
-    <diffuse>weapons/dagger_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>weapons/dagger_1_001_n.png</normal>
-    <specular>weapons/dagger_1_001_s.png</specular>
-</material>

@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>rock_6_001</name>
-    <diffuse>objects/rock_6_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>objects/rock_6_001_n.png</normal>
-    <specular>objects/rock_6_001_s.png</specular>
-</material>

@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>skull_1_001</name>
-    <diffuse>objects/skull_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>objects/skull_1_001_n.png</normal>
-    <specular>objects/skull_1_001_s.png</specular>
-</material>

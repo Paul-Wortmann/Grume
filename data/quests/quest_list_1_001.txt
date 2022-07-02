@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-
-<quest_list>
-    # UID, file name
-    <quest>001 quest_main_1_001.txt</quest>
-
-</quest_list>
-
