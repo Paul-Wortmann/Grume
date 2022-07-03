@@ -1,0 +1,98 @@
+
+<biome>
+
+    <base>
+	    <name>dungeon_3</name>
+    </base>
+
+    # Floor
+
+    <floor>biome/dungeon_3/dungeon_3_floor_001.txt</floor>
+    
+    # Chests
+
+    <chest_1td>objects/chest_1_001.txt<chest_1td>
+
+    # Doors
+
+    <door_1td>objects/dungeon_gate_1_001.txt</door_1td>
+    <door_2td>objects/dungeon_gate_1_002.txt</door_2td>
+    <door_3td>objects/dungeon_gate_1_003.txt</door_3td>
+
+    # Path
+
+    <path_corner>biome/dungeon_3/dungeon_3_path_cp_001.txt</path_corner>
+    <path_double_sided>biome/dungeon_3/dungeon_3_path_dp_001.txt</path_double_sided>
+    <path_four_sided>biome/dungeon_3/dungeon_3_path_fp_001.txt</path_four_sided>
+    <path_main>biome/dungeon_3/dungeon_3_path_mp_001.txt</path_main>
+    <path_single_sided>biome/dungeon_3/dungeon_3_path_sp_001.txt</path_single_sided>
+    <path_triple_sided>biome/dungeon_3/dungeon_3_path_tp_001.txt</path_triple_sided>
+    <path_inner_corner_single>biome/dungeon_3/dungeon_3_path_i1p_001.txt</path_inner_corner_single>
+    <path_inner_corner_double>biome/dungeon_3/dungeon_3_path_i2p_001.txt</path_inner_corner_double>
+    <path_inner_corner_opposite>biome/dungeon_3/dungeon_3_path_iop_001.txt</path_inner_corner_opposite>
+    <path_inner_corner_triple>biome/dungeon_3/dungeon_3_path_i3p_001.txt</path_inner_corner_triple>
+    <path_inner_corner_quad>biome/dungeon_3/dungeon_3_path_i4p_001.txt</path_inner_corner_quad>
+
+    # Portals
+
+    <portal_stairs_down_single>biome/dungeon_3/dungeon_3_sds_001.txt</portal_stairs_down_single>
+    <portal_stairs_up_single>biome/dungeon_3/dungeon_3_sus_001.txt</portal_stairs_up_single>
+    
+    <portal_cave_single>biome/dungeon_3/dungeon_3_scs_001.txt</portal_cave_single>
+    <portal_cave_left>biome/dungeon_3/dungeon_3_scl_001.txt</portal_cave_left>
+    <portal_cave_right>biome/dungeon_3/dungeon_3_scr_001.txt</portal_cave_right>
+    <portal_cave_center>biome/dungeon_3/dungeon_3_scc_001.txt</portal_cave_center>
+    
+    <portal_opening_single>biome/dungeon_3/dungeon_3_sos_001.txt</portal_opening_single>
+    <portal_opening_left>biome/dungeon_3/dungeon_3_sol_001.txt</portal_opening_left>
+    <portal_opening_right>biome/dungeon_3/dungeon_3_sor_001.txt</portal_opening_right>
+    <portal_opening_center>biome/dungeon_3/dungeon_3_soc_001.txt</portal_opening_center>
+
+    # High single sided walls
+
+    <high_wall_single_sided_corner>biome/dungeon_3/dungeon_3_hw_sc_001.txt</high_wall_single_sided_corner>
+    <high_wall_single_sided_wall>biome/dungeon_3/dungeon_3_hw_sw_001.txt</high_wall_single_sided_wall>
+    <high_wall_single_sided_roof>biome/dungeon_3/dungeon_3_hw_sr_001.txt</high_wall_single_sided_roof>
+
+    # High walls
+
+    <high_wall_double_sided_corner>biome/dungeon_3/dungeon_3_hw_dc_001.txt</high_wall_double_sided_corner>
+    <high_wall_double_sided_end>biome/dungeon_3/dungeon_3_hw_de_001.txt</high_wall_double_sided_end>
+    <high_wall_double_sided_pillar>biome/dungeon_3/dungeon_3_hw_dp_001.txt</high_wall_double_sided_pillar>
+    <high_wall_double_sided_t-junction>biome/dungeon_3/dungeon_3_hw_dt_001.txt</high_wall_double_sided_t-junction>
+    <high_wall_double_sided_wall>biome/dungeon_3/dungeon_3_hw_dw_001.txt</high_wall_double_sided_wall>
+    <high_wall_double_sided_x-junction>biome/dungeon_3/dungeon_3_hw_dx_001.txt</high_wall_double_sided_x-junction>
+
+    # Hole walls
+
+    <hole_wall_double_sided_corner>biome/dungeon_3/dungeon_3_pw_dc_001.txt</hole_wall_double_sided_corner>
+    <hole_wall_double_sided_end>biome/dungeon_3/dungeon_3_pw_de_001.txt</hole_wall_double_sided_end>
+    <hole_wall_double_sided_pillar>biome/dungeon_3/dungeon_3_pw_dp_001.txt</hole_wall_double_sided_pillar>
+    <hole_wall_double_sided_t-junction>biome/dungeon_3/dungeon_3_pw_dt_001.txt</hole_wall_double_sided_t-junction>
+    <hole_wall_double_sided_wall>biome/dungeon_3/dungeon_3_pw_dw_001.txt</hole_wall_double_sided_wall>
+    <hole_wall_double_sided_x-junction>biome/dungeon_3/dungeon_3_pw_dx_001.txt</hole_wall_double_sided_x-junction>
+
+    # Low walls
+
+    <low_wall_double_sided_corner>biome/dungeon_3/dungeon_3_lw_dc_001.txt</low_wall_double_sided_corner>
+    <low_wall_double_sided_end>biome/dungeon_3/dungeon_3_lw_de_001.txt</low_wall_double_sided_end>
+    <low_wall_double_sided_pillar>biome/dungeon_3/dungeon_3_lw_dp_001.txt</low_wall_double_sided_pillar>
+    <low_wall_double_sided_t-junction>biome/dungeon_3/dungeon_3_lw_dt_001.txt</low_wall_double_sided_t-junction>
+    <low_wall_double_sided_wall>biome/dungeon_3/dungeon_3_lw_dw_001.txt</low_wall_double_sided_wall>
+    <low_wall_double_sided_x-junction>biome/dungeon_3/dungeon_3_lw_dx_001.txt</low_wall_double_sided_x-junction>
+
+    # Doorway walls
+
+    <doorway_wall_double_sided_corner>biome/dungeon_3/dungeon_3_dw_dc_001.txt</doorway_wall_double_sided_corner>
+    <doorway_wall_double_sided_end>biome/dungeon_3/dungeon_3_dw_de_001.txt</doorway_wall_double_sided_end>
+    <doorway_wall_double_sided_t-junction>biome/dungeon_3/dungeon_3_dw_dt_001.txt</doorway_wall_double_sided_t-junction>
+    <doorway_wall_double_sided_wall>biome/dungeon_3/dungeon_3_dw_dw_001.txt</doorway_wall_double_sided_wall>
+    <doorway_wall_double_sided_x-junction>biome/dungeon_3/dungeon_3_dw_dx_001.txt</doorway_wall_double_sided_x-junction>
+
+    # Wall torches
+
+    <torch_1td>biome/dungeon_3/dungeon_3_torch_1td_001.txt<torch_1td>
+
+
+</biome>
+
