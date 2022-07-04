@@ -1,0 +1,45 @@
+
+# /*
+#
+# A database of all NPCs used by the game, this is used as a lookup table internally
+#
+# */
+
+<npc_database>
+
+    #    catagory file_name
+    <npc>bug_1            npc/bug_1/bug_1_001.txt</npc>
+
+	<npc>bat_1            npc/bat_1/bat_1_001.txt</npc>
+	<npc>bat_leader_1     npc/bat_leader_1/bat_leader_1_001.txt</npc>
+
+	<npc>dragon           npc/dragon_1_001.txt</npc>
+    <npc>dragon_ice       npc/dragon_1_002.txt</npc>
+
+    <npc>forest_monster_1 npc/forest_monster_1/forest_monster_1_001.txt</npc>
+    
+    <npc>golem_1          npc/golem_1/golem_1_001.txt</npc> # Rock
+    <npc>golem_2          npc/golem_2/golem_2_001.txt</npc> # Lava
+    <npc>golem_3          npc/golem_3/golem_3_001.txt</npc> # Ice
+    <npc>golem_4          npc/golem_4/golem_4_001.txt</npc> # Blood
+
+    <npc>monk             npc/monk_1_001.txt</npc>
+    
+    <npc>mudeater         npc/mudeater_1_001.txt</npc>
+    
+    <npc>skeleton_1       npc/skeleton_1/skeleton_1_001.txt</npc>
+
+    <npc>spider_1         npc/spider_1/spider_1_001.txt</npc>
+    <npc>spider_leader_1  npc/spider_leader_1/spider_leader_1_001.txt</npc>
+    
+    <npc>werewolf         npc/werewolf_1_001.txt</npc>
+    
+
+    # NPC
+    <npc>blacksmith       npc/blacksmith_1_001.txt</npc>
+    <npc>dead_body        npc/dead_body_1_001.txt</npc>
+    <npc>mudeater_1       npc/mudeater_1/mudeater_1_001.txt</npc>
+    <npc>trader           npc/trader_1_001.txt</npc>
+
+</npc_database>
+

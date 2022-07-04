@@ -1,0 +1,23 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+
+# This is the game configuration file.
+# Delete it to have the game recreate it with safe defaults.
+
+<config>
+
+    <graphics>
+        <resolution_w>800</resolution_w>
+        <resolution_h>600</resolution_h>
+        <fullscreen>1</fullscreen>
+        <basic_renderer>0</basic_renderer>
+        <wireframe_render>0</wireframe_render>
+    </graphics>
+
+    <audio>
+        <volume_master>78</volume_master>
+        <volume_music>82</volume_music>
+        <volume_sfx>36</volume_sfx>
+    </audio>
+
+</config>
+

@@ -1,0 +1,27 @@
+
+# /*
+#
+# A database of all biomes used by the game, this is used as a lookup table internally
+#
+# */
+
+<biome_database>
+
+   #       catagory file_name
+   
+	<biome>cave_1      cave_1_biome.txt</biome>
+	<biome>cave_2      cave_2_biome.txt</biome>
+	<biome>cave_3      cave_3_biome.txt</biome>
+	<biome>cave_4      cave_4_biome.txt</biome>
+	<biome>cemetery_1  cemetery_1_biome.txt</biome>
+	<biome>crypt_1     crypt_1_biome.txt</biome>
+	<biome>dungeon_1   dungeon_1_biome.txt</biome>
+	<biome>dungeon_2   dungeon_2_biome.txt</biome>
+	<biome>dungeon_3   dungeon_3_biome.txt</biome>
+	<biome>dungeon_4   dungeon_4_biome.txt</biome>
+	<biome>ruins_1     ruins_1_biome.txt</biome>
+	<biome>ruins_2     ruins_2_biome.txt</biome>
+	<biome>town_1      town_1_biome.txt</biome>
+
+</biome_database>
+

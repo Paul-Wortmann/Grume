@@ -1,0 +1,625 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<ui>
+    <information>
+        # size in pixels
+        # position in OpenGL coordinate space
+    </information>
+
+# Action bar
+    <menu>
+        <menu_name>action_bar</menu_name>
+        <menu_enabled>1</menu_enabled>
+        <menu_texture_normal>ui/action_bar/action_bar_003_back_001.png</menu_texture_normal>
+        <menu_position>0.0f, -0.9f, -0.01f</menu_position>
+        <menu_size>1.0f 0.1f</menu_size>
+        <menu_component_count>4<menu_component_count>
+
+        <component>
+            <component_name>health_bar</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_activated>
+            <component_position>-0.797f, 0.02f, -0.02f</component_position>
+            <component_size>0.179166667f 0.075925926f</component_size>
+            <component_function>HEALTH_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>mana_bar</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_activated>
+            <component_position>0.797f, 0.02f, -0.02f</component_position>
+            <component_size>0.179166667f 0.075925926f</component_size>
+            <component_function>MANA_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>exp_bar</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_activated>
+            <component_position>0.0f, -0.075f, -0.02f</component_position>
+            <component_size>0.991666667f 0.014814815f</component_size>
+            <component_function>EXP_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>action_bar_cover</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/action_bar/action_bar_003_front_003.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_front_003.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_front_003.png</component_texture_activated>
+            <component_position>0.0f, 0.0f, -0.03f</component_position>
+            <component_size>1.0f 0.1f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+    </menu>
+
+# Main menu
+    <menu>
+        <menu_name>main_menu</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>12<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_main_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_main_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_main_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_new</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_001_a.png</component_texture_activated>
+            <component_position>0.0f, 0.35f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_NEW</component_function>
+        </component>
+
+        <component>
+            <component_name>button_2_load</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_001_a.png</component_texture_activated>
+            <component_position>0.0f, 0.175f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_LOAD</component_function>
+        </component>
+
+        <component>
+            <component_name>button_3_save</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_001_a.png</component_texture_activated>
+            <component_position>0.0f, 0.0f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_SAVE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_4_options_menu</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_001_a.png</component_texture_activated>
+            <component_position>0.0f, -0.175f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>MENU_OPTIONS</component_function>
+        </component>
+
+        <component>
+            <component_name>button_5_game_quit</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_001_a.png</component_texture_activated>
+            <component_position>0.0f, -0.475f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_QUIT</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_new_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_new_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_new_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_new_001.png</component_texture_activated>
+            <component_position>0.0f, 0.35f, -0.03f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_NEW</component_function>
+        </component>
+
+        <component>
+            <component_name>button_2_load_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_load_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_load_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_load_001.png</component_texture_activated>
+            <component_position>0.0f, 0.175f, -0.03f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_LOAD</component_function>
+        </component>
+
+        <component>
+            <component_name>button_3_save_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_save_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_save_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_save_001.png</component_texture_activated>
+            <component_position>0.0f, 0.0f, -0.03f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_SAVE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_4_options_menu_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_options_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_options_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_options_001.png</component_texture_activated>
+            <component_position>0.0f, -0.175f, -0.03f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>MENU_OPTIONS</component_function>
+        </component>
+
+        <component>
+            <component_name>button_5_game_quit_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_quit_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_quit_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_quit_001.png</component_texture_activated>
+            <component_position>0.0f, -0.475f, -0.03f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>GAME_QUIT</component_function>
+        </component>
+
+    </menu>
+    
+# Options
+    <menu>
+        <menu_name>options</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>17<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_options_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_options_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_options_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+        
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+        # Music volume
+        
+        <component>
+            <component_name>text_music_volume</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_music_volume_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_music_volume_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_music_volume_001.png</component_texture_activated>
+            <component_position>-0.145f, 0.475f, -0.02f</component_position>
+            <component_size>0.073697917f 0.02962963f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>music_volume_down</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/arrow_left_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_left_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_left_button_activated_001.png</component_texture_activated>
+            <component_position>-0.2f, 0.4f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>MUSIC_VOLUME_DOWN</component_function>
+        </component>
+
+        <component>
+            <component_name>music_volume_up</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/arrow_right_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_right_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_right_button_activated_001.png</component_texture_activated>
+            <component_position>0.2f, 0.4f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>MUSIC_VOLUME_UP</component_function>
+        </component>
+
+        <component>
+            <component_name>music_volume_bar</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_001.png</component_texture_activated>
+            <component_position>0.0f, 0.4f, -0.02f</component_position>
+            <component_size>0.159895833f 0.039814815f</component_size>
+            <component_function>MUSIC_VOLUME_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>music_volume_bar_cover</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/bar_cover_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_cover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_cover_001.png</component_texture_activated>
+            <component_position>0.0f, 0.4f, -0.03f</component_position>
+            <component_size>0.1625f 0.043518519f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        # Sound volume
+        
+        <component>
+            <component_name>text_sound_volume</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_sound_volume_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_sound_volume_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_sound_volume_001.png</component_texture_activated>
+            <component_position>-0.145f, 0.325f, -0.02f</component_position>
+            <component_size>0.07578125f 0.02962963f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>sound_volume_down</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/arrow_left_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_left_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_left_button_activated_001.png</component_texture_activated>
+            <component_position>-0.2f, 0.25f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>SOUND_VOLUME_DOWN</component_function>
+        </component>
+
+        <component>
+            <component_name>sound_volume_up</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/arrow_right_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_right_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_right_button_activated_001.png</component_texture_activated>
+            <component_position>0.2f, 0.25f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>SOUND_VOLUME_UP</component_function>
+        </component>
+
+        <component>
+            <component_name>sound_volume_bar</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_001.png</component_texture_activated>
+            <component_position>0.0f, 0.25f, -0.02f</component_position>
+            <component_size>0.159895833f 0.039814815f</component_size>
+            <component_function>SOUND_VOLUME_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>sound_volume_bar_cover</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/bar_cover_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_cover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_cover_001.png</component_texture_activated>
+            <component_position>0.0f, 0.25f, -0.03f</component_position>
+            <component_size>0.1625f 0.043518519f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        # Master volume
+        
+        <component>
+            <component_name>text_master_volume</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_master_volume_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_master_volume_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_master_volume_001.png</component_texture_activated>
+            <component_position>-0.145f, 0.175f, -0.02f</component_position>
+            <component_size>0.07578125f 0.02962963f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_down</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/arrow_left_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_left_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_left_button_activated_001.png</component_texture_activated>
+            <component_position>-0.2f, 0.1f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>MASTER_VOLUME_DOWN</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_up</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/arrow_right_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_right_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_right_button_activated_001.png</component_texture_activated>
+            <component_position>0.2f, 0.1f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>MASTER_VOLUME_UP</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_bar</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_001.png</component_texture_activated>
+            <component_position>0.0f, 0.1f, -0.02f</component_position>
+            <component_size>0.159895833f 0.039814815f</component_size>
+            <component_function>MASTER_VOLUME_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_bar_cover</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/bar_cover_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_cover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_cover_001.png</component_texture_activated>
+            <component_position>0.0f, 0.1f, -0.03f</component_position>
+            <component_size>0.1625f 0.043518519f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+
+# Fullscreen checkbox
+# Resolution scrollbox
+
+
+    </menu>
+    
+# Inventory
+    <menu>
+        <menu_name>inventory</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/inventory_menu_002.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>2<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_inventory_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_inventory_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_inventory_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+        
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+    </menu>
+
+# Character
+    <menu>
+        <menu_name>character</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/character_menu_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>2<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_character_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_character_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_character_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+    </menu>
+
+# Skills
+    <menu>
+        <menu_name>skills</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>2<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_skills_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_skills_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_skills_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+    </menu>
+
+# Way-points
+    <menu>
+        <menu_name>waypoints</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>9<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_waypoint_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_waypoint_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_waypoint_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+        <component>
+            <component_name>pentagram_background</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/waypoint_menu_pentagram_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/waypoint_menu_pentagram_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/waypoint_menu_pentagram_001.png</component_texture_activated>
+            <component_position>0.0f, 0.12f, -0.02f</component_position>
+            <component_size>0.228125f 0.388888889f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_town_1</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
+            <component_position>-0.11f, -0.32f, -0.02f</component_position>
+            <component_size>0.104166667f 0.059259259f</component_size>
+            <component_function>LOAD_MAP_TOWN_1</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_town_2</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
+            <component_position>0.11f, -0.32f, -0.02f</component_position>
+            <component_size>0.104166667f 0.059259259f</component_size>
+            <component_function>LOAD_MAP_TOWN_2</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_town_3</component_name>
+            <component_enabled01</component_enabled>
+            <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
+            <component_position>-0.11f, -0.44f, -0.02f</component_position>
+            <component_size>0.104166667f 0.059259259f</component_size>
+            <component_function>LOAD_MAP_TOWN_3</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_town_4</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
+            <component_position>0.11f, -0.44f, -0.02f</component_position>
+            <component_size>0.104166667f 0.059259259f</component_size>
+            <component_function>LOAD_MAP_TOWN_4</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_town_5</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
+            <component_position>-0.11f, -0.56f, -0.02f</component_position>
+            <component_size>0.104166667f 0.059259259f</component_size>
+            <component_function>LOAD_MAP_TOWN_5</component_function>
+        </component>
+
+        <component>
+            <component_name>button_1_town_6</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
+            <component_position>0.11f, -0.56f, -0.02f</component_position>
+            <component_size>0.104166667f 0.059259259f</component_size>
+            <component_function>LOAD_MAP_TOWN_6</component_function>
+        </component>
+
+    </menu>
+
+</ui>
+
+

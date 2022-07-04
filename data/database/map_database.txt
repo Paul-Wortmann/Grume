@@ -1,0 +1,79 @@
+
+# /*
+#
+# A database of all map used by the game, this is used as a lookup table internally
+#
+# */
+
+<map_database>
+
+    # name, file_name
+
+    # ------------------------------------- Area 1 -------------------------------------
+	<map>cave_1_001     area_1/cave_1_001.txt</map>
+	<map>cave_1_002     area_1/cave_1_002.txt</map>
+	<map>cave_1_003     area_1/cave_1_003.txt</map>
+	<map>cave_1_004     area_1/cave_1_004.txt</map>
+	<map>cave_1_005     area_1/cave_1_005.txt</map>
+	<map>cave_1_006     area_1/cave_1_006.txt</map>
+
+	<map>cave_2_001     area_1/cave_2_001.txt</map>
+	<map>cave_2_002     area_1/cave_2_002.txt</map>
+	<map>cave_2_003     area_1/cave_2_003.txt</map>
+	<map>cave_2_004     area_1/cave_2_004.txt</map>
+	<map>cave_2_005     area_1/cave_2_005.txt</map>
+	<map>cave_2_006     area_1/cave_2_006.txt</map>
+	<map>cave_2_007     area_1/cave_2_007.txt</map>
+	<map>cave_2_008     area_1/cave_2_008.txt</map>
+	<map>cave_2_009     area_1/cave_2_009.txt</map>
+
+	<map>cave_2_010     area_1/cave_2_010.txt</map>
+	<map>cave_2_011     area_1/cave_2_011.txt</map>
+	<map>cave_2_012     area_1/cave_2_012.txt</map>
+	<map>cave_2_013     area_1/cave_2_013.txt</map>
+
+	<map>cave_4_001     area_1/cave_4_001.txt</map>
+	<map>cave_4_002     area_1/cave_4_002.txt</map>
+
+	<map>cemetery_1_001 area_1/cemetery_1_001.txt</map>
+	<map>cemetery_1_002 area_1/cemetery_1_002.txt</map>
+	<map>cemetery_1_003 area_1/cemetery_1_003.txt</map>
+	<map>cemetery_1_004 area_1/cemetery_1_004.txt</map>
+	<map>cemetery_1_005 area_1/cemetery_1_005.txt</map>
+	<map>cemetery_1_006 area_1/cemetery_1_006.txt</map>
+
+	<map>crypt_1_001    area_1/crypt_1_001.txt</map>
+
+	<map>crypt_2_001    area_1/crypt_2_001.txt</map>
+
+	<map>crypt_3_001    area_1/crypt_3_001.txt</map>
+
+	<map>dungeon_1_001  area_1/dungeon_1_001.txt</map>
+	<map>dungeon_1_002  area_1/dungeon_1_002.txt</map>
+
+	<map>dungeon_2_001  area_1/dungeon_2_001.txt</map>
+	<map>dungeon_2_002  area_1/dungeon_2_002.txt</map>
+	<map>dungeon_2_003  area_1/dungeon_2_003.txt</map>
+
+	<map>dungeon_3_001  area_1/dungeon_3_001.txt</map>
+
+	<map>ruins_1_001    area_1/ruins_1_001.txt</map>
+	<map>ruins_1_002    area_1/ruins_1_002.txt</map>
+	<map>ruins_1_003    area_1/ruins_1_003.txt</map>
+	<map>ruins_1_004    area_1/ruins_1_004.txt</map>
+	<map>ruins_1_005    area_1/ruins_1_005.txt</map>
+
+	<map>ruins_2_001    area_1/ruins_2_001.txt</map>
+	<map>ruins_2_002    area_1/ruins_2_002.txt</map>
+	<map>ruins_2_003    area_1/ruins_2_003.txt</map>
+	<map>ruins_2_004    area_1/ruins_2_004.txt</map>
+	<map>ruins_2_005    area_1/ruins_2_005.txt</map>
+
+	<map>town_1_001     area_1/town_1_001.txt</map>
+
+    # ------------------------------------- Area 2 -------------------------------------
+	<map>town_2_001     area_2/town_2_001.txt</map>
+
+</map_database>
+
+

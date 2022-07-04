@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<game>
+
+	<loading_screen>ui/loading_screen_001.png</loading_screen>
+    <mouse_cursor>ui/cursor_001.png</mouse_cursor>
+    <window_icon>ui/icon_001.png</window_icon>
+
+	<database>database_001.txt</database>
+	<loot_table>loot_table_001.txt</loot_table>
+	<player>player/player_001.txt</player>
+	<ui>ui_001.txt<ui>
+	<quests>quests_001.txt</quests>
+	<game_conditions>game_conditions_001.txt<game_conditions>
+	<map>area_2/town_2_001.txt</map>
+	<map>area_1/cave_2_012.txt</map>
+	<map>area_1/town_1_001.txt</map>
+	<map>area_1/ruins_2_001.txt</map>
+	<map>area_1/cave_1_001.txt</map>
+	<map>area_1/cemetery_1_001.txt</map>
+	<map>area_1/dungeon_1_002.txt</map>
+	<map_town>town_2_001</map_town>
+
+</game>
+

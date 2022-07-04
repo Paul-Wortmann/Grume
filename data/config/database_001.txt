@@ -1,0 +1,20 @@
+
+
+# This may appear redundant, but it is useful for testing, or different levels of detail, etc.
+
+<database>
+
+	<biome_database>biome_database.txt</biome_database>
+	<item_database>item_database.txt</item_database>
+	<material_database>material_database.txt</material_database>
+	<map_database>map_database.txt</map_database>
+	<map_prefab_database>map_prefab_database.txt</map_prefab_database>
+	<music_database>music_database.txt</music_database>
+	<model_database>model_database.txt</model_database>
+	<npc_database>npc_database.txt</npc_database>
+	<object_database>object_database.txt</object_database>
+	<particle_database>particle_database.txt</particle_database>
+	<sound_database>sound_database.txt</sound_database>
+
+</database>
+

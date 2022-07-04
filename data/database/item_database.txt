@@ -1,0 +1,39 @@
+
+# /*
+#
+# A database of all items used by the game, this is used as a lookup table internally
+#
+# */
+
+<item_database>
+
+    #       catagory file_name
+
+    # Coins
+	<item>coins                 items/coins_1_001.txt</item>
+	<item>coins                 items/coins_1_002.txt</item>
+	<item>coins                 items/coins_1_003.txt</item>
+	<item>coins                 items/coins_1_004.txt</item>
+	<item>coins                 items/coins_1_005.txt</item>
+	<item>coins                 items/coins_1_006.txt</item>
+	<item>coins                 items/coins_1_007.txt</item>
+	<item>coins                 items/coins_1_008.txt</item>
+	<item>coins                 items/coins_1_009.txt</item>
+
+    # Coinpile
+	<item>coinpile              items/coins_2_001.txt</item>
+
+    # Runes
+	<item>rune                  items/rune_1_001.txt</item>
+	<item>rune                  items/rune_2_001.txt</item>
+	<item>rune                  items/rune_3_001.txt</item>
+	<item>rune                  items/rune_4_001.txt</item>
+	<item>rune                  items/rune_5_001.txt</item>
+	<item>rune                  items/rune_6_001.txt</item>
+
+	<item>shield                items/shield_1_001.txt</item>
+	<item>two_handed_axe        items/two_handed_axe_1_001.txt</item>
+	<item>two_handed_sword      items/two_handed_sword_1_001.txt</item>
+
+</item_database>
+

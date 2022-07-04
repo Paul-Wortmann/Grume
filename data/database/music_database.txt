@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+# /*
+#
+# A database of all music used by the game, this is used as a lookup table internally
+#
+# */
+
+<music_database>
+
+	<music>town_1             forest_001.ogg</music>
+	<music>cave_1             cave_001.ogg</music>
+	<music>cemetery_1         ambientmain_0.ogg</music>
+	<music>crypt_1            atmoseerie_01.ogg</music>
+	<music>cave_2             dark_cavern_ambient_002.ogg</music>
+	<music>ruins_1            bleeding_out2.ogg</music>
+	<music>dungeon_1          dungeon_001.ogg</music>
+	<music>dungeon_2          dungeon_ambient_1.ogg</music>
+	<music>dungeon_3          atmoseerie_02.ogg</music>
+	<music>ruins_2            atmoseerie_03.ogg</music>
+	<music>cave_4             forgoten_tombs.ogg</music>
+
+	<music>atmoseerie_4       atmoseerie_04.ogg</music>
+	<music>dark_forest_1      dark_forest_theme.ogg</music>
+	<music>dark_rainy_night_1 dark_rainy_night.ogg</music>
+	<music>menu_1             menu_001.ogg</music>
+	<music>persistence_1      persistence.ogg</music>
+	<music>rat_sewer_1        rat_sewer.ogg</music>
+	<music>town_in_ruins_1    town_in_ruins.ogg</music>
+	<music>unrest_theme_1     unrest_theme.ogg</music>
+	<music>upside_down_1      upside_down_grin2.ogg</music>
+
+</music_database>
+

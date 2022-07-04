@@ -1,0 +1,65 @@
+
+# /*
+#
+# A database of all map prefabs used by the game, this is used as a lookup table internally
+#
+# */
+#    roomTypeNone         =  0, // None / empty
+#    roomTypeCell         =  1, // Prison Cell
+#    roomTypeSecret       =  2, // Secret room
+#    roomTypeStairwell    =  3, // Stairwell
+#    roomTypeStore        =  4, // Store
+#    roomTypeBlacksmith   =  5, // Blacksmith
+#    roomTypeCanteen      =  6, // Canteen
+#    roomTypeStorage      =  7, // Storage room
+#    roomTypeLibrary      =  8, // Library
+#    roomTypeAlchemyLab   =  9, // Alchemy Lab
+#    roomTypeLaboratory   = 10, // Laboratory
+#    roomTypeTorture      = 11  // Torture Chamber
+
+<map_prefab_database>
+
+    #           catagory file_name
+
+    # 1 - Prison Cell
+    <map_prefab>1 cell_1_001.txt</map_prefab>
+    <map_prefab>1 cell_1_002.txt</map_prefab>
+    <map_prefab>1 cell_1_003.txt</map_prefab>
+    <map_prefab>1 cell_1_004.txt</map_prefab>
+    <map_prefab>1 cell_1_005.txt</map_prefab>
+    <map_prefab>1 cell_1_006.txt</map_prefab>
+    <map_prefab>1 cell_1_007.txt</map_prefab>
+    <map_prefab>1 cell_1_008.txt</map_prefab> # altar
+    <map_prefab>1 cell_1_009.txt</map_prefab> # coffin
+    
+    # 2 - Secret room
+    
+    # 3 - Stairwell
+    
+    # 4 - Store
+    
+    # 5 - Blacksmith
+
+    # 6 - Canteen
+    <map_prefab>6 canteen_1_001.txt</map_prefab>
+    <map_prefab>6 canteen_1_002.txt</map_prefab>
+
+    # 7 - Food store
+    <map_prefab>7 storeroom_1_001.txt</map_prefab>
+
+    # 8 - Library
+    <map_prefab>8 library_1_001.txt</map_prefab>
+    <map_prefab>8 library_1_002.txt</map_prefab>
+    
+    # 9 - Alchemy Lab
+    <map_prefab>9 alchemylab_1_001.txt</map_prefab>
+    
+    # 10 - Labratory
+    
+    # 11 - Torture Chamber
+    <map_prefab>11 torturechamber_1_001.txt</map_prefab>
+    <map_prefab>11 torturechamber_1_002.txt</map_prefab>
+    <map_prefab>11 torturechamber_1_003.txt</map_prefab>
+
+</map_prefab_database>
+

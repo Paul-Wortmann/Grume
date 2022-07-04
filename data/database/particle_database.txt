@@ -1,0 +1,20 @@
+
+# /*
+#
+# A database of all particles used by the game, this is used as a lookup table internally
+#
+# */
+
+<particle_database>
+
+    #       catagory file_name
+
+	<particle>blood          particles/blood_001.txt</particle>
+	<particle>dust           particles/dust_001.txt</particle>
+	<particle>fire           particles/fire_001.txt</particle>
+	<particle>ice            particles/ice_001.txt</particle>
+	<particle>slime          particles/slime_001.txt</particle>
+	<particle>smoke          particles/smoke_001.txt</particle>
+
+</particle_database>
+

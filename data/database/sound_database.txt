@@ -1,0 +1,453 @@
+
+# /*
+#
+# A database of all sounds used by the game, this is used as a lookup table internally
+#
+# */
+
+<sound_database>
+
+    #      catagory file_name
+    <sound>ability ability/ability_learn_1_001.ogg</sound>
+    <sound>ability ability/ability_level_up_1_001.ogg</sound>
+    <sound>ability ability/ability_transition_1_001.ogg</sound>
+
+	<sound>bat    monster/bat/bat_1_001.ogg</sound>
+	<sound>bat    monster/bat/bat_1_002.ogg</sound>
+	<sound>bat    monster/bat/bat_1_003.ogg</sound>
+
+    <sound>battle battle/magic_1_001.ogg</sound>
+    <sound>battle battle/spell_1_001.ogg</sound>
+    <sound>battle battle/swing_1_001.ogg</sound>
+    <sound>battle battle/swing_2_001.ogg</sound>
+    <sound>battle battle/swing_3_001.ogg</sound>
+    <sound>battle battle/sword_unsheathe_1_001.ogg</sound>
+    <sound>battle battle/sword_unsheathe_2_001.ogg</sound>
+    <sound>battle battle/sword_unsheathe_3_001.ogg</sound>
+    <sound>battle battle/sword_unsheathe_4_001.ogg</sound>
+    <sound>battle battle/sword_unsheathe_5_001.ogg</sound>
+
+    <sound>beetle monster/beetle/beetle_1_001.ogg<sound>
+    <sound>beetle monster/beetle/beetle_1_002.ogg<sound>
+    <sound>beetle monster/beetle/beetle_1_003.ogg<sound>
+
+	<sound>break  environment/break/impact_crunch_001.ogg</sound>
+	<sound>break  environment/break/impact_crunch_002.ogg</sound>
+	<sound>break  environment/break/impact_crunch_003.ogg</sound>
+	<sound>break  environment/break/impact_crunch_004.ogg</sound>
+	<sound>break  environment/break/impact_crunch_005.ogg</sound>
+
+	<sound>break  environment/misc/bfh1_breaking_01.ogg</sound>
+	<sound>break  environment/misc/bfh1_breaking_02.ogg</sound>
+	<sound>break  environment/misc/bfh1_breaking_03.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_01.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_02.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_03.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_04.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_05.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_06.ogg</sound>
+	<sound>break  environment/misc/bfh1_falling_07.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_01.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_02.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_03.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_04.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_05.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_06.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_07.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_08.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_09.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_10.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_11.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_12.ogg</sound>
+	<sound>break  environment/misc/bfh1_hit_13.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_01.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_02.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_03.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_04.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_05.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_06.ogg</sound>
+	<sound>break  environment/misc/bfh1_misc_07.ogg</sound>
+
+    <sound>creature monster/creature/alien_01.ogg<sound>
+    <sound>creature monster/creature/alien_02.ogg<sound>
+    <sound>creature monster/creature/alien_03.ogg<sound>
+    <sound>creature monster/creature/alien_04.ogg<sound>
+    <sound>creature monster/creature/alien_05.ogg<sound>
+    <sound>creature monster/creature/alien_06.ogg<sound>
+    <sound>creature monster/creature/breath_01.ogg<sound>
+    <sound>creature monster/creature/bug_01.ogg<sound>
+    <sound>creature monster/creature/bug_02.ogg<sound>
+    <sound>creature monster/creature/bug_03.ogg<sound>
+    <sound>creature monster/creature/bug_04.ogg<sound>
+    <sound>creature monster/creature/burble_01.ogg<sound>
+    <sound>creature monster/creature/burble_02.ogg<sound>
+    <sound>creature monster/creature/burp_01.ogg<sound>
+    <sound>creature monster/creature/burp_02.ogg<sound>
+    <sound>creature monster/creature/eat_01.ogg<sound>
+    <sound>creature monster/creature/eat_02.ogg<sound>
+    <sound>creature monster/creature/eat_03.ogg<sound>
+    <sound>creature monster/creature/eat_04.ogg<sound>
+    <sound>creature monster/creature/grunt_01.ogg<sound>
+    <sound>creature monster/creature/grunt_02.ogg<sound>
+    <sound>creature monster/creature/grunt_03.ogg<sound>
+    <sound>creature monster/creature/grunt_04.ogg<sound>
+    <sound>creature monster/creature/grunt_05.ogg<sound>
+    <sound>creature monster/creature/howl_01.ogg<sound>
+    <sound>creature monster/creature/hurt_01.ogg<sound>
+    <sound>creature monster/creature/hurt_04.ogg<sound>
+    <sound>creature monster/creature/hurt_05.ogg<sound>
+    <sound>creature monster/creature/misc_01.ogg<sound>
+    <sound>creature monster/creature/misc_02.ogg<sound>
+    <sound>creature monster/creature/misc_03.ogg<sound>
+    <sound>creature monster/creature/misc_04.ogg<sound>
+    <sound>creature monster/creature/misc_05.ogg<sound>
+    <sound>creature monster/creature/misc_06.ogg<sound>
+    <sound>creature monster/creature/misc_07.ogg<sound>
+    <sound>creature monster/creature/misc_08.ogg<sound>
+    <sound>creature monster/creature/misc_09.ogg<sound>
+    <sound>creature monster/creature/monster_01.ogg<sound>
+    <sound>creature monster/creature/monster_02.ogg<sound>
+    <sound>creature monster/creature/monster_03.ogg<sound>
+    <sound>creature monster/creature/monster_04.ogg<sound>
+    <sound>creature monster/creature/monster_05.ogg<sound>
+    <sound>creature monster/creature/monster_06.ogg<sound>
+    <sound>creature monster/creature/monster_07.ogg<sound>
+    <sound>creature monster/creature/roar_01.ogg<sound>
+    <sound>creature monster/creature/roar_02.ogg<sound>
+    <sound>creature monster/creature/roar_03.ogg<sound>
+    <sound>creature monster/creature/scream_01.ogg<sound>
+    <sound>creature monster/creature/scream_02.ogg<sound>
+    <sound>creature monster/creature/spit_01.ogg<sound>
+    <sound>creature monster/creature/spit_02.ogg<sound>
+
+    <sound>ghost monster/ghost/ghost_1_001.ogg<sound>
+    <sound>ghost monster/ghost/ghost_1_002.ogg<sound>
+    <sound>ghost monster/ghost/ghost_2_001.ogg<sound>
+    <sound>ghost monster/ghost/ghost_2_002.ogg<sound>
+    <sound>ghost monster/ghost/ghost_2_003.ogg<sound>
+    <sound>ghost monster/ghost/ghost_2_004.ogg<sound>
+    <sound>ghost monster/ghost/ghost_2_005.ogg<sound>
+
+    <sound>giant monster/giant/giant_1_001.ogg<sound>
+    <sound>giant monster/giant/giant_1_002.ogg<sound>
+    <sound>giant monster/giant/giant_1_003.ogg<sound>
+    <sound>giant monster/giant/giant_1_004.ogg<sound>
+    <sound>giant monster/giant/giant_1_005.ogg<sound>
+
+	<sound>glass_break  environment/glass/bfh1_glass_breaking_01.ogg</sound>
+	<sound>glass_break  environment/glass/bfh1_glass_breaking_02.ogg</sound>
+	<sound>glass_break  environment/glass/bfh1_glass_breaking_03.ogg</sound>
+	<sound>glass_break  environment/glass/bfh1_glass_breaking_04.ogg</sound>
+	<sound>glass_break  environment/glass/bfh1_glass_breaking_05.ogg</sound>
+	<sound>glass_break  environment/glass/bfh1_glass_breaking_06.ogg</sound>
+	<sound>glass_fall   environment/glass/bfh1_glass_falling_01.ogg</sound>
+	<sound>glass_fall   environment/glass/bfh1_glass_falling_02.ogg</sound>
+	<sound>glass_fall   environment/glass/bfh1_glass_falling_03.ogg</sound>
+	<sound>glass_fall   environment/glass/bfh1_glass_falling_04.ogg</sound>
+	<sound>glass_hit    environment/glass/bfh1_glass_hit_01.ogg</sound>
+	<sound>glass_hit    environment/glass/bfh1_glass_hit_02.ogg</sound>
+
+    <sound>goblin monster/goblin/goblin_1_001.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_002.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_003.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_004.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_005.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_006.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_007.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_008.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_009.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_010.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_011.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_012.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_013.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_014.ogg<sound>
+    <sound>goblin monster/goblin/goblin_1_015.ogg<sound>
+
+    <sound>grunt_sound monster/pain_sound/grunt_sound_3_001.ogg<sound>
+    <sound>grunt_sound monster/pain_sound/grunt_sound_3_002.ogg<sound>
+    <sound>grunt_sound monster/pain_sound/grunt_sound_3_003.ogg<sound>
+    <sound>grunt_sound monster/pain_sound/grunt_sound_3_004.ogg<sound>
+    <sound>grunt_sound monster/pain_sound/grunt_sound_3_005.ogg<sound>
+    <sound>grunt_sound monster/pain_sound/grunt_sound_3_006.ogg<sound>
+
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_001.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_002.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_003.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_004.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_005.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_006.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_007.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_008.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_009.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_010.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_011.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_012.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_013.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_014.ogg<sound>
+    <sound>gutteral_beast monster/gutteral_beast/gutteral_beast_1_015.ogg<sound>
+
+    <sound>impact_splat monster/impact_splat/impact_splat_1_001.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_002.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_003.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_004.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_005.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_006.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_007.ogg<sound>
+    <sound>impact_splat monster/impact_splat/impact_splat_1_008.ogg<sound>
+
+    <sound>menu         menu/menu_item_pickup_1_001.ogg</sound>
+    <sound>menu         menu/menu_confirm_1_001.ogg</sound>
+    <sound>menu         menu/menu_error_1_001.ogg</sound>
+    <sound>menu         menu/menu_move_1_001.ogg</sound>
+
+	<sound>metal_fall   environment/metal/bfh1_metal_falling_01.ogg</sound>
+	<sound>metal_fall   environment/metal/bfh1_metal_falling_02.ogg</sound>
+	<sound>metal_fall   environment/metal/bfh1_metal_falling_03.ogg</sound>
+	<sound>metal_fall   environment/metal/bfh1_metal_falling_04.ogg</sound>
+	<sound>metal_fall   environment/metal/bfh1_metal_falling_05.ogg</sound>
+	<sound>metal_hit    environment/metal/bfh1_metal_hit_01.ogg</sound>
+	<sound>metal_hit    environment/metal/bfh1_metal_hit_02.ogg</sound>
+	<sound>metal_hit    environment/metal/bfh1_metal_hit_03.ogg</sound>
+	<sound>metal_hit    environment/metal/bfh1_metal_hit_04.ogg</sound>
+	<sound>metal_hit    environment/metal/bfh1_metal_hit_05.ogg</sound>
+	<sound>metal_hit    environment/metal/bfh1_metal_hit_06.ogg</sound>
+
+    <sound>minotaur monster/minotaur/minotaur_1_001.ogg<sound>
+    <sound>minotaur monster/minotaur/minotaur_1_002.ogg<sound>
+    <sound>minotaur monster/minotaur/minotaur_1_003.ogg<sound>
+
+    <sound>monster_1 monster/monster_1/monster_1_001.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_002.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_003.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_004.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_005.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_006.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_007.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_008.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_009.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_010.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_011.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_012.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_013.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_014.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_015.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_016.ogg<sound>
+    <sound>monster_1 monster/monster_1/monster_1_017.ogg<sound>
+
+    <sound>monster_2 monster/monster_2/beast_dieing_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_dieing_1_002.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_growl_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_growl_1_002.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_growl_1_003.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_growl_1_004.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_growl_1_005.ogg<sound>
+    <sound>monster_2 monster/monster_2/beast_growl_1_006.ogg<sound>
+    <sound>monster_2 monster/monster_2/children_spirit_sounds_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/demon_call_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/demon_call_1_002.ogg<sound>
+    <sound>monster_2 monster/monster_2/demon_growl_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/pixie_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/pixie_dieing_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/spirit_shout_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_001.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_002.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_003.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_004.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_005.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_006.ogg<sound>
+    <sound>monster_2 monster/monster_2/yucky_beast_1_007.ogg<sound>
+
+    <sound>monster_3 monster/monster_3/monster_3_001.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_002.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_003.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_004.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_005.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_006.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_007.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_008.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_009.ogg<sound>
+    <sound>monster_3 monster/monster_3/monster_3_010.ogg<sound>
+
+    <sound>monster_4 monster/monster_4/monster_4_001.ogg<sound>
+    <sound>monster_4 monster/monster_4/monster_4_002.ogg<sound>
+    <sound>monster_4 monster/monster_4/monster_4_003.ogg<sound>
+    <sound>monster_4 monster/monster_4/monster_4_004.ogg<sound>
+    <sound>monster_4 monster/monster_4/monster_4_005.ogg<sound>
+    <sound>monster_4 monster/monster_4/monster_4_006.ogg<sound>
+
+    <sound>monster_5 monster/monster_5/monster_5_001.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_002.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_003.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_004.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_005.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_006.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_007.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_008.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_009.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_010.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_011.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_012.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_013.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_014.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_015.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_016.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_017.ogg<sound>
+    <sound>monster_5 monster/monster_5/monster_5_018.ogg<sound>
+
+    <sound>object object/door_1_001.ogg</sound>
+    <sound>object object/door_1_002.ogg</sound>
+    <sound>object object/gate_1_001.ogg</sound>
+
+    <sound>ogre monster/ogre/ogre_1_001.ogg<sound>
+    <sound>ogre monster/ogre/ogre_1_002.ogg<sound>
+    <sound>ogre monster/ogre/ogre_1_003.ogg<sound>
+    <sound>ogre monster/ogre/ogre_1_004.ogg<sound>
+    <sound>ogre monster/ogre/ogre_1_005.ogg<sound>
+
+    <sound>pain_sound monster/pain_sound/pain_sound_1_001.ogg<sound>
+    <sound>pain_sound monster/pain_sound/pain_sound_1_002.ogg<sound>
+    <sound>pain_sound monster/pain_sound/pain_sound_1_003.ogg<sound>
+    <sound>pain_sound monster/pain_sound/pain_sound_1_004.ogg<sound>
+    <sound>pain_sound monster/pain_sound/pain_sound_1_005.ogg<sound>
+    <sound>pain_sound monster/pain_sound/pain_sound_1_006.ogg<sound>
+
+	<sound>rock_break  environment/rock/bfh1_rock_breaking_01.ogg</sound>
+	<sound>rock_break  environment/rock/bfh1_rock_breaking_02.ogg</sound>
+	<sound>rock_break  environment/rock/bfh1_rock_breaking_03.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_01.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_02.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_03.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_04.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_05.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_06.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_07.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_08.ogg</sound>
+	<sound>rock_fall   environment/rock/bfh1_rock_falling_09.ogg</sound>
+	<sound>rock_hit    environment/rock/bfh1_rock_hit_01.ogg</sound>
+
+    <sound>shade monster/shade/shade_01_001.ogg<sound>
+    <sound>shade monster/shade/shade_01_002.ogg<sound>
+    <sound>shade monster/shade/shade_01_003.ogg<sound>
+    <sound>shade monster/shade/shade_01_004.ogg<sound>
+    <sound>shade monster/shade/shade_01_005.ogg<sound>
+    <sound>shade monster/shade/shade_01_006.ogg<sound>
+    <sound>shade monster/shade/shade_01_007.ogg<sound>
+    <sound>shade monster/shade/shade_01_008.ogg<sound>
+    <sound>shade monster/shade/shade_01_009.ogg<sound>
+    <sound>shade monster/shade/shade_01_010.ogg<sound>
+    <sound>shade monster/shade/shade_01_011.ogg<sound>
+    <sound>shade monster/shade/shade_01_012.ogg<sound>
+    <sound>shade monster/shade/shade_01_013.ogg<sound>
+    <sound>shade monster/shade/shade_01_014.ogg<sound>
+    <sound>shade monster/shade/shade_01_015.ogg<sound>
+
+    <sound>slime monster/slime/slime_01_001.ogg<sound>
+    <sound>slime monster/slime/slime_01_002.ogg<sound>
+    <sound>slime monster/slime/slime_01_003.ogg<sound>
+    <sound>slime monster/slime/slime_01_004.ogg<sound>
+    <sound>slime monster/slime/slime_01_005.ogg<sound>
+    <sound>slime monster/slime/slime_01_006.ogg<sound>
+    <sound>slime monster/slime/slime_01_007.ogg<sound>
+    <sound>slime monster/slime/slime_01_008.ogg<sound>
+    <sound>slime monster/slime/slime_01_009.ogg<sound>
+    <sound>slime monster/slime/slime_01_010.ogg<sound>
+
+    <sound>spider monster/spider/spider_01_001.ogg</sound>
+    <sound>spider monster/spider/spider_01_002.ogg</sound>
+
+    <sound>trader npc/trader/trader_1_001.ogg</sound>
+    <sound>trader npc/trader/trader_1_002.ogg</sound>
+    <sound>trader npc/trader/trader_1_003.ogg</sound>
+    <sound>trader npc/trader/trader_1_004.ogg</sound>
+    <sound>trader npc/trader/trader_1_005.ogg</sound>
+
+    <sound>wolfman monster/wolfman/wolfman_01_001.ogg<sound>
+
+	<sound>wood_break  environment/wood/bfh1_wood_breaking_01.ogg</sound>
+	<sound>wood_break  environment/wood/bfh1_wood_breaking_02.ogg</sound>
+	<sound>wood_break  environment/wood/bfh1_wood_breaking_03.ogg</sound>
+	<sound>wood_break  environment/wood/bfh1_wood_breaking_04.ogg</sound>
+	<sound>wood_fall   environment/wood/bfh1_wood_falling_01.ogg</sound>
+	<sound>wood_fall   environment/wood/bfh1_wood_falling_02.ogg</sound>
+	<sound>wood_hit    environment/wood/bfh1_wood_hit_01.ogg</sound>
+	<sound>wood_hit    environment/wood/bfh1_wood_hit_02.ogg</sound>
+	<sound>wood_hit    environment/wood/bfh1_wood_hit_03.ogg</sound>
+
+    <sound>yell_sound monster/pain_sound/yell_sound_1_001.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_002.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_003.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_004.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_005.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_006.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_007.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_008.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_009.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_010.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_011.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_012.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_013.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_014.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_015.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_1_016.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_001.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_002.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_003.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_004.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_005.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_006.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_007.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_008.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_009.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_010.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_2_011.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_001.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_002.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_003.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_004.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_005.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_006.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_007.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_008.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_009.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_010.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_011.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_012.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_013.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_014.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_015.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_3_016.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_001.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_002.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_003.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_004.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_005.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_006.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_007.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_008.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_009.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_010.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_011.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_012.ogg<sound>
+    <sound>yell_sound monster/pain_sound/yell_sound_4_013.ogg<sound>
+
+    <sound>zombie monster/zombie/zombie_1_001.ogg<sound>
+    <sound>zombie monster/zombie/zombie_1_002.ogg<sound>
+    <sound>zombie monster/zombie/zombie_1_003.ogg<sound>
+
+	<sound>coin        object/coin_1_001.ogg</sound>
+	<sound>coin        object/coin_1_002.ogg</sound>
+	<sound>coin        object/coin_1_003.ogg</sound>
+
+	<sound>door        object/door_1_001.ogg</sound>
+	<sound>door        object/door_1_002.ogg</sound>
+
+	<sound>gate        object/gate_1_001.ogg</sound>
+
+	<sound>trader      npc/trader/trader_1_001.ogg</sound>
+	<sound>trader      npc/trader/trader_1_002.ogg</sound>
+	<sound>trader      npc/trader/trader_1_003.ogg</sound>
+	<sound>trader      npc/trader/trader_1_004.ogg</sound>
+	<sound>trader      npc/trader/trader_1_005.ogg</sound>
+
+</sound_database>
+

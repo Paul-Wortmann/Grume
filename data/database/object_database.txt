@@ -1,0 +1,563 @@
+
+# /*
+#
+# A database of all objects used by the game, this is used as a lookup table internally
+#
+# */
+
+<object_database>
+
+    #       catagory file_name
+
+    # Alchemy table
+	<object>alchemy_table         objects/alchemy_table_1_001.txt</object>
+
+    # Altar
+	<object>altar                 objects/altar_1_001.txt</object>
+	<object>altar                 objects/altar_1_002.txt</object>
+	<object>altar                 objects/altar_1_003.txt</object>
+
+    # Arrow
+	<object>arrow                 objects/arrow_1_001.txt</object>
+
+    # Bar counter
+	<object>bar_counter           objects/bar_counter_1_001.txt</object>
+
+    # Barrel
+	<object>barrel                objects/barrel_1_001.txt</object>
+	<object>barrel_debris         objects/barrel_2_002.txt</object>
+	<object>barrel_debris         objects/barrel_2_003.txt</object>
+	<object>barrel_debris         objects/barrel_2_004.txt</object>
+
+    # Bed
+	<object>bed                   objects/bed_1_001.txt</object>
+
+    # Bench
+	<object>bench                 objects/bench_1_001.txt</object>
+	
+    # Bat corpse and debris
+	<object>bat_1_corpse          npc/bat_1/bat_1_corpse_001.txt<object>
+	<object>bat_1_debris          npc/bat_1/bat_1_debris_001.txt<object>
+	<object>bat_1_debris          npc/bat_1/bat_1_debris_002.txt<object>
+	<object>bat_1_debris          npc/bat_1/bat_1_debris_003.txt<object>
+	<object>bat_1_debris          npc/bat_1/bat_1_debris_004.txt<object>
+	<object>bat_1_debris          npc/bat_1/bat_1_debris_005.txt<object>
+	<object>bat_1_debris          npc/bat_1/bat_1_debris_006.txt<object>
+	
+    # Bat leader corpse and debris
+	<object>bat_leader_1_corpse   npc/bat_leader_1/bat_leader_1_corpse_001.txt<object>
+	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_001.txt<object>
+	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_002.txt<object>
+	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_003.txt<object>
+	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_004.txt<object>
+	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_005.txt<object>
+	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_006.txt<object>
+
+    # Blacksmith forge
+	<object>blacksmith_forge      objects/blacksmith_forge_1_001.txt<object>
+
+    # Bone
+	<object>bone                  objects/bone_arm_1_001.txt<object>
+	<object>bone                  objects/bone_leg_1_001.txt<object>
+	<object>bone                  objects/bone_pelvis_1_001.txt<object>
+	<object>bone                  objects/bone_ribcage_1_001.txt<object>
+	<object>bone                  objects/bone_skull_1_001.txt<object>
+	<object>bone                  objects/bone_skull_1_002.txt<object>
+	<object>bone                  objects/bone_spine_1_001.txt<object>
+
+    # Bone pile
+	<object>bone_pile             objects/bone_pile_1_001.txt<object>
+	<object>bone_pile             objects/bone_pile_1_002.txt<object>
+	<object>bone_pile             objects/bone_pile_1_003.txt<object>
+	<object>bone_pile             objects/bone_pile_1_004.txt<object>
+	<object>bone_pile             objects/bone_pile_1_005.txt<object>
+	<object>bone_pile             objects/bone_pile_1_006.txt<object>
+	<object>bone_pile             objects/bone_pile_1_007.txt<object>
+	<object>bone_pile             objects/bone_pile_1_008.txt<object>
+	<object>bone_pile             objects/bone_pile_1_009.txt<object>
+
+    # Bookshelf
+	<object>bookshelf             objects/bookshelf_1_001.txt</object>
+	<object>bookshelf             objects/bookshelf_2_001.txt</object>
+	<object>bookshelf             objects/bookshelf_2_002.txt</object>
+	<object>bookshelf             objects/bookshelf_2_003.txt</object>
+	<object>bookshelf             objects/bookshelf_2_004.txt</object>
+
+    # Brazier
+	<object>brazier               objects/brazier_1_001.txt</object>
+
+    # Bridge
+	<object>bridge                objects/bridge_2_001.txt</object>
+	<object>bridge                objects/bridge_2_002.txt</object>
+
+    # Bucket
+	<object>bucket                objects/bucket_1_001.txt</object>
+
+    # Bug corpse and debris
+	<object>bug_1_corpse          npc/bug_1/bug_1_corpse_001.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_001.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_002.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_003.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_004.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_005.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_006.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_007.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_008.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_009.txt<object>
+	<object>bug_1_debris          npc/bug_1/bug_1_debris_010.txt<object>
+
+    # Cabinet
+	<object>cabinet               objects/cabinet_1_001.txt</object>
+
+    # Campfire
+	<object>campfire              objects/campfire_1_001.txt</object>
+
+    # Candle
+	<object>candle                objects/candle_1_001.txt</object>
+
+    # Cart
+	<object>cart                  objects/cart_1_001.txt</object>
+
+    # Castle
+	<object>castle                objects/castle_1_001.txt</object>
+
+    # Cauldron
+	<object>cauldron              objects/cauldron_1_001.txt</object>
+
+    # Cemetery object
+	<object>cemetery_object       objects/cemetery_object_1_001.txt</object> # Stone casket 1
+	<object>cemetery_object       objects/cemetery_object_2_001.txt</object> # Stone casket 2
+	<object>cemetery_object       objects/cemetery_object_3_001.txt</object> # Pillar
+	<object>cemetery_object       objects/cemetery_object_4_001.txt</object> # cross
+	<object>cemetery_object       objects/cemetery_object_5_001.txt</object> # flat tomb stone
+	<object>cemetery_object       objects/cemetery_object_6_001.txt</object> # fat tomb stone
+	<object>cemetery_object       objects/cemetery_object_7_001.txt</object> # tomb with pillar
+	<object>cemetery_object       objects/cemetery_object_8_001.txt</object> # Gate
+    <object>cemetery_object       objects/mort_safe_1_001.txt<object> # mort safe
+
+
+    # Chair
+	<object>chair                 objects/chair_1_001.txt</object>
+	<object>chair                 objects/chair_2_001.txt</object>
+
+    # Chest
+	<object>chest                 objects/chest_1_001.txt</object>
+
+    # Coffin
+    <object>coffin                objects/coffin_1_001.txt<object>
+    <object>coffin                objects/coffin_1_002.txt<object>
+    <object>coffin                objects/coffin_1_003.txt<object>
+
+    # Crate
+	<object>crate                 objects/crate_1_001.txt</object>
+	<object>crate                 objects/crate_1_002.txt</object>
+	<object>crate_debris          objects/crate_2_002.txt</object>
+	<object>crate_debris          objects/crate_2_003.txt</object>
+
+    # Crystal
+	<object>crystal_blue          objects/crystal_blue_001.txt</object>
+	<object>crystal_blue          objects/crystal_blue_002.txt</object>
+	<object>crystal_blue          objects/crystal_blue_003.txt</object>
+	<object>crystal_blue          objects/crystal_blue_004.txt</object>
+	<object>crystal_blue          objects/crystal_blue_005.txt</object>
+	<object>crystal_blue          objects/crystal_blue_006.txt</object>
+	<object>crystal_blue          objects/crystal_blue_007.txt</object>
+	<object>crystal_blue          objects/crystal_blue_008.txt</object>
+	<object>crystal_blue          objects/crystal_blue_009.txt</object>
+	<object>crystal_blue          objects/crystal_blue_010.txt</object>
+	<object>crystal_blue          objects/crystal_blue_011.txt</object>
+	<object>crystal_blue          objects/crystal_blue_012.txt</object>
+	<object>crystal_blue          objects/crystal_blue_013.txt</object>
+	<object>crystal_blue          objects/crystal_blue_014.txt</object>
+	<object>crystal_blue          objects/crystal_blue_015.txt</object>
+	<object>crystal_blue          objects/crystal_blue_016.txt</object>
+
+	<object>crystal_ice           objects/crystal_ice_001.txt</object>
+	<object>crystal_ice           objects/crystal_ice_002.txt</object>
+	<object>crystal_ice           objects/crystal_ice_003.txt</object>
+	<object>crystal_ice           objects/crystal_ice_004.txt</object>
+	<object>crystal_ice           objects/crystal_ice_005.txt</object>
+	<object>crystal_ice           objects/crystal_ice_006.txt</object>
+	<object>crystal_ice           objects/crystal_ice_007.txt</object>
+	<object>crystal_ice           objects/crystal_ice_008.txt</object>
+	<object>crystal_ice           objects/crystal_ice_009.txt</object>
+	<object>crystal_ice           objects/crystal_ice_010.txt</object>
+	<object>crystal_ice           objects/crystal_ice_011.txt</object>
+	<object>crystal_ice           objects/crystal_ice_012.txt</object>
+	<object>crystal_ice           objects/crystal_ice_013.txt</object>
+	<object>crystal_ice           objects/crystal_ice_014.txt</object>
+	<object>crystal_ice           objects/crystal_ice_015.txt</object>
+	<object>crystal_ice           objects/crystal_ice_016.txt</object>
+
+	<object>crystal_red           objects/crystal_red_001.txt</object>
+	<object>crystal_red           objects/crystal_red_002.txt</object>
+	<object>crystal_red           objects/crystal_red_003.txt</object>
+	<object>crystal_red           objects/crystal_red_004.txt</object>
+	<object>crystal_red           objects/crystal_red_005.txt</object>
+	<object>crystal_red           objects/crystal_red_006.txt</object>
+	<object>crystal_red           objects/crystal_red_007.txt</object>
+	<object>crystal_red           objects/crystal_red_008.txt</object>
+	<object>crystal_red           objects/crystal_red_009.txt</object>
+	<object>crystal_red           objects/crystal_red_010.txt</object>
+	<object>crystal_red           objects/crystal_red_011.txt</object>
+	<object>crystal_red           objects/crystal_red_012.txt</object>
+	<object>crystal_red           objects/crystal_red_013.txt</object>
+	<object>crystal_red           objects/crystal_red_014.txt</object>
+	<object>crystal_red           objects/crystal_red_015.txt</object>
+	<object>crystal_red           objects/crystal_red_016.txt</object>
+
+    # Dead_tree
+	<object>dead_tree             objects/dead_tree_1_001.txt</object>
+
+    # Dead_tree_stump
+    <object>dead_tree_stump       objects/dead_tree_stump_1_001.txt<object>
+
+    # Deamon Statue
+	<object>deamon_statue         objects/deamon_statue_1_001.txt</object>
+	<object>deamon_statue         objects/deamon_statue_1_002.txt</object>
+	<object>deamon_statue         objects/deamon_statue_1_003.txt</object>
+
+	<object>dungeon_gate          objects/dungeon_gate_1_001.txt</object>
+	<object>dungeon_gate          objects/dungeon_gate_1_002.txt</object>
+	<object>dungeon_gate          objects/dungeon_gate_1_003.txt</object>
+
+	<object>dungeon_switch        objects/dungeon_switch_1_001.txt</object>
+
+	<object>dungeon_trap          objects/dungeon_trap_spike_1_001.txt</object>
+
+    # Forest monster corpse and debris
+	<object>forest_monster_1_corpse npc/forest_monster_1/forest_monster_1_corpse_001.txt<object>
+	<object>forest_monster_1_debris npc/forest_monster_1/forest_monster_1_debris_001.txt<object>
+	<object>forest_monster_1_debris npc/forest_monster_1/forest_monster_1_debris_002.txt<object>
+	<object>forest_monster_1_debris npc/forest_monster_1/forest_monster_1_debris_003.txt<object>
+	<object>forest_monster_1_debris npc/forest_monster_1/forest_monster_1_debris_004.txt<object>
+	<object>forest_monster_1_debris npc/forest_monster_1/forest_monster_1_debris_005.txt<object>
+	<object>forest_monster_1_debris npc/forest_monster_1/forest_monster_1_debris_006.txt<object>
+
+    # Fence_metal
+    <object>fence_metal           objects/fence_metal_1_001.txt<object>
+    <object>fence_metal           objects/fence_metal_1_002.txt<object>
+    <object>fence_metal           objects/fence_metal_1_003.txt</object>
+    <object>fence_metal           objects/fence_metal_1_004.txt</object>
+    <object>fence_metal           objects/fence_metal_1_005.txt</object>
+
+    # Gib
+    <object>gib                   objects/gibs_1_001.txt<object> # heart
+    <object>gib                   objects/gibs_1_002.txt<object> # lungs
+    <object>gib                   objects/gibs_1_003.txt<object> # hand
+    <object>gib                   objects/gibs_1_004.txt<object> # arm
+    <object>gib                   objects/gibs_1_005.txt<object> # leg
+    <object>gib                   objects/gibs_1_006.txt<object>
+    <object>gib                   objects/gibs_1_007.txt<object> # corpse
+    <object>gib                   objects/gibs_1_008.txt<object> # corpse
+    <object>gib                   objects/gibs_1_009.txt<object>
+
+    # Golem corpse and debris (Rock)
+	<object>golem_1_corpse          npc/golem_1/golem_1_corpse_001.txt<object>
+	<object>golem_1_debris          npc/golem_1/golem_1_debris_001.txt<object>
+	<object>golem_1_debris          npc/golem_1/golem_1_debris_002.txt<object>
+	<object>golem_1_debris          npc/golem_1/golem_1_debris_003.txt<object>
+	<object>golem_1_debris          npc/golem_1/golem_1_debris_004.txt<object>
+	<object>golem_1_debris          npc/golem_1/golem_1_debris_005.txt<object>
+	<object>golem_1_debris          npc/golem_1/golem_1_debris_006.txt<object>
+
+    # Golem corpse and debris (Lava)
+	<object>golem_2_corpse          npc/golem_2/golem_2_corpse_001.txt<object>
+	<object>golem_2_debris          npc/golem_2/golem_2_debris_001.txt<object>
+	<object>golem_2_debris          npc/golem_2/golem_2_debris_002.txt<object>
+	<object>golem_2_debris          npc/golem_2/golem_2_debris_003.txt<object>
+	<object>golem_2_debris          npc/golem_2/golem_2_debris_004.txt<object>
+	<object>golem_2_debris          npc/golem_2/golem_2_debris_005.txt<object>
+	<object>golem_2_debris          npc/golem_2/golem_2_debris_006.txt<object>
+
+    # Golem corpse and debris (Ice)
+	<object>golem_3_corpse          npc/golem_3/golem_3_corpse_001.txt<object>
+	<object>golem_3_debris          npc/golem_3/golem_3_debris_001.txt<object>
+	<object>golem_3_debris          npc/golem_3/golem_3_debris_002.txt<object>
+	<object>golem_3_debris          npc/golem_3/golem_3_debris_003.txt<object>
+	<object>golem_3_debris          npc/golem_3/golem_3_debris_004.txt<object>
+	<object>golem_3_debris          npc/golem_3/golem_3_debris_005.txt<object>
+	<object>golem_3_debris          npc/golem_3/golem_3_debris_006.txt<object>
+
+    # Golem corpse and debris (Blood)
+	<object>golem_4_corpse          npc/golem_4/golem_4_corpse_001.txt<object>
+	<object>golem_4_debris          npc/golem_4/golem_4_debris_001.txt<object>
+	<object>golem_4_debris          npc/golem_4/golem_4_debris_002.txt<object>
+	<object>golem_4_debris          npc/golem_4/golem_4_debris_003.txt<object>
+	<object>golem_4_debris          npc/golem_4/golem_4_debris_004.txt<object>
+	<object>golem_4_debris          npc/golem_4/golem_4_debris_005.txt<object>
+	<object>golem_4_debris          npc/golem_4/golem_4_debris_006.txt<object>
+
+    # Jar
+	<object>jar                   objects/jar_1_001.txt</object>
+
+    # Jar debris
+	<object>jar_debris            objects/jar_1_002.txt</object>
+	<object>jar_debris            objects/jar_1_003.txt</object>
+	<object>jar_debris            objects/jar_1_004.txt</object>
+	<object>jar_debris            objects/jar_1_005.txt</object>
+
+    # Medieval_building
+    <object>medieval_building     objects/medieval_blacksmith_1_001.txt<object>
+    <object>medieval_building     objects/medieval_house_1_001.txt<object>
+    <object>medieval_building     objects/medieval_house_2_001.txt<object>
+    <object>medieval_building     objects/medieval_sawmill_1_001.txt<object>
+
+    # Medieval_prop
+    <object>medieval_prop         objects/medieval_bench_1_001.txt<object>
+    <object>medieval_prop         objects/medieval_cart_1_001.txt<object>
+    <object>medieval_prop         objects/medieval_stool_1_001.txt<object>
+    <object>medieval_prop         objects/medieval_watch_tower_1_001.txt<object>
+    <object>medieval_prop         objects/medieval_well_1_001.txt<object>
+    <object>medieval_prop         objects/medieval_wheelbarrow_1_001.txt<object>
+    <object>medieval_prop         objects/medieval_outhouse_1_001.txt<object>
+
+    # Mausoleum
+    <object>mausoleum             objects/mausoleum_1_001.txt</object>
+
+    # Mushroom
+    <object>mushroom_green        objects/mushroom_green_1_001.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_002.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_003.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_004.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_005.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_006.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_007.txt<object>
+    <object>mushroom_green        objects/mushroom_green_1_008.txt<object>
+
+    <object>mushroom_orange       objects/mushroom_orange_1_001.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_002.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_003.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_004.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_005.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_006.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_007.txt<object>
+    <object>mushroom_orange       objects/mushroom_orange_1_008.txt<object>
+
+    <object>mushroom_purple       objects/mushroom_purple_1_001.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_002.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_003.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_004.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_005.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_006.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_007.txt<object>
+    <object>mushroom_purple       objects/mushroom_purple_1_008.txt<object>
+
+    <object>mushroom_red          objects/mushroom_red_1_001.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_002.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_003.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_004.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_005.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_006.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_007.txt<object>
+    <object>mushroom_red          objects/mushroom_red_1_008.txt<object>
+
+    # Old_wagon
+    <object>old_wagon             objects/old_wagon_1_001.txt</object>
+
+    # Paper_debris
+    <object>paper_debris          objects/paper_debris_1_001.txt<object>
+    <object>paper_debris          objects/paper_debris_1_002.txt<object>
+    <object>paper_debris          objects/paper_debris_1_003.txt<object>
+    <object>paper_debris          objects/paper_debris_1_004.txt<object>
+    <object>paper_debris          objects/paper_debris_1_005.txt<object>
+
+    # River
+    <object>river                 objects/river_1_001.txt</object>
+
+    # Rock
+    <object>rock                  objects/rock_1_001.txt</object>
+    <object>rock                  objects/rock_2_001.txt</object>
+    <object>rock                  objects/rock_3_001.txt</object>
+    <object>rock                  objects/rock_4_001.txt</object>
+    <object>rock                  objects/rock_5_001.txt</object>
+
+    # Rock black
+    <object>rock_black            objects/rock_14_001.txt</object>
+
+    # Rock_small
+    <object>rock_small            objects/rock_6_001.txt</object>
+    <object>rock_small            objects/rock_7_001.txt</object>
+    <object>rock_small            objects/rock_8_001.txt</object>
+    <object>rock_small            objects/rock_9_001.txt</object>
+    <object>rock_small            objects/rock_10_001.txt</object>
+    <object>rock_small            objects/rock_11_001.txt</object>
+    <object>rock_small            objects/rock_12_001.txt</object>
+    <object>rock_small            objects/rock_13_001.txt</object>
+
+    # Skeleton
+    <object>skeleton              objects/skeleton_horse_1_001.txt</object>
+
+    # Skeleton corpse and debris
+	<object>skeleton_1_corpse     npc/skeleton_1/skeleton_1_corpse_001.txt<object>
+	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_001.txt<object>
+	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_002.txt<object>
+	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_003.txt<object>
+	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_004.txt<object>
+	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_005.txt<object>
+	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_006.txt<object>
+
+    # Spider corpse and debris
+	<object>spider_1_corpse       npc/spider_1/spider_1_corpse_001.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_001.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_002.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_003.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_004.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_005.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_006.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_007.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_008.txt<object>
+	<object>spider_1_debris       npc/spider_1/spider_1_debris_009.txt<object>
+	<#object>spider_1_debris       npc/spider_1/spider_1_debris_010.txt<object>
+	<#object>spider_1_debris       npc/spider_1/spider_1_debris_011.txt<object>
+	<#object>spider_1_debris       npc/spider_1/spider_1_debris_012.txt<object>
+	<#object>spider_1_debris       npc/spider_1/spider_1_debris_013.txt<object>
+
+    # Spider leader corpse and debris
+	<object>spider_leader_1_corpse       npc/spider_leader_1/spider_leader_1_corpse_001.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_001.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_002.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_003.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_004.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_005.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_006.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_007.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_008.txt<object>
+	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_009.txt<object>
+	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_010.txt<object>
+	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_011.txt<object>
+	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_012.txt<object>
+	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_013.txt<object>
+
+    # Spiked Gib
+    <object>spiked_gib            objects/spiked_gib_1_001.txt</object>
+    <object>spiked_gib            objects/spiked_gib_1_002.txt</object>
+    <object>spiked_gib            objects/spiked_gib_1_003.txt</object>
+    <object>spiked_gib            objects/spiked_gib_1_004.txt</object>
+    <object>spiked_gib            objects/spiked_gib_1_005.txt</object>
+
+    # Statue
+    <object>statue                objects/medieval_statue_1_001.txt</object>
+    <object>statue                objects/deamon_statue_1_001.txt</object>
+    <object>statue                objects/deamon_statue_1_002.txt</object>
+    <object>statue                objects/deamon_statue_1_003.txt</object>
+
+    # Torch
+    <object>torch                 objects/torch_1_001.txt</object>
+    <object>torch                 objects/torch_1_002.txt</object>
+    <object>torch                 objects/torch_2_001.txt</object>
+    <object>torch                 objects/torch_2_002.txt</object>
+    <object>torch                 objects/torch_2_003.txt</object>
+    <object>torch                 objects/torch_2_004.txt</object>
+    <object>torch                 objects/torch_2_005.txt</object>
+    <object>torch                 objects/torch_2_006.txt</object>
+    <object>torch                 objects/torch_2_007.txt</object>
+    <object>torch                 objects/torch_2_008.txt</object>
+    <object>torch                 objects/torch_2_009.txt</object>
+    <object>torch                 objects/torch_2_010.txt</object>
+    <object>torch                 objects/torch_2_011.txt</object>
+    <object>torch                 objects/torch_2_012.txt</object>
+    <object>torch                 objects/torch_2_013.txt</object>
+    <object>torch                 objects/torch_2_014.txt</object>
+    <object>torch                 objects/torch_2_015.txt</object>
+    <object>torch                 objects/torch_2_016.txt</object>
+    <object>torch                 objects/torch_2_017.txt</object>
+    <object>torch                 objects/torch_2_018.txt</object>
+    <object>torch                 objects/torch_2_019.txt</object>
+    <object>torch                 objects/torch_2_020.txt</object>
+    <object>torch                 objects/torch_2_021.txt</object>
+
+    # Torture device
+	<object>torture_device        objects/torture_device_1_001.txt</object>
+	<object>torture_device        objects/torture_device_2_001.txt</object>
+	<object>torture_device        objects/torture_device_3_001.txt</object>
+	<object>torture_device        objects/torture_device_4_001.txt</object>
+	<object>torture_device        objects/torture_device_5_001.txt</object>
+	<object>torture_device        objects/torture_device_6_001.txt</object>
+	<object>torture_device        objects/torture_device_7_001.txt</object>
+	<object>torture_device        objects/torture_device_8_001.txt</object>
+	<object>torture_device        objects/torture_device_9_001.txt</object>
+	<object>torture_device        objects/torture_device_10_001.txt</object>
+	<object>torture_device        objects/torture_device_11_001.txt</object>
+	<object>torture_device        objects/torture_device_12_001.txt</object>
+	<object>torture_device        objects/torture_device_13_001.txt</object>
+	<object>torture_device        objects/torture_device_14_001.txt</object>
+	<object>torture_device        objects/torture_device_15_001.txt</object>
+
+    # Tower
+    <object>tower                 objects/tower_1_001.txt</object> # broken tower
+    <object>tower                 objects/tower_1_002.txt</object> # broken tower
+
+    # Town_prop
+    <object>town_prop             objects/alchemy_table_1_001.txt<object>
+    <object>town_prop             objects/bar_counter_1_001.txt<object>
+    <object>town_prop             objects/bed_1_001.txt<object>
+    <object>town_prop             objects/bench_1_001.txt<object>
+    <object>town_prop             objects/blacksmith_forge_1_001.txt<object>
+    <object>town_prop             objects/bookshelf_1_001.txt<object>
+    <object>town_prop             objects/brazier_1_001.txt<object>
+    <object>town_prop             objects/bucket_1_001.txt<object>
+    <object>town_prop             objects/campfire_1_001.txt<object>
+    <object>town_prop             objects/candle_1_001.txt<object>
+    <object>town_prop             objects/cart_1_001.txt<object>
+    <object>town_prop             objects/chair_1_001.txt<object>
+    <object>town_prop             objects/chair_2_001.txt<object>
+    <object>town_prop             objects/cauldron_1_001.txt<object>
+    <object>town_prop             objects/fireplace_1_001.txt<object>
+    <object>town_prop             objects/firewood_1_001.txt<object>
+    <object>town_prop             objects/hay_1_001.txt<object>
+    <object>town_prop             objects/hitching_post_1_001.txt<object>
+    <object>town_prop             objects/lamp_1_001.txt<object>
+    <object>town_prop             objects/log_1_001.txt<object>
+    <object>town_prop             objects/log_2_001.txt<object>
+    <object>town_prop             objects/plate_1_001.txt<object>
+    <object>town_prop             objects/sawbuck_1_001.txt<object>
+    <object>town_prop             objects/shelf_1_001.txt<object>
+    <object>town_prop             objects/table_1_001.txt<object>
+    <object>town_prop             objects/table_2_001.txt<object>
+    <object>town_prop             objects/tankard_1_001.txt<object>
+    <object>town_prop             objects/trough_1_001.txt<object>
+    <object>town_prop             objects/wood_fire_1_001.txt<object>
+    <object>town_prop             objects/bookshelf_2_001.txt<object>
+    <object>town_prop             objects/bookshelf_2_002.txt<object>
+    <object>town_prop             objects/bookshelf_2_003.txt<object>
+    <object>town_prop             objects/bookshelf_2_004.txt<object>
+    <object>town_prop             objects/paper_debris_1_001.txt<object>
+    <object>town_prop             objects/paper_debris_1_002.txt<object>
+    <object>town_prop             objects/paper_debris_1_003.txt<object>
+    <object>town_prop             objects/paper_debris_1_004.txt<object>
+    <object>town_prop             objects/paper_debris_1_005.txt<object>
+
+    # Vase
+    <object>vase                  objects/vase_1_001.txt</object>
+    <object>vase                  objects/vase_1_002.txt</object>
+    <object>vase                  objects/vase_1_003.txt</object>
+    <object>vase                  objects/vase_1_004.txt</object>
+    <object>vase                  objects/vase_1_005.txt</object>
+    <object>vase                  objects/vase_1_006.txt</object>
+    <object>vase                  objects/vase_1_007.txt</object>
+    <object>vase                  objects/vase_1_008.txt</object>
+    <object>vase                  objects/vase_1_009.txt</object>
+    <object>vase                  objects/vase_1_010.txt</object>
+
+    # Vase broken
+    <object>vase_broken           objects/vase_1_broken_001.txt</object>
+    <object>vase_broken           objects/vase_1_broken_002.txt</object>
+
+    # Vase debris
+    <object>vase_debris           objects/vase_1_debris_001.txt</object>
+    <object>vase_debris           objects/vase_1_debris_002.txt</object>
+    <object>vase_debris           objects/vase_1_debris_003.txt</object>
+    <object>vase_debris           objects/vase_1_debris_004.txt</object>
+    <object>vase_debris           objects/vase_1_debris_005.txt</object>
+    <object>vase_debris           objects/vase_1_debris_006.txt</object>
+    <object>vase_debris           objects/vase_1_debris_007.txt</object>
+    <object>vase_debris           objects/vase_1_debris_008.txt</object>
+    <object>vase_debris           objects/vase_1_debris_009.txt</object>
+
+    # Waypoint Circle
+    <object>waypoint_circle       objects/waypoint_circle_1_001.txt</object>
+    <object>waypoint_circle       objects/waypoint_circle_2_001.txt</object>
+
+</object_database>
+
