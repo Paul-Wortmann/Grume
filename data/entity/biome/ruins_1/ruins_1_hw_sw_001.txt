@@ -1,0 +1,35 @@
+
+<entity>
+
+    <base>
+	    <base_name>ruins_1_hw_sw_1_001</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>1.0 1.0 1.0</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_rotation>
+    </base>
+    
+    <graphics>
+	    <graphics_model>biome/ruins_1/ruins_1_hw_sw_001.obj</graphics_model>
+	    <graphics_material>biome/ruins_1/ruins_1_wall_001.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>1</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>1</physics_bounding_volume_type>
+	    <physics_mass>0.01</physics_mass>
+	    <physics_collision_radius>0.5</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.5 1.0 0.5</physics_collision_half_dimentions>
+	    <physics_acceleration>0.025</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+</entity>
+

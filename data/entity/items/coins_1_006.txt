@@ -1,0 +1,73 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <base>
+	    <base_name>coins_1_006</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>1.0 1.0 1.0</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_otation>
+	    <base_hit_points>2</base_hit_points>
+	    <base_destructible>0<base_destructible>
+	    <base_collectable>1<base_collectable>
+        <base_textActive>1<base_textActive>
+        <base_textColor>255 220 000<base_textColor>
+    </base>
+
+    <graphics>
+	    <graphics_model>items/coins_1_006.obj</graphics_model>
+	    <graphics_material>base/gold_1_001.txt</graphics_material>
+    </graphics>
+
+    <loot>
+        # gold + experience are multiplied by the map modifier
+	    # gold is ammount min-max for NPC
+	    <loot_gold>1</loot_gold>
+	    <loot_gold_min>50</loot_gold_min>
+	    <loot_gold_max>100</loot_gold_max>
+
+	    # experience is amount min-max
+	    <loot_experience>0</loot_experience>
+	    <loot_experience_min>50</loot_experience_min>
+	    <loot_experience_max>100</loot_experience_max>
+    </loot>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>0</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>2</physics_bounding_volume_type>
+	    <physics_mass>0.0125</physics_mass>
+	    <physics_collision_radius>0.45</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.45 0.5 0.45</physics_collision_half_dimentions>
+	    <physics_acceleration>0.025</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <state>
+        <state_initial>0</state_initial> # 0 == none
+        
+        <state_spawn_audio_name>coin</state_spawn_audio_name>
+        <state_spawn_audio_number>2</state_spawn_audio_number>
+        <state_spawn_tile_state>1</state_spawn_tile_state>
+        <state_spawn_animation>0.0 0.0 0</state_spawn_animation>
+
+        <state_interact_audio_name>coin</state_interact_audio_name>
+        <state_interact_audio_number>3</state_interact_audio_number>
+        <state_interact_tile_state>1</state_interact_tile_state>
+        <state_interact_animation>0.0 0.0 0</state_interact_animation>
+    </state>
+    
+</entity>
+
+

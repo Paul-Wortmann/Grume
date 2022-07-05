@@ -1,0 +1,91 @@
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <animation>
+        <animation_independent>1</animation_independent>
+        <animation_count>1</animation_count>
+    </animation>
+
+    <base>
+	    <base_name>player</base_name>
+	    <base_flying>0</base_flying>
+	    <base_over_size>0</base_over_size>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>0.65 0.65 0.65</base_scale>
+	    <base_rotation>0.0 0.0 3.14159</base_rotation>
+    </base>
+    
+    <character>
+	    <character_importance>0</character_importance>
+	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
+	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
+	    <character_health_max>100</character_health_max>
+	    <character_health_regen>0.0125</character_health_regen>
+	    <character_mana_max>100</character_mana_max>
+	    <character_mana_regen>0.0125</character_mana_regen>
+    </character>
+
+    <graphics>
+	    <graphics_model>player/human_male_2_001.dae</graphics_model>
+	    <graphics_material>player/human_male_head_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_heavy_armor_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_heavy_boots_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_heavy_gloves_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_heavy_helmet_1_001.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>2</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>2</physics_bounding_volume_type>
+	    <physics_mass>0.04</physics_mass>
+	    <physics_collision_radius>0.45</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.45 0.5 0.45</physics_collision_half_dimentions>
+	    <physics_acceleration>0.125</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <state>
+        <state_initial>4</state_initial> # 4 == idle
+
+        # Attack
+        <state_attack_audio_name>bat</state_attack_audio_name>
+        <state_attack_audio_number>3</state_attack_audio_number>
+        <state_attack_tile_state>1</state_attack_tile_state>
+        <state_attack_animation>2.541666667 2.916666667 0</state_attack_animation>
+
+        # Defend
+        <state_defend_audio_name>bat</state_defend_audio_name>
+        <state_defend_audio_number>1</state_defend_audio_number>
+        <state_defend_tile_state>1</state_defend_tile_state>
+        <state_defend_animation>0.0 0.333333 1</state_defend_animation>
+
+        # Die
+        <state_die_audio_name>bat</state_die_audio_name>
+        <state_die_audio_number>2</state_die_audio_number>
+        <state_die_tile_state>1</state_die_tile_state>
+        <state_die_animation>1.708333333 2.5 0</state_die_animation>
+
+        # Idle
+        <state_idle_animation>0.0 0.791666667 1</state_idle_animation>
+
+        # Move
+        <state_move_animation>0.833333333 1.583333333 1</state_move_animation>
+
+        # Spawn
+        <state_spawn_animation>0.0 0.333333 1</state_spawn_animation>
+    </state>
+
+</entity>
+

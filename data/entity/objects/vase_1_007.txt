@@ -1,0 +1,70 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+        <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <base>
+        <base_name>vase_1_007</base_name>
+        <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>1.0 1.0 1.0</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_otation>
+	    <base_hit_points>2</base_hit_points>
+	    <base_debris>vase_debris</base_debris>
+	    <base_destructible>1<base_destructible>
+	    <base_collectable>0<base_collectable>
+    </base>
+
+    <graphics>
+        <graphics_model>objects/vase_1_007.obj</graphics_model>
+        <graphics_material>objects/dungeon_objects_1_001.txt</graphics_material>
+    </graphics>
+
+    <loot>
+        # gold + experience are multiplied by the map modifier
+	    # gold is ammount min-max for NPC
+	    <loot_gold>1</loot_gold>
+	    <loot_gold_min>50</loot_gold_min>
+	    <loot_gold_max>100</loot_gold_max>
+
+	    # experience is amount min-max
+	    <loot_experience>0</loot_experience>
+	    <loot_experience_min>50</loot_experience_min>
+	    <loot_experience_max>100</loot_experience_max>
+    </loot>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+        <physics_type>2</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+        <physics_bounding_volume_type>2</physics_bounding_volume_type>
+        <physics_mass>0.05</physics_mass>
+        <physics_collision_radius>0.485</physics_collision_radius>
+        <physics_collision_half_dimentions>0.485 0.5 0.485</physics_collision_half_dimentions>
+        <physics_acceleration>0.025</physics_acceleration>
+        <physics_velocity>0.0 0.0 0.0</physics_velocity>
+        <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <state>
+        <state_initial>0</state_initial> # 0 == none
+        
+        <state_defend_audio_name>glass_hit</state_defend_audio_name>
+        <state_defend_audio_number>1</state_defend_audio_number>
+        <state_defend_tile_state>1</state_defend_tile_state>
+        <state_defend_animation>0.0 0.0 0</state_defend_animation>
+
+        <state_die_audio_name>glass_break</state_die_audio_name>
+        <state_die_audio_number>4</state_die_audio_number>
+        <state_die_tile_state>0</state_die_tile_state>
+        <state_die_animation>0.0 0.0 0</state_die_animation>
+    </state>
+
+</entity>

@@ -1,0 +1,26 @@
+
+<entity>
+
+    <base>
+	    <base_name>ruins_2_path_001_i1p_001</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>1.0 1.0 1.0</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_rotation>
+    </base>
+    
+    <graphics>
+	    <graphics_model>biome/ruins_2/ruins_2_path_i1p_001.obj</graphics_model>
+	    <graphics_material>biome/ruins_2/ruins_2_path_i1p_001.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_mass>1</physics_mass>
+	    <physics_type>0</physics_type>
+	    <physics_collision_radius>0.5</physics_collision_radius>
+    </physics>
+
+</entity>
+

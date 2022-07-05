@@ -1,0 +1,27 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <base>
+	    <base_name>spider_leader_1_debris_004</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+        <base_scale>0.15 0.15 0.15</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_otation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
+	    <base_destructible>0<base_destructible>
+	    <base_collectable>0<base_collectable>
+        <base_fly_over>1</base_fly_over>
+        <base_type>0</base_type>
+    </base>
+    
+    <graphics>
+	    <graphics_model>npc/spider_1/spider_1_debris_004.obj</graphics_model>
+	    <graphics_material>npc/spider_1_002.txt</graphics_material>
+    </graphics>
+
+</entity>
+

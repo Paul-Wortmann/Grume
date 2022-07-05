@@ -1,0 +1,89 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <animation>
+        <animation_independent>1</animation_independent>
+    <animation>
+
+    <base>
+	    <base_name>dungeon_gate_1_003</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>1.0 1.0 1.0</base_scale>
+        <base_rotation>0.0000 0.0000 3.1416</base_rotation>
+        <base_type>3</base_type>
+    </base>
+
+    <graphics>
+	    <graphics_model>objects/dungeon_gate_1_003.dae</graphics_model>
+	    <graphics_material>objects/medieval_1_001.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>1</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>1</physics_bounding_volume_type>
+	    <physics_mass>0.005</physics_mass>
+	    <physics_collision_radius>0.5</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.5 0.5 1.5</physics_collision_half_dimentions>
+    </physics>
+    
+    <state>
+        <state_initial>0</state_initial> # 0 == none
+        
+        <state_open_audio_name>gate</state_open_audio_name>
+        <state_open_audio_number>1</state_open_audio_number>
+        <state_open_physics_state>0</state_open_physics_state>
+        <state_open_tile_state>0</state_open_tile_state>
+        <state_open_animation>0.0 0.4166 0</state_open_animation>
+
+        <state_close_audio_name>gate</state_close_audio_name>
+        <state_close_audio_number>1</state_close_audio_number>
+        <state_close_physics_state>1</state_close_physics_state>
+        <state_close_tile_state>1</state_close_tile_state>
+        <state_close_animation>0.4166 0.8332 0</state_close_animation>
+    </state>
+
+    <tile_collision>
+        <tile_collision_size>3</tile_collision_size>
+        <tile_collision_data>0 1 0</tile_collision_data>
+        <tile_collision_data>0 1 0</tile_collision_data>
+        <tile_collision_data>0 1 0</tile_collision_data>
+    </tile_collision>
+
+    <interaction>
+        #type, state 1 , state 2
+        #type 0 = none
+        #type 1 = set state
+        #type 2 = toggle states
+        #type 3 = activate state
+
+        # state type:    entityState_none     = 0,    // none
+        # state type:    entityState_attack   = 1,    // attack
+        # state type:    entityState_defend   = 2,    // defend
+        # state type:    entityState_die      = 3,    // die
+        # state type:    entityState_idle     = 4,    // idle
+        # state type:    entityState_interact = 5,    // interact
+        # state type:    entityState_move     = 6,    // move
+        # state type:    entityState_spawn    = 7,    // spawn
+        # state type:    entityState_open     = 8,    // open
+        # state type:    entityState_close    = 9 };  // close
+
+        <interaction_mouse>1</interaction_mouse>
+        <interaction_action>2 8 9</interaction_action>
+        <interaction_distance>6</interaction_distance> # ~num tiles (float)
+    </interaction>
+
+</entity>
+
+

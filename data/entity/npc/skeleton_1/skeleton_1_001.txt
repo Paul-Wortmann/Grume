@@ -1,0 +1,164 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <ai>
+        # ranges are distances squared
+        <ai_attack_range>1.5</ai_attack_range>
+        <ai_attack_frequency>1024</ai_attack_frequency> # mili-seconds
+        <ai_aware_range>15.0</ai_aware_range>
+        <ai_move_range>10.0</ai_move_range>
+        <ai_retreat_range>0.25</ai_retreat_range>
+        <ai_retreat_threshold>0.0125</ai_retreat_threshold>
+        <ai_model_corpse>npc/skeleton_1/skeleton_1_corpse_001.obj</ai_model_corpse>
+    </ai>
+
+    <movement>
+        <movement_speed>1.1</movement_speed>
+    </movement>
+
+    <animation>
+        <animation_independent>1</animation_independent>
+        <animation_count>1</animation_count>
+    </animation>
+
+    <base>
+        <base_name>skeleton_1_001</base_name>
+	    <base_type>6</base_type>
+	    <base_flying>0</base_flying>
+	    <base_over_size>0</base_over_size>
+        <base_position>0.0 0.0 0.0</base_position>
+        <base_scale>1.5 1.5 1.5</base_scale>
+        <base_rotation>3.14159 1.5708 0</base_otation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
+	    <base_debris>skeleton_1_debris</base_debris>
+	    <base_destructible>1</base_destructible>
+	    <base_collectable>0</base_collectable>
+	    <base_particle_type>4</base_particle_type>
+        <base_particle_height>3.0</base_particle_height>
+    </base>
+
+    <character>
+	    <character_importance>0</character_importance>
+	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
+	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
+	    <character_billboard_position>3.0</character_billboard_position>
+	    <character_health_max>100</character_health_max>
+	    <character_health_regen>0.0125</character_health_regen>
+	    <character_mana_max>100</character_mana_max>
+	    <character_mana_regen>0.0125</character_mana_regen>
+
+        <character_damage>
+	        <character_damage_physical_base>25.0</character_damage_physical_base>
+	        <character_damage_physical_crit_chance>0.1</character_damage_physical_crit_chance>
+	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
+
+	        <character_damage_fire_base>1.5</character_damage_fire_base>
+	        <character_damage_fire_crit_chance>0.1</character_damage_fire_crit_chance>
+	        <character_damage_fire_crit_multiplier>1.5</character_damage_fire_crit_multiplier>
+
+	        <character_damage_frost_base>1.5</character_damage_frost_base>
+	        <character_damage_frost_crit_chance>0.1</character_damage_frost_crit_chance>
+	        <character_damage_frost_crit_multiplier>1.5</character_damage_frost_crit_multiplier>
+        </character_damage>
+
+        <character_armor>
+	        <character_armor_physical_base>1.5</character_armor_physical_base>
+	        <character_armor_fire_base>1.5</character_armor_fire_base>
+	        <character_armor_frost_base>1.5</character_armor_frost_base>
+        </character_armor>
+
+        <character_skills>
+
+            <character_skills>
+	            <character_skill_heal_enabled>0</character_skill_heal_enabled>
+	            <character_skill_heal_mana_cost>50.0</character_skill_heal_mana_cost>
+	            <character_skill_heal_amount>12.5</character_skill_heal_amount>
+            </character_skills>
+
+        </character_skills>
+
+    </character>
+
+    <graphics>
+        <graphics_model>npc/skeleton_1/skeleton_4_001.dae</graphics_model>
+        <graphics_material>npc/skeleton_1_001.txt</graphics_material>
+    </graphics>
+
+    <loot>
+        # gold + experience are multiplied by the map modifier
+	    # gold is ammount min-max for NPC
+	    <loot_gold>1</loot_gold>
+	    <loot_gold_min>50</loot_gold_min>
+	    <loot_gold_max>100</loot_gold_max>
+
+	    # experience is amount min-max
+	    <loot_experience>1</loot_experience>
+	    <loot_experience_min>50</loot_experience_min>
+	    <loot_experience_max>100</loot_experience_max>
+
+	    # guaranteed item drop (position in loot table), 0 for random loot
+	    <loot_item_id>0<loot_item_id>
+    </loot>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>2</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>2</physics_bounding_volume_type>
+	    <physics_mass>0.0125</physics_mass>
+	    <physics_collision_radius>0.45</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.45 0.5 0.45</physics_collision_half_dimentions>
+	    <physics_acceleration>0.025</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <state>
+        <state_initial>4</state_initial> # 4 == idle
+
+        # Attack
+        <state_attack_audio_name>creature</state_attack_audio_name>
+        <state_attack_audio_number>8</state_attack_audio_number>
+        <state_attack_tile_state>1</state_attack_tile_state>
+        <state_attack_animation>0.0 0.625 1</state_attack_animation>
+
+        # Defend
+        <state_defend_audio_name>creature</state_defend_audio_name>
+        <state_defend_audio_number>8</state_defend_audio_number>
+        <state_defend_tile_state>1</state_defend_tile_state>
+        <state_defend_animation>0.0 0.625 1</state_defend_animation>
+
+        # Die
+        <state_die_audio_name>creature</state_die_audio_name>
+        <state_die_audio_number>9</state_die_audio_number>
+        <state_die_tile_state>1</state_die_tile_state>
+        <state_die_animation>0.0 0.1 0</state_die_animation>
+
+        # Idle
+        <state_idle_tile_state>1</state_idle_tile_state>
+        <state_idle_animation>0.0 0.625 1</state_idle_animation>
+
+        # Interact
+        <state_interact_tile_state>1</state_interact_tile_state>
+        <state_interact_animation>0.0 0.625 1</state_interact_animation>
+
+        # Move
+        <state_move_animation>0.0 0.625 1</state_move_animation>
+
+        # Spawn
+        <state_spawn_tile_state>1</state_spawn_tile_state>
+        <state_spawn_animation>0.0 0.625 1</state_spawn_animation>
+    </state>
+
+</entity>
+

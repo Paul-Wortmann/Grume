@@ -1,0 +1,92 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+        <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <animation>
+        <animation_independent>1</animation_independent>
+        <animation_count>1</animation_count>
+    </animation>
+
+    <base>
+        <base_name>blacksmith_1_001</base_name>
+        <base_collectable>0</base_collectable>
+        <base_destructible>0</base_destructible>
+	    <base_flying>0</base_flying>
+        <base_fly_over>0</base_fly_over>
+	    <base_over_size>0</base_over_size>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_rotation>0.0 0.0 3.14159</base_rotation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
+	    <base_scale>0.65 0.65 0.65</base_scale>
+	    <base_type>9</base_type>
+    </base>
+
+    <graphics>
+	    <graphics_model>player/human_male_1_001.dae</graphics_model>
+	    <graphics_material>player/human_male_feet_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_hands_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_body_1_001.txt</graphics_material>
+	    <graphics_material>player/human_male_head_1_001.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>0</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>2</physics_bounding_volume_type>
+	    <physics_mass>0.04</physics_mass>
+	    <physics_collision_radius>0.45</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.45 0.5 0.45</physics_collision_half_dimentions>
+	    <physics_acceleration>0.125</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <state>
+        <state_initial>4</state_initial> # 4 == idle
+        
+        # Idle
+        <state_idle_tile_state>1</state_idle_tile_state>
+        <state_idle_animation>0.0 0.791666667 1</state_idle_animation>
+
+        # Interact
+        <state_interact_audio_name>trader</state_interact_audio_name>
+        <state_interact_audio_number>2</state_interact_audio_number>
+        <state_interact_tile_state>1</state_interact_tile_state>
+        <state_interact_animation>0.0 0.791666667 1</state_interact_animation>
+    </state>
+
+    <interaction>
+        #type, state 1 , state 2
+        #type 0 = none
+        #type 1 = set state
+        #type 2 = toggle states
+        #type 3 = activate state
+
+        # state type:    entityState_none     = 0,    // none
+        # state type:    entityState_attack   = 1,    // attack
+        # state type:    entityState_defend   = 2,    // defend
+        # state type:    entityState_die      = 3,    // die
+        # state type:    entityState_idle     = 4,    // idle
+        # state type:    entityState_interact = 5,    // interact
+        # state type:    entityState_spawn    = 6,    // spawn
+        # state type:    entityState_open     = 7,    // open
+        # state type:    entityState_close    = 8 };  // close
+
+        <interaction_mouse>1</interaction_mouse>
+        <interaction_action>2 5 5</interaction_action>
+        <interaction_distance>10</interaction_distance> # ~num tiles (float)
+    </interaction>
+
+</entity>
+
+</entity>
