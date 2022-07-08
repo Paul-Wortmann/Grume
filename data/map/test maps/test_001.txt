@@ -1,0 +1,128 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map>
+    <information>
+    	<map_name>test_001</map_name>
+    	<map_biome>dungeon_1</map_biome>
+    	<map_tiles_x>32</map_tiles_x>
+    	<map_tiles_y>32</map_tiles_y>
+    	<map_seed>0</map_seed>
+    	<map_music_name>test</map_music_name>
+    	<map_music_number>0</map_music_number>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <tile_data>
+        # tileNone           =  0, // None
+        # tileFloor          =  1, // Floor tile
+        # tilePath           =  2, // Path tile
+        # tileFloorNoGo      =  3, // Floor no go tile
+        # tilePathNoGo       =  4, // Path no go tile
+        # tileWallTall       =  5, // Wall tall tile
+        # tileWallTallHole   =  6, // Wall tall tile - hole
+        # tileWallShort      =  7, // Wall short tile
+        # tileDoorWay        =  8, // DoorWay tile
+        # tileDoorwayNoGo    =  9  // Doorway no go tile
+        #
+    	<tiles>5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5</tiles>
+    	<tiles>5,5,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,8,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,8,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,8,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,7,7,7,7,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,5,1,7,1,1,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,5,1,1,1,1,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,5,1,1,5,1,1,1,1,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,5,1,1,1,1,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,5,1,1,1,1,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,8,5,5,5,5,5,5,5,5,5,5,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,5,5,5,8,8,8,5,8,8,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,5,5,5,5,5,5,5,5,5,5,8,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5</tiles>
+    	<tiles>5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5</tiles>
+    </tile_data>
+
+    <portals>
+        # These are used when warping from a prior map
+        # Portal number, map from database name, and portal, tile location x, y, player face direction
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
+        <portal>1 test_2 1 003 028 4.7124</portal>
+    </portals>
+
+    <events>
+        # Event number, type, tile x, y, trigger tile x, y, database map name, repeat
+        # Type 1: trigger object on tile
+        # Type 2: map warp event
+
+        <event>1 1  16 11  16 10  none   1</event>
+        <event>2 1  20 08  16 10  none   1</event>
+        <event>3 2  01 00  00 00  test_2 0</event>
+    </events>
+
+    <npc_mobs>
+        # database name, number, frequency
+        <npc_mob>bat 1 10</npc_mob>
+    </npc_mobs>
+
+    <debris_objects>
+        # database name, number, frequency
+        <debris_object>bones 0 10</debris_object>
+    </debris_objects>
+
+    <npcs>
+        # database name, number, tile x, y, scale x, y, z, rotation x, y, z
+        <npc>golem  1  020 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000</npc>
+        <npc>trader 1  001 003  0.0000 0.0000 0.0000  0.0000 4.7124 0.0000</npc>
+        <npc>bat    1  027 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000</npc>
+    </npcs>
+
+    <objects>
+        # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
+        <object>portal_stairs_down 1  001 028  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3</object>
+
+        <object>dungeon_switch 1  016 010  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 020 009 0</object>
+        <object>dungeon_trap   1  020 009  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 020 010 0</object>
+        <object>dungeon_trap   1  020 010  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 020 011 0</object>
+        <object>dungeon_trap   1  020 011  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>dungeon_gate   1  011 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
+        <object>dungeon_gate   1  020 012  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
+        <object>dungeon_gate   2  009 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
+        <object>dungeon_gate   3  005 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
+        <object>chest          1  001 005  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
+        <object>coins          1  016 012  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>jar            1  005 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>jar            1  005 009  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>jar            1  005 010  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>jar            1  005 011  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>jar            1  005 012  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel         1  009 009  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel         1  009 010  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel         1  009 011  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>crate          1  010 004  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>crate          2  010 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>alchemy_table  1  001 012  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+    </objects>
+
+</map>
+
+
+
