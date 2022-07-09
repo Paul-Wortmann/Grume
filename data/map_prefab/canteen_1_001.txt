@@ -1,0 +1,83 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<map_prefab>
+    <information>
+        <exit_data>1 0 0 0</exit_data>
+        <room_type>6</room_type>
+        <map_tiles_x>19</map_tiles_x>
+        <map_tiles_y>19</map_tiles_y>
+    </information>
+
+    <tile_data>
+        # tileNone           =  0,  // None
+        # tileFloor          =  1,  // Floor tile
+        # tilePath           =  2,  // Path tile
+        # tileFloorNoGo      =  3,  // Floor no go tile
+        # tilePathNoGo       =  4,  // Path no go tile
+        # tileWallTall       =  5,  // Wall tall tile
+        # tileWallTallHole   =  6,  // Wall tall tile - hole
+        # tileWallShort      =  7,  // Wall short tile
+        # tileDoorWay        =  8,  // DoorWay tile
+        # tileDoorwayNoGo    =  9   // Doorway no go tile
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</tiles>
+    </tile_data>
+
+    <objects>
+        # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
+        <object>town_prop  2  2  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3  2 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3  6 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2  2 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2  3 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2  5 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  2  2  9 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3  7 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3  9 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3 11 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2  8 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2 10 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2 11 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  2  2 14 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3 13 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3 14 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 13  3 16 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2 13 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2 15 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop 27  2 16 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4  9  1 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 25  9  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4  9  7 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 10  9  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4 15  1 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 25 15  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4 15  7 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 10 15  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4  9 11 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 25  9 14 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4  9 17 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 10  9 14 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4 15 11 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 25 15 14 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>town_prop  4 15 17 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0 0 0</object>
+        <object>town_prop 10 15 14 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+    </objects>
+
+</map_prefab>

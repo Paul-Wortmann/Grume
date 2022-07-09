@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<map_prefab>
+    <information>
+        <exit_data>1 0 0 0</exit_data>
+        <room_type>1</room_type>
+        <map_tiles_x>9</map_tiles_x>
+        <map_tiles_y>9</map_tiles_y>
+    </information>
+
+    <tile_data>
+        # tileNone           =  0,  // None
+        # tileFloor          =  1,  // Floor tile
+        # tilePath           =  2,  // Path tile
+        # tileFloorNoGo      =  3,  // Floor no go tile
+        # tilePathNoGo       =  4,  // Path no go tile
+        # tileWallTall       =  5,  // Wall tall tile
+        # tileWallTallHole   =  6,  // Wall tall tile - hole
+        # tileWallShort      =  7,  // Wall short tile
+        # tileDoorWay        =  8,  // DoorWay tile
+        # tileDoorwayNoGo    =  9   // Doorway no go tile
+        <tiles>1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,3,3,3,1,1,1</tiles>
+        <tiles>1,1,1,3,3,3,1,1,1</tiles>
+        <tiles>1,1,1,3,3,3,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1</tiles>
+        <tiles>1,1,1,1,1,1,1,1,1</tiles>
+    </tile_data>
+
+    <objects>
+        # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
+        <object>torture_device 11  4  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+        <object>gib             8  4  4 0.0000 0.0000 0.0000 0.0000 1.5708 0.0000 0 0 0</object>
+    </objects>
+
+</map_prefab>
