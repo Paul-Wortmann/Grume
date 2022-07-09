@@ -1,0 +1,9 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+	<material_name>barrel_001</material_name>
+	<diffuse_texture>objects/barrel_001_d.png</diffuse_texture>
+	<normal_texture>objects/barrel_001_n.png</normal_texture>
+	<specular_texture>objects/barrel_001_s.png</specular_texture>
+	<emissive_texture>default/default_e.png</emissive_texture>
+</material>
+

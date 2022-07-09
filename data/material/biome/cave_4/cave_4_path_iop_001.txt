@@ -1,0 +1,9 @@
+
+<material>
+	<material_name>cave_4_path_iop_001</material_name>
+	<diffuse_texture>biome/cave_4/cave_4_path_iop_001_d.png</diffuse_texture>
+	<normal_texture>biome/cave_1/cave_1_path_iop_001_n.png</normal_texture>
+	<specular_texture>biome/cave_1/cave_1_path_iop_001_s.png</specular_texture>
+	<emissive_texture>default/default_e.png</emissive_texture>
+</material>
+

@@ -1,0 +1,9 @@
+
+<material>
+	<material_name>dungeon_1_path_dp_001</material_name>
+	<diffuse_texture>biome/dungeon_1/dungeon_1_path_dp_001_d.png</diffuse_texture>
+	<normal_texture>biome/dungeon_1/dungeon_1_path_dp_001_n.png</normal_texture>
+	<specular_texture>biome/dungeon_1/dungeon_1_path_dp_001_s.png</specular_texture>
+	<emissive_texture>default/default_e.png</emissive_texture>
+</material>
+
