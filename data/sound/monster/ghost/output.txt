@@ -1,0 +1,8 @@
+ghost_1_001.ogg
+ghost_1_002.ogg
+ghost_2_001.ogg
+ghost_2_002.ogg
+ghost_2_003.ogg
+ghost_2_004.ogg
+ghost_2_005.ogg
+output.txt

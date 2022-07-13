@@ -1,0 +1,16 @@
+output.txt
+shade_1_001.ogg
+shade_1_002.ogg
+shade_1_003.ogg
+shade_1_004.ogg
+shade_1_005.ogg
+shade_1_006.ogg
+shade_1_007.ogg
+shade_1_008.ogg
+shade_1_009.ogg
+shade_1_010.ogg
+shade_1_011.ogg
+shade_1_012.ogg
+shade_1_013.ogg
+shade_1_014.ogg
+shade_1_015.ogg

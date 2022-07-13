@@ -1,0 +1,11 @@
+monster_3_001.ogg
+monster_3_002.ogg
+monster_3_003.ogg
+monster_3_004.ogg
+monster_3_005.ogg
+monster_3_006.ogg
+monster_3_007.ogg
+monster_3_008.ogg
+monster_3_009.ogg
+monster_3_010.ogg
+output.txt
