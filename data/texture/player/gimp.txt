@@ -1,0 +1,3 @@
+brightness contrast
+-80
+40
