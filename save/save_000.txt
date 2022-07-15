@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<save_file>
+
+   <information>
+      <current_map>test_001</current_map>
+      <current_position>528</current_position>
+      <current_rotation>0</current_rotation>
+   </information>
+
+   <player>
+      <level_current>0</level_current>
+      <exp_current>0</exp_current>
+      <exp_next>1024</exp_next>
+      <health_current>100</health_current>
+      <health_max>100</health_max>
+      <health_regen>0.0125</health_regen>
+      <mana_current>100</mana_current>
+      <mana_max>100</mana_max>
+      <mana_regen>0.0125</mana_regen>
+   </player>
+
+   <quest>
+      <001>0</001>
+   </quest>
+
+   <map_data>
+   </map_data>
+
+</save_file>
+
