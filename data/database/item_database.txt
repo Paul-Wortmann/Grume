@@ -31,9 +31,20 @@
 	<item>rune                  items/rune_5_001.txt</item>
 	<item>rune                  items/rune_6_001.txt</item>
 
+	<item>bow                   items/bow_1_001.txt</item>
+	<item>crossbow              items/crossbow_1_001.txt</item>
+	<item>dagger                items/dagger_1_001.txt</item>
+	<item>grimoire              items/grimoire_1_001.txt</item>
+	<item>one_handed_axe        items/one_handed_axe_1_001.txt</item>
+	<item>one_handed_mace       items/one_handed_mace_1_001.txt</item>
+	<item>one_handed_sword      items/one_handed_sword_1_001.txt</item>
+	<item>quiver                items/quiver_1_001.txt</item>
 	<item>shield                items/shield_1_001.txt</item>
+	<item>staff                 items/staff_1_001.txt</item>
 	<item>two_handed_axe        items/two_handed_axe_1_001.txt</item>
+	<item>two_handed_mace       items/two_handed_mace_1_001.txt</item>
 	<item>two_handed_sword      items/two_handed_sword_1_001.txt</item>
+	<item>wand                  items/wand_1_001.txt</item>
 
 </item_database>
 
