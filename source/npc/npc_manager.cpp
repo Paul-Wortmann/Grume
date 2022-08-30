@@ -1123,6 +1123,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                 if (m_entityPlayer->character->level.exp >= m_entityPlayer->character->level.expNext)
                 {
                     // Level up
+                    m_entityPlayer->character->level.current++;
                     m_entityPlayer->character->level.exp -= m_entityPlayer->character->level.expNext;
                     m_entityPlayer->character->level.expNext *= m_entityPlayer->character->level.expMultiplier;
 
@@ -1135,12 +1136,12 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                     // Health
                     m_entityPlayer->character->attribute.health.max += (m_entityPlayer->character->attribute.health.max / 2.0f);
                     m_entityPlayer->character->attribute.health.current = m_entityPlayer->character->attribute.health.max;
-                    m_entityPlayer->character->attribute.health.regen += 0.005f;
+                    m_entityPlayer->character->attribute.health.regen += (m_entityPlayer->character->attribute.health.regen * 1.25f);
 
                     // Mana
                     m_entityPlayer->character->attribute.mana.max += (m_entityPlayer->character->attribute.mana.max / 2.0f);
                     m_entityPlayer->character->attribute.mana.current = m_entityPlayer->character->attribute.mana.max;
-                    m_entityPlayer->character->attribute.mana.regen += 0.005f;
+                    m_entityPlayer->character->attribute.mana.regen += (m_entityPlayer->character->attribute.mana.regen * 1.25f);
 
                     // Damage
                     m_entityPlayer->character->attribute.damagePhysical.base += 1;

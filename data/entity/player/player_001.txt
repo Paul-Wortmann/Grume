@@ -24,9 +24,9 @@
 	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
 	    <character_health_max>100</character_health_max>
-	    <character_health_regen>0.0125</character_health_regen>
+	    <character_health_regen>0.025</character_health_regen>
 	    <character_mana_max>100</character_mana_max>
-	    <character_mana_regen>0.0125</character_mana_regen>
+	    <character_mana_regen>0.025</character_mana_regen>
     </character>
 
     <graphics>

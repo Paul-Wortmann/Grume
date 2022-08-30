@@ -12,6 +12,10 @@
 	<ui>ui_001.txt<ui>
 	<quests>quests_001.txt</quests>
 	<game_conditions>game_conditions_001.txt<game_conditions>
+
+	<map>area_1/town_1_001.txt</map>
+	<map_town>town_1_001</map_town>
+
 	<map>area_2/town_2_001.txt</map>
 	<map>area_1/cave_2_012.txt</map>
 	<map>area_1/town_1_001.txt</map>

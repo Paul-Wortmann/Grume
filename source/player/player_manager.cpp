@@ -180,6 +180,18 @@ void cPlayerManager::targetTile(const std::uint32_t &_tile)
 
 void cPlayerManager::process(const float &_dt)
 {
+    float frameDelta = _dt / 16.0f; // 60 FPS == 16ms per frame
+
+    // Health regeneration
+    m_player->character->attribute.health.current += (m_player->character->attribute.health.regen * frameDelta);
+    if (m_player->character->attribute.health.current > m_player->character->attribute.health.max)
+        m_player->character->attribute.health.current = m_player->character->attribute.health.max;
+
+    // Mana regeneration
+    m_player->character->attribute.mana.current += (m_player->character->attribute.mana.regen * frameDelta);
+    if (m_player->character->attribute.mana.current > m_player->character->attribute.mana.max)
+        m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
+
     if (m_player->movement->pathing == true)
     {
         std::uint32_t currentTile    = m_player->movement->mapPath.path[m_player->movement->mapPath.currentPosition];
