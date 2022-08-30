@@ -1,16 +1,16 @@
-# Blender v2.83.5 OBJ File: 'dungeon_2022_001.blend'
+# Blender v2.83.5 OBJ File: 'biome_tileset_town_001.blend'
 # www.blender.org
-mtllib tile_set_001_hw_sr_1_001.mtl
-o tile_set_001_hw_sr_1_001_Cube.027
-v -0.500000 3.000000 0.500000
-v -0.500000 3.000000 -0.500000
+mtllib town_1_hw_sr_001.mtl
+o town_1_hw_sr_001.001_Cube.010
 v 0.500000 3.000000 0.500000
+v -0.500000 3.000000 0.500000
 v 0.500000 3.000000 -0.500000
-vt 0.500000 1.000000
-vt 0.000000 1.000000
-vt 0.000000 0.666667
-vt 0.500000 0.666667
+v -0.500000 3.000000 -0.500000
+vt 0.498535 0.666992
+vt 0.498535 1.000326
+vt -0.000488 1.000326
+vt -0.000488 0.666992
 vn 0.0000 1.0000 0.0000
-usemtl Material.003
-s off
-f 4/1/1 2/2/1 1/3/1 3/4/1
+usemtl town_biome_material.027
+s 1
+f 1/1/1 3/2/1 4/3/1 2/4/1
