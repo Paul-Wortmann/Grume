@@ -31,6 +31,8 @@
 #include "../physics/physics_collision.hpp"
 #include "../resource/database_manager.hpp"
 
+#include "player_inventory.hpp"
+
 // Event type enum
 enum ePlayerEventType : std::uint32_t { playerEventType_none        = 0,    // null event
                                         playerEventType_newPosition = 1 };  // player has been repositioned
@@ -83,6 +85,10 @@ class cPlayerManager :tcTemplateEngine
         sEntity*          m_player          = nullptr;
         sMap*             m_mapPointer      = nullptr;
 
+        // systems
+        cPlayerInventory  m_playerInventory = {};
+
+        // Data
         std::uint32_t     m_tileClicked     = 0;
         std::uint32_t     m_objectClicked   = 0;
 };

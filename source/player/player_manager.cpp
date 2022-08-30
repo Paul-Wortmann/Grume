@@ -26,11 +26,14 @@
 std::uint32_t cPlayerManager::initialize(void)
 {
     std::uint32_t return_value = EXIT_SUCCESS;
+    return_value = m_playerInventory.initialize();
+    m_playerInventory.setInventorySize(6, 9);
     return return_value;
 }
 
 void cPlayerManager::terminate(void)
 {
+    m_playerInventory.terminate();
 }
 
 std::uint32_t cPlayerManager::load(const std::string &_fileName)
