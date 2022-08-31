@@ -50,6 +50,7 @@ class cPlayerInventory
         void          terminate(void);
         void          setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
         bool          pickupItem(const sEntity* &_entity);
+        bool          dropItem(const sEntity* &_entity);
 
     protected:
     private:

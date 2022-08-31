@@ -61,3 +61,8 @@ bool cPlayerInventory::pickupItem(const sEntity* &_entity)
 {
     return false;
 }
+
+bool cPlayerInventory::dropItem(const sEntity* &_entity)
+{
+    return false;
+}
