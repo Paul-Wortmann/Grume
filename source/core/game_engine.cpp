@@ -41,6 +41,8 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     std::string GRUMECompile = __DATE__; GRUMECompile += " - "; GRUMECompile += __TIME__;
     gLogWrite(LOG_INFO, "Compile details: " + GRUMECompile, __FILE__, __LINE__, __FUNCTION__);
 
+    gLogWrite(LOG_INFO, "Home path: " + std::string(std::getenv("HOME")), __FILE__, __LINE__, __FUNCTION__);
+
     // Load the configuration file
     m_gameConfig.load();
 

@@ -31,6 +31,13 @@
 	<item>rune                  items/rune_5_001.txt</item>
 	<item>rune                  items/rune_6_001.txt</item>
 
+    # Armor
+	<item>heavy_armor           items/heavy_armor_1_001.txt</item>
+	<item>heavy_boots           items/heavy_boots_1_001.txt</item>
+	<item>heavy_gloves          items/heavy_gloves_1_001.txt</item>
+	<item>heavy_helmet          items/heavy_helmet_1_001.txt</item>
+
+    # Weapons
 	<item>bow                   items/bow_1_001.txt</item>
 	<item>crossbow              items/crossbow_1_001.txt</item>
 	<item>dagger                items/dagger_1_001.txt</item>

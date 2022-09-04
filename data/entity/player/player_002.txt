@@ -32,10 +32,10 @@
     <graphics>
 	    <graphics_model>player/human_male_2_001.dae</graphics_model>
 	    <graphics_material>player/human_male_head_1_001.txt</graphics_material>
-	    <graphics_material>player/human_male_heavy_armor_1_001.txt</graphics_material>
-	    <graphics_material>player/human_male_heavy_boots_1_001.txt</graphics_material>
-	    <graphics_material>player/human_male_heavy_gloves_1_001.txt</graphics_material>
-	    <graphics_material>player/human_male_heavy_helmet_1_001.txt</graphics_material>
+	    <graphics_material>items/human_male_heavy_armor_1_001.txt</graphics_material>
+	    <graphics_material>items/human_male_heavy_boots_1_001.txt</graphics_material>
+	    <graphics_material>items/human_male_heavy_gloves_1_001.txt</graphics_material>
+	    <graphics_material>items/human_male_heavy_helmet_1_001.txt</graphics_material>
     </graphics>
 
     <physics>

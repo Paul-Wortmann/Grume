@@ -69,6 +69,8 @@
 
 // Project includes
 #include "defines.hpp"
+#include "defines_linux.hpp"
+#include "defines_windows.hpp"
 #include "defines_types.hpp"
 #include "file_paths.hpp"
 #include "../debug/debug_log.hpp"
