@@ -130,25 +130,25 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
 
         // Gold
         tPlayer->character->gold = xmlSaveGameFile.getInteger("<gold_current>");
-/*
+
         // Damage
-        player->character->attributes.damagePhysical.base           = xmlSaveGameFile.getFloat("<damage_physical_base>");
-        player->character->attributes.damagePhysical.critChancev    = xmlSaveGameFile.getFloat("<damage_physical_crit_chance>");
-        player->character->attributes.damagePhysical.critMultiplier = xmlSaveGameFile.getFloat("<damage_physical_crit_multiplier>");
-        player->character->attributes.damageFire.base               = xmlSaveGameFile.getFloat("<damage_fire_base>");
-        player->character->attributes.damageFire.critChancev        = xmlSaveGameFile.getFloat("<damage_fire_crit_chance>");
-        player->character->attributes.damageFire.critMultiplier     = xmlSaveGameFile.getFloat("<damage_fire_crit_multiplier>");
-        player->character->attributes.damageFrost.base              = xmlSaveGameFile.getFloat("<damage_frost_base>");
-        player->character->attributes.damageFrost.critChancev       = xmlSaveGameFile.getFloat("<damage_frost_crit_chance>");
-        player->character->attributes.damageFrost.critMultiplier    = xmlSaveGameFile.getFloat("<damage_frost_crit_multiplier>");
+        tPlayer->character->attribute.damagePhysical.base           = xmlSaveGameFile.getFloat("<damage_physical_base>");
+        tPlayer->character->attribute.damagePhysical.critChance     = xmlSaveGameFile.getFloat("<damage_physical_crit_chance>");
+        tPlayer->character->attribute.damagePhysical.critMultiplier = xmlSaveGameFile.getFloat("<damage_physical_crit_multiplier>");
+        tPlayer->character->attribute.damageFire.base               = xmlSaveGameFile.getFloat("<damage_fire_base>");
+        tPlayer->character->attribute.damageFire.critChance         = xmlSaveGameFile.getFloat("<damage_fire_crit_chance>");
+        tPlayer->character->attribute.damageFire.critMultiplier     = xmlSaveGameFile.getFloat("<damage_fire_crit_multiplier>");
+        tPlayer->character->attribute.damageFrost.base              = xmlSaveGameFile.getFloat("<damage_frost_base>");
+        tPlayer->character->attribute.damageFrost.critChance        = xmlSaveGameFile.getFloat("<damage_frost_crit_chance>");
+        tPlayer->character->attribute.damageFrost.critMultiplier    = xmlSaveGameFile.getFloat("<damage_frost_crit_multiplier>");
 
         // Armor
-        player->character->attributes.armorPhysical.base            = xmlSaveGameFile.getFloat("<armor_physical_base>");
+        tPlayer->character->attribute.armorPhysical.base            = xmlSaveGameFile.getFloat("<armor_physical_base>");
 
         // Resistance
-        player->character->attributes.resistanceFire.base           = xmlSaveGameFile.getFloat("<resistance_fire_base>");
-        player->character->attributes.resistanceFrost.base          = xmlSaveGameFile.getFloat("<resistance_frost_base>");
-*/
+        tPlayer->character->attribute.resistanceFire.base           = xmlSaveGameFile.getFloat("<resistance_fire_base>");
+        tPlayer->character->attribute.resistanceFrost.base          = xmlSaveGameFile.getFloat("<resistance_frost_base>");
+
         // Quest
 
         // Map data

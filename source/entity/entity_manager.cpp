@@ -559,21 +559,21 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             if (xmlEntityFile.getInstanceCount("<character_damage_physical_base>") > 0)
                 tEntity->character->attribute.damagePhysical.base = xmlEntityFile.getFloat("<character_damage_physical_base>");
             if (xmlEntityFile.getInstanceCount("<character_damage_physical_crit_chance>") > 0)
-                tEntity->character->attribute.damagePhysical.critChancev = xmlEntityFile.getFloat("<character_damage_physical_crit_chance>");
+                tEntity->character->attribute.damagePhysical.critChance = xmlEntityFile.getFloat("<character_damage_physical_crit_chance>");
             if (xmlEntityFile.getInstanceCount("<character_damage_physical_crit_multiplier>") > 0)
                 tEntity->character->attribute.damagePhysical.critMultiplier = xmlEntityFile.getFloat("<character_damage_physical_crit_multiplier>");
 
             if (xmlEntityFile.getInstanceCount("<character_damage_fire_base>") > 0)
                 tEntity->character->attribute.damageFire.base = xmlEntityFile.getFloat("<character_damage_fire_base>");
             if (xmlEntityFile.getInstanceCount("<character_damage_fire_crit_chance>") > 0)
-                tEntity->character->attribute.damageFire.critChancev = xmlEntityFile.getFloat("<character_damage_fire_crit_chance>");
+                tEntity->character->attribute.damageFire.critChance = xmlEntityFile.getFloat("<character_damage_fire_crit_chance>");
             if (xmlEntityFile.getInstanceCount("<character_damage_fire_crit_multiplier>") > 0)
                 tEntity->character->attribute.damageFire.critMultiplier = xmlEntityFile.getFloat("<character_damage_fire_crit_multiplier>");
 
             if (xmlEntityFile.getInstanceCount("<character_damage_frost_base>") > 0)
                 tEntity->character->attribute.damageFrost.base = xmlEntityFile.getFloat("<character_damage_frost_base>");
             if (xmlEntityFile.getInstanceCount("<character_damage_frost_crit_chance>") > 0)
-                tEntity->character->attribute.damageFrost.critChancev = xmlEntityFile.getFloat("<character_damage_frost_crit_chance>");
+                tEntity->character->attribute.damageFrost.critChance = xmlEntityFile.getFloat("<character_damage_frost_crit_chance>");
             if (xmlEntityFile.getInstanceCount("<character_damage_frost_crit_multiplier>") > 0)
                 tEntity->character->attribute.damageFrost.critMultiplier = xmlEntityFile.getFloat("<character_damage_frost_crit_multiplier>");
 

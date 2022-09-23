@@ -1145,13 +1145,13 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
 
                     // Damage
                     m_entityPlayer->character->attribute.damagePhysical.base += 1;
-                    m_entityPlayer->character->attribute.damagePhysical.critChancev += 1.0f;
+                    m_entityPlayer->character->attribute.damagePhysical.critChance += 1.0f;
                     m_entityPlayer->character->attribute.damagePhysical.critMultiplier += 0.25f;
                     m_entityPlayer->character->attribute.damageFire.base += 1;
-                    m_entityPlayer->character->attribute.damageFire.critChancev += 1.0f;
+                    m_entityPlayer->character->attribute.damageFire.critChance += 1.0f;
                     m_entityPlayer->character->attribute.damageFire.critMultiplier += 0.25f;
                     m_entityPlayer->character->attribute.damageFrost.base += 1;
-                    m_entityPlayer->character->attribute.damageFrost.critChancev += 1.0f;
+                    m_entityPlayer->character->attribute.damageFrost.critChance += 1.0f;
                     m_entityPlayer->character->attribute.damageFrost.critMultiplier += 0.25f;
 
                     // Armor
