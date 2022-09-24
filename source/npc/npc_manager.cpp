@@ -919,6 +919,7 @@ void cNPCManager::process(const float &_dt)
                     // Note: this does not factor in npc armor / resistance
                     // Note: this does not factor in damage types
                     // Note: we should calculate total damage and total armor first before applying it
+                    // Note: rand() for crit does not factor in max chance or player level
 
                     // Crit damage
                     if ((rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.critChance)

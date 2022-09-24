@@ -10,7 +10,8 @@
 	    <base_name>coins_1_006</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>1.0 1.0 1.0</base_scale>
-	    <base_rotation>0.0 0.0 0.0</base_otation>
+	    <base_rotation>0.0 0.0 0.0</base_rotation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_hit_points>2</base_hit_points>
 	    <base_destructible>0<base_destructible>
 	    <base_collectable>1<base_collectable>
