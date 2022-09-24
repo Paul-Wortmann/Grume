@@ -916,11 +916,22 @@ void cNPCManager::process(const float &_dt)
                     m_entityTemp->character->healthBarEnabled = true;
                     m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
 
+                    // Note: this does not factor in npc armor / resistance
+                    // Note: this does not factor in damage types
+                    // Note: we should calculate total damage and total armor first before applying it
+
+                    // Crit damage
+                    if ((rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.critChance)
+                    {
+                        float damage = m_entityPlayer->character->attribute.damagePhysical.base * m_entityPlayer->character->attribute.damagePhysical.critMultiplier;
+                        damage += m_entityPlayer->character->attribute.damagePhysical.base;
+                        m_entityTemp->character->attribute.health.current -= (m_entityPlayer->character->damage * damage);
+                    }
+                    else
                     // Normal damage
-                    m_entityTemp->character->attribute.health.current -= (m_entityPlayer->character->damage * m_entityPlayer->character->attribute.damagePhysical.base);
-
-                    // Crit damage....
-
+                    {
+                        m_entityTemp->character->attribute.health.current -= (m_entityPlayer->character->damage * m_entityPlayer->character->attribute.damagePhysical.base);
+                    }
 
                     // Set entity state : defend
                     m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_defend);
