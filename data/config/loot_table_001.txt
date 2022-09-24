@@ -196,5 +196,37 @@
         <item_type>1</item_type>
     </loot>
 
+    <loot>
+        <entity_name>medium_armor</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>medium_boots</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>medium_gloves</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>medium_helmet</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
 </loot_table>
 
