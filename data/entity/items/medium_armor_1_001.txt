@@ -1,0 +1,63 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <base>
+	    <base_name>medium_armor_1_001</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>0.5 0.5 0.5</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_otation>
+	    <base_hit_points>2</base_hit_points>
+	    <base_destructible>0<base_destructible>
+	    <base_collectable>1<base_collectable>
+        <base_textActive>1<base_textActive>
+        <base_textColor>192 192 192<base_textColor>
+        <base_textData>medium_armor<base_textData>
+        <base_type>3</base_type>
+    </base>
+
+    <graphics>
+	    <graphics_model>items/human_male_medium_armor_1_001.obj</graphics_model>
+	    <graphics_material>items/human_male_medium_armor_1_001.txt</graphics_material>
+	    <graphics_icon>icons/human_male_medium_armor_1_001.png</graphics_icon>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>0</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>2</physics_bounding_volume_type>
+	    <physics_mass>0.0125</physics_mass>
+	    <physics_collision_radius>0.45</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.45 0.5 0.45</physics_collision_half_dimentions>
+	    <physics_acceleration>0.025</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <state>
+        <state_initial>0</state_initial> # 0 == none
+
+        <state_spawn_audio_name>metal_fall</state_spawn_audio_name>
+        <state_spawn_audio_number>2</state_spawn_audio_number>
+        <state_spawn_tile_state>1</state_spawn_tile_state>
+        <state_spawn_animation>0.0 0.0 0</state_spawn_animation>
+
+        <state_interact_audio_name>metal_fall</state_interact_audio_name>
+        <state_interact_audio_number>1</state_interact_audio_number>
+        <state_interact_tile_state>1</state_interact_tile_state>
+        <state_interact_animation>0.0 0.0 0</state_interact_animation>
+    </state>
+
+</entity>
+
+
