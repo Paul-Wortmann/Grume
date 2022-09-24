@@ -36,6 +36,10 @@
 	<item>heavy_boots           items/heavy_boots_1_001.txt</item>
 	<item>heavy_gloves          items/heavy_gloves_1_001.txt</item>
 	<item>heavy_helmet          items/heavy_helmet_1_001.txt</item>
+	<item>medium_armor          items/medium_armor_1_001.txt</item>
+	<item>medium_boots          items/medium_boots_1_001.txt</item>
+	<item>medium_gloves         items/medium_gloves_1_001.txt</item>
+	<item>medium_helmet         items/medium_helmet_1_001.txt</item>
 
     # Weapons
 	<item>bow                   items/bow_1_001.txt</item>
