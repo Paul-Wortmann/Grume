@@ -915,7 +915,12 @@ void cNPCManager::process(const float &_dt)
                 {
                     m_entityTemp->character->healthBarEnabled = true;
                     m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
-                    m_entityTemp->character->attribute.health.current -= m_entityPlayer->character->damage;
+
+                    // Normal damage
+                    m_entityTemp->character->attribute.health.current -= (m_entityPlayer->character->damage * m_entityPlayer->character->attribute.damagePhysical.base);
+
+                    // Crit damage....
+
 
                     // Set entity state : defend
                     m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_defend);
