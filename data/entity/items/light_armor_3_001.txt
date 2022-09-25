@@ -7,7 +7,7 @@
     </information>
 
     <base>
-	    <base_name>magic_boots_1_001</base_name>
+	    <base_name>light_armor_3_001</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>0.5 0.5 0.5</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_rotation>
@@ -17,14 +17,14 @@
 	    <base_collectable>1<base_collectable>
         <base_textActive>1<base_textActive>
         <base_textColor>192 192 192<base_textColor>
-        <base_textData>magic_boots<base_textData>
+        <base_textData>light_armor<base_textData>
         <base_type>3</base_type>
     </base>
 
     <graphics>
-	    <graphics_model>items/human_male_magic_boots_1_001.obj</graphics_model>
-	    <graphics_material>items/human_male_magic_boots_1_001.txt</graphics_material>
-	    <graphics_icon>icons/human_male_magic_boots_1_001.png</graphics_icon>
+	    <graphics_model>items/human_male_light_armor_3_001.obj</graphics_model>
+	    <graphics_material>items/human_male_light_armor_3_001.txt</graphics_material>
+	    <graphics_icon>icons/human_male_light_armor_3_001.png</graphics_icon>
     </graphics>
 
     <physics>

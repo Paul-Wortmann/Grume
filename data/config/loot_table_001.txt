@@ -197,6 +197,46 @@
     </loot>
 
     <loot>
+        <entity_name>light_armor</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>light_armor</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>light_armor</entity_name>
+        <entity_number>3</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>light_boots</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>light_gloves</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
         <entity_name>magic_armor</entity_name>
         <entity_number>1</entity_number>
         <value>10</value>

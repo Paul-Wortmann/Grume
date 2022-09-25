@@ -36,6 +36,11 @@
 	<item>heavy_boots           items/heavy_boots_1_001.txt</item>
 	<item>heavy_gloves          items/heavy_gloves_1_001.txt</item>
 	<item>heavy_helmet          items/heavy_helmet_1_001.txt</item>
+	<item>light_armor           items/light_armor_2_001.txt</item>
+	<item>light_armor           items/light_armor_3_001.txt</item>
+	<item>light_armor           items/light_armor_4_001.txt</item>
+	<item>light_boots           items/light_boots_2_001.txt</item>
+	<item>light_gloves          items/light_gloves_3_001.txt</item>
 	<item>magic_armor           items/magic_armor_1_001.txt</item>
 	<item>magic_boots           items/magic_boots_1_001.txt</item>
 	<item>magic_gloves          items/magic_gloves_1_001.txt</item>

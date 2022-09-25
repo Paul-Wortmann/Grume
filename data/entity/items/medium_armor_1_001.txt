@@ -10,7 +10,8 @@
 	    <base_name>medium_armor_1_001</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>0.5 0.5 0.5</base_scale>
-	    <base_rotation>0.0 0.0 0.0</base_otation>
+	    <base_rotation>0.0 0.0 0.0</base_rotation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_hit_points>2</base_hit_points>
 	    <base_destructible>0<base_destructible>
 	    <base_collectable>1<base_collectable>
@@ -47,12 +48,12 @@
     <state>
         <state_initial>0</state_initial> # 0 == none
 
-        <state_spawn_audio_name>metal_fall</state_spawn_audio_name>
+        <state_spawn_audio_name>wood_fall</state_spawn_audio_name>
         <state_spawn_audio_number>2</state_spawn_audio_number>
         <state_spawn_tile_state>1</state_spawn_tile_state>
         <state_spawn_animation>0.0 0.0 0</state_spawn_animation>
 
-        <state_interact_audio_name>metal_fall</state_interact_audio_name>
+        <state_interact_audio_name>wood_hit</state_interact_audio_name>
         <state_interact_audio_number>1</state_interact_audio_number>
         <state_interact_tile_state>1</state_interact_tile_state>
         <state_interact_animation>0.0 0.0 0</state_interact_animation>
