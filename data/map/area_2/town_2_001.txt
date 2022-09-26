@@ -185,6 +185,7 @@
         <#debris>dead_tree  0.5  1.0  70</debris>
         <#debris>gib        0.75 1.0  32</debris>
         <#debris>bone       0.75 1.0  64</debris>
+        <debris>sack       0.75 1.0  64</debris>
     </debris_objects>
 
     <destructible_objects>

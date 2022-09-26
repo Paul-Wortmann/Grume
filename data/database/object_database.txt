@@ -385,6 +385,10 @@
     <object>rock_small            objects/rock_12_001.txt</object>
     <object>rock_small            objects/rock_13_001.txt</object>
 
+    # Sack
+    <object>sack                  objects/sack_1_001.txt</object>
+    <object>sack                  objects/sack_2_001.txt</object>
+
     # Skeleton
     <object>skeleton              objects/skeleton_horse_1_001.txt</object>
 
