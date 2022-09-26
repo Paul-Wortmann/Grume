@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+        <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <base>
+        <base_name>barrel_4_013</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+        <base_scale>0.5 0.5 0.5</base_scale>
+        <base_rotation>0 0 0</base_otation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
+        <base_destructible>0</base_destructible>
+        <base_collectable>0</base_collectable>
+        <base_fly_over>1</base_fly_over>
+        <base_type>0</base_type>
+    </base>
+
+    <graphics>
+        <graphics_model>objects/barrel_4_013.obj</graphics_model>
+        <graphics_material>objects/barrel_4_001.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+        <physics_type>0</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+        <physics_bounding_volume_type>2</physics_bounding_volume_type>
+        <physics_mass>0.05</physics_mass>
+        <physics_collision_radius>0.485</physics_collision_radius>
+        <physics_collision_half_dimentions>0.485 0.5 0.485</physics_collision_half_dimentions>
+        <physics_acceleration>0.025</physics_acceleration>
+        <physics_velocity>0.0 0.0 0.0</physics_velocity>
+        <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+</entity>

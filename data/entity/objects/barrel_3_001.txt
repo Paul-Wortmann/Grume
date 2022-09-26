@@ -3,23 +3,23 @@
 <entity>
 
     <information>
-	    <world_orientation>0 0 1</world_orientation>
+        <world_orientation>0 0 1</world_orientation>
     </information>
 
     <base>
-	    <base_name>crate_1_001</base_name>
+        <base_name>barrel_3_001</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
-	    <base_scale>1.0 1.0 1.0</base_scale>
-	    <base_rotation>0.0 0.0 0.0</base_rotation>
+        <base_scale>0.5 0.5 0.5</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_otation>
 	    <base_hit_points>2</base_hit_points>
-	    <base_debris>crate_debris</base_debris>
+	    <base_debris>barrel_debris</base_debris>
 	    <base_destructible>1<base_destructible>
 	    <base_collectable>0<base_collectable>
     </base>
-
+    
     <graphics>
-	    <graphics_model>objects/crate_1_001.obj</graphics_model>
-	    <graphics_material>objects/crate_001.txt</graphics_material>
+        <graphics_model>objects/barrel_3_001.obj</graphics_model>
+        <graphics_material>objects/barrel_3_001.txt</graphics_material>
     </graphics>
 
     <loot>
@@ -44,7 +44,7 @@
         # none: 0
         # aabs: 1
         # circle: 2
-	    <physics_bounding_volume_type>1</physics_bounding_volume_type>
+	    <physics_bounding_volume_type>2</physics_bounding_volume_type>
 	    <physics_mass>0.0125</physics_mass>
 	    <physics_collision_radius>0.45</physics_collision_radius>
 	    <physics_collision_half_dimentions>0.45 0.5 0.45</physics_collision_half_dimentions>
@@ -57,12 +57,12 @@
         <state_initial>0</state_initial> # 0 == none
         
         <state_defend_audio_name>wood_hit</state_defend_audio_name>
-        <state_defend_audio_number>2</state_defend_audio_number>
+        <state_defend_audio_number>1</state_defend_audio_number>
         <state_defend_tile_state>1</state_defend_tile_state>
         <state_defend_animation>0.0 0.0 0</state_defend_animation>
 
         <state_die_audio_name>break</state_die_audio_name>
-        <state_die_audio_number>2</state_die_audio_number>
+        <state_die_audio_number>1</state_die_audio_number>
         <state_die_tile_state>0</state_die_tile_state>
         <state_die_animation>0.0 0.0 0</state_die_animation>
     </state>

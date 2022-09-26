@@ -25,9 +25,26 @@
 
     # Barrel
 	<object>barrel                objects/barrel_1_001.txt</object>
-	<object>barrel_debris         objects/barrel_2_002.txt</object>
-	<object>barrel_debris         objects/barrel_2_003.txt</object>
-	<object>barrel_debris         objects/barrel_2_004.txt</object>
+	<object>barrel_debris         objects/barrel_1_debris_001.txt</object>
+	<object>barrel_debris         objects/barrel_1_debris_002.txt</object>
+	<object>barrel_debris         objects/barrel_1_debris_003.txt</object>
+	<object>barrel                objects/barrel_2_001.txt</object>
+	<object>barrel                objects/barrel_3_001.txt</object>
+	<object>barrel_debris         objects/barrel_4_001.txt</object>
+	<object>barrel_debris         objects/barrel_4_002.txt</object>
+	<object>barrel_debris         objects/barrel_4_003.txt</object>
+	<object>barrel_debris         objects/barrel_4_004.txt</object>
+	<object>barrel                objects/barrel_4_005.txt</object>
+	<object>barrel                objects/barrel_4_006.txt</object>
+	<object>barrel                objects/barrel_4_007.txt</object>
+	<object>barrel                objects/barrel_4_008.txt</object>
+	<object>barrel_stack          objects/barrel_4_009.txt</object>
+	<object>barrel_stack          objects/barrel_4_010.txt</object>
+	<object>barrel_stack          objects/barrel_4_011.txt</object>
+	<object>barrel_stack          objects/barrel_4_012.txt</object>
+	<object>barrel_stack          objects/barrel_4_013.txt</object>
+	<object>barrel                objects/barrel_5_001.txt</object>
+	<object>barrel                objects/barrel_5_002.txt</object>
 
     # Bed
 	<object>bed                   objects/bed_1_001.txt</object>
@@ -151,8 +168,8 @@
     # Crate
 	<object>crate                 objects/crate_1_001.txt</object>
 	<object>crate                 objects/crate_1_002.txt</object>
-	<object>crate_debris          objects/crate_2_002.txt</object>
-	<object>crate_debris          objects/crate_2_003.txt</object>
+	<object>crate_debris          objects/crate_1_debris_001.txt</object>
+	<object>crate_debris          objects/crate_1_debris_002.txt</object>
 
     # Crystal
 	<object>crystal_blue          objects/crystal_blue_001.txt</object>
