@@ -8,7 +8,7 @@
 
     <base>
 	    <base_name>bridge_2_002</base_name>
-	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_position>0.0 0.01 0.5</base_position>
 	    <base_scale>1.0 1.0 1.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
         <base_rotation_axis>0 1 0</base_rotation_axis>

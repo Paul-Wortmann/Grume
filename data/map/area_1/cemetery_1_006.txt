@@ -142,10 +142,10 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small 0.75 1 20</debris>
-        <debris>dead_tree  0.50 1 30</debris>
-        <debris>bone       0.75 1 40</debris>
-        <debris>gib        0.75 1 42</debris>
+        <debris>rock_small      0.75 1.00 20</debris>
+        <debris>dead_tree       0.50 1.00 30</debris>
+        <debris>bone            0.75 1.00 40</debris>
+        <debris>gib             0.75 1.00 42</debris>
     </debris_objects>
 
     <npcs>
@@ -164,7 +164,14 @@
         <object>mausoleum       1 33 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 1</object>
         <object>mausoleum       1 23 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 3</object>
         <object>mausoleum       1 43 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 4</object>
+        
+        <object>crucifixion     1 23 26 0.1250  0.1250  0.1250  0.0000 2.8520 0.0000 0 0 0</object>
+        <object>crucifixion     1 30 30 0.2500  0.2500  0.2500  0.0000 3.3416 0.0000 0 0 0</object>
+        <object>crucifixion     1 35 29 0.1250  0.1250  0.1250  0.0000 3.0000 0.0000 0 0 0</object>
+        <object>crucifixion     1 41 27 0.2500  0.2500  0.2500  0.0000 3.5416 0.0000 0 0 0</object>
 
+        <object>statue          6 30 37 0.0000  0.0000  0.0000  0.0000 3.5416 0.0000 0 0 0</object>
+        <object>statue          5 38 37 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
     </objects>
 
 </map>

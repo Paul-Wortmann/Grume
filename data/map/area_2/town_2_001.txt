@@ -186,7 +186,8 @@
         <#debris>gib        0.75 1.0  32</debris>
         <#debris>bone       0.75 1.0  64</debris>
         <#debris>sack       0.75 1.0  64</debris>
-        <debris>barrel_stack     0.75 1.0  64</debris>
+        <#debris>barrel     0.75 1.0  64</debris>
+        <debris>pumpkin    0.75 1.0  256</debris>
     </debris_objects>
 
     <destructible_objects>

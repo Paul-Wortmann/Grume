@@ -106,6 +106,8 @@
     # Bridge
 	<object>bridge                objects/bridge_2_001.txt</object>
 	<object>bridge                objects/bridge_2_002.txt</object>
+	<object>bridge                objects/bridge_2_003.txt</object>
+	<object>bridge                objects/bridge_2_004.txt</object>
 
     # Bucket
 	<object>bucket                objects/bucket_1_001.txt</object>
@@ -170,6 +172,9 @@
 	<object>crate                 objects/crate_1_002.txt</object>
 	<object>crate_debris          objects/crate_1_debris_001.txt</object>
 	<object>crate_debris          objects/crate_1_debris_002.txt</object>
+
+    # Crucifixion
+	<object>crucifixion           objects/crucifixion_1_001.txt</object>
 
     # Crystal
 	<object>crystal_blue          objects/crystal_blue_001.txt</object>
@@ -379,6 +384,9 @@
     <object>paper_debris          objects/paper_debris_1_004.txt<object>
     <object>paper_debris          objects/paper_debris_1_005.txt<object>
 
+    # Pumpkin
+    <object>pumpkin               objects/pumpkin_1_001.txt<object>
+
     # River
     <object>river                 objects/river_1_001.txt</object>
 
@@ -462,6 +470,8 @@
     <object>statue                objects/deamon_statue_1_001.txt</object>
     <object>statue                objects/deamon_statue_1_002.txt</object>
     <object>statue                objects/deamon_statue_1_003.txt</object>
+    <object>statue                objects/knight_statue_1_001.txt</object>
+    <object>statue                objects/statue_with_lamp_1_001.txt</object>
 
     # Torch
     <object>torch                 objects/torch_1_001.txt</object>
