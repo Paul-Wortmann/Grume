@@ -2,15 +2,15 @@
 <save_file>
 
    <information>
-      <current_map>ruins_1_001</current_map>
-      <current_position>2229</current_position>
+      <current_map>cave_1_006</current_map>
+      <current_position>1292</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
       <level_current>6</level_current>
-      <exp_current>11441</exp_current>
+      <exp_current>11626</exp_current>
       <exp_next>11664</exp_next>
       <health_current>11389</health_current>
       <health_max>11389</health_max>
@@ -18,7 +18,7 @@
       <mana_current>1138</mana_current>
       <mana_max>1138</mana_max>
       <mana_regen>3.24364</mana_regen>
-      <gold_current>21894</gold_current>
+      <gold_current>22049</gold_current>
       <damage_physical_base>25</damage_physical_base>
       <damage_physical_crit_chance>7</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>1.75</damage_physical_crit_multiplier>

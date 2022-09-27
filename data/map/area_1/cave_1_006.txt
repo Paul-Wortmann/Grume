@@ -101,7 +101,7 @@
         # 1.5708 - Face east
         # 3.1416 - Face north
         # 4.7124 - Face west
-        <portal>1 cave_1_005     0 15 29 0.0000</portal>
+        <portal>1 cave_1_005     0 15 61 0.0000</portal>
         <portal>2 cemetery_1_003 0 28 04 1.5708</portal>
     </portals>
 
@@ -148,10 +148,10 @@
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
         
         # Portal bottom
-        <object>portal_cave_right  1  013 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  014 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  015 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  016 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  013 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_center 1  014 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_center 1  015 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_left   1  016 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
 
         # Portal left
         <object>portal_cave_right  1  000 002  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>

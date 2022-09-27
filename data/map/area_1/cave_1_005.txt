@@ -72,7 +72,7 @@
         # 3.1416 - Face north
         # 4.7124 - Face west
         <portal>1 cave_1_004 0 15 31 0.0000</portal>
-        <portal>2 cave_1_006 0 15 03 3.14159</portal>
+        <portal>2 cave_1_006 0 17 02 3.14159</portal>
     </portals>
 
     <events>
