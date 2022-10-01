@@ -8,7 +8,7 @@
 
     <base>
         <base_name>shrine_1_001</base_name>
-        <base_position>-0.5 0 -0.5</base_position>
+        <base_position>0.0 0.0 0.0</base_position>
         <base_scale>1 1 1</base_scale>
         <base_rotation>0 0 0</base_otation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
@@ -27,7 +27,7 @@
         # none: 0
         # static: 1
         # dynamic: 2
-        <physics_type>0</physics_type>
+        <physics_type>1</physics_type>
 
         # none: 0
         # aabs: 1
