@@ -108,6 +108,7 @@
 	<object>bridge                objects/bridge_2_002.txt</object>
 	<object>bridge                objects/bridge_2_003.txt</object>
 	<object>bridge                objects/bridge_2_004.txt</object>
+	<object>bridge                objects/bridge_1_001.txt</object>
 
     # Bucket
 	<object>bucket                objects/bucket_1_001.txt</object>
