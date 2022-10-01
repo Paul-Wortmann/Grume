@@ -231,6 +231,12 @@
 
     # Dead_tree
 	<object>dead_tree             objects/dead_tree_1_001.txt</object>
+	<object>dead_tree             objects/dead_tree_1_002.txt</object>
+	<object>dead_tree             objects/dead_tree_3_001.txt</object>
+	<object>dead_tree_2           objects/dead_tree_2_001.txt</object>
+	<object>dead_tree_2           objects/dead_tree_2_002.txt</object>
+	<object>dead_tree_2           objects/dead_tree_2_003.txt</object>
+	<object>dead_tree_2           objects/dead_tree_2_004.txt</object>
 
     # Dead_tree_stump
     <object>dead_tree_stump       objects/dead_tree_stump_1_001.txt<object>

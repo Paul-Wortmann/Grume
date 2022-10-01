@@ -454,6 +454,13 @@ void cGameEngine::process(void)
                 m_mapManager.load(m_databaseManager.getDatabaseEntryFileName("town_2_001", 1, eDatabaseType::databaseTypeMap));
                 m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
             break;
+            // Way-point map load town 3
+            case eComponentFunction::componentFunctionLoadMapTown_3:
+                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+                m_mapManager.setSpawnPortal(2);
+                m_mapManager.load(m_databaseManager.getDatabaseEntryFileName("town_3_001", 1, eDatabaseType::databaseTypeMap));
+                m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
+            break;
 
             // None
             case eComponentFunction::componentFunctionNone:

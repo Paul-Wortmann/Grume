@@ -576,7 +576,7 @@
 
         <component>
             <component_name>button_1_town_3</component_name>
-            <component_enabled01</component_enabled>
+            <component_enabled>1</component_enabled>
             <component_texture_normal>ui/menu/button_002_n.png</component_texture_normal>
             <component_texture_hover>ui/menu/button_002_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_002_a.png</component_texture_activated>
