@@ -7,7 +7,7 @@ layout (location = 4) in vec3  bitangent;
 layout (location = 5) in vec4  boneWeights;
 layout (location = 6) in ivec4 boneID;
 
-const int MAX_BONES = 128; // This has to match graphics_engine_defines.hpp !!!!
+const int MAX_BONES = 140; // This has to match graphics_engine_defines.hpp !!!!
 
 uniform int  animationEnabled;
 uniform mat4 lightMatrix;

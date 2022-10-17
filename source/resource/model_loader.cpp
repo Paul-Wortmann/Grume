@@ -465,9 +465,9 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
 
                 // Make sure to build the bone map before calling m_processNode()!
                 m_loadBones(tModel, scene);
-                if (tModel->numBones > 128)
+                if (tModel->numBones > MAX_BONES)
                 {
-                    gLogWrite(LOG_WARNING, "3D model has too many bones: " + std::to_string(tModel->numBones), __FILE__, __LINE__, __FUNCTION__);
+                    gLogWrite(LOG_WARNING, "3D model: " + _fileName + ", has too many bones: " + std::to_string(tModel->numBones), __FILE__, __LINE__, __FUNCTION__);
                 }
                 if (m_boneMap.size() > 0)
                 {

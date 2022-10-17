@@ -27,8 +27,8 @@
 	    <base_type>6</base_type>
 	    <base_flying>0</base_flying>
 	    <base_over_size>0</base_over_size>
-        <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>0.125 0.125 0.125</base_scale>
+        <base_position>0.0 4.0 0.0</base_position>
+        <base_scale>2.0 2.0 2.0</base_scale>
         <base_rotation>3.1416 1.570795 0.0</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_debris>bat_monster_1_debris</base_debris>

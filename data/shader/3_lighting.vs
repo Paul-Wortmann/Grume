@@ -1,6 +1,6 @@
 #version 330 core
 const int MAX_POINT_LIGHTS =  4; // !!! HAS to to match graphics_engine_defines.hpp - MAX_LIGHTS
-const int MAX_BONES        = 128; // This has to match defines.hpp !!!!
+const int MAX_BONES        = 140; // This has to match defines.hpp !!!!
 
 layout (location = 0) in vec3  position;
 layout (location = 1) in vec3  normal;

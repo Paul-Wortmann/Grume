@@ -36,9 +36,6 @@
 #include "graphics_engine_shader.hpp"
 #include "graphics_engine_utils.hpp"
 
-// Bones used for animation
-#define MAX_BONES  128 // This will need to match the shader !
-
 // Event type enum
 enum eGraphicsEventType : std::uint32_t { graphicsEventType_none        = 0,    // null event
                                           graphicsEventType_windowClose = 1 };  // window close event

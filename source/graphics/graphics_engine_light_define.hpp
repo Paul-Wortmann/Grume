@@ -26,8 +26,6 @@
 
 #include "../core/includes.hpp"
 
-#define MAX_POINT_LIGHTS 4 // This HAS to match the shader!
-
 // Hold data for each point light
 struct sGraphicsEnginePointLight
 {

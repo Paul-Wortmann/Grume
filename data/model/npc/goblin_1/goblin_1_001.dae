@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.83.5</authoring_tool>
     </contributor>
-    <created>2022-10-17T11:19:34</created>
-    <modified>2022-10-17T11:19:34</modified>
+    <created>2022-10-17T15:03:43</created>
+    <modified>2022-10-17T15:03:43</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -66,14 +66,7 @@
       </profile_COMMON>
     </effect>
   </library_effects>
-  <library_images>
-    <image id="Scythe_texture_png" name="Scythe_texture_png">
-      <init_from>Scythe_texture.png</init_from>
-    </image>
-    <image id="texture_png" name="texture_png">
-      <init_from>texture.png</init_from>
-    </image>
-  </library_images>
+  <library_images/>
   <library_materials>
     <material id="Material-material" name="Material">
       <instance_effect url="#Material-effect"/>
@@ -682,6 +675,9 @@
       </skin>
     </controller>
   </library_controllers>
+  <library_animations>
+    <animation id="action_container-metarig" name="metarig"/>
+  </library_animations>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Sphere" name="Sphere" type="NODE">
