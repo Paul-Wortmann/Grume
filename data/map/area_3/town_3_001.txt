@@ -147,6 +147,7 @@
         <#npc_mob>spider_1         0  10</npc_mob>
         <#npc_mob>spider_leader_1  0  10</npc_mob>
         <#npc_mob>skeleton_1       0   5</npc_mob>
+        <npc_mob>warwolf_1        0   5</npc_mob>
     </npc_mobs>
 
     <debris_objects>
@@ -159,7 +160,7 @@
         <#debris>bone       0.75 1.0  64</debris>
         <#debris>sack       0.75 1.0  64</debris>
         <#debris>barrel     0.75 1.0  64</debris>
-        <debris>pumpkin    0.75 1.0  256</debris>
+        <debris>pumpkin    0.75 1.0  5</debris>
     </debris_objects>
 
     <destructible_objects>

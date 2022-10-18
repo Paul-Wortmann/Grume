@@ -37,7 +37,7 @@
     <npc>spider_1         npc/spider_1/spider_1_001.txt</npc>
     <npc>spider_leader_1  npc/spider_leader_1/spider_leader_1_001.txt</npc>
     
-    <npc>werewolf         npc/werewolf_1_001.txt</npc>
+    <npc>warwolf_1        npc/warwolf_1/warwolf_1_001.txt</npc>
     
 
     # NPC
