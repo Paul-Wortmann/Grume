@@ -33,7 +33,7 @@
 	    <base_over_size>0</base_over_size>
         <base_position>0.0 0.0 0.0</base_position>
         <base_scale>0.25 0.25 0.25</base_scale>
-        <base_rotation>4.7124 0 1.5708</base_otation>
+        <base_rotation>4.7124 0.0 4.71238898038</base_otation>
         <base_rotation_axis>0 0 -1</base_rotation_axis>
 	    <base_debris>bug_1_debris</base_debris>
 	    <base_destructible>1</base_destructible>
