@@ -51,7 +51,7 @@
     </character>
     
     <graphics>
-        <graphics_model>npc/dragon_1_001.dae</graphics_model>
+        <graphics_model>npc/dragon_1/dragon_1_001.dae</graphics_model>
         <graphics_material>npc/dragon_1_001.txt</graphics_material>
     </graphics>
 
