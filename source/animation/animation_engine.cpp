@@ -164,6 +164,11 @@ void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, std::uint32
     sEntityModelAnimation* animation = &m_entityTemp->graphics->model->animation[_currentAnimation];
     // for each channel (bone) set the animation transformation matrix based on the time in the animation
 
+    if (!animation)
+        return;
+        //std::cout << "Animation null! " << std::endl;
+
+    //std::cout << "Num channels: " << animation->numChannels << std::endl;
     for (std::size_t i = 0; i < animation->numChannels; ++i)
     {
         if (animation->channel[i].boneID > -1)
@@ -185,7 +190,7 @@ void cAnimationEngine::initializeEntities(void)
     {
         if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr))
         {
-            // Initialize the bone trasforms if need be
+            // Initialize the bone transforms if need be
             if (m_entityTemp->animation->boneTransform == nullptr)
             {
                 m_entityTemp->animation->numBones = m_entityTemp->graphics->model->numBones;
@@ -260,7 +265,7 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
     // Processed animations
     if ((m_entityTemp->animation->finishedAnimation == false) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr) && (m_entityTemp->graphics->model->animation != nullptr))
     {
-        // Initialize the bone trasforms if need be
+        // Initialize the bone transforms if need be
         if (m_entityTemp->animation->boneTransform == nullptr)
         {
             m_entityTemp->animation->numBones = m_entityTemp->graphics->model->numBones;

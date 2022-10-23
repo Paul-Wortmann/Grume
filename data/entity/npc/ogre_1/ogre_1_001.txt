@@ -32,7 +32,7 @@
 	    <base_flying>0</base_flying>
 	    <base_over_size>0</base_over_size>
         <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>0.0786 0.0786 0.0786</base_scale>
+        <base_scale>1.0 1.0 1.0</base_scale>
         <base_rotation>3.14159 1.570795 0.0</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_debris>ogre_1_debris</base_debris>
