@@ -8,19 +8,23 @@
 
     <base>
         <base_name>monk_1_001</base_name>
-        <base_position>-0.5 0 -0.5</base_position>
-        <base_scale>1.5 1.5 1.5</base_scale>
-        <base_rotation>3.1416 0 0</base_otation>
-        <base_rotation_axis>0 1 0</base_rotation_axis>
-        <base_destructible>0</base_destructible>
         <base_collectable>0</base_collectable>
-        <base_fly_over>1</base_fly_over>
-        <base_type>0</base_type>
+        <base_destructible>0</base_destructible>
+	    <base_flying>0</base_flying>
+        <base_fly_over>0</base_fly_over>
+	    <base_over_size>0</base_over_size>
+	    <base_position>0.0 1.5 0.0</base_position>
+	    <base_rotation>0.0 3.1416 3.1416</base_rotation>
+        <base_rotation_axis>0 1 0</base_rotation_axis>
+	    <base_scale>1.5 1.5 1.5</base_scale>
+	    <base_type>9</base_type>
     </base>
 
     <graphics>
         <graphics_model>npc/monk_1_001.dae</graphics_model>
-        <graphics_material>npc/monk_1_001.txt</graphics_material>
+        <graphics_material>npc/monk_1_head_001.txt</graphics_material>
+        <graphics_material>npc/monk_1_hair_001.txt</graphics_material>
+        <graphics_material>npc/monk_1_body_001.txt</graphics_material>
     </graphics>
 
     <physics>

@@ -104,7 +104,7 @@
         # 3.1416 - Face north
         # 4.7124 - Face west
         <portal>1 cemetery_1_006     0 32 02 3.14159</portal>
-        <portal>2 cemetery_1_002     0 32 61 0.0000</portal>
+        <portal>2 cemetery_1_002     0 32 63 0.0000</portal>
     </portals>
 
     <events>
@@ -138,10 +138,12 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small 0.75 1 20</debris>
-        <debris>dead_tree  0.50 1 30</debris>
-        <debris>bone       0.75 1 40</debris>
-        <debris>gib        0.75 1 42</debris>
+        <debris>rock_small      0.75 1.0 020</debris>
+        <debris>dead_tree       0.50 1.0 030</debris>
+        <debris>bone            0.75 1.0 040</debris>
+        <debris>gib             0.75 1.0 042</debris>
+        <debris>grass_1         0.75 1.0 125</debris>
+        <debris>mushroom_green  0.75 1.0 066</debris>
     </debris_objects>
 
     <npcs>

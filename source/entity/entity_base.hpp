@@ -61,6 +61,7 @@ struct sEntityBase
     bool            flyOver         = false; // This entity can be flown over
     bool            flying          = false; // This entity can fly
     bool            overSize        = false; // This entity is larger than a doorway
+    float           flexibility     = 0.0f;  // How much the entity is affected by wind, etc..
 
     std::uint32_t   hitPoints       = 40; // Used for objects that can take damage
     std::string     debris          = {};

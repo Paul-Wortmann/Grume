@@ -162,8 +162,9 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small 0.5 1.0  60</debris>
-        <debris>dead_tree  0.5 1.0  70</debris>
+        <debris>rock_small 0.5 1.0  060</debris>
+        <debris>dead_tree  0.5 1.0  070</debris>
+        <debris>grass_1    1.5 2.0  125</debris>
     </debris_objects>
 
     <npcs>

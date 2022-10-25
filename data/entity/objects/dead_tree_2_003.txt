@@ -16,6 +16,7 @@
         <base_collectable>0</base_collectable>
         <base_fly_over>0</base_fly_over>
         <base_type>3</base_type>
+	    <base_flexibility>0.0125</base_flexibility>
     </base>
 
     <graphics>

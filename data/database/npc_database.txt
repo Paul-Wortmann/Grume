@@ -26,10 +26,6 @@
     <npc>golem_3          npc/golem_3/golem_3_001.txt</npc> # Ice
     <npc>golem_4          npc/golem_4/golem_4_001.txt</npc> # Blood
 
-    <npc>monk             npc/monk_1_001.txt</npc>
-    
-    <npc>mudeater         npc/mudeater_1_001.txt</npc>
-    
     <npc>ogre_1           npc/ogre_1/ogre_1_001.txt</npc>
 
     <npc>skeleton_1       npc/skeleton_1/skeleton_1_001.txt</npc>
@@ -43,6 +39,7 @@
     # NPC
     <npc>blacksmith       npc/blacksmith_1_001.txt</npc>
     <npc>dead_body        npc/dead_body_1_001.txt</npc>
+    <npc>monk_1           npc/monk_1_001.txt</npc>
     <npc>mudeater_1       npc/mudeater_1/mudeater_1_001.txt</npc>
     <npc>trader           npc/trader_1_001.txt</npc>
 

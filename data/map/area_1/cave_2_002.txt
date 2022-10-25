@@ -138,7 +138,8 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone 0.75 1 64</debris>
+        <debris>bone            0.75 1.0 064</debris>
+        <debris>mushroom_red    0.75 1.0 066</debris>
     </debris_objects>
 
     <npcs>
@@ -159,7 +160,7 @@
         <object>portal_cave_center 1  032 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
         <object>portal_cave_left   1  033 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
         
-        <object>shrine 1 54 18 1 1 1 0.0000 0 0.0000 0 0 0</object>
+        <object>shrine             1  054 018  0.2500 0.2500 0.2500  0.0000 0.0000 0.0000 000 000 0</object>
     </objects>
 
 </map>

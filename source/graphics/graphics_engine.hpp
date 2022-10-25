@@ -124,6 +124,9 @@ class cGraphicsEngine :tcTemplateEngine
         std::uint32_t      m_renderBufferSize_w = 1024;
         std::uint32_t      m_renderBufferSize_h = 1024;
 
+        // Time
+        float              m_time               = 0.0f;
+
         // GLFW callback functions
         inline static void sm_glfwErrorCallback(std::int32_t _error, const char* _description);
         inline static void sm_glfwWindowCloseCallback(GLFWwindow* _window);
@@ -180,6 +183,9 @@ class cGraphicsEngine :tcTemplateEngine
         std::uint32_t         m_pb_loc_animationEnabled      = 0;
         std::uint32_t         m_pb_loc_boneMatrix[MAX_BONES] = {};
 
+        std::uint32_t         m_pb_loc_time                  = 0;
+        std::uint32_t         m_pb_loc_flexibility           = 0;
+
         std::uint32_t         m_pb_loc_billboard             = 0;
         std::uint32_t         m_pb_loc_collision             = 0;
         std::uint32_t         m_pb_loc_mouseOver             = 0;
@@ -205,6 +211,9 @@ class cGraphicsEngine :tcTemplateEngine
         std::uint32_t         m_p1_loc_animationEnabled      = 0;
         std::uint32_t         m_p1_loc_boneMatrix[MAX_BONES] = {};
 
+        std::uint32_t         m_p1_loc_time                  = 0;
+        std::uint32_t         m_p1_loc_flexibility           = 0;
+
         // Render pipeline stage 2 (depth cube map)
         // graphics_engine_pipeline_2.cpp
         void m_p2_initialize(void);
@@ -226,6 +235,9 @@ class cGraphicsEngine :tcTemplateEngine
         std::uint32_t         m_p2_loc_depthMatrix[6]                      = {};
         std::uint32_t         m_p2_loc_animationEnabled                    = 0;
         std::uint32_t         m_p2_loc_boneMatrix[MAX_BONES]               = {};
+
+        std::uint32_t         m_p2_loc_time                  = 0;
+        std::uint32_t         m_p2_loc_flexibility           = 0;
 
         // Render pipeline stage 3 (final scene render - lighting)
         // graphics_engine_pipeline_3.cpp
@@ -263,6 +275,9 @@ class cGraphicsEngine :tcTemplateEngine
         std::uint32_t         m_p3_loc_hasFunction                         = 0;
         std::uint32_t         m_p3_loc_isText                              = 0;
         std::uint32_t         m_p3_loc_textColor                           = 0;
+
+        std::uint32_t         m_p3_loc_time                                = 0;
+        std::uint32_t         m_p3_loc_flexibility                         = 0;
 
         // Render pipeline stage UI
         // Take in the final scene render as a texture and renders

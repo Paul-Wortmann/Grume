@@ -25,11 +25,11 @@
 #define DEFINES_HPP
 
 #ifndef MAX_BONES
-    #define MAX_BONES 140 // This HAS to match the shader!
+    #define MAX_BONES 140 // This HAS to match all shaders!
 #endif
 
 #ifndef MAX_POINT_LIGHTS
-    #define MAX_POINT_LIGHTS 4 // This HAS to match the shader!
+    #define MAX_POINT_LIGHTS 4 // This HAS to match all shaders!
 #endif
 
 // Platform defines

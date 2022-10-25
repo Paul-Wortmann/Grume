@@ -62,6 +62,9 @@ void cGraphicsEngine::m_pb_initialize(void)
     m_pb_loc_materialDiffuse  = m_pb_shader.getUniformLocation("diffuse");
     m_pb_loc_animationEnabled = m_pb_shader.getUniformLocation("animationEnabled");
 
+    m_pb_loc_time             = m_pb_shader.getUniformLocation("time");
+    m_pb_loc_flexibility      = m_pb_shader.getUniformLocation("flexibility");
+
     m_pb_loc_billboard        = m_pb_shader.getUniformLocation("billboard");
     m_pb_loc_collision        = m_pb_shader.getUniformLocation("collision");
     m_pb_loc_mouseOver        = m_pb_shader.getUniformLocation("mouseOver");
@@ -94,6 +97,8 @@ void cGraphicsEngine::m_pb_render(void)
     glUniformMatrix4fv(m_pb_loc_projectionMatrix,  1, GL_FALSE, glm::value_ptr(m_camera.getProjectionMatrix()));
     glUniform1i(m_pb_loc_materialDiffuse, 0);
 
+    glUniform1f(m_pb_loc_time, m_time);
+
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
@@ -104,6 +109,8 @@ void cGraphicsEngine::m_pb_render(void)
                 // Shader uniforms
                 glUniform1i(m_pb_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
                 glUniform1i(m_pb_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
+
+                glUniform1f(m_pb_loc_flexibility, m_entityTemp->base.flexibility);
 
                 if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
                 {

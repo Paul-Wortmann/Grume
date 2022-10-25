@@ -65,6 +65,9 @@ void cGraphicsEngine::m_p3_initialize(void)
     m_p3_loc_isText                 = m_p3_shader.getUniformLocation("isText");
     m_p3_loc_textColor              = m_p3_shader.getUniformLocation("textColor");
 
+    m_p3_loc_time                   = m_p3_shader.getUniformLocation("time");
+    m_p3_loc_flexibility            = m_p3_shader.getUniformLocation("flexibility");
+
     // Vertex shader -----------------------------
 
     // View and transform
@@ -210,6 +213,9 @@ void cGraphicsEngine::m_p3_render(void)
     // Light uniforms
     m_p3_setLightUniformLocations();
 
+    // Time
+    glUniform1f(m_p3_loc_time, m_time);
+
     // Shader uniforms
     glUniformMatrix4fv(m_p3_loc_viewMatrix,  1, GL_FALSE, glm::value_ptr(m_camera.getViewMatrix()));
     glUniformMatrix4fv(m_p3_loc_projectionMatrix,  1, GL_FALSE, glm::value_ptr(m_camera.getProjectionMatrix()));
@@ -246,6 +252,9 @@ void cGraphicsEngine::m_p3_render(void)
                 // Shader uniforms
                 glUniform1i(m_p3_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
                 glUniform1i(m_p3_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
+
+                // Flexibility
+                glUniform1f(m_p3_loc_flexibility, m_entityTemp->base.flexibility);
 
                 if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
                 {

@@ -34,6 +34,9 @@ void cGraphicsEngine::m_p2_initialize(void)
     m_p2_loc_farPlane          = m_p2_shader.getUniformLocation("farPlane");
     m_p2_loc_animationEnabled  = m_p2_shader.getUniformLocation("animationEnabled");
 
+    m_p2_loc_time             = m_p2_shader.getUniformLocation("time");
+    m_p2_loc_flexibility      = m_p2_shader.getUniformLocation("flexibility");
+
     // Bone transformation matrices
     for (std::uint32_t i = 0; i < MAX_BONES; ++i)
     {
@@ -102,6 +105,9 @@ void cGraphicsEngine::m_p2_render(void)
                 // Use shader
                 glUseProgram(m_p2_shader.getID());
 
+                // Time
+                glUniform1f(m_p2_loc_time, m_time);
+
                 // Light transform matrices
                 m_p2_lightPosition = tLight->position;
                 m_p2_depthProjectionMatrix = glm::perspective(glm::radians(90.0f), m_p2_aspectRatio, m_p2_nearPlane, m_p2_farPlane);
@@ -151,6 +157,9 @@ void cGraphicsEngine::m_p2_render(void)
                             {
                                 // Shader uniforms
                                 glUniformMatrix4fv(m_p2_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
+
+                                // Flexibility
+                                glUniform1f(m_p2_loc_flexibility, m_entityTemp->base.flexibility);
 
                                 // skeletal animation uniforms for dynamic models
                                 if (m_entityTemp->graphics->model->numBones > 0)

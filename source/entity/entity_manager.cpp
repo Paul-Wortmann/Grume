@@ -97,6 +97,7 @@ void cEntityManager::freeData(sEntity*& _pointer)
     _pointer->base.clicked         = false;
 	_pointer->base.destructible    = false;
 	_pointer->base.collectable     = false;
+	_pointer->base.flexibility     = 0.0f;
 
     _pointer->base.textActive      = false;
     _pointer->base.textHover       = false;
@@ -333,6 +334,9 @@ sEntity* cEntityManager::load(const std::string &_fileName)
         tEntity->base.hitPoints      = xmlEntityFile.getInteger("<base_hit_points>");
         tEntity->base.destructible   = (xmlEntityFile.getInteger("<base_destructible>") > 0);
         tEntity->base.collectable    = (xmlEntityFile.getInteger("<base_collectable>") > 0);
+
+        if (xmlEntityFile.getInstanceCount("<base_flexibility>") > 0)
+            tEntity->base.flexibility    = xmlEntityFile.getFloat("<base_flexibility>");
 
         // Footprint
         if (xmlEntityFile.getInstanceCount("<footprint>") > 0)

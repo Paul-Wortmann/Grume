@@ -108,7 +108,8 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone 0.75 1.0 32</debris>
+        <debris>bone            0.75 1.0 36</debris>
+        <debris>mushroom_orange 0.75 1.0 36</debris>
     </debris_objects>
 
     <npcs>

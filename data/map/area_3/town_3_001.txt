@@ -139,12 +139,13 @@
         <#npc_mob>bug_1            0  10</npc_mob>
         <#npc_mob>dragon_1         0   5</npc_mob>
         <#npc_mob>forest_monster_1 0  5</npc_mob>
-        <npc_mob>goblin_1         0   5</npc_mob>
+        <#npc_mob>goblin_1         0   5</npc_mob>
         <#npc_mob>golem_1          0  5</npc_mob>
         <#npc_mob>golem_2          0  10</npc_mob>
         <#npc_mob>golem_3          0  10</npc_mob>
         <#npc_mob>golem_4          0  10</npc_mob>
         <#npc_mob>ogre_1           0   5</npc_mob>
+        <npc_mob>monk_1           0   5</npc_mob>
         <#npc_mob>spider_1         0  10</npc_mob>
         <#npc_mob>spider_leader_1  0  10</npc_mob>
         <#npc_mob>skeleton_1       0   5</npc_mob>

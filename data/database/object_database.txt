@@ -317,6 +317,11 @@
 	<object>golem_4_debris          npc/golem_4/golem_4_debris_005.txt<object>
 	<object>golem_4_debris          npc/golem_4/golem_4_debris_006.txt<object>
 
+    # Grass
+	<object>grass_1                 objects/grass_1_001.txt<object>
+	<object>grass_1                 objects/grass_1_002.txt<object>
+	<object>grass_1                 objects/grass_1_003.txt<object>
+
     # Jar
 	<object>jar                   objects/jar_1_001.txt</object>
 

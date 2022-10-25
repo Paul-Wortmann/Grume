@@ -29,9 +29,14 @@ void cGraphicsEngine::m_p1_initialize(void)
     m_p1_shader.initialize();
     m_p1_shader.load("1_directionalShadow");
     glUseProgram(m_p1_shader.getID());
+
+    // Uniforms
     m_p1_loc_modelMatrix      = m_p1_shader.getUniformLocation("modelMatrix");
     m_p1_loc_lightMatrix      = m_p1_shader.getUniformLocation("lightMatrix");
     m_p1_loc_animationEnabled = m_p1_shader.getUniformLocation("animationEnabled");
+
+    m_p1_loc_time             = m_p1_shader.getUniformLocation("time");
+    m_p1_loc_flexibility      = m_p1_shader.getUniformLocation("flexibility");
 
     // Bone transformation matrices
     for (std::uint32_t i = 0; i < MAX_BONES; ++i)
@@ -92,6 +97,9 @@ void cGraphicsEngine::m_p1_render(void)
     m_p1_lightMatrix = m_p1_projectionMatrix * m_p1_viewMatrix;
     glUniformMatrix4fv(m_p1_loc_lightMatrix, 1, GL_FALSE, glm::value_ptr(m_p1_lightMatrix));
 
+    // Time
+    glUniform1f(m_p1_loc_time, m_time);
+
     // Textures
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_p1_depthMapID);
@@ -115,6 +123,9 @@ void cGraphicsEngine::m_p1_render(void)
 
                 // Shader uniforms
                 glUniformMatrix4fv(m_p1_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
+
+                // Flexibility
+                glUniform1f(m_p1_loc_flexibility, m_entityTemp->base.flexibility);
 
                 // skeletal animation uniforms for dynamic models
                 if (m_entityTemp->graphics->model->numBones > 0)

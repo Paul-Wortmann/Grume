@@ -165,8 +165,10 @@ void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, std::uint32
     // for each channel (bone) set the animation transformation matrix based on the time in the animation
 
     if (!animation)
+    {
+        std::cout << "Animation null! :" << m_entityTemp->base.name << std::endl;
         return;
-        //std::cout << "Animation null! " << std::endl;
+    }
 
     //std::cout << "Num channels: " << animation->numChannels << std::endl;
     for (std::size_t i = 0; i < animation->numChannels; ++i)

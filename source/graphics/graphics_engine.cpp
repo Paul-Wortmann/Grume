@@ -588,6 +588,9 @@ void cGraphicsEngine::m_initializeEntities(void)
 
 void cGraphicsEngine::process(const float &_dt)
 {
+    // get current time
+    m_time = glfwGetTime();
+
     // Windows close event
     if (m_windowClosed)
     {
