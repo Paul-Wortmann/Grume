@@ -187,42 +187,42 @@
         <object>waypoint_circle    1  008 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3</object>
         
         # river
-        <object>river   1  050 006  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  050 016  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  050 026  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  050 036  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  050 046  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  050 056  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  050 066  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 006  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 016  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 026  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 036  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 046  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 056  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river              1  050 066  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
 
         # Bridge
-        <object>bridge  1  050 033  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>bridge             1  050 033  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
 
         # town central
-        <object>medieval_prop 5  034 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # well
-        <object>medieval_prop 4  046 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Watch tower
-        <object>medieval_prop 4  046 037  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Watch tower
-        <object>medieval_prop 7  042 018  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Out house
-        <object>medieval_prop 2  045 026  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Broken cart
+        <object>medieval_prop      5  034 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # well
+        <object>medieval_prop      4  046 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Watch tower
+        <object>medieval_prop      4  046 037  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Watch tower
+        <object>medieval_prop      7  042 018  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Out house
+        <object>medieval_prop      2  045 026  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Broken cart
 
-        <object>medieval_building 1  024 028  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Medieval blacksmith building
-        <object>medieval_building 2  040 025  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Medieval house
-        <object>medieval_building 2  026 043  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Medieval house
-        <object>medieval_building 4  045 043  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Medeival sawmill
+        <object>medieval_building  1  024 028  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Medieval blacksmith building
+        <object>medieval_building  2  040 025  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Medieval house
+        <object>medieval_building  2  026 043  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Medieval house
+        <object>medieval_building  4  045 043  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Medeival sawmill
 
-        <object>torture_device 12  027 036  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Stocks
-        <object>old_wagon       1  029 027  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # old wagon
-        <object>skeleton        1  030 024  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Skeleton horse
+        <object>torture_device    12  027 036  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Stocks
+        <object>old_wagon          1  029 027  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # old wagon
+        <object>skeleton           1  030 024  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Skeleton horse
 
-        <object>dead_tree       1  037 042  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Dead tree
-        <object>dead_tree       1  039 046  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Dead tree
-        <object>dead_tree       1  024 038  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Dead tree
-        <object>rock            1  038 037  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Rock
+        <object>dead_tree          1  037 042  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Dead tree
+        <object>dead_tree          1  039 046  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Dead tree
+        <object>dead_tree          1  024 038  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Dead tree
+        <object>rock               1  038 037  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Rock
 
-        <object>barrel         1  029 040  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel         1  029 041  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>crate          1  029 045  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>vase           2  037 028  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel             1  029 040  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel             1  029 041  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>crate              1  029 045  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>vase               2  037 028  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
 
         <#object>1700 chest             1  1.0 0.0000 1 0</object> # Chest
 
