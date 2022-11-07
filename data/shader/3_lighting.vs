@@ -51,7 +51,11 @@ vec4 windEffect(vec4 _worldPos)
 void main()
 {
     // wind effect
-    vec4 windPos = windEffect(vec4(position.xyz, 1.0));
+    vec4 windPos = vec4(position, 1.0);
+    if (flexibility > 0.001)
+    {
+        windPos = windEffect(windPos);
+    }
 
     // Bone transforms
     mat4 boneTransform = mat4(1);
@@ -62,7 +66,7 @@ void main()
         boneTransform += boneMatrix[boneID[2]] * boneWeights[2];
         boneTransform += boneMatrix[boneID[3]] * boneWeights[3];
     }
-    vec4 tPosition = boneTransform * vec4(windPos.xyz, 1.0);
+    vec4 tPosition = boneTransform * windPos;
     vec3 tNormal   = (boneTransform * vec4(normal, 1.0)).xyz;
     vec3 tTangent  = (boneTransform * vec4(tangent, 1.0)).xyz;
 
