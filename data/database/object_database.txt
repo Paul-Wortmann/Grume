@@ -325,6 +325,8 @@
 	<object>grass_1                 objects/grass_1_003.txt<object>
 	<object>grass_1                 objects/grass_1_004.txt<object>
 	<object>grass_1                 objects/grass_1_005.txt<object>
+	<object>grass_1                 objects/grass_1_006.txt<object>
+	<object>grass_1                 objects/grass_1_007.txt<object>
 
     # Jar
 	<object>jar                   objects/jar_1_001.txt</object>
