@@ -233,6 +233,8 @@
 	<object>dead_tree             objects/dead_tree_1_001.txt</object>
 	<object>dead_tree             objects/dead_tree_1_002.txt</object>
 	<object>dead_tree             objects/dead_tree_3_001.txt</object>
+	<object>dead_tree             objects/dead_tree_4_001.txt</object>
+	<object>dead_tree             objects/dead_tree_4_002.txt</object>
 	<object>dead_tree_2           objects/dead_tree_2_001.txt</object>
 	<object>dead_tree_2           objects/dead_tree_2_002.txt</object>
 	<object>dead_tree_2           objects/dead_tree_2_003.txt</object>
