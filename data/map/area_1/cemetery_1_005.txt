@@ -165,6 +165,12 @@
         <object>portal_cave_center 1  033 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
         <object>portal_cave_left   1  034 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
 
+        #buildings
+        <object>medieval_building  2  024 024  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Medieval blacksmith building
+        <object>medieval_building  2  040 022  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Medieval house
+        <object>medieval_building  2  025 042  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Medieval house
+        <object>medieval_building  2  041 041  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object> # Medeival sawmill
+
     </objects>
 
 </map>
