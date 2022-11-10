@@ -27,6 +27,7 @@
 #include "../core/includes.hpp"
 #include "../core/game_config.hpp"
 #include "../entity/entity_define.hpp"
+#include "../map/map_define.hpp"
 #include "../ui/ui_manager.hpp"
 #include "../resource/resource_manager.hpp"
 #include "graphics_engine_camera.hpp"

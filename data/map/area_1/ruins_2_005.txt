@@ -9,6 +9,7 @@
         <map_music_name>ruins_2</map_music_name>
         <map_music_number>1</map_music_number>
         <world_orientation>0 0 1</world_orientation>
+        <map_wind>4.5</map_wind>
     </information>
 
     <tile_data>

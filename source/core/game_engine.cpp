@@ -104,6 +104,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_graphicsEngine.setGameConfigPointer(&m_gameConfig);
     m_graphicsEngine.setUIPointer(&m_uiManager);
     m_graphicsEngine.setResourceManagerPointer(&m_resourceManager);
+    m_graphicsEngine.setMapPointer(m_mapManager.getMapPointer());
     m_physicsEngine.setEntityHead(m_entityManager.getHead());
     m_physicsEngine.setEntityManager(&m_entityManager);
     m_physicsEngine.setMapPointer(m_mapManager.getMapPointer());

@@ -254,7 +254,7 @@ void cGraphicsEngine::m_p3_render(void)
                 glUniform1i(m_p3_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
 
                 // Flexibility
-                glUniform1f(m_p3_loc_flexibility, m_entityTemp->base.flexibility);
+                glUniform1f(m_p3_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
 
                 if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
                 {

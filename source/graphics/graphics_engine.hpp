@@ -62,6 +62,9 @@ class cGraphicsEngine :tcTemplateEngine
         void                   initializeEntity(sEntity *&_entity)  { m_initializeEntity(_entity); }
         void                   setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
 
+        // Map
+        void                   setMapPointer(sMap* _map) { m_map = _map; }
+
         // IO
         bool                   getKeyState(const std::uint32_t &_key) { return m_keyMap[_key]; }
         void                   setKeyState(const std::uint32_t &_key, const bool &_state) { m_keyMap[_key] = _state; }
@@ -145,6 +148,9 @@ class cGraphicsEngine :tcTemplateEngine
         sEntity* m_entityHead   = nullptr;
         sEntity* m_entityTemp   = nullptr;
         sEntity* m_entityPlayer = nullptr;
+
+        // Entities
+        sMap*    m_map          = nullptr;
 
         // IO
         std::unordered_map<std::int32_t, bool> m_keyMap      = {};

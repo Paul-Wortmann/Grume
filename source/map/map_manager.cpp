@@ -377,8 +377,13 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
         float      playerStartRotation  = mapFile.getFloat("<player_start_rotation>");
         glm::ivec2 playerStartTile      = mapFile.getIVec2("<player_start_tile>");
 
+        // Re-spawn town name
         if (mapFile.getInstanceCount("<set_town>") > 0)
             mapTown = mapFile.getString("<set_town>");
+
+        // Wind speed multiplier
+        if (mapFile.getInstanceCount("<map_wind>") > 0)
+            m_map->info.windSpeed = mapFile.getFloat("<map_wind>");
 
         // Seed
         m_map->info.seed = mapFile.getInteger("<map_seed>");

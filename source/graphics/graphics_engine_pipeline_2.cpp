@@ -159,7 +159,7 @@ void cGraphicsEngine::m_p2_render(void)
                                 glUniformMatrix4fv(m_p2_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
 
                                 // Flexibility
-                                glUniform1f(m_p2_loc_flexibility, m_entityTemp->base.flexibility);
+                                glUniform1f(m_p2_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
 
                                 // skeletal animation uniforms for dynamic models
                                 if (m_entityTemp->graphics->model->numBones > 0)

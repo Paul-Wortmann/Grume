@@ -49,6 +49,7 @@ struct sMapInformation
     float          terrainHeight = -1.0f;
 
     std::uint32_t  seed          = 0;
+    float          windSpeed     = 1.0f;
 };
 
 #endif // MAP_DEFINE_INFORMATION_HPP
