@@ -103,13 +103,16 @@
 
     <npc_mobs>
         # database name, number, prevalence
-        <npc_mob>skeleton_1 0 5</npc_mob>
+        <#npc_mob>bat_leader_1 0 4</npc_mob>
+        <npc_mob>bug_1        0 8</npc_mob>
+        <#npc_mob>skeleton_1 0 5</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone            0.75 1.0 36</debris>
-        <debris>mushroom_orange 0.75 1.0 36</debris>
+        <debris>bone            0.75 1.0 06</debris>
+        <debris>rock_small_2    0.75 1.0 63</debris>
+        <debris>mushroom_orange 0.75 1.0 63</debris>
     </debris_objects>
 
     <npcs>
