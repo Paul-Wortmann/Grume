@@ -37,8 +37,9 @@
 
 // Event type enum
 enum sMapManagerEventType : std::uint32_t { sMapManagerEventType_none         = 0,    // null event
-                                            sMapManagerEventType_mapWarp      = 1,    // Map warp
-                                            sMapManagerEventType_menuActivate = 2 };  // menu activate
+                                            sMapManagerEventType_mapWarp      = 1,    // map warp
+                                            sMapManagerEventType_mapLoad      = 2,    // map load
+                                            sMapManagerEventType_menuActivate = 3 };  // menu activate
 
 // Event struct
 struct sMapManagerEvent

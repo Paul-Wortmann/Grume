@@ -70,6 +70,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     return_value = (return_value == EXIT_SUCCESS) ? m_resourceManager.initialize() : return_value;
 
     // Initialize sub-systems
+    return_value = (return_value == EXIT_SUCCESS) ? m_resourceManager.initializeFont() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_uiManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_graphicsEngine.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_eventManager.initialize() : return_value;
@@ -83,7 +84,6 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     return_value = (return_value == EXIT_SUCCESS) ? m_animationEngine.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_npcManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_objectManager.initialize() : return_value;
-    return_value = (return_value == EXIT_SUCCESS) ? m_resourceManager.initializeFont() : return_value;
 
     // Apply post-initialization configuration settings
     m_audioEngine.setVolumeMaster(m_gameConfig.m_volume_master);
@@ -343,6 +343,11 @@ void cGameEngine::process(void)
                     m_uiManager.setMenuEnabled("skills", false);
                     m_uiManager.setMenuEnabled("options", false);
                 }
+            }
+            // Map loaded
+            else if (tEvent->type == sMapManagerEventType::sMapManagerEventType_mapLoad)
+            {
+                m_uiManager.setMapTitle(tEvent->text);
             }
 
             // Cleanup

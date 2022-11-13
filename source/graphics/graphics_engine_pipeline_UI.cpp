@@ -194,4 +194,30 @@ void cGraphicsEngine::m_pui_render(void)
             }
         }
     }
+
+    // Render mini-map
+    sTexture* titleTexture = m_UIManager->getTitleTexture();
+    if(titleTexture != nullptr)
+    {
+        // Shader uniforms
+        m_pui_modelMatrix = glm::mat4(1);
+        //m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].position);
+        //m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].scale.x, menu[m].scale.y, 1.0f));
+        glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
+
+        if (m_pc_fsq_VAO != 0)
+        {
+            // Texture
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, titleTexture->ID);
+
+            // VAO
+            glBindVertexArray(m_pc_fsq_VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+        }
+    }
+    else
+    {
+        std::cout << "Title texture == NULL!" << std::endl;
+    }
 }

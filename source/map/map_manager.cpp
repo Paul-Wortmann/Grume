@@ -488,6 +488,12 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
         m_entityManager->spawnMinionEntities();
         process(16); // 60 fps, 1 frame
 
+        // Create map load event
+        sMapManagerEvent* event = new sMapManagerEvent;
+        event->type = sMapManagerEventType::sMapManagerEventType_mapLoad;
+        event->text = m_map->info.name;
+        m_event.push(event);
+
         // Load finished
         m_graphicsEngine->setLoading(false);
     }

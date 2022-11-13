@@ -131,18 +131,25 @@
 
     <npc_mobs>
         # database name, number, prevalence
-        <npc_mob>dragon 0 2</npc_mob>
+        <#npc_mob>bat_leader_1 0 4</npc_mob>
+        <#npc_mob>bug_1        0 8</npc_mob>
+        <#npc_mob>dragon_1 0 2</npc_mob>
+        <#npc_mob>skeleton_1 0 5</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>gib             0.75 1.0 064</debris>
-        <debris>bone            0.75 1.0 128</debris>
-        <debris>mushroom_orange 0.75 1.0 066</debris>
+        <debris>gib             0.75 1.0 032</debris>
+        <debris>bone            0.75 1.0 064</debris>
+        <debris>mushroom_orange 0.75 1.0 016</debris>
+        <debris>rock_small_2    0.75 1.0 064</debris>
     </debris_objects>
+
+
 
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
+        <npc>dragon_1 0 32 32 1.000 1.000 1.000  1.000 1.000 1.000</npc>
     </npcs>
 
     <objects>

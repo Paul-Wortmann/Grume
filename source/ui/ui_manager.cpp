@@ -241,3 +241,9 @@ void cUIManager::process(const float &_dt)
         m_mouseClicked = false;
     }
 }
+
+void cUIManager::setMapTitle(const std::string &_mapTitle)
+{
+    m_mapTitle = _mapTitle;
+    m_mapTitleTexture = m_resourceManager->generateTexture(m_mapTitle);
+}

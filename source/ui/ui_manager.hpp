@@ -47,6 +47,8 @@ class cUIManager
         eComponentFunction getUIEvent(void) { return m_uiEvent; };
         void               setUIEvent(eComponentFunction _uiEvent) { m_uiEvent = _uiEvent; };
         void               setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
+        void               setMapTitle(const std::string &_mapTitle);
+        sTexture*          getTitleTexture(void) { return m_mapTitleTexture; };
 
         // ui_manager_load.cpp
         std::uint32_t      load(const std::string &_fileName);
@@ -65,6 +67,8 @@ class cUIManager
         glm::vec2           m_mousePosition     = glm::vec2(0.0f, 0.0f);
         std::uint32_t       m_activeWindowCount = 0;
         eComponentFunction  m_uiEvent           = eComponentFunction::componentFunctionNone;
+        std::string         m_mapTitle          = "undefined";
+        sTexture           *m_mapTitleTexture   = nullptr;
 
         // member pointer handles
         cResourceManager*   m_resourceManager   = nullptr;

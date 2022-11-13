@@ -32,7 +32,7 @@
 	    <base_over_size>1</base_over_size>
         <base_position>0.0 2.0 0.0</base_position>
         <base_scale>10.0 10.0 10.0</base_scale>
-        <base_rotation>3.1416 -4.7124 0.0</base_rotation>
+        <base_rotation>0.0000 0.0000 0.0000</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_debris>bat_debris</base_debris>
 	    <base_destructible>1<base_destructible>
