@@ -39,6 +39,7 @@ class cTextureManager : public tcLinkedList<sTexture>
         // Font
         std::uint32_t initializeFont(void) { return m_fontManager.initializeFont(); };
         sTexture*     generateTexture(const std::string &_text);
+        sTexture*     generateTexture(const std::string &_text, const glm::vec4 &_color);
 
     protected:
 

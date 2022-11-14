@@ -56,6 +56,7 @@ class cResourceManager :tcTemplateManager
         // Font
         std::uint32_t initializeFont(void) { return m_materialManager.initializeFont(); };
         sTexture*     generateTexture(const std::string &_text) { return m_materialManager.generateTexture(_text); };
+        sTexture*     generateTexture(const std::string &_text, const glm::vec4 &_color) { return m_materialManager.generateTexture(_text, _color); };
 
     protected:
 

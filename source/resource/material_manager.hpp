@@ -42,6 +42,7 @@ class cMaterialManager : public tcLinkedList<sMaterial>
         // Font
         std::uint32_t initializeFont(void) { return m_textureManager.initializeFont(); };
         sTexture*     generateTexture(const std::string &_text) { return m_textureManager.generateTexture(_text); };
+        sTexture*     generateTexture(const std::string &_text, const glm::vec4 &_color) { return m_textureManager.generateTexture(_text, _color); };
 
     protected:
 

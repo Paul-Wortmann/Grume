@@ -245,5 +245,5 @@ void cUIManager::process(const float &_dt)
 void cUIManager::setMapTitle(const std::string &_mapTitle)
 {
     m_mapTitle = _mapTitle;
-    m_mapTitleTexture = m_resourceManager->generateTexture(m_mapTitle);
+    m_mapTitleTexture = m_resourceManager->generateTexture(m_mapTitle, glm::vec4(230, 230, 230, 255));
 }

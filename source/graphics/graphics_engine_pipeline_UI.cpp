@@ -199,10 +199,16 @@ void cGraphicsEngine::m_pui_render(void)
     sTexture* titleTexture = m_UIManager->getTitleTexture();
     if(titleTexture != nullptr)
     {
+        //std::cout  << "Texture x: " << titleTexture->width << " - " << titleTexture->height << std::endl;
         // Shader uniforms
+        float scale_x = 1920.0 * (static_cast<float>(titleTexture->width) / static_cast<float>(m_window_w)) * 0.0001;
+        float scale_y = 1080.0 * (static_cast<float>(titleTexture->height) / static_cast<float>(m_window_h)) * 0.0001;
+        glm::vec3 position = glm::vec3(1.0 - scale_x, 1.0 - scale_y, -1.0);
+        //std::cout  << "Scale x: " << scale_x << " - " << scale_y << std::endl;
+
         m_pui_modelMatrix = glm::mat4(1);
-        //m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].position);
-        //m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].scale.x, menu[m].scale.y, 1.0f));
+        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(scale_x, scale_y, 1.0f));
         glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
         if (m_pc_fsq_VAO != 0)
