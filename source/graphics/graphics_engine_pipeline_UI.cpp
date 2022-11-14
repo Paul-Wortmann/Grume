@@ -222,8 +222,4 @@ void cGraphicsEngine::m_pui_render(void)
             glDrawArrays(GL_TRIANGLES, 0, 6);
         }
     }
-    else
-    {
-        std::cout << "Title texture == NULL!" << std::endl;
-    }
 }

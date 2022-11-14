@@ -90,11 +90,10 @@ void cObjectManager::process(const float &_dt)
                             tEntity->base.collectable = false;
 
                             // spawn npc
-                            if  ((rand() % 100) < 20)
+                            if ((m_mapPointer->numNPCmob > 0) && ((rand() % 100) < 20))
                             {
-                                tEntity = m_particleEngine->spawnEntity("bat", 0, eDatabaseType::databaseTypeNpc, glm::vec3(m_entityTemp->base.position.x, 1.0f, m_entityTemp->base.position.z));
+                                tEntity = m_particleEngine->spawnEntity(m_mapPointer->npcMob[0].databaseName, m_mapPointer->npcMob[0].databaseNumber, eDatabaseType::databaseTypeNpc, glm::vec3(m_entityTemp->base.position.x, 1.0f, m_entityTemp->base.position.z));
                             }
-
                             glm::vec3 spawnPosition = m_entityTemp->base.position;
                             spawnPosition.y = m_mapPointer->info.terrainHeight - 1.0f;
 

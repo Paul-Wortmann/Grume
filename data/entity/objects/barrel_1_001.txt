@@ -11,7 +11,7 @@
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>1.0 1.0 1.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
-	    <base_hit_points>2</base_hit_points>
+	    <base_hit_points>4</base_hit_points>
 	    <base_debris>barrel_debris</base_debris>
 	    <base_destructible>1<base_destructible>
 	    <base_collectable>0<base_collectable>
