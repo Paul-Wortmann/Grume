@@ -137,7 +137,7 @@
 
     <npc_mobs>
         # database name, number, prevalence
-        <npc_mob>skeleton_1 0 1</npc_mob>
+        <npc_mob>skeleton_1 0 64</npc_mob>
     </npc_mobs>
 
     <debris_objects>
@@ -145,7 +145,7 @@
         <debris>rock_small      0.75 1.0 020</debris>
         <debris>dead_tree       0.50 1.0 030</debris>
         <debris>bone            0.75 1.0 040</debris>
-        <debris>gib             0.75 1.0 042</debris>
+        <#debris>gib             0.75 1.0 042</debris>
         <debris>grass_1         0.75 1.0 125</debris>
         <debris>mushroom_green  0.75 1.0 066</debris>
     </debris_objects>

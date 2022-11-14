@@ -2,23 +2,23 @@
 <save_file>
 
    <information>
-      <current_map>cave_1_001</current_map>
-      <current_position>1266</current_position>
+      <current_map>cemetery_1_002</current_map>
+      <current_position>2077</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
       <level_current>4</level_current>
-      <exp_current>699</exp_current>
+      <exp_current>2373</exp_current>
       <exp_next>5184</exp_next>
-      <health_current>506.25</health_current>
-      <health_max>506.25</health_max>
-      <health_regen>0.640723</health_regen>
-      <mana_current>506.25</mana_current>
-      <mana_max>506.25</mana_max>
-      <mana_regen>0.640723</mana_regen>
-      <gold_current>12338</gold_current>
+      <health_current>505.5</health_current>
+      <health_max>505.5</health_max>
+      <health_regen>0.640726</health_regen>
+      <mana_current>505.5</mana_current>
+      <mana_max>505.5</mana_max>
+      <mana_regen>0.640726</mana_regen>
+      <gold_current>10827</gold_current>
       <damage_physical_base>5</damage_physical_base>
       <damage_physical_crit_chance>5</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>1.25</damage_physical_crit_multiplier>
@@ -39,9 +39,10 @@
 
    <map_data>
       <map>cave_1_001 1410763947</map>
-      <map>cave_1_002 113369062</map>
-      <map>town_2_001 1410763947</map>
-      <map>town_3_001 1969034340</map>
+      <map>cave_1_002 774098068</map>
+      <map>cave_1_003 285319764</map>
+      <map>cave_1_004 1460495598</map>
+      <map>cave_1_005 24381077</map>
    </map_data>
 
 </save_file>

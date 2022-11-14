@@ -16,6 +16,7 @@
 	<map>cave_1_004     area_1/cave_1_004.txt</map>
 	<map>cave_1_005     area_1/cave_1_005.txt</map>
 	<map>cave_1_006     area_1/cave_1_006.txt</map>
+	<map>cave_1_007     area_1/cave_1_007.txt</map>
 
 	<map>cave_2_001     area_1/cave_2_001.txt</map>
 	<map>cave_2_002     area_1/cave_2_002.txt</map>
