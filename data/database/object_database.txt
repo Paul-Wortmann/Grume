@@ -155,6 +155,10 @@
 	<object>cemetery_object       objects/cemetery_object_8_001.txt</object> # Gate
     <object>cemetery_object       objects/mort_safe_1_001.txt<object> # mort safe
 
+    # Tombstone
+	<object>tombstone             objects/cemetery_object_4_001.txt</object> # cross
+	<object>tombstone             objects/cemetery_object_5_001.txt</object> # flat tomb stone
+	<object>tombstone             objects/cemetery_object_6_001.txt</object> # flat tomb stone
 
     # Chair
 	<object>chair                 objects/chair_1_001.txt</object>
