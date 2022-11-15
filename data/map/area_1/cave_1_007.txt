@@ -135,9 +135,9 @@
         <object>portal_cave_center 1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
         <object>portal_cave_left   1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
 
-        # Knight sarcophicus
-        <object>statue             5  006 008  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object>
-        <object>statue             5  012 008  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object>
+        # Knight sarcophagus
+        <object>statue             5  006 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>statue             5  012 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
         <object>statue             5  006 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object>
         <object>statue             5  012 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object>
     </objects>

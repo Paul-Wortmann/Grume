@@ -132,13 +132,15 @@ void cPhysicsEngine::process(const float &_dt)
             }
 
             // 3D picking
-            if (gPhysicsCollision_ray_aabb(m_mousePosition.x, m_mousePosition.y, m_mousePosition.z, m_mouseDirection.x, m_mouseDirection.y, m_mouseDirection.z,
+            if (gPhysicsCollision_ray_aabb(m_mousePosition.x, m_mousePosition.y, m_mousePosition.z,
+                                           m_mouseDirection.x, m_mouseDirection.y, m_mouseDirection.z,
                                            tEntity->base.position.x, tEntity->base.position.y - m_mapPointer->info.terrainHeight, tEntity->base.position.z,
-                                           tEntity->physics->halfDimentions.x, tEntity->physics->halfDimentions.y, tEntity->physics->halfDimentions.z, tmin))
+                                           tEntity->physics->halfDimentions.x, tEntity->physics->halfDimentions.y, tEntity->physics->halfDimentions.z,
+                                           tmin))
             {
                 bool reject = false;
 
-                // Reject non-inter-actable wall objects
+                // Reject non-interactable wall objects
                 if (((tEntity->base.type == eEntityType::entityType_wallHigh) ||
                      (tEntity->base.type == eEntityType::entityType_wallHole) ||
                      (tEntity->base.type == eEntityType::entityType_wallLow)) &&
