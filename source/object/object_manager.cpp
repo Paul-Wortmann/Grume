@@ -92,7 +92,7 @@ void cObjectManager::process(const float &_dt)
                             // spawn npc
                             if ((m_mapPointer->numNPCmob > 0) && ((rand() % 100) < 20))
                             {
-                                tEntity = m_particleEngine->spawnEntity(m_mapPointer->npcMob[0].databaseName, m_mapPointer->npcMob[0].databaseNumber, eDatabaseType::databaseTypeNpc, glm::vec3(m_entityTemp->base.position.x, 1.0f, m_entityTemp->base.position.z));
+                                tEntity = m_particleEngine->spawnEntity(m_mapPointer->npcMob[0].databaseName, m_mapPointer->npcMob[0].databaseNumber, eDatabaseType::databaseTypeNpc, m_entityTemp->base.position);
                             }
                             glm::vec3 spawnPosition = m_entityTemp->base.position;
                             spawnPosition.y = m_mapPointer->info.terrainHeight - 1.0f;
