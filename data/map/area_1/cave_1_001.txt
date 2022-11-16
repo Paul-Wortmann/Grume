@@ -113,6 +113,7 @@
         <debris>bone            0.75 1.0 06</debris>
         <debris>rock_small_2    0.75 1.0 63</debris>
         <debris>mushroom_orange 0.75 1.0 63</debris>
+        <debris>barrel_debris   0.75 1.0 63</debris>
     </debris_objects>
 
     <npcs>

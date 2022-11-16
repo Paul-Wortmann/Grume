@@ -94,8 +94,6 @@ void cObjectManager::process(const float &_dt)
                             {
                                 tEntity = m_particleEngine->spawnEntity(m_mapPointer->npcMob[0].databaseName, m_mapPointer->npcMob[0].databaseNumber, eDatabaseType::databaseTypeNpc, m_entityTemp->base.position);
                             }
-                            glm::vec3 spawnPosition = m_entityTemp->base.position;
-                            spawnPosition.y = m_mapPointer->info.terrainHeight - 1.0f;
 
                             // Loot:
                             if (m_entityTemp->loot != nullptr)
@@ -107,6 +105,9 @@ void cObjectManager::process(const float &_dt)
 
                                     std::uint32_t gold = m_entityTemp->loot->gold_min;
                                     gold += rand() % (m_entityTemp->loot->gold_max - m_entityTemp->loot->gold_min);
+
+                                    glm::vec3 spawnPosition = m_entityTemp->base.position;
+                                    //spawnPosition.y = m_mapPointer->info.terrainHeight - 1.0f;
 
                                     sEntity* tEntity = nullptr;
                                     tEntity = m_particleEngine->spawnEntity("coins", 0, eDatabaseType::databaseTypeItem, spawnPosition);
