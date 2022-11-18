@@ -3,14 +3,14 @@
 
    <information>
       <current_map>cave_1_007</current_map>
-      <current_position>1020</current_position>
+      <current_position>729</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
       <level_current>7</level_current>
-      <exp_current>2110</exp_current>
+      <exp_current>2566</exp_current>
       <exp_next>17496</exp_next>
       <health_current>1702</health_current>
       <health_max>1702</health_max>
@@ -18,7 +18,7 @@
       <mana_current>1702</mana_current>
       <mana_max>1702</mana_max>
       <mana_regen>7.29826</mana_regen>
-      <gold_current>25889</gold_current>
+      <gold_current>26290</gold_current>
       <damage_physical_base>8</damage_physical_base>
       <damage_physical_crit_chance>8</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>2</damage_physical_crit_multiplier>
