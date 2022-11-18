@@ -198,6 +198,7 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         if (return_value == EXIT_SUCCESS)
         {
             // Get cold start position from the map
+            /*
             cXML mapFile;
             mapFile.load(std::string(FILE_PATH_MAP) + filenName);
             if (mapFile.isValid())
@@ -210,6 +211,7 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
 
             // Cleanup
             mapFile.free();
+            */
 
             // Setup
             //tPlayer->base.position = gMapTileToPosition(tMap, currentPosition);
