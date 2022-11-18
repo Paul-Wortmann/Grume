@@ -29,7 +29,7 @@
 struct sEntityLoot
 {
     // Gold
-    bool            gold           = false;
+    std::uint32_t   gold           = 0;
     std::uint32_t   gold_min       = 0;
     std::uint32_t   gold_max       = 0;
 

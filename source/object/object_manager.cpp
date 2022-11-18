@@ -99,50 +99,51 @@ void cObjectManager::process(const float &_dt)
                             if (m_entityTemp->loot != nullptr)
                             {
                                 // Gold
-                                if (m_entityTemp->loot->gold)
+                                if (m_entityTemp->loot->gold > 0)
                                 {
-                                    m_entityTemp->loot->gold = false;
-
-                                    std::uint32_t gold = m_entityTemp->loot->gold_min;
-                                    gold += rand() % (m_entityTemp->loot->gold_max - m_entityTemp->loot->gold_min);
-
-                                    glm::vec3 spawnPosition = m_entityTemp->base.position;
-                                    //spawnPosition.y = m_mapPointer->info.terrainHeight - 1.0f;
-
-                                    sEntity* tEntity = nullptr;
-                                    tEntity = m_particleEngine->spawnEntity("coins", 0, eDatabaseType::databaseTypeItem, spawnPosition);
-
-                                    // if the entity could be loaded
-                                    if (tEntity != nullptr)
+                                    for (std::uint32_t i = 0; i < m_entityTemp->loot->gold; ++i)
                                     {
-                                        // variation: position
-                                        float posX = gRandFloatNormalized() - 1.0f;
-                                        float posZ = gRandFloatNormalized() - 1.0f;
-                                        tEntity->base.position.x += posX;
-                                        tEntity->base.position.z += posZ;
+                                        std::uint32_t gold = m_entityTemp->loot->gold_min;
+                                        gold += rand() % (m_entityTemp->loot->gold_max - m_entityTemp->loot->gold_min);
 
-                                        // variation: rotation
-                                        float rotation = gRandFloatNormalized() * M_PI * 2;
-                                        tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
-                                        tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
-                                        tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;
+                                        glm::vec3 spawnPosition = m_entityTemp->base.position;
+                                        //spawnPosition.y = m_mapPointer->info.terrainHeight - 1.0f;
 
-                                        // Update model matrix
-                                        m_entityManager->updateModelMatrix(tEntity);
+                                        sEntity* tEntity = nullptr;
+                                        tEntity = m_particleEngine->spawnEntity("coins", 0, eDatabaseType::databaseTypeItem, spawnPosition);
 
-                                        // text tooltip
-                                        tEntity->base.textActive = true;
-                                        tEntity->base.textData = std::to_string(gold);
-                                        tEntity->base.collectable = true;
-
-                                        // loot: gold
-                                        if (tEntity->loot == nullptr)
+                                        // if the entity could be loaded
+                                        if (tEntity != nullptr)
                                         {
-                                            tEntity->loot = new sEntityLoot;
+                                            // variation: position
+                                            float posX = gRandFloatNormalized() - 1.0f;
+                                            float posZ = gRandFloatNormalized() - 1.0f;
+                                            tEntity->base.position.x += posX;
+                                            tEntity->base.position.z += posZ;
+
+                                            // variation: rotation
+                                            float rotation = gRandFloatNormalized() * M_PI * 2;
+                                            tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
+                                            tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
+                                            tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;
+
+                                            // Update model matrix
+                                            m_entityManager->updateModelMatrix(tEntity);
+
+                                            // text tooltip
+                                            tEntity->base.textActive = true;
+                                            tEntity->base.textData = std::to_string(gold);
+                                            tEntity->base.collectable = true;
+
+                                            // loot: gold
+                                            if (tEntity->loot == nullptr)
+                                            {
+                                                tEntity->loot = new sEntityLoot;
+                                            }
+                                            tEntity->loot->gold     = 1;
+                                            tEntity->loot->gold_min = gold;
+                                            tEntity->loot->gold_max = gold;
                                         }
-                                        tEntity->loot->gold     = true;
-                                        tEntity->loot->gold_min = gold;
-                                        tEntity->loot->gold_max = gold;
                                     }
                                 }
                             }

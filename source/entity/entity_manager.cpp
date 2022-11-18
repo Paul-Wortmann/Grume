@@ -692,7 +692,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             }
 
             // Gold
-            tEntity->loot->gold     = (xmlEntityFile.getInteger("<loot_gold>") > 0);
+            tEntity->loot->gold     = xmlEntityFile.getInteger("<loot_gold>");
             tEntity->loot->gold_min = xmlEntityFile.getInteger("<loot_gold_min>");
             tEntity->loot->gold_max = xmlEntityFile.getInteger("<loot_gold_max>");
 
@@ -1157,8 +1157,12 @@ void cEntityManager::spawnMinionEntities(void)
                 // If slot available, spawn new
                 if (_leaderEntity->ai->leader->minion[i].entity == nullptr)
                 {
-                    tEntity = spawnEntity(_leaderEntity->ai->leader->minionName, _leaderEntity->ai->leader->minionNumber, eDatabaseType::databaseTypeNpc,
-                                          gMapTileToPosition(m_mapPointer, gClosestFreeTile(m_mapPointer, gMapPositionToTile(m_mapPointer, _leaderEntity->base.position))));
+                    // calculate spawn position
+                    glm::vec3 position = gMapTileToPosition(m_mapPointer, gClosestFreeTile(m_mapPointer, gMapPositionToTile(m_mapPointer, _leaderEntity->base.position)));
+                    position.y = _leaderEntity->base.position.y;
+
+                    // spawn entity
+                    tEntity = spawnEntity(_leaderEntity->ai->leader->minionName, _leaderEntity->ai->leader->minionNumber, eDatabaseType::databaseTypeNpc, position);
 
                     if (tEntity != nullptr)
                     {

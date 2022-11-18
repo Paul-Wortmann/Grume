@@ -1095,39 +1095,42 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
         if (_entity->loot != nullptr)
         {
             // Gold
-            if (_entity->loot->gold)
+            if (_entity->loot->gold > 0)
             {
-                std::uint32_t gold = _entity->loot->gold_min;
-                gold += rand() % (_entity->loot->gold_max - _entity->loot->gold_min);
-
-                // spawn coins
-                sEntity* tEntity = nullptr;
-                tEntity = m_particleEngine->spawnEntity("coins", 0, eDatabaseType::databaseTypeItem, spawnPosition);
-
-                // If entity could be loaded
-                if (tEntity != nullptr)
+                for (uint32_t i = 0; i < _entity->loot->gold; ++i)
                 {
-                    // text tooltip
-                    tEntity->base.textActive  = true;
-                    tEntity->base.textData    = std::to_string(gold);
-                    tEntity->base.collectable = true;
+                    std::uint32_t gold = _entity->loot->gold_min;
+                    gold += rand() % (_entity->loot->gold_max - _entity->loot->gold_min);
 
-                    // gold loot
-                    tEntity->loot->gold       = true;
-                    tEntity->loot->gold_min   = gold;
-                    tEntity->loot->gold_max   = gold;
+                    // spawn coins
+                    sEntity* tEntity = nullptr;
+                    tEntity = m_particleEngine->spawnEntity("coins", 0, eDatabaseType::databaseTypeItem, spawnPosition);
 
-                    // placement variation: position
-                    float posX = gRandFloatNormalized() - 1.0f;
-                    float posZ = gRandFloatNormalized() - 1.0f;
-                    tEntity->base.position.x += posX;
-                    tEntity->base.position.z += posZ;
+                    // If entity could be loaded
+                    if (tEntity != nullptr)
+                    {
+                        // text tooltip
+                        tEntity->base.textActive  = true;
+                        tEntity->base.textData    = std::to_string(gold);
+                        tEntity->base.collectable = true;
 
-                    // placement variation: rotation
-                    tEntity->base.rotation.y = gRandFloatNormalized() * M_PI * 2; // random angle
+                        // gold loot
+                        tEntity->loot->gold       = 1;
+                        tEntity->loot->gold_min   = gold;
+                        tEntity->loot->gold_max   = gold;
 
-                    // Update model matrix
-                    m_entityManager->updateModelMatrix(tEntity);
+                        // placement variation: position
+                        float posX = gRandFloatNormalized() - 1.0f;
+                        float posZ = gRandFloatNormalized() - 1.0f;
+                        tEntity->base.position.x += posX;
+                        tEntity->base.position.z += posZ;
+
+                        // placement variation: rotation
+                        tEntity->base.rotation.y = gRandFloatNormalized() * M_PI * 2; // random angle
+
+                        // Update model matrix
+                        m_entityManager->updateModelMatrix(tEntity);
+                    }
                 }
             }
 

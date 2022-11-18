@@ -9,6 +9,7 @@
 
     #    catagory file_name
     <npc>bug_1            npc/bug_1/bug_1_001.txt</npc>
+    <npc>bug_leader_1     npc/bug_leader_1/bug_leader_1_001.txt</npc>
 
 	<npc>bat_1            npc/bat_1/bat_1_001.txt</npc>
 	<npc>bat_leader_1     npc/bat_leader_1/bat_leader_1_001.txt</npc>
