@@ -14,13 +14,13 @@
         <ai_move_range>10.0</ai_move_range>
         <ai_retreat_range>0.0</ai_retreat_range>
         <ai_retreat_threshold>0.000125</ai_retreat_threshold>
-        <ai_model_corpse>npc/bug_leader_1/bug_leader_1_corpse_001.obj</ai_model_corpse>
+        <ai_model_corpse>npc/bug_leader_2/bug_leader_2_corpse_001.obj</ai_model_corpse>
         
         <ai_leader>
-            <ai_leader_minion_managed>0</ai_leader_minion_managed>
+            <ai_leader_minion_managed>1</ai_leader_minion_managed>
             <ai_leader_minion_start>0</ai_leader_minion_start>
-            <ai_leader_minion_max>512</ai_leader_minion_max>
-            <ai_leader_minion_name>bug_1</ai_leader_minion_name>
+            <ai_leader_minion_max>8</ai_leader_minion_max>
+            <ai_leader_minion_name>bug_2</ai_leader_minion_name>
             <ai_leader_minion_number>1</ai_leader_minion_number>
 
             <ai_leader_minion_revive>1</ai_leader_minion_revive> # bool
@@ -28,7 +28,7 @@
             <ai_leader_minion_heal>1</ai_leader_minion_heal> # bool
             <ai_leader_minion_heal_cost>125</ai_leader_minion_heal_cost>
             <ai_leader_minion_spawn>1</ai_leader_minion_spawn> # bool
-            <ai_leader_minion_spawn_cost>200</ai_leader_minion_spawn_cost>
+            <ai_leader_minion_spawn_cost>100</ai_leader_minion_spawn_cost>
         </ai_leader>
     </ai>
 
@@ -42,15 +42,15 @@
     </animation>
 
     <base>
-	    <base_name>bug_leader_1_001</base_name>
+	    <base_name>bug_leader_2_001</base_name>
 	    <base_type>6</base_type>
 	    <base_flying>0</base_flying>
 	    <base_over_size>1</base_over_size>
         <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>1.0 1.0 1.0</base_scale>
+        <base_scale>0.75 0.75 0.75</base_scale>
         <base_rotation>4.7124 0.0 4.71238898038</base_otation>
         <base_rotation_axis>0 0 -1</base_rotation_axis>
-	    <base_debris>bug_leader_1_debris</base_debris>
+	    <base_debris>bug_leader_2_debris</base_debris>
 	    <base_destructible>1</base_destructible>
 	    <base_collectable>0</base_collectable>
 	    <base_particle_type>5</base_particle_type>
@@ -70,10 +70,10 @@
 	    <character_health_regen>1.25</character_health_regen>
 	    <character_mana_max>1000</character_mana_max>
 	    <character_mana_current>0.0</character_mana_current>
-	    <character_mana_regen>1.25</character_mana_regen>
+	    <character_mana_regen>1.5</character_mana_regen>
 
         <character_damage>
-	        <character_damage_physical_base>100.0</character_damage_physical_base>
+	        <character_damage_physical_base>150.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>12.5</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 
@@ -95,7 +95,7 @@
     
     <graphics>
         <graphics_model>npc/bug_1/bug_1_001.dae</graphics_model>
-        <graphics_material>npc/bug_leader_1_001.txt</graphics_material>
+        <graphics_material>npc/bug_leader_2_001.txt</graphics_material>
     </graphics>
 
     <loot>

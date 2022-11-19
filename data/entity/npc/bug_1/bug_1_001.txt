@@ -53,7 +53,7 @@
 	    <character_mana_regen>0.0</character_mana_regen>
 
         <character_damage>
-	        <character_damage_physical_base>15.0</character_damage_physical_base>
+	        <character_damage_physical_base>30.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>0.1</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 
