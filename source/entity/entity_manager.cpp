@@ -458,6 +458,9 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 }
 
                 // Minions
+                if (xmlEntityFile.getInstanceCount("<ai_leader_minion_managed>") > 0)
+                    tEntity->ai->leader->minionManaged = (xmlEntityFile.getInteger("<ai_leader_minion_managed>") > 0);
+
                 tEntity->ai->leader->minionCurrent = xmlEntityFile.getInteger("<ai_leader_minion_start>");
                 tEntity->ai->leader->minionMax     = xmlEntityFile.getInteger("<ai_leader_minion_max>");
                 if (tEntity->ai->leader->minionCurrent > tEntity->ai->leader->minionMax)

@@ -54,9 +54,10 @@ struct sEntityAIMinion
 struct sEntityAILeader
 {
     // Minion data
+    bool             minionManaged   = true;    // leader manages minion
     std::uint32_t    minionCurrent   = 0;       // current number of minions
     std::uint32_t    minionMax       = 0;       // maximum number of minions to spawn
-    std::string      minionName      = {};       // database minion name
+    std::string      minionName      = {};      // database minion name
     std::uint32_t    minionNumber    = 0;       // database minion number
     sEntityAIMinion *minion          = nullptr; // array of minions
 

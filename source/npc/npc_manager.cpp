@@ -239,10 +239,28 @@ void cNPCManager::process(const float &_dt)
                     if ((m_entityTemp->ai->leader->minionCurrent < m_entityTemp->ai->leader->minionMax) &&
                         (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->spawnCost))
                     {
-                        //std::cout << "Spawning new NPC : " << m_entityTemp->ai->leader->minionCurrent << std::endl;
+                        // Update minion count
                         m_entityTemp->ai->leader->minionCurrent++;
+
+                        // Decrease mana by spawn cost
                         m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->spawnCost;
-                        m_entityManager->spawnMinionEntities();
+
+                        // Set a managed entity to be spawned
+                        if (m_entityTemp->ai->leader->minionManaged)
+                        {
+                            //std::cout << "Spawning new NPC : " << m_entityTemp->ai->leader->minionCurrent << std::endl;
+                            m_entityManager->spawnMinionEntities();
+                        }
+                        // Spawn a non-managed entity
+                        else
+                        {
+                            // calculate spawn position
+                            glm::vec3 positionTemp = gMapTileToPosition(m_mapPointer, gClosestFreeTile(m_mapPointer, gMapPositionToTile(m_mapPointer, m_entityTemp->base.position)));
+                            positionTemp.y = m_entityTemp->base.position.y;
+
+                            // spawn entity
+                            m_entityManager->spawnEntity(m_entityTemp->ai->leader->minionName, m_entityTemp->ai->leader->minionNumber, eDatabaseType::databaseTypeNpc, positionTemp);
+                        }
 
                         // blood particles
                         m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
@@ -1036,8 +1054,8 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
     //Else die and give loot and experience
     else
     {
-        // If leader, release minions
-        if ((_entity->ai != nullptr) && (_entity->ai->leader != nullptr))
+        // If leader, release managed minions
+        if ((_entity->ai != nullptr) && (_entity->ai->leader != nullptr) && (_entity->ai->leader->minionManaged))
         {
             for (std::uint32_t i = 0; i < _entity->ai->leader->minionCurrent; ++i)
             {

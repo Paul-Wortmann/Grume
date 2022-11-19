@@ -17,8 +17,9 @@
         <ai_model_corpse>npc/bug_leader_1/bug_leader_1_corpse_001.obj</ai_model_corpse>
         
         <ai_leader>
+            <ai_leader_minion_managed>0</ai_leader_minion_managed>
             <ai_leader_minion_start>0</ai_leader_minion_start>
-            <ai_leader_minion_max>15</ai_leader_minion_max>
+            <ai_leader_minion_max>512</ai_leader_minion_max>
             <ai_leader_minion_name>bug_1</ai_leader_minion_name>
             <ai_leader_minion_number>1</ai_leader_minion_number>
 
@@ -27,7 +28,7 @@
             <ai_leader_minion_heal>1</ai_leader_minion_heal> # bool
             <ai_leader_minion_heal_cost>125</ai_leader_minion_heal_cost>
             <ai_leader_minion_spawn>1</ai_leader_minion_spawn> # bool
-            <ai_leader_minion_spawn_cost>50</ai_leader_minion_spawn_cost>
+            <ai_leader_minion_spawn_cost>100</ai_leader_minion_spawn_cost>
         </ai_leader>
     </ai>
 
@@ -68,6 +69,7 @@
 	    <character_health_max>1000</character_health_max>
 	    <character_health_regen>1.25</character_health_regen>
 	    <character_mana_max>1000</character_mana_max>
+	    <character_mana_current>0.0</character_mana_current>
 	    <character_mana_regen>1.25</character_mana_regen>
 
         <character_damage>
