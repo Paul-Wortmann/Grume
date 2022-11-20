@@ -1055,18 +1055,21 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
     else
     {
         // If leader, release managed minions
-        if ((_entity->ai != nullptr) && (_entity->ai->leader != nullptr) && (_entity->ai->leader->minionManaged))
+        if ((_entity->ai != nullptr) && (_entity->ai->leader != nullptr))
         {
-            for (std::uint32_t i = 0; i < _entity->ai->leader->minionCurrent; ++i)
+            for (std::uint32_t i = 0; i < _entity->ai->leader->minionMax; ++i)
             {
-                sEntity *minion = static_cast<sEntity*>(_entity->ai->leader->minion[i].entity);
-                minion->ai->leaderEntity = nullptr;
-                _entity->ai->leader->minion[i].entity = nullptr;
-
-                // if the minion is a corpse, kill it
-                if (minion->ai->state == eEntityAIState::entityAIStateCorpse)
+                if (_entity->ai->leader->minion[i].entity != nullptr)
                 {
-                    m_entityDeath(minion);
+                    sEntity *minion = static_cast<sEntity*>(_entity->ai->leader->minion[i].entity);
+                    minion->ai->leaderEntity = nullptr;
+                    _entity->ai->leader->minion[i].entity = nullptr;
+
+                    // if the minion is a corpse, kill it
+                    if (minion->ai->state == eEntityAIState::entityAIStateCorpse)
+                    {
+                        m_entityDeath(minion);
+                    }
                 }
             }
         }
