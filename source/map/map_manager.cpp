@@ -121,6 +121,8 @@ void cMapManager::m_freeData(sMap*& _map)
         _map->tile = nullptr;
         _map->numTiles = 0;
     }
+
+    _map->info.currentNumMob = 0;
 }
 
 void cMapManager::process(const float &_dt)

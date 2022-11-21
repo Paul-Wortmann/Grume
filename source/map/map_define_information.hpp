@@ -50,6 +50,8 @@ struct sMapInformation
 
     std::uint32_t  seed          = 0;
     float          windSpeed     = 1.0f;
+
+    std::uint32_t  currentNumMob = 0; // How many NPC mobs are currently active on the map
 };
 
 #endif // MAP_DEFINE_INFORMATION_HPP

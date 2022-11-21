@@ -147,6 +147,8 @@ void cMapManager::m_addNPC_mobs(void)
                                 // Process collision data
                                 m_addCollisionData(m_map, tEntity, tEntity->base.rotation.y);
 
+                                // Update map mob count
+                                m_map->info.currentNumMob++;
                             }
                         }
                     }

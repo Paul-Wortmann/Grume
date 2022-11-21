@@ -203,7 +203,7 @@ void cNPCManager::process(const float &_dt)
                 if ((m_entityTemp->ai->leader != nullptr) && (m_entityTemp->ai->leader->minion != nullptr))
                 {
                     // Process current minions
-                    for (std::uint32_t i = 0; i < m_entityTemp->ai->leader->minionCurrent; ++i)
+                    for (std::uint32_t i = 0; i < m_entityTemp->ai->leader->minionMax; ++i)
                     {
                         sEntity *minion = static_cast<sEntity*>(m_entityTemp->ai->leader->minion[i].entity);
                         if (minion != nullptr)
@@ -250,6 +250,7 @@ void cNPCManager::process(const float &_dt)
                         {
                             //std::cout << "Spawning new NPC : " << m_entityTemp->ai->leader->minionCurrent << std::endl;
                             m_entityManager->spawnMinionEntities();
+                            m_mapPointer->info.currentNumMob++;
                         }
                         // Spawn a non-managed entity
                         else
@@ -260,6 +261,7 @@ void cNPCManager::process(const float &_dt)
 
                             // spawn entity
                             m_entityManager->spawnEntity(m_entityTemp->ai->leader->minionName, m_entityTemp->ai->leader->minionNumber, eDatabaseType::databaseTypeNpc, positionTemp);
+                            m_mapPointer->info.currentNumMob++;
                         }
 
                         // blood particles
@@ -1033,6 +1035,9 @@ void cNPCManager::process(const float &_dt)
 
 void cNPCManager::m_entityDeath(sEntity*& _entity)
 {
+    // Update map mob count
+    m_mapPointer->info.currentNumMob--;
+
     // Screen shake on NPC death
     if ((_entity->base.deathShakeChance > 0) && ((rand() % 101) < _entity->base.deathShakeChance))
     {
