@@ -130,10 +130,9 @@
     </rooms>
 
     <npc_mobs>
-        # database name, number, prevalence
-        <npc_mob>bat_leader_1 0 2</npc_mob>
-        <npc_mob>bat_1        0 4</npc_mob>
-        <npc_mob>bug_1        0 8</npc_mob>
+        # database name, number, scale min, scale max, prevalence
+        <npc_mob>bat_leader_1 0 0.95 1.0 2</npc_mob>
+        <npc_mob>bat_1        0 0.85 1.0 4</npc_mob>
     </npc_mobs>
 
     <debris_objects>

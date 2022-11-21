@@ -157,7 +157,7 @@
     </rooms>
 
     <npc_mobs>
-        # database name, number, prevalence
+        # database name, number, scale min, scale max, prevalence
     </npc_mobs>
 
     <debris_objects>

@@ -58,6 +58,10 @@ void cMapManager::m_addNPC_mobs(void)
                 tStringNum  = 0;
                 tString     = "";
 
+                // Scale
+                float scaleMin = 1.0;
+                float scaleMax = 1.0;
+
                 // Process data
                 /// # database name, database number, frequency
                 if (dataStringLength > 4)
@@ -75,6 +79,14 @@ void cMapManager::m_addNPC_mobs(void)
                                 m_map->npcMob[i].databaseNumber = std::stoi(tString); // database number
                             }
                             else if (tStringNum == 2)
+                            {
+                                scaleMin = std::stof(tString); // scale min
+                            }
+                            else if (tStringNum == 3)
+                            {
+                                scaleMax = std::stof(tString); // scale max
+                            }
+                            else if (tStringNum == 4)
                             {
                                 m_map->npcMob[i].prevalence = std::stoi(tString); // prevalence
                             }
@@ -122,6 +134,12 @@ void cMapManager::m_addNPC_mobs(void)
                                 tEntity->base.position.x += tilePosition.x;
                                 tEntity->base.position.y += m_map->info.terrainHeight;
                                 tEntity->base.position.z += tilePosition.z;
+
+                                // Determine scale
+                                float scale = gRandFloatMinMax(scaleMin, scaleMax);
+                                tEntity->base.scale.x *= scale;
+                                tEntity->base.scale.y *= scale;
+                                tEntity->base.scale.z *= scale;
 
                                 // update model matrix
                                 m_entityManager->updateModelMatrix(tEntity);

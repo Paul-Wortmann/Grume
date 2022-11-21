@@ -129,8 +129,8 @@
     </rooms>
 
     <npc_mobs>
-        # database name, number, prevalence
-        <npc_mob>golem_1 0 4</npc_mob>
+        # database name, number, scale min, scale max, prevalence
+        <npc_mob>golem_1 0 0.9 1.0 4</npc_mob>
     </npc_mobs>
 
     <debris_objects>
