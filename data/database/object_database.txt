@@ -489,7 +489,7 @@
     # Skeleton
     <object>skeleton              objects/skeleton_horse_1_001.txt</object>
 
-    # Skeleton corpse and debris
+    # Skeleton 1 corpse and debris
 	<object>skeleton_1_corpse     npc/skeleton_1/skeleton_1_corpse_001.txt<object>
 	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_001.txt<object>
 	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_002.txt<object>
@@ -497,6 +497,15 @@
 	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_004.txt<object>
 	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_005.txt<object>
 	<object>skeleton_1_debris     npc/skeleton_1/skeleton_1_debris_006.txt<object>
+
+    # Skeleton leader 1 corpse and debris
+	<object>skeleton_leader_1_corpse     npc/skeleton_leader_1/skeleton_leader_1_corpse_001.txt<object>
+	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_001.txt<object>
+	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_002.txt<object>
+	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_003.txt<object>
+	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_004.txt<object>
+	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_005.txt<object>
+	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_006.txt<object>
 
     # Spider corpse and debris
 	<object>spider_1_corpse       npc/spider_1/spider_1_corpse_001.txt<object>
