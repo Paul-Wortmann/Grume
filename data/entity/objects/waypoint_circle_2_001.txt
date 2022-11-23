@@ -12,6 +12,7 @@
         <base_scale>2.0 2.0 2.0</base_scale>
         <base_rotation>0 0 0</base_otation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
+	    <base_interactable>1</base_interactable>
     </base>
 
     <graphics>

@@ -14,6 +14,7 @@
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_destructible>0<base_destructible>
 	    <base_collectable>0<base_collectable>
+	    <base_interactable>1</base_interactable>
     </base>
 
     <graphics>

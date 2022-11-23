@@ -15,6 +15,7 @@
         <base_name>blacksmith_1_001</base_name>
         <base_collectable>0</base_collectable>
         <base_destructible>0</base_destructible>
+	    <base_interactable>1</base_interactable>
 	    <base_flying>0</base_flying>
         <base_fly_over>0</base_fly_over>
 	    <base_over_size>0</base_over_size>
@@ -89,4 +90,3 @@
 
 </entity>
 
-</entity>

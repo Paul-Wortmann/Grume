@@ -255,16 +255,25 @@ void cGraphicsEngine::m_p3_render(void)
                 // Flexibility
                 glUniform1f(m_p3_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
 
+                // Mouse over
+                if (m_entityTemp->physics != nullptr)
+                {
+                    glUniform1i(m_p3_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
+                }
+                else
+                {
+                    glUniform1i(m_p3_loc_mouseOver, 0);
+                }
+
+                // Debug
                 if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
                 {
                     glUniform1i(m_p3_loc_collision, (m_entityTemp->physics->collision) ? 1 : 0);
-                    glUniform1i(m_p3_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
                     glUniform1i(m_p3_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
                 }
                 else
                 {
                     glUniform1i(m_p3_loc_collision, 0);
-                    glUniform1i(m_p3_loc_mouseOver, 0);
                     glUniform1i(m_p3_loc_hasFunction, 0);
                 }
 

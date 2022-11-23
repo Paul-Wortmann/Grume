@@ -138,21 +138,13 @@ void cPhysicsEngine::process(const float &_dt)
                                            tEntity->physics->halfDimentions.x, tEntity->physics->halfDimentions.y, tEntity->physics->halfDimentions.z,
                                            tmin))
             {
-                bool reject = false;
-
-                // Reject non-interactable wall objects
-                if (((tEntity->base.type == eEntityType::entityType_wallHigh) ||
-                     (tEntity->base.type == eEntityType::entityType_wallHole) ||
-                     (tEntity->base.type == eEntityType::entityType_wallLow)) &&
-                     (tEntity->interaction == nullptr))
-                    reject = true;
 
                 // Only closest valid object under mouse
-                if ((!reject) && (!std::signbit(tmin)) && (tmin < tminValue))
+                if ((!std::signbit(tmin)) && (tmin < tminValue))
                 {
                     tminValue = tmin;
                     tminEntity->physics->mouseOver = false;
-                    tEntity->physics->mouseOver = true;
+                    tEntity->physics->mouseOver = tEntity->base.interactable;
                     tminEntity = tEntity;
                 }
             }

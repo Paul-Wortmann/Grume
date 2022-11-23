@@ -68,6 +68,7 @@ struct sEntityBase
     bool            clicked         = false;
 	bool            destructible    = false;
 	bool            collectable     = false;
+	bool            interactable    = false;
 	eParticleType   particleType    = eParticleType::particleType_blood; // blood
 	float           particleHeight  = 0.0f; // spawn offset y axis
 

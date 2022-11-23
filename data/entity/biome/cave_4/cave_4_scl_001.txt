@@ -6,6 +6,7 @@
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>1.0 1.0 1.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_rotation>
+	    <base_interactable>1</base_interactable>
     </base>
     
     <graphics>
