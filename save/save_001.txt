@@ -9,28 +9,28 @@
    </information>
 
    <player>
-      <level_current>9</level_current>
-      <exp_current>6581</exp_current>
-      <exp_next>39366</exp_next>
-      <health_current>3829</health_current>
-      <health_max>3829</health_max>
-      <health_regen>36.9475</health_regen>
-      <mana_current>3829</mana_current>
-      <mana_max>3829</mana_max>
-      <mana_regen>36.9475</mana_regen>
-      <gold_current>55414</gold_current>
-      <damage_physical_base>10</damage_physical_base>
-      <damage_physical_crit_chance>10</damage_physical_crit_chance>
-      <damage_physical_crit_multiplier>2.5</damage_physical_crit_multiplier>
-      <damage_fire_base>10</damage_fire_base>
-      <damage_fire_crit_chance>10</damage_fire_crit_chance>
-      <damage_fire_crit_multiplier>2.5</damage_fire_crit_multiplier>
-      <damage_frost_base>10</damage_frost_base>
-      <damage_frost_crit_chance>10</damage_frost_crit_chance>
-      <damage_frost_crit_multiplier>2.5</damage_frost_crit_multiplier>
-      <armor_physical_base>10</armor_physical_base>
-      <resistance_fire_base>10</resistance_fire_base>
-      <resistance_frost_base>10</resistance_frost_base>
+      <level_current>5</level_current>
+      <exp_current>503</exp_current>
+      <exp_next>7776</exp_next>
+      <health_current>759.375</health_current>
+      <health_max>759.375</health_max>
+      <health_regen>1.44163</health_regen>
+      <mana_current>759.375</mana_current>
+      <mana_max>759.375</mana_max>
+      <mana_regen>1.44163</mana_regen>
+      <gold_current>8329</gold_current>
+      <damage_physical_base>6</damage_physical_base>
+      <damage_physical_crit_chance>6</damage_physical_crit_chance>
+      <damage_physical_crit_multiplier>1.5</damage_physical_crit_multiplier>
+      <damage_fire_base>6</damage_fire_base>
+      <damage_fire_crit_chance>6</damage_fire_crit_chance>
+      <damage_fire_crit_multiplier>1.5</damage_fire_crit_multiplier>
+      <damage_frost_base>6</damage_frost_base>
+      <damage_frost_crit_chance>6</damage_frost_crit_chance>
+      <damage_frost_crit_multiplier>1.5</damage_frost_crit_multiplier>
+      <armor_physical_base>6</armor_physical_base>
+      <resistance_fire_base>6</resistance_fire_base>
+      <resistance_frost_base>6</resistance_frost_base>
    </player>
 
    <quest>
@@ -39,11 +39,10 @@
 
    <map_data>
       <map>cave_1_001 1410763947</map>
-      <map>cave_1_002 774098068</map>
-      <map>cave_1_003 285319764</map>
-      <map>cave_1_004 1460495598</map>
-      <map>cave_1_005 24381077</map>
-      <map>cave_1_008 161738193</map>
+      <map>cave_1_002 1141082986</map>
+      <map>cave_1_003 907028006</map>
+      <map>cave_1_004 1558708126</map>
+      <map>cave_1_005 1072865156</map>
    </map_data>
 
 </save_file>

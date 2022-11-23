@@ -254,7 +254,8 @@ void cMapManager::m_unloadMap(void)
     // Free all entities associated with the map
     for (sEntity* tEntity = m_entityManager->getHead(); tEntity != nullptr; tEntity = tEntity->next)
     {
-        if (tEntity->base.owner == eEntityOwner::entityOwner_map)
+        if ((tEntity->base.owner == eEntityOwner::entityOwner_map) ||
+            (tEntity->base.owner == eEntityOwner::entityOwner_particle))
         {
             m_entityManager->deleteEntity(tEntity);
         }

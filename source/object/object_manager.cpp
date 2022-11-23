@@ -43,7 +43,8 @@ void cObjectManager::process(const float &_dt)
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        if ((m_entityTemp->base.inRnge) && (m_entityTemp->base.enabled) && (m_entityPlayer != nullptr) && ((m_entityTemp->base.type == eEntityType::entityType_objectStatic) || (m_entityTemp->base.type == eEntityType::entityType_objectDynamic)))
+        if ((m_entityTemp->base.inRnge) && (m_entityTemp->base.enabled) && (m_entityPlayer != nullptr) &&
+           ((m_entityTemp->base.type == eEntityType::entityType_objectStatic) || (m_entityTemp->base.type == eEntityType::entityType_objectDynamic)))
         {
             // Calculate the distance to the player
             float distPlayerSqrd = (((m_entityTemp->base.position.x - m_entityPlayer->base.position.x) *

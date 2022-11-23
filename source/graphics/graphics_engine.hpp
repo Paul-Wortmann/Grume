@@ -103,7 +103,7 @@ class cGraphicsEngine :tcTemplateEngine
         // Render settings
         bool               m_wireframe          = false;
         bool               m_basicRender        = false;
-        bool               m_renderDebug        = true;
+        bool               m_renderDebug        = false;
         bool               m_loadRender         = false;
         bool               m_animation          = true;
 

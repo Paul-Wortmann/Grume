@@ -29,7 +29,6 @@
 #include "entity_base.hpp"
 #include "entity_character.hpp"
 #include "entity_footprint.hpp"
-#include "entity_function.hpp"
 #include "entity_graphics.hpp"
 #include "entity_interaction.hpp"
 #include "entity_loot.hpp"
@@ -50,7 +49,6 @@ struct sEntity
     sEntityBase           base          = {};
     sEntityCharacter*     character     = nullptr;
     sEntityFootprint*     footprint     = nullptr;
-    sEntityFunction*      function      = nullptr;
     sEntityGraphics*      graphics      = nullptr;
     sEntityInteraction*   interaction   = nullptr;
     sEntityLoot*          loot          = nullptr;

@@ -44,6 +44,8 @@ class cParticleEngine :tcTemplateEngine
     protected:
 
     private:
+        std::uint32_t       m_maxParticles         = 256;    // Maximum number of particles allowed to exist concurrently
+        std::uint32_t       m_activeParticles      = 0;     // Number of currently active particles
         const float         m_timeStep             = 16.0f; // Simulation time step in ms
 
         void                m_sortParticles(std::uint32_t _maxIterations);

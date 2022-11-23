@@ -107,7 +107,7 @@ void cNPCManager::process(const float &_dt)
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
         // Proceed if NPC of enemy type
-        if ((m_entityTemp->base.enabled) && (m_entityTemp->base.inRnge) &&
+        if ((m_entityTemp->base.inRnge) && (m_entityTemp->base.enabled) &&
             ((m_entityTemp->base.type == eEntityType::entityType_npc) ||
              (m_entityTemp->base.type == eEntityType::entityType_npc_fly) ||
              (m_entityTemp->base.type == eEntityType::entityType_npc_boss)))
@@ -931,7 +931,7 @@ void cNPCManager::process(const float &_dt)
                 }
 
                 // Not yet a corpse
-                if (m_entityTemp->base.destructible)
+                if ((m_entityTemp->base.destructible) && (m_entityTemp->ai->state != eEntityAIState::entityAIStateCorpse))
                 {
                     m_entityTemp->character->healthBarEnabled = true;
                     m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);

@@ -108,19 +108,19 @@ void cGraphicsEngine::m_pb_render(void)
             {
                 // Shader uniforms
                 glUniform1i(m_pb_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
-                glUniform1i(m_pb_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
-
                 glUniform1f(m_pb_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
 
                 if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
                 {
                     glUniform1i(m_pb_loc_collision, (m_entityTemp->physics->collision) ? 1 : 0);
                     glUniform1i(m_pb_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
+                    glUniform1i(m_pb_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
                 }
                 else
                 {
                     glUniform1i(m_pb_loc_collision, 0);
                     glUniform1i(m_pb_loc_mouseOver, 0);
+                    glUniform1i(m_pb_loc_hasFunction, 0);
                 }
 
                 // Model matrix uniform

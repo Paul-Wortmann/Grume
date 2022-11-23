@@ -139,13 +139,6 @@ void cEntityManager::freeData(sEntity*& _pointer)
         _pointer->footprint = nullptr;
     }
 
-    // Function
-    if (_pointer->function != nullptr)
-    {
-        delete _pointer->function;
-        _pointer->function = nullptr;
-    }
-
     // Graphics
     if (_pointer->graphics != nullptr)
     {
@@ -266,7 +259,7 @@ sEntity* cEntityManager::getEntityOnTile(const std::uint32_t &_tile)
 void cEntityManager::process(const float &_dt)
 {
         //std::cout << "Range check: " << _dt << std::endl;
-    m_rangeUpdateTime += (_dt / m_rangeUpdateFT);
+    m_rangeUpdateTime += _dt;
     if (m_rangeUpdateTime > m_rangeUpdateMax)
     {
         m_rangeUpdateTime -= m_rangeUpdateMax;
@@ -320,6 +313,9 @@ sEntity* cEntityManager::load(const std::string &_fileName)
         {
             //std::cout << "Reusing entity: " << tEntity->UID << std::endl;
         }
+
+        // Ownership (default to map as owner, as this will free the entity on map unload)
+        tEntity->base.owner = eEntityOwner::entityOwner_map;
 
         // Base
         tEntity->base.enabled        = true;

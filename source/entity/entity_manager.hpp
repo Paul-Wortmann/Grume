@@ -78,9 +78,8 @@ class cEntityManager : public tcLinkedList<sEntity>
         float             m_range_x_max     =  14.0f;
         float             m_range_z_min     = -28.0f;
         float             m_range_z_max     =  14.0f;
-        float             m_rangeUpdateFT   =  16.0f; // desired frame time
         float             m_rangeUpdateTime =  0.0f; // accumulated time
-        float             m_rangeUpdateMax  =  32.0f; // time required for a range check update
+        float             m_rangeUpdateMax  =  512.0f; // time required for a range check update ( frame time * frames = 16 * 32 = 512)
 
         // Event
         tcQueue<sEntityManagerEvent> m_event = {};

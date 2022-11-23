@@ -115,60 +115,67 @@ void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
 
 void cParticleEngine::spawnParticles(const std::uint32_t &_type, const std::uint32_t &_amount, const glm::vec3 &_position)
 {
-    sEntity* tEntity = nullptr;
-
-    for (std::uint32_t i = 0; i < _amount; ++i)
+    // Only spawn particles if the limit has not yet been reached
+    if ((m_activeParticles  + _amount) < m_maxParticles)
     {
-        if (_type == eParticleType::particleType_blood)
-        {
-            std::string fileName = m_databaseManager->getDatabaseEntryFileName("blood", 1, eDatabaseType::databaseTypeParticle);
-            tEntity = m_entityManager->load(fileName);
-        }
-        else if (_type == eParticleType::particleType_fire)
-        {
-            std::string fileName = m_databaseManager->getDatabaseEntryFileName("fire", 1, eDatabaseType::databaseTypeParticle);
-            tEntity = m_entityManager->load(fileName);
-        }
-        else if (_type == eParticleType::particleType_smoke)
-        {
-            std::string fileName = m_databaseManager->getDatabaseEntryFileName("smoke", 1, eDatabaseType::databaseTypeParticle);
-            tEntity = m_entityManager->load(fileName);
-        }
-        else if (_type == eParticleType::particleType_dust)
-        {
-            std::string fileName = m_databaseManager->getDatabaseEntryFileName("dust", 1, eDatabaseType::databaseTypeParticle);
-            tEntity = m_entityManager->load(fileName);
-        }
-        else if (_type == eParticleType::particleType_slime)
-        {
-            std::string fileName = m_databaseManager->getDatabaseEntryFileName("slime", 1, eDatabaseType::databaseTypeParticle);
-            tEntity = m_entityManager->load(fileName);
-        }
-        else if (_type == eParticleType::particleType_ice)
-        {
-            std::string fileName = m_databaseManager->getDatabaseEntryFileName("ice", 1, eDatabaseType::databaseTypeParticle);
-            tEntity = m_entityManager->load(fileName);
-        }
 
-        if (tEntity != nullptr)
-        {
-            tEntity->graphics->billboard      = true;
-            tEntity->base.type                = eEntityType::entityType_particle;
-            tEntity->base.owner               = eEntityOwner::entityOwner_particle;
-            tEntity->base.position           += _position;
-            tEntity->base.scale               = glm::vec3(0.75, 0.75, 0.75);
-            tEntity->particle->life           = m_timeStep + (m_timeStep * (20 + rand() % 10));
-            tEntity->particle->accelerationZ  = gRandFloatMinMax(-0.0025, 0.0025);
-            tEntity->physics->acceleration    = gRandFloatMinMax(-0.0025, 0.0025);
-            tEntity->physics->velocity        = glm::vec3(gRandFloatMinMax(-0.005, 0.005), gRandFloatMinMax(0.005, 0.01), gRandFloatMinMax(-0.005, 0.005));
-            tEntity->physics->velocityMax     = 0.0125;
+        // Temporary entity
+        sEntity* tEntity = nullptr;
 
-            m_entityManager->updateModelMatrix(tEntity);
-            m_graphicsEngine->initializeEntity(tEntity);
+        // Spawn each particle
+        for (std::uint32_t i = 0; i < _amount; ++i)
+        {
+            if (_type == eParticleType::particleType_blood)
+            {
+                std::string fileName = m_databaseManager->getDatabaseEntryFileName("blood", 1, eDatabaseType::databaseTypeParticle);
+                tEntity = m_entityManager->load(fileName);
+            }
+            else if (_type == eParticleType::particleType_fire)
+            {
+                std::string fileName = m_databaseManager->getDatabaseEntryFileName("fire", 1, eDatabaseType::databaseTypeParticle);
+                tEntity = m_entityManager->load(fileName);
+            }
+            else if (_type == eParticleType::particleType_smoke)
+            {
+                std::string fileName = m_databaseManager->getDatabaseEntryFileName("smoke", 1, eDatabaseType::databaseTypeParticle);
+                tEntity = m_entityManager->load(fileName);
+            }
+            else if (_type == eParticleType::particleType_dust)
+            {
+                std::string fileName = m_databaseManager->getDatabaseEntryFileName("dust", 1, eDatabaseType::databaseTypeParticle);
+                tEntity = m_entityManager->load(fileName);
+            }
+            else if (_type == eParticleType::particleType_slime)
+            {
+                std::string fileName = m_databaseManager->getDatabaseEntryFileName("slime", 1, eDatabaseType::databaseTypeParticle);
+                tEntity = m_entityManager->load(fileName);
+            }
+            else if (_type == eParticleType::particleType_ice)
+            {
+                std::string fileName = m_databaseManager->getDatabaseEntryFileName("ice", 1, eDatabaseType::databaseTypeParticle);
+                tEntity = m_entityManager->load(fileName);
+            }
+
+            if (tEntity != nullptr)
+            {
+                tEntity->graphics->billboard      = true;
+                tEntity->base.type                = eEntityType::entityType_particle;
+                tEntity->base.owner               = eEntityOwner::entityOwner_particle;
+                tEntity->base.position           += _position;
+                tEntity->base.scale               = glm::vec3(0.75, 0.75, 0.75);
+                tEntity->particle->life           = m_timeStep + (m_timeStep * (20 + rand() % 10));
+                tEntity->particle->accelerationZ  = gRandFloatMinMax(-0.0025, 0.0025);
+                tEntity->physics->acceleration    = gRandFloatMinMax(-0.0025, 0.0025);
+                tEntity->physics->velocity        = glm::vec3(gRandFloatMinMax(-0.005, 0.005), gRandFloatMinMax(0.005, 0.01), gRandFloatMinMax(-0.005, 0.005));
+                tEntity->physics->velocityMax     = 0.0125;
+
+                m_entityManager->updateModelMatrix(tEntity);
+                m_graphicsEngine->initializeEntity(tEntity);
+            }
         }
+        process(m_timeStep);
+        m_sortParticles(_amount);
     }
-    process(m_timeStep);
-    m_sortParticles(_amount);
 }
 
 void cParticleEngine::process(const float &_dt)
@@ -176,16 +183,24 @@ void cParticleEngine::process(const float &_dt)
     // Calculate delta time
     float dt = _dt / m_timeStep;
 
+    // reset particle count
+    m_activeParticles = 0;
+
     // Process particle entities
     for (sEntity* tEntity = m_entityHead; tEntity != nullptr; tEntity = tEntity->next)
     {
         if ((tEntity->base.inRnge) && (tEntity->particle != nullptr))
         {
+            // Update particle count
+            m_activeParticles++;
+
+            // Decrease particle life
             tEntity->particle->life -= _dt;
             if (tEntity->particle->life < 0.0f)
             {
                 //die
                 m_entityManager->deleteEntity(tEntity);
+
                 //return;
                 tEntity = m_entityHead;
             }
