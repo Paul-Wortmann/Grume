@@ -194,6 +194,13 @@ void cEntityManager::freeData(sEntity*& _pointer)
         _pointer->physics = nullptr;
     }
 
+    // Quest
+    if (_pointer->quest != nullptr)
+    {
+        delete _pointer->quest;
+        _pointer->quest = nullptr;
+    }
+
     // State
     if (_pointer->state != nullptr)
     {
@@ -736,6 +743,59 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             tEntity->physics->velocity           = xmlEntityFile.getVec3("<physics_velocity>");
             tEntity->physics->velocityMax        = xmlEntityFile.getFloat("<physics_max_velocity>");
             tEntity->physics->dammage            = xmlEntityFile.getFloat("<physics_dammage>");
+        }
+
+        // Quest
+        if (xmlEntityFile.getInstanceCount("<quest>") > 0)
+        {
+            // allocate memory if entity has a quest component
+            if (tEntity->quest == nullptr)
+            {
+                tEntity->quest = new sEntityQuest;
+            }
+
+            // if quest on death component, process
+            if (xmlEntityFile.getInstanceCount("<quest_on_death>") > 0)
+            {
+                // Data parsing
+                std::string   dataString       = {};
+                std::uint32_t dataStringLength = 0;
+                std::uint32_t tStringNum       = 0;
+                std::string   tString          = {};
+
+                // Get data
+                dataString  = xmlEntityFile.getString("<quest_on_death>");
+                dataString += " "; // end of string marker
+                dataStringLength = dataString.length();
+                tStringNum  = 0;
+                tString     = "";
+
+                // Process data
+                /// # quest name, set state
+                if (dataStringLength > 4)
+                {
+                    for (std::uint32_t j = 0; j < dataStringLength; ++j)
+                    {
+                        if (dataString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                tEntity->quest->onDeath.questName = tString; // quest name
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tEntity->quest->onDeath.setState = std::stoi(tString); // set state
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += dataString[j];
+                        }
+                    }
+                }
+            }
         }
 
         // State

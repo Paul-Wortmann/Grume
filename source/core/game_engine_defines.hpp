@@ -41,6 +41,7 @@
 #include "../particles/particle_engine.hpp"
 #include "../physics/physics_engine.hpp"
 #include "../player/player_manager.hpp"
+#include "../quest/quest_manager.hpp"
 #include "../resource/database_manager.hpp"
 #include "../resource/resource_manager.hpp"
 #include "../ui/ui_manager.hpp"

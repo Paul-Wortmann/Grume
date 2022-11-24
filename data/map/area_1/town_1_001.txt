@@ -157,18 +157,18 @@
     </rooms>
 
     <npc_mobs>
-        # database name, number, scale min, scale max, prevalence
+        # database name, number, scale min, scale max, prevalence, quest name, quest required state
     </npc_mobs>
 
     <debris_objects>
-        # database name, scale min, scale max, prevalence
+        # database name, scale min, scale max, prevalence, quest name, quest required state
         <debris>grass_1    0.75 1.0  125</debris>
         <debris>rock_small 0.50 1.0  060</debris>
         <debris>dead_tree  0.50 1.0  070</debris>
     </debris_objects>
 
     <npcs>
-        # database name, number, tile x, y, scale x, y, z, rotation x, y, z
+        # database name, number, tile x, y, scale x, y, z, rotation x, y, z, quest name, quest required state
         <npc>blacksmith       1  025 031  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000</npc>
         <npc>dead_body        1  038 042  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000</npc>
         <npc>trader           1  030 043  0.0000 0.0000 0.0000  0.0000 4.7124 0.0000</npc>
@@ -176,7 +176,7 @@
     </npcs>
 
     <objects>
-        # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
+        # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, quest name, quest required state, trigger event number
         
         # Portals
         <object>portal_cave_right  1  065 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
@@ -223,8 +223,6 @@
         <#object>barrel             1  029 041  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
         <#object>crate              1  029 045  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
         <#object>vase               2  037 028  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-
-        <#object>1700 chest             1  1.0 0.0000 1 0</object> # Chest
 
     </objects>
 

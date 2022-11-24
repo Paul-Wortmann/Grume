@@ -84,6 +84,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     return_value = (return_value == EXIT_SUCCESS) ? m_animationEngine.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_npcManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_objectManager.initialize() : return_value;
+    return_value = (return_value == EXIT_SUCCESS) ? m_questManager.initialize() : return_value;
 
     // Apply post-initialization configuration settings
     m_audioEngine.setVolumeMaster(m_gameConfig.m_volume_master);
@@ -119,6 +120,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_mapManager.setGraphicsEngine(&m_graphicsEngine);
     m_mapManager.setAnimationEngine(&m_animationEngine);
     m_mapManager.setPlayerManager(&m_playerManager);
+    m_mapManager.setQuestManager(&m_questManager);
     m_npcManager.setAudioEngine(&m_audioEngine);
     m_npcManager.setGraphicsEnginePointer(&m_graphicsEngine);
     m_npcManager.setEntityHead(m_entityManager.getHead());
@@ -181,6 +183,7 @@ void cGameEngine::terminate(void)
     m_physicsEngine.terminate();
 
     // Terminate managers
+    m_questManager.terminate();
     m_npcManager.terminate();
     m_objectManager.terminate();
     m_eventManager.terminate();
@@ -225,6 +228,7 @@ void cGameEngine::process(void)
         m_graphicsEngine.process(dt);
         m_animationEngine.process(dt);
         m_mapManager.process(dt);
+        m_questManager.process(dt);
 
         m_physicsEngine.setMouseClick(false);
         // If mouse over UI

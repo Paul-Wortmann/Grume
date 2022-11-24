@@ -129,6 +129,10 @@
 	    <physics_max_velocity>0.25</physics_max_velocity>
     </physics>
 
+    <quest>
+	    <quest_on_death>bug_boss_1_dead 1</quest_on_death>
+    </quest>
+
     <state>
         <state_initial>4</state_initial> # 4 == idle
 

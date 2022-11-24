@@ -62,6 +62,7 @@ class cGameEngine
         cNPCManager      m_npcManager      = {};
         cObjectManager   m_objectManager   = {};
         cPlayerManager   m_playerManager   = {};
+        cQuestManager    m_questManager    = {};
         cResourceManager m_resourceManager = {};
         cUIManager       m_uiManager       = {};
 

@@ -109,11 +109,14 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
         saveFile << std::endl;
 
         // Quest
-        saveFile << indent(iLevel) << "<quest>" << std::endl;
+        saveFile << indent(iLevel) << "<quests>" << std::endl;
         iLevel++;
-        saveFile << indent(iLevel) << "<001>" << "0" << "</001>" << std::endl;
+        for (sQuest* tQuest = m_questManager.getHead(); tQuest != nullptr; tQuest = tQuest->next)
+        {
+            saveFile << indent(iLevel) << "<quest>" << tQuest->name << " " << tQuest->state << "</quest>" << std::endl;
+        }
         iLevel--;
-        saveFile << indent(iLevel) << "</quest>" << std::endl;
+        saveFile << indent(iLevel) << "</quests>" << std::endl;
         saveFile << std::endl;
 
         // Map data

@@ -34,6 +34,7 @@
 #include "../entity/entity_manager.hpp"
 #include "../graphics/graphics_engine.hpp"
 #include "../player/player_manager.hpp"
+#include "../quest/quest_manager.hpp"
 
 // Event type enum
 enum sMapManagerEventType : std::uint32_t { sMapManagerEventType_none         = 0,    // null event

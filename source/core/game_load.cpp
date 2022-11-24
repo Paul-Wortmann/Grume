@@ -45,6 +45,7 @@ std::uint32_t cGameEngine::m_game_load(void)
         return_value = (return_value == EXIT_SUCCESS) ? m_playerManager.load(xmlGameFile.getString("<player>")) : return_value;
         return_value = (return_value == EXIT_SUCCESS) ? m_uiManager.load(xmlGameFile.getString("<ui>")) : return_value;
         return_value = (return_value == EXIT_SUCCESS) ? m_mapManager.load(xmlGameFile.getString("<map>")) : return_value;
+        return_value = (return_value == EXIT_SUCCESS) ? m_questManager.load(xmlGameFile.getString("<quests>")) : return_value;
         m_mapManager.mapTown = xmlGameFile.getString("<map_town>");
 
         // Setup and initialize
@@ -150,6 +151,41 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         tPlayer->character->attribute.resistanceFrost.base          = xmlSaveGameFile.getFloat("<resistance_frost_base>");
 
         // Quest
+        std::uint32_t questCount = xmlSaveGameFile.getInstanceCount("<quest>");
+        for (std::uint32_t i = 0; i < questCount; ++i)
+        {
+            std::string tQuestData = xmlSaveGameFile.getString("<quest>", 1 + i);
+            tQuestData += "    ";
+            std::uint64_t tQuestDataLength = tQuestData.length();
+            std::string tQuestName       = "";
+            std::uint32_t tQuestState    = 0;
+            std::uint32_t tStringNum = 0;
+            std::string tString = "";
+            if (tQuestDataLength > 6)
+            {
+                for (std::uint64_t j = 0; j < tQuestDataLength; ++j)
+                {
+                    if (tQuestData[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tQuestName = tString;
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tQuestState = std::stoi(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tQuestData[j];
+                    }
+                }
+                m_questManager.setQuest(tQuestName, tQuestState);
+            }
+        }
 
         // Map data
         m_mapManager.mapList.clear();

@@ -35,6 +35,7 @@
 #include "entity_movement.hpp"
 #include "entity_particle.hpp"
 #include "entity_physics.hpp"
+#include "entity_quest.hpp"
 #include "entity_state.hpp"
 #include "entity_tile_collision.hpp"
 
@@ -55,6 +56,7 @@ struct sEntity
     sEntityMovement*      movement      = nullptr;
     sEntityParticle*      particle      = nullptr;
     sEntityPhysics*       physics       = nullptr;
+    sEntityQuest*         quest         = nullptr;
     sEntityState*         state         = nullptr;
     sEntityTileCollision* tileCollision = nullptr;
 };

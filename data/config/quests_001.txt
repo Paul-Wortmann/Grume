@@ -2,15 +2,7 @@
 
 <quests>
 
-	<quest>
-	    <quest_ID>1<quest_ID>
-	    <quest_name>Kill the dragon<quest_name>
-	    <quest_active>false<quest_active>
-	    <quest_completed>false<quest_completed>
-	    <quest_require>kill_dragon 1<quest_require>
-	    <quest_reward_gold>10000<quest_reward_gold>
-	    <quest_reward_item>sword_001<quest_reward_item>
-	</quest>
+	<quest>bug_boss_1_dead 0</quest>
 
 </quests>
 

@@ -10,13 +10,13 @@
 
    <player>
       <level_current>4</level_current>
-      <exp_current>3057</exp_current>
+      <exp_current>3164</exp_current>
       <exp_next>5184</exp_next>
-      <health_current>506.25</health_current>
-      <health_max>506.25</health_max>
+      <health_current>506</health_current>
+      <health_max>506</health_max>
       <health_regen>0.640723</health_regen>
-      <mana_current>506.25</mana_current>
-      <mana_max>506.25</mana_max>
+      <mana_current>506</mana_current>
+      <mana_max>506</mana_max>
       <mana_regen>0.640723</mana_regen>
       <gold_current>8617</gold_current>
       <damage_physical_base>5</damage_physical_base>
@@ -33,9 +33,9 @@
       <resistance_frost_base>5</resistance_frost_base>
    </player>
 
-   <quest>
-      <001>0</001>
-   </quest>
+   <quests>
+      <quest>bug_boss_1_dead 0</quest>
+   </quests>
 
    <map_data>
       <map>cave_1_001 1410763947</map>
