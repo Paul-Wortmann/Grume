@@ -33,6 +33,9 @@
     <npc>ogre_1                  npc/ogre_1/ogre_1_001.txt</npc>
 
     <npc>skeleton_1              npc/skeleton_1/skeleton_1_001.txt</npc>
+    <npc>skeleton_boss_1         npc/skeleton_boss_1/skeleton_boss_1_001.txt</npc>
+    <npc>skeleton_boss_2         npc/skeleton_boss_2/skeleton_boss_2_001.txt</npc>
+    <npc>skeleton_boss_3         npc/skeleton_boss_3/skeleton_boss_3_001.txt</npc>
     <npc>skeleton_leader_1       npc/skeleton_leader_1/skeleton_leader_1_001.txt</npc>
 
     <npc>spider_1                npc/spider_1/spider_1_001.txt</npc>
