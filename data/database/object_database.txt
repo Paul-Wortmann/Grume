@@ -456,6 +456,12 @@
     <object>rock                  objects/rock_4_001.txt</object>
     <object>rock                  objects/rock_5_001.txt</object>
 
+    <object>rock_2                objects/rock_16_001.txt</object>
+    <object>rock_2                objects/rock_16_002.txt</object>
+    <object>rock_2                objects/rock_16_003.txt</object>
+    <object>rock_2                objects/rock_16_004.txt</object>
+    <object>rock_2                objects/rock_16_005.txt</object>
+
     # Rock black
     <object>rock_black            objects/rock_14_001.txt</object>
 

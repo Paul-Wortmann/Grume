@@ -139,6 +139,47 @@
         <object>statue             5  012 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
         <object>statue             5  006 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object>
         <object>statue             5  012 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object>
+
+        # Rocks pile 1
+        <object>rock_2             0  052 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  053 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  054 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  052 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  053 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  054 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  052 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  053 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  054 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  052 021  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  053 021  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+        <object>rock_2             0  054 021  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_1_dead 0</object>
+
+        # Rocks pile 2
+        <object>rock_2             0  025 008  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  025 009  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  025 010  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  025 011  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  025 012  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  025 013  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  026 008  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  026 009  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  026 010  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  026 011  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  026 012  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  026 013  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  027 008  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  027 009  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  027 010  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  027 011  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  027 012  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  027 013  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  028 008  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  028 009  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  028 010  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  028 011  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  028 012  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+        <object>rock_2             0  028 013  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+
     </objects>
 
 </map>
