@@ -28,10 +28,12 @@
 
 struct sMapDebris
 {
-    std::string    databaseName = {};
-    float          scaleMin     = 1.0f;
-    float          scaleMax     = 1.0f;
-    std::uint32_t  prevalence   = 0;
+    std::string    databaseName   = {};
+    float          scaleMin       = 1.0f;
+    float          scaleMax       = 1.0f;
+    std::uint32_t  prevalence     = 0;
+    std::string    questName      = {};  // quest name
+    std::uint32_t  questStateReq  = 0;   // quest required state
 };
 
 #endif // MAP_DEFINE_DEBRIS_HPP

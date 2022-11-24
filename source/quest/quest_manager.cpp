@@ -76,7 +76,7 @@ std::uint32_t cQuestManager::getQuest(const std::string &_questName)
         }
     }
 
-    // If not found
+    // If not found return 0
     return 0;
 }
 

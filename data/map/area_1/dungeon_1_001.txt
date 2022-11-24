@@ -175,13 +175,13 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>spider_leader_1 0 0.9 1.0 5</npc_mob>
+        <npc_mob>spider_leader_1 0 0.9 1.0 5 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>gib  0.75 1 32</debris>
-        <debris>bone 0.75 1 64</debris>
+        <debris>gib  0.75 1 32 none 0</debris>
+        <debris>bone 0.75 1 64 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -190,16 +190,16 @@
 
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
-        <object>portal_stairs_up_single    1  042 001  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 1</object>
-        <object>portal_stairs_down_single  1  058 001  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 2</object>
+        <object>portal_stairs_up_single    1  042 001  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 1 none 0</object>
+        <object>portal_stairs_down_single  1  058 001  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 2 none 0</object>
 
-        <object>torch  17 40 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
-        <object>torch  17 44 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
-        <object>torch  17 56 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
-        <object>torch  17 60 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
-        <object>switch 01 48 20 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
-        <object>trap   01 49 22 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
-        <object>trap   01 50 22 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0</object>
+        <object>torch  17 40 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
+        <object>torch  17 44 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
+        <object>torch  17 56 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
+        <object>torch  17 60 04 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
+        <object>switch 01 48 20 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
+        <object>trap   01 49 22 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
+        <object>trap   01 50 22 0.0 0.0 0.0 0.0000 0 0.0000 0 0 0 none 0</object>
     </objects>
 
 </map>

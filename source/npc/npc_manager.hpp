@@ -53,6 +53,7 @@ class cNPCManager
         void          setParticleEnginePointer(cParticleEngine* _particleEngine) { m_particleEngine = _particleEngine; };
         void          setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
         void          setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
+        void          setQuestManager(cQuestManager* _questManager) { m_questManager = _questManager; };
         void          updatePaths(void) { m_updatePaths = true; };
 
     protected:
@@ -65,6 +66,7 @@ class cNPCManager
         cGraphicsEngine*  m_graphicsEngine  = nullptr;
         cLootManager*     m_lootManager     = nullptr;
         cParticleEngine*  m_particleEngine  = nullptr;
+        cQuestManager*    m_questManager    = nullptr;
         cResourceManager* m_resourceManager = nullptr;
         sEntity*          m_entityHead      = nullptr;
         sEntity*          m_entityTemp      = nullptr;

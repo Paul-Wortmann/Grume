@@ -131,27 +131,27 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>golem_3 0 0.9 1.0 2</npc_mob>
+        <npc_mob>golem_3 0 0.9 1.0 2 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>crystal_ice 0.5 1 20</debris>
-        <debris>bone  0.5 1 30</debris>
+        <debris>crystal_ice 0.5 1 20 none 0</debris>
+        <debris>bone  0.5 1 30 none 0</debris>
     </debris_objects>
 
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
-        <npc>dragon_ice 1 32 4 1 1 1 0.0000 0 0.0000</npc>
+        <npc>dragon_ice 1 32 4 1 1 1 0.0000 0 0.0000 none 0</npc>
     </npcs>
 
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
         # Portal bottom
-        <object>portal_cave_right  1  019 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  020 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  021 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  022 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  019 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  020 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  021 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  022 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
 
     </objects>
 

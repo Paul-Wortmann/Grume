@@ -63,7 +63,7 @@ void cMapManager::m_addNPC_mobs(void)
                 float scaleMax = 1.0;
 
                 // Process data
-                /// # database name, database number, frequency
+                /// # database name, database number, frequency, quest name, quest required state
                 if (dataStringLength > 4)
                 {
                     for (std::uint32_t j = 0; j < dataStringLength; ++j)
@@ -90,6 +90,14 @@ void cMapManager::m_addNPC_mobs(void)
                             {
                                 m_map->npcMob[i].prevalence = std::stoi(tString); // prevalence
                             }
+                            else if (tStringNum == 5)
+                            {
+                                m_map->npcMob[i].questName = tString; // quest name
+                            }
+                            else if (tStringNum == 6)
+                            {
+                                m_map->npcMob[i].questStateReq = std::stoi(tString); // quest required state
+                            }
                             tStringNum++;
                             tString = "";
                         }
@@ -103,52 +111,56 @@ void cMapManager::m_addNPC_mobs(void)
                 // Try to place npc_mob
                 for (std::uint32_t i = 0; i < m_map->numNPCmob; ++i)
                 {
-                    for (std::uint32_t j = 0; j < m_map->npcMob[i].prevalence; ++j)
+                    // check quest state requirement has been met first
+                    if (m_questManager->getQuest(m_map->npcMob[i].questName) == m_map->npcMob[i].questStateReq)
                     {
-                        // position
-                        std::uint32_t tileNumber = rand() % m_map->numTiles;
-
-                        // Only place the object if the map tile is free
-                        if ((m_map->tile[tileNumber].entity.type == eTileEntityType::tileEntityNone) &&
-                            (m_map->tile[tileNumber].type == eTileType::tileFloor))
+                        for (std::uint32_t j = 0; j < m_map->npcMob[i].prevalence; ++j)
                         {
-                            // Retrieve an npc filename from the database
-                            entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->npcMob[i].databaseName, m_map->npcMob[i].databaseNumber, eDatabaseType::databaseTypeNpc);
+                            // position
+                            std::uint32_t tileNumber = rand() % m_map->numTiles;
 
-                            // Load the entity
-                            tEntity = m_entityManager->load(entity_fileName);
-
-                            // Only place the object if the entity was loaded
-                            if (tEntity != nullptr)
+                            // Only place the object if the map tile is free
+                            if ((m_map->tile[tileNumber].entity.type == eTileEntityType::tileEntityNone) &&
+                                (m_map->tile[tileNumber].type == eTileType::tileFloor))
                             {
-                                // Map tile position
-                                tEntity->base.tileOnMap = tileNumber;
-                                m_map->tile[tEntity->base.tileOnMap].entity.UID = tEntity->UID;
-                                m_map->tile[tEntity->base.tileOnMap].entity.type = eTileEntityType::tileEntityNPC;
+                                // Retrieve an npc filename from the database
+                                entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->npcMob[i].databaseName, m_map->npcMob[i].databaseNumber, eDatabaseType::databaseTypeNpc);
 
-                                // Ownership
-                                tEntity->base.owner = eEntityOwner::entityOwner_map;
+                                // Load the entity
+                                tEntity = m_entityManager->load(entity_fileName);
 
-                                // position relative to tile
-                                glm::vec3 tilePosition = gMapTileToPosition(m_map, tileNumber);
-                                tEntity->base.position.x += tilePosition.x;
-                                tEntity->base.position.y += m_map->info.terrainHeight;
-                                tEntity->base.position.z += tilePosition.z;
+                                // Only place the object if the entity was loaded
+                                if (tEntity != nullptr)
+                                {
+                                    // Map tile position
+                                    tEntity->base.tileOnMap = tileNumber;
+                                    m_map->tile[tEntity->base.tileOnMap].entity.UID = tEntity->UID;
+                                    m_map->tile[tEntity->base.tileOnMap].entity.type = eTileEntityType::tileEntityNPC;
 
-                                // Determine scale
-                                float scale = gRandFloatMinMax(scaleMin, scaleMax);
-                                tEntity->base.scale.x *= scale;
-                                tEntity->base.scale.y *= scale;
-                                tEntity->base.scale.z *= scale;
+                                    // Ownership
+                                    tEntity->base.owner = eEntityOwner::entityOwner_map;
 
-                                // update model matrix
-                                m_entityManager->updateModelMatrix(tEntity);
+                                    // position relative to tile
+                                    glm::vec3 tilePosition = gMapTileToPosition(m_map, tileNumber);
+                                    tEntity->base.position.x += tilePosition.x;
+                                    tEntity->base.position.y += m_map->info.terrainHeight;
+                                    tEntity->base.position.z += tilePosition.z;
 
-                                // Process collision data
-                                m_addCollisionData(m_map, tEntity, tEntity->base.rotation.y);
+                                    // Determine scale
+                                    float scale = gRandFloatMinMax(scaleMin, scaleMax);
+                                    tEntity->base.scale.x *= scale;
+                                    tEntity->base.scale.y *= scale;
+                                    tEntity->base.scale.z *= scale;
 
-                                // Update map mob count
-                                m_map->info.currentNumMob++;
+                                    // update model matrix
+                                    m_entityManager->updateModelMatrix(tEntity);
+
+                                    // Process collision data
+                                    m_addCollisionData(m_map, tEntity, tEntity->base.rotation.y);
+
+                                    // Update map mob count
+                                    m_map->info.currentNumMob++;
+                                }
                             }
                         }
                     }

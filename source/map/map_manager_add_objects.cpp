@@ -163,6 +163,14 @@ void cMapManager::m_addObjects(void)
                             {
                                 m_map->object[i].triggerEvent = std::stoi(tString); // trigger event number
                             }
+                            else if (tStringNum == 13)
+                            {
+                                m_map->object[i].questName = tString; // quest name
+                            }
+                            else if (tStringNum == 14)
+                            {
+                                m_map->object[i].questStateReq = std::stoi(tString); // quest required state
+                            }
                             tStringNum++;
                             tString = "";
                         }
@@ -175,8 +183,9 @@ void cMapManager::m_addObjects(void)
                     }
                 }
 
-                // Only place the object if the map tile is free
-                if (m_map->tile[m_map->object[i].tile].entity.type == eTileEntityType::tileEntityNone)
+                // Only place the object if the map tile is free and quest condition met
+                if ((m_map->tile[m_map->object[i].tile].entity.type == eTileEntityType::tileEntityNone) &&
+                    (m_questManager->getQuest(m_map->object[i].questName) == m_map->object[i].questStateReq))
                 {
                     // Biome object load
                     if (biomeObject)

@@ -31,6 +31,8 @@ struct sMapNPCMob
     std::string    databaseName   = {};
     std::uint32_t  databaseNumber = 0;
     std::uint32_t  prevalence     = 0;
+    std::string    questName      = {};  // quest name
+    std::uint32_t  questStateReq  = 0;   // quest required state
 };
 
 #endif // MAP_DEFINE_NPC_MOB_HPP

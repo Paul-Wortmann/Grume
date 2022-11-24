@@ -165,12 +165,12 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>skeleton_leader_1 0 0.85 1.0 6</npc_mob>
+        <npc_mob>skeleton_leader_1 0 0.85 1.0 6 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone       0.75 1 40</debris>
+        <debris>bone       0.75 1 40 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -180,7 +180,7 @@
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
         # Portal stairs up
-        <object>portal_stairs_up_single  1  044 001  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 1</object>
+        <object>portal_stairs_up_single  1  044 001  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 1 none 0</object>
     </objects>
 
 </map>

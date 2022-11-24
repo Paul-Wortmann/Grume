@@ -133,49 +133,49 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>skeleton_1 0 0.75 1.0 16</npc_mob>
-        <#npc_mob>skeleton_leader_1 0 0.75 1.0 16</npc_mob>
+        <npc_mob>skeleton_1         0 0.75 1.0 16 none 0</npc_mob>
+        <#npc_mob>skeleton_leader_1 0 0.75 1.0 16 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small      0.75 1.0 020</debris>
-        <debris>dead_tree       0.50 1.0 030</debris>
-        <debris>bone            0.75 1.0 040</debris>
-        <#debris>gib             0.75 1.0 042</debris>
-        <debris>grass_1         0.75 1.0 125</debris>
-        <debris>mushroom_green  0.75 1.0 066</debris>
-        <debris>tombstone       0.75 1.0 16</debris>        
+        <debris>rock_small      0.75 1.0 020 none 0</debris>
+        <debris>dead_tree       0.50 1.0 030 none 0</debris>
+        <debris>bone            0.75 1.0 040 none 0</debris>
+        <#debris>gib             0.75 1.0 042 none 0</debris>
+        <debris>grass_1         0.75 1.0 125 none 0</debris>
+        <debris>mushroom_green  0.75 1.0 066 none 0</debris>
+        <debris>tombstone       0.75 1.0 16 none 0</debris>        
     </debris_objects>
 
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
-        <npc>monk_1 0 25 31 0.0000 0.0000 0.0000  0.0000 0.5708 0.0000</npc>
+        <npc>monk_1 0 25 31 0.0000 0.0000 0.0000  0.0000 0.5708 0.0000 none 0</npc>
     </npcs>
 
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
         # Portal top
-        <object>portal_cave_right  1  031 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  032 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  033 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  034 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  031 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  032 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  033 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  034 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
 
         # Portal bottom
-        <object>portal_cave_right  1  031 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  032 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  033 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_left   1  034 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
+        <object>portal_cave_right  1  031 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  032 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  033 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_left   1  034 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
 
         #buildings
-        <object>medieval_building  2  021 032  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object> # Medieval house
+        <object>medieval_building  2  021 032  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object> # Medieval house
         
         #coffins
-        <object>coffin             1  025 035  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object> # Coffin
-        <object>coffin             2  027 035  0.0000 0.0000 0.0000  0.0000 2.1416 0.0000 000 000 0</object> # Coffin
-        <object>coffin             3  029 036  0.0000 0.0000 0.0000  0.0000 1.9416 0.0000 000 000 0</object> # Coffin
-        <object>coffin             2  026 029  0.0000 0.0000 0.0000  0.0000 1.1416 0.0000 000 000 0</object> # Coffin
+        <object>coffin             1  025 035  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object> # Coffin
+        <object>coffin             2  027 035  0.0000 0.0000 0.0000  0.0000 2.1416 0.0000 000 000 0 none 0</object> # Coffin
+        <object>coffin             3  029 036  0.0000 0.0000 0.0000  0.0000 1.9416 0.0000 000 000 0 none 0</object> # Coffin
+        <object>coffin             2  026 029  0.0000 0.0000 0.0000  0.0000 1.1416 0.0000 000 000 0 none 0</object> # Coffin
 
     </objects>
 

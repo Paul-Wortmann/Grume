@@ -59,7 +59,7 @@ void cMapManager::m_addDebris(void)
                 tString     = "";
 
                 // Process data
-                /// # database name, scale min, scale max, frequency
+                /// # database name, scale min, scale max, frequency, quest name, quest required state
                 if (dataStringLength > 4)
                 {
                     for (std::uint32_t j = 0; j < dataStringLength; ++j)
@@ -82,6 +82,14 @@ void cMapManager::m_addDebris(void)
                             {
                                 m_map->debris[i].prevalence = std::stoi(tString); // prevalence
                             }
+                            else if (tStringNum == 4)
+                            {
+                                m_map->debris[i].questName = tString; // quest name
+                            }
+                            else if (tStringNum == 5)
+                            {
+                                m_map->debris[i].questStateReq = std::stoi(tString); // quest required state
+                            }
                             tStringNum++;
                             tString = "";
                         }
@@ -95,70 +103,74 @@ void cMapManager::m_addDebris(void)
                 // Try to place debris
                 for (std::uint32_t i = 0; i < m_map->numDebris; ++i)
                 {
-                    for (std::uint32_t j = 0; j < m_map->debris[i].prevalence; ++j)
+                    // check quest state requirement has been met first
+                    if (m_questManager->getQuest(m_map->debris[i].questName) == m_map->debris[i].questStateReq)
                     {
-                        // position
-                        std::uint32_t tileNumber = rand() % m_map->numTiles;
-
-                        // Only place the object if the map tile is free
-                        if ((m_map->tile[tileNumber].entity.type == eTileEntityType::tileEntityNone) &&
-                            (m_map->tile[tileNumber].type == eTileType::tileFloor))
+                        for (std::uint32_t j = 0; j < m_map->debris[i].prevalence; ++j)
                         {
-                            // Retrieve a random object filename from the database
-                            entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->debris[i].databaseName, 0, eDatabaseType::databaseTypeObject);
+                            // position
+                            std::uint32_t tileNumber = rand() % m_map->numTiles;
 
-                            // Load the entity
-                            tEntity = m_entityManager->load(entity_fileName);
-
-                            // Only place the object if the entity was loaded
-                            if (tEntity != nullptr)
+                            // Only place the object if the map tile is free
+                            if ((m_map->tile[tileNumber].entity.type == eTileEntityType::tileEntityNone) &&
+                                (m_map->tile[tileNumber].type == eTileType::tileFloor))
                             {
-                                // Map tile position
-                                tEntity->base.tileOnMap = tileNumber;
-                                m_map->tile[tEntity->base.tileOnMap].entity.UID = tEntity->UID;
+                                // Retrieve a random object filename from the database
+                                entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->debris[i].databaseName, 0, eDatabaseType::databaseTypeObject);
 
-                                // Tile entity data
-                                if ((tEntity->physics != nullptr) && (tEntity->physics->type == ePhysicsType::physicsTypeDynamic))
+                                // Load the entity
+                                tEntity = m_entityManager->load(entity_fileName);
+
+                                // Only place the object if the entity was loaded
+                                if (tEntity != nullptr)
                                 {
-                                    m_map->tile[tEntity->base.tileOnMap].entity.type = (tEntity->base.flyOver) ? eTileEntityType::tileEntityObjectDynamicLow : eTileEntityType::tileEntityObjectDynamic;
-                                    tEntity->base.type = (tEntity->base.flyOver) ? eEntityType::entityType_objectDynamicLow : eEntityType::entityType_objectDynamic;
+                                    // Map tile position
+                                    tEntity->base.tileOnMap = tileNumber;
+                                    m_map->tile[tEntity->base.tileOnMap].entity.UID = tEntity->UID;
+
+                                    // Tile entity data
+                                    if ((tEntity->physics != nullptr) && (tEntity->physics->type == ePhysicsType::physicsTypeDynamic))
+                                    {
+                                        m_map->tile[tEntity->base.tileOnMap].entity.type = (tEntity->base.flyOver) ? eTileEntityType::tileEntityObjectDynamicLow : eTileEntityType::tileEntityObjectDynamic;
+                                        tEntity->base.type = (tEntity->base.flyOver) ? eEntityType::entityType_objectDynamicLow : eEntityType::entityType_objectDynamic;
+                                    }
+                                    else if ((tEntity->physics != nullptr) && (tEntity->physics->type == ePhysicsType::physicsTypeStatic))
+                                    {
+                                        m_map->tile[tEntity->base.tileOnMap].entity.type = (tEntity->base.flyOver) ? eTileEntityType::tileEntityObjectStaticLow : eTileEntityType::tileEntityObjectStatic;
+                                        tEntity->base.type = (tEntity->base.flyOver) ? eEntityType::entityType_objectStaticLow : eEntityType::entityType_objectStatic;
+                                    }
+                                    else
+                                    {
+                                        m_map->tile[tEntity->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+                                        tEntity->base.type = eEntityType::entityType_none;
+                                    }
+
+                                    // Ownership
+                                    tEntity->base.owner = eEntityOwner::entityOwner_map;
+
+                                    // Scale
+                                    float scale = m_map->debris[i].scaleMin + (gRandFloatNormalized() * (m_map->debris[i].scaleMax - m_map->debris[i].scaleMin));
+                                    tEntity->base.scale *= scale;
+
+                                    // rotation
+                                    float rotation = gRandFloatNormalized() * M_PI * 2;
+                                    tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
+                                    tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
+                                    tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;
+
+                                    // position relative to tile
+                                    glm::vec3 tilePosition = gMapTileToPosition(m_map, tileNumber);
+                                    tEntity->base.position.x += tilePosition.x;
+                                    tEntity->base.position.y += m_map->info.terrainHeight;
+                                    tEntity->base.position.z += tilePosition.z;
+
+                                    // update model matrix
+                                    m_entityManager->updateModelMatrix(tEntity);
+
+                                    // Process collision data
+                                    m_addCollisionData(m_map, tEntity, tEntity->base.rotation.y);
+
                                 }
-                                else if ((tEntity->physics != nullptr) && (tEntity->physics->type == ePhysicsType::physicsTypeStatic))
-                                {
-                                    m_map->tile[tEntity->base.tileOnMap].entity.type = (tEntity->base.flyOver) ? eTileEntityType::tileEntityObjectStaticLow : eTileEntityType::tileEntityObjectStatic;
-                                    tEntity->base.type = (tEntity->base.flyOver) ? eEntityType::entityType_objectStaticLow : eEntityType::entityType_objectStatic;
-                                }
-                                else
-                                {
-                                    m_map->tile[tEntity->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-                                    tEntity->base.type = eEntityType::entityType_none;
-                                }
-
-                                // Ownership
-                                tEntity->base.owner = eEntityOwner::entityOwner_map;
-
-                                // Scale
-                                float scale = m_map->debris[i].scaleMin + (gRandFloatNormalized() * (m_map->debris[i].scaleMax - m_map->debris[i].scaleMin));
-                                tEntity->base.scale *= scale;
-
-                                // rotation
-                                float rotation = gRandFloatNormalized() * M_PI * 2;
-                                tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
-                                tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
-                                tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;
-
-                                // position relative to tile
-                                glm::vec3 tilePosition = gMapTileToPosition(m_map, tileNumber);
-                                tEntity->base.position.x += tilePosition.x;
-                                tEntity->base.position.y += m_map->info.terrainHeight;
-                                tEntity->base.position.z += tilePosition.z;
-
-                                // update model matrix
-                                m_entityManager->updateModelMatrix(tEntity);
-
-                                // Process collision data
-                                m_addCollisionData(m_map, tEntity, tEntity->base.rotation.y);
-
                             }
                         }
                     }

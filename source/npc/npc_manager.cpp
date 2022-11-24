@@ -1035,18 +1035,6 @@ void cNPCManager::process(const float &_dt)
 
 void cNPCManager::m_entityDeath(sEntity*& _entity)
 {
-    // Update map mob count
-    m_mapPointer->info.currentNumMob--;
-
-    // Screen shake on NPC death
-    if ((_entity->base.deathShakeChance > 0) && ((rand() % 101) < _entity->base.deathShakeChance))
-    {
-        m_graphicsEngine->addScreenShake(_entity->base.deathShakeDuration, _entity->base.deathShakeForce);
-    }
-
-    // Set entity state : die
-    m_entityManager->stateSet(_entity, eEntityState::entityState_die);
-
     // If minion has a leader, become a corpse
     if ((_entity->ai != nullptr) && (_entity->ai->leaderEntity != nullptr))
     {
@@ -1059,6 +1047,18 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
     //Else die and give loot and experience
     else
     {
+        // Update map mob count
+        m_mapPointer->info.currentNumMob--;
+
+        // Screen shake on NPC death
+        if ((_entity->base.deathShakeChance > 0) && ((rand() % 101) < _entity->base.deathShakeChance))
+        {
+            m_graphicsEngine->addScreenShake(_entity->base.deathShakeDuration, _entity->base.deathShakeForce);
+        }
+
+        // Set entity state : die
+        m_entityManager->stateSet(_entity, eEntityState::entityState_die);
+
         // If leader, release managed minions
         if ((_entity->ai != nullptr) && (_entity->ai->leader != nullptr))
         {
@@ -1253,6 +1253,12 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                 }
             }
 
+        }
+
+        // set on death quest data
+        if (_entity->quest != nullptr)
+        {
+            m_questManager->setQuest(_entity->quest->onDeath.questName, _entity->quest->onDeath.setState);
         }
 
         // Last, remove the entity from the game

@@ -28,11 +28,13 @@
 
 struct sMapNPC
 {
-    std::string   databaseName   = {};
-    std::uint32_t databaseNumber = 0;
-    std::uint32_t tile           = 0;
-    glm::vec3     scale          = glm::vec3(0.0, 0.0, 0.0);
-    glm::vec3     rotation       = glm::vec3(0.0, 0.0, 0.0);
+    std::string   databaseName    = {};
+    std::uint32_t databaseNumber  = 0;
+    std::uint32_t tile            = 0;
+    glm::vec3     scale           = glm::vec3(0.0, 0.0, 0.0);
+    glm::vec3     rotation        = glm::vec3(0.0, 0.0, 0.0);
+    std::string   questName       = {};  // quest name
+    std::uint32_t questStateReq   = 0;   // quest required state
 };
 
 #endif // MAP_DEFINE_NPC_HPP

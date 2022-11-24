@@ -103,17 +103,17 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>bug_1        0 0.75 1.0 10</npc_mob>
-        <npc_mob>bug_2        0 0.75 1.0 06</npc_mob>
+        <npc_mob>bug_1        0 0.75 1.0 10 none 0</npc_mob>
+        <npc_mob>bug_2        0 0.75 1.0 06 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone            0.75 1.00 06</debris>
-        <debris>rock_small_2    0.75 1.00 31</debris>
-        <debris>mushroom_orange 1.50 2.50 31</debris>
-        <debris>mushroom_green 0.75 1.00 31</debris>
-        <debris>barrel_debris   0.75 1.00 31</debris>
+        <debris>bone            0.75 1.00 06 none 0</debris>
+        <debris>rock_small_2    0.75 1.00 31 none 0</debris>
+        <debris>mushroom_orange 1.50 2.50 31 none 0</debris>
+        <debris>mushroom_green 0.75 1.00 31 none 0</debris>
+        <debris>barrel_debris   0.75 1.00 31 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -124,33 +124,33 @@
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
         # Portal left
-        <object>portal_cave_right  1  000 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  000 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  000 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  000 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
 
         # Portal top
-        <object>portal_cave_right  1  050 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  051 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  052 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_left   1  053 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
+        <object>portal_cave_right  1  050 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  051 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  052 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_left   1  053 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
 
         # Barrels room 1
-        <object>barrel_stack       4  004 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel_stack       2  009 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  006 006  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  005 007  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  007 007  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel_stack       4  004 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel_stack       2  009 003  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  006 006  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  005 007  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  007 007  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
 
         # Barrels room 2
-        <object>barrel_stack       3  004 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel_stack       1  009 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  007 026  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  003 027  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  004 027  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  006 025  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  005 028  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>barrel             6  007 029  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>barrel_stack       3  004 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel_stack       1  009 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  007 026  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  003 027  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  004 027  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  006 025  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  005 028  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>barrel             6  007 029  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
         
     </objects>
 

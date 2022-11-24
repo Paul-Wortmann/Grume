@@ -133,14 +133,14 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>bat_leader_1 0 0.95 1.0 4</npc_mob>
-        <npc_mob>bat_1        0 0.85 1.0 4</npc_mob>
+        <npc_mob>bat_leader_1 0 0.95 1.0 4 none 0</npc_mob>
+        <npc_mob>bat_1        0 0.85 1.0 4 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone            0.75 1.0 064</debris>
-        <debris>mushroom_red    0.75 1.0 066</debris>
+        <debris>bone            0.75 1.0 064 none 0</debris>
+        <debris>mushroom_red    0.75 1.0 066 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -150,22 +150,22 @@
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
         # Portal top
-        <object>portal_cave_right  1  030 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  031 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  032 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  033 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  030 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  031 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  032 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  033 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
 
         # Portal bottom
-        <object>portal_cave_right  1  031 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  032 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  033 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
-        <object>portal_cave_left   1  034 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2</object>
+        <object>portal_cave_right  1  031 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  032 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  033 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_left   1  034 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
 
         # Portal right
-        <object>portal_cave_right  1  063 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3</object>
-        <object>portal_cave_center 1  063 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3</object>
-        <object>portal_cave_center 1  063 035  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3</object>
-        <object>portal_cave_left   1  063 036  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3</object>
+        <object>portal_cave_right  1  063 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3 none 0</object>
+        <object>portal_cave_center 1  063 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3 none 0</object>
+        <object>portal_cave_center 1  063 035  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3 none 0</object>
+        <object>portal_cave_left   1  063 036  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 3 none 0</object>
     </objects>
 
 </map>

@@ -133,18 +133,18 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>skeleton_1 0 0.75 1.0 16</npc_mob>
-        <#npc_mob>skeleton_leader_1 0 0.75 1.0 16</npc_mob>
+        <npc_mob>skeleton_1         0 0.75 1.0 16 none 0</npc_mob>
+        <#npc_mob>skeleton_leader_1 0 0.75 1.0 16 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small      0.75 1.0 020</debris>
-        <debris>dead_tree       0.50 1.0 030</debris>
-        <debris>bone            0.75 1.0 128</debris>
-        <#debris>gib             0.75 1.0 042</debris>
-        <debris>grass_1         0.75 1.0 125</debris>
-        <debris>mushroom_green  0.75 1.0 066</debris>
+        <debris>rock_small      0.75 1.0 020 none 0</debris>
+        <debris>dead_tree       0.50 1.0 030 none 0</debris>
+        <debris>bone            0.75 1.0 128 none 0</debris>
+        <#debris>gib             0.75 1.0 042 none 0</debris>
+        <debris>grass_1         0.75 1.0 125 none 0</debris>
+        <debris>mushroom_green  0.75 1.0 066 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -155,115 +155,115 @@
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
         # Portal left
-        <object>portal_cave_right  1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
 
         # Portal right
-        <object>portal_cave_right  1  065 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  065 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  065 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
-        <object>portal_cave_left   1  065 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
+        <object>portal_cave_right  1  065 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  065 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  065 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_left   1  065 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
         
         # river
-        <object>river   1  048 004  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  048 014  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  048 024  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  048 034  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  048 044  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  048 054  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>river   1  048 064  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>river   1  048 004  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>river   1  048 014  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>river   1  048 024  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>river   1  048 034  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>river   1  048 044  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>river   1  048 054  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>river   1  048 064  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
 
         # Bridge
-        <object>bridge  3  048 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
+        <object>bridge  3  048 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
 
         # Statue
-        <object>statue  6  063 029  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
-        <object>statue  6  063 037  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0</object>
+        <object>statue  6  063 029  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object>
+        <object>statue  6  063 037  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object>
 
         # Grave areas
-        <object>cemetery_object 1 27 10 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 2 27 14 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 4 25 18 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 5 25 22 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 1 27 26 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 5 40 10 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 4 40 14 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 2 39 18 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 1 39 22 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 5 40 26 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 5 32 08 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 5 35 08 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
+        <object>cemetery_object 1 27 10 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 2 27 14 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 4 25 18 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 25 22 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 1 27 26 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 40 10 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 4 40 14 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 2 39 18 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 1 39 22 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 40 26 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 32 08 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 35 08 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
 
-        <object>fence_metal     1 37 28 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 40 28 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     2 42 28 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 26 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 23 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 20 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 17 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 14 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 08 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     2 42 06 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 40 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 37 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 34 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 31 06 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 28 06 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 25 06 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     2 23 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 08 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 14 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 17 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 20 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 23 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 26 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     2 23 28 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>fence_metal     1 25 28 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 28 28 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
+        <object>fence_metal     1 37 28 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 40 28 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 42 28 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 26 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 23 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 20 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 17 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 14 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 08 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 42 06 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 40 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 37 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 34 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 31 06 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 28 06 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 25 06 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 23 06 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 08 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 11 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 14 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 17 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 20 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 23 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 26 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 23 28 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 25 28 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 28 28 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
 
-        <object>cemetery_object 1 27 40 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 2 27 44 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 4 25 48 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 5 25 52 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 1 27 56 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 5 40 40 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 4 40 44 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 2 39 48 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 1 39 52 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>cemetery_object 5 40 56 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>cemetery_object 5 32 56 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>fence_metal     1 34 58 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 37 58 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 40 58 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     2 42 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 56 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 53 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 50 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 47 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 44 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 41 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 42 38 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     2 42 36 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 40 36 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 37 36 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 28 36 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 25 36 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     2 23 36 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 38 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 41 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 44 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 47 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 50 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 53 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     1 23 56 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0</object>
-        <object>fence_metal     2 23 58 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0</object>
-        <object>fence_metal     1 25 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 28 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
-        <object>fence_metal     1 31 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0</object>
+        <object>cemetery_object 1 27 40 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 2 27 44 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 4 25 48 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 25 52 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 1 27 56 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 40 40 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 4 40 44 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 2 39 48 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 1 39 52 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 40 56 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>cemetery_object 5 32 56 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 34 58 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 37 58 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 40 58 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 42 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 56 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 53 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 50 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 47 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 44 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 41 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 42 38 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 42 36 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 40 36 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 37 36 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 28 36 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 25 36 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 23 36 0.0000  0.0000  0.0000  0.0000 4.7124 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 38 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 41 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 44 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 47 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 50 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 53 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 23 56 0.0000  0.0000  0.0000  0.0000 3.1416 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     2 23 58 0.0000  0.0000  0.0000  0.0000 0.0000 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 25 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 28 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
+        <object>fence_metal     1 31 58 0.0000  0.0000  0.0000  0.0000 1.5708 0.0000 0 0 0 none 0</object>
 
     </objects>
 

@@ -131,13 +131,13 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>golem_4 0 0.9 1.0 3</npc_mob>
+        <npc_mob>golem_4 0 0.9 1.0 3 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>gib  0.75 1 20</debris>
-        <debris>bone 0.75 1 50</debris>
+        <debris>gib  0.75 1 20 none 0</debris>
+        <debris>bone 0.75 1 50 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -146,8 +146,8 @@
 
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
-        <object>portal_stairs_up_single    1  001 003  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_stairs_up_single    1  055 061  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
+        <object>portal_stairs_up_single    1  001 003  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_stairs_up_single    1  055 061  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
     </objects>
 
 </map>

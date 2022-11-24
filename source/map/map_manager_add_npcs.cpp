@@ -61,7 +61,7 @@ void cMapManager::m_addNPCs(void)
                 tString     = "";
 
                 // Process data
-                /// # database name, number, tile x, y, scale x, y, z, rotation x, y, z
+                /// # database name, number, tile x, y, scale x, y, z, rotation x, y, z, quest name, quest required state
                 if (dataStringLength > 4)
                 {
                     for (std::uint32_t j = 0; j < dataStringLength; ++j)
@@ -108,6 +108,14 @@ void cMapManager::m_addNPCs(void)
                             {
                                 m_map->npc[i].rotation.z = std::stof(tString); // Object rotation z
                             }
+                            else if (tStringNum == 10)
+                            {
+                                m_map->npc[i].questName = tString; // quest name
+                            }
+                            else if (tStringNum == 11)
+                            {
+                                m_map->npc[i].questStateReq = std::stoi(tString); // quest required state
+                            }
                             tStringNum++;
                             tString = "";
                         }
@@ -119,8 +127,9 @@ void cMapManager::m_addNPCs(void)
                     }
                 }
 
-                // Only load the NPC if destination tile is free
-                if (m_map->tile[m_map->npc[i].tile].entity.type == eTileEntityType::tileEntityNone)
+                // Only load the NPC if destination tile is free and quest condition met
+                if ((m_map->tile[m_map->npc[i].tile].entity.type == eTileEntityType::tileEntityNone) &&
+                    (m_questManager->getQuest(m_map->npc[i].questName) == m_map->npc[i].questStateReq))
                 {
                     // Retrieve the npc filename from the database
                     entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->npc[i].databaseName, m_map->npc[i].databaseNumber, eDatabaseType::databaseTypeNpc);

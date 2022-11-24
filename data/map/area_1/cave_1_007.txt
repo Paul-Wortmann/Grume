@@ -99,46 +99,46 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>bug_1        0 0.85 1.0 06</npc_mob>
-        <npc_mob>bug_2        0 0.85 1.0 02</npc_mob>
+        <npc_mob>bug_1        0 0.85 1.0 06 none 0</npc_mob>
+        <npc_mob>bug_2        0 0.85 1.0 02 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <#debris>gib             0.75 1.0 032</debris>
-        <debris>bone            0.75 1.0 064</debris>
-        <debris>mushroom_orange 1.50 2.50 16</debris>
-        <debris>mushroom_green 0.75 1.00 16</debris>
-        <debris>rock_small_2    0.75 1.0 064</debris>
+        <#debris>gib             0.75 1.0 032 none 0</debris>
+        <debris>bone            0.75 1.0 064 none 0</debris>
+        <debris>mushroom_orange 1.50 2.50 16 none 0</debris>
+        <debris>mushroom_green 0.75 1.00 16 none 0</debris>
+        <debris>rock_small_2    0.75 1.0 064 none 0</debris>
     </debris_objects>
 
 
 
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
-        <npc>dragon_1 0 32 32 1.000 1.000 1.000  1.000 1.000 1.000</npc>
+        <#npc>dragon_1 0 32 32 1.000 1.000 1.000  1.000 1.000 1.000 none 0</npc>
     </npcs>
 
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
         
         # Portal right
-        <object>portal_cave_right  1  063 014  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  063 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
-        <object>portal_cave_center 1  063 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
-        <object>portal_cave_left   1  063 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2</object>
+        <object>portal_cave_right  1  063 014  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  063 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  063 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_left   1  063 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
 
         # Portal left
-        <object>portal_cave_right  1  000 014  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  000 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  000 014  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  000 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
 
         # Knight sarcophagus
-        <object>statue             5  006 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>statue             5  012 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0</object>
-        <object>statue             5  006 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object>
-        <object>statue             5  012 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0</object>
+        <object>statue             5  006 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>statue             5  012 008  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>statue             5  006 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object>
+        <object>statue             5  012 023  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object>
     </objects>
 
 </map>

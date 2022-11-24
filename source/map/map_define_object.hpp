@@ -35,6 +35,8 @@ struct sMapObject
     glm::vec3     rotation       = glm::vec3(0.0, 0.0, 0.0);
     std::uint32_t triggerTile    = 0;
     std::uint32_t triggerEvent   = 0;
+    std::string   questName      = {};  // quest name
+    std::uint32_t questStateReq  = 0;   // quest required state
 };
 
 #endif // MAP_DEFINE_OBJECT_HPP

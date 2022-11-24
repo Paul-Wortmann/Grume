@@ -129,14 +129,14 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>bat_leader_1 0 0.95 1.0 4</npc_mob>
-        <npc_mob>bat_1        0 0.85 1.0 4</npc_mob>
+        <npc_mob>bat_leader_1 0 0.95 1.0 4 none 0</npc_mob>
+        <npc_mob>bat_1        0 0.85 1.0 4 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone            0.75 1.0 064</debris>
-        <debris>mushroom_red    0.75 1.0 066</debris>
+        <debris>bone            0.75 1.0 064 none 0</debris>
+        <debris>mushroom_red    0.75 1.0 066 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -147,10 +147,10 @@
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
         # Portal bottom
-        <object>portal_cave_right  1  020 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  021 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_center 1  022 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
-        <object>portal_cave_left   1  023 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1</object>
+        <object>portal_cave_right  1  020 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  021 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  022 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  023 063  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
     </objects>
 
 </map>

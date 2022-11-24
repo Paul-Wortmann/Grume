@@ -129,6 +129,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_npcManager.setLootManagerPointer(&m_lootManager);
     m_npcManager.setParticleEnginePointer(&m_particleEngine);
     m_npcManager.setResourceManagerPointer(&m_resourceManager);
+    m_npcManager.setQuestManager(&m_questManager);
     m_objectManager.setAudioEngine(&m_audioEngine);
     m_objectManager.setEntityHead(m_entityManager.getHead());
     m_objectManager.setEntityManagerPointer(&m_entityManager);
