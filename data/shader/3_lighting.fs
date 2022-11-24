@@ -11,7 +11,7 @@ uniform int  isText;
 uniform vec4 textColor;
 
 // Lights
-const int MAX_POINT_LIGHTS = 4; // !!! HAS to to match graphics_engine_defines.hpp - MAX_LIGHTS
+const int MAX_POINT_LIGHTS = 4; // !!! HAS to to match core/defines.hpp - MAX_POINT_LIGHTS
 
 // From the vertex shader
 in vec3 vs_fragPosition;
@@ -127,15 +127,15 @@ void main()
         // -- debug --
         if (collision != 0)
         {
-            result.r += 0.5f;
-            if (result.r > 1.0f)
-                result.r = 1.0f;
-        }
-        if (mouseOver != 0)
-        {
             result.g += 0.5f;
             if (result.g > 1.0f)
                 result.g = 1.0f;
+        }
+        if (mouseOver != 0)
+        {
+            result.r += 0.5f;
+            if (result.r > 1.0f)
+                result.r = 1.0f;
         }
         if (hasFunction != 0)
         {

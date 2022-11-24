@@ -4,7 +4,7 @@
 layout(location = 0) out vec4 fragColor;
 
 // Lights
-const int MAX_POINT_LIGHTS = 4; // !!! HAS to to match graphics_engine_defines.hpp - MAX_LIGHTS
+const int MAX_POINT_LIGHTS = 4; // !!! HAS to to match core/defines.hpp - MAX_POINT_LIGHTS
 
 // From the vertex shader
 in vec3 vs_fragPosition;

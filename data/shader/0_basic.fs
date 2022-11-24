@@ -26,15 +26,15 @@ void main()
     }
     if (collision != 0)
     {
-        finalColor.r += 0.5f;
-        if (finalColor.r > 1.0f)
-            finalColor.r = 1.0f;
-    }
-    if (mouseOver != 0)
-    {
         finalColor.g += 0.5f;
         if (finalColor.g > 1.0f)
             finalColor.g = 1.0f;
+    }
+    if (mouseOver != 0)
+    {
+        finalColor.r += 0.5f;
+        if (finalColor.r > 1.0f)
+            finalColor.r = 1.0f;
     }
     if (hasFunction != 0)
     {

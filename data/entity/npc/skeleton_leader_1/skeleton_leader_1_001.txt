@@ -24,11 +24,11 @@
             <ai_leader_minion_number>1</ai_leader_minion_number>
 
             <ai_leader_minion_revive>1</ai_leader_minion_revive> # bool
-            <ai_leader_minion_revive_cost>175</ai_leader_minion_revive_cost>
+            <ai_leader_minion_revive_cost>575</ai_leader_minion_revive_cost>
             <ai_leader_minion_heal>1</ai_leader_minion_heal> # bool
-            <ai_leader_minion_heal_cost>125</ai_leader_minion_heal_cost>
+            <ai_leader_minion_heal_cost>550</ai_leader_minion_heal_cost>
             <ai_leader_minion_spawn>1</ai_leader_minion_spawn> # bool
-            <ai_leader_minion_spawn_cost>100</ai_leader_minion_spawn_cost>
+            <ai_leader_minion_spawn_cost>500</ai_leader_minion_spawn_cost>
         </ai_leader>
     </ai>
 
@@ -53,7 +53,7 @@
 	    <base_debris>skeleton_leader_1_debris</base_debris>
 	    <base_destructible>1</base_destructible>
 	    <base_collectable>0</base_collectable>
-	    <base_particle_type>5</base_particle_type>
+	    <base_particle_type>4</base_particle_type>
 	    <base_particle_height>3.5</base_particle_height>
 
         <death_shake_chance>99</death_shake_chance>
@@ -70,27 +70,28 @@
 	    <character_health_regen>1.25</character_health_regen>
 	    <character_mana_max>1000</character_mana_max>
 	    <character_mana_current>0.0</character_mana_current>
-	    <character_mana_regen>1.5</character_mana_regen>
+	    <character_mana_regen>1.25</character_mana_regen>
 
         <character_damage>
-	        <character_damage_physical_base>150.0</character_damage_physical_base>
+	        <character_damage_physical_base>300.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>12.5</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 
-	        <character_damage_fire_base>10.5</character_damage_fire_base>
+	        <character_damage_fire_base>50.0</character_damage_fire_base>
 	        <character_damage_fire_crit_chance>0.1</character_damage_fire_crit_chance>
 	        <character_damage_fire_crit_multiplier>1.5</character_damage_fire_crit_multiplier>
 
-	        <character_damage_frost_base>10.5</character_damage_frost_base>
+	        <character_damage_frost_base>50.0</character_damage_frost_base>
 	        <character_damage_frost_crit_chance>0.1</character_damage_frost_crit_chance>
 	        <character_damage_frost_crit_multiplier>1.5</character_damage_frost_crit_multiplier>
         </character_damage>
 
         <character_armor>
-	        <character_armor_physical_base>10.5</character_armor_physical_base>
+	        <character_armor_physical_base>50.5</character_armor_physical_base>
 	        <character_armor_fire_base>1.5</character_armor_fire_base>
 	        <character_armor_frost_base>1.5</character_armor_frost_base>
         </character_armor>
+
     </character>
     
     <graphics>
