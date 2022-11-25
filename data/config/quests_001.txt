@@ -4,6 +4,7 @@
 
 	<quest>bug_boss_1_dead 0</quest>
 	<quest>bug_boss_2_dead 0</quest>
+	<quest>skeleton_boss_1_dead 0</quest>
 
 </quests>
 
