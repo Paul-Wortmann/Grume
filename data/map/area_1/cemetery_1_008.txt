@@ -110,10 +110,10 @@
 
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
-        <npc>skeleton_leader_1 0 16 16 0.000 0.000 0.000  0.000 0.000 0.000 none 0</npc>
-        <npc>skeleton_boss_1   0 17 16 0.000 0.000 0.000  0.000 0.000 0.000 skeleton_boss_1_dead 0</npc>
-        <npc>skeleton_boss_2   0 16 17 0.000 0.000 0.000  0.000 0.000 0.000 skeleton_boss_2_dead 0</npc>
-        <npc>skeleton_boss_3   0 17 17 0.000 0.000 0.000  0.000 0.000 0.000 skeleton_boss_3_dead 0</npc>
+        <npc>skeleton_leader_1 0 16 26 0.000 0.000 0.000  0.000 0.000 0.000 none 0</npc>
+        <npc>skeleton_boss_1   0 17 26 0.000 0.000 0.000  0.000 0.000 0.000 skeleton_boss_1_dead 0</npc>
+        <npc>skeleton_boss_2   0 16 27 0.000 0.000 0.000  0.000 0.000 0.000 skeleton_boss_2_dead 0</npc>
+        <npc>skeleton_boss_3   0 17 27 0.000 0.000 0.000  0.000 0.000 0.000 skeleton_boss_3_dead 0</npc>
     </npcs>
 
     <objects>

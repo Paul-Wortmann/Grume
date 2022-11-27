@@ -133,7 +133,7 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>skeleton_1        0 0.75 1.0 32 none 0</npc_mob>
+        <npc_mob>skeleton_1        0 0.75 1.0 16 none 0</npc_mob>
         <npc_mob>skeleton_leader_1 0 0.75 1.0 1 none 0</npc_mob>
     </npc_mobs>
 
@@ -155,17 +155,17 @@
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
         # Portal left
-        <object>portal_cave_right  1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_1_dead 1</object>
-        <object>portal_cave_center 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_1_dead 1</object>
-        <object>portal_cave_center 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_1_dead 1</object>
-        <object>portal_cave_left   1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_1_dead 1</object>
+        <object>portal_cave_right  1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_3_dead 1</object>
+        <object>portal_cave_center 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_3_dead 1</object>
+        <object>portal_cave_center 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_3_dead 1</object>
+        <object>portal_cave_left   1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 skeleton_boss_3_dead 1</object>
         
-        <object>cemetery_1_hw_dw_001 1  000 030  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_1_dead 0</object>
-        <object>cemetery_1_hw_dw_001 1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_1_dead 0</object>
-        <object>cemetery_1_hw_dw_001 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_1_dead 0</object>
-        <object>cemetery_1_hw_dw_001 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_1_dead 0</object>
-        <object>cemetery_1_hw_dw_001 1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_1_dead 0</object>
-        <object>cemetery_1_hw_dw_001 1  000 035  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_1_dead 0</object>
+        <object>cemetery_1_hw_dw_001 1  000 030  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_3_dead 0</object>
+        <object>cemetery_1_hw_dw_001 1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_3_dead 0</object>
+        <object>cemetery_1_hw_dw_001 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_3_dead 0</object>
+        <object>cemetery_1_hw_dw_001 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_3_dead 0</object>
+        <object>cemetery_1_hw_dw_001 1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_3_dead 0</object>
+        <object>cemetery_1_hw_dw_001 1  000 035  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 skeleton_boss_3_dead 0</object>
 
         # Portal right
         <object>portal_cave_right  1  065 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
