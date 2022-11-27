@@ -501,11 +501,11 @@
     <object>river                 objects/river_1_001.txt</object>
 
     # Rock
-    <object>rock                  objects/rock_1_001.txt</object>
-    <object>rock                  objects/rock_2_001.txt</object>
-    <object>rock                  objects/rock_3_001.txt</object>
-    <object>rock                  objects/rock_4_001.txt</object>
-    <object>rock                  objects/rock_5_001.txt</object>
+    <object>rock_1                objects/rock_1_001.txt</object>
+    <object>rock_1                objects/rock_2_001.txt</object>
+    <object>rock_1                objects/rock_3_001.txt</object>
+    <object>rock_1                objects/rock_4_001.txt</object>
+    <object>rock_1                objects/rock_5_001.txt</object>
 
     <object>rock_2                objects/rock_16_001.txt</object>
     <object>rock_2                objects/rock_16_002.txt</object>
@@ -517,14 +517,14 @@
     <object>rock_black            objects/rock_14_001.txt</object>
 
     # Rock_small
-    <object>rock_small            objects/rock_6_001.txt</object>
-    <object>rock_small            objects/rock_7_001.txt</object>
-    <object>rock_small            objects/rock_8_001.txt</object>
-    <object>rock_small            objects/rock_9_001.txt</object>
-    <object>rock_small            objects/rock_10_001.txt</object>
-    <object>rock_small            objects/rock_11_001.txt</object>
-    <object>rock_small            objects/rock_12_001.txt</object>
-    <object>rock_small            objects/rock_13_001.txt</object>
+    <object>rock_small_1          objects/rock_6_001.txt</object>
+    <object>rock_small_1          objects/rock_7_001.txt</object>
+    <object>rock_small_1          objects/rock_8_001.txt</object>
+    <object>rock_small_1          objects/rock_9_001.txt</object>
+    <object>rock_small_1          objects/rock_10_001.txt</object>
+    <object>rock_small_1          objects/rock_11_001.txt</object>
+    <object>rock_small_1          objects/rock_12_001.txt</object>
+    <object>rock_small_1          objects/rock_13_001.txt</object>
 
     # Rock_small
     <object>rock_small_2          objects/rock_15_001.txt</object>
@@ -563,6 +563,33 @@
 	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_004.txt</object>
 	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_005.txt</object>
 	<object>skeleton_leader_1_debris     npc/skeleton_leader_1/skeleton_leader_1_debris_006.txt</object>
+
+    # Skeleton boss 1 corpse and debris
+	<object>skeleton_boss_1_corpse     npc/skeleton_boss_1/skeleton_boss_1_corpse_001.txt</object>
+	<object>skeleton_boss_1_debris     npc/skeleton_boss_1/skeleton_boss_1_debris_001.txt</object>
+	<object>skeleton_boss_1_debris     npc/skeleton_boss_1/skeleton_boss_1_debris_002.txt</object>
+	<object>skeleton_boss_1_debris     npc/skeleton_boss_1/skeleton_boss_1_debris_003.txt</object>
+	<object>skeleton_boss_1_debris     npc/skeleton_boss_1/skeleton_boss_1_debris_004.txt</object>
+	<object>skeleton_boss_1_debris     npc/skeleton_boss_1/skeleton_boss_1_debris_005.txt</object>
+	<object>skeleton_boss_1_debris     npc/skeleton_boss_1/skeleton_boss_1_debris_006.txt</object>
+
+    # Skeleton boss 2 corpse and debris
+	<object>skeleton_boss_2_corpse     npc/skeleton_boss_2/skeleton_boss_2_corpse_001.txt</object>
+	<object>skeleton_boss_2_debris     npc/skeleton_boss_2/skeleton_boss_2_debris_001.txt</object>
+	<object>skeleton_boss_2_debris     npc/skeleton_boss_2/skeleton_boss_2_debris_002.txt</object>
+	<object>skeleton_boss_2_debris     npc/skeleton_boss_2/skeleton_boss_2_debris_003.txt</object>
+	<object>skeleton_boss_2_debris     npc/skeleton_boss_2/skeleton_boss_2_debris_004.txt</object>
+	<object>skeleton_boss_2_debris     npc/skeleton_boss_2/skeleton_boss_2_debris_005.txt</object>
+	<object>skeleton_boss_2_debris     npc/skeleton_boss_2/skeleton_boss_2_debris_006.txt</object>
+
+    # Skeleton boss 3 corpse and debris
+	<object>skeleton_boss_3_corpse     npc/skeleton_boss_3/skeleton_boss_3_corpse_001.txt</object>
+	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_001.txt</object>
+	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_002.txt</object>
+	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_003.txt</object>
+	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_004.txt</object>
+	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_005.txt</object>
+	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_006.txt</object>
 
     # Spider corpse and debris
 	<object>spider_1_corpse       npc/spider_1/spider_1_corpse_001.txt</object>

@@ -9,7 +9,7 @@
     <base>
 	    <base_name>skeleton_boss_1_debris_003</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>0.5 0.5 0.5</base_scale>
+	    <base_scale>1.0 1.0 1.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_destructible>0<base_destructible>

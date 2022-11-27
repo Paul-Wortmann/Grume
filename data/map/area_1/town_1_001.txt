@@ -162,9 +162,9 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence, quest name, quest required state
-        <debris>grass_1    0.75 1.0  125 none 0</debris>
-        <debris>rock_small 0.50 1.0  060 none 0</debris>
-        <debris>dead_tree  0.50 1.0  070 none 0</debris>
+        <debris>grass_1      0.75 1.0  125 none 0</debris>
+        <debris>rock_small_1 0.50 1.0  060 none 0</debris>
+        <debris>dead_tree    0.50 1.0  070 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -217,7 +217,7 @@
         <object>dead_tree          1  037 042  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object> # Dead tree
         <object>dead_tree          1  039 046  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object> # Dead tree
         <object>dead_tree          1  024 038  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object> # Dead tree
-        <object>rock               1  038 037  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object> # Rock
+        <object>rock_1             1  038 037  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object> # Rock
 
         <#object>barrel             1  029 040  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
         <#object>barrel             1  029 041  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>

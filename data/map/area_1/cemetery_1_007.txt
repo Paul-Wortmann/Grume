@@ -105,7 +105,7 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small      0.75 1.0 008 none 0</debris>
+        <debris>rock_small_1    0.75 1.0 008 none 0</debris>
         <debris>dead_tree       0.50 1.0 004 none 0</debris>
         <debris>bone            0.75 1.0 020 none 0</debris>
         <#debris>gib             0.75 1.0 022 none 0</debris>

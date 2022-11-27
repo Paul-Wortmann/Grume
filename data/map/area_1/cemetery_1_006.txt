@@ -5,7 +5,7 @@
         <map_biome>cemetery_1</map_biome>
         <map_tiles_x>66</map_tiles_x>
         <map_tiles_y>66</map_tiles_y>
-        <map_seed>389151908</map_seed>
+        <map_seed>0</map_seed>
         <map_music_name>cemetery_1</map_music_name>
         <map_music_number>1</map_music_number>
         <world_orientation>0 0 1</world_orientation>
@@ -143,7 +143,7 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>rock_small      0.75 1.0 020 none 0</debris>
+        <debris>rock_small_1    0.75 1.0 020 none 0</debris>
         <debris>dead_tree       0.50 1.0 030 none 0</debris>
         <debris>bone            0.75 1.0 040 none 0</debris>
         <#debris>gib             0.75 1.0 042 none 0</debris>

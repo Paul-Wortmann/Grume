@@ -5,7 +5,7 @@
         <map_biome>cave_1</map_biome>
         <map_tiles_x>64</map_tiles_x>
         <map_tiles_y>32</map_tiles_y>
-        <map_seed>1</map_seed>  # 1 - Seed that guarantees only 1 dragon is generated
+        <map_seed>0</map_seed>
         <map_music_name>cave_1</map_music_name>
         <map_music_number>1</map_music_number>
         <world_orientation>0 0 1</world_orientation>
