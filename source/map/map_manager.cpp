@@ -479,6 +479,7 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
         {
             float playerStartRotation = m_map->portal[m_spawnPortal - 1].rotation;
             std::uint32_t playerTile = m_map->portal[m_spawnPortal - 1].tile;
+            playerTile = gClosestFreeTile(m_map, playerTile);
             m_playerManager->setPlayerPosition(playerTile, playerStartRotation);
         }
         m_spawnPortal = 0;
