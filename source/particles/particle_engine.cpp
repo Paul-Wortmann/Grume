@@ -36,7 +36,7 @@ void cParticleEngine::terminate(void)
 
 void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
 {
-    // Find the first entity particle, so we don't need to iterate from the entity head each time
+    // Find the first entity particle, so we don't need to iterate from the list head each time
     sEntity* tFirstEntity = nullptr;
     for (sEntity* tEntity = m_entityHead; tEntity != nullptr; tEntity = tEntity->next)
     {
@@ -44,6 +44,16 @@ void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
         {
             tFirstEntity = tEntity;
             break;
+        }
+    }
+
+    // Find the last entity particle, so we don't need to iterate to the list tail each time
+    sEntity* tLastEntity = nullptr;
+    for (sEntity* tEntity = tFirstEntity; tEntity != nullptr; tEntity = tEntity->next)
+    {
+        if (tEntity->particle != nullptr)
+        {
+            tLastEntity = tEntity;
         }
     }
 
@@ -59,11 +69,11 @@ void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
     while ((sorted) && (iterationCount < _maxIterations))
     {
         // iterate and sort furthest first
-        for (sEntity* tEntity1 = tFirstEntity; tEntity1 != nullptr; tEntity1 = tEntity1->next)
+        for (sEntity* tEntity1 = tFirstEntity; tEntity1 != tLastEntity->next; tEntity1 = tEntity1->next)
         {
             if (tEntity1->particle != nullptr)
             {
-                for (sEntity* tEntity2 = tEntity1->next; tEntity2 != nullptr; tEntity2 = tEntity2->next)
+                for (sEntity* tEntity2 = tEntity1->next; tEntity2 != tLastEntity->next; tEntity2 = tEntity2->next)
                 {
                     if (tEntity2->particle != nullptr)
                     {

@@ -190,29 +190,29 @@
 	<object>bug_2_debris          npc/bug_2/bug_2_debris_010.txt</object>
 
     # Bug leader corpse and debris
-	<object>bug_leader_1_corpse          npc/bug_leader_1/bug_leader_1_corpse_001.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_001.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_002.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_003.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_004.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_005.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_006.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_007.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_008.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_009.txt</object>
-	<object>bug_leader_1_debris          npc/bug_leader_1/bug_leader_1_debris_010.txt</object>
+	<object>bug_boss_1_corpse          npc/bug_boss_1/bug_boss_1_corpse_001.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_001.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_002.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_003.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_004.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_005.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_006.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_007.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_008.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_009.txt</object>
+	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_010.txt</object>
 
-	<object>bug_leader_2_corpse          npc/bug_leader_2/bug_leader_2_corpse_001.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_001.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_002.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_003.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_004.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_005.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_006.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_007.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_008.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_009.txt</object>
-	<object>bug_leader_2_debris          npc/bug_leader_2/bug_leader_2_debris_010.txt</object>
+	<object>bug_boss_2_corpse          npc/bug_boss_2/bug_boss_2_corpse_001.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_001.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_002.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_003.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_004.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_005.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_006.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_007.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_008.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_009.txt</object>
+	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_010.txt</object>
 
     # Cabinet
 	<object>cabinet               objects/cabinet_1_001.txt</object>
