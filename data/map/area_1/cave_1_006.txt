@@ -147,8 +147,8 @@
 
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
-        <npc>bug_leader_1 0 34 26 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_1_dead 0</npc>
-        <npc>bug_leader_2 0 30 28 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_2_dead 0</npc>
+        <npc>bug_boss_1 0 34 26 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_1_dead 0</npc>
+        <npc>bug_boss_2 0 30 28 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_2_dead 0</npc>
     </npcs>
 
     <objects>

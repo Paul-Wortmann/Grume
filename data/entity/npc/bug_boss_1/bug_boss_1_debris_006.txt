@@ -7,7 +7,7 @@
     </information>
 
     <base>
-	    <base_name>bug_leader_1_debris_009</base_name>
+	    <base_name>bug_boss_1_debris_006</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
         <base_scale>1.0 1.0 1.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
@@ -20,7 +20,7 @@
     
     <graphics>
 	    <graphics_model>npc/bug_1/bug_1_debris_004.obj</graphics_model>
-	    <graphics_material>npc/bug_leader_1_001.txt</graphics_material>
+	    <graphics_material>npc/bug_boss_1_001.txt</graphics_material>
     </graphics>
 
 </entity>

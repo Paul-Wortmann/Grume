@@ -7,10 +7,10 @@
     </information>
 
     <base>
-	    <base_name>bug_leader_1_debris_007</base_name>
+	    <base_name>bug_boss_2_debris_005</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>1.0 1.0 1.0</base_scale>
-	    <base_rotation>0.0 0.0 0.0</base_otation>
+        <base_scale>0.75 0.75 0.75</base_scale>
+	    <base_rotation>0.0 1.5708 0.0</base_otation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_destructible>0<base_destructible>
 	    <base_collectable>0<base_collectable>
@@ -19,8 +19,8 @@
     </base>
     
     <graphics>
-	    <graphics_model>npc/bug_1/bug_1_debris_004.obj</graphics_model>
-	    <graphics_material>npc/bug_leader_1_001.txt</graphics_material>
+	    <graphics_model>npc/bug_1/bug_1_debris_002.obj</graphics_model>
+	    <graphics_material>npc/bug_boss_2_001.txt</graphics_material>
     </graphics>
 
 </entity>

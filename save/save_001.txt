@@ -3,7 +3,7 @@
 
    <information>
       <current_map>cave_2_001</current_map>
-      <current_position>603</current_position>
+      <current_position>573</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
@@ -12,11 +12,11 @@
       <level_current>8</level_current>
       <exp_current>17582</exp_current>
       <exp_next>26244</exp_next>
-      <health_current>2560.5</health_current>
-      <health_max>2560.5</health_max>
+      <health_current>2560</health_current>
+      <health_max>2560</health_max>
       <health_regen>16.4211</health_regen>
-      <mana_current>2560.5</mana_current>
-      <mana_max>2560.5</mana_max>
+      <mana_current>2560</mana_current>
+      <mana_max>2560</mana_max>
       <mana_regen>16.4211</mana_regen>
       <gold_current>33557</gold_current>
       <damage_physical_base>9</damage_physical_base>
@@ -34,8 +34,8 @@
    </player>
 
    <quests>
-      <quest>bug_boss_1_dead 0</quest>
-      <quest>bug_boss_2_dead 0</quest>
+      <quest>bug_boss_1_dead 1</quest>
+      <quest>bug_boss_2_dead 1</quest>
       <quest>skeleton_boss_1_dead 1</quest>
       <quest>skeleton_boss_2_dead 1</quest>
       <quest>skeleton_boss_3_dead 1</quest>
@@ -47,6 +47,7 @@
       <map>cave_1_003 412077026</map>
       <map>cave_1_004 1421909336</map>
       <map>cave_1_005 133815515</map>
+      <map>cave_1_006 1062029111</map>
       <map>cave_1_007 960392883</map>
       <map>cave_2_001 864370565</map>
       <map>cave_2_002 956364123</map>
