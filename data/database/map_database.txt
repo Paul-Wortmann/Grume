@@ -43,6 +43,8 @@
 	<map>cemetery_1_004 area_1/cemetery_1_004.txt</map>
 	<map>cemetery_1_005 area_1/cemetery_1_005.txt</map>
 	<map>cemetery_1_006 area_1/cemetery_1_006.txt</map>
+	<map>cemetery_1_007 area_1/cemetery_1_007.txt</map>
+	<map>cemetery_1_008 area_1/cemetery_1_008.txt</map>
 
 	<map>crypt_1_001    area_1/crypt_1_001.txt</map>
 

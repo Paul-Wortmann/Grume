@@ -2,7 +2,7 @@
 <save_file>
 
    <information>
-      <current_map>test_001</current_map>
+      <current_map>town_1_001</current_map>
       <current_position>528</current_position>
       <current_rotation>0</current_rotation>
    </information>
@@ -19,9 +19,13 @@
       <mana_regen>0.0125</mana_regen>
    </player>
 
-   <quest>
-      <001>0</001>
-   </quest>
+   <quests>
+      <quest>bug_boss_1_dead 0</quest>
+      <quest>bug_boss_2_dead 0</quest>
+      <quest>skeleton_boss_1_dead 0</quest>
+      <quest>skeleton_boss_2_dead 0</quest>
+      <quest>skeleton_boss_3_dead 0</quest>
+   </quests>
 
    <map_data>
    </map_data>
