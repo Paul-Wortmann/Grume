@@ -7,7 +7,7 @@
     </information>
 
     <base>
-	    <base_name>rock_15_001</base_name>
+	    <base_name>rock_16_004</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>1.0 1.0 1.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
@@ -17,8 +17,8 @@
     </base>
 
     <graphics>
-	    <graphics_model>objects/rock_6_001.obj</graphics_model>
-	    <graphics_material>objects/rock_15_001.txt</graphics_material>
+	    <graphics_model>objects/rock_9_001.obj</graphics_model>
+	    <graphics_material>objects/rock_16_001.txt</graphics_material>
     </graphics>
     
 </entity>

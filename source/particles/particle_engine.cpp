@@ -209,7 +209,7 @@ void cParticleEngine::process(const float &_dt)
             if (tEntity->particle->life < 0.0f)
             {
                 //die
-                m_entityManager->deleteEntity(tEntity);
+                m_entityManager->deleteParticleEntity(tEntity);
 
                 //return;
                 tEntity = m_entityHead;

@@ -1138,6 +1138,13 @@ void cEntityManager::deleteEntity(sEntity*& _pointer)
     _pointer->base.enabled = false;
 };
 
+void cEntityManager::deleteParticleEntity(sEntity*& _pointer)
+{
+    // Free data and disable (possible future entity reuse)
+    freeData(_pointer);
+    _pointer->base.enabled = false;
+};
+
 sEntity* cEntityManager::spawnEntity(const std::string &_name, const std::uint32_t &_number, const eDatabaseType &_type, const glm::vec3 &_position)
 {
     std::string fileName = m_databaseManager->getDatabaseEntryFileName(_name, _number, _type);

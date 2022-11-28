@@ -50,6 +50,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         sEntity*             getEntity(const std::uint32_t &_ID);
         sEntity*             getEntityOnTile(const std::uint32_t &_tile);
         void                 deleteEntity(sEntity*& _pointer);
+        void                 deleteParticleEntity(sEntity*& _pointer);
         void                 setPlayerEntity(sEntity* _pointer) { m_playerEntity = _pointer; };
         sEntity*             spawnEntity(const std::string &_name, const std::uint32_t &_number, const eDatabaseType &_type, const glm::vec3 &_position);
         void                 spawnMinionEntities(void);
@@ -79,7 +80,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         float             m_range_z_min     = -28.0f;
         float             m_range_z_max     =  14.0f;
         float             m_rangeUpdateTime =  0.0f; // accumulated time
-        float             m_rangeUpdateMax  =  512.0f; // time required for a range check update ( frame time * frames = 16 * 32 = 512)
+        float             m_rangeUpdateMax  =  256.0f; // time required for a range check update ( frame time * frames = 16 * 16 = 256)
 
         // Event
         tcQueue<sEntityManagerEvent> m_event = {};

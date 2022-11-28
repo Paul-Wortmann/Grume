@@ -63,7 +63,7 @@ class cTimer
         // Called at the end of the same loop as ready()
         void advance_dt(void)
         {
-            m_t += m_dt;
+            //m_t += m_dt;
             m_accumulator -= m_dt;
         };
 
@@ -79,7 +79,7 @@ class cTimer
     protected:
 
     private:
-        double m_t           = 0.0f;  // total time
+        //double m_t           = 0.0f;  // total time
         double m_dt          = 16.0f; // desired frametime
         double m_mt          = 64.0f; // max frametime - limit
         double m_accumulator = 0.0f;  // Used to accumulate frame time until it is m_dt

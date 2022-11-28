@@ -500,23 +500,31 @@
     # River
     <object>river                 objects/river_1_001.txt</object>
 
-    # Rock
+    # Rock 1
     <object>rock_1                objects/rock_1_001.txt</object>
     <object>rock_1                objects/rock_2_001.txt</object>
     <object>rock_1                objects/rock_3_001.txt</object>
     <object>rock_1                objects/rock_4_001.txt</object>
     <object>rock_1                objects/rock_5_001.txt</object>
 
-    <object>rock_2                objects/rock_16_001.txt</object>
-    <object>rock_2                objects/rock_16_002.txt</object>
-    <object>rock_2                objects/rock_16_003.txt</object>
-    <object>rock_2                objects/rock_16_004.txt</object>
-    <object>rock_2                objects/rock_16_005.txt</object>
+    # Rock 2 -> cave 1
+    <object>rock_2                objects/rock_15_001.txt</object>
+    <object>rock_2                objects/rock_15_002.txt</object>
+    <object>rock_2                objects/rock_15_003.txt</object>
+    <object>rock_2                objects/rock_15_004.txt</object>
+    <object>rock_2                objects/rock_15_005.txt</object>
+
+    # Rock 3 -> cave 2
+    <object>rock_3                objects/rock_16_001.txt</object>
+    <object>rock_3                objects/rock_16_002.txt</object>
+    <object>rock_3                objects/rock_16_003.txt</object>
+    <object>rock_3                objects/rock_16_004.txt</object>
+    <object>rock_3                objects/rock_16_005.txt</object>
 
     # Rock black
     <object>rock_black            objects/rock_14_001.txt</object>
 
-    # Rock_small
+    # Rock_small_1
     <object>rock_small_1          objects/rock_6_001.txt</object>
     <object>rock_small_1          objects/rock_7_001.txt</object>
     <object>rock_small_1          objects/rock_8_001.txt</object>
@@ -526,15 +534,25 @@
     <object>rock_small_1          objects/rock_12_001.txt</object>
     <object>rock_small_1          objects/rock_13_001.txt</object>
 
-    # Rock_small
-    <object>rock_small_2          objects/rock_15_001.txt</object>
-    <object>rock_small_2          objects/rock_15_002.txt</object>
-    <object>rock_small_2          objects/rock_15_003.txt</object>
-    <object>rock_small_2          objects/rock_15_004.txt</object>
-    <object>rock_small_2          objects/rock_15_005.txt</object>
-    <object>rock_small_2          objects/rock_15_006.txt</object>
-    <object>rock_small_2          objects/rock_15_007.txt</object>
+    # Rock_small_2 -> cave 1
     <object>rock_small_2          objects/rock_15_008.txt</object>
+    <object>rock_small_2          objects/rock_15_009.txt</object>
+    <object>rock_small_2          objects/rock_15_010.txt</object>
+    <object>rock_small_2          objects/rock_15_011.txt</object>
+    <object>rock_small_2          objects/rock_15_012.txt</object>
+    <object>rock_small_2          objects/rock_15_013.txt</object>
+    <object>rock_small_2          objects/rock_15_014.txt</object>
+    <object>rock_small_2          objects/rock_15_015.txt</object>
+
+    # Rock_small_3 -> cave 2
+    <object>rock_small_3          objects/rock_16_008.txt</object>
+    <object>rock_small_3          objects/rock_16_009.txt</object>
+    <object>rock_small_3          objects/rock_16_010.txt</object>
+    <object>rock_small_3          objects/rock_16_011.txt</object>
+    <object>rock_small_3          objects/rock_16_012.txt</object>
+    <object>rock_small_3          objects/rock_16_013.txt</object>
+    <object>rock_small_3          objects/rock_16_014.txt</object>
+    <object>rock_small_3          objects/rock_16_015.txt</object>
 
     # Sack
     <object>sack                  objects/sack_1_001.txt</object>

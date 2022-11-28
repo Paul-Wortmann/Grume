@@ -19,7 +19,7 @@
 
     <graphics>
 	    <graphics_model>objects/rock_5_001.obj</graphics_model>
-	    <graphics_material>objects/rock_15_001.txt</graphics_material>
+	    <graphics_material>objects/rock_16_001.txt</graphics_material>
     </graphics>
 
     <physics>
