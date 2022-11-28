@@ -2,8 +2,8 @@
 <material>
 	<material_name>cave_2_path_cp_001</material_name>
 	<diffuse_texture>biome/cave_2/cave_2_path_cp_001_d.png</diffuse_texture>
-	<normal_texture>biome/cave_2/cave_2_path_cp_001_n.png</normal_texture>
-	<specular_texture>biome/cave_2/cave_2_path_cp_001_s.png</specular_texture>
+	<normal_texture>biome/cave_2/cave_2_floor_001_n.png</normal_texture>
+	<specular_texture>biome/cave_2/cave_2_floor_001_s.png</specular_texture>
 	<emissive_texture>default/default_e.png</emissive_texture>
 </material>
 
