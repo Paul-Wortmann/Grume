@@ -28,11 +28,12 @@
 
 enum class eMapEventType : std::uint32_t
 {
-    eventTypeNone         = 0, // None
-    eventTypeTriggerTile  = 1, // Trigger tile
-    eventTypeMapWarp      = 2, // Map warp
-    eventTypeMapCondition = 3, // Map condition set
-    eventTypeMenuActivate = 4  // Menu activate
+    eventTypeNone          = 0, // None
+    eventTypeTriggerTile   = 1, // Trigger tile
+    eventTypeMapWarp       = 2, // Map warp
+    eventTypeMapQuestSet   = 3, // Map quest set
+    eventTypeMenuActivate  = 4, // Menu activate
+    eventTypeMapShrine     = 5  // Shrine
 };
 
 struct sMapEvent

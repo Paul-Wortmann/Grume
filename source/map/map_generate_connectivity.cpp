@@ -480,7 +480,7 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // apply room inter-connections
-    for (std::uint32_t i = 0; i < _map->numRoom; i++)
+    for (std::int32_t i = 0; i < _map->numRoom; ++i)
     {
         switch (_map->generate->connectivityAlgorithm)
         {

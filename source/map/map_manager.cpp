@@ -133,7 +133,12 @@ void cMapManager::process(const float &_dt)
         // map warp events
         if (m_map->event[i].triggered)
         {
-            if (m_map->event[i].type == eMapEventType::eventTypeMapWarp)
+            // Trigger tile
+            if (m_map->event[i].type == eMapEventType::eventTypeTriggerTile)
+            {
+            }
+            // Map warp
+            else if (m_map->event[i].type == eMapEventType::eventTypeMapWarp)
             {
                 // Create events
                 sMapManagerEvent* event = new sMapManagerEvent;
@@ -142,6 +147,11 @@ void cMapManager::process(const float &_dt)
                 event->text = m_map->event[i].trigger_name;
                 m_event.push(event);
             }
+            // Quest set
+            else if (m_map->event[i].type == eMapEventType::eventTypeMapQuestSet)
+            {
+            }
+            // Activate menu
             else if (m_map->event[i].type == eMapEventType::eventTypeMenuActivate)
             {
                 // Create events
@@ -149,6 +159,10 @@ void cMapManager::process(const float &_dt)
                 event->type = sMapManagerEventType::sMapManagerEventType_menuActivate;
                 event->text = m_map->event[i].trigger_name;
                 m_event.push(event);
+            }
+            // Shrine
+            else if (m_map->event[i].type == eMapEventType::eventTypeMapShrine)
+            {
             }
         }
 
@@ -189,7 +203,7 @@ void cMapManager::process(const float &_dt)
 
 
 
-
+/*
 /// legacy cruft below...
 
 
@@ -221,7 +235,7 @@ void cMapManager::process(const float &_dt)
             }
          }
     }
-
+*/
 }
 
 void cMapManager::m_playMapMusic(void)
