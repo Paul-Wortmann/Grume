@@ -103,7 +103,7 @@
         # 1.5708 - Face east
         # 3.1416 - Face north
         # 4.7124 - Face west
-        <portal>1 cave_2_012        0 02 32 4.7124</portal>
+        <portal>1 cave_2_016        0 02 32 4.7124</portal>
         <portal>2 ruins_1_002       2 63 32 1.5708</portal>
     </portals>
 
@@ -111,7 +111,7 @@
         # Event number, type, tile x, y, trigger tile x, y, database map name, repeat
         # Type 1: trigger object on tile
         # Type 2: map warp event
-        <event>1 2  02 00  00 00  cave_2_012     0</event>
+        <event>1 2  02 00  00 00  cave_2_016     0</event>
         <event>2 2  01 00  00 00  ruins_1_002    0</event>
     </events>
 

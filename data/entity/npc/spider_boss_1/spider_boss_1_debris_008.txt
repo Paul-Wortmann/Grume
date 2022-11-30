@@ -7,9 +7,9 @@
     </information>
 
     <base>
-	    <base_name>spider_leader_1_debris_011</base_name>
+	    <base_name>spider_boss_1_debris_008</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>0.15 0.15 0.15</base_scale>
+        <base_scale>0.25 0.25 0.25</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_destructible>0<base_destructible>
@@ -19,8 +19,8 @@
     </base>
     
     <graphics>
-	    <graphics_model>npc/spider_1/spider_1_debris_011.obj</graphics_model>
-	    <graphics_material>npc/spider_leader_1_001.txt</graphics_material>
+	    <graphics_model>npc/spider_1/spider_1_debris_008.obj</graphics_model>
+	    <graphics_material>npc/spider_boss_1_001.txt</graphics_material>
     </graphics>
 
 </entity>

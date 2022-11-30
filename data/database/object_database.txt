@@ -605,7 +605,7 @@
 	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_005.txt</object>
 	<object>skeleton_boss_3_debris     npc/skeleton_boss_3/skeleton_boss_3_debris_006.txt</object>
 
-    # Spider corpse and debris
+    # Spider 1 corpse and debris
 	<object>spider_1_corpse       npc/spider_1/spider_1_corpse_001.txt</object>
 	<object>spider_1_debris       npc/spider_1/spider_1_debris_001.txt</object>
 	<object>spider_1_debris       npc/spider_1/spider_1_debris_002.txt</object>
@@ -621,7 +621,7 @@
 	<#object>spider_1_debris       npc/spider_1/spider_1_debris_012.txt</object>
 	<#object>spider_1_debris       npc/spider_1/spider_1_debris_013.txt</object>
 
-    # Spider leader corpse and debris
+    # Spider 1 leader corpse and debris
 	<object>spider_leader_1_corpse       npc/spider_leader_1/spider_leader_1_corpse_001.txt</object>
 	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_001.txt</object>
 	<object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_002.txt</object>
@@ -636,6 +636,22 @@
 	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_011.txt</object>
 	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_012.txt</object>
 	<#object>spider_leader_1_debris       npc/spider_leader_1/spider_leader_1_debris_013.txt</object>
+
+    # Spider 1 boss corpse and debris
+	<object>spider_boss_1_corpse       npc/spider_boss_1/spider_boss_1_corpse_001.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_001.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_002.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_003.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_004.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_005.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_006.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_007.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_008.txt</object>
+	<object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_009.txt</object>
+	<#object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_010.txt</object>
+	<#object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_011.txt</object>
+	<#object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_012.txt</object>
+	<#object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_013.txt</object>
 
     # Spiked Gib
     <object>spiked_gib            objects/spiked_gib_1_001.txt</object>

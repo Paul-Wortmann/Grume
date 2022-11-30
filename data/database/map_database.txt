@@ -28,11 +28,14 @@
 	<map>cave_2_007     area_1/cave_2_007.txt</map>
 	<map>cave_2_008     area_1/cave_2_008.txt</map>
 	<map>cave_2_009     area_1/cave_2_009.txt</map>
-
 	<map>cave_2_010     area_1/cave_2_010.txt</map>
 	<map>cave_2_011     area_1/cave_2_011.txt</map>
 	<map>cave_2_012     area_1/cave_2_012.txt</map>
 	<map>cave_2_013     area_1/cave_2_013.txt</map>
+
+	<map>cave_2_014     area_1/cave_2_014.txt</map>
+	<map>cave_2_015     area_1/cave_2_015.txt</map>
+	<map>cave_2_016     area_1/cave_2_016.txt</map>
 
 	<map>cave_4_001     area_1/cave_4_001.txt</map>
 	<map>cave_4_002     area_1/cave_4_002.txt</map>

@@ -2,15 +2,15 @@
 <save_file>
 
    <information>
-      <current_map>cave_2_012</current_map>
-      <current_position>636</current_position>
+      <current_map>cave_2_016</current_map>
+      <current_position>1154</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
       <level_current>7</level_current>
-      <exp_current>9740</exp_current>
+      <exp_current>9791</exp_current>
       <exp_next>17496</exp_next>
       <health_current>1708</health_current>
       <health_max>1708</health_max>
@@ -39,6 +39,7 @@
       <quest>skeleton_boss_1_dead 1</quest>
       <quest>skeleton_boss_2_dead 1</quest>
       <quest>skeleton_boss_3_dead 1</quest>
+      <quest>spider_boss_1_dead 0</quest>
    </quests>
 
    <map_data>
@@ -62,6 +63,9 @@
       <map>cave_2_011 181309110</map>
       <map>cave_2_012 1227121988</map>
       <map>cave_2_013 2137136718</map>
+      <map>cave_2_014 1410763947</map>
+      <map>cave_2_015 1229701854</map>
+      <map>cave_2_016 1413723542</map>
       <map>cemetery_1_001 52420276</map>
       <map>cemetery_1_002 852049122</map>
       <map>cemetery_1_003 1463210838</map>

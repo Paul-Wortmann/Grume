@@ -20,7 +20,7 @@
     
     <graphics>
 	    <graphics_model>npc/spider_1/spider_1_debris_003.obj</graphics_model>
-	    <graphics_material>npc/spider_1_002.txt</graphics_material>
+	    <graphics_material>npc/spider_leader_1_001.txt</graphics_material>
     </graphics>
 
 </entity>

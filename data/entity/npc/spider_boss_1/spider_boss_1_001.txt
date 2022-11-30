@@ -8,18 +8,18 @@
 
     <ai>
         # ranges are distances squared
-        <ai_attack_range>1.5</ai_attack_range>
-        <ai_attack_frequency>1024</ai_attack_frequency> # mili-seconds
-        <ai_aware_range>15.0</ai_aware_range>
-        <ai_move_range>10.0</ai_move_range>
-        <ai_retreat_range>0.25</ai_retreat_range>
+        <ai_attack_range>2.0</ai_attack_range>
+        <ai_attack_frequency>512</ai_attack_frequency> # mili-seconds
+        <ai_aware_range>32.0</ai_aware_range>
+        <ai_move_range>16.0</ai_move_range>
+        <ai_retreat_range>0.00001</ai_retreat_range>
         <ai_retreat_threshold>0.25</ai_retreat_threshold>
-        <ai_model_corpse>npc/spider_1/spider_leader_1_corpse_001.obj</ai_model_corpse>
+        <ai_model_corpse>npc/spider_1/spider_boss_1_corpse_001.obj</ai_model_corpse>
         
         <ai_leader>
             <ai_leader_minion_start>0</ai_leader_minion_start>
             <ai_leader_minion_max>5</ai_leader_minion_max>
-            <ai_leader_minion_name>spider_1</ai_leader_minion_name>
+            <ai_leader_minion_name>spider_leader_1</ai_leader_minion_name>
             <ai_leader_minion_number>1</ai_leader_minion_number>
 
             <ai_leader_minion_revive>1</ai_leader_minion_revive> # bool
@@ -32,7 +32,7 @@
     </ai>
 
     <movement>
-        <movement_speed>1.1</movement_speed>
+        <movement_speed>2.0</movement_speed>
     </movement>
 
     <animation>
@@ -41,15 +41,15 @@
     </animation>
 
     <base>
-	    <base_name>spider_leader_1_001</base_name>
+	    <base_name>spider_boss_1_001</base_name>
 	    <base_type>6</base_type>
 	    <base_flying>0</base_flying>
 	    <base_over_size>0</base_over_size>
         <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>0.15 0.15 0.15</base_scale>
+        <base_scale>0.25 0.25 0.25</base_scale>
         <base_rotation>3.14159 1.570795 0.0</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
-	    <base_debris>spider_leader_1_debris</base_debris>
+	    <base_debris>spider_boss_1_debris</base_debris>
 	    <base_destructible>1</base_destructible>
 	    <base_collectable>0</base_collectable>
 	    <base_particle_type>1</base_particle_type>
@@ -61,14 +61,14 @@
 	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
 	    <character_billboard_position>1.0</character_billboard_position>
-	    <character_health_max>2000.0</character_health_max>
-	    <character_health_regen>0.0125</character_health_regen>
-	    <character_mana_max>200.0</character_mana_max>
-	    <character_mana_regen>0.125</character_mana_regen>
+	    <character_health_max>5000.0</character_health_max>
+	    <character_health_regen>0.25</character_health_regen>
+	    <character_mana_max>2000.0</character_mana_max>
+	    <character_mana_regen>0.5</character_mana_regen>
 	    <character_mana_current>0</character_mana_current>
 
         <character_damage>
-	        <character_damage_physical_base>2000.0</character_damage_physical_base>
+	        <character_damage_physical_base>500.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>0.1</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 
@@ -82,7 +82,7 @@
         </character_damage>
 
         <character_armor>
-	        <character_armor_physical_base>1.5</character_armor_physical_base>
+	        <character_armor_physical_base>5.5</character_armor_physical_base>
 	        <character_armor_fire_base>1.5</character_armor_fire_base>
 	        <character_armor_frost_base>1.5</character_armor_frost_base>
         </character_armor>
@@ -90,20 +90,20 @@
     
     <graphics>
         <graphics_model>npc/spider_1/spider_1_001.dae</graphics_model>
-        <graphics_material>npc/spider_leader_1_001.txt</graphics_material>
+        <graphics_material>npc/spider_boss_1_001.txt</graphics_material>
     </graphics>
 
     <loot>
         # gold + experience are multiplied by the map modifier
 	    # gold is ammount min-max for NPC
 	    <loot_gold>1</loot_gold>
-	    <loot_gold_min>50</loot_gold_min>
-	    <loot_gold_max>100</loot_gold_max>
+	    <loot_gold_min>500</loot_gold_min>
+	    <loot_gold_max>1000</loot_gold_max>
 
 	    # experience is amount min-max
 	    <loot_experience>1</loot_experience>
-	    <loot_experience_min>50</loot_experience_min>
-	    <loot_experience_max>100</loot_experience_max>
+	    <loot_experience_min>500</loot_experience_min>
+	    <loot_experience_max>1000</loot_experience_max>
     </loot>
 
     <physics>

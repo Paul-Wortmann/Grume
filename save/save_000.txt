@@ -25,6 +25,7 @@
       <quest>skeleton_boss_1_dead 0</quest>
       <quest>skeleton_boss_2_dead 0</quest>
       <quest>skeleton_boss_3_dead 0</quest>
+      <quest>spider_boss_1_dead 0</quest>
    </quests>
 
    <map_data>
