@@ -10,15 +10,15 @@
 
    <player>
       <level_current>7</level_current>
-      <exp_current>50</exp_current>
+      <exp_current>9740</exp_current>
       <exp_next>17496</exp_next>
-      <health_current>1708.5</health_current>
-      <health_max>1708.5</health_max>
+      <health_current>1708</health_current>
+      <health_max>1708</health_max>
       <health_regen>7.29823</health_regen>
-      <mana_current>1708.5</mana_current>
-      <mana_max>1708.5</mana_max>
+      <mana_current>1708</mana_current>
+      <mana_max>1708</mana_max>
       <mana_regen>7.29823</mana_regen>
-      <gold_current>12904</gold_current>
+      <gold_current>16373</gold_current>
       <damage_physical_base>8</damage_physical_base>
       <damage_physical_crit_chance>8</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>2</damage_physical_crit_multiplier>
@@ -68,7 +68,15 @@
       <map>cemetery_1_004 1971866418</map>
       <map>cemetery_1_007 659587167</map>
       <map>cemetery_1_008 876021131</map>
+      <map>dungeon_1_001 1823305328</map>
+      <map>dungeon_1_002 1833866285</map>
+      <map>dungeon_2_001 338391705</map>
+      <map>dungeon_3_001 976828435</map>
       <map>ruins_1_001 1453627981</map>
+      <map>ruins_1_002 850556360</map>
+      <map>ruins_1_003 485881815</map>
+      <map>ruins_1_004 1487118297</map>
+      <map>ruins_1_005 840158571</map>
    </map_data>
 
 </save_file>
