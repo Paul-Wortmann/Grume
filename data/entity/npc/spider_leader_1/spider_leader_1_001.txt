@@ -14,7 +14,7 @@
         <ai_move_range>10.0</ai_move_range>
         <ai_retreat_range>0.25</ai_retreat_range>
         <ai_retreat_threshold>0.25</ai_retreat_threshold>
-        <ai_model_corpse>npc/spider_1/spider_leader_1_corpse_001.obj</ai_model_corpse>
+        <ai_model_corpse>npc/spider_1/spider_1_corpse_001.obj</ai_model_corpse>
         
         <ai_leader>
             <ai_leader_minion_start>0</ai_leader_minion_start>
