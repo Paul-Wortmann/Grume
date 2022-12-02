@@ -174,7 +174,7 @@ void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const s
                     break;
                 }
                 outFile << timeString;
-                outFile << " - " << stripPath(_file) << " - " << _function << "() - " << std::to_string(_line) << " -> ";
+                outFile << " - " << gStripPath(_file) << " - " << _function << "() - " << std::to_string(_line) << " -> ";
                 outFile << _string << std::endl;
                 outFile.close();
             }

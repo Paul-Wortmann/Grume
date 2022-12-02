@@ -441,7 +441,7 @@ void cModelManager::m_loadAnimations(sEntityModel* _model, const aiScene* _scene
 
 sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
 {
-    if (fileExists(FILE_PATH_MODEL+_fileName))
+    if (gFileExists(FILE_PATH_MODEL+_fileName))
     {
         Assimp::Importer importer;
         const aiScene* scene = importer.ReadFile(FILE_PATH_MODEL+_fileName, aiProcess_CalcTangentSpace |

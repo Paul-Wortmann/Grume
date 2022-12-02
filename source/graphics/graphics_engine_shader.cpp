@@ -52,13 +52,13 @@ std::uint32_t cGraphicsEngineShader::load(const std::string &_fileName)
     GLuint vertShader = 0;
 
     std::string file_vs = FILE_PATH_SHADER + _fileName + ".vs";
-    bool exist_vs = (fileExists(file_vs));
+    bool exist_vs = (gFileExists(file_vs));
     if (exist_vs)
     {
         // Load the shader
         vertShader = glCreateShader(GL_VERTEX_SHADER);
         std::string shaderStr = "";
-        fileToString(file_vs, shaderStr);
+        gFileToString(file_vs, shaderStr);
         const char *shaderSrc = shaderStr.c_str();
 
         // Compile the shader
@@ -91,13 +91,13 @@ std::uint32_t cGraphicsEngineShader::load(const std::string &_fileName)
     GLuint geomShader = 0;
 
     std::string file_gs = FILE_PATH_SHADER + _fileName + ".gs";
-    bool exist_gs = (fileExists(file_gs));
+    bool exist_gs = (gFileExists(file_gs));
     if (exist_gs)
     {
         // Load the shader
         geomShader = glCreateShader(GL_GEOMETRY_SHADER);
         std::string shaderStr = "";
-        fileToString(file_gs, shaderStr);
+        gFileToString(file_gs, shaderStr);
         const char *shaderSrc = shaderStr.c_str();
 
         // Compile the shader
@@ -131,13 +131,13 @@ std::uint32_t cGraphicsEngineShader::load(const std::string &_fileName)
     GLuint fragShader = 0;
 
     std::string file_fs = FILE_PATH_SHADER + _fileName + ".fs";
-    bool exist_fs = (fileExists(file_fs));
+    bool exist_fs = (gFileExists(file_fs));
     if (exist_fs)
     {
         // Load the shader
         fragShader = glCreateShader(GL_FRAGMENT_SHADER);
         std::string shaderStr = "";
-        fileToString(file_fs, shaderStr);
+        gFileToString(file_fs, shaderStr);
         const char *shaderSrc = shaderStr.c_str();
 
         // Compile the shader

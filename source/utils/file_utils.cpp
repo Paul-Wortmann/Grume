@@ -26,7 +26,7 @@
 // A function to read data from a file and copy it to a string
 // Function is called with _filename
 // Returns the string in _buffer
-void fileToString(const std::string &_fileName, std::string &_buffer)
+void gFileToString(const std::string &_fileName, std::string &_buffer)
 {
     std::ifstream file;
     file.open(_fileName.c_str());
@@ -46,7 +46,7 @@ void fileToString(const std::string &_fileName, std::string &_buffer)
 // A function to read data from a file and return it as a string
 // Function is called with _filename
 // Returns a string
-std::string fileToString(const std::string &_fileName)
+std::string gFileToString(const std::string &_fileName)
 {
     std::ifstream fileStream(_fileName, std::ios::in);
     if (fileStream.fail())
@@ -72,7 +72,7 @@ std::string fileToString(const std::string &_fileName)
 // A function to check weather a file exists
 // Function is called with _filename
 // Returns a bool
-bool fileExists(const std::string &_fileName)
+bool gFileExists(const std::string &_fileName)
 {
     std::ifstream fileIn(_fileName.c_str());
     if(fileIn.is_open())
@@ -87,7 +87,7 @@ bool fileExists(const std::string &_fileName)
 // Function is called with _filename
 // Returns the data in _buffer
 // Returns a bool to indicate success or failure
-bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
+bool gFileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
 {
     std::fstream fileStream(_fileName.c_str(), std::ios::in | std::ios::binary);
     if (fileStream.fail())
@@ -106,10 +106,10 @@ bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_bu
     return true;
 }
 
-// A function to return a file's extention
+// A function to return a file's extension
 // Function is called with _filename
 // Returns the data as a string
-std::string fileExtention(const std::string &_fileName)
+std::string gFileExtension(const std::string &_fileName)
 {
     const char16_t marker = '.';
     std::string r_returnString = "";
@@ -134,10 +134,10 @@ std::string fileExtention(const std::string &_fileName)
     return returnString;
 }
 
-// A function to remove a files path and return only the file's name and extention
+// A function to remove a files path and return only the file's name and extension
 // Function is called with _filename
 // Returns the data as a string
-std::string stripPath(const std::string &_fileName)
+std::string gStripPath(const std::string &_fileName)
 {
     const char16_t marker = '/';
     std::string r_returnString = "";
