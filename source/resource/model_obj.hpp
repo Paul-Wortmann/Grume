@@ -27,6 +27,8 @@
 #include <cstdint>
 #include <string>
 
+#include "obj_loader.hpp"
+
 #include "../entity/entity_model.hpp"
 
 void model_obj_import(sEntityModel *&_model, const std::string &_fileName);
