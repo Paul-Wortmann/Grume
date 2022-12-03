@@ -70,7 +70,109 @@
 	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_005.txt</object>
 	<object>bat_leader_1_debris   npc/bat_leader_1/bat_leader_1_debris_006.txt</object>
 
-    # Biome - cemetery
+    # Biome - cave 1
+	<object>cave_1_dw_dc_001        biome/cave_1/cave_1_dw_dc_001.txt</object>
+	<object>cave_1_dw_de_001        biome/cave_1/cave_1_dw_de_001.txt</object>
+	<object>cave_1_dw_dt_001        biome/cave_1/cave_1_dw_dt_001.txt</object>
+	<object>cave_1_dw_dw_001        biome/cave_1/cave_1_dw_dw_001.txt</object>
+	<object>cave_1_dw_dx_001        biome/cave_1/cave_1_dw_dx_001.txt</object>
+	<object>cave_1_floor_001        biome/cave_1/cave_1_floor_001.txt</object>
+	<object>cave_1_hw_dc_001        biome/cave_1/cave_1_hw_dc_001.txt</object>
+	<object>cave_1_hw_de_001        biome/cave_1/cave_1_hw_de_001.txt</object>
+	<object>cave_1_hw_dp_001        biome/cave_1/cave_1_hw_dp_001.txt</object>
+	<object>cave_1_hw_dt_001        biome/cave_1/cave_1_hw_dt_001.txt</object>
+	<object>cave_1_hw_dw_001        biome/cave_1/cave_1_hw_dw_001.txt</object>
+	<object>cave_1_hw_dx_001        biome/cave_1/cave_1_hw_dx_001.txt</object>
+	<object>cave_1_hw_sc_001        biome/cave_1/cave_1_hw_sc_001.txt</object>
+	<object>cave_1_hw_sr_001        biome/cave_1/cave_1_hw_sr_001.txt</object>
+	<object>cave_1_hw_sw_001        biome/cave_1/cave_1_hw_sw_001.txt</object>
+	<object>cave_1_lw_dc_001        biome/cave_1/cave_1_lw_dc_001.txt</object>
+	<object>cave_1_lw_de_001        biome/cave_1/cave_1_lw_de_001.txt</object>
+	<object>cave_1_lw_dp_001        biome/cave_1/cave_1_lw_dp_001.txt</object>
+	<object>cave_1_lw_dt_001        biome/cave_1/cave_1_lw_dt_001.txt</object>
+	<object>cave_1_lw_dw_001        biome/cave_1/cave_1_lw_dw_001.txt</object>
+	<object>cave_1_lw_dx_001        biome/cave_1/cave_1_lw_dx_001.txt</object>
+	<object>cave_1_path_cp_001      biome/cave_1/cave_1_path_cp_001.txt</object>
+	<object>cave_1_path_dp_001      biome/cave_1/cave_1_path_dp_001.txt</object>
+	<object>cave_1_path_fp_001      biome/cave_1/cave_1_path_fp_001.txt</object>
+	<object>cave_1_path_i1p_001     biome/cave_1/cave_1_path_i1p_001.txt</object>
+	<object>cave_1_path_i2p_001     biome/cave_1/cave_1_path_i2p_001.txt</object>
+	<object>cave_1_path_i3p_001     biome/cave_1/cave_1_path_i3p_001.txt</object>
+	<object>cave_1_path_i4p_001     biome/cave_1/cave_1_path_i4p_001.txt</object>
+	<object>cave_1_path_iop_001     biome/cave_1/cave_1_path_iop_001.txt</object>
+	<object>cave_1_path_mp_001      biome/cave_1/cave_1_path_mp_001.txt</object>
+	<object>cave_1_path_sp_001      biome/cave_1/cave_1_path_sp_001.txt</object>
+	<object>cave_1_path_tp_001      biome/cave_1/cave_1_path_tp_001.txt</object>
+	<object>cave_1_pw_dc_001        biome/cave_1/cave_1_pw_dc_001.txt</object>
+	<object>cave_1_pw_de_001        biome/cave_1/cave_1_pw_de_001.txt</object>
+	<object>cave_1_pw_dp_001        biome/cave_1/cave_1_pw_dp_001.txt</object>
+	<object>cave_1_pw_dt_001        biome/cave_1/cave_1_pw_dt_001.txt</object>
+	<object>cave_1_pw_dw_001        biome/cave_1/cave_1_pw_dw_001.txt</object>
+	<object>cave_1_pw_dx_001        biome/cave_1/cave_1_pw_dx_001.txt</object>
+	<object>cave_1_scc_001          biome/cave_1/cave_1_scc_001.txt</object>
+	<object>cave_1_scl_001          biome/cave_1/cave_1_scl_001.txt</object>
+	<object>cave_1_scr_001          biome/cave_1/cave_1_scr_001.txt</object>
+	<object>cave_1_scs_001          biome/cave_1/cave_1_scs_001.txt</object>
+	<object>cave_1_sds_001          biome/cave_1/cave_1_sds_001.txt</object>
+	<object>cave_1_soc_001          biome/cave_1/cave_1_soc_001.txt</object>
+	<object>cave_1_sol_001          biome/cave_1/cave_1_sol_001.txt</object>
+	<object>cave_1_sor_001          biome/cave_1/cave_1_sor_001.txt</object>
+	<object>cave_1_sos_001          biome/cave_1/cave_1_sos_001.txt</object>
+	<object>cave_1_sus_001          biome/cave_1/cave_1_sus_001.txt</object>
+	<object>cave_1_torch_1td_001    biome/cave_1/cave_1_torch_1td_001.txt</object>
+
+    # Biome - cave 2
+	<object>cave_2_dw_dc_001        biome/cave_2/cave_2_dw_dc_001.txt</object>
+	<object>cave_2_dw_de_001        biome/cave_2/cave_2_dw_de_001.txt</object>
+	<object>cave_2_dw_dt_001        biome/cave_2/cave_2_dw_dt_001.txt</object>
+	<object>cave_2_dw_dw_001        biome/cave_2/cave_2_dw_dw_001.txt</object>
+	<object>cave_2_dw_dx_001        biome/cave_2/cave_2_dw_dx_001.txt</object>
+	<object>cave_2_floor_001        biome/cave_2/cave_2_floor_001.txt</object>
+	<object>cave_2_hw_dc_001        biome/cave_2/cave_2_hw_dc_001.txt</object>
+	<object>cave_2_hw_de_001        biome/cave_2/cave_2_hw_de_001.txt</object>
+	<object>cave_2_hw_dp_001        biome/cave_2/cave_2_hw_dp_001.txt</object>
+	<object>cave_2_hw_dt_001        biome/cave_2/cave_2_hw_dt_001.txt</object>
+	<object>cave_2_hw_dw_001        biome/cave_2/cave_2_hw_dw_001.txt</object>
+	<object>cave_2_hw_dx_001        biome/cave_2/cave_2_hw_dx_001.txt</object>
+	<object>cave_2_hw_sc_001        biome/cave_2/cave_2_hw_sc_001.txt</object>
+	<object>cave_2_hw_sr_001        biome/cave_2/cave_2_hw_sr_001.txt</object>
+	<object>cave_2_hw_sw_001        biome/cave_2/cave_2_hw_sw_001.txt</object>
+	<object>cave_2_lw_dc_001        biome/cave_2/cave_2_lw_dc_001.txt</object>
+	<object>cave_2_lw_de_001        biome/cave_2/cave_2_lw_de_001.txt</object>
+	<object>cave_2_lw_dp_001        biome/cave_2/cave_2_lw_dp_001.txt</object>
+	<object>cave_2_lw_dt_001        biome/cave_2/cave_2_lw_dt_001.txt</object>
+	<object>cave_2_lw_dw_001        biome/cave_2/cave_2_lw_dw_001.txt</object>
+	<object>cave_2_lw_dx_001        biome/cave_2/cave_2_lw_dx_001.txt</object>
+	<object>cave_2_path_cp_001      biome/cave_2/cave_2_path_cp_001.txt</object>
+	<object>cave_2_path_dp_001      biome/cave_2/cave_2_path_dp_001.txt</object>
+	<object>cave_2_path_fp_001      biome/cave_2/cave_2_path_fp_001.txt</object>
+	<object>cave_2_path_i1p_001     biome/cave_2/cave_2_path_i1p_001.txt</object>
+	<object>cave_2_path_i2p_001     biome/cave_2/cave_2_path_i2p_001.txt</object>
+	<object>cave_2_path_i3p_001     biome/cave_2/cave_2_path_i3p_001.txt</object>
+	<object>cave_2_path_i4p_001     biome/cave_2/cave_2_path_i4p_001.txt</object>
+	<object>cave_2_path_iop_001     biome/cave_2/cave_2_path_iop_001.txt</object>
+	<object>cave_2_path_mp_001      biome/cave_2/cave_2_path_mp_001.txt</object>
+	<object>cave_2_path_sp_001      biome/cave_2/cave_2_path_sp_001.txt</object>
+	<object>cave_2_path_tp_001      biome/cave_2/cave_2_path_tp_001.txt</object>
+	<object>cave_2_pw_dc_001        biome/cave_2/cave_2_pw_dc_001.txt</object>
+	<object>cave_2_pw_de_001        biome/cave_2/cave_2_pw_de_001.txt</object>
+	<object>cave_2_pw_dp_001        biome/cave_2/cave_2_pw_dp_001.txt</object>
+	<object>cave_2_pw_dt_001        biome/cave_2/cave_2_pw_dt_001.txt</object>
+	<object>cave_2_pw_dw_001        biome/cave_2/cave_2_pw_dw_001.txt</object>
+	<object>cave_2_pw_dx_001        biome/cave_2/cave_2_pw_dx_001.txt</object>
+	<object>cave_2_scc_001          biome/cave_2/cave_2_scc_001.txt</object>
+	<object>cave_2_scl_001          biome/cave_2/cave_2_scl_001.txt</object>
+	<object>cave_2_scr_001          biome/cave_2/cave_2_scr_001.txt</object>
+	<object>cave_2_scs_001          biome/cave_2/cave_2_scs_001.txt</object>
+	<object>cave_2_sds_001          biome/cave_2/cave_2_sds_001.txt</object>
+	<object>cave_2_soc_001          biome/cave_2/cave_2_soc_001.txt</object>
+	<object>cave_2_sol_001          biome/cave_2/cave_2_sol_001.txt</object>
+	<object>cave_2_sor_001          biome/cave_2/cave_2_sor_001.txt</object>
+	<object>cave_2_sos_001          biome/cave_2/cave_2_sos_001.txt</object>
+	<object>cave_2_sus_001          biome/cave_2/cave_2_sus_001.txt</object>
+	<object>cave_2_torch_1td_001    biome/cave_2/cave_2_torch_1td_001.txt</object>
+
+    # Biome - cemetery 1
 	<object>cemetery_1_dw_dc_001        biome/cemetery_1/cemetery_1_dw_dc_001.txt</object>
 	<object>cemetery_1_dw_de_001        biome/cemetery_1/cemetery_1_dw_de_001.txt</object>
 	<object>cemetery_1_dw_dt_001        biome/cemetery_1/cemetery_1_dw_dt_001.txt</object>

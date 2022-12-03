@@ -124,6 +124,10 @@
 	    <physics_max_velocity>0.5</physics_max_velocity>
     </physics>
 
+    <quest>
+	    <quest_on_death>spider_boss_1_dead 1</quest_on_death>
+    </quest>
+
     <state>
         <state_initial>4</state_initial> # 4 == idle
 

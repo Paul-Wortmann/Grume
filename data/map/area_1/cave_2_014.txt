@@ -119,11 +119,18 @@
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
-        # Portal lest
-        <object>portal_cave_right  1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_center 1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_center 1  000 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_left   1  000 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
+        # Portal left
+        <object>portal_cave_right  1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 1</object>
+        <object>portal_cave_center 1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 1</object>
+        <object>portal_cave_center 1  000 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 1</object>
+        <object>portal_cave_left   1  000 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 1</object>
+
+        <object>cave_2_hw_dw_001  1  000 015  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 0</object>
+        <object>cave_2_hw_dw_001  1  000 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 0</object>
+        <object>cave_2_hw_dw_001  1  000 017  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 0</object>
+        <object>cave_2_hw_dw_001  1  000 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 0</object>
+        <object>cave_2_hw_dw_001  1  000 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 0</object>
+        <object>cave_2_hw_dw_001  1  000 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 spider_boss_1_dead 0</object>
 
         # Portal right
         <object>portal_cave_right  1  063 016  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
@@ -134,3 +141,4 @@
     </objects>
 
 </map>
+
