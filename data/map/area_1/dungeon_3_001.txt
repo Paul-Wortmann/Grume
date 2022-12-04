@@ -131,7 +131,7 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>golem_4 0 0.9 1.0 3 none 0</npc_mob>
+        <npc_mob>golem_4         0 0.90 1.00 16 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>

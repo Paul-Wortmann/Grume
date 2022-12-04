@@ -32,7 +32,7 @@
 	    <base_flying>0</base_flying>
 	    <base_over_size>0</base_over_size>
         <base_position>0.0 0.0 0.0</base_position>
-        <base_scale>0.0786 0.0786 0.0786</base_scale>
+        <base_scale>0.0786 0.1572 0.0786</base_scale>
         <base_rotation>3.14159 1.570795 0.0</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
 	    <base_debris>spider_1_debris</base_debris>
@@ -46,7 +46,7 @@
 	    <character_importance>0</character_importance>
 	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
-	    <character_billboard_position>0.5</character_billboard_position>
+	    <character_billboard_position>1.0</character_billboard_position>
 	    <character_health_max>1000</character_health_max>
 	    <character_health_regen>0.0125</character_health_regen>
 	    <character_mana_max>1</character_mana_max>

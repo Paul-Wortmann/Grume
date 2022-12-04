@@ -124,7 +124,7 @@ void cGraphicsEngine::m_pui_render(void)
                     // Experience bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionBarExp)
                     {
-                        float     percent  = static_cast<float>(m_entityPlayer->character->level.exp) / static_cast<float>(m_entityPlayer->character->level.expNext);
+                        float     percent  = static_cast<double>(m_entityPlayer->character->level.exp) / static_cast<double>(m_entityPlayer->character->level.expNext);
                         glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
