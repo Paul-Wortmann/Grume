@@ -204,6 +204,9 @@ void cGraphicsEngine::m_pb_render(void)
                     glm::mat4 billboardModelMatrix = glm::mat4(1);
                     glm::mat4 billboardScaleMatrix = glm::mat4(1);
                     glm::vec3 billboardPosition    = glm::vec3();
+                    glm::vec3 billboardScale       = glm::vec3();
+                    float billboardScaleRatio      = 0.865168539f;
+                    float billboardScaleRatioDiv   = 0.865168539f / 2.9;
 
                     // Model
                     if (m_entityTemp->character->healthBarModel->mesh[0].VAO != 0)
@@ -216,7 +219,8 @@ void cGraphicsEngine::m_pb_render(void)
                         billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
                         billboardPosition.z = m_entityTemp->base.position.z - 0.001f;
                         billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
-                        billboardScaleMatrix = glm::scale(glm::mat4(1), glm::vec3(0.865168539f, 1.0f, 1.0f));
+                        billboardScale       = glm::vec3(billboardScaleRatio * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
+                        billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
                         billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
                         glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
 
@@ -225,13 +229,13 @@ void cGraphicsEngine::m_pb_render(void)
 
                         // Health bar
                         float factor = m_entityTemp->character->attribute.health.current / m_entityTemp->character->attribute.health.max;
-                        float offset = ((0.865168539f / 2.9) * factor) - (0.865168539f / 2.9);
+                        float offset = ((billboardScaleRatioDiv) * factor * m_entityTemp->character->healthBarScale.x) - (billboardScaleRatioDiv * m_entityTemp->character->healthBarScale.x);
                         billboardPosition.x = m_entityTemp->base.position.x + offset;
                         billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
                         billboardPosition.z = m_entityTemp->base.position.z - offset;
                         billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
-                        //0.865168539
-                        billboardScaleMatrix = glm::scale(glm::mat4(1), glm::vec3(0.865168539f * factor, 1.0f, 1.0f));
+                        billboardScale       = glm::vec3(billboardScaleRatio * factor * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
+                        billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
                         billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
                         glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
 
@@ -243,7 +247,8 @@ void cGraphicsEngine::m_pb_render(void)
                         billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
                         billboardPosition.z = m_entityTemp->base.position.z + 0.001f;
                         billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
-                        billboardScaleMatrix = glm::scale(glm::mat4(1), glm::vec3(1.0f, 1.0f, 1.0f));
+                        billboardScale       = glm::vec3(1.0f * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
+                        billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
                         billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
                         glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
 

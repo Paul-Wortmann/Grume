@@ -40,7 +40,7 @@ struct sEntityCharacter
     bool                 healthBarEnabled  = false;
     sEntityModel*        healthBarModel    = nullptr;
     sMaterial**          healthBarmaterial = nullptr;
-    glm::vec2            healthBarScale    = glm::vec2(1.0f, 0.5f);
+    glm::vec2            healthBarScale    = glm::vec2(1.0f, 1.0f);
     float                healthBarOffset   = 0.0f;
     eCharacterImportance importance        = eCharacterImportance::characterImportance_noob;
 

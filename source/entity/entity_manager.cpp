@@ -546,7 +546,10 @@ sEntity* cEntityManager::load(const std::string &_fileName)
 
             }
 
-            tEntity->character->healthBarOffset = xmlEntityFile.getFloat("<character_billboard_position>");
+            if (xmlEntityFile.getInstanceCount("<character_billboard_position>") > 0)
+                tEntity->character->healthBarOffset = xmlEntityFile.getFloat("<character_billboard_position>");
+            if (xmlEntityFile.getInstanceCount("<character_billboard_scale>") > 0)
+                tEntity->character->healthBarScale = xmlEntityFile.getVec2("<character_billboard_scale>");
 
             // Health
             if (xmlEntityFile.getInstanceCount("<character_health_max>") > 0)
