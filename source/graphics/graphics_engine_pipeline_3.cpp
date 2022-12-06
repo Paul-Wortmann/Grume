@@ -354,7 +354,7 @@ void cGraphicsEngine::m_p3_render(void)
                 glm::vec3 billboardPosition    = glm::vec3();
                 glm::vec3 billboardScale       = glm::vec3();
                 float billboardScaleRatio      = 0.865168539f;
-                float billboardScaleRatioDiv   = 0.865168539f / 2.9;
+                float billboardScaleRatioDiv   = 0.298333979f; // 0.865168539f / 2.9;
 
                 // Model
                 if (m_entityTemp->character->healthBarModel->mesh[0].VAO != 0)

@@ -28,8 +28,6 @@
 #include "game_config.hpp"
 #include "version.hpp"
 
-#include "../event_manager.hpp"
-
 #include "../animation/animation_engine.hpp"
 #include "../audio/audio_engine.hpp"
 #include "../entity/entity_manager.hpp"

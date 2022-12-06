@@ -73,7 +73,6 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     return_value = (return_value == EXIT_SUCCESS) ? m_resourceManager.initializeFont() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_uiManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_graphicsEngine.initialize() : return_value;
-    return_value = (return_value == EXIT_SUCCESS) ? m_eventManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_entityManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_lootManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_mapManager.initialize() : return_value;
@@ -187,7 +186,6 @@ void cGameEngine::terminate(void)
     m_questManager.terminate();
     m_npcManager.terminate();
     m_objectManager.terminate();
-    m_eventManager.terminate();
     m_lootManager.terminate();
     m_resourceManager.terminate();
     m_databaseManager.terminate();
@@ -223,7 +221,6 @@ void cGameEngine::process(void)
             m_playerManager.process(dt);
         }
         m_uiManager.process(dt);
-        m_eventManager.process(dt);
         m_audioEngine.process(dt);
         m_graphicsEngine.setPlayerLightPosition(m_playerManager.getPosition());
         m_graphicsEngine.process(dt);

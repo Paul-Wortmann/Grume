@@ -55,7 +55,6 @@ class cGameEngine
         // Manager
         cDatabaseManager m_databaseManager = {};
         cEntityManager   m_entityManager   = {};
-        cEventManager    m_eventManager    = {};
         cGameConfig      m_gameConfig      = {};
         cLootManager     m_lootManager     = {};
         cMapManager      m_mapManager      = {};
