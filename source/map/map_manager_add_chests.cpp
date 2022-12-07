@@ -63,8 +63,6 @@ void cMapManager::m_addChests(void)
         float yo = static_cast<float>(m_map->info.size_y / 2);
 
         const float y_pos = m_map->info.terrainHeight; // Map floor position on the y axis
-        const float tp    = 1.0f / 2.0f; // Tile center positioning (half model dimension)
-
         const std::uint32_t boundry_distance = 1;
 
         for (std::uint32_t y = boundry_distance; y < m_map->info.size_y - boundry_distance; ++y)

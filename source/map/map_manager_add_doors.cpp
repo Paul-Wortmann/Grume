@@ -66,7 +66,6 @@ void cMapManager::m_addDoors(void)
         float yo = static_cast<float>(m_map->info.size_y / 2);
 
         const float y_pos = m_map->info.terrainHeight; // Map floor position on the y axis
-        const float tp    = 1.0f / 2.0f; // Tile center positioning (half model dimension)
 
         for (std::uint32_t y = 1; y < m_map->info.size_y - 1; ++y)
         {
