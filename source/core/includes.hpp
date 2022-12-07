@@ -33,6 +33,7 @@
 #include "../3rd_party/stb_image_write.hpp"
 #include "../3rd_party/stb_truetype.hpp"
 #include "../3rd_party/stb_vorbis.hpp"
+#include "../3rd_party/miniaudio.hpp" // include after stb_vorbis.hpp
 
 // Audio -> OpenAL, Vorbis
 #include <AL/al.h>
