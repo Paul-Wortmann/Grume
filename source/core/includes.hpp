@@ -25,6 +25,9 @@
 #define INCLUDES_HPP
 
 // 3rd Party
+#include "../3rd_party/dr_flac.hpp"
+#include "../3rd_party/dr_mp3.hpp"
+#include "../3rd_party/dr_wav.hpp"
 #include "../3rd_party/galogen.hpp"
 #include "../3rd_party/stb_image.hpp"
 #include "../3rd_party/stb_image_write.hpp"
