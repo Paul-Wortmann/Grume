@@ -223,8 +223,12 @@ sEntityMaterial* cModelManager::loadMaterial(const std::string &_fileName)
 
 sEntityModel* cModelManager::load(const std::string &_fileName)
 {
-//    model_obj_import(model, std::string(FILE_PATH_MODEL) + _fileName);
-
+    // If the file does not exist, early exit
+    if (!gFileExists(FILE_PATH_MODEL+_fileName))
+    {
+        gLogWrite(LOG_ERROR, "Failed to open file: " + std::string(FILE_PATH_MODEL) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        return nullptr;
+    }
 
     // If the model has already been loaded, return a pointer to it
     // Also create a new instance
@@ -239,8 +243,22 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     // Add a short delay to prevent CPU saturation;
     gThreadSleep(1);
 
-    // Else try to load the model
-    sEntityModel* tModel = m_loadModel(_fileName);
+    // model pointer
+    sEntityModel* tModel = nullptr;
+
+    // Use individual loaders based on file extension
+    //std::string fileExtension = gFileExtension(_fileName);
+    //if (strcmp(fileExtension.c_str(), "obj") == 0)
+    //{
+    //    model_obj_import(tModel, std::string(FILE_PATH_MODEL) + _fileName);
+    //}
+    // Else try to load the model with assimp
+    //else
+    //{
+        tModel = m_loadModel(_fileName);
+    //}
+
+    // store the model if it is valid
     if (tModel != nullptr)
     {
         //gLogWrite(LOG_INFO, "Loading model: " + _fileName, __FILE__, __LINE__, __FUNCTION__);

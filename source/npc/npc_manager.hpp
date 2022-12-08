@@ -60,20 +60,23 @@ class cNPCManager
 
     private:
         // external pointers
-        cAudioEngine*     m_audioEngine     = nullptr;
-        cDatabaseManager* m_databaseManager = nullptr;
-        cEntityManager*   m_entityManager   = nullptr;
-        cGraphicsEngine*  m_graphicsEngine  = nullptr;
-        cLootManager*     m_lootManager     = nullptr;
-        cParticleEngine*  m_particleEngine  = nullptr;
-        cQuestManager*    m_questManager    = nullptr;
-        cResourceManager* m_resourceManager = nullptr;
-        sEntity*          m_entityHead      = nullptr;
-        sEntity*          m_entityTemp      = nullptr;
-        sEntity*          m_entityPlayer    = nullptr;
-        sMap*             m_mapPointer      = nullptr;
+        cAudioEngine*     m_audioEngine       = nullptr;
+        cDatabaseManager* m_databaseManager   = nullptr;
+        cEntityManager*   m_entityManager     = nullptr;
+        cGraphicsEngine*  m_graphicsEngine    = nullptr;
+        cLootManager*     m_lootManager       = nullptr;
+        cParticleEngine*  m_particleEngine    = nullptr;
+        cQuestManager*    m_questManager      = nullptr;
+        cResourceManager* m_resourceManager   = nullptr;
+        sEntity*          m_entityHead        = nullptr;
+        sEntity*          m_entityTemp        = nullptr;
+        sEntity*          m_entityPlayer      = nullptr;
+        sMap*             m_mapPointer        = nullptr;
 
-        bool              m_updatePaths     = false;
+        bool              m_updatePaths       = false;
+
+        float             m_updateAIFrequency = 50.0f; // miliseconds
+        float             m_updateAICounter   = 0.0f;
 
         void              m_generateWaypoints(sEntity*& _entity);
         void              m_entityDeath(sEntity*& _entity);

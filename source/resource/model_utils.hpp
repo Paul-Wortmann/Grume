@@ -21,18 +21,16 @@
  * @date 2011-11-11
  */
 
-#ifndef MODEL_OBJ_HPP
-#define MODEL_OBJ_HPP
+#ifndef MODEL_UTILS_HPP
+#define MODEL_UTILS_HPP
 
 #include <cstdint>
 #include <string>
 
-#include "model_utils.hpp"
-#include "obj_loader.hpp"
-
+#include "../core/includes.hpp"
 #include "../entity/entity_model.hpp"
 
-void model_obj_import(sEntityModel *&_model, const std::string &_fileName);
-void model_obj_export(sEntityModel *&_model, const std::string &_fileName);
+void gCalculateTangentBiTangent(sEntityModelVertex &_v1, sEntityModelVertex &_v2, sEntityModelVertex &_v3);
 
-#endif // MODEL_OBJ_HPP
+#endif // MODEL_UTILS_HPP
+

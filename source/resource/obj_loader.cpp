@@ -74,6 +74,7 @@ void gFreeOBJ(sOBJ *&_obj)
     }
 }
 
+// load obj data and automatically triangulate quad faces
 void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
 {
     // index count lambda
@@ -251,13 +252,9 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
                 {
                     _obj->mesh[meshNum - 1].numIndex += 3;
                 }
-                else if (indexCount == 4) // Quad (2 triangles)
-                {
-                    _obj->mesh[meshNum - 1].numIndex += 6;
-                }
                 else // n-gon
                 {
-                    std::cout << "Polygonal meshes are not supported!" << std::endl;
+                    _obj->mesh[meshNum - 1].numIndex += ((indexCount - 2) * 3);
                 }
             }
         }
@@ -333,7 +330,7 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
 
                     indexNum += 3;
                 }
-                else if (indexCount == 4) // Quad (2 triangles)
+                else if (indexCount == 4) // Quad
                 {
                     _obj->mesh[meshNum - 1].index[indexNum + 0] = _getIndex(line + " ", 1);
                     _obj->mesh[meshNum - 1].index[indexNum + 1] = _getIndex(line + " ", 2);
@@ -344,6 +341,22 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
                     _obj->mesh[meshNum - 1].index[indexNum + 5] = _getIndex(line + " ", 1);
 
                     indexNum += 6;
+                }
+                else // n-gon
+                {
+                    _obj->mesh[meshNum - 1].index[indexNum + 0] = _getIndex(line + " ", 1);
+                    _obj->mesh[meshNum - 1].index[indexNum + 1] = _getIndex(line + " ", 2);
+                    _obj->mesh[meshNum - 1].index[indexNum + 2] = _getIndex(line + " ", 3);
+
+                    std::uint32_t ic = 3; // triangle index count
+                    for (std::uint32_t i = 3; i < indexCount; ++i)
+                    {
+                        _obj->mesh[meshNum - 1].index[indexNum + ic + 0] = _getIndex(line + " ", i + 0);
+                        _obj->mesh[meshNum - 1].index[indexNum + ic + 1] = _getIndex(line + " ", i + 1);
+                        _obj->mesh[meshNum - 1].index[indexNum + ic + 2] = _getIndex(line + " ", 1);
+                        ic += 3;
+                    }
+                    indexNum += ((indexCount - 2) * 3);
                 }
             }
         }

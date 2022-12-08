@@ -755,6 +755,9 @@
 	<#object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_012.txt</object>
 	<#object>spider_boss_1_debris       npc/spider_boss_1/spider_boss_1_debris_013.txt</object>
 
+    # spider_egg_sack_1_001
+	<object>spider_egg_sack       objects/spider_egg_sack_1_001.txt</object>
+
     # Spiked Gib
     <object>spiked_gib            objects/spiked_gib_1_001.txt</object>
     <object>spiked_gib            objects/spiked_gib_1_002.txt</object>

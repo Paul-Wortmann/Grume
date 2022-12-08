@@ -133,195 +133,188 @@ void cNPCManager::process(const float &_dt)
                     m_entityTemp->character->attribute.mana.current = 0.0f;
             }
 
+            // Update timer
+            m_updateAICounter += _dt;
+
             // Ai
             if ((m_entityTemp->ai != nullptr) && (m_entityTemp->ai->state != eEntityAIState::entityAIStateCorpse))
             {
-                // Direction angle to face
-                float faceDirection = 0.0f;
-
-                // Calculate the distance to the player squared
-                float distancetoPlayerSqr = (((m_entityTemp->base.position.x - m_entityPlayer->base.position.x) *
-                                              (m_entityTemp->base.position.x - m_entityPlayer->base.position.x)) +
-                                             ((m_entityTemp->base.position.z - m_entityPlayer->base.position.z) *
-                                              (m_entityTemp->base.position.z - m_entityPlayer->base.position.z)));
-
-                // Calculate position tiles
-                std::uint32_t playerTile = gMapPositionToTile(m_mapPointer, m_entityPlayer->base.position);
-                std::uint32_t enemyTile  = gMapPositionToTile(m_mapPointer, m_entityTemp->base.position);
-
-                // Calculate state ranges
-                bool inRangeAttack    = (distancetoPlayerSqr < (m_entityTemp->ai->attackRange) * (m_entityTemp->ai->attackRange));
-                bool inRangePursue    = (distancetoPlayerSqr < (m_entityTemp->ai->moveRange) * (m_entityTemp->ai->moveRange));
-                bool inRangeAware     = (distancetoPlayerSqr < (m_entityTemp->ai->awareRange) * (m_entityTemp->ai->awareRange));
-                bool playerVisable    = gLineOfSight(m_mapPointer, playerTile, enemyTile);
-                bool lowHealth        = (m_entityTemp->character->attribute.health.current < (m_entityTemp->character->attribute.health.max / 4.0));
-                bool lowHealthRetreat = (m_entityTemp->character->attribute.health.current < (m_entityTemp->ai->retreatThreshold * m_entityTemp->character->attribute.health.max));
-
-
-                // Enable health bar for visible entities near the player
-                m_entityTemp->character->healthBarEnabled = (playerVisable && inRangePursue);
-
-                // If health is too low, use health spell
-                if (lowHealth)
+                // Only allow entity logic updates if timer ready
+                if (m_updateAICounter > m_updateAIFrequency)
                 {
-                    // if mana -> health spell mana need, heal
-                    if ((m_entityTemp->character->skill.heal.enabled) &&
-                        (m_entityTemp->character->attribute.mana.current > m_entityTemp->character->skill.heal.manaCost))
-                    {
-                        //std::cout << "Low health, healing!" << i << std::endl;
-                        m_entityTemp->character->attribute.mana.current -= m_entityTemp->character->skill.heal.manaCost;
-                        m_entityTemp->character->attribute.health.current += (m_entityTemp->character->attribute.health.max / 2.0);
+                    // Reset timer
+                    m_updateAICounter -= m_updateAIFrequency;
+
+                    // Direction angle to face
+                    float faceDirection = 0.0f;
+
+                    // Calculate the distance to the player squared
+                    float distancetoPlayerSqr = (((m_entityTemp->base.position.x - m_entityPlayer->base.position.x) *
+                                                  (m_entityTemp->base.position.x - m_entityPlayer->base.position.x)) +
+                                                 ((m_entityTemp->base.position.z - m_entityPlayer->base.position.z) *
+                                                  (m_entityTemp->base.position.z - m_entityPlayer->base.position.z)));
+
+                    // Calculate position tiles
+                    std::uint32_t playerTile = gMapPositionToTile(m_mapPointer, m_entityPlayer->base.position);
+                    std::uint32_t enemyTile  = gMapPositionToTile(m_mapPointer, m_entityTemp->base.position);
+
+                    // Calculate state ranges
+                    bool inRangeAttack    = (distancetoPlayerSqr < (m_entityTemp->ai->attackRange) * (m_entityTemp->ai->attackRange));
+                    bool inRangePursue    = (distancetoPlayerSqr < (m_entityTemp->ai->moveRange) * (m_entityTemp->ai->moveRange));
+                    bool inRangeAware     = (distancetoPlayerSqr < (m_entityTemp->ai->awareRange) * (m_entityTemp->ai->awareRange));
+                    bool playerVisable    = gLineOfSight(m_mapPointer, playerTile, enemyTile);
+                    bool lowHealth        = (m_entityTemp->character->attribute.health.current < (m_entityTemp->character->attribute.health.max / 4.0));
+                    bool lowHealthRetreat = (m_entityTemp->character->attribute.health.current < (m_entityTemp->ai->retreatThreshold * m_entityTemp->character->attribute.health.max));
 
 
-                        // blood particles
-                        m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
-                    }
-                }
+                    // Enable health bar for visible entities near the player
+                    m_entityTemp->character->healthBarEnabled = (playerVisable && inRangePursue);
 
-                // If health is too low, retreat
-                if (lowHealthRetreat)
-                {
-                    // Retreat if not already retreating
-                    if (m_entityTemp->ai->state != eEntityAIState::entityAIStateRetreat)
+                    // If health is too low, use health spell
+                    if (lowHealth)
                     {
-                        m_entityTemp->ai->state = eEntityAIState::entityAIStateRetreat;
-                        m_entityTemp->ai->stateChange = true;
-                    }
-                }
-                // Health not low enough to retreat
-                else
-                {
-                    // Cancel retreat if health has been restored
-                    if (m_entityTemp->ai->state == eEntityAIState::entityAIStateRetreat)
-                    {
-                        m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-                        m_entityTemp->ai->stateChange = true;
-                    }
-                }
-
-                // If entity has dependent minions
-                if ((m_entityTemp->ai->leader != nullptr) && (m_entityTemp->ai->leader->minion != nullptr))
-                {
-                    // Process current minions
-                    for (std::uint32_t i = 0; i < m_entityTemp->ai->leader->minionMax; ++i)
-                    {
-                        sEntity *minion = static_cast<sEntity*>(m_entityTemp->ai->leader->minion[i].entity);
-                        if (minion != nullptr)
+                        // if mana -> health spell mana need, heal
+                        if ((m_entityTemp->character->skill.heal.enabled) &&
+                            (m_entityTemp->character->attribute.mana.current > m_entityTemp->character->skill.heal.manaCost))
                         {
-                            // Minion is dead, revive
-                            if (minion->ai->state == eEntityAIState::entityAIStateCorpse)
+                            //std::cout << "Low health, healing!" << i << std::endl;
+                            m_entityTemp->character->attribute.mana.current -= m_entityTemp->character->skill.heal.manaCost;
+                            m_entityTemp->character->attribute.health.current += (m_entityTemp->character->attribute.health.max / 2.0);
+
+
+                            // blood particles
+                            m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
+                        }
+                    }
+
+                    // If health is too low, retreat
+                    if (lowHealthRetreat)
+                    {
+                        // Retreat if not already retreating
+                        if (m_entityTemp->ai->state != eEntityAIState::entityAIStateRetreat)
+                        {
+                            m_entityTemp->ai->state = eEntityAIState::entityAIStateRetreat;
+                            m_entityTemp->ai->stateChange = true;
+                        }
+                    }
+                    // Health not low enough to retreat
+                    else
+                    {
+                        // Cancel retreat if health has been restored
+                        if (m_entityTemp->ai->state == eEntityAIState::entityAIStateRetreat)
+                        {
+                            m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+                            m_entityTemp->ai->stateChange = true;
+                        }
+                    }
+
+                    // If entity has dependent minions
+                    if ((m_entityTemp->ai->leader != nullptr) && (m_entityTemp->ai->leader->minion != nullptr))
+                    {
+                        // Process current minions
+                        for (std::uint32_t i = 0; i < m_entityTemp->ai->leader->minionMax; ++i)
+                        {
+                            sEntity *minion = static_cast<sEntity*>(m_entityTemp->ai->leader->minion[i].entity);
+                            if (minion != nullptr)
                             {
-                                if (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->reviveCost)
+                                // Minion is dead, revive
+                                if (minion->ai->state == eEntityAIState::entityAIStateCorpse)
                                 {
-                                    //std::cout << "Minion is dead, reviving!" << i << std::endl;
-                                    m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->reviveCost;
-                                    m_entityRevive(minion);
+                                    if (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->reviveCost)
+                                    {
+                                        //std::cout << "Minion is dead, reviving!" << i << std::endl;
+                                        m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->reviveCost;
+                                        m_entityRevive(minion);
+                                    }
+                                }
+                                // Minion low health: heal minion
+                                else if (minion->character->attribute.health.current < (minion->ai->retreatThreshold * minion->character->attribute.health.max))
+                                {
+                                    if (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->healCost)
+                                    {
+                                        //std::cout << "Minion has low health, healing!" << i << std::endl;
+                                        m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->healCost;
+                                        minion->character->attribute.health.current = (minion->character->attribute.health.max / 2.0);
+
+                                        // blood particles
+                                        glm::vec3 minionPosition = glm::vec3(minion->base.position.x, minion->base.position.y + minion->base.particleHeight, minion->base.position.z);
+                                        m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, minionPosition);
+                                        m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
+                                    }
                                 }
                             }
-                            // Minion low health: heal minion
-                            else if (minion->character->attribute.health.current < (minion->ai->retreatThreshold * minion->character->attribute.health.max))
-                            {
-                                if (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->healCost)
-                                {
-                                    //std::cout << "Minion has low health, healing!" << i << std::endl;
-                                    m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->healCost;
-                                    minion->character->attribute.health.current = (minion->character->attribute.health.max / 2.0);
+                        }
+                        // If enough mana, spawn minions if not at max
+                        if ((m_entityTemp->ai->leader->minionCurrent < m_entityTemp->ai->leader->minionMax) &&
+                            (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->spawnCost))
+                        {
+                            // Update minion count
+                            m_entityTemp->ai->leader->minionCurrent++;
 
-                                    // blood particles
-                                    glm::vec3 minionPosition = glm::vec3(minion->base.position.x, minion->base.position.y + minion->base.particleHeight, minion->base.position.z);
-                                    m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, minionPosition);
-                                    m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
-                                }
+                            // Decrease mana by spawn cost
+                            m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->spawnCost;
+
+                            // Set a managed entity to be spawned
+                            if (m_entityTemp->ai->leader->minionManaged)
+                            {
+                                //std::cout << "Spawning new NPC : " << m_entityTemp->ai->leader->minionCurrent << std::endl;
+                                m_entityManager->spawnMinionEntities();
+                                m_mapPointer->info.currentNumMob++;
                             }
-                        }
-                    }
-                    // If enough mana, spawn minions if not at max
-                    if ((m_entityTemp->ai->leader->minionCurrent < m_entityTemp->ai->leader->minionMax) &&
-                        (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->spawnCost))
-                    {
-                        // Update minion count
-                        m_entityTemp->ai->leader->minionCurrent++;
-
-                        // Decrease mana by spawn cost
-                        m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->spawnCost;
-
-                        // Set a managed entity to be spawned
-                        if (m_entityTemp->ai->leader->minionManaged)
-                        {
-                            //std::cout << "Spawning new NPC : " << m_entityTemp->ai->leader->minionCurrent << std::endl;
-                            m_entityManager->spawnMinionEntities();
-                            m_mapPointer->info.currentNumMob++;
-                        }
-                        // Spawn a non-managed entity
-                        else
-                        {
-                            // calculate spawn position
-                            glm::vec3 positionTemp = gMapTileToPosition(m_mapPointer, gClosestFreeTile(m_mapPointer, gMapPositionToTile(m_mapPointer, m_entityTemp->base.position)));
-                            positionTemp.y = m_entityTemp->base.position.y;
-
-                            // spawn entity
-                            m_entityManager->spawnEntity(m_entityTemp->ai->leader->minionName, m_entityTemp->ai->leader->minionNumber, eDatabaseType::databaseTypeNpc, positionTemp);
-                            m_mapPointer->info.currentNumMob++;
-                        }
-
-                        // blood particles
-                        m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
-                    }
-                }
-
-                // Process AI based on state
-                switch (m_entityTemp->ai->state)
-                {
-                    // Default:
-                    default:
-                        // When in doubt return to an idle state
-                        m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-                    break;
-
-                    // Idle state:
-                    case eEntityAIState::entityAIStateIdle:
-
-                        // reset the change state flag if it is set
-                        if (m_entityTemp->ai->stateChange == true)
-                        {
-                            m_entityTemp->ai->stateChange = false;
-                        }
-
-                        // Attack player if in range
-                        if ((inRangeAttack == true) && (playerVisable))
-                        {
-                            m_entityTemp->ai->state = eEntityAIState::entityAIStateAttack;
-                            m_entityTemp->ai->stateChange = true;
-                            //std::cout << "Setting state: attack" << std::endl;
-                        }
-                        // Pursue player if in range
-                        else if ((inRangePursue == true) && (playerVisable))
-                        {
-                            m_entityTemp->ai->state = eEntityAIState::entityAIStatePursue;
-                            m_entityTemp->ai->stateChange = true;
-                            //std::cout << "Setting state: pursue" << std::endl;
-                        }
-                        // Observe player if in range
-                        else if ((inRangeAware == true) && (m_entityTemp->movement->pathing == false))
-                        {
-                            // Turn to face the player
-                            faceDirection = static_cast<float>(atan2(m_entityTemp->base.position.z - m_entityPlayer->base.position.z, m_entityTemp->base.position.x - m_entityPlayer->base.position.x));
-
-                            // if not already patrolling, initiate patrol
-                            if (m_entityTemp->ai->state != eEntityAIState::entityAIStatePatrol)
+                            // Spawn a non-managed entity
+                            else
                             {
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStatePatrol;
+                                // calculate spawn position
+                                glm::vec3 positionTemp = gMapTileToPosition(m_mapPointer, gClosestFreeTile(m_mapPointer, gMapPositionToTile(m_mapPointer, m_entityTemp->base.position)));
+                                positionTemp.y = m_entityTemp->base.position.y;
+
+                                // spawn entity
+                                m_entityManager->spawnEntity(m_entityTemp->ai->leader->minionName, m_entityTemp->ai->leader->minionNumber, eDatabaseType::databaseTypeNpc, positionTemp);
+                                m_mapPointer->info.currentNumMob++;
+                            }
+
+                            // blood particles
+                            m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
+                        }
+                    }
+
+                    // Process AI based on state
+                    switch (m_entityTemp->ai->state)
+                    {
+                        // Default:
+                        default:
+                            // When in doubt return to an idle state
+                            m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+                        break;
+
+                        // Idle state:
+                        case eEntityAIState::entityAIStateIdle:
+
+                            // reset the change state flag if it is set
+                            if (m_entityTemp->ai->stateChange == true)
+                            {
+                                m_entityTemp->ai->stateChange = false;
+                            }
+
+                            // Attack player if in range
+                            if ((inRangeAttack == true) && (playerVisable))
+                            {
+                                m_entityTemp->ai->state = eEntityAIState::entityAIStateAttack;
                                 m_entityTemp->ai->stateChange = true;
-                                //std::cout << "Setting state: patrol" << std::endl;
+                                //std::cout << "Setting state: attack" << std::endl;
                             }
-                        }
-
-                        // out of range, initiate patrol
-                        else
-                        {
-                            // if not pathing, go on patrol
-                            if (m_entityTemp->movement->pathing == false)
+                            // Pursue player if in range
+                            else if ((inRangePursue == true) && (playerVisable))
                             {
+                                m_entityTemp->ai->state = eEntityAIState::entityAIStatePursue;
+                                m_entityTemp->ai->stateChange = true;
+                                //std::cout << "Setting state: pursue" << std::endl;
+                            }
+                            // Observe player if in range
+                            else if ((inRangeAware == true) && (m_entityTemp->movement->pathing == false))
+                            {
+                                // Turn to face the player
+                                faceDirection = static_cast<float>(atan2(m_entityTemp->base.position.z - m_entityPlayer->base.position.z, m_entityTemp->base.position.x - m_entityPlayer->base.position.x));
 
                                 // if not already patrolling, initiate patrol
                                 if (m_entityTemp->ai->state != eEntityAIState::entityAIStatePatrol)
@@ -331,489 +324,505 @@ void cNPCManager::process(const float &_dt)
                                     //std::cout << "Setting state: patrol" << std::endl;
                                 }
                             }
-                        }
 
-                    break;
-
-                    // Attack state:
-                    case eEntityAIState::entityAIStateAttack:
-
-                        // stop pathing
-                        m_entityTemp->movement->pathing = false;
-
-                        // Return AI state to idle
-                        m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-
-                        // Direction angle to face: player
-                        faceDirection = static_cast<float>(atan2(m_entityTemp->base.position.z - m_entityPlayer->base.position.z, m_entityTemp->base.position.x - m_entityPlayer->base.position.x));
-
-                        // Attack
-                        //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
-
-                        m_entityTemp->ai->attackCounter += _dt;
-                        if (m_entityTemp->ai->attackCounter > m_entityTemp->ai->attackFrequency)
-                        {
-                            m_entityTemp->ai->attackCounter = 0.0f;
-
-                            // Inflict damage on the player
-                            // **** this should be based on NPC strength and player defense, etc...
-
-                            float damage = m_entityTemp->character->attribute.damagePhysical.base / 2.0f;
-                            m_entityPlayer->character->attribute.health.current -= damage;
-
-                            // Player death
-                            if (m_entityPlayer->character->attribute.health.current <= 0)
+                            // out of range, initiate patrol
+                            else
                             {
-                                m_entityPlayer->character->attribute.health.current = 0;
-                                // Set state if not yet set
-                                if (m_entityPlayer->state->stateCurrent != eEntityState::entityState_idle)
+                                // if not pathing, go on patrol
+                                if (m_entityTemp->movement->pathing == false)
                                 {
-                                    m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_die);
+
+                                    // if not already patrolling, initiate patrol
+                                    if (m_entityTemp->ai->state != eEntityAIState::entityAIStatePatrol)
+                                    {
+                                        m_entityTemp->ai->state = eEntityAIState::entityAIStatePatrol;
+                                        m_entityTemp->ai->stateChange = true;
+                                        //std::cout << "Setting state: patrol" << std::endl;
+                                    }
                                 }
                             }
 
-                                // Set attack and defend states
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_attack)
-                                {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_attack);
-                                }
-                                // Set state if not yet set
-                                if (m_entityPlayer->state->stateCurrent != eEntityState::entityState_defend)
-                                {
-                                    m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_defend);
-                                }
-                        }
-                        else
-                        {
-                            // Set move idle
-                            // Set state if not yet set
-                            if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                        break;
+
+                        // Attack state:
+                        case eEntityAIState::entityAIStateAttack:
+
+                            // stop pathing
+                            m_entityTemp->movement->pathing = false;
+
+                            // Return AI state to idle
+                            m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                            // Direction angle to face: player
+                            faceDirection = static_cast<float>(atan2(m_entityTemp->base.position.z - m_entityPlayer->base.position.z, m_entityTemp->base.position.x - m_entityPlayer->base.position.x));
+
+                            // Attack
+                            //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
+
+                            m_entityTemp->ai->attackCounter += _dt;
+                            if (m_entityTemp->ai->attackCounter > m_entityTemp->ai->attackFrequency)
                             {
-                                m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
-                            }
-                        }
-                    break;
+                                m_entityTemp->ai->attackCounter = 0.0f;
 
-                    // Retreat state:
-                    case eEntityAIState::entityAIStateRetreat:
+                                // Inflict damage on the player
+                                // **** this should be based on NPC strength and player defense, etc...
 
-                        // Initiate retreat
-                        if (m_entityTemp->ai->stateChange == true)
-                        {
-                            // Reset state change flag
-                            m_entityTemp->ai->stateChange = false;
+                                float damage = m_entityTemp->character->attribute.damagePhysical.base / 2.0f;
+                                m_entityPlayer->character->attribute.health.current -= damage;
 
-                            //std::cout << "Initiating state: Retreat." << std::endl;
-
-                            // Setup pathfinder
-                            m_entityTemp->movement->mapPath.currentTile     = enemyTile;
-                            m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
-                            m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityTemp->ai->spawnTile);
-
-                            // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
-                            eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-
-                            // Attempt to path to destination
-                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
-
-                            // Return the collision data to the map after searching for a path
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
-
-                            if (m_entityTemp->movement->mapPath.pathLength > 0)
-                            {
-                                //std::cout << "Retreat: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Path found
-                                m_entityTemp->movement->mapPath.currentPosition = 0;
-                                m_entityTemp->movement->pathing = true;
-
-                                // Set entity state : move
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                // Player death
+                                if (m_entityPlayer->character->attribute.health.current <= 0)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    m_entityPlayer->character->attribute.health.current = 0;
+                                    // Set state if not yet set
+                                    if (m_entityPlayer->state->stateCurrent != eEntityState::entityState_idle)
+                                    {
+                                        m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_die);
+                                    }
                                 }
+
+                                    // Set attack and defend states
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_attack)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_attack);
+                                    }
+                                    // Set state if not yet set
+                                    if (m_entityPlayer->state->stateCurrent != eEntityState::entityState_defend)
+                                    {
+                                        m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_defend);
+                                    }
                             }
                             else
                             {
-                                //std::cout << "Retreat: path NOT found: " << m_entityTemp->movement->mapPath.startTile;
-                                //std::cout << " -> " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Failed to find a path
-                                m_entityTemp->movement->pathing = false;
-
-                                // Set AI state to idle
-                                m_entityTemp->ai->stateChange = true;
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-                            }
-                        }
-
-                        // process retreat
-                        else
-                        {
-                            // pathing finished, return to an idle state
-                            if (m_entityTemp->movement->pathing == false)
-                            {
-                                // Set AI state to idle
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-
-                                // Ensure finish pathing
-                                m_entityTemp->movement->pathing = false;
-
-                                // Set entity state : idle
+                                // Set move idle
                                 // Set state if not yet set
                                 if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
                                 {
                                     m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
                                 }
                             }
-                        }
-                    break;
+                        break;
 
-                    // Pursue state:
-                    case eEntityAIState::entityAIStatePursue:
+                        // Retreat state:
+                        case eEntityAIState::entityAIStateRetreat:
 
-                        // Initiate pursue if conditions met
-                        if ((m_entityTemp->ai->stateChange == true) ||
-                           ((m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile) && inRangePursue && playerVisable))
-                        {
-                            //std::cout << "Initiating pursue: " << std::endl;
-                            // Reset state change flag
-                            m_entityTemp->ai->stateChange = false;
-
-                            // Setup pathfinder
-                            m_entityTemp->ai->lastKnownPlayerTile = m_entityPlayer->movement->mapPath.currentTile;
-                            m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityPlayer->movement->mapPath.currentTile);
-                            m_entityTemp->movement->mapPath.currentTile     = enemyTile;
-                            m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
-
-                            // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
-                            eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-
-                            // Attempt to path to destination
-                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
-
-                            // Return the collision data to the map after searching for a path
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
-
-                            if (m_entityTemp->movement->mapPath.pathLength > 0)
+                            // Initiate retreat
+                            if (m_entityTemp->ai->stateChange == true)
                             {
-                                //std::cout << "Pursue: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Path found
-                                m_entityTemp->movement->mapPath.currentPosition = 0;
-                                m_entityTemp->movement->pathing = true;
+                                // Reset state change flag
+                                m_entityTemp->ai->stateChange = false;
 
-                                // Set entity state : move
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                //std::cout << "Initiating state: Retreat." << std::endl;
+
+                                // Setup pathfinder
+                                m_entityTemp->movement->mapPath.currentTile     = enemyTile;
+                                m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
+                                m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityTemp->ai->spawnTile);
+
+                                // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
+                                eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+
+                                // Attempt to path to destination
+                                gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
+
+                                // Return the collision data to the map after searching for a path
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
+
+                                if (m_entityTemp->movement->mapPath.pathLength > 0)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    //std::cout << "Retreat: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Path found
+                                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                                    m_entityTemp->movement->pathing = true;
+
+                                    // Set entity state : move
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    }
+                                }
+                                else
+                                {
+                                    //std::cout << "Retreat: path NOT found: " << m_entityTemp->movement->mapPath.startTile;
+                                    //std::cout << " -> " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Failed to find a path
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->stateChange = true;
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                                 }
                             }
+
+                            // process retreat
                             else
                             {
-                                //std::cout << "Pursue: path NOT found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Failed to find a path
-                                m_entityTemp->movement->pathing = false;
-
-                                // Set AI state to idle
-                                m_entityTemp->ai->stateChange = true;
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-                            }
-                        }
-
-                        // Process pursue
-                        else
-                        {
-                            // pathing finished, return to an idle state
-                            if (m_entityTemp->movement->pathing == false)
-                            {
-                                // Set AI state to idle
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateReturn;
-                                m_entityTemp->ai->stateChange = true;
-
-                                // Set entity state : move
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                // pathing finished, return to an idle state
+                                if (m_entityTemp->movement->pathing == false)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                                    // Ensure finish pathing
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set entity state : idle
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    }
+                                }
+                            }
+                        break;
+
+                        // Pursue state:
+                        case eEntityAIState::entityAIStatePursue:
+
+                            // Initiate pursue if conditions met
+                            if ((m_entityTemp->ai->stateChange == true) ||
+                               ((m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile) && inRangePursue && playerVisable))
+                            {
+                                //std::cout << "Initiating pursue: " << std::endl;
+                                // Reset state change flag
+                                m_entityTemp->ai->stateChange = false;
+
+                                // Setup pathfinder
+                                m_entityTemp->ai->lastKnownPlayerTile = m_entityPlayer->movement->mapPath.currentTile;
+                                m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityPlayer->movement->mapPath.currentTile);
+                                m_entityTemp->movement->mapPath.currentTile     = enemyTile;
+                                m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
+
+                                // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
+                                eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+
+                                // Attempt to path to destination
+                                gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
+
+                                // Return the collision data to the map after searching for a path
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
+
+                                if (m_entityTemp->movement->mapPath.pathLength > 0)
+                                {
+                                    //std::cout << "Pursue: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Path found
+                                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                                    m_entityTemp->movement->pathing = true;
+
+                                    // Set entity state : move
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    }
+                                }
+                                else
+                                {
+                                    //std::cout << "Pursue: path NOT found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Failed to find a path
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->stateChange = true;
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                                 }
                             }
 
-                            // If in attack range, stop pursuing
-                            if (inRangeAttack)
-                            {
-                                // Stop pathing
-                                m_entityTemp->movement->pathing = false;
-
-                                // Set AI state to idle
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-
-                                // Set entity state : idle
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
-                                {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
-                                }
-                            }
-                        }
-
-                    break;
-
-                    // Patrol state:
-                    case eEntityAIState::entityAIStatePatrol:
-
-                        // Initiate patrol
-                        if (m_entityTemp->ai->stateChange == true)
-                        {
-                            // Ensure we have waypoint data
-                            if ((m_entityTemp->ai->patrol == nullptr) || (m_entityTemp->ai->patrol->waypoint == nullptr))
-                            {
-                                m_generateWaypoints(m_entityTemp);
-                            }
-
-                            // Reset state change flag
-                            m_entityTemp->ai->stateChange = false;
-
-                            // Setup pathfinder
-                            m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityTemp->ai->patrol->waypoint[m_entityTemp->ai->patrol->waypointCurrent]);
-                            m_entityTemp->movement->mapPath.currentTile     = enemyTile;
-                            m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
-
-                            //std::cout << "Moving to waypoint: " << m_entityTemp->ai->patrol->waypointCurrent;
-                            //std::cout << " tile: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-
-                            // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
-                            eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-
-                            // Attempt to path to destination
-                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
-
-                            // Return the collision data to the map after searching for a path
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
-
-                            if (m_entityTemp->movement->mapPath.pathLength > 0)
-                            {
-                                //std::cout << "Patrol: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Path found
-                                m_entityTemp->movement->mapPath.currentPosition = 0;
-                                m_entityTemp->movement->pathing = true;
-
-                                // Set entity state : move
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
-                                {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
-                                }
-                            }
+                            // Process pursue
                             else
                             {
-                                //std::cout << "Patrol: path NOT found: " << m_entityTemp->movement->mapPath.startTile;
-                                //std::cout << " -> " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Failed to find a path
-                                m_entityTemp->movement->pathing = false;
+                                // pathing finished, return to an idle state
+                                if (m_entityTemp->movement->pathing == false)
+                                {
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateReturn;
+                                    m_entityTemp->ai->stateChange = true;
 
-                                // Set AI state to idle
-                                m_entityTemp->ai->stateChange = true;
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+                                    // Set entity state : move
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    }
+                                }
 
-                                // increment waypoint count
-                                m_entityTemp->ai->patrol->waypointCurrent = (m_entityTemp->ai->patrol->waypointCurrent + 1) % m_entityTemp->ai->patrol->waypointCount;
+                                // If in attack range, stop pursuing
+                                if (inRangeAttack)
+                                {
+                                    // Stop pathing
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                                    // Set entity state : idle
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    }
+                                }
                             }
-                        }
 
-                        // process patrol
-                        else
-                        {
-                            // pathing finished or out of range, return to an idle state
-                            if (m_entityTemp->movement->pathing == false)
+                        break;
+
+                        // Patrol state:
+                        case eEntityAIState::entityAIStatePatrol:
+
+                            // Initiate patrol
+                            if (m_entityTemp->ai->stateChange == true)
                             {
-                                //std::cout << "Patrol: arrived at waypoint: " << m_entityTemp->ai->patrol->waypointCurrent << std::endl;
-
                                 // Ensure we have waypoint data
                                 if ((m_entityTemp->ai->patrol == nullptr) || (m_entityTemp->ai->patrol->waypoint == nullptr))
                                 {
                                     m_generateWaypoints(m_entityTemp);
                                 }
 
-                                // increment waypoint count
-                                m_entityTemp->ai->patrol->waypointCurrent = (m_entityTemp->ai->patrol->waypointCurrent + 1) % m_entityTemp->ai->patrol->waypointCount;
+                                // Reset state change flag
+                                m_entityTemp->ai->stateChange = false;
 
-                                // Set AI state change flag for path finder on next iteration
-                                m_entityTemp->ai->stateChange = true;
-                            }
+                                // Setup pathfinder
+                                m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityTemp->ai->patrol->waypoint[m_entityTemp->ai->patrol->waypointCurrent]);
+                                m_entityTemp->movement->mapPath.currentTile     = enemyTile;
+                                m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
 
-                            // If we are in range of the player and viasable, stop patroling
-                            if ((inRangeAttack || inRangePursue) && playerVisable)
-                            {
-                                //std::cout << "Patrol: player spotted, stopping" << std::endl;
+                                //std::cout << "Moving to waypoint: " << m_entityTemp->ai->patrol->waypointCurrent;
+                                //std::cout << " tile: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
 
-                                // Stop pathing
-                                m_entityTemp->movement->pathing = false;
+                                // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
+                                eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
 
-                                // Set AI state to idle
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+                                // Attempt to path to destination
+                                gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
 
-                                // Set entity state : idle
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                // Return the collision data to the map after searching for a path
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
+
+                                if (m_entityTemp->movement->mapPath.pathLength > 0)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    //std::cout << "Patrol: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Path found
+                                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                                    m_entityTemp->movement->pathing = true;
+
+                                    // Set entity state : move
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    }
+                                }
+                                else
+                                {
+                                    //std::cout << "Patrol: path NOT found: " << m_entityTemp->movement->mapPath.startTile;
+                                    //std::cout << " -> " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Failed to find a path
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->stateChange = true;
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                                    // increment waypoint count
+                                    m_entityTemp->ai->patrol->waypointCurrent = (m_entityTemp->ai->patrol->waypointCurrent + 1) % m_entityTemp->ai->patrol->waypointCount;
                                 }
                             }
-                        }
-                    break;
 
-                    // GoToTile state:
-                    case eEntityAIState::entityAIStateGoToTile:
-
-                        // Initiate retreat
-                        if (m_entityTemp->ai->stateChange == true)
-                        {
-                            // Reset state change flag
-                            m_entityTemp->ai->stateChange = false;
-
-                            // Setup pathfinder
-                            m_entityTemp->movement->mapPath.currentTile     = enemyTile;
-                            m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
-
-                            // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
-                            eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-
-                            // Attempt to path to destination
-                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
-
-                            // Return the collision data to the map after searching for a path
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
-
-                            if (m_entityTemp->movement->mapPath.pathLength > 0)
-                            {
-                                // Path found
-                                m_entityTemp->movement->mapPath.currentPosition = 0;
-                                m_entityTemp->movement->pathing = true;
-
-                                // Set entity state : move
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
-                                {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
-                                }
-                            }
+                            // process patrol
                             else
                             {
-                                // Failed to find a path
-                                m_entityTemp->movement->pathing = false;
-
-                                // Set AI state to idle
-                                m_entityTemp->ai->stateChange = true;
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-                            }
-                        }
-
-                        // process retreat
-                        else
-                        {
-                            // pathing finished or out of range, return to an idle state
-                            if (m_entityTemp->movement->pathing == false)
-                            {
-                                // Set AI state to idle
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-
-                                // Set entity state : idle
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                // pathing finished or out of range, return to an idle state
+                                if (m_entityTemp->movement->pathing == false)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    //std::cout << "Patrol: arrived at waypoint: " << m_entityTemp->ai->patrol->waypointCurrent << std::endl;
+
+                                    // Ensure we have waypoint data
+                                    if ((m_entityTemp->ai->patrol == nullptr) || (m_entityTemp->ai->patrol->waypoint == nullptr))
+                                    {
+                                        m_generateWaypoints(m_entityTemp);
+                                    }
+
+                                    // increment waypoint count
+                                    m_entityTemp->ai->patrol->waypointCurrent = (m_entityTemp->ai->patrol->waypointCurrent + 1) % m_entityTemp->ai->patrol->waypointCount;
+
+                                    // Set AI state change flag for path finder on next iteration
+                                    m_entityTemp->ai->stateChange = true;
+                                }
+
+                                // If we are in range of the player and viasable, stop patroling
+                                if ((inRangeAttack || inRangePursue) && playerVisable)
+                                {
+                                    //std::cout << "Patrol: player spotted, stopping" << std::endl;
+
+                                    // Stop pathing
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                                    // Set entity state : idle
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    }
                                 }
                             }
-                        }
-                    break;
+                        break;
 
-                    // Return state:
-                    case eEntityAIState::entityAIStateReturn:
+                        // GoToTile state:
+                        case eEntityAIState::entityAIStateGoToTile:
 
-                        // Initiate retreat
-                        if (m_entityTemp->ai->stateChange == true)
-                        {
-                            // Reset state change flag
-                            m_entityTemp->ai->stateChange = false;
-
-                            //std::cout << "Initiating Retreat." << std::endl;
-
-                            // Setup pathfinder
-                            m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityTemp->ai->spawnTile);
-                            m_entityTemp->movement->mapPath.currentTile     = enemyTile;
-                            m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
-
-                            // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
-                            eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-
-                            // Attempt to path to destination
-                            gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
-
-                            // Return the collision data to the map after searching for a path
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
-                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
-
-                            if (m_entityTemp->movement->mapPath.pathLength > 0)
+                            // Initiate retreat
+                            if (m_entityTemp->ai->stateChange == true)
                             {
-                                //std::cout << "Return: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Path found
-                                m_entityTemp->movement->mapPath.currentPosition = 0;
-                                m_entityTemp->movement->pathing = true;
+                                // Reset state change flag
+                                m_entityTemp->ai->stateChange = false;
 
-                                // Set entity state : move
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                // Setup pathfinder
+                                m_entityTemp->movement->mapPath.currentTile     = enemyTile;
+                                m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
+
+                                // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
+                                eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+
+                                // Attempt to path to destination
+                                gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
+
+                                // Return the collision data to the map after searching for a path
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
+
+                                if (m_entityTemp->movement->mapPath.pathLength > 0)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    // Path found
+                                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                                    m_entityTemp->movement->pathing = true;
+
+                                    // Set entity state : move
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    }
+                                }
+                                else
+                                {
+                                    // Failed to find a path
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->stateChange = true;
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
                                 }
                             }
+
+                            // process retreat
                             else
                             {
-                                //std::cout << "Return: path NOT found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
-                                // Failed to find a path
-                                m_entityTemp->movement->pathing = false;
-
-                                // Set AI state to idle
-                                m_entityTemp->ai->stateChange = true;
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-                            }
-                        }
-
-                        // process retreat
-                        else
-                        {
-                            // pathing finished or out of range, return to an idle state
-                            if (m_entityTemp->movement->pathing == false)
-                            {
-                                // Set AI state to idle
-                                m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
-
-                                // Set entity state : idle
-                                // Set state if not yet set
-                                if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                // pathing finished or out of range, return to an idle state
+                                if (m_entityTemp->movement->pathing == false)
                                 {
-                                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                                    // Set entity state : idle
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    }
                                 }
                             }
-                        }
-                    break;
+                        break;
+
+                        // Return state:
+                        case eEntityAIState::entityAIStateReturn:
+
+                            // Initiate retreat
+                            if (m_entityTemp->ai->stateChange == true)
+                            {
+                                // Reset state change flag
+                                m_entityTemp->ai->stateChange = false;
+
+                                //std::cout << "Initiating Retreat." << std::endl;
+
+                                // Setup pathfinder
+                                m_entityTemp->movement->mapPath.destinationTile = gClosestFreeTile(m_mapPointer, enemyTile, m_entityTemp->ai->spawnTile);
+                                m_entityTemp->movement->mapPath.currentTile     = enemyTile;
+                                m_entityTemp->movement->mapPath.startTile       = m_entityTemp->movement->mapPath.currentTile;
+
+                                // Remove collision data from map prior to searching for a path to avoid false obstacle of entity
+                                eTileEntityType tileEntityType = m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = 0;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+
+                                // Attempt to path to destination
+                                gAStar(m_mapPointer, m_entityTemp->movement->mapPath, m_entityTemp->base.flying, m_entityTemp->base.overSize);
+
+                                // Return the collision data to the map after searching for a path
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.UID  = m_entityTemp->UID;
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = tileEntityType;
+
+                                if (m_entityTemp->movement->mapPath.pathLength > 0)
+                                {
+                                    //std::cout << "Return: path found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Path found
+                                    m_entityTemp->movement->mapPath.currentPosition = 0;
+                                    m_entityTemp->movement->pathing = true;
+
+                                    // Set entity state : move
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_move)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_move);
+                                    }
+                                }
+                                else
+                                {
+                                    //std::cout << "Return: path NOT found: " << m_entityTemp->movement->mapPath.destinationTile << std::endl;
+                                    // Failed to find a path
+                                    m_entityTemp->movement->pathing = false;
+
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->stateChange = true;
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+                                }
+                            }
+
+                            // process retreat
+                            else
+                            {
+                                // pathing finished or out of range, return to an idle state
+                                if (m_entityTemp->movement->pathing == false)
+                                {
+                                    // Set AI state to idle
+                                    m_entityTemp->ai->state = eEntityAIState::entityAIStateIdle;
+
+                                    // Set entity state : idle
+                                    // Set state if not yet set
+                                    if (m_entityTemp->state->stateCurrent != eEntityState::entityState_idle)
+                                    {
+                                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_idle);
+                                    }
+                                }
+                            }
+                        break;
+                    }
                 }
-
 
 
                 // -------------------- Post-process ---------------------
@@ -909,6 +918,9 @@ void cNPCManager::process(const float &_dt)
 
                     m_entityTemp->movement->mapPath.currentTile = m_entityTemp->base.tileOnMap;
                 }
+
+                // Lastly update the entity's model matrix.
+                m_entityManager->updateModelMatrix(m_entityTemp);
             }
 
             // Entity clicked
@@ -979,9 +991,6 @@ void cNPCManager::process(const float &_dt)
                     m_entityManager->updateModelMatrix(m_entityPlayer);
                 }
             }
-
-            // Lastly update the entity's model matrix.
-            m_entityManager->updateModelMatrix(m_entityTemp);
         }
 
         // Inter-actable non-enemy NPCs: Trader
