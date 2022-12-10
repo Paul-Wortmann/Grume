@@ -52,7 +52,6 @@ struct sEntityCharacter
 
     // These need to be expanded
     float damage = 10.0f;
-
 };
 
 #endif // ENTITY_CHARACTER_HPP

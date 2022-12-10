@@ -70,7 +70,6 @@ struct sEntityAILeader
 
     bool             heal            = false;   // Leader can heal minions?
     std::uint32_t    healCost        = 1000;    // Heal mana cost
-
 };
 
 struct sEntityAI

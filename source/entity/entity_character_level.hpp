@@ -34,7 +34,7 @@ struct sCharacterLevel
     std::uint64_t  exp            = 0;          // Current experience
     std::uint64_t  expNext        = 1024;       // Experience for next level
     float          expMultiplier  = 1.5f;       // Experience multiplier
-    std::uint64_t  expMax         = UINT64_MAX; // Max experence
+    std::uint64_t  expMax         = UINT64_MAX; // Max experience
 };
 
 #endif // ENTITY_CHARACTER_LEVEL_HPP
