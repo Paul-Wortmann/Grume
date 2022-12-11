@@ -267,9 +267,9 @@ void cPhysicsEngine::process(const float &_dt)
                             if ((tEntity1->physics->collision) && (tEntity1->physics->type == ePhysicsType::physicsTypeDynamic))
                             {
                                 // Inflict damage
-                                if ((tEntity1->character) && (tEntity1->character->attribute.health.current > 0.00f) && (tEntity2->physics->dammage > 0.0f))
+                                if ((tEntity1->character) && (tEntity1->character->attribute.health.current > 0.00f) && (tEntity2->physics->damage > 0.0f))
                                 {
-                                    tEntity1->character->attribute.health.current -= tEntity2->physics->dammage;
+                                    tEntity1->character->attribute.health.current -= tEntity2->physics->damage;
                                 }
 
                                 // Create events
@@ -281,9 +281,9 @@ void cPhysicsEngine::process(const float &_dt)
                             if ((tEntity2->physics->collision) && (tEntity2->physics->type == ePhysicsType::physicsTypeDynamic))
                             {
                                 // Inflict damage
-                                if ((tEntity2->character) && (tEntity2->character->attribute.health.current > 0.00f) && (tEntity1->physics->dammage > 0.0f))
+                                if ((tEntity2->character) && (tEntity2->character->attribute.health.current > 0.00f) && (tEntity1->physics->damage > 0.0f))
                                 {
-                                    tEntity2->character->attribute.health.current -= tEntity1->physics->dammage;
+                                    tEntity2->character->attribute.health.current -= tEntity1->physics->damage;
                                 }
 
                                 // Create events

@@ -745,7 +745,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             tEntity->physics->type               = static_cast<ePhysicsType>(xmlEntityFile.getInteger("<physics_type>"));
             tEntity->physics->velocity           = xmlEntityFile.getVec3("<physics_velocity>");
             tEntity->physics->velocityMax        = xmlEntityFile.getFloat("<physics_max_velocity>");
-            tEntity->physics->dammage            = xmlEntityFile.getFloat("<physics_dammage>");
+            tEntity->physics->damage             = xmlEntityFile.getFloat("<physics_dammage>");
         }
 
         // Quest
