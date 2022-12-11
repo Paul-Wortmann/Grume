@@ -41,7 +41,7 @@ struct sMapPath
 // ----- used internally -----
 enum ePathData:uint16_t { pathNone = 0, pathStart = 1, pathEnd = 2, pathOpen = 3, pathClosed = 4 };
 
-// Astar path weights
+// A-star path weights
 #define AS_MOV_F  90 // Forced cost when next to walls
 #define AS_MOV_D  15 // Directional cost
 #define AS_MOV_S  10 // Straight cost, horizontal or vertical

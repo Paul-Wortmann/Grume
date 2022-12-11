@@ -75,7 +75,7 @@ class cNPCManager
 
         bool              m_updatePaths       = false;
 
-        float             m_updateAIFrequency = 50.0f; // miliseconds
+        float             m_updateAIFrequency = 50.0f; // milliseconds
         float             m_updateAICounter   = 0.0f;
 
         void              m_generateWaypoints(sEntity*& _entity);

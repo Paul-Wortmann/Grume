@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef TEMPLATE_MANAGER_HPP
 #define TEMPLATE_MANAGER_HPP
 

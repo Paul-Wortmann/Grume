@@ -49,7 +49,7 @@ struct sEntityPhysics
     ePhysicsType               type               = ePhysicsType::physicsTypeNone;
     ePhysicsBoundingVolumeType boundingVolumeType = ePhysicsBoundingVolumeType::physicsBoundingVolumeTypeCircle;
 
-    float                      dammage            = 0.0f;
+    float                      damage             = 0.0f;
 };
 
 #endif // ENTITY_PHYSICS_HPP

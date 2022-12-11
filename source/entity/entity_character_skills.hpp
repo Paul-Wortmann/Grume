@@ -41,11 +41,11 @@ struct sCharacterSkillAttack
 {
     std::uint32_t        damage              = 10;         // Maximum damage
     float                damageMultiplier    = 1.5f;       // Damage multiplier
-    std::uint32_t        duration            = 2000;       // Duration in miliseconds
+    std::uint32_t        duration            = 2000;       // Duration in milliseconds
     float                durationMultiplier  = 1.1f;       // Duration multiplier
     float                aoe                 = 1.0f;       // Radius for area of effect
     float                aoeMultiplier       = 1.25f;      // AOE multiplier
-    std::uint32_t        numProjectiles      = 1;          // Duration in miliseconds
+    std::uint32_t        numProjectiles      = 1;          // Duration in milliseconds
     float                numProFloat         = 1.0f;       // Number of projectiles float value
     float                numProMultiplier    = 1.5f;       // Number of projectiles multiplier
 
@@ -57,7 +57,7 @@ struct sCharacterSkillAttack
 
 struct sCharacterSkillDefend
 {
-    std::uint32_t        duration            = 10000;      // Duration in miliseconds
+    std::uint32_t        duration            = 10000;      // Duration in milliseconds
     float                durationMultiplier  = 1.1f;       // Duration multiplier
     float                aoe                 = 1.0f;       // Radius for area of effect
     float                aoeMultiplier       = 1.25f;      // AOE multiplier
@@ -80,17 +80,17 @@ struct sCharacterSkillBasic
 
 struct sEntityCharSkill // Character skills
 {
-    // Pysical - Meele - Attack skill
-    sCharacterSkillAttack   earthquake      = {};
+    // Physical - Melee - Attack skill
+    sCharacterSkillAttack   earthquake       = {};
 
     // Magic - Fire - Attack skill
-    sCharacterSkillAttack   fireBall        = {};
+    sCharacterSkillAttack   fireBall         = {};
 
-    // Magic - Forcefield - Defence skill
-    sCharacterSkillDefend   forceField      = {};
+    // Magic - Force field - Defense skill
+    sCharacterSkillDefend   forceField       = {};
 
     // Magic - HealSelf   - Heal skill
-    sCharacterSkillBasic    heal            = {};
+    sCharacterSkillBasic    heal             = {};
 };
 
 #endif // ENTITY_CHARACTER_SKILL_HPP

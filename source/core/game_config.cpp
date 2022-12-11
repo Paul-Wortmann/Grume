@@ -29,7 +29,7 @@ void cGameConfig::load(const std::string &_fileName)
     cXML xmlFile;
     xmlFile.load(FILE_PATH_CONFIG + _fileName);
 
-    // Only contine if we load a file with data
+    // Only continue if we load a file with data
     if (xmlFile.lineCount() > 0)
     {
         // Load the data

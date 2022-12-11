@@ -69,8 +69,8 @@ struct sEntityCharAttrib // Character attributes
 
 /*
  Attack:
-   melle:
-     weapon, ie. sword, axe, sythe
+   melee:
+     weapon, ie. sword, axe, scythe
 
    ranged:
      weapon, ie. bow
@@ -82,7 +82,7 @@ struct sEntityCharAttrib // Character attributes
 
    passive skill: (augment attack)
      imbue -> weapon / spell with attribute, ie. fire
-     increase projectile count / dammage -> weapon / spell with attribute, ie. fire
+     increase projectile count / damage -> weapon / spell with attribute, ie. fire
      regen health / mana speed.
 
 

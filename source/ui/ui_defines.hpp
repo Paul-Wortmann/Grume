@@ -71,7 +71,7 @@ struct sUIComponent
     sUIComponent*      next          = nullptr;
     std::uint32_t      UID           = 0;
 
-    // Infomation
+    // Information
     std::string        name          = "";
     bool               enabled       = false;
     eComponentFunction function      = eComponentFunction::componentFunctionNone;
@@ -97,7 +97,7 @@ struct sUIMenu
     std::uint32_t     numComponent  = 0;
     sUIComponent*     component     = nullptr;
 
-    // Infomation
+    // Information
     std::string       name          = "";
     bool              enabled       = false;
 

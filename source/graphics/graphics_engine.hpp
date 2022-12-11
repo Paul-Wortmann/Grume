@@ -158,7 +158,7 @@ class cGraphicsEngine :tcTemplateEngine
         float                                  m_mouseX      = 0.0f;
         float                                  m_mouseY      = 0.0f;
 
-        // Garaphics engine light
+        // Graphics engine light
         cGraphicsEngineLightManager m_lightManager;
         sGraphicsEnginePointLight*  m_playerLight = nullptr;
 
