@@ -37,6 +37,9 @@
 	<map>cave_2_015     area_1/cave_2_015.txt</map>
 	<map>cave_2_016     area_1/cave_2_016.txt</map>
 
+	<map>cave_3_001     area_1/cave_3_001.txt</map>
+	<map>cave_3_002     area_1/cave_3_002.txt</map>
+
 	<map>cave_4_001     area_1/cave_4_001.txt</map>
 	<map>cave_4_002     area_1/cave_4_002.txt</map>
 
@@ -69,6 +72,8 @@
 	<map>ruins_1_003    area_1/ruins_1_003.txt</map>
 	<map>ruins_1_004    area_1/ruins_1_004.txt</map>
 	<map>ruins_1_005    area_1/ruins_1_005.txt</map>
+	<map>ruins_1_006    area_1/ruins_1_006.txt</map>
+	<map>ruins_1_007    area_1/ruins_1_007.txt</map>
 
 	<map>ruins_2_001    area_1/ruins_2_001.txt</map>
 	<map>ruins_2_002    area_1/ruins_2_002.txt</map>
