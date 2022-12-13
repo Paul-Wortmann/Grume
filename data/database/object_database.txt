@@ -261,6 +261,7 @@
 	<object>bridge                objects/bridge_2_002.txt</object>
 	<object>bridge                objects/bridge_2_003.txt</object>
 	<object>bridge                objects/bridge_2_004.txt</object>
+	<object>bridge                objects/bridge_2_005.txt</object>
 	<object>bridge                objects/bridge_1_001.txt</object>
 
     # Bucket
@@ -644,7 +645,7 @@
     <object>rock_small_2          objects/rock_15_012.txt</object>
     <object>rock_small_2          objects/rock_15_013.txt</object>
 
-    # Rock_small_3 -> cave 2
+    # Rock_small_3 -> cave 3
     <object>rock_small_3          objects/rock_16_008.txt</object>
     <object>rock_small_3          objects/rock_16_009.txt</object>
     <object>rock_small_3          objects/rock_16_010.txt</object>

@@ -139,10 +139,10 @@
 
     <debris_objects>
         # database name, scale min, scale max, prevalence
-        <debris>bone            0.75 1.00 06 none 0</debris>
-        <debris>rock_small_2    0.75 1.00 63 none 0</debris>
-        <debris>mushroom_red    1.50 2.50 63 none 0</debris>
-        <debris>mushroom_red    0.75 1.00 63 none 0</debris>
+        <debris>bone            0.75 1.00 006 none 0</debris>
+        <debris>rock_small_3    0.75 1.00 128 none 0</debris>
+        <debris>mushroom_red    1.50 2.50 063 none 0</debris>
+        <debris>mushroom_red    0.75 1.00 063 none 0</debris>
     </debris_objects>
 
     <npcs>
@@ -174,7 +174,7 @@
         <object>river   1  048 064  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
 
         # Bridge
-        <object>bridge  4  048 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
+        <object>bridge  5  048 032  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
 
     </objects>
 
