@@ -16,8 +16,9 @@
         <ai_retreat_threshold>0.25</ai_retreat_threshold>
         
         <ai_leader>
+            <ai_leader_minion_managed>0</ai_leader_minion_managed>
             <ai_leader_minion_start>0</ai_leader_minion_start>
-            <ai_leader_minion_max>5</ai_leader_minion_max>
+            <ai_leader_minion_max>8</ai_leader_minion_max>
             <ai_leader_minion_name>bat_1</ai_leader_minion_name>
             <ai_leader_minion_number>1</ai_leader_minion_number>
 
