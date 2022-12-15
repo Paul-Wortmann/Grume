@@ -24,14 +24,12 @@ Make sure you have all the relevant dependencies installed:
 - [Assimp](https://www.assimp.org/)
 - [GLFW](https://www.glfw.org/)
 - [glm](https://glm.g-truc.net/)
-- [OpenAL](https://openal.org/)
 - OpenGL
-- [Physfs](https://icculus.org/physfs/)
-- [Vorbis](https://xiph.org/vorbis/)
 
 ## Credits:
 
 - [STB](https://github.com/nothings/stb)
+- [miniaudio](https://miniaud.io/)
 
 While I endeavor to list all resource origins and give credit where possible, with frequent changes I may however make a mistake.
 If you find any resource that hasn't been correctly credited, please inform me so that mistakes can be rectified.
@@ -67,5 +65,4 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 - Paul Wortmann: physhex@gmail.com
 - Website:            https://paul-wortmann.github.io/
 - Development:   https://github.com/Paul-Wortmann/Grume
-- Discord:   https://discord.gg/JCqmb5Vd
 

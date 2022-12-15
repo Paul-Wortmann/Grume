@@ -29,17 +29,11 @@
 #include "../3rd_party/dr_mp3.hpp"
 #include "../3rd_party/dr_wav.hpp"
 #include "../3rd_party/galogen.hpp"
+#include "../3rd_party/miniaudio.hpp"
 #include "../3rd_party/stb_image.hpp"
 #include "../3rd_party/stb_image_write.hpp"
 #include "../3rd_party/stb_truetype.hpp"
 #include "../3rd_party/stb_vorbis.hpp"
-#include "../3rd_party/miniaudio.hpp" // include after stb_vorbis.hpp
-
-// Audio -> OpenAL, Vorbis
-#include <AL/al.h>
-#include <AL/alc.h>
-#include <vorbis/vorbisfile.h>
-#include <vorbis/codec.h>
 
 // GLM
 #define GLM_ENABLE_EXPERIMENTAL

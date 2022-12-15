@@ -85,6 +85,9 @@ void cEntityManager::freeData(sEntity*& _pointer)
         _pointer->animation = nullptr;
     }
 
+    // Audio
+    //m_audioEngine->freeData(_pointer->state->attack.audio.sound);
+
     // Base
     _pointer->base.name            = {};
     _pointer->base.enabled         = true;
@@ -818,7 +821,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->attack.audio.name   = xmlEntityFile.getString("<state_attack_audio_name>");
                 tEntity->state->attack.audio.number = xmlEntityFile.getInteger("<state_attack_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->attack.audio.name, tEntity->state->attack.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->attack.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->attack.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->attack.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_attack_physics_state>") > 0)
             {
@@ -833,7 +837,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->defend.audio.name   = xmlEntityFile.getString("<state_defend_audio_name>");
                 tEntity->state->defend.audio.number = xmlEntityFile.getInteger("<state_defend_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->defend.audio.name, tEntity->state->defend.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->defend.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->defend.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->defend.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_defend_physics_state>") > 0)
             {
@@ -848,7 +853,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->die.audio.name   = xmlEntityFile.getString("<state_die_audio_name>");
                 tEntity->state->die.audio.number = xmlEntityFile.getInteger("<state_die_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->die.audio.name, tEntity->state->die.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->die.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->die.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->die.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_die_physics_state>") > 0)
             {
@@ -863,7 +869,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->idle.audio.name   = xmlEntityFile.getString("<state_idle_audio_name>");
                 tEntity->state->idle.audio.number = xmlEntityFile.getInteger("<state_idle_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->idle.audio.name, tEntity->state->idle.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->idle.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->idle.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->idle.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_idle_physics_state>") > 0)
             {
@@ -878,7 +885,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->interact.audio.name   = xmlEntityFile.getString("<state_interact_audio_name>");
                 tEntity->state->interact.audio.number = xmlEntityFile.getInteger("<state_interact_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->interact.audio.name, tEntity->state->interact.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->interact.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->interact.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->interact.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_interact_physics_state>") > 0)
             {
@@ -893,7 +901,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->move.audio.name   = xmlEntityFile.getString("<state_move_audio_name>");
                 tEntity->state->move.audio.number = xmlEntityFile.getInteger("<state_move_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->move.audio.name, tEntity->state->move.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->move.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->move.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->move.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_move_physics_state>") > 0)
             {
@@ -908,7 +917,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->spawn.audio.name   = xmlEntityFile.getString("<state_spawn_audio_name>");
                 tEntity->state->spawn.audio.number = xmlEntityFile.getInteger("<state_spawn_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->spawn.audio.name, tEntity->state->spawn.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->spawn.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->spawn.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->spawn.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_spawn_physics_state>") > 0)
             {
@@ -923,7 +933,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->open.audio.name   = xmlEntityFile.getString("<state_open_audio_name>");
                 tEntity->state->open.audio.number = xmlEntityFile.getInteger("<state_open_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->open.audio.name, tEntity->state->open.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->open.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->open.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->open.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_open_physics_state>") > 0)
             {
@@ -938,7 +949,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->close.audio.name   = xmlEntityFile.getString("<state_close_audio_name>");
                 tEntity->state->close.audio.number = xmlEntityFile.getInteger("<state_close_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->close.audio.name, tEntity->state->close.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->close.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->close.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->close.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_close_physics_state>") > 0)
             {
@@ -953,7 +965,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->state->levelUp.audio.name   = xmlEntityFile.getString("<state_levelUp_audio_name>");
                 tEntity->state->levelUp.audio.number = xmlEntityFile.getInteger("<state_levelUp_audio_number>");
                 fileName = m_databaseManager->getDatabaseEntryFileName(tEntity->state->levelUp.audio.name, tEntity->state->levelUp.audio.number, eDatabaseType::databaseTypeSound);
-                tEntity->state->levelUp.audio.bufferID = m_audioEngine->loadSound(fileName);
+                tEntity->state->levelUp.audio.sound = m_audioEngine->getNewSoundPointer();
+                m_audioEngine->loadSound(fileName, tEntity->state->levelUp.audio.sound->data);
             }
             if (xmlEntityFile.getInstanceCount("<state_levelUp_physics_state>") > 0)
             {
@@ -1202,8 +1215,8 @@ sEntity* cEntityManager::spawnEntity(const std::string &_name, const std::uint32
         updateModelMatrix(tEntity);
 
         // Play spawn audio
-        if ((tEntity->state != nullptr) && (tEntity->state->spawn.audio.bufferID != 0))
-            m_audioEngine->playSound(tEntity->state->spawn.audio.bufferID);
+        if ((tEntity->state != nullptr) && (tEntity->state->spawn.audio.sound != nullptr))
+            m_audioEngine->playSound(tEntity->state->spawn.audio.sound->data);
 
         // Push spawn entity event
         sEntityManagerEvent* event = new sEntityManagerEvent;
@@ -1377,61 +1390,71 @@ void cEntityManager::stateSet(sEntity*& _entity, const eEntityState &_state_1)
         {
             case eEntityState::entityState_attack:
                 m_setAnimationState(_entity, _entity->state->attack.animation);
-                m_audioEngine->playSound(_entity->state->attack.audio.bufferID);
+                if (_entity->state->attack.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->attack.audio.sound->data);
                 m_physicsState(_entity, _entity->state->attack.physicsState);
                 m_tileCollisionState(_entity, _entity->state->attack.tileCollision);
             break;
             case eEntityState::entityState_defend:
                 m_setAnimationState(_entity, _entity->state->defend.animation);
-                m_audioEngine->playSound(_entity->state->defend.audio.bufferID);
+                if (_entity->state->defend.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->defend.audio.sound->data);
                 m_physicsState(_entity, _entity->state->defend.physicsState);
                 m_tileCollisionState(_entity, _entity->state->defend.tileCollision);
             break;
             case eEntityState::entityState_die:
                 m_setAnimationState(_entity, _entity->state->die.animation);
-                m_audioEngine->playSound(_entity->state->die.audio.bufferID);
+                if (_entity->state->die.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->die.audio.sound->data);
                 m_physicsState(_entity, _entity->state->die.physicsState);
                 m_tileCollisionState(_entity, _entity->state->die.tileCollision);
             break;
             case eEntityState::entityState_idle:
                 m_setAnimationState(_entity, _entity->state->idle.animation);
-                m_audioEngine->playSound(_entity->state->idle.audio.bufferID);
+                if (_entity->state->idle.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->idle.audio.sound->data);
                 m_physicsState(_entity, _entity->state->idle.physicsState);
                 m_tileCollisionState(_entity, _entity->state->idle.tileCollision);
             break;
             case eEntityState::entityState_interact:
                 m_setAnimationState(_entity, _entity->state->interact.animation);
-                m_audioEngine->playSound(_entity->state->interact.audio.bufferID);
+                if (_entity->state->interact.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->interact.audio.sound->data);
                 m_physicsState(_entity, _entity->state->interact.physicsState);
                 m_tileCollisionState(_entity, _entity->state->interact.tileCollision);
             break;
             case eEntityState::entityState_move:
                 m_setAnimationState(_entity, _entity->state->move.animation);
-                m_audioEngine->playSound(_entity->state->move.audio.bufferID);
+                if (_entity->state->move.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->move.audio.sound->data);
                 m_physicsState(_entity, _entity->state->move.physicsState);
                 m_tileCollisionState(_entity, _entity->state->move.tileCollision);
             break;
             case eEntityState::entityState_spawn:
                 m_setAnimationState(_entity, _entity->state->spawn.animation);
-                m_audioEngine->playSound(_entity->state->spawn.audio.bufferID);
+                if (_entity->state->spawn.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->spawn.audio.sound->data);
                 m_physicsState(_entity, _entity->state->spawn.physicsState);
                 m_tileCollisionState(_entity, _entity->state->spawn.tileCollision);
             break;
             case eEntityState::entityState_open:
                 m_setAnimationState(_entity, _entity->state->open.animation);
-                m_audioEngine->playSound(_entity->state->open.audio.bufferID);
+                if (_entity->state->open.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->open.audio.sound->data);
                 m_physicsState(_entity, _entity->state->open.physicsState);
                 m_tileCollisionState(_entity, _entity->state->open.tileCollision);
             break;
             case eEntityState::entityState_close:
                 m_setAnimationState(_entity, _entity->state->close.animation);
-                m_audioEngine->playSound(_entity->state->close.audio.bufferID);
+                if (_entity->state->close.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->close.audio.sound->data);
                 m_physicsState(_entity, _entity->state->close.physicsState);
                 m_tileCollisionState(_entity, _entity->state->close.tileCollision);
             break;
             case eEntityState::entityState_levelUp:
                 m_setAnimationState(_entity, _entity->state->levelUp.animation);
-                m_audioEngine->playSound(_entity->state->levelUp.audio.bufferID);
+                if (_entity->state->levelUp.audio.sound != nullptr)
+                    m_audioEngine->playSound(_entity->state->levelUp.audio.sound->data);
                 m_physicsState(_entity, _entity->state->levelUp.physicsState);
                 m_tileCollisionState(_entity, _entity->state->levelUp.tileCollision);
             break;

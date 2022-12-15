@@ -24,13 +24,14 @@
 #ifndef ENTITY_AUDIO_HPP
 #define ENTITY_AUDIO_HPP
 
+#include "../audio/audio_defines.hpp"
 #include "../core/includes.hpp"
 
 struct sEntityAudioData
 {
     std::string   name     = {};
     std::uint32_t number   = {};
-    std::uint32_t bufferID = 0;
+    sAudio*       sound    = {};
 };
 
 #endif // ENTITY_AUDIO_HPP
