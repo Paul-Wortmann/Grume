@@ -62,6 +62,10 @@ void cAudioEngine::loadSound(const std::string &_fileName, ma_sound &_ma_sound)
     {
         gLogWrite(LOG_ERROR, "Failed to load sound: " + std::string(ma_result_description(m_result)) + " - " + fileName, __FILE__, __LINE__, __FUNCTION__);
     }
+    else
+    {
+        ma_sound_set_volume(&_ma_sound, static_cast<float>(m_volumeSound) / static_cast<float>(m_volumeMax));
+    }
 }
 
 void cAudioEngine::playSound(ma_sound &_ma_sound)
@@ -70,6 +74,20 @@ void cAudioEngine::playSound(ma_sound &_ma_sound)
     if (m_result != MA_SUCCESS)
     {
         gLogWrite(LOG_ERROR, "Failed to play sound: " + std::string(ma_result_description(m_result)), __FILE__, __LINE__, __FUNCTION__);
+    }
+}
+
+void cAudioEngine::freeSound(sAudio *&_pointer)
+{
+    ma_sound_uninit(&_pointer->data);
+}
+
+void cAudioEngine::deleteSound(sAudio *&_pointer)
+{
+    if (_pointer != nullptr)
+    {
+        ma_sound_uninit(&_pointer->data);
+        remove(_pointer);
     }
 }
 
@@ -95,6 +113,7 @@ void cAudioEngine::loadMusic(const std::string &_fileName)
     }
     else
     {
+        ma_sound_set_volume(&m_music->data, static_cast<float>(m_volumeMusic) / static_cast<float>(m_volumeMax));
         ma_sound_set_looping(&m_music->data, true);
     }
 }

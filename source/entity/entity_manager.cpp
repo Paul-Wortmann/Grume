@@ -85,9 +85,6 @@ void cEntityManager::freeData(sEntity*& _pointer)
         _pointer->animation = nullptr;
     }
 
-    // Audio
-    //m_audioEngine->freeData(_pointer->state->attack.audio.sound);
-
     // Base
     _pointer->base.name            = {};
     _pointer->base.enabled         = true;
@@ -207,6 +204,18 @@ void cEntityManager::freeData(sEntity*& _pointer)
     // State
     if (_pointer->state != nullptr)
     {
+        // Audio
+        m_audioEngine->deleteSound(_pointer->state->attack.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->close.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->defend.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->die.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->idle.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->interact.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->levelUp.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->move.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->open.audio.sound);
+        m_audioEngine->deleteSound(_pointer->state->spawn.audio.sound);
+
         delete _pointer->state;
         _pointer->state = nullptr;
     }
