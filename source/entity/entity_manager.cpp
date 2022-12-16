@@ -1096,11 +1096,11 @@ sEntity* cEntityManager::load(const std::string &_fileName)
 
 std::uint32_t cEntityManager::m_nearestFreeTile(const std::uint32_t &_tile)
 {
-    auto clearTile = [](sMap* &_map, const std::uint32_t &_tile)
+    auto clearTile = [](sMap* &_map, const std::uint32_t &_tileNumber)
     {
-        return ((_map->tile[_tile].entity.type == eTileEntityType::tileEntityNone) &&
-               ((_map->tile[_tile].type == eTileType::tileFloor) ||
-                (_map->tile[_tile].type == eTileType::tilePath)));
+        return ((_map->tile[_tileNumber].entity.type == eTileEntityType::tileEntityNone) &&
+               ((_map->tile[_tileNumber].type == eTileType::tileFloor) ||
+                (_map->tile[_tileNumber].type == eTileType::tilePath)));
     };
 
     // First try to use the position provided
@@ -1136,7 +1136,7 @@ std::uint32_t cEntityManager::m_nearestFreeTile(const std::uint32_t &_tile)
         // Third a very iterative approach
         std::uint32_t itterations = (m_mapPointer->info.size_x > m_mapPointer->info.size_y) ? m_mapPointer->info.size_x : m_mapPointer->info.size_y;
 
-        for (std::uint32_t radius = 1; radius < itterations; ++radius)
+        for (radius = 1; radius < itterations; ++radius)
         {
             std::uint32_t tile_xStart = tile_x - radius;
             std::uint32_t tile_yStart = tile_y - radius;

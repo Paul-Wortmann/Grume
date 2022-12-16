@@ -187,8 +187,8 @@ void cMapManager::process(const float &_dt)
                     if (m_map->event[i].triggered == false)
                     {
                         m_map->event[i].triggered = true;
-                        sEntity* tEntity = m_entityManager->getEntityOnTile(m_map->event[i].trigger_tile);
-                        m_entityManager->triggerEntity(tEntity);
+                        sEntity* tEntityTile = m_entityManager->getEntityOnTile(m_map->event[i].trigger_tile);
+                        m_entityManager->triggerEntity(tEntityTile);
                     }
                 }
             }
@@ -318,7 +318,7 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
             m_map->condition = new sMapCondition[m_map->numCondition];
             for (std::uint32_t c = 0; c < m_map->numCondition; ++c)
             {
-                std::string tString = mapFile.getString("<condition>", c + 1);
+                tString = mapFile.getString("<condition>", c + 1);
             }
         }
 
@@ -489,7 +489,7 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
         }
         else
         {
-            float playerStartRotation = m_map->portal[m_spawnPortal - 1].rotation;
+            playerStartRotation = m_map->portal[m_spawnPortal - 1].rotation;
             std::uint32_t playerTile = m_map->portal[m_spawnPortal - 1].tile;
             playerTile = gClosestFreeTile(m_map, playerTile);
             m_playerManager->setPlayerPosition(playerTile, playerStartRotation);
