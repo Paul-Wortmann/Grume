@@ -86,14 +86,14 @@ void cObjectManager::process(const float &_dt)
                             m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
 
                             // spawn debris
-                            sEntity* tEntity = m_particleEngine->spawnEntity(m_entityTemp->base.debris, 0, eDatabaseType::databaseTypeObject, m_entityTemp->base.position);
-                            tEntity->base.destructible = false;
-                            tEntity->base.collectable = false;
+                            sEntity* tEntityDebris = m_particleEngine->spawnEntity(m_entityTemp->base.debris, 0, eDatabaseType::databaseTypeObject, m_entityTemp->base.position);
+                            tEntityDebris->base.destructible = false;
+                            tEntityDebris->base.collectable = false;
 
                             // spawn npc
                             if ((m_mapPointer->numNPCmob > 0) && ((rand() % 100) < 20))
                             {
-                                tEntity = m_particleEngine->spawnEntity(m_mapPointer->npcMob[0].databaseName, m_mapPointer->npcMob[0].databaseNumber, eDatabaseType::databaseTypeNpc, m_entityTemp->base.position);
+                                sEntity* tEntityMob = m_particleEngine->spawnEntity(m_mapPointer->npcMob[0].databaseName, m_mapPointer->npcMob[0].databaseNumber, eDatabaseType::databaseTypeNpc, m_entityTemp->base.position);
                             }
 
                             // Loot:
