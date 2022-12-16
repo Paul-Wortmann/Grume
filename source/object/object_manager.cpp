@@ -180,6 +180,7 @@ void cObjectManager::process(const float &_dt)
 
                         // Delete the entity from the game
                         m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+                        m_entityTemp->base.dying = true;
                         m_particleEngine->deleteEntity(m_entityTemp);
                     }
 

@@ -53,6 +53,7 @@ struct sEntityBase
 {
     std::string     name            = {};
     bool            enabled         = true;
+    bool            dying           = false;
     bool            inRnge          = true;
     eEntityType     type            = eEntityType::entityType_none;
     eEntityOwner    owner           = eEntityOwner::entityOwner_none;

@@ -236,105 +236,93 @@ void cGraphicsEngine::m_p3_render(void)
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        if ((m_entityTemp != nullptr) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr))
+        if ((m_entityTemp != nullptr) && (m_entityTemp->base.inRnge) && (m_entityTemp->base.enabled) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr))
         {
-            if (m_entityTemp->base.inRnge)
-            /*
-            // Only render if an always rendable type or within view
-            if ((m_entityTemp->base.type == eEntityType::entityType_floor) ||
-            ( m_renderRange >
-            (((m_entityPlayer->base.position.x - m_entityTemp->base.position.x) * (m_entityPlayer->base.position.x - m_entityTemp->base.position.x)) +
-             ((m_entityPlayer->base.position.y - m_entityTemp->base.position.y) * (m_entityPlayer->base.position.y - m_entityTemp->base.position.y)) +
-             ((m_entityPlayer->base.position.z - m_entityTemp->base.position.z) * (m_entityPlayer->base.position.z - m_entityTemp->base.position.z)))))
-            */
+            // Shader uniforms
+            glUniform1i(m_p3_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
+
+            // Flexibility
+            glUniform1f(m_p3_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
+
+            // Mouse over
+            if (m_entityTemp->physics != nullptr)
             {
+                glUniform1i(m_p3_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
+            }
+            else
+            {
+                glUniform1i(m_p3_loc_mouseOver, 0);
+            }
 
-                // Shader uniforms
-                glUniform1i(m_p3_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
+            // Debug
+            if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
+            {
+                glUniform1i(m_p3_loc_collision, (m_entityTemp->physics->collision) ? 1 : 0);
+                glUniform1i(m_p3_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
+            }
+            else
+            {
+                glUniform1i(m_p3_loc_collision, 0);
+                glUniform1i(m_p3_loc_hasFunction, 0);
+            }
 
-                // Flexibility
-                glUniform1f(m_p3_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
+            glUniformMatrix4fv(m_p3_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
 
-                // Mouse over
-                if (m_entityTemp->physics != nullptr)
+            // skeletal animation uniforms for dynamic models
+            if (m_entityTemp->graphics->model->numBones > 0)
+            {
+                // enable skinning
+                glUniform1i(m_p3_loc_animationEnabled, 1);
+
+                // bone transforms
+                if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent))
                 {
-                    glUniform1i(m_p3_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
-                }
-                else
-                {
-                    glUniform1i(m_p3_loc_mouseOver, 0);
-                }
-
-                // Debug
-                if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
-                {
-                    glUniform1i(m_p3_loc_collision, (m_entityTemp->physics->collision) ? 1 : 0);
-                    glUniform1i(m_p3_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
-                }
-                else
-                {
-                    glUniform1i(m_p3_loc_collision, 0);
-                    glUniform1i(m_p3_loc_hasFunction, 0);
-                }
-
-                glUniformMatrix4fv(m_p3_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
-
-                // skeletal animation uniforms for dynamic models
-                if (m_entityTemp->graphics->model->numBones > 0)
-                {
-                    // enable skinning
-                    glUniform1i(m_p3_loc_animationEnabled, 1);
-
-                    // bone transforms
-                    if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent))
+                    for (std::size_t i = 0; i < m_entityTemp->animation->numBones; ++i)
                     {
-                        for (std::size_t i = 0; i < m_entityTemp->animation->numBones; ++i)
-                        {
-                            glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->animation->boneTransform[i]));
-                        }
+                        glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->animation->boneTransform[i]));
+                    }
+                }
+                else
+                {
+                    for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
+                    {
+                        glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->model->bone[i].transformFinal));
+                    }
+                }
+            }
+            else // no bones
+            {
+                // disable skinning
+                glUniform1i(m_p3_loc_animationEnabled, 0);
+            }
+
+            // Model
+            for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
+            {
+                if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
+                    (m_entityTemp->graphics->model->mesh[j].VAO != 0))
+                {
+                    // Use textures
+                    if (m_entityTemp->graphics->material != nullptr)
+                    {
+                        glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 1);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->diffuse->ID);
+                        glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 2);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->normal->ID);
+                        glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 3);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->specular->ID);
+                        glUniform1fv(m_p3_loc_materialShininess, 1, &m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->shininess);
+                    }
+                    // VAO
+                    glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
+                    if (m_wireframe)
+                    {
+                        glDrawElements(GL_LINE_LOOP, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
                     }
                     else
                     {
-                        for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
-                        {
-                            glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->model->bone[i].transformFinal));
-                        }
-                    }
-                }
-                else // no bones
-                {
-                    // disable skinning
-                    glUniform1i(m_p3_loc_animationEnabled, 0);
-                }
-
-                // Model
-                for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
-                {
-                    if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
-                        (m_entityTemp->graphics->model->mesh[j].VAO != 0))
-                    {
-                        // Use textures
-                        if (m_entityTemp->graphics->material != nullptr)
-                        {
-                            glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 1);
-                            glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->diffuse->ID);
-                            glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 2);
-                            glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->normal->ID);
-                            glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 3);
-                            glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->specular->ID);
-                            glUniform1fv(m_p3_loc_materialShininess, 1, &m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->shininess);
-                        }
-                        // VAO
-                        glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
-                        if (m_wireframe)
-                        {
-                            glDrawElements(GL_LINE_LOOP, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
-                        }
-                        else
-                        {
-                            //glDrawArrays(GL_TRIANGLES, 0, 3);
-                            glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
-                        }
+                        //glDrawArrays(GL_TRIANGLES, 0, 3);
+                        glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
                     }
                 }
             }

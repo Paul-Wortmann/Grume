@@ -84,7 +84,8 @@ void cAudioEngine::freeSound(sAudio *&_pointer)
 
 void cAudioEngine::deleteSound(sAudio *&_pointer)
 {
-    if (_pointer != nullptr)
+    if ((_pointer != nullptr) &&
+        (_pointer->data.pDataSource != nullptr))
     {
         ma_sound_uninit(&_pointer->data);
         remove(_pointer);

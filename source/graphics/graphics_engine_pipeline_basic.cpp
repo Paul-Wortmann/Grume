@@ -102,210 +102,207 @@ void cGraphicsEngine::m_pb_render(void)
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        if ((m_entityTemp != nullptr) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr))
+        if ((m_entityTemp != nullptr) && (m_entityTemp->base.inRnge) && (m_entityTemp->base.enabled) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr))
         {
-            if (m_entityTemp->base.inRnge)
+            // Shader uniforms
+            glUniform1i(m_pb_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
+            glUniform1f(m_pb_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
+
+            // Mouse over
+            if (m_entityTemp->physics != nullptr)
             {
-                // Shader uniforms
-                glUniform1i(m_pb_loc_billboard, (m_entityTemp->graphics->billboard) ? 1 : 0);
-                glUniform1f(m_pb_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
+                glUniform1i(m_pb_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
+            }
+            else
+            {
+                glUniform1i(m_pb_loc_mouseOver, 0);
+            }
 
-                // Mouse over
-                if (m_entityTemp->physics != nullptr)
-                {
-                    glUniform1i(m_pb_loc_mouseOver, (m_entityTemp->physics->mouseOver) ? 1 : 0);
-                }
-                else
-                {
-                    glUniform1i(m_pb_loc_mouseOver, 0);
-                }
+            // Debug
+            if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
+            {
+                glUniform1i(m_pb_loc_collision, (m_entityTemp->physics->collision) ? 1 : 0);
+                glUniform1i(m_pb_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
+            }
+            else
+            {
+                glUniform1i(m_pb_loc_collision, 0);
+                glUniform1i(m_pb_loc_hasFunction, 0);
+            }
 
-                // Debug
-                if ((m_entityTemp->physics != nullptr) && (m_renderDebug))
-                {
-                    glUniform1i(m_pb_loc_collision, (m_entityTemp->physics->collision) ? 1 : 0);
-                    glUniform1i(m_pb_loc_hasFunction, (m_entityTemp->base.hasFunction) ? 1 : 0);
-                }
-                else
-                {
-                    glUniform1i(m_pb_loc_collision, 0);
-                    glUniform1i(m_pb_loc_hasFunction, 0);
-                }
+            // Model matrix uniform
+            glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
 
-                // Model matrix uniform
-                glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
+            // skeletal animation uniforms for dynamic models
+            if ((m_entityTemp->graphics->model->numBones > 0) && (m_animation))
+            {
+                // enable skinning
+                glUniform1i(m_pb_loc_animationEnabled, 1);
 
-                // skeletal animation uniforms for dynamic models
-                if ((m_entityTemp->graphics->model->numBones > 0) && (m_animation))
+                // bone transforms
+                if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent))
                 {
-                    // enable skinning
-                    glUniform1i(m_pb_loc_animationEnabled, 1);
-
-                    // bone transforms
-                    if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent))
+                    for (std::size_t i = 0; i < m_entityTemp->animation->numBones; ++i)
                     {
-                        for (std::size_t i = 0; i < m_entityTemp->animation->numBones; ++i)
-                        {
-                            glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->animation->boneTransform[i]));
-                        }
+                        glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->animation->boneTransform[i]));
+                    }
+                }
+                else
+                {
+                    for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
+                    {
+                        glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->model->bone[i].transformFinal));
+                    }
+                }
+            }
+            else // no bones
+            {
+                // disable skinning
+                glUniform1i(m_pb_loc_animationEnabled, 0);
+            }
+
+            // Model
+            for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
+            {
+                if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
+                    (m_entityTemp->graphics->model->mesh[j].VAO != 0))
+                {
+                    // Use textures
+                    if (m_entityTemp->graphics->material != nullptr)
+                    {
+                        glActiveTexture(GL_TEXTURE0);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->diffuse->ID);
+                    }
+
+                    // VAO
+                    glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
+                    if (m_wireframe)
+                    {
+                        glDrawElements(GL_LINE_LOOP, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
                     }
                     else
                     {
-                        for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
-                        {
-                            glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->model->bone[i].transformFinal));
-                        }
+                        //glDrawArrays(GL_TRIANGLES, 0, 3);
+                        glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
                     }
                 }
-                else // no bones
-                {
-                    // disable skinning
-                    glUniform1i(m_pb_loc_animationEnabled, 0);
-                }
+            }
+
+            // Health bar
+//            if ((m_entityTemp->physics->mouseOver) && (m_entityTemp->character != nullptr) && (m_entityTemp->character->healthBarModel != nullptr))
+            if ((m_entityTemp->character != nullptr) && (m_entityTemp->character->healthBarModel != nullptr) && m_entityTemp->character->healthBarEnabled)
+            {
+                glUniform1i(m_pb_loc_billboard, 1);
+                glUniform1i(m_pb_loc_collision, 0);
+                glUniform1i(m_pb_loc_mouseOver, 0);
+                glUniform1i(m_pb_loc_animationEnabled, 0);
+                glUniform1i(m_pb_loc_isText, 0);
+
+                // Model matrix uniform
+                glm::mat4 billboardModelMatrix = glm::mat4(1);
+                glm::mat4 billboardScaleMatrix = glm::mat4(1);
+                glm::vec3 billboardPosition    = glm::vec3();
+                glm::vec3 billboardScale       = glm::vec3();
+                float billboardScaleRatio      = 0.865168539f;
+                float billboardScaleRatioDiv   = 0.298333979f; // 0.865168539f / 2.9;
 
                 // Model
-                for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
+                if (m_entityTemp->character->healthBarModel->mesh[0].VAO != 0)
                 {
-                    if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
-                        (m_entityTemp->graphics->model->mesh[j].VAO != 0))
-                    {
-                        // Use textures
-                        if (m_entityTemp->graphics->material != nullptr)
-                        {
-                            glActiveTexture(GL_TEXTURE0);
-                            glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->diffuse->ID);
-                        }
+                    glBindVertexArray(m_entityTemp->character->healthBarModel->mesh[0].VAO);
+                    glActiveTexture(GL_TEXTURE0);
 
-                        // VAO
-                        glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
-                        if (m_wireframe)
-                        {
-                            glDrawElements(GL_LINE_LOOP, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
-                        }
-                        else
-                        {
-                            //glDrawArrays(GL_TRIANGLES, 0, 3);
-                            glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
-                        }
-                    }
+                    // Health bar background
+                    billboardPosition.x = m_entityTemp->base.position.x - 0.001f;
+                    billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
+                    billboardPosition.z = m_entityTemp->base.position.z - 0.001f;
+                    billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
+                    billboardScale       = glm::vec3(billboardScaleRatio * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
+                    billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
+                    billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
+                    glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
+
+                    glBindTexture(GL_TEXTURE_2D, m_entityTemp->character->healthBarmaterial[0]->specular->ID);
+                    glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
+
+                    // Health bar
+                    float factor = m_entityTemp->character->attribute.health.current / m_entityTemp->character->attribute.health.max;
+                    float offset = ((billboardScaleRatioDiv) * factor * m_entityTemp->character->healthBarScale.x) - (billboardScaleRatioDiv * m_entityTemp->character->healthBarScale.x);
+                    billboardPosition.x = m_entityTemp->base.position.x + offset;
+                    billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
+                    billboardPosition.z = m_entityTemp->base.position.z - offset;
+                    billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
+                    billboardScale       = glm::vec3(billboardScaleRatio * factor * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
+                    billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
+                    billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
+                    glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
+
+                    glBindTexture(GL_TEXTURE_2D, m_entityTemp->character->healthBarmaterial[0]->normal->ID);
+                    glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
+
+                    // Health bar cover
+                    billboardPosition.x = m_entityTemp->base.position.x + 0.001f;
+                    billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
+                    billboardPosition.z = m_entityTemp->base.position.z + 0.001f;
+                    billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
+                    billboardScale       = glm::vec3(1.0f * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
+                    billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
+                    billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
+                    glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
+
+                    glBindTexture(GL_TEXTURE_2D, m_entityTemp->character->healthBarmaterial[0]->diffuse->ID);
+                    glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
                 }
+            }
 
-                // Health bar
-    //            if ((m_entityTemp->physics->mouseOver) && (m_entityTemp->character != nullptr) && (m_entityTemp->character->healthBarModel != nullptr))
-                if ((m_entityTemp->character != nullptr) && (m_entityTemp->character->healthBarModel != nullptr) && m_entityTemp->character->healthBarEnabled)
+            // Tooltip
+            if ((m_entityTemp->base.textActive != 0) && (m_pc_bbq_VAO != 0))
+            {
+                if ((m_entityTemp->physics->mouseOver != 0) || (getKeyState(GLFW_KEY_LEFT_ALT)))
                 {
+                    glEnable(GL_BLEND);
+                    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
                     glUniform1i(m_pb_loc_billboard, 1);
                     glUniform1i(m_pb_loc_collision, 0);
                     glUniform1i(m_pb_loc_mouseOver, 0);
                     glUniform1i(m_pb_loc_animationEnabled, 0);
-                    glUniform1i(m_pb_loc_isText, 0);
+                    glUniform1i(m_pb_loc_isText, 1);
+
+                    glUniform4f(m_pb_loc_textColor,
+                                m_entityTemp->base.textColor.x,
+                                m_entityTemp->base.textColor.y,
+                                m_entityTemp->base.textColor.z,
+                                1.0);
 
                     // Model matrix uniform
-                    glm::mat4 billboardModelMatrix = glm::mat4(1);
-                    glm::mat4 billboardScaleMatrix = glm::mat4(1);
-                    glm::vec3 billboardPosition    = glm::vec3();
-                    glm::vec3 billboardScale       = glm::vec3();
-                    float billboardScaleRatio      = 0.865168539f;
-                    float billboardScaleRatioDiv   = 0.298333979f; // 0.865168539f / 2.9;
+                    glm::mat4 tooltipModelMatrix = glm::mat4(1);
+                    glm::mat4 tooltipScaleMatrix = glm::mat4(1);
+                    glm::vec3 tooltipPosition    = glm::vec3(0.001f, 0.001f, 0.001f);
 
-                    // Model
-                    if (m_entityTemp->character->healthBarModel->mesh[0].VAO != 0)
-                    {
-                        glBindVertexArray(m_entityTemp->character->healthBarModel->mesh[0].VAO);
-                        glActiveTexture(GL_TEXTURE0);
+                    glBindVertexArray(m_pc_bbq_VAO);
+                    glActiveTexture(GL_TEXTURE0);
 
-                        // Health bar background
-                        billboardPosition.x = m_entityTemp->base.position.x - 0.001f;
-                        billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
-                        billboardPosition.z = m_entityTemp->base.position.z - 0.001f;
-                        billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
-                        billboardScale       = glm::vec3(billboardScaleRatio * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
-                        billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
-                        billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
-                        glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
+                    sTexture* texture = m_resourceManager->generateTexture(m_entityTemp->base.textData);
 
-                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->character->healthBarmaterial[0]->specular->ID);
-                        glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
+                    // Scale
+                    float scale  = 2.0f;
+                    float scaleX = static_cast<float>(m_window_w) / 1920.0f * (texture->width * scale / static_cast<float>(m_window_w));
+                    float scaleY = static_cast<float>(m_window_h) / 1080.0f * (texture->height * scale / static_cast<float>(m_window_h));
 
-                        // Health bar
-                        float factor = m_entityTemp->character->attribute.health.current / m_entityTemp->character->attribute.health.max;
-                        float offset = ((billboardScaleRatioDiv) * factor * m_entityTemp->character->healthBarScale.x) - (billboardScaleRatioDiv * m_entityTemp->character->healthBarScale.x);
-                        billboardPosition.x = m_entityTemp->base.position.x + offset;
-                        billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
-                        billboardPosition.z = m_entityTemp->base.position.z - offset;
-                        billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
-                        billboardScale       = glm::vec3(billboardScaleRatio * factor * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
-                        billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
-                        billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
-                        glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
+                    // position
+                    tooltipPosition.x = m_entityTemp->base.position.x;
+                    tooltipPosition.y = m_entityTemp->base.position.y + (m_entityTemp->physics->halfDimentions.y * 4);
+                    tooltipPosition.z = m_entityTemp->base.position.z;
+                    tooltipModelMatrix = glm::translate(glm::mat4(1), tooltipPosition);
+                    tooltipScaleMatrix = glm::scale(glm::mat4(1), glm::vec3(scaleX, scaleY, 1.0f));
+                    tooltipModelMatrix = tooltipModelMatrix * tooltipScaleMatrix;
+                    glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(tooltipModelMatrix));
 
-                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->character->healthBarmaterial[0]->normal->ID);
-                        glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
+                    glBindTexture(GL_TEXTURE_2D, texture->ID);
+                    glDrawArrays(GL_TRIANGLES, 0, 6);
 
-                        // Health bar cover
-                        billboardPosition.x = m_entityTemp->base.position.x + 0.001f;
-                        billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
-                        billboardPosition.z = m_entityTemp->base.position.z + 0.001f;
-                        billboardModelMatrix = glm::translate(glm::mat4(1), billboardPosition);
-                        billboardScale       = glm::vec3(1.0f * m_entityTemp->character->healthBarScale.x, 1.0f * m_entityTemp->character->healthBarScale.y, 1.0f);
-                        billboardScaleMatrix = glm::scale(glm::mat4(1), billboardScale);
-                        billboardModelMatrix = billboardModelMatrix * billboardScaleMatrix;
-                        glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(billboardModelMatrix));
-
-                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->character->healthBarmaterial[0]->diffuse->ID);
-                        glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
-                    }
-                }
-
-                // Tooltip
-                if ((m_entityTemp->base.textActive != 0) && (m_pc_bbq_VAO != 0))
-                {
-                    if ((m_entityTemp->physics->mouseOver != 0) || (getKeyState(GLFW_KEY_LEFT_ALT)))
-                    {
-                        glEnable(GL_BLEND);
-                        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-                        glUniform1i(m_pb_loc_billboard, 1);
-                        glUniform1i(m_pb_loc_collision, 0);
-                        glUniform1i(m_pb_loc_mouseOver, 0);
-                        glUniform1i(m_pb_loc_animationEnabled, 0);
-                        glUniform1i(m_pb_loc_isText, 1);
-
-                        glUniform4f(m_pb_loc_textColor,
-                                    m_entityTemp->base.textColor.x,
-                                    m_entityTemp->base.textColor.y,
-                                    m_entityTemp->base.textColor.z,
-                                    1.0);
-
-                        // Model matrix uniform
-                        glm::mat4 tooltipModelMatrix = glm::mat4(1);
-                        glm::mat4 tooltipScaleMatrix = glm::mat4(1);
-                        glm::vec3 tooltipPosition    = glm::vec3(0.001f, 0.001f, 0.001f);
-
-                        glBindVertexArray(m_pc_bbq_VAO);
-                        glActiveTexture(GL_TEXTURE0);
-
-                        sTexture* texture = m_resourceManager->generateTexture(m_entityTemp->base.textData);
-
-                        // Scale
-                        float scale  = 2.0f;
-                        float scaleX = static_cast<float>(m_window_w) / 1920.0f * (texture->width * scale / static_cast<float>(m_window_w));
-                        float scaleY = static_cast<float>(m_window_h) / 1080.0f * (texture->height * scale / static_cast<float>(m_window_h));
-
-                        // position
-                        tooltipPosition.x = m_entityTemp->base.position.x;
-                        tooltipPosition.y = m_entityTemp->base.position.y + (m_entityTemp->physics->halfDimentions.y * 4);
-                        tooltipPosition.z = m_entityTemp->base.position.z;
-                        tooltipModelMatrix = glm::translate(glm::mat4(1), tooltipPosition);
-                        tooltipScaleMatrix = glm::scale(glm::mat4(1), glm::vec3(scaleX, scaleY, 1.0f));
-                        tooltipModelMatrix = tooltipModelMatrix * tooltipScaleMatrix;
-                        glUniformMatrix4fv(m_pb_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(tooltipModelMatrix));
-
-                        glBindTexture(GL_TEXTURE_2D, texture->ID);
-                        glDrawArrays(GL_TRIANGLES, 0, 6);
-
-                        glUniform1i(m_pb_loc_isText, 0);
-                    }
+                    glUniform1i(m_pb_loc_isText, 0);
                 }
             }
         }

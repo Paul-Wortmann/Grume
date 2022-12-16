@@ -222,7 +222,9 @@ void cAnimationEngine::process(double _deltaTime)
         if (m_entityTemp->base.inRnge)
         {
             // Set the animation processed flag
-            if ((m_entityTemp->base.enabled) && (m_entityTemp->graphics->model != nullptr))
+            if ((m_entityTemp->base.enabled) &&
+                (m_entityTemp->graphics != nullptr) &&
+                (m_entityTemp->graphics->model != nullptr))
             {
                 m_entityTemp->graphics->model->animProcessed = false;
             }
@@ -234,7 +236,7 @@ void cAnimationEngine::process(double _deltaTime)
             }
 
             // Non independent animations
-            if ((m_entityTemp->base.enabled) && (m_entityTemp->graphics->model != nullptr) && (m_entityTemp->graphics->model->animation != nullptr) && (!m_entityTemp->graphics->model->animProcessed))
+            if ((m_entityTemp->base.enabled) && (m_entityTemp->graphics != nullptr)  && (m_entityTemp->graphics->model != nullptr) && (m_entityTemp->graphics->model->animation != nullptr) && (!m_entityTemp->graphics->model->animProcessed))
             {
                 // Set the animation processed flag, only process once per frame
                 m_entityTemp->graphics->model->animProcessed = true;

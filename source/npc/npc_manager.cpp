@@ -1271,6 +1271,8 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
         }
 
         // Last, remove the entity from the game
+        _entity->character->healthBarEnabled = false;
+        _entity->base.dying = true;
         m_entityManager->deleteEntity(_entity);
     }
 }

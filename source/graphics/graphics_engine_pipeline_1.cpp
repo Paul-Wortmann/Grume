@@ -107,67 +107,56 @@ void cGraphicsEngine::m_p1_render(void)
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        if ((m_entityTemp != nullptr) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr) && (m_entityTemp->graphics->billboard == false))
+        if ((m_entityTemp != nullptr) && (m_entityTemp->base.inRnge) && (m_entityTemp->base.enabled) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr))
         {
             // Only render if an always rendable type or within view
 
-            if (m_entityTemp->base.inRnge)
-            /*
-            if ((m_entityTemp->base.type == eEntityType::entityType_floor) ||
-            ( m_renderRange >
-            (((m_entityPlayer->base.position.x - m_entityTemp->base.position.x) * (m_entityPlayer->base.position.x - m_entityTemp->base.position.x)) +
-             ((m_entityPlayer->base.position.y - m_entityTemp->base.position.y) * (m_entityPlayer->base.position.y - m_entityTemp->base.position.y)) +
-             ((m_entityPlayer->base.position.z - m_entityTemp->base.position.z) * (m_entityPlayer->base.position.z - m_entityTemp->base.position.z)))))
-             */
+            // Shader uniforms
+            glUniformMatrix4fv(m_p1_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
+
+            // Flexibility
+            glUniform1f(m_p1_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
+
+            // skeletal animation uniforms for dynamic models
+            if (m_entityTemp->graphics->model->numBones > 0)
             {
+                // enable skinning
+                glUniform1i(m_p1_loc_animationEnabled, 1);
 
-                // Shader uniforms
-                glUniformMatrix4fv(m_p1_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->modelMatrix));
-
-                // Flexibility
-                glUniform1f(m_p1_loc_flexibility, m_entityTemp->base.flexibility * m_map->info.windSpeed);
-
-                // skeletal animation uniforms for dynamic models
-                if (m_entityTemp->graphics->model->numBones > 0)
+                // bone transforms
+                if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent))
                 {
-                    // enable skinning
-                    glUniform1i(m_p1_loc_animationEnabled, 1);
-
-                    // bone transforms
-                    if ((m_entityTemp->animation != nullptr) && (m_entityTemp->animation->animationIndependent))
+                    for (std::size_t i = 0; i < m_entityTemp->animation->numBones; ++i)
                     {
-                        for (std::size_t i = 0; i < m_entityTemp->animation->numBones; ++i)
-                        {
-                            glUniformMatrix4fv(m_p1_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->animation->boneTransform[i]));
-                        }
-                    }
-                    else
-                    {
-                        for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
-                        {
-                            glUniformMatrix4fv(m_p1_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->model->bone[i].transformFinal));
-                        }
+                        glUniformMatrix4fv(m_p1_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->animation->boneTransform[i]));
                     }
                 }
-                else // no bones
+                else
                 {
-                    // disable skinning
-                    glUniform1i(m_p1_loc_animationEnabled, 0);
-                }
-
-                // Model
-                for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
-                {
-                    if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
-                        (m_entityTemp->graphics->model->mesh[j].VAO != 0))
+                    for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
                     {
-                        // Texture
-                        //glActiveTexture(GL_TEXTURE0);
-
-                        // VAO
-                        glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
-                        glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
+                        glUniformMatrix4fv(m_p1_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->graphics->model->bone[i].transformFinal));
                     }
+                }
+            }
+            else // no bones
+            {
+                // disable skinning
+                glUniform1i(m_p1_loc_animationEnabled, 0);
+            }
+
+            // Model
+            for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
+            {
+                if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
+                    (m_entityTemp->graphics->model->mesh[j].VAO != 0))
+                {
+                    // Texture
+                    //glActiveTexture(GL_TEXTURE0);
+
+                    // VAO
+                    glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
+                    glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
                 }
             }
         }

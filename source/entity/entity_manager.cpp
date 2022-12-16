@@ -88,6 +88,7 @@ void cEntityManager::freeData(sEntity*& _pointer)
     // Base
     _pointer->base.name            = {};
     _pointer->base.enabled         = true;
+    _pointer->base.dying           = false;
     _pointer->base.type            = eEntityType::entityType_none;
     _pointer->base.owner           = eEntityOwner::entityOwner_none;
     _pointer->base.tileOnMap       = 0;
@@ -296,6 +297,24 @@ void cEntityManager::process(const float &_dt)
                                     (tEntity->base.position.x < range_x_max) &&
                                     (tEntity->base.position.z > range_z_min) &&
                                     (tEntity->base.position.z < range_z_max));
+            // process dying entities
+            if (tEntity->base.dying)
+            {
+                bool soundPlayingDie = false;
+                if ((tEntity->state != nullptr) && (tEntity->state->die.audio.sound != nullptr))
+                    soundPlayingDie = ma_sound_is_playing(&tEntity->state->die.audio.sound->data);
+
+                bool soundPlayingInteract = false;
+                if ((tEntity->state != nullptr) && (tEntity->state->interact.audio.sound != nullptr))
+                    soundPlayingDie = ma_sound_is_playing(&tEntity->state->interact.audio.sound->data);
+
+                if ((soundPlayingDie == false) && (soundPlayingInteract == false))
+                {
+                    freeData(tEntity);
+                    tEntity->base.dying = false;
+                    tEntity->base.inRnge = false;
+                }
+            }
         }
     }
 }
@@ -317,7 +336,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
         // Reuse a dead entity if possible
         for (sEntity* ptEntity = getHead(); ptEntity != nullptr; ptEntity = ptEntity->next)
         {
-            if (!ptEntity->base.enabled)
+            if ((ptEntity->base.enabled == false) && (ptEntity->base.dying == false))
             {
                 tEntity = ptEntity;
                 break;
@@ -339,6 +358,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
 
         // Base
         tEntity->base.enabled        = true;
+        tEntity->base.dying          = false;
         tEntity->base.initialized    = false;
         tEntity->base.name           = xmlEntityFile.getString("<base_name>");
         tEntity->base.position       = xmlEntityFile.getVec3("<base_position>");
@@ -1158,9 +1178,12 @@ void cEntityManager::deleteEntity(sEntity*& _pointer)
         }
     }
 
-    // Free data and disable (possible future entity reuse)
-    freeData(_pointer);
+    // Disable (possible future entity reuse), set to dying so the audio can finish playing before freeing data
     _pointer->base.enabled = false;
+    if (_pointer->base.dying == false)
+    {
+        freeData(_pointer);
+    }
 };
 
 void cEntityManager::deleteParticleEntity(sEntity*& _pointer)
@@ -1168,6 +1191,7 @@ void cEntityManager::deleteParticleEntity(sEntity*& _pointer)
     // Free data and disable (possible future entity reuse)
     freeData(_pointer);
     _pointer->base.enabled = false;
+    _pointer->base.dying   = false;
 };
 
 sEntity* cEntityManager::spawnEntity(const std::string &_name, const std::uint32_t &_number, const eDatabaseType &_type, const glm::vec3 &_position)
@@ -1414,7 +1438,10 @@ void cEntityManager::stateSet(sEntity*& _entity, const eEntityState &_state_1)
             case eEntityState::entityState_die:
                 m_setAnimationState(_entity, _entity->state->die.animation);
                 if (_entity->state->die.audio.sound != nullptr)
+                {
+                    _entity->base.dying = true;
                     m_audioEngine->playSound(_entity->state->die.audio.sound->data);
+                }
                 m_physicsState(_entity, _entity->state->die.physicsState);
                 m_tileCollisionState(_entity, _entity->state->die.tileCollision);
             break;
