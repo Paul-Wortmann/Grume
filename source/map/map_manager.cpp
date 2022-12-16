@@ -475,8 +475,6 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
             if (m_map->info.enableChests)
                 m_addChests();
             if (m_map->info.enableObjects)
-                m_addDestructibles();
-            if (m_map->info.enableObjects)
                 m_addDebris();
             if (m_map->info.enableNpcs)
                 m_addNPC_mobs();

@@ -96,9 +96,6 @@ class cMapManager :tcTemplateEngine
         // map_manager_add_debris.cpp
         void              m_addDebris(void);
 
-        //map_manager_add_destructibles.cpp
-        void              m_addDestructibles(void);
-
         // map_manager_add_doors.cpp
         void              m_addDoors(void);
 

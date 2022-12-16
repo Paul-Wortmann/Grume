@@ -322,7 +322,6 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
     m_addObjects();
     m_addNPCs();
     m_addChests();
-    m_addDestructibles();
     m_addDebris();
     m_addNPC_mobs();
 }
