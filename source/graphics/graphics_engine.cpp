@@ -586,7 +586,7 @@ void cGraphicsEngine::m_initializeEntities(void)
     }
 }
 
-void cGraphicsEngine::process(const float &_dt)
+void cGraphicsEngine::process(const std::int64_t &_dt)
 {
     // get current time
     m_time = glfwGetTime();

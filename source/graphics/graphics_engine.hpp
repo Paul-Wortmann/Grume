@@ -33,7 +33,7 @@ class cGraphicsEngine :tcTemplateEngine
         // Engine base
         std::uint32_t          initialize(void);
         void                   terminate(void) override;
-        void                   process(const float &_dt) override;
+        void                   process(const std::int64_t &_dt) override;
         sGraphicsEvent*        getEvent(void) { return m_event.pop(); }
 
         // External system pointers

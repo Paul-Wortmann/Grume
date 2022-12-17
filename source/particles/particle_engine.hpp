@@ -31,7 +31,7 @@ class cParticleEngine :tcTemplateEngine
     public:
         std::uint32_t initialize(void) override;
         void          terminate(void) override;
-        void          process(const float &_dt) override;
+        void          process(const std::int64_t &_dt) override;
         void          spawnParticles(const std::uint32_t &_type, const std::uint32_t &_amount, const glm::vec3 &_position);
         void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void          setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; }

@@ -188,7 +188,7 @@ void cParticleEngine::spawnParticles(const std::uint32_t &_type, const std::uint
     }
 }
 
-void cParticleEngine::process(const float &_dt)
+void cParticleEngine::process(const std::int64_t &_dt)
 {
     // Calculate delta time
     float dt = _dt / m_timeStep;

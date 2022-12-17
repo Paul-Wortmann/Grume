@@ -49,10 +49,10 @@ void cMapManager::m_addDebris(void)
             std::string   entity_fileName        = {};
 
             // Get and process each debris entry
-            for (std::uint32_t i = 0; i < m_map->numDebris; ++i)
+            for (std::uint32_t d = 0; d < m_map->numDebris; ++d)
             {
                 // Get data
-                dataString  = mapFile.getString("<debris>", i + 1);
+                dataString  = mapFile.getString("<debris>", d + 1);
                 dataString += " "; // end of string marker
                 dataStringLength = dataString.length();
                 tStringNum  = 0;
@@ -68,27 +68,27 @@ void cMapManager::m_addDebris(void)
                         {
                             if (tStringNum == 0)
                             {
-                                m_map->debris[i].databaseName = tString; // database name
+                                m_map->debris[d].databaseName = tString; // database name
                             }
                             else if (tStringNum == 1)
                             {
-                                m_map->debris[i].scaleMin = std::stof(tString); // scale min
+                                m_map->debris[d].scaleMin = std::stof(tString); // scale min
                             }
                             else if (tStringNum == 2)
                             {
-                                m_map->debris[i].scaleMax = std::stof(tString); // scale max
+                                m_map->debris[d].scaleMax = std::stof(tString); // scale max
                             }
                             else if (tStringNum == 3)
                             {
-                                m_map->debris[i].prevalence = std::stoi(tString); // prevalence
+                                m_map->debris[d].prevalence = std::stoi(tString); // prevalence
                             }
                             else if (tStringNum == 4)
                             {
-                                m_map->debris[i].questName = tString; // quest name
+                                m_map->debris[d].questName = tString; // quest name
                             }
                             else if (tStringNum == 5)
                             {
-                                m_map->debris[i].questStateReq = std::stoi(tString); // quest required state
+                                m_map->debris[d].questStateReq = std::stoi(tString); // quest required state
                             }
                             tStringNum++;
                             tString = "";
@@ -101,12 +101,12 @@ void cMapManager::m_addDebris(void)
                 }
 
                 // Try to place debris
-                for (std::uint32_t d = 0; d < m_map->numDebris; ++d)
+                for (std::uint32_t i = 0; i < m_map->numDebris; ++i)
                 {
                     // check quest state requirement has been met first
-                    if (m_questManager->getQuest(m_map->debris[d].questName) == m_map->debris[d].questStateReq)
+                    if (m_questManager->getQuest(m_map->debris[i].questName) == m_map->debris[i].questStateReq)
                     {
-                        for (std::uint32_t j = 0; j < m_map->debris[d].prevalence; ++j)
+                        for (std::uint32_t j = 0; j < m_map->debris[i].prevalence; ++j)
                         {
                             // position
                             std::uint32_t tileNumber = rand() % m_map->numTiles;
@@ -116,7 +116,7 @@ void cMapManager::m_addDebris(void)
                                 (m_map->tile[tileNumber].type == eTileType::tileFloor))
                             {
                                 // Retrieve a random object filename from the database
-                                entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->debris[d].databaseName, 0, eDatabaseType::databaseTypeObject);
+                                entity_fileName = m_databaseManager->getDatabaseEntryFileName(m_map->debris[i].databaseName, 0, eDatabaseType::databaseTypeObject);
 
                                 // Load the entity
                                 tEntity = m_entityManager->load(entity_fileName);
@@ -149,7 +149,7 @@ void cMapManager::m_addDebris(void)
                                     tEntity->base.owner = eEntityOwner::entityOwner_map;
 
                                     // Scale
-                                    float scale = m_map->debris[d].scaleMin + (gRandFloatNormalized() * (m_map->debris[d].scaleMax - m_map->debris[d].scaleMin));
+                                    float scale = m_map->debris[i].scaleMin + (gRandFloatNormalized() * (m_map->debris[i].scaleMax - m_map->debris[i].scaleMin));
                                     tEntity->base.scale *= scale;
 
                                     // rotation

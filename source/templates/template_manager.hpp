@@ -29,9 +29,9 @@
 class tcTemplateManager
 {
     public:
-        virtual std::uint32_t initialize(void)          = 0;
-        virtual void          terminate(void)           = 0;
-        virtual void          process(const float &_dt) = 0;
+        virtual std::uint32_t initialize(void) = 0;
+        virtual void          terminate(void) = 0;
+        virtual void          process(const std::int64_t &_dt) = 0;
 
     protected:
 

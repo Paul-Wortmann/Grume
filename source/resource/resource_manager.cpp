@@ -37,7 +37,7 @@ void cResourceManager::terminate(void)
     m_materialManager.terminate();
 }
 
-void cResourceManager::process(const float &_dt)
+void cResourceManager::process(const std::int64_t &_dt)
 {
 
 }

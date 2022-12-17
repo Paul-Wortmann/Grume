@@ -50,7 +50,7 @@ class cPlayerManager :tcTemplateEngine
     public:
         std::uint32_t initialize(void) override;
         void          terminate(void) override;
-        void          process(const float &_dt) override;
+        void          process(const std::int64_t &_dt) override;
         sPlayerEvent* getEvent(void) { return m_event.pop(); }
 
         // Set pointers

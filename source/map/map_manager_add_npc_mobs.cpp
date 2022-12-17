@@ -48,11 +48,11 @@ void cMapManager::m_addNPC_mobs(void)
 
             std::string   entity_fileName  = {};
 
-            // Get and process each event entry
-            for (std::uint32_t i = 0; i < m_map->numNPCmob; ++i)
+            // Get and process each npc mob entry
+            for (std::uint32_t n = 0; n < m_map->numNPCmob; ++n)
             {
                 // Get data
-                dataString  = mapFile.getString("<npc_mob>", i + 1);
+                dataString  = mapFile.getString("<npc_mob>", n + 1);
                 dataString += " "; // end of string marker
                 dataStringLength = dataString.length();
                 tStringNum  = 0;
@@ -72,11 +72,11 @@ void cMapManager::m_addNPC_mobs(void)
                         {
                             if (tStringNum == 0)
                             {
-                                m_map->npcMob[i].databaseName = tString; // database name
+                                m_map->npcMob[n].databaseName = tString; // database name
                             }
                             else if (tStringNum == 1)
                             {
-                                m_map->npcMob[i].databaseNumber = std::stoi(tString); // database number
+                                m_map->npcMob[n].databaseNumber = std::stoi(tString); // database number
                             }
                             else if (tStringNum == 2)
                             {
@@ -88,15 +88,15 @@ void cMapManager::m_addNPC_mobs(void)
                             }
                             else if (tStringNum == 4)
                             {
-                                m_map->npcMob[i].prevalence = std::stoi(tString); // prevalence
+                                m_map->npcMob[n].prevalence = std::stoi(tString); // prevalence
                             }
                             else if (tStringNum == 5)
                             {
-                                m_map->npcMob[i].questName = tString; // quest name
+                                m_map->npcMob[n].questName = tString; // quest name
                             }
                             else if (tStringNum == 6)
                             {
-                                m_map->npcMob[i].questStateReq = std::stoi(tString); // quest required state
+                                m_map->npcMob[n].questStateReq = std::stoi(tString); // quest required state
                             }
                             tStringNum++;
                             tString = "";

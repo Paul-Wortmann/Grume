@@ -35,8 +35,8 @@ std::string cXML::m_formatLine(const std::string &_string)
 
     // Process _string
     std::string   tString = "";
-    std::uint32_t tStringLength = _string.length();
-    std::uint32_t tStringPosition = 0;
+    std::uint64_t tStringLength = _string.length();
+    std::uint64_t tStringPosition = 0;
     std::uint32_t abCount = 0; // angle bracket count
 
     // if the first character is a space or a tab, proceed
@@ -61,7 +61,7 @@ std::string cXML::m_formatLine(const std::string &_string)
         return "";
     }
 
-    // Save the string without any aditional spaces
+    // Save the string without any additional spaces
     for(; tStringPosition < tStringLength; ++tStringPosition)
     {
         // Look for the end of the data

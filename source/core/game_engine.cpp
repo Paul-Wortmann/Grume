@@ -91,7 +91,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_audioEngine.setVolumeSound(m_gameConfig.m_volume_sfx);
 
     // Seed the random number generator
-    std::uint64_t gameSeed = 0;
+    std::uint32_t gameSeed = 0;
     gRandSeed(gameSeed);
 
     // Set inter-system connections

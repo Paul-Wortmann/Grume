@@ -28,7 +28,7 @@
 #include <cstdlib>
 #include <ctime>
 
-void  gRandSeed(std::uint64_t &_seed);
+void  gRandSeed(std::uint32_t &_seed);
 float gRandFloatNormalized(void);
 float gRandFloatMax(const float &_max);
 float gRandFloatMinMax(const float &_min, const float &_max);

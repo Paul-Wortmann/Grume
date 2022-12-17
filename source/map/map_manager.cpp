@@ -125,7 +125,7 @@ void cMapManager::m_freeData(sMap*& _map)
     _map->info.currentNumMob = 0;
 }
 
-void cMapManager::process(const float &_dt)
+void cMapManager::process(const std::int64_t &_dt)
 {
     // Reset frame trigger flag, and look for non tile events
     for (std::uint32_t i = 0; i < m_map->numEvent; ++i)

@@ -23,11 +23,11 @@
 
 #include "random.hpp"
 
-void gRandSeed(std::uint64_t &_seed)
+void gRandSeed(std::uint32_t &_seed)
 {
     if (_seed == 0)
-        _seed = static_cast <unsigned> (time(0));
-    srand (_seed);
+        _seed = static_cast <std::uint32_t> (time(0));
+    srand(_seed);
 }
 
 float gRandFloatNormalized(void)
@@ -37,10 +37,10 @@ float gRandFloatNormalized(void)
 
 float gRandFloatMax(const float &_max)
 {
-    return static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / _max));
+    return static_cast <float> (rand()) / ((static_cast <float> (RAND_MAX) / _max));
 }
 
 float gRandFloatMinMax(const float &_min, const float &_max)
 {
-    return _min + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX / (_max - _min)));
+    return _min + static_cast <float> (rand()) / (( static_cast <float> (RAND_MAX) / (_max - _min)));
 }

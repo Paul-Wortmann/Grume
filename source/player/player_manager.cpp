@@ -181,7 +181,7 @@ void cPlayerManager::targetTile(const std::uint32_t &_tile)
 
 }
 
-void cPlayerManager::process(const float &_dt)
+void cPlayerManager::process(const std::int64_t &_dt)
 {
     float frameDelta = _dt / 16.0f; // 60 FPS == 16ms per frame
 

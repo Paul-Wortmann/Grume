@@ -38,7 +38,7 @@ void cPhysicsEngine::terminate(void)
 
 }
 
-void cPhysicsEngine::process(const float &_dt)
+void cPhysicsEngine::process(const std::int64_t &_dt)
 {
     // Calculate delta time
     float dt = _dt / m_timeStep;
