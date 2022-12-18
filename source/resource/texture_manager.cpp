@@ -47,11 +47,6 @@ void cTextureManager::terminate(void)
     m_fontManager.terminate();
 }
 
-void cTextureManager::process(const float &_dt)
-{
-
-}
-
 sTexture* cTextureManager::load(const std::string &_fileName)
 {
     for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
@@ -134,8 +129,8 @@ sTexture* cTextureManager::generateTexture(const std::string &_text)
     texture->numChannel = 1; // GL_RED
 
     // Determine texture size
-    std::uint32_t dataLength = _text.length();
-    for (std::uint32_t i = 0; i < dataLength; i++)
+    std::uint64_t dataLength = _text.length();
+    for (std::uint64_t i = 0; i < dataLength; i++)
     {
         sFontCharacter charData = m_fontManager.getFontCharacter(_text[i]);
         texture->width += charData.size.x;
@@ -151,7 +146,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text)
         data[i] = 0;
     }
 
-    for (std::uint32_t i = 0; i < dataLength; i++)
+    for (std::uint64_t i = 0; i < dataLength; i++)
     {
         sFontCharacter charData = m_fontManager.getFontCharacter(_text[i]);
         for (std::uint32_t y = 0; y < static_cast<std::uint32_t>(charData.size.y); y++)
@@ -187,7 +182,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text)
     return texture;
 }
 
-sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::vec4 &_color)
+sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::uvec4 &_color)
 {
     // If it already exists in memory, return a pointer to it
     for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
@@ -206,8 +201,8 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
     texture->numChannel = 1; // GL_RED
 
     // Determine texture size
-    std::uint32_t dataLength = _text.length();
-    for (std::uint32_t i = 0; i < dataLength; i++)
+    std::uint64_t dataLength = _text.length();
+    for (std::uint64_t i = 0; i < dataLength; i++)
     {
         sFontCharacter charData = m_fontManager.getFontCharacter(_text[i]);
         texture->width += charData.size.x;
@@ -223,7 +218,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
         data[i] = 0;
     }
 
-    for (std::uint32_t i = 0; i < dataLength; i++)
+    for (std::uint64_t i = 0; i < dataLength; i++)
     {
         sFontCharacter charData = m_fontManager.getFontCharacter(_text[i]);
         for (std::uint32_t y = 0; y < static_cast<std::uint32_t>(charData.size.y); y++)
@@ -241,10 +236,10 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
     unsigned char *dataRGBA = new unsigned char[dataSizeRGBA];
     for (std::uint32_t i = 0; i < dataSize; i++)
     {
-        dataRGBA[(i * 4) + 0] = (data[i] > 0) ? _color.x : 0; // Red
-        dataRGBA[(i * 4) + 1] = (data[i] > 0) ? _color.y : 0; // Green
-        dataRGBA[(i * 4) + 2] = (data[i] > 0) ? _color.z : 0; // Blue
-        dataRGBA[(i * 4) + 3] = _color.w;     // Alpha
+        dataRGBA[(i * 4) + 0] = static_cast<unsigned char>((data[i] > 0) ? _color.x : 0); // Red
+        dataRGBA[(i * 4) + 1] = static_cast<unsigned char>((data[i] > 0) ? _color.y : 0); // Green
+        dataRGBA[(i * 4) + 2] = static_cast<unsigned char>((data[i] > 0) ? _color.z : 0); // Blue
+        dataRGBA[(i * 4) + 3] = static_cast<unsigned char>(_color.w);     // Alpha
     }
 
     // Disable 4 byte packing alignment

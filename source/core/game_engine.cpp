@@ -220,8 +220,7 @@ void cGameEngine::process(void)
             m_objectManager.process(dt);
             m_playerManager.process(dt);
         }
-        m_uiManager.process(dt);
-        m_audioEngine.process(dt);
+        m_uiManager.process();
         m_graphicsEngine.setPlayerLightPosition(m_playerManager.getPosition());
         m_graphicsEngine.process(dt);
         m_animationEngine.process(dt);

@@ -33,7 +33,7 @@ void gCalculateTangentBiTangent(sEntityModelVertex &_v1,
     glm::vec2 delta_uv1 = _v2.texcoord - _v1.texcoord;
     glm::vec2 delta_uv2 = _v3.texcoord - _v1.texcoord;
 
-    float r = 1.0 / (delta_uv1.x * delta_uv2.y - delta_uv1.y * delta_uv2.x);
+    float r = static_cast<float>(1.0 / (delta_uv1.x * delta_uv2.y - delta_uv1.y * delta_uv2.x));
     _v1.tangent = (delta_pos1 * delta_uv2.y - delta_pos2 * delta_uv1.y) * r;
     _v1.bitangent = (delta_pos2 * delta_uv1.x - delta_pos1 * delta_uv2.x) * r;
 

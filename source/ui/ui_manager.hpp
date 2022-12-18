@@ -32,7 +32,7 @@ class cUIManager
         // ui_manager.cpp
         std::uint32_t      initialize(void);
         void               terminate(void);
-        void               process(const float &_dt);
+        void               process(void);
 
         std::uint32_t      getNumMenu(void) { return m_numMenu; };
         sUIMenu*           getMenu(void) { return m_menu; };

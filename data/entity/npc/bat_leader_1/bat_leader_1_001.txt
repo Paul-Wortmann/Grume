@@ -9,7 +9,7 @@
     <ai>
         # ranges are distances squared
         <ai_attack_range>1.25</ai_attack_range>
-        <ai_attack_frequency>1024</ai_attack_frequency> # mili-seconds
+        <ai_attack_frequency>18</ai_attack_frequency> # mili-seconds
         <ai_aware_range>15.0</ai_aware_range>
         <ai_move_range>10.0</ai_move_range>
         <ai_retreat_range>0.25</ai_retreat_range>

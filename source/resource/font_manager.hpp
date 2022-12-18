@@ -47,7 +47,7 @@ class cFontManager
     private:
         std::map<char, sFontCharacter> m_characters;
         void           m_generateGlyphs(void);
-        std::uint32_t  m_fontPixelScale = 128;
+        float          m_fontPixelScale = 128;
         stbtt_fontinfo m_fontInfo       = {};
         char*          m_fontBuffer     = nullptr;
 };

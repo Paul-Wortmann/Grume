@@ -81,6 +81,7 @@ void cObjectManager::process(const float &_dt)
                         {
                             // object death state
                             m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_die);
+                            m_entityTemp->base.dying = true;
 
                             // remove object from map
                             m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;

@@ -1438,10 +1438,7 @@ void cEntityManager::stateSet(sEntity*& _entity, const eEntityState &_state_1)
             case eEntityState::entityState_die:
                 m_setAnimationState(_entity, _entity->state->die.animation);
                 if (_entity->state->die.audio.sound != nullptr)
-                {
-                    _entity->base.dying = true;
                     m_audioEngine->playSound(_entity->state->die.audio.sound->data);
-                }
                 m_physicsState(_entity, _entity->state->die.physicsState);
                 m_tileCollisionState(_entity, _entity->state->die.tileCollision);
             break;

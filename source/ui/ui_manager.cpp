@@ -83,7 +83,7 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
     }
 }
 
-void cUIManager::process(const float &_dt)
+void cUIManager::process(void)
 {
     // If menu data structure exists
     if (m_menu != nullptr)
@@ -245,5 +245,5 @@ void cUIManager::process(const float &_dt)
 void cUIManager::setMapTitle(const std::string &_mapTitle)
 {
     m_mapTitle = _mapTitle;
-    m_mapTitleTexture = m_resourceManager->generateTexture(m_mapTitle, glm::vec4(230, 230, 230, 255));
+    m_mapTitleTexture = m_resourceManager->generateTexture(m_mapTitle, glm::ivec4(230, 230, 230, 255));
 }

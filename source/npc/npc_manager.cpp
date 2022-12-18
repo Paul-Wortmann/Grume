@@ -1067,6 +1067,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
 
         // Set entity state : die
         m_entityManager->stateSet(_entity, eEntityState::entityState_die);
+        _entity->base.dying = true;
 
         // If leader, release managed minions
         if ((_entity->ai != nullptr) && (_entity->ai->leader != nullptr))

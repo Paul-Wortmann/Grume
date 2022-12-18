@@ -54,11 +54,6 @@ void cMaterialManager::terminate(void)
     freeAll();
 }
 
-void cMaterialManager::process(const float &_dt)
-{
-
-}
-
 sMaterial* cMaterialManager::load(const std::string &_fileName)
 {
     sMaterial*  tMaterial        = nullptr;

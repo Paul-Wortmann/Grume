@@ -33,7 +33,6 @@ class cMaterialManager : public tcLinkedList<sMaterial>
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
-        void          process(const float &_dt);
         sMaterial*    load(const std::string &_fileName);
 
         // Texture
@@ -42,7 +41,7 @@ class cMaterialManager : public tcLinkedList<sMaterial>
         // Font
         std::uint32_t initializeFont(void) { return m_textureManager.initializeFont(); };
         sTexture*     generateTexture(const std::string &_text) { return m_textureManager.generateTexture(_text); };
-        sTexture*     generateTexture(const std::string &_text, const glm::vec4 &_color) { return m_textureManager.generateTexture(_text, _color); };
+        sTexture*     generateTexture(const std::string &_text, const glm::uvec4 &_color) { return m_textureManager.generateTexture(_text, _color); };
 
     protected:
 

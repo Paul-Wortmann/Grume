@@ -33,13 +33,12 @@ class cTextureManager : public tcLinkedList<sTexture>
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
-        void          process(const float &_dt);
         sTexture*     load(const std::string &_fileName);
 
         // Font
         std::uint32_t initializeFont(void) { return m_fontManager.initializeFont(); };
         sTexture*     generateTexture(const std::string &_text);
-        sTexture*     generateTexture(const std::string &_text, const glm::vec4 &_color);
+        sTexture*     generateTexture(const std::string &_text, const glm::uvec4 &_color);
 
     protected:
 

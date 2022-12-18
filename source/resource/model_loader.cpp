@@ -220,17 +220,17 @@ void cModelManager::m_processNode(const aiScene*& _scene, const aiNode* _node, s
 void cModelManager::m_addBoneMap(const std::string &_name, const glm::mat4 &_mat4)
 {
     std::int32_t found = -1;
-    for (std::size_t k = 0; k < m_boneMap.size(); ++k)
+    for (std::uint32_t k = 0; k < m_boneMap.size(); ++k)
     {
         if (m_boneMap[k].name.compare(_name) == 0)
         {
-            found = k;
+            found = static_cast<std::int32_t>(k);
         }
     }
     if (found == -1)
     {
         sEntityBone tBone;
-        tBone.ID   = m_boneMap.size();
+        tBone.ID   = static_cast<std::int32_t>(m_boneMap.size());
         tBone.name = _name;
         tBone.transformPose = _mat4;
         m_boneMap.push_back(tBone);
@@ -354,7 +354,7 @@ void cModelManager::m_loadBones(sEntityModel* _model, const aiScene* _scene)
     {
         m_buildBoneMapNodes(_scene->mRootNode);
         m_buildBoneMapParents(_scene->mRootNode, nullptr, _scene);
-        _model->numBones     = m_boneMap.size();
+        _model->numBones     = static_cast<std::int32_t>(m_boneMap.size());
         _model->bone         = new sEntityBone[_model->numBones];
         //std::cout << "Bone count: " << _model->numBones << std::endl;
         for (std::size_t i = 0; i < _model->numBones; ++i)
@@ -365,7 +365,7 @@ void cModelManager::m_loadBones(sEntityModel* _model, const aiScene* _scene)
             _model->bone[i].transformNode = m_boneMap[i].transformNode;
             _model->bone[i].transformPose = m_boneMap[i].transformPose;
         }
-        for (std::size_t i = 0; i < _model->numBones; ++i)
+        for (std::uint32_t i = 0; i < _model->numBones; ++i)
         {
             _model->bone[i].transformFinal = _model->inverseTransform * m_getRecursiveTransforms(i) * _model->bone[i].transformPose;
         }

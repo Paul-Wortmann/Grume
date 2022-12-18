@@ -81,9 +81,9 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
     auto _getIndexCount = [](const std::string &_line)
     {
         std::uint32_t sCount = 0;
-        std::uint32_t lLength = _line.length();
+        std::uint64_t lLength = _line.length();
 
-        for (std::uint32_t i = 0; i < lLength; ++i)
+        for (std::uint64_t i = 0; i < lLength; ++i)
         {
             if (_line[i] == ' ')
                 sCount++;
@@ -95,9 +95,9 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
     auto _getObjectName = [](const std::string &_line)
     {
         std::string returnData;
-        std::uint32_t lLength = _line.length();
+        std::uint64_t lLength = _line.length();
 
-        for (std::uint32_t i = 2; i < lLength; ++i)
+        for (std::uint64_t i = 2; i < lLength; ++i)
         {
             returnData += _line[i];
         }
@@ -110,9 +110,9 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
         vec2 returnData;
         std::uint32_t sCount = 0;
         std::string   tData  = {};
-        std::uint32_t lLength = _line.length();
+        std::uint64_t lLength = _line.length();
 
-        for (std::uint32_t i = 0; i < lLength; ++i)
+        for (std::uint64_t i = 0; i < lLength; ++i)
         {
             if (_line[i] == ' ')
             {
@@ -137,9 +137,9 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
         vec3 returnData;
         std::uint32_t sCount = 0;
         std::string   tData  = {};
-        std::uint32_t lLength = _line.length();
+        std::uint64_t lLength = _line.length();
 
-        for (std::uint32_t i = 0; i < lLength; ++i)
+        for (std::uint64_t i = 0; i < lLength; ++i)
         {
             if (_line[i] == ' ')
             {
@@ -167,9 +167,9 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
         std::uint32_t sCount = 0;
         std::uint32_t dCount = 0;
         std::string   tData  = {};
-        std::uint32_t lLength = _line.length();
+        std::uint64_t lLength = _line.length();
 
-        for (std::uint32_t i = 0; i < lLength; ++i)
+        for (std::uint64_t i = 0; i < lLength; ++i)
         {
             if (_line[i] == ' ')
             {

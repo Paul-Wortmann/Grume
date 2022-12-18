@@ -31,7 +31,6 @@ class cAudioEngine : public tcLinkedList<sAudio>
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
-        void          process(float _dt) { };
 
         sAudio*       getNewSoundPointer(void) { return getNew(); };
         void          loadSound(const std::string &_fileName, ma_sound &_ma_sound);
