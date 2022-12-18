@@ -589,7 +589,7 @@ void cGraphicsEngine::m_initializeEntities(void)
 void cGraphicsEngine::process(const std::int64_t &_dt)
 {
     // get current time
-    m_time = glfwGetTime();
+    m_time = static_cast<float>(glfwGetTime());
 
     // Windows close event
     if (m_windowClosed)

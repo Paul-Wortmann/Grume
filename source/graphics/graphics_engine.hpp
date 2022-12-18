@@ -81,7 +81,7 @@ class cGraphicsEngine :tcTemplateEngine
         void                   setCameraPosition(glm::vec3 &_position) { m_camera.setPosition(_position); };
         void                   setCameraTarget(glm::vec3 &_target) { m_camera.setTarget(_target); };
         void                   moveCamera(glm::vec3 &_position);
-        void                   addScreenShake(const float &_st, const float &_sf) { m_camera.addScreenShake(_st, _sf); };
+        void                   addScreenShake(const std::uint32_t &_st, const float &_sf) { m_camera.addScreenShake(_st, _sf); };
 
         // Lights
         void                   setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position.x = _position.x; m_playerLight->position.z = _position.z; }

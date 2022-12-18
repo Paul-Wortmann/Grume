@@ -31,7 +31,7 @@ class cGraphicsEngineCamera
     public:
         void      initialize(std::uint32_t _fov, std::uint32_t _width, std::uint32_t _height);
         void      terminate(void);
-        void      process(const float &_dt);
+        void      process(const std::int64_t &_dt);
         void      setOrthographic(void) { m_orthographic = true; m_perspective = false;  m_calculateMartacies(); }
         void      setPerspective(void)  { m_perspective = true;  m_orthographic = false; m_calculateMartacies(); }
         glm::mat4 getViewMatrix(void) { return m_view; }
@@ -43,7 +43,7 @@ class cGraphicsEngineCamera
         glm::vec3 getOrientation(void) { return m_orientation; }
         void      setOrientation(glm::vec3 _orientation) { m_orientation = _orientation; m_calculateMartacies(); }
         glm::vec3 getMouseRay(const float &_mouseX, const float &_mouseY);
-        void      addScreenShake(const float &_st, const float &_sf) { m_shakeTime += _st; m_shakeForce = _sf; m_shakeActive = true; }
+        void      addScreenShake(const std::uint32_t &_st, const float &_sf) { m_shakeTime += _st; m_shakeForce = _sf; m_shakeActive = true; }
 
     protected:
 
@@ -61,7 +61,7 @@ class cGraphicsEngineCamera
         glm::vec3      m_target        = glm::vec3(0.0f, -1.0f, 0.0f);
         glm::vec3      m_orientation   = glm::vec3(0.0f,  1.0f, 0.0f);
         glm::vec3      m_shakeTarget   = glm::vec3(0.0f,  0.0f, 0.0f);
-        float          m_shakeTime     = 0.0f;
+        std::uint32_t  m_shakeTime     = 0;
         float          m_shakeForce    = 0.25f;
         bool           m_shakeActive   = false;
 };

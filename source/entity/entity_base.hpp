@@ -80,7 +80,7 @@ struct sEntityBase
     // timer / transparency / fade out?
 
     std::uint32_t   deathShakeChance   = 0;
-    std::uint32_t   deathShakeDuration = 0.0f;
+    std::uint32_t   deathShakeDuration = 0;
     float           deathShakeForce    = 0;
 
     glm::vec3       position        = glm::vec3(0.0f, 0.0f, 0.0f);

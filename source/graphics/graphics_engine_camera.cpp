@@ -37,12 +37,12 @@ void cGraphicsEngineCamera::terminate(void)
 
 }
 
-void cGraphicsEngineCamera::process(const float &_dt)
+void cGraphicsEngineCamera::process(const std::int64_t &_dt)
 {
     if (m_shakeActive)
     {
-        m_shakeTime -= _dt;
-        if (m_shakeTime < 0.0f)
+        m_shakeTime -= static_cast<std::uint32_t>(_dt);
+        if (m_shakeTime == 0)
         {
             m_shakeTarget = glm::vec3(0.0f, 0.0f, 0.0f);
             m_view        = glm::lookAt(m_position, m_target, m_orientation);

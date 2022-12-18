@@ -42,7 +42,8 @@
 #include <iostream>
 #include <string>
 
-void gLogClear(void);
+void gLogClear(/* DEBUG_FILE will be used */);
+void gLogClear(const std::string &_fileName);
 void gLogWrite(/* DEBUG_FILE will be used */ const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function);
 void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function);
 

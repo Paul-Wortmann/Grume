@@ -280,7 +280,7 @@ sEntity* cEntityManager::getEntityOnTile(const std::uint32_t &_tile)
 void cEntityManager::process(const std::int64_t &_dt)
 {
         //std::cout << "Range check: " << _dt << std::endl;
-    m_rangeUpdateTime += static_cast<float>(_dt);
+    m_rangeUpdateTime += static_cast<std::uint32_t>(_dt);
     if (m_rangeUpdateTime > m_rangeUpdateMax)
     {
         m_rangeUpdateTime -= m_rangeUpdateMax;
@@ -794,7 +794,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             {
                 // Data parsing
                 std::string   dataString       = {};
-                std::uint32_t dataStringLength = 0;
+                std::uint64_t dataStringLength = 0;
                 std::uint32_t tStringNum       = 0;
                 std::string   tString          = {};
 
@@ -809,7 +809,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 /// # quest name, set state
                 if (dataStringLength > 4)
                 {
-                    for (std::uint32_t j = 0; j < dataStringLength; ++j)
+                    for (std::uint64_t j = 0; j < dataStringLength; ++j)
                     {
                         if (dataString[j] == ' ')
                         {

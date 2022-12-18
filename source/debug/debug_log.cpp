@@ -74,7 +74,12 @@ std::string _UDATE_(void)
 
 void gLogClear(void)
 {
-    std::ofstream outFile(DEBUG_FILE, std::fstream::trunc | std::fstream::out);
+    gLogClear(DEBUG_FILE);
+}
+
+void gLogClear(const std::string &_fileName)
+{
+    std::ofstream outFile(_fileName, std::fstream::trunc | std::fstream::out);
     outFile.close();
 }
 
@@ -155,7 +160,7 @@ void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const s
     #endif // DEBUG_LC
     #ifdef DEBUG_LF
         #if (defined(__linux__) || defined(_WIN32))
-            std::ofstream outFile(DEBUG_FILE, std::fstream::out | std::fstream::app);
+            std::ofstream outFile(_fileName, std::fstream::out | std::fstream::app);
             if (outFile.is_open())
             {
                 switch (_type)
@@ -180,7 +185,7 @@ void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const s
             }
             else
             {
-                std::cout << "Failed to write to file: " << std::string(DEBUG_FILE) << std::endl;
+                std::cout << "Failed to write to file: " << std::string(_fileName) << std::endl;
             }
         #else
             #error Platform not supported
