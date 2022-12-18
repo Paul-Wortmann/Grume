@@ -38,7 +38,7 @@ void cMapManager::m_addPortals(void)
 
             // Data parsing
             std::string   dataString       = {};
-            std::uint32_t dataStringLength = 0;
+            std::uint64_t dataStringLength = 0;
             std::uint32_t tStringNum       = 0;
             std::string   tString          = {};
 
@@ -60,7 +60,7 @@ void cMapManager::m_addPortals(void)
                 /// # Portal number, map from database name, and portal, tile location x, y, player face direction
                 if (dataStringLength > 4)
                 {
-                    for (std::uint32_t j = 0; j < dataStringLength; ++j)
+                    for (std::uint64_t j = 0; j < dataStringLength; ++j)
                     {
                         if (dataString[j] == ' ')
                         {

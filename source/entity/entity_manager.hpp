@@ -38,7 +38,7 @@ class cEntityManager : public tcLinkedList<sEntity>
     public:
         std::uint32_t        initialize(void);
         void                 terminate(void);
-        void                 process(const float &_dt);
+        void                 process(const std::int64_t &_dt);
         sEntityManagerEvent* getEvent(void) { return m_event.pop(); }
 
         void                 setMapPointer(sMap* _map) { m_mapPointer = _map; };
@@ -79,8 +79,8 @@ class cEntityManager : public tcLinkedList<sEntity>
         float             m_range_x_max     =  14.0f;
         float             m_range_z_min     = -28.0f;
         float             m_range_z_max     =  14.0f;
-        float             m_rangeUpdateTime =  0.0f; // accumulated time
-        float             m_rangeUpdateMax  =  256.0f; // time required for a range check update ( frame time * frames = 16 * 16 = 256)
+        std::uint32_t     m_rangeUpdateTime =  0;     // accumulated time
+        std::uint32_t     m_rangeUpdateMax  =  256;   // time required for a range check update ( frame time * frames = 16 * 16 = 256)
 
         // Event
         tcQueue<sEntityManagerEvent> m_event = {};

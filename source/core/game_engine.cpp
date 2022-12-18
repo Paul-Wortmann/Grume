@@ -206,7 +206,7 @@ void cGameEngine::process(void)
     if (m_timer.ready())
     {
         // Get the delta time
-        double dt = m_timer.get_frameTime();
+        std::int64_t dt = m_timer.get_frameTime();
 
         // Process systems
         if (m_engineState != eEngineState::engineStatePause)
@@ -225,7 +225,6 @@ void cGameEngine::process(void)
         m_graphicsEngine.process(dt);
         m_animationEngine.process(dt);
         m_mapManager.process(dt);
-        m_questManager.process(dt);
 
         m_physicsEngine.setMouseClick(false);
         // If mouse over UI

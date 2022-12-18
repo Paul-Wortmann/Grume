@@ -32,7 +32,6 @@ class cLootManager
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
-        void          process(const float &_dt);
         std::uint32_t loadLootTable(const std::string &_fileName);
         void          getLoot(std::uint32_t &_itemID, std::string &_databaseName, std::uint32_t &_databaseNumber);
 

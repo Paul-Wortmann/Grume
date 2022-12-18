@@ -277,10 +277,10 @@ sEntity* cEntityManager::getEntityOnTile(const std::uint32_t &_tile)
     return nullptr;
 }
 
-void cEntityManager::process(const float &_dt)
+void cEntityManager::process(const std::int64_t &_dt)
 {
         //std::cout << "Range check: " << _dt << std::endl;
-    m_rangeUpdateTime += _dt;
+    m_rangeUpdateTime += static_cast<float>(_dt);
     if (m_rangeUpdateTime > m_rangeUpdateMax)
     {
         m_rangeUpdateTime -= m_rangeUpdateMax;

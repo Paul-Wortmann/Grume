@@ -32,16 +32,12 @@ std::uint32_t cQuestManager::initialize(void)
 
 void cQuestManager::freeData(sQuest*& _pointer)
 {
+    _pointer->state = 0;
 }
 
 void cQuestManager::terminate(void)
 {
     freeAll();
-}
-
-void cQuestManager::process(const float &_dt)
-{
-
 }
 
 void cQuestManager::setQuest(const std::string &_questName, const std::uint32_t &_state)

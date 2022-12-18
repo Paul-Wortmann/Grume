@@ -88,7 +88,8 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
 {
     // return value
     std::uint32_t return_value = EXIT_SUCCESS;
-    sMap*    tMap    = m_mapManager.getMapPointer();
+
+    // player entity pointer
     sEntity* tPlayer = m_playerManager.getEntityPlayer();
 
     // Load start
@@ -120,13 +121,13 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         tPlayer->character->level.expNext = xmlSaveGameFile.getInteger64("<exp_next>");
 
         // Health
-        tPlayer->character->attribute.health.current = xmlSaveGameFile.getInteger("<health_current>");
-        tPlayer->character->attribute.health.max     = xmlSaveGameFile.getInteger("<health_max>");
+        tPlayer->character->attribute.health.current = xmlSaveGameFile.getFloat("<health_current>");
+        tPlayer->character->attribute.health.max     = xmlSaveGameFile.getFloat("<health_max>");
         tPlayer->character->attribute.health.regen   = xmlSaveGameFile.getFloat("<health_regen>");
 
         // Mana
-        tPlayer->character->attribute.mana.current = xmlSaveGameFile.getInteger("<mana_current>");
-        tPlayer->character->attribute.mana.max     = xmlSaveGameFile.getInteger("<mana_max>");
+        tPlayer->character->attribute.mana.current = xmlSaveGameFile.getFloat("<mana_current>");
+        tPlayer->character->attribute.mana.max     = xmlSaveGameFile.getFloat("<mana_max>");
         tPlayer->character->attribute.mana.regen   = xmlSaveGameFile.getFloat("<mana_regen>");
 
         // Gold

@@ -42,7 +42,7 @@ class cNPCManager
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
-        void          process(const float &_dt);
+        void          process(const std::int64_t &_dt);
         void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void          setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
         void          setMapPointer(sMap* _map) { m_mapPointer = _map; };
@@ -75,8 +75,8 @@ class cNPCManager
 
         bool              m_updatePaths       = false;
 
-        float             m_updateAIFrequency = 50.0f; // milliseconds
-        float             m_updateAICounter   = 0.0f;
+        std::uint32_t     m_updateAIFrequency = 50; // milliseconds
+        std::uint32_t     m_updateAICounter   = 0;
 
         void              m_generateWaypoints(sEntity*& _entity);
         void              m_entityDeath(sEntity*& _entity);

@@ -34,10 +34,10 @@ struct sEntityAnimation
     glm::mat4*          boneTransform        = nullptr;
 
     std::uint32_t       currentAnimation     = 0;
-    double              previousAnimTime     = 0.0;
-    double              currentAnimTime      = 0.0;
-    double              stopAnimTime         = 0.0;
-    double              startAnimTime        = 0.0;
+    float               previousAnimTime     = 0.0f;
+    float               currentAnimTime      = 0.0f;
+    float               stopAnimTime         = 0.0f;
+    float               startAnimTime        = 0.0f;
     bool                repeatAnimation      = false;
     bool                finishedAnimation    = true;
 };

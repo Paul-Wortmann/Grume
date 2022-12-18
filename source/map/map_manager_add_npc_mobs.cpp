@@ -39,7 +39,7 @@ void cMapManager::m_addNPC_mobs(void)
 
             // Data parsing
             std::string   dataString       = {};
-            std::uint32_t dataStringLength = 0;
+            std::uint64_t dataStringLength = 0;
             std::uint32_t tStringNum       = 0;
             std::string   tString          = {};
 
@@ -66,7 +66,7 @@ void cMapManager::m_addNPC_mobs(void)
                 /// # database name, database number, frequency, quest name, quest required state
                 if (dataStringLength > 4)
                 {
-                    for (std::uint32_t j = 0; j < dataStringLength; ++j)
+                    for (std::uint64_t j = 0; j < dataStringLength; ++j)
                     {
                         if (dataString[j] == ' ')
                         {

@@ -365,7 +365,7 @@ void cMapManager::m_addRooms(void)
         {
             // Data parsing
             std::string   dataString       = {};
-            std::uint32_t dataStringLength = 0;
+            std::uint64_t dataStringLength = 0;
             std::uint32_t tStringNum       = 0;
             std::string   tString          = {};
 
@@ -389,7 +389,7 @@ void cMapManager::m_addRooms(void)
                 /// # Room tile, room type, ignore
                 if (dataStringLength > 4)
                 {
-                    for (std::uint32_t j = 0; j < dataStringLength; ++j)
+                    for (std::uint64_t j = 0; j < dataStringLength; ++j)
                     {
                         if (dataString[j] == ' ')
                         {
@@ -421,7 +421,7 @@ void cMapManager::m_addRooms(void)
 
                 // Set the room type
                 std::int32_t roomNum = m_getRoomFromTile(m_map, (tRoomTileY * m_map->info.size_x) + tRoomTileX, tRoomIgnore);
-                if ((roomNum >= 0) && (roomNum < m_map->numRoom))
+                if ((roomNum >= 0) && (roomNum < static_cast<std::int32_t>(m_map->numRoom)))
                 {
                     m_map->room[roomNum].type = static_cast<eMapRoomType>(tRoomType);
                 }

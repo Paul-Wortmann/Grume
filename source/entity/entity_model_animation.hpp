@@ -28,19 +28,19 @@
 
 struct sAnimationVecKey
 {
-    double                 time              = 0;
+    float                  time              = 0;
     glm::vec3              vector            = {};
 };
 
 struct sAnimationQuatKey
 {
-    double                 time              = 0;
+    float                  time              = 0;
     glm::quat              quat              = {};
 };
 
 struct sAnimationMeshKey
 {
-    double                 time              = 0;
+    float                  time              = 0;
     std::uint32_t          value             = {};
 };
 
@@ -70,15 +70,15 @@ struct sEntityModelAnimation
     sAnimationChannel*     channel           = nullptr;
     std::uint32_t          numMeshChannels   = 0;
     sAnimationMeshChannel* meshChannel       = nullptr;
-    double                 duration          = 0.0; // duration in ticks
-    double                 ticksPerSecond    = 0.0;
-    double                 timeInSeconds     = 0.0;
-    double                 animationTime     = 16.0; // never set this to 0.0 or lower
+    float                  duration          = 0.0; // duration in ticks
+    float                  ticksPerSecond    = 0.0;
+    float                  timeInSeconds     = 0.0;
+    float                  animationTime     = 16.0; // never set this to 0.0 or lower
 
-    double                 previousAnimTime  = 0.0;
-    double                 currentAnimTime   = 0.0;
-    double                 stopAnimTime      = 0.0;
-    double                 startAnimTime     = 0.0;
+    float                  previousAnimTime  = 0.0;
+    float                  currentAnimTime   = 0.0;
+    float                  stopAnimTime      = 0.0;
+    float                  startAnimTime     = 0.0;
     bool                   repeatAnimation   = true;
     bool                   finishedAnimation = false;
 };

@@ -42,7 +42,7 @@ void cAnimationEngine::terminate(void)
 
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
+glm::mat4 cAnimationEngine::m_calculateTransformPosition(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     sAnimationChannel* channel = &m_entityTemp->graphics->model->animation[_currentAnimation].channel[_channel];
 
@@ -53,7 +53,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime
         std::uint32_t i1 = 0;
         std::uint32_t i2 = 0;
 
-        for (size_t i = 0; i < channel->numPositionKeys - 1; ++i)
+        for (std::uint32_t i = 0; i < channel->numPositionKeys - 1; ++i)
         {
             if (_currentAnimTime < channel->positionKey[i + 1].time)
             {
@@ -63,8 +63,8 @@ glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime
         }
         i2 = (i1 + 1) % channel->numPositionKeys;
 
-        float deltaTime = (float)(channel->positionKey[i2].time - channel->positionKey[i1].time);
-        float factor = (_currentAnimTime - (float)channel->positionKey[i1].time) / deltaTime;
+        float deltaTime = static_cast<float>(channel->positionKey[i2].time - channel->positionKey[i1].time);
+        float factor = (_currentAnimTime - static_cast<float>(channel->positionKey[i1].time)) / deltaTime;
 
         const glm::vec3& startKey = channel->positionKey[i1].vector;
         const glm::vec3& endKey = channel->positionKey[i2].vector;
@@ -74,7 +74,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime
     return glm::translate(glm::mat4(1.0f), newVector);
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
+glm::mat4 cAnimationEngine::m_calculateTransformRotation(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     sAnimationChannel* channel = &m_entityTemp->graphics->model->animation[_currentAnimation].channel[_channel];
 
@@ -84,7 +84,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime
         std::uint32_t i1 = 0;
         std::uint32_t i2 = 0;
 
-        for (size_t i = 0; i < channel->numRotationKeys - 1; ++i)
+        for (uint32_t i = 0; i < channel->numRotationKeys - 1; ++i)
         {
             if (_currentAnimTime < channel->rotationKey[i + 1].time)
             {
@@ -94,8 +94,8 @@ glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime
         }
         i2 = (i1 + 1) % channel->numRotationKeys;
 
-        float deltaTime = (float)(channel->rotationKey[i2].time - channel->rotationKey[i1].time);
-        float factor = (_currentAnimTime - (float)channel->rotationKey[i1].time) / deltaTime;
+        float deltaTime = static_cast<float>(channel->rotationKey[i2].time - channel->rotationKey[i1].time);
+        float factor = (_currentAnimTime - static_cast<float>(channel->rotationKey[i1].time)) / deltaTime;
 
         const glm::quat& startKey = channel->rotationKey[i1].quat;
         const glm::quat& endKey = channel->rotationKey[i2].quat;
@@ -105,7 +105,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime
     return glm::toMat4(newQuat);
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
+glm::mat4 cAnimationEngine::m_calculateTransformScale(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     sAnimationChannel* channel = &m_entityTemp->graphics->model->animation[_currentAnimation].channel[_channel];
 
@@ -116,7 +116,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, s
         std::uint32_t i1 = 0;
         std::uint32_t i2 = 0;
 
-        for (std::size_t i = 0; i < channel->numScalingKeys - 1; ++i)
+        for (std::uint32_t i = 0; i < channel->numScalingKeys - 1; ++i)
         {
             if (_currentAnimTime < channel->scalingKey[i + 1].time)
             {
@@ -126,8 +126,8 @@ glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, s
         }
         i2 = (i1 + 1) % channel->numScalingKeys;
 
-        float deltaTime = (float)(channel->scalingKey[i2].time - channel->scalingKey[i1].time);
-        float factor = (_currentAnimTime - (float)channel->scalingKey[i1].time) / deltaTime;
+        float deltaTime = static_cast<float>(channel->scalingKey[i2].time - channel->scalingKey[i1].time);
+        float factor = (_currentAnimTime - static_cast<float>(channel->scalingKey[i1].time)) / deltaTime;
 
         const glm::vec3& startKey = channel->scalingKey[i1].vector;
         const glm::vec3& endKey = channel->scalingKey[i2].vector;
@@ -137,7 +137,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, s
     return glm::scale(glm::mat4(1.0f), newVector);
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransform(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
+glm::mat4 cAnimationEngine::m_calculateTransform(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     // position
     glm::mat4 matrixPosition = m_calculateTransformPosition(_currentAnimTime, _currentAnimation, _channel);
@@ -159,7 +159,7 @@ glm::mat4 cAnimationEngine::m_calcRecursiveTransforms(int32_t _ID)
     return rMat;
 };
 
-void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, std::uint32_t _currentAnimation)
+void cAnimationEngine::m_calculateAnimation(float _currentAnimTime, std::uint32_t _currentAnimation)
 {
     sEntityModelAnimation* animation = &m_entityTemp->graphics->model->animation[_currentAnimation];
     // for each channel (bone) set the animation transformation matrix based on the time in the animation
@@ -171,7 +171,7 @@ void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, std::uint32
     }
 
     //std::cout << "Num channels: " << animation->numChannels << std::endl;
-    for (std::size_t i = 0; i < animation->numChannels; ++i)
+    for (std::uint32_t i = 0; i < animation->numChannels; ++i)
     {
         if (animation->channel[i].boneID > -1)
         {
@@ -179,7 +179,7 @@ void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, std::uint32
         }
     }
     // calculate the recursive transforms
-    for (std::size_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
+    for (std::uint32_t i = 0; i < m_entityTemp->graphics->model->numBones; ++i)
     {
         m_entityTemp->graphics->model->bone[i].transformFinal = m_entityTemp->graphics->model->inverseTransform * m_calcRecursiveTransforms(i) * m_entityTemp->graphics->model->bone[i].transformPose;
     }
@@ -214,7 +214,7 @@ void cAnimationEngine::initializeEntities(void)
 
 }
 
-void cAnimationEngine::process(double _deltaTime)
+void cAnimationEngine::process(std::int64_t _deltaTime)
 {
     // Process animations
     for (m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
@@ -246,7 +246,7 @@ void cAnimationEngine::process(double _deltaTime)
 
                 // determine the new animation time
                 animation->previousAnimTime = animation->currentAnimTime;
-                animation->currentAnimTime += _deltaTime / 1000.0f; // convert milliseconds to seconds
+                animation->currentAnimTime += static_cast<float>(_deltaTime) / 1000.0f; // convert milliseconds to seconds
                 while (animation->currentAnimTime > animation->animationTime)
                 {
                     animation->currentAnimTime -= animation->animationTime;
@@ -258,7 +258,7 @@ void cAnimationEngine::process(double _deltaTime)
     }
 }
 
-void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
+void cAnimationEngine::m_processEntity(sEntity* _entity, std::int64_t _deltaTime)
 {
     if (!m_entityTemp->base.enabled)
         return;
@@ -278,7 +278,7 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
 
         // determine the new animation time
         m_entityTemp->animation->previousAnimTime = m_entityTemp->animation->currentAnimTime;
-        m_entityTemp->animation->currentAnimTime += _deltaTime / 1000.0f; // convert milliseconds to seconds
+        m_entityTemp->animation->currentAnimTime += static_cast<float>(_deltaTime) / 1000.0f; // convert milliseconds to seconds
         if (m_entityTemp->animation->currentAnimTime > m_entityTemp->animation->stopAnimTime)
         {
             if (m_entityTemp->animation->repeatAnimation == true)

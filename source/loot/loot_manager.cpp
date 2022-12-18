@@ -36,10 +36,6 @@ void cLootManager::terminate(void)
     }
 }
 
-void cLootManager::process(const float &_dt)
-{
-}
-
 std::uint32_t cLootManager::loadLootTable(const std::string &_fileName)
 {
     std::uint32_t return_value = EXIT_SUCCESS;

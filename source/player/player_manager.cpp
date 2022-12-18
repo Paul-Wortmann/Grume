@@ -184,7 +184,7 @@ void cPlayerManager::targetTile(const std::uint32_t &_tile)
 void cPlayerManager::process(const std::int64_t &_dt)
 {
 
-    float frameDelta = _dt / 16.0f; // 60 FPS == 16ms per frame
+    float frameDelta = static_cast<float>(_dt) / 16.0f; // 60 FPS == 16ms per frame
 
     // Health regeneration
     m_player->character->attribute.health.current += (m_player->character->attribute.health.regen * frameDelta);

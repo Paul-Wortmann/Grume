@@ -49,7 +49,7 @@ void cMapManager::m_addObjects(void)
 
             // Data parsing
             std::string   dataString       = {};
-            std::uint32_t dataStringLength = 0;
+            std::uint64_t dataStringLength = 0;
             std::uint32_t tStringNum       = 0;
             std::string   tString          = {};
             bool          biomeObject      = false;
@@ -107,7 +107,7 @@ void cMapManager::m_addObjects(void)
                 /// # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
                 if (dataStringLength > 4)
                 {
-                    for (std::uint32_t j = 0; j < dataStringLength; ++j)
+                    for (std::uint64_t j = 0; j < dataStringLength; ++j)
                     {
                         if (dataString[j] == ' ')
                         {

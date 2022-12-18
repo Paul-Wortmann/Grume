@@ -31,7 +31,6 @@ class cQuestManager : public tcLinkedList<sQuest>
     public:
         std::uint32_t     initialize(void);
         void              terminate(void);
-        void              process(const float &_dt);
         void              setQuest(const std::string &_questName, const std::uint32_t &_state);
         std::uint32_t     getQuest(const std::string &_questName);
         std::uint32_t     load(const std::string &_fileName);

@@ -37,7 +37,7 @@ class cAnimationEngine
         std::uint32_t initialize(void);
         void          terminate(void);
         void          initializeEntities(void);
-        void          process(double _deltaTime);
+        void          process(std::int64_t _deltaTime);
         void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; m_entityTemp = _entity; }
 
     protected:
@@ -48,13 +48,13 @@ class cAnimationEngine
         sEntity*  m_entityTemp = nullptr;
 
         // animation_engine.cpp
-        glm::mat4 m_calculateTransformPosition(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
-        glm::mat4 m_calculateTransformRotation(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
-        glm::mat4 m_calculateTransformScale(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
-        glm::mat4 m_calculateTransform(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransformPosition(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransformRotation(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransformScale(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransform(float _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
         glm::mat4 m_calcRecursiveTransforms(std::int32_t  _ID);
-        void      m_calculateAnimation(double _currentAnimTime, std::uint32_t _currentAnimation);
-        void      m_processEntity(sEntity* _entity, double _deltaTime);
+        void      m_calculateAnimation(float _currentAnimTime, std::uint32_t _currentAnimation);
+        void      m_processEntity(sEntity* _entity, std::int64_t _deltaTime);
 };
 
 #endif //ANIMATION_ENGINE_HPP

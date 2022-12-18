@@ -101,7 +101,7 @@ void cNPCManager::m_generateWaypoints(sEntity*& _entity)
     }
 };
 
-void cNPCManager::process(const float &_dt)
+void cNPCManager::process(const std::int64_t &_dt)
 {
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
@@ -134,7 +134,7 @@ void cNPCManager::process(const float &_dt)
             }
 
             // Update timer
-            m_updateAICounter += _dt;
+            m_updateAICounter += static_cast<std::uint32_t>(_dt);
 
             // Ai
             if ((m_entityTemp->ai != nullptr) && (m_entityTemp->ai->state != eEntityAIState::entityAIStateCorpse))
@@ -146,7 +146,7 @@ void cNPCManager::process(const float &_dt)
                     m_updateAICounter -= m_updateAIFrequency;
 
                     // Direction angle to face
-                    float faceDirection = 0.0f;
+                    float faceDirection;
 
                     // Calculate the distance to the player squared
                     float distancetoPlayerSqr = (((m_entityTemp->base.position.x - m_entityPlayer->base.position.x) *
@@ -359,7 +359,7 @@ void cNPCManager::process(const float &_dt)
                             // Attack
                             //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
 
-                            m_entityTemp->ai->attackCounter += _dt;
+                            m_entityTemp->ai->attackCounter += static_cast<std::uint32_t>(_dt);
                             if (m_entityTemp->ai->attackCounter > m_entityTemp->ai->attackFrequency)
                             {
                                 m_entityTemp->ai->attackCounter = 0.0f;

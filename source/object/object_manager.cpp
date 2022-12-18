@@ -33,12 +33,12 @@ void cObjectManager::terminate(void)
 
 }
 
-void cObjectManager::process(const float &_dt)
+void cObjectManager::process(const std::int64_t &_dt)
 {
     // Map warp data
-    bool          mapWarp   = false;
     std::string   mapName   = {};
-    std::uint32_t mapPortal = 0;
+    // bool          mapWarp   = false;
+    // std::uint32_t mapPortal = 0;
 
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
@@ -53,9 +53,9 @@ void cObjectManager::process(const float &_dt)
                                      (m_entityTemp->base.position.z - m_entityPlayer->base.position.z)));
 
             float playerAwareDistance    = 50.0f;
-            float playerAttackDistance   = 1.0f;
-            float playerMovetoDistance   = 10.0f;
-            float playerMoveAwayDistance = 0.75f;
+            // float playerAttackDistance   = 1.0f;
+            // float playerMovetoDistance   = 10.0f;
+            // float playerMoveAwayDistance = 0.75f;
 
             // Entity clicked
             if (m_entityTemp->base.clicked)
@@ -124,7 +124,7 @@ void cObjectManager::process(const float &_dt)
                                             tEntity->base.position.z += posZ;
 
                                             // variation: rotation
-                                            float rotation = gRandFloatNormalized() * M_PI * 2;
+                                            float rotation = gRandFloatNormalized() * static_cast<float>(M_PI) * 2.0f;
                                             tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
                                             tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
                                             tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;

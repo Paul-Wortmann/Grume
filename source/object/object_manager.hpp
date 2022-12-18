@@ -38,7 +38,7 @@ class cObjectManager
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
-        void          process(const float &_dt);
+        void          process(const std::int64_t &_dt);
         void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; };
         void          setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; };
         void          setMapPointer(sMap* _map) { m_mapPointer = _map; };
