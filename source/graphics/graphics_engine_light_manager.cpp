@@ -35,5 +35,5 @@ void cGraphicsEngineLightManager::terminate(void)
 
 void cGraphicsEngineLightManager::freeData(sGraphicsEnginePointLight*& _light)
 {
-
+    _light->enabled = 0;
 }

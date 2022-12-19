@@ -124,7 +124,7 @@ void cGraphicsEngine::m_pui_render(void)
                     // Experience bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionBarExp)
                     {
-                        float     percent  = static_cast<double>(m_entityPlayer->character->level.exp) / static_cast<double>(m_entityPlayer->character->level.expNext);
+                        float     percent  = static_cast<float>(static_cast<double>(m_entityPlayer->character->level.exp) / static_cast<double>(m_entityPlayer->character->level.expNext));
                         glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
@@ -201,8 +201,8 @@ void cGraphicsEngine::m_pui_render(void)
     {
         //std::cout  << "Texture x: " << titleTexture->width << " - " << titleTexture->height << std::endl;
         // Shader uniforms
-        float scale_x = 1920.0 * (static_cast<float>(titleTexture->width) / static_cast<float>(m_window_w)) * 0.0001;
-        float scale_y = 1080.0 * (static_cast<float>(titleTexture->height) / static_cast<float>(m_window_h)) * 0.0001;
+        float scale_x = 1920.0f * (static_cast<float>(titleTexture->width) / static_cast<float>(m_window_w)) * 0.0001f;
+        float scale_y = 1080.0f * (static_cast<float>(titleTexture->height) / static_cast<float>(m_window_h)) * 0.0001f;
         glm::vec3 position = glm::vec3(1.0 - scale_x, 1.0 - scale_y, -1.0);
         //std::cout  << "Scale x: " << scale_x << " - " << scale_y << std::endl;
 

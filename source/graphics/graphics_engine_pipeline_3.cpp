@@ -425,8 +425,8 @@ void cGraphicsEngine::m_p3_render(void)
 
                     // Scale
                     float scale  = 2.0f;
-                    float scaleX = static_cast<float>(m_window_w) / 1920.0f * (texture->width * scale / static_cast<float>(m_window_w));
-                    float scaleY = static_cast<float>(m_window_h) / 1080.0f * (texture->height * scale / static_cast<float>(m_window_h));
+                    float scaleX = static_cast<float>(m_window_w) / 1920.0f * static_cast<float>(texture->width) * scale / static_cast<float>(m_window_w);
+                    float scaleY = static_cast<float>(m_window_h) / 1080.0f * static_cast<float>(texture->height) * scale / static_cast<float>(m_window_h);
 
                     // position
                     tooltipPosition.x = m_entityTemp->base.position.x;
