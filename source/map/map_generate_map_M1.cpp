@@ -288,7 +288,7 @@ void cMapManager::m_generateMap_M1(sMap*& _map)
             // epoch in microseconds
             std::uint64_t milliseconds_since_epoch = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
-            _map->info.seed = milliseconds_since_epoch;
+            _map->info.seed = static_cast<std::uint32_t>(milliseconds_since_epoch);
             srand (_map->info.seed);
             mapList[_map->info.name] = _map->info.seed;
         }

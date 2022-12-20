@@ -25,9 +25,8 @@
 
 std::uint32_t cMapManager::m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile)
 {
-    // _tile is unsigned, as such use a signed variable.
-    const std::int64_t tile_x = _tile % _map->info.size_x;
-    const std::int64_t tile_y = _tile / _map->info.size_y;
+    const std::int32_t tile_x = _tile % _map->info.size_x;
+    const std::int32_t tile_y = _tile / _map->info.size_y;
 
     std::uint32_t numNeighbors = 0;
 

@@ -294,7 +294,7 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
         }
         else
         {
-            _map->info.seed = time(nullptr);
+            _map->info.seed = static_cast<std::uint32_t>(time(nullptr));
             srand (_map->info.seed);
             mapList[_map->info.name] = _map->info.seed;
         }

@@ -54,13 +54,13 @@ void cMapManager::m_generateMap_C2(sMap*& _map)
         m_mapRoomDiscardAllButLargest(_map);
         m_mapRemoveAnomalies(_map);
 
-        if (m_mapGetFloorArea(_map) > (_map->numTiles * (_map->generate->floorAreaMin / 100.0f)))
+        if (m_mapGetFloorArea(_map) > ((_map->numTiles) * static_cast<std::uint32_t>(_map->generate->floorAreaMin / 100)))
         {
             i = _map->generate->pass;
         }
         else
         {
-            _map->info.seed = time(nullptr);
+            _map->info.seed = static_cast<std::uint32_t>(time(nullptr));
             srand (_map->info.seed);
             mapList[_map->info.name] = _map->info.seed;
         }
