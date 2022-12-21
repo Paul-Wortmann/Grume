@@ -39,7 +39,7 @@ void cGraphicsEngineCamera::terminate(void)
 
 void cGraphicsEngineCamera::process(const std::int64_t &_dt)
 {
-    if (m_shakeActive)
+    if ((m_shakeActive) && (m_shakeTime > _dt))
     {
         m_shakeTime -= static_cast<std::uint32_t>(_dt);
         if (m_shakeTime == 0)
