@@ -514,6 +514,15 @@
 	<object>golem_4_debris          npc/golem_4/golem_4_debris_005.txt</object>
 	<object>golem_4_debris          npc/golem_4/golem_4_debris_006.txt</object>
 
+    # Golem boss corpse and debris (Rock)
+	<object>golem_boss_1_corpse     npc/golem_boss_1/golem_boss_1_corpse_001.txt</object>
+	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_001.txt</object>
+	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_002.txt</object>
+	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_003.txt</object>
+	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_004.txt</object>
+	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_005.txt</object>
+	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_006.txt</object>
+
     # Grass
 	<object>grass_1                 objects/grass_1_001.txt</object>
 	<object>grass_1                 objects/grass_1_002.txt</object>

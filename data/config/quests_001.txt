@@ -8,6 +8,7 @@
 	<quest>skeleton_boss_2_dead 0</quest>
 	<quest>skeleton_boss_3_dead 0</quest>
 	<quest>spider_boss_1_dead 0</quest>
+	<quest>golem_boss_1_dead 0</quest>
 
 </quests>
 

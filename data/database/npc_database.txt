@@ -29,6 +29,7 @@
     <npc>golem_2                 npc/golem_2/golem_2_001.txt</npc> # Lava
     <npc>golem_3                 npc/golem_3/golem_3_001.txt</npc> # Ice
     <npc>golem_4                 npc/golem_4/golem_4_001.txt</npc> # Blood
+    <npc>golem_boss_1            npc/golem_boss_1/golem_boss_1_001.txt</npc> # Rock
 
     <npc>ogre_1                  npc/ogre_1/ogre_1_001.txt</npc>
 
