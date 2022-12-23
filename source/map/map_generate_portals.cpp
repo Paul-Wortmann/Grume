@@ -65,8 +65,8 @@ void cMapManager::m_generatePortals(sMap*& _map)
 
                 if (m_mapGetFootprint(_map, tEntity, locationNum, locationX, locationY))
                 {
-                    locationX += tEntity->physics->halfDimentions.x;
-                    locationY += tEntity->physics->halfDimentions.y;
+                    locationX += static_cast<std::uint32_t>(tEntity->physics->halfDimentions.x);
+                    locationY += static_cast<std::uint32_t>(tEntity->physics->halfDimentions.y);
                     locationTile = (locationY * _map->info.size_x) + locationX;
 
                     // Portal tile

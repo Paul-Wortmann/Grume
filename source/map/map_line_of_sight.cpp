@@ -47,21 +47,15 @@ bool gLineOfSight(sMap*& _map, const std::uint32_t& _x1, const std::uint32_t& _y
     // Double to avoid sparse interpolation
     distance = distance * 2;
 
-    // If distance = 0 return early
-    if (distance < 0)
-    {
-        return true;
-    }
-
     // Check for collisions
     for (std::uint32_t i = 0; i < distance; ++i)
     {
         // interpolate between (x1,y1) and (x2,y2)
-        float dt = float(i) / distance;
+        float dt = static_cast<float>(i) / static_cast<float>(distance);
 
         // at t=0.0 we get (x1,y1); at t=1.0 we get (x2,y2)
-        std::uint32_t x = std::uint32_t(_x2 * (1.0 - dt) + _x1 * dt);
-        std::uint32_t y = std::uint32_t(_y2 * (1.0 - dt) + _y1 * dt);
+        std::uint32_t x = std::uint32_t(_x2 * (1.0 - dt) + static_cast<float>(_x1) * dt);
+        std::uint32_t y = std::uint32_t(_y2 * (1.0 - dt) + static_cast<float>(_y1) * dt);
 
         // now check tile (x,y)
         if (_isObstacle(_map, x, y))
