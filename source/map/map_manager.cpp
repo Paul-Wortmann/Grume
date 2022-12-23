@@ -307,7 +307,7 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
 
         // Data parsing
         std::string   dataString       = {};
-        std::uint32_t dataStringLength = 0;
+        std::uint64_t dataStringLength = 0;
         std::string   tString          = "";
 
         // Map conditions
@@ -334,31 +334,31 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
         if (mapFile.getInstanceCount("<generation_wall_size>") > 0)
             m_map->generate->wallSize = mapFile.getInteger("<generation_wall_size>");
         if (mapFile.getInstanceCount("<generation_density>") > 0)
-            m_map->generate->density = mapFile.getInteger("<generation_density>");
+            m_map->generate->density = static_cast<uint16_t>(mapFile.getInteger("<generation_density>"));
         if (mapFile.getInstanceCount("<generation_room_min>") > 0)
-            m_map->generate->roomMin = mapFile.getInteger("<generation_room_min>");
+            m_map->generate->roomMin = static_cast<uint16_t>(mapFile.getInteger("<generation_room_min>"));
         if (mapFile.getInstanceCount("<generation_room_max>") > 0)
-            m_map->generate->roomMax = mapFile.getInteger("<generation_room_max>");
+            m_map->generate->roomMax = static_cast<uint16_t>(mapFile.getInteger("<generation_room_max>"));
         if (mapFile.getInstanceCount("<generation_room_radius_min>") > 0)
-            m_map->generate->roomRadiusMin = mapFile.getInteger("<generation_room_radius_min>");
+            m_map->generate->roomRadiusMin = static_cast<uint16_t>(mapFile.getInteger("<generation_room_radius_min>"));
         if (mapFile.getInstanceCount("<generation_room_radius_max>") > 0)
-            m_map->generate->roomRadiusMax = mapFile.getInteger("<generation_room_radius_max>");
+            m_map->generate->roomRadiusMax = static_cast<uint16_t>(mapFile.getInteger("<generation_room_radius_max>"));
         if (mapFile.getInstanceCount("<generation_room_border>") > 0)
-            m_map->generate->roomBorder = mapFile.getInteger("<generation_room_border>");
+            m_map->generate->roomBorder = static_cast<uint16_t>(mapFile.getInteger("<generation_room_border>"));
         if (mapFile.getInstanceCount("<generation_room_shape>") > 0)
             m_map->generate->roomShape = static_cast<eRoomShape>(mapFile.getInteger("<generation_room_shape>"));
         if (mapFile.getInstanceCount("<generation_floor_area_min>") > 0)
-            m_map->generate->floorAreaMin = mapFile.getInteger("<generation_floor_area_min>");
+            m_map->generate->floorAreaMin = static_cast<uint16_t>(mapFile.getInteger("<generation_floor_area_min>"));
         if (mapFile.getInstanceCount("<generation_connectivity_algorithm>") > 0)
             m_map->generate->connectivityAlgorithm = static_cast<eConnectAlgo>(mapFile.getInteger("<generation_connectivity_algorithm>"));
         if (mapFile.getInstanceCount("<generation_connectivity_complexity>") > 0)
-            m_map->generate->connectivityComplexity = mapFile.getInteger("<generation_connectivity_complexity>");
+            m_map->generate->connectivityComplexity = static_cast<uint16_t>(mapFile.getInteger("<generation_connectivity_complexity>"));
         if (mapFile.getInstanceCount("<generation_connectivity_padding>") > 0)
-            m_map->generate->connectivityPadding = mapFile.getInteger("<generation_connectivity_padding>");
+            m_map->generate->connectivityPadding = static_cast<uint16_t>(mapFile.getInteger("<generation_connectivity_padding>"));
         if (mapFile.getInstanceCount("<generation_direction_bias>") > 0)
             m_map->generate->directionBias = static_cast<eDirectionBias>(mapFile.getInteger("<generation_direction_bias>"));
         if (mapFile.getInstanceCount("<generation_direction_bias_strength>") > 0)
-            m_map->generate->directionBiasStrength = mapFile.getInteger("<generation_direction_bias_strength>");
+            m_map->generate->directionBiasStrength = static_cast<uint16_t>(mapFile.getInteger("<generation_direction_bias_strength>"));
 
         // Map information
         m_map->info.fileName    = _fileName;
@@ -440,7 +440,7 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
                 x = 0;
                 dataString = mapFile.getString("<tiles>", y + 1);
                 dataStringLength = dataString.length();
-                for (std::uint32_t i = 0; i < dataStringLength; ++i)
+                for (std::uint64_t i = 0; i < dataStringLength; ++i)
                 {
                     if (dataString[i] != ',')
                     {

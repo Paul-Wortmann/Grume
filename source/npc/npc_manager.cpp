@@ -66,22 +66,22 @@ void cNPCManager::m_generateWaypoints(sEntity*& _entity)
     const float PI  = 3.14159265f;
 
     // Calculate angle between waypoints (in radians)
-    float anglePoint = (360.0f / _entity->ai->patrol->waypointCount) * (PI / 180.0);
+    float anglePoint = static_cast<float>(360.0f / static_cast<float>(_entity->ai->patrol->waypointCount)) * static_cast<float>(PI / 180.0f);
 
     // Random angle offset (in radians)
-    float angleBias = (rand() % 360) * (PI / 180.0);
+    float angleBias = static_cast<float>(rand() % 360) * static_cast<float>(PI / 180.0f);
 
     for (std::uint32_t i = 0; i < _entity->ai->patrol->waypointCount; ++i)
     {
         // calculate angle
-        float angle = (anglePoint + angleBias) * i;
+        float angle = (anglePoint + angleBias) * static_cast<float>(i);
 
         // random radius 10 - 20 tiles
-        float radius = 10.0f + (rand() % 10);
+        float radius = 10.0f + static_cast<float>(rand() % 10);
 
         // Generate each point on the circle
-        std::int32_t x = (radius * cos(angle)) + tx;
-        std::int32_t y = (radius * sin(angle)) + ty;
+        std::int32_t x = static_cast<std::int32_t>((radius * cos(angle)) + static_cast<float>(tx));
+        std::int32_t y = static_cast<std::int32_t>((radius * sin(angle)) + static_cast<float>(ty));
 
         //std::cout << "Generating point: " << x << " : " << y << std::endl;
 
@@ -179,7 +179,7 @@ void cNPCManager::process(const std::int64_t &_dt)
                         {
                             //std::cout << "Low health, healing!" << i << std::endl;
                             m_entityTemp->character->attribute.mana.current -= m_entityTemp->character->skill.heal.manaCost;
-                            m_entityTemp->character->attribute.health.current += (m_entityTemp->character->attribute.health.max / 2.0);
+                            m_entityTemp->character->attribute.health.current += static_cast<float>(m_entityTemp->character->attribute.health.max / 2.0f);
 
 
                             // blood particles
@@ -220,21 +220,21 @@ void cNPCManager::process(const std::int64_t &_dt)
                                 // Minion is dead, revive
                                 if (minion->ai->state == eEntityAIState::entityAIStateCorpse)
                                 {
-                                    if (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->reviveCost)
+                                    if (m_entityTemp->character->attribute.mana.current > static_cast<float>(m_entityTemp->ai->leader->reviveCost))
                                     {
                                         //std::cout << "Minion is dead, reviving!" << i << std::endl;
-                                        m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->reviveCost;
+                                        m_entityTemp->character->attribute.mana.current -= static_cast<float>(m_entityTemp->ai->leader->reviveCost);
                                         m_entityRevive(minion);
                                     }
                                 }
                                 // Minion low health: heal minion
                                 else if (minion->character->attribute.health.current < (minion->ai->retreatThreshold * minion->character->attribute.health.max))
                                 {
-                                    if (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->healCost)
+                                    if (m_entityTemp->character->attribute.mana.current > static_cast<float>(m_entityTemp->ai->leader->healCost))
                                     {
                                         //std::cout << "Minion has low health, healing!" << i << std::endl;
-                                        m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->healCost;
-                                        minion->character->attribute.health.current = (minion->character->attribute.health.max / 2.0);
+                                        m_entityTemp->character->attribute.mana.current -= static_cast<float>(m_entityTemp->ai->leader->healCost);
+                                        minion->character->attribute.health.current = static_cast<float>(minion->character->attribute.health.max / 2.0f);
 
                                         // blood particles
                                         glm::vec3 minionPosition = glm::vec3(minion->base.position.x, minion->base.position.y + minion->base.particleHeight, minion->base.position.z);
@@ -246,13 +246,13 @@ void cNPCManager::process(const std::int64_t &_dt)
                         }
                         // If enough mana, spawn minions if not at max
                         if ((m_entityTemp->ai->leader->minionCurrent < m_entityTemp->ai->leader->minionMax) &&
-                            (m_entityTemp->character->attribute.mana.current > m_entityTemp->ai->leader->spawnCost))
+                            (m_entityTemp->character->attribute.mana.current > static_cast<float>(m_entityTemp->ai->leader->spawnCost)))
                         {
                             // Update minion count
                             m_entityTemp->ai->leader->minionCurrent++;
 
                             // Decrease mana by spawn cost
-                            m_entityTemp->character->attribute.mana.current -= m_entityTemp->ai->leader->spawnCost;
+                            m_entityTemp->character->attribute.mana.current -= static_cast<float>(m_entityTemp->ai->leader->spawnCost);
 
                             // Set a managed entity to be spawned
                             if (m_entityTemp->ai->leader->minionManaged)
@@ -954,7 +954,7 @@ void cNPCManager::process(const std::int64_t &_dt)
                     // Note: rand() for crit does not factor in max chance or player level
 
                     // Crit damage
-                    if ((rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.critChance)
+                    if (static_cast<float>(rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.critChance)
                     {
                         float damage = m_entityPlayer->character->attribute.damagePhysical.base * m_entityPlayer->character->attribute.damagePhysical.critMultiplier;
                         damage += m_entityPlayer->character->attribute.damagePhysical.base;
@@ -1060,7 +1060,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
         m_mapPointer->info.currentNumMob--;
 
         // Screen shake on NPC death
-        if ((_entity->base.deathShakeChance > 0) && ((rand() % 101) < _entity->base.deathShakeChance))
+        if ((_entity->base.deathShakeChance > 0) && (static_cast<std::uint32_t>(rand() % 101) < _entity->base.deathShakeChance))
         {
             m_graphicsEngine->addScreenShake(_entity->base.deathShakeDuration, _entity->base.deathShakeForce);
         }
@@ -1098,8 +1098,8 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
         for (std::uint32_t i = 0; i < gibCount; ++i)
         {
             glm::vec3 gibPosition = spawnPosition;
-            gibPosition.x += (1.0 - (gRandFloatNormalized() * 2.0));
-            gibPosition.z += (1.0 - (gRandFloatNormalized() * 2.0));
+            gibPosition.x += static_cast<float>(1.0 - (gRandFloatNormalized() * 2.0));
+            gibPosition.z += static_cast<float>(1.0 - (gRandFloatNormalized() * 2.0));
             sEntity* tEntity = nullptr;
             tEntity = m_particleEngine->spawnEntity(_entity->base.debris, i + 1, eDatabaseType::databaseTypeObject, gibPosition);
 
@@ -1113,7 +1113,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                 tEntity->base.position.z += posZ;
 
                 // variation: rotation
-                float rotation = gRandFloatNormalized() * M_PI * 2;
+                float rotation = static_cast<float>(gRandFloatNormalized() * M_PI * 2.0f);
                 tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
                 tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
                 tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;
@@ -1162,7 +1162,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                         tEntity->base.position.z += posZ;
 
                         // placement variation: rotation
-                        tEntity->base.rotation.y = gRandFloatNormalized() * M_PI * 2; // random angle
+                        tEntity->base.rotation.y = static_cast<float>(gRandFloatNormalized() * M_PI * 2.0f); // random angle
 
                         // Update model matrix
                         m_entityManager->updateModelMatrix(tEntity);
@@ -1181,7 +1181,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                     // Level up
                     m_entityPlayer->character->level.current++;
                     m_entityPlayer->character->level.exp -= m_entityPlayer->character->level.expNext;
-                    m_entityPlayer->character->level.expNext *= m_entityPlayer->character->level.expMultiplier;
+                    m_entityPlayer->character->level.expNext = static_cast<std::uint64_t>(static_cast<double>(m_entityPlayer->character->level.expNext) * static_cast<double>(m_entityPlayer->character->level.expMultiplier));
 
                     // Set entity state : levelUp
                     m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_levelUp);
@@ -1242,7 +1242,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                     tEntity->base.position.z += posZ;
 
                     // variation: rotation
-                    float rotation = gRandFloatNormalized() * M_PI * 2;
+                    float rotation = static_cast<float>(gRandFloatNormalized() * M_PI * 2.0f);
                     tEntity->base.rotation.x = rotation * tEntity->base.rotationAxis.x;
                     tEntity->base.rotation.y = rotation * tEntity->base.rotationAxis.y;
                     tEntity->base.rotation.z = rotation * tEntity->base.rotationAxis.z;

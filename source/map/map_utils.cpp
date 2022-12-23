@@ -217,7 +217,7 @@ std::uint32_t gClosestFreeTile(sMap*& _map, const std::uint32_t &_tile)
         }
 
         // Third a very iterative approach
-        for (std::uint32_t radius = 1; radius < iterations; ++radius)
+        for (radius = 1; radius < iterations; ++radius)
         {
             std::uint32_t tile_xStart = tile_x - radius;
             std::uint32_t tile_yStart = tile_y - radius;
