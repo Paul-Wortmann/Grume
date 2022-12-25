@@ -86,15 +86,15 @@ void cEntityManager::freeData(sEntity*& _pointer)
     }
 
     // Base
-    _pointer->base.name            = {};
-    _pointer->base.enabled         = true;
+    _pointer->base.name            = "";
+    _pointer->base.enabled         = false;
     _pointer->base.dying           = false;
     _pointer->base.type            = eEntityType::entityType_none;
     _pointer->base.owner           = eEntityOwner::entityOwner_none;
     _pointer->base.tileOnMap       = 0;
 
     _pointer->base.hitPoints       = 40; // Used for objects that can take damage
-    _pointer->base.debris          = {};
+    _pointer->base.debris          = "";
     _pointer->base.clicked         = false;
 	_pointer->base.destructible    = false;
 	_pointer->base.collectable     = false;
@@ -103,7 +103,7 @@ void cEntityManager::freeData(sEntity*& _pointer)
 
     _pointer->base.textActive      = false;
     _pointer->base.textHover       = false;
-    _pointer->base.textData        = {};
+    _pointer->base.textData        = "";
 
     _pointer->base.position        = glm::vec3(0.0f, 0.0f, 0.0f);
     _pointer->base.rotation        = glm::vec3(0.0f, 0.0f, 0.0f);

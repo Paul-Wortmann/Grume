@@ -90,6 +90,14 @@ void cMapManager::m_freeData(sMap*& _map)
         _map->numNPC = 0;
     }
 
+    // Delete NPC mob data
+    if (_map->npcMob != nullptr)
+    {
+        delete [] _map->npcMob;
+        _map->npcMob    = nullptr;
+        _map->numNPCmob = 0;
+    }
+
     // Delete object data
     if (_map->object != nullptr)
     {
@@ -255,6 +263,9 @@ void cMapManager::m_playMapMusic(void)
 
 void cMapManager::m_unloadMap(void)
 {
+    // Temp free entity count
+    //std::uint32_t entityCount = 0;
+
     // If nullptr return
     if (m_map == nullptr)
     {
@@ -271,9 +282,16 @@ void cMapManager::m_unloadMap(void)
         if ((tEntity->base.owner == eEntityOwner::entityOwner_map) ||
             (tEntity->base.owner == eEntityOwner::entityOwner_particle))
         {
+            tEntity->base.dying = false;
             m_entityManager->deleteEntity(tEntity);
         }
+        //else
+        //{
+        //    entityCount++;
+        //}
     }
+
+    //std::cout << "Unused entities: " << entityCount << std::endl;
 }
 
 std::uint32_t cMapManager::load(const std::string &_fileName)

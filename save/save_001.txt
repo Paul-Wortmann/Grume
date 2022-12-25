@@ -2,8 +2,8 @@
 <save_file>
 
    <information>
-      <current_map>ruins_2_002</current_map>
-      <current_position>176</current_position>
+      <current_map>cave_4_008</current_map>
+      <current_position>4058</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
@@ -18,7 +18,7 @@
       <mana_current>5764</mana_current>
       <mana_max>5764</mana_max>
       <mana_regen>83.1314</mana_regen>
-      <gold_current>70428</gold_current>
+      <gold_current>71806</gold_current>
       <damage_physical_base>20</damage_physical_base>
       <damage_physical_crit_chance>11</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>2.75</damage_physical_crit_multiplier>
@@ -71,6 +71,10 @@
       <map>cave_3_002 1920331983</map>
       <map>cave_4_001 1872221306</map>
       <map>cave_4_002 1799729037</map>
+      <map>cave_4_004 744790395</map>
+      <map>cave_4_006 1702881018</map>
+      <map>cave_4_007 559656329</map>
+      <map>cave_4_008 1161248664</map>
       <map>cemetery_1_001 52420276</map>
       <map>cemetery_1_002 852049122</map>
       <map>cemetery_1_003 1463210838</map>
