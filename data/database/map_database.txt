@@ -42,6 +42,18 @@
 
 	<map>cave_4_001     area_1/cave_4_001.txt</map>
 	<map>cave_4_002     area_1/cave_4_002.txt</map>
+	<map>cave_4_003     area_1/cave_4_003.txt</map>
+	<map>cave_4_004     area_1/cave_4_004.txt</map>
+	<map>cave_4_005     area_1/cave_4_005.txt</map>
+	<map>cave_4_006     area_1/cave_4_006.txt</map>
+	<map>cave_4_007     area_1/cave_4_007.txt</map>
+	<map>cave_4_008     area_1/cave_4_008.txt</map>
+	<map>cave_4_009     area_1/cave_4_009.txt</map>
+	<map>cave_4_010     area_1/cave_4_010.txt</map>
+	<map>cave_4_011     area_1/cave_4_011.txt</map>
+	<map>cave_4_012     area_1/cave_4_012.txt</map>
+	<map>cave_4_013     area_1/cave_4_013.txt</map>
+	<map>cave_4_014     area_1/cave_4_014.txt</map>
 
 	<map>cemetery_1_001 area_1/cemetery_1_001.txt</map>
 	<map>cemetery_1_002 area_1/cemetery_1_002.txt</map>
