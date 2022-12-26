@@ -103,20 +103,16 @@
         # 1.5708 - Face east
         # 3.1416 - Face north
         # 4.7124 - Face west
-        <portal>1 cave_4_002         0 02 32 4.7124</portal>
-        <portal>2 cave_4_002         0 62 32 1.5708</portal>
-        <portal>3 cave_4_002         0 32 02 3.14159</portal>
-        <portal>4 cave_4_002         0 32 61 0.0000</portal>
+        <portal>1 cave_4_013         0 32 63 0.0000</portal>
+        <portal>2 cave_4_015         0 32 02 3.1416</portal>
     </portals>
 
     <events>
         # Event number, type, tile x, y, trigger tile x, y, database map name, repeat
         # Type 1: trigger object on tile
         # Type 2: map warp event
-        <event>1 2  02 00  00 00  cave_4_002      0</event>
-        <event>2 2  01 00  00 00  cave_4_002      0</event>
-        <event>3 2  02 00  00 00  cave_4_002      0</event>
-        <event>4 2  01 00  00 00  cave_4_002      0</event>
+        <event>1 2  02 00  00 00  cave_4_013      0</event>
+        <event>2 2  01 00  00 00  cave_4_015      0</event>
     </events>
 
     <rooms>
@@ -154,29 +150,17 @@
     <objects>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z, trigger tile x, y, trigger event number
 
-        # Portal left
-        <object>portal_cave_right  1  000 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_center 1  000 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_center 1  000 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_left   1  000 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 1 none 0</object>
-
-        # Portal right
-        <object>portal_cave_right  1  065 031  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
-        <object>portal_cave_center 1  065 032  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
-        <object>portal_cave_center 1  065 033  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
-        <object>portal_cave_left   1  065 034  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 2 none 0</object>
-
         # Portal top
-        <object>portal_cave_right  1  031 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 3 none 0</object>
-        <object>portal_cave_center 1  032 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 3 none 0</object>
-        <object>portal_cave_center 1  033 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 3 none 0</object>
-        <object>portal_cave_left   1  034 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 3 none 0</object>
+        <object>portal_cave_right  1  031 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  032 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_center 1  033 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
+        <object>portal_cave_left   1  034 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
 
         # Portal bottom
-        <object>portal_cave_right  1  031 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 4 none 0</object>
-        <object>portal_cave_center 1  032 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 4 none 0</object>
-        <object>portal_cave_center 1  033 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 4 none 0</object>
-        <object>portal_cave_left   1  034 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 4 none 0</object>
+        <object>portal_cave_right  1  031 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  032 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_center 1  033 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_left   1  034 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
 
     </objects>
 
