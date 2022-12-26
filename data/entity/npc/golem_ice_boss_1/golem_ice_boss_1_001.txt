@@ -20,7 +20,7 @@
             <ai_leader_minion_managed>0</ai_leader_minion_managed>
             <ai_leader_minion_start>0</ai_leader_minion_start>
             <ai_leader_minion_max>8</ai_leader_minion_max>
-            <ai_leader_minion_name>golem_1</ai_leader_minion_name>
+            <ai_leader_minion_name>golem_3</ai_leader_minion_name>
             <ai_leader_minion_number>1</ai_leader_minion_number>
 
             <ai_leader_minion_revive>1</ai_leader_minion_revive> # bool
@@ -42,7 +42,7 @@
     </animation>
 
     <base>
-	    <base_name>golem_boss_1_001</base_name>
+	    <base_name>golem_ice_boss_1_001</base_name>
 	    <base_type>6</base_type>
 	    <base_flying>0</base_flying>
 	    <base_over_size>1</base_over_size>
@@ -50,7 +50,7 @@
         <base_scale>2.0 2.0 2.0</base_scale>
         <base_rotation>3.14159 1.5708 0</base_rotation>
         <base_rotation_axis>0 1 0</base_rotation_axis>
-	    <base_debris>golem_boss_1_debris</base_debris>
+	    <base_debris>golem_ice_boss_1_debris</base_debris>
 	    <base_destructible>1</base_destructible>
 	    <base_collectable>0</base_collectable>
 	    <base_particle_type>4</base_particle_type>
@@ -97,7 +97,7 @@
     
     <graphics>
         <graphics_model>npc/golem_1/golem_1_001.dae</graphics_model>
-        <graphics_material>npc/golem_boss_1_001.txt</graphics_material>
+        <graphics_material>npc/golem_ice_boss_1_001.txt</graphics_material>
     </graphics>
 
     <loot>
@@ -132,7 +132,7 @@
     </physics>
 
     <quest>
-	    <quest_on_death>golem_boss_1_dead 1</quest_on_death>
+	    <quest_on_death>golem_ice_boss_1_dead 1</quest_on_death>
     </quest>
 
     <state>

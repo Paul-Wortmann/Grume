@@ -30,6 +30,10 @@
     <npc>golem_3                 npc/golem_3/golem_3_001.txt</npc> # Ice
     <npc>golem_4                 npc/golem_4/golem_4_001.txt</npc> # Blood
     <npc>golem_boss_1            npc/golem_boss_1/golem_boss_1_001.txt</npc> # Rock
+	<npc>golem_ice_mini_boss_1   npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_001.txt</npc>
+	<npc>golem_ice_mini_boss_2   npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_001.txt</npc>
+	<npc>golem_ice_mini_boss_3   npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_001.txt</npc>
+	<npc>golem_ice_boss_1        npc/golem_ice_boss_1/golem_ice_boss_1_001.txt</npc>
 
     <npc>ogre_1                  npc/ogre_1/ogre_1_001.txt</npc>
 

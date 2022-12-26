@@ -479,49 +479,85 @@
     <object>gib                   objects/gibs_1_009.txt</object>
 
     # Golem corpse and debris (Rock)
-	<object>golem_1_corpse          npc/golem_1/golem_1_corpse_001.txt</object>
-	<object>golem_1_debris          npc/golem_1/golem_1_debris_001.txt</object>
-	<object>golem_1_debris          npc/golem_1/golem_1_debris_002.txt</object>
-	<object>golem_1_debris          npc/golem_1/golem_1_debris_003.txt</object>
-	<object>golem_1_debris          npc/golem_1/golem_1_debris_004.txt</object>
-	<object>golem_1_debris          npc/golem_1/golem_1_debris_005.txt</object>
-	<object>golem_1_debris          npc/golem_1/golem_1_debris_006.txt</object>
+	<object>golem_1_corpse               npc/golem_1/golem_1_corpse_001.txt</object>
+	<object>golem_1_debris               npc/golem_1/golem_1_debris_001.txt</object>
+	<object>golem_1_debris               npc/golem_1/golem_1_debris_002.txt</object>
+	<object>golem_1_debris               npc/golem_1/golem_1_debris_003.txt</object>
+	<object>golem_1_debris               npc/golem_1/golem_1_debris_004.txt</object>
+	<object>golem_1_debris               npc/golem_1/golem_1_debris_005.txt</object>
+	<object>golem_1_debris               npc/golem_1/golem_1_debris_006.txt</object>
 
     # Golem corpse and debris (Lava)
-	<object>golem_2_corpse          npc/golem_2/golem_2_corpse_001.txt</object>
-	<object>golem_2_debris          npc/golem_2/golem_2_debris_001.txt</object>
-	<object>golem_2_debris          npc/golem_2/golem_2_debris_002.txt</object>
-	<object>golem_2_debris          npc/golem_2/golem_2_debris_003.txt</object>
-	<object>golem_2_debris          npc/golem_2/golem_2_debris_004.txt</object>
-	<object>golem_2_debris          npc/golem_2/golem_2_debris_005.txt</object>
-	<object>golem_2_debris          npc/golem_2/golem_2_debris_006.txt</object>
+	<object>golem_2_corpse               npc/golem_2/golem_2_corpse_001.txt</object>
+	<object>golem_2_debris               npc/golem_2/golem_2_debris_001.txt</object>
+	<object>golem_2_debris               npc/golem_2/golem_2_debris_002.txt</object>
+	<object>golem_2_debris               npc/golem_2/golem_2_debris_003.txt</object>
+	<object>golem_2_debris               npc/golem_2/golem_2_debris_004.txt</object>
+	<object>golem_2_debris               npc/golem_2/golem_2_debris_005.txt</object>
+	<object>golem_2_debris               npc/golem_2/golem_2_debris_006.txt</object>
 
     # Golem corpse and debris (Ice)
-	<object>golem_3_corpse          npc/golem_3/golem_3_corpse_001.txt</object>
-	<object>golem_3_debris          npc/golem_3/golem_3_debris_001.txt</object>
-	<object>golem_3_debris          npc/golem_3/golem_3_debris_002.txt</object>
-	<object>golem_3_debris          npc/golem_3/golem_3_debris_003.txt</object>
-	<object>golem_3_debris          npc/golem_3/golem_3_debris_004.txt</object>
-	<object>golem_3_debris          npc/golem_3/golem_3_debris_005.txt</object>
-	<object>golem_3_debris          npc/golem_3/golem_3_debris_006.txt</object>
+	<object>golem_3_corpse               npc/golem_3/golem_3_corpse_001.txt</object>
+	<object>golem_3_debris               npc/golem_3/golem_3_debris_001.txt</object>
+	<object>golem_3_debris               npc/golem_3/golem_3_debris_002.txt</object>
+	<object>golem_3_debris               npc/golem_3/golem_3_debris_003.txt</object>
+	<object>golem_3_debris               npc/golem_3/golem_3_debris_004.txt</object>
+	<object>golem_3_debris               npc/golem_3/golem_3_debris_005.txt</object>
+	<object>golem_3_debris               npc/golem_3/golem_3_debris_006.txt</object>
 
     # Golem corpse and debris (Blood)
-	<object>golem_4_corpse          npc/golem_4/golem_4_corpse_001.txt</object>
-	<object>golem_4_debris          npc/golem_4/golem_4_debris_001.txt</object>
-	<object>golem_4_debris          npc/golem_4/golem_4_debris_002.txt</object>
-	<object>golem_4_debris          npc/golem_4/golem_4_debris_003.txt</object>
-	<object>golem_4_debris          npc/golem_4/golem_4_debris_004.txt</object>
-	<object>golem_4_debris          npc/golem_4/golem_4_debris_005.txt</object>
-	<object>golem_4_debris          npc/golem_4/golem_4_debris_006.txt</object>
+	<object>golem_4_corpse               npc/golem_4/golem_4_corpse_001.txt</object>
+	<object>golem_4_debris               npc/golem_4/golem_4_debris_001.txt</object>
+	<object>golem_4_debris               npc/golem_4/golem_4_debris_002.txt</object>
+	<object>golem_4_debris               npc/golem_4/golem_4_debris_003.txt</object>
+	<object>golem_4_debris               npc/golem_4/golem_4_debris_004.txt</object>
+	<object>golem_4_debris               npc/golem_4/golem_4_debris_005.txt</object>
+	<object>golem_4_debris               npc/golem_4/golem_4_debris_006.txt</object>
 
     # Golem boss corpse and debris (Rock)
-	<object>golem_boss_1_corpse     npc/golem_boss_1/golem_boss_1_corpse_001.txt</object>
-	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_001.txt</object>
-	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_002.txt</object>
-	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_003.txt</object>
-	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_004.txt</object>
-	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_005.txt</object>
-	<object>golem_boss_1_debris     npc/golem_boss_1/golem_boss_1_debris_006.txt</object>
+	<object>golem_boss_1_corpse          npc/golem_boss_1/golem_boss_1_corpse_001.txt</object>
+	<object>golem_boss_1_debris          npc/golem_boss_1/golem_boss_1_debris_001.txt</object>
+	<object>golem_boss_1_debris          npc/golem_boss_1/golem_boss_1_debris_002.txt</object>
+	<object>golem_boss_1_debris          npc/golem_boss_1/golem_boss_1_debris_003.txt</object>
+	<object>golem_boss_1_debris          npc/golem_boss_1/golem_boss_1_debris_004.txt</object>
+	<object>golem_boss_1_debris          npc/golem_boss_1/golem_boss_1_debris_005.txt</object>
+	<object>golem_boss_1_debris          npc/golem_boss_1/golem_boss_1_debris_006.txt</object>
+
+    # Golem ice boss corpse and debris (Rock)
+	<object>golem_ice_boss_1_corpse      npc/golem_ice_boss_1/golem_ice_boss_1_corpse_001.txt</object>
+	<object>golem_ice_boss_1_debris      npc/golem_ice_boss_1/golem_ice_boss_1_debris_001.txt</object>
+	<object>golem_ice_boss_1_debris      npc/golem_ice_boss_1/golem_ice_boss_1_debris_002.txt</object>
+	<object>golem_ice_boss_1_debris      npc/golem_ice_boss_1/golem_ice_boss_1_debris_003.txt</object>
+	<object>golem_ice_boss_1_debris      npc/golem_ice_boss_1/golem_ice_boss_1_debris_004.txt</object>
+	<object>golem_ice_boss_1_debris      npc/golem_ice_boss_1/golem_ice_boss_1_debris_005.txt</object>
+	<object>golem_ice_boss_1_debris      npc/golem_ice_boss_1/golem_ice_boss_1_debris_006.txt</object>
+
+    # Golem ice mini boss 1 corpse and debris
+	<object>golem_ice_mini_boss_1_corpse npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_corpse_001.txt</object>
+	<object>golem_ice_mini_boss_1_debris npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_debris_001.txt</object>
+	<object>golem_ice_mini_boss_1_debris npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_debris_002.txt</object>
+	<object>golem_ice_mini_boss_1_debris npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_debris_003.txt</object>
+	<object>golem_ice_mini_boss_1_debris npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_debris_004.txt</object>
+	<object>golem_ice_mini_boss_1_debris npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_debris_005.txt</object>
+	<object>golem_ice_mini_boss_1_debris npc/golem_ice_mini_boss_1/golem_ice_mini_boss_1_debris_006.txt</object>
+
+    # Golem ice mini boss 2 corpse and debris
+	<object>golem_ice_mini_boss_2_corpse npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_corpse_001.txt</object>
+	<object>golem_ice_mini_boss_2_debris npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_debris_001.txt</object>
+	<object>golem_ice_mini_boss_2_debris npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_debris_002.txt</object>
+	<object>golem_ice_mini_boss_2_debris npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_debris_003.txt</object>
+	<object>golem_ice_mini_boss_2_debris npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_debris_004.txt</object>
+	<object>golem_ice_mini_boss_2_debris npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_debris_005.txt</object>
+	<object>golem_ice_mini_boss_2_debris npc/golem_ice_mini_boss_2/golem_ice_mini_boss_2_debris_006.txt</object>
+
+    # Golem ice mini boss 1 corpse and debris
+	<object>golem_ice_mini_boss_3_corpse npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_corpse_001.txt</object>
+	<object>golem_ice_mini_boss_3_debris npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_debris_001.txt</object>
+	<object>golem_ice_mini_boss_3_debris npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_debris_002.txt</object>
+	<object>golem_ice_mini_boss_3_debris npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_debris_003.txt</object>
+	<object>golem_ice_mini_boss_3_debris npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_debris_004.txt</object>
+	<object>golem_ice_mini_boss_3_debris npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_debris_005.txt</object>
+	<object>golem_ice_mini_boss_3_debris npc/golem_ice_mini_boss_3/golem_ice_mini_boss_3_debris_006.txt</object>
 
     # Grass
 	<object>grass_1                 objects/grass_1_001.txt</object>

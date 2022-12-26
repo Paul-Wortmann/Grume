@@ -2,8 +2,8 @@
 <save_file>
 
    <information>
-      <current_map>cave_4_015</current_map>
-      <current_position>83</current_position>
+      <current_map>cave_4_010</current_map>
+      <current_position>2211</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
@@ -41,6 +41,10 @@
       <quest>skeleton_boss_3_dead 0</quest>
       <quest>spider_boss_1_dead 0</quest>
       <quest>golem_boss_1_dead 0</quest>
+      <quest>ice_golem_mini_boss_1_dead 0</quest>
+      <quest>ice_golem_mini_boss_2_dead 0</quest>
+      <quest>ice_golem_mini_boss_3_dead 0</quest>
+      <quest>ice_golem_boss_1_dead 0</quest>
    </quests>
 
    <map_data>

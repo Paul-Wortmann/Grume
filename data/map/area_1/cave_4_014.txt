@@ -145,6 +145,7 @@
     <npcs>
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
         <#npc>dragon_ice 1 32 4 1 1 1 0.0000 0 0.0000 none 0</npc>
+        <npc>golem_ice_boss_1 0 30 30 0.000 0.000 0.000  0.000 0.000 0.000 golem_ice_boss_1_dead 0</npc>
     </npcs>
 
     <objects>
