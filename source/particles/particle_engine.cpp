@@ -173,17 +173,17 @@ void cParticleEngine::spawnParticles(const std::uint32_t &_type, const std::uint
                 tEntity->base.owner               = eEntityOwner::entityOwner_particle;
                 tEntity->base.position           += _position;
                 tEntity->base.scale               = glm::vec3(0.75, 0.75, 0.75);
-                tEntity->particle->life           = m_timeStep + (m_timeStep * (20 + rand() % 10));
-                tEntity->particle->accelerationZ  = gRandFloatMinMax(-0.0025, 0.0025);
-                tEntity->physics->acceleration    = gRandFloatMinMax(-0.0025, 0.0025);
-                tEntity->physics->velocity        = glm::vec3(gRandFloatMinMax(-0.005, 0.005), gRandFloatMinMax(0.005, 0.01), gRandFloatMinMax(-0.005, 0.005));
-                tEntity->physics->velocityMax     = 0.0125;
+                tEntity->particle->life           = m_timeStep + (m_timeStep * static_cast<float>(20 + (rand() % 10)));
+                tEntity->particle->accelerationZ  = gRandFloatMinMax(-0.0025f, 0.0025f);
+                tEntity->physics->acceleration    = gRandFloatMinMax(-0.0025f, 0.0025f);
+                tEntity->physics->velocity        = glm::vec3(gRandFloatMinMax(-0.005f, 0.005f), gRandFloatMinMax(0.005f, 0.01f), gRandFloatMinMax(-0.005f, 0.005f));
+                tEntity->physics->velocityMax     = 0.0125f;
 
                 m_entityManager->updateModelMatrix(tEntity);
                 m_graphicsEngine->initializeEntity(tEntity);
             }
         }
-        process(m_timeStep);
+        process(static_cast<std::int64_t>(m_timeStep));
         m_sortParticles(_amount);
     }
 }
@@ -191,7 +191,7 @@ void cParticleEngine::spawnParticles(const std::uint32_t &_type, const std::uint
 void cParticleEngine::process(const std::int64_t &_dt)
 {
     // Calculate delta time
-    float dt = _dt / m_timeStep;
+    float dt = static_cast<float>(_dt) / m_timeStep;
 
     // reset particle count
     m_activeParticles = 0;
@@ -205,7 +205,7 @@ void cParticleEngine::process(const std::int64_t &_dt)
             m_activeParticles++;
 
             // Decrease particle life
-            tEntity->particle->life -= _dt;
+            tEntity->particle->life -= static_cast<float>(_dt);
             if (tEntity->particle->life < 0.0f)
             {
                 //die

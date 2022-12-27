@@ -41,7 +41,7 @@ void cPhysicsEngine::terminate(void)
 void cPhysicsEngine::process(const std::int64_t &_dt)
 {
     // Calculate delta time
-    float dt = _dt / m_timeStep;
+    float dt = static_cast<float>(_dt) / m_timeStep;
 
     // tmin for 3D picking
     sEntity* tminEntity = m_entityHead;

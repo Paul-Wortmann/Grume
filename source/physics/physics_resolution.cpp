@@ -110,8 +110,8 @@ void gPhysicsResolution_circle_circle(float &_vx1, float &_vy1, float &_px1, flo
     float sp = sin(directOfContact);
     float cdp1 = v1 * cos(d1 - directOfContact);
     float cdp2 = v2 * cos(d2 - directOfContact);
-    float cpp = cos((directOfContact + M_PI) / 2);
-    float spp = sin((directOfContact + M_PI) / 2);
+    float cpp = cos((directOfContact + static_cast<float>(M_PI)) / 2.0f);
+    float spp = sin((directOfContact + static_cast<float>(M_PI)) / 2.0f);
 
     float t = 0.5f;
 
@@ -130,7 +130,7 @@ void gPhysicsResolution_circle_circle(float &_vx1, float &_vy1, float &_px1, flo
         t = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
         _vx1 = t * cp + v1s * cpp;
         _vy1 = t * sp + v1s * spp;
-        directOfContact += M_PI;
+        directOfContact += static_cast<float>(M_PI);
         const float v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
         cdp2 = v2 * cos(d2 - directOfContact);
@@ -286,11 +286,11 @@ void gPhysicsResolution_aabs_aabs(float &_vx1, float &_vy1, float &_px1, float &
         float sp = sin(directOfContact);
         float cdp1 = v1 * cos(d1 - directOfContact);
         float cdp2 = v2 * cos(d2 - directOfContact);
-        float cpp = cos((directOfContact + M_PI) / 2);
-        float spp = sin((directOfContact + M_PI) / 2);
+        float cpp = cos((directOfContact + static_cast<float>(M_PI)) / 2.0f);
+        float spp = sin((directOfContact + static_cast<float>(M_PI)) / 2.0f);
 
         float t1 = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
-        directOfContact += M_PI;
+        directOfContact += static_cast<float>(M_PI);
         const float v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
         cdp2 = v2 * cos(d2 - directOfContact);
@@ -434,11 +434,11 @@ void gPhysicsResolution_aabs_circle(float &_vx1, float &_vy1, float &_px1, float
         float sp = sin(directOfContact);
         float cdp1 = v1 * cos(d1 - directOfContact);
         float cdp2 = v2 * cos(d2 - directOfContact);
-        float cpp = cos((directOfContact + M_PI) / 2);
-        float spp = sin((directOfContact + M_PI) / 2);
+        float cpp = cos((directOfContact + static_cast<float>(M_PI)) / 2.0f);
+        float spp = sin((directOfContact + static_cast<float>(M_PI)) / 2.0f);
 
         float t1 = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
-        directOfContact += M_PI;
+        directOfContact += static_cast<float>(M_PI);
         const float v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
         cdp2 = v2 * cos(d2 - directOfContact);
