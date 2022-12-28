@@ -41,7 +41,7 @@ bool gPhysicsCollision_circle_circle(const float &_px1, const float &_py1, const
 float gPhysicsDistance_circle_circle(const float &_px1, const float &_py1, const float &_r1,
                                      const float &_px2, const float &_py2, const float &_r2)
 {
-    return sqrt(((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2)));
+    return sqrt(((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2))) - _r1 - _r2;
 }
 
 // Sphere - Sphere
