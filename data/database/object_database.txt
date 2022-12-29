@@ -662,12 +662,19 @@
     <object>rock_2                objects/rock_15_004.txt</object>
     <object>rock_2                objects/rock_15_005.txt</object>
 
-    # Rock 3 -> cave 2
+    # Rock 3 -> cave 2 and 3
     <object>rock_3                objects/rock_16_001.txt</object>
     <object>rock_3                objects/rock_16_002.txt</object>
     <object>rock_3                objects/rock_16_003.txt</object>
     <object>rock_3                objects/rock_16_004.txt</object>
     <object>rock_3                objects/rock_16_005.txt</object>
+
+    # Rock 4 -> cave 4
+    <object>rock_4                objects/rock_17_001.txt</object>
+    <object>rock_4                objects/rock_17_002.txt</object>
+    <object>rock_4                objects/rock_17_003.txt</object>
+    <object>rock_4                objects/rock_17_004.txt</object>
+    <object>rock_4                objects/rock_17_005.txt</object>
 
     # Rock black
     <object>rock_black            objects/rock_14_001.txt</object>
@@ -690,13 +697,21 @@
     <object>rock_small_2          objects/rock_15_012.txt</object>
     <object>rock_small_2          objects/rock_15_013.txt</object>
 
-    # Rock_small_3 -> cave 3
+    # Rock_small_3 -> cave 2 and 3
     <object>rock_small_3          objects/rock_16_008.txt</object>
     <object>rock_small_3          objects/rock_16_009.txt</object>
     <object>rock_small_3          objects/rock_16_010.txt</object>
     <object>rock_small_3          objects/rock_16_011.txt</object>
     <object>rock_small_3          objects/rock_16_012.txt</object>
     <object>rock_small_3          objects/rock_16_013.txt</object>
+
+    # Rock_small_4 -> cave 4
+    <object>rock_small_4          objects/rock_17_008.txt</object>
+    <object>rock_small_4          objects/rock_17_009.txt</object>
+    <object>rock_small_4          objects/rock_17_010.txt</object>
+    <object>rock_small_4          objects/rock_17_011.txt</object>
+    <object>rock_small_4          objects/rock_17_012.txt</object>
+    <object>rock_small_4          objects/rock_17_013.txt</object>
 
     # Sack
     <object>sack                  objects/sack_1_001.txt</object>
