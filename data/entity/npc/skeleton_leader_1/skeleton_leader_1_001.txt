@@ -67,14 +67,14 @@
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
 	    <character_billboard_position>4.0</character_billboard_position>
 	    <character_billboard_scale>1.5 1.5</character_billboard_scale>
-	    <character_health_max>1000</character_health_max>
+	    <character_health_max>1500</character_health_max>
 	    <character_health_regen>1.25</character_health_regen>
 	    <character_mana_max>1000</character_mana_max>
 	    <character_mana_current>0.0</character_mana_current>
 	    <character_mana_regen>1.25</character_mana_regen>
 
         <character_damage>
-	        <character_damage_physical_base>300.0</character_damage_physical_base>
+	        <character_damage_physical_base>150.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>12.5</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 

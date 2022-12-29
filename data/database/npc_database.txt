@@ -10,8 +10,10 @@
     #    catagory file_name
     <npc>bug_1                   npc/bug_1/bug_1_001.txt</npc>
     <npc>bug_2                   npc/bug_2/bug_2_001.txt</npc>
+    <npc>bug_3                   npc/bug_3/bug_3_001.txt</npc>
     <npc>bug_boss_1              npc/bug_boss_1/bug_boss_1_001.txt</npc>
     <npc>bug_boss_2              npc/bug_boss_2/bug_boss_2_001.txt</npc>
+    <npc>bug_boss_3              npc/bug_boss_3/bug_boss_3_001.txt</npc>
 
 	<npc>bat_1                   npc/bat_1/bat_1_001.txt</npc>
 	<npc>bat_leader_1            npc/bat_leader_1/bat_leader_1_001.txt</npc>
@@ -44,6 +46,7 @@
     <npc>skeleton_leader_1       npc/skeleton_leader_1/skeleton_leader_1_001.txt</npc>
 
     <npc>spider_1                npc/spider_1/spider_1_001.txt</npc>
+    <npc>spider_2                npc/spider_2/spider_2_001.txt</npc>
     <npc>spider_leader_1         npc/spider_leader_1/spider_leader_1_001.txt</npc>
     <npc>spider_boss_1           npc/spider_boss_1/spider_boss_1_001.txt</npc>
     

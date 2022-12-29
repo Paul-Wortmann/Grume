@@ -394,6 +394,18 @@
 	<object>bug_2_debris          npc/bug_2/bug_2_debris_009.txt</object>
 	<object>bug_2_debris          npc/bug_2/bug_2_debris_010.txt</object>
 
+	<object>bug_3_corpse          npc/bug_3/bug_3_corpse_001.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_001.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_002.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_003.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_004.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_005.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_006.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_007.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_008.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_009.txt</object>
+	<object>bug_3_debris          npc/bug_3/bug_3_debris_010.txt</object>
+
     # Bug leader corpse and debris
 	<object>bug_boss_1_corpse          npc/bug_boss_1/bug_boss_1_corpse_001.txt</object>
 	<object>bug_boss_1_debris          npc/bug_boss_1/bug_boss_1_debris_001.txt</object>
@@ -418,6 +430,18 @@
 	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_008.txt</object>
 	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_009.txt</object>
 	<object>bug_boss_2_debris          npc/bug_boss_2/bug_boss_2_debris_010.txt</object>
+
+	<object>bug_boss_3_corpse          npc/bug_boss_3/bug_boss_3_corpse_001.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_001.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_002.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_003.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_004.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_005.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_006.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_007.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_008.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_009.txt</object>
+	<object>bug_boss_3_debris          npc/bug_boss_3/bug_boss_3_debris_010.txt</object>
 
     # Cabinet
 	<object>cabinet               objects/cabinet_1_001.txt</object>
@@ -885,6 +909,22 @@
 	<#object>spider_1_debris       npc/spider_1/spider_1_debris_011.txt</object>
 	<#object>spider_1_debris       npc/spider_1/spider_1_debris_012.txt</object>
 	<#object>spider_1_debris       npc/spider_1/spider_1_debris_013.txt</object>
+
+    # Spider 2 corpse and debris
+	<object>spider_2_corpse       npc/spider_2/spider_2_corpse_001.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_001.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_002.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_003.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_004.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_005.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_006.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_007.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_008.txt</object>
+	<object>spider_2_debris       npc/spider_2/spider_2_debris_009.txt</object>
+	<#object>spider_2_debris       npc/spider_2/spider_2_debris_010.txt</object>
+	<#object>spider_2_debris       npc/spider_2/spider_2_debris_011.txt</object>
+	<#object>spider_2_debris       npc/spider_2/spider_2_debris_012.txt</object>
+	<#object>spider_2_debris       npc/spider_2/spider_2_debris_013.txt</object>
 
     # Spider 1 leader corpse and debris
 	<object>spider_leader_1_corpse       npc/spider_leader_1/spider_leader_1_corpse_001.txt</object>

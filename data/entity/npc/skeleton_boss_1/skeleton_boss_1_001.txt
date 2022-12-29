@@ -67,7 +67,7 @@
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
 	    <character_billboard_position>4.0</character_billboard_position>
 	    <character_billboard_scale>2.0 2.0</character_billboard_scale>
-	    <character_health_max>1000</character_health_max>
+	    <character_health_max>2000</character_health_max>
 	    <character_health_regen>1.25</character_health_regen>
 	    <character_mana_max>1000</character_mana_max>
 	    <character_mana_current>0.0</character_mana_current>

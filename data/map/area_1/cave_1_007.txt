@@ -101,6 +101,7 @@
         # database name, number, scale min, scale max, prevalence
         <npc_mob>bug_1        0 0.85 1.0 06 none 0</npc_mob>
         <npc_mob>bug_2        0 0.85 1.0 02 none 0</npc_mob>
+        <npc_mob>bug_3        0 0.75 1.0 008 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
@@ -179,6 +180,20 @@
         <object>rock_2             0  028 011  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
         <object>rock_2             0  028 012  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
         <object>rock_2             0  028 013  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_2_dead 0</object>
+
+        # Rocks pile 3
+        <object>rock_2             0  052 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  053 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  054 018  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  052 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  053 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  054 019  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  052 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  053 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  054 020  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  052 021  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  053 021  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
+        <object>rock_2             0  054 021  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 bug_boss_3_dead 0</object>
 
     </objects>
 

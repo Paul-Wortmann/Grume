@@ -129,8 +129,9 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>spider_leader_1 0 0.95 1.0 4 none 0</npc_mob>
-        <npc_mob>spider_1        0 0.85 1.0 4 none 0</npc_mob>
+        <npc_mob>spider_leader_1 0 0.95 1.0 04 none 0</npc_mob>
+        <npc_mob>spider_1        0 0.85 1.0 04 none 0</npc_mob>
+        <npc_mob>spider_2        0 0.85 1.0 16 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>

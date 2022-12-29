@@ -47,14 +47,14 @@
 	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
 	    <character_billboard_position>3.0</character_billboard_position>
-	    <character_health_max>500</character_health_max>
+	    <character_health_max>2500</character_health_max>
 	    <character_health_regen>0.0125</character_health_regen>
 	    <character_mana_max>100</character_mana_max>
 	    <character_mana_regen>0.0125</character_mana_regen>
 
 
         <character_damage>
-	        <character_damage_physical_base>50.0</character_damage_physical_base>
+	        <character_damage_physical_base>500.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>0.1</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 
@@ -93,13 +93,13 @@
         # gold + experience are multiplied by the map modifier
 	    # gold is ammount min-max for NPC
 	    <loot_gold>1</loot_gold>
-	    <loot_gold_min>200</loot_gold_min>
-	    <loot_gold_max>300</loot_gold_max>
+	    <loot_gold_min>250</loot_gold_min>
+	    <loot_gold_max>500</loot_gold_max>
 
 	    # experience is amount min-max
 	    <loot_experience>1</loot_experience>
-	    <loot_experience_min>400</loot_experience_min>
-	    <loot_experience_max>800</loot_experience_max>
+	    <loot_experience_min>1250</loot_experience_min>
+	    <loot_experience_max>2500</loot_experience_max>
     </loot>
 
     <physics>

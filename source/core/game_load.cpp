@@ -253,7 +253,8 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
             // Setup
             //tPlayer->base.position = gMapTileToPosition(tMap, currentPosition);
             //tPlayer->base.rotation.y = currentRotation;
-            m_playerManager.setPlayerPosition(currentPosition, currentRotation);
+            sMap* map = m_mapManager.getMapPointer();
+            m_playerManager.setPlayerPosition(gClosestFreeTile(map ,currentPosition), currentRotation);
 
             m_playerManager.setMapPlayer();
             m_graphicsEngine.moveCamera(tPlayer->base.position);

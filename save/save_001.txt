@@ -2,116 +2,82 @@
 <save_file>
 
    <information>
-      <current_map>town_2_001</current_map>
-      <current_position>3616</current_position>
+      <current_map>ruins_1_001</current_map>
+      <current_position>1590</current_position>
       <current_rotation>3.14159</current_rotation>
-      <current_town>town_2_001</current_town>
+      <current_town>town_1_001</current_town>
    </information>
 
    <player>
-      <level_current>10</level_current>
-      <exp_current>50009</exp_current>
-      <exp_next>59049</exp_next>
-      <health_current>57645</health_current>
-      <health_max>57645</health_max>
-      <health_regen>305.881</health_regen>
-      <mana_current>5764</mana_current>
-      <mana_max>5764</mana_max>
-      <mana_regen>83.1314</mana_regen>
-      <gold_current>83811</gold_current>
-      <damage_physical_base>20</damage_physical_base>
-      <damage_physical_crit_chance>11</damage_physical_crit_chance>
-      <damage_physical_crit_multiplier>2.75</damage_physical_crit_multiplier>
-      <damage_fire_base>11</damage_fire_base>
-      <damage_fire_crit_chance>11</damage_fire_crit_chance>
-      <damage_fire_crit_multiplier>2.75</damage_fire_crit_multiplier>
-      <damage_frost_base>11</damage_frost_base>
-      <damage_frost_crit_chance>11</damage_frost_crit_chance>
-      <damage_frost_crit_multiplier>2.75</damage_frost_crit_multiplier>
-      <armor_physical_base>11</armor_physical_base>
-      <resistance_fire_base>11</resistance_fire_base>
-      <resistance_frost_base>11</resistance_frost_base>
+      <level_current>12</level_current>
+      <exp_current>115261</exp_current>
+      <exp_next>132859</exp_next>
+      <health_current>12974.6</health_current>
+      <health_max>12974.6</health_max>
+      <health_regen>420.853</health_regen>
+      <mana_current>12974.6</mana_current>
+      <mana_max>12974.6</mana_max>
+      <mana_regen>420.853</mana_regen>
+      <gold_current>22482</gold_current>
+      <damage_physical_base>13</damage_physical_base>
+      <damage_physical_crit_chance>13</damage_physical_crit_chance>
+      <damage_physical_crit_multiplier>3.25</damage_physical_crit_multiplier>
+      <damage_fire_base>13</damage_fire_base>
+      <damage_fire_crit_chance>13</damage_fire_crit_chance>
+      <damage_fire_crit_multiplier>3.25</damage_fire_crit_multiplier>
+      <damage_frost_base>13</damage_frost_base>
+      <damage_frost_crit_chance>13</damage_frost_crit_chance>
+      <damage_frost_crit_multiplier>3.25</damage_frost_crit_multiplier>
+      <armor_physical_base>13</armor_physical_base>
+      <resistance_fire_base>13</resistance_fire_base>
+      <resistance_frost_base>13</resistance_frost_base>
    </player>
 
    <quests>
-      <quest>bug_boss_1_dead 0</quest>
-      <quest>bug_boss_2_dead 0</quest>
-      <quest>skeleton_boss_1_dead 0</quest>
-      <quest>skeleton_boss_2_dead 0</quest>
-      <quest>skeleton_boss_3_dead 0</quest>
-      <quest>spider_boss_1_dead 0</quest>
+      <quest>bug_boss_1_dead 1</quest>
+      <quest>bug_boss_2_dead 1</quest>
+      <quest>bug_boss_3_dead 1</quest>
+      <quest>skeleton_boss_1_dead 1</quest>
+      <quest>skeleton_boss_2_dead 1</quest>
+      <quest>skeleton_boss_3_dead 1</quest>
+      <quest>spider_boss_1_dead 1</quest>
       <quest>golem_boss_1_dead 0</quest>
-      <quest>golem_ice_mini_boss_1_dead 1</quest>
-      <quest>golem_ice_mini_boss_2_dead 1</quest>
-      <quest>golem_ice_mini_boss_3_dead 1</quest>
-      <quest>ice_golem_boss_1_dead 0</quest>
+      <quest>golem_ice_mini_boss_1_dead 0</quest>
+      <quest>golem_ice_mini_boss_2_dead 0</quest>
+      <quest>golem_ice_mini_boss_3_dead 0</quest>
       <quest>golem_ice_boss_1_dead 0</quest>
    </quests>
 
    <map_data>
       <map>cave_1_001 1410763947</map>
-      <map>cave_1_002 153988896</map>
-      <map>cave_1_003 1398639725</map>
-      <map>cave_1_004 816624342</map>
-      <map>cave_1_005 20238120</map>
-      <map>cave_1_006 1251557446</map>
-      <map>cave_1_007 102417148</map>
-      <map>cave_2_001 1812461306</map>
-      <map>cave_2_002 1459369799</map>
-      <map>cave_2_003 360732457</map>
-      <map>cave_2_004 1971744157</map>
-      <map>cave_2_005 784942958</map>
-      <map>cave_2_006 804934262</map>
-      <map>cave_2_007 1500484100</map>
-      <map>cave_2_008 698491176</map>
-      <map>cave_2_009 1318397220</map>
-      <map>cave_2_010 1438752592</map>
-      <map>cave_2_011 181309110</map>
-      <map>cave_2_012 1227121988</map>
-      <map>cave_2_013 2137136718</map>
-      <map>cave_2_014 1410763947</map>
-      <map>cave_2_015 1229701854</map>
-      <map>cave_2_016 1413723542</map>
-      <map>cave_3_001 818836650</map>
-      <map>cave_3_002 1920331983</map>
-      <map>cave_4_001 1872221306</map>
-      <map>cave_4_002 1799729037</map>
-      <map>cave_4_003 239894690</map>
-      <map>cave_4_004 744790395</map>
-      <map>cave_4_005 1741975752</map>
-      <map>cave_4_006 1702881018</map>
-      <map>cave_4_007 559656329</map>
-      <map>cave_4_008 1161248664</map>
-      <map>cave_4_009 145593509</map>
-      <map>cave_4_010 145593509</map>
-      <map>cave_4_011 145593509</map>
-      <map>cave_4_012 1121221181</map>
-      <map>cave_4_013 1966775841</map>
-      <map>cave_4_014 1562958770</map>
-      <map>cave_4_015 309764908</map>
-      <map>cemetery_1_001 52420276</map>
-      <map>cemetery_1_002 852049122</map>
-      <map>cemetery_1_003 1463210838</map>
-      <map>cemetery_1_004 1971866418</map>
-      <map>cemetery_1_007 659587167</map>
-      <map>cemetery_1_008 876021131</map>
-      <map>dungeon_1_001 1823305328</map>
-      <map>dungeon_1_002 1833866285</map>
-      <map>dungeon_2_001 338391705</map>
-      <map>dungeon_3_001 976828435</map>
-      <map>ruins_1_001 1453627981</map>
-      <map>ruins_1_002 850556360</map>
-      <map>ruins_1_003 485881815</map>
-      <map>ruins_1_004 1487118297</map>
-      <map>ruins_1_005 840158571</map>
-      <map>ruins_1_006 716857884</map>
-      <map>ruins_1_007 850556360</map>
-      <map>ruins_2_001 545572371</map>
-      <map>ruins_2_002 887287001</map>
-      <map>ruins_2_003 543237104</map>
-      <map>ruins_2_004 155630566</map>
-      <map>ruins_2_005 1199028285</map>
-      <map>town_2_001 1644388733</map>
+      <map>cave_1_002 1244638362</map>
+      <map>cave_1_003 1469448356</map>
+      <map>cave_1_004 1156449392</map>
+      <map>cave_1_005 391023957</map>
+      <map>cave_1_006 573436450</map>
+      <map>cave_1_007 143283030</map>
+      <map>cave_2_001 574033019</map>
+      <map>cave_2_002 1965350239</map>
+      <map>cave_2_003 536943063</map>
+      <map>cave_2_004 1204830550</map>
+      <map>cave_2_005 1302799035</map>
+      <map>cave_2_006 2029293986</map>
+      <map>cave_2_007 1948817484</map>
+      <map>cave_2_010 821578852</map>
+      <map>cave_2_012 1952223623</map>
+      <map>cave_2_014 997173726</map>
+      <map>cave_2_015 1432078196</map>
+      <map>cave_2_016 24357509</map>
+      <map>cemetery_1_001 1107021466</map>
+      <map>cemetery_1_002 18679449</map>
+      <map>cemetery_1_003 556459085</map>
+      <map>cemetery_1_004 374311216</map>
+      <map>cemetery_1_005 2123613305</map>
+      <map>cemetery_1_006 499742200</map>
+      <map>cemetery_1_007 1028012679</map>
+      <map>cemetery_1_008 281710182</map>
+      <map>crypt_2_001 1880217799</map>
+      <map>ruins_1_001 266594286</map>
    </map_data>
 
 </save_file>

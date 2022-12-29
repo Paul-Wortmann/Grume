@@ -133,6 +133,7 @@
         # database name, number, scale min, scale max, prevalence
         <npc_mob>bug_1        0 0.85 1.0 4 none 0</npc_mob>
         <npc_mob>bug_2        0 0.85 1.0 4 none 0</npc_mob>
+        <npc_mob>bug_3        0 0.75 1.0 008 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>
@@ -149,6 +150,7 @@
         # database name, number, tile x, y, scale x, y, z, rotation x, y, z
         <npc>bug_boss_1 0 34 26 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_1_dead 0</npc>
         <npc>bug_boss_2 0 30 28 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_2_dead 0</npc>
+        <npc>bug_boss_3 0 32 24 0.000 0.000 0.000  0.000 0.000 0.000 bug_boss_3_dead 0</npc>
     </npcs>
 
     <objects>

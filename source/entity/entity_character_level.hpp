@@ -29,7 +29,7 @@
 struct sCharacterLevel
 {
     std::uint32_t  current        = 0;          // Current level
-    std::uint32_t  max            = 10;         // Max level
+    std::uint32_t  max            = 100;         // Max level
 
     std::uint64_t  exp            = 0;          // Current experience
     std::uint64_t  expNext        = 1024;       // Experience for next level

@@ -103,8 +103,9 @@
 
     <npc_mobs>
         # database name, number, scale min, scale max, prevalence
-        <npc_mob>bug_1        0 0.75 1.0 10 none 0</npc_mob>
-        <npc_mob>bug_2        0 0.75 1.0 06 none 0</npc_mob>
+        <npc_mob>bug_1        0 0.75 1.0 008 none 0</npc_mob>
+        <npc_mob>bug_2        0 0.75 1.0 008 none 0</npc_mob>
+        <npc_mob>bug_3        0 0.75 1.0 001 none 0</npc_mob>
     </npc_mobs>
 
     <debris_objects>

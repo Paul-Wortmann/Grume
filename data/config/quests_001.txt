@@ -4,6 +4,7 @@
 
 	<quest>bug_boss_1_dead 0</quest>
 	<quest>bug_boss_2_dead 0</quest>
+	<quest>bug_boss_3_dead 0</quest>
 	<quest>skeleton_boss_1_dead 0</quest>
 	<quest>skeleton_boss_2_dead 0</quest>
 	<quest>skeleton_boss_3_dead 0</quest>
@@ -12,7 +13,7 @@
 	<quest>golem_ice_mini_boss_1_dead 0</quest>
 	<quest>golem_ice_mini_boss_2_dead 0</quest>
 	<quest>golem_ice_mini_boss_3_dead 0</quest>
-	<quest>ice_golem_boss_1_dead 0</quest>
+	<quest>golem_ice_boss_1_dead 0</quest>
 
 </quests>
 

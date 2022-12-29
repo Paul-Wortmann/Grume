@@ -74,7 +74,7 @@
 	    <character_mana_regen>1.25</character_mana_regen>
 
         <character_damage>
-	        <character_damage_physical_base>100.0</character_damage_physical_base>
+	        <character_damage_physical_base>85.0</character_damage_physical_base>
 	        <character_damage_physical_crit_chance>12.5</character_damage_physical_crit_chance>
 	        <character_damage_physical_crit_multiplier>1.5</character_damage_physical_crit_multiplier>
 
@@ -108,8 +108,8 @@
 
 	    # experience is amount min-max
 	    <loot_experience>1</loot_experience>
-	    <loot_experience_min>1000</loot_experience_min>
-	    <loot_experience_max>2000</loot_experience_max>
+	    <loot_experience_min>1500</loot_experience_min>
+	    <loot_experience_max>3000</loot_experience_max>
     </loot>
 
     <physics>

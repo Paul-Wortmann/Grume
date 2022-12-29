@@ -102,8 +102,8 @@
 
 	    # experience is amount min-max
 	    <loot_experience>1</loot_experience>
-	    <loot_experience_min>50</loot_experience_min>
-	    <loot_experience_max>100</loot_experience_max>
+	    <loot_experience_min>1000</loot_experience_min>
+	    <loot_experience_max>2000</loot_experience_max>
     </loot>
 
     <physics>
