@@ -13,7 +13,7 @@
         <ai_aware_range>100.0</ai_aware_range>
         <ai_move_range>80.0</ai_move_range>
         <ai_retreat_range>0.01</ai_retreat_range>
-        <ai_retreat_threshold>0.25</ai_retreat_threshold>
+        <ai_retreat_threshold>0.0125</ai_retreat_threshold>
         <ai_model_corpse>npc/golem_1/golem_1_corpse_001.obj</ai_model_corpse>
     </ai>
 
@@ -102,6 +102,10 @@
 	    <loot_experience_max>800</loot_experience_max>
     </loot>
 
+    <movement>
+        <movement_speed>2.0</movement_speed>
+    </movement>
+
     <physics>
         # none: 0
         # static: 1
@@ -119,10 +123,6 @@
 	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
 	    <physics_max_velocity>0.25</physics_max_velocity>
     </physics>
-
-    <movement>
-        <movement_speed>0.2</movement_speed>
-    </movement>
 
     <state>
         <state_initial>4</state_initial> # 4 == idle

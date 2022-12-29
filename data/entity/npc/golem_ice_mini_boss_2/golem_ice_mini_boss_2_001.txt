@@ -32,10 +32,6 @@
         </ai_leader>
     </ai>
 
-    <movement>
-        <movement_speed>2.125</movement_speed>
-    </movement>
-
     <animation>
         <animation_independent>1</animation_independent>
         <animation_count>1</animation_count>
@@ -112,6 +108,10 @@
 	    <loot_experience_min>1000</loot_experience_min>
 	    <loot_experience_max>2000</loot_experience_max>
     </loot>
+
+    <movement>
+        <movement_speed>2.5</movement_speed>
+    </movement>
 
     <physics>
         # none: 0

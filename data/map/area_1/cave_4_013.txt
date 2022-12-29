@@ -159,10 +159,26 @@
         <object>portal_cave_left   1  018 000  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 2 none 0</object>
 
         # Portal bottom
-        <object>portal_cave_right  1  015 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_center 1  016 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_center 1  017 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
-        <object>portal_cave_left   1  018 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 none 0</object>
+        <object>portal_cave_right  1  015 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 1</object>
+        <object>portal_cave_center 1  016 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 1</object>
+        <object>portal_cave_center 1  017 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 1</object>
+        <object>portal_cave_left   1  018 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 1</object>
+
+
+        # Rock blockade ice golem boss 1
+        <object>rock_4             0  014 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+        <object>rock_4             0  015 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+        <object>rock_4             0  016 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+        <object>rock_4             0  017 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+        <object>rock_4             0  018 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+        <object>rock_4             0  019 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+        <object>rock_4             0  020 064  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 golem_ice_boss_1_dead 0</object>
+
+        # Wall bottom
+        <object>cave_4_hw_dw_001   1  015 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 0</object>
+        <object>cave_4_hw_dw_001   1  016 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 0</object>
+        <object>cave_4_hw_dw_001   1  017 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 0</object>
+        <object>cave_4_hw_dw_001   1  018 065  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 1 golem_ice_boss_1_dead 0</object>
 
     </objects>
 
