@@ -236,11 +236,20 @@ void cGameEngine::process(void)
             {
                 m_physicsEngine.setMouseClick(false);
                 m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                m_uiManager.setMouseClicked(true);
+                m_uiManager.setMouseLClicked(true);
+            }
+            // mouse button right click
+            if (m_graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_RIGHT))
+            {
+                m_physicsEngine.setMouseClick(false);
+                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_RIGHT, false);
+                m_uiManager.setMouseRClicked(true);
             }
 
             // mouse button left pressed
-            m_uiManager.setMousePressed(m_graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT));
+            m_uiManager.setMouseLPressed(m_graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT));
+            // mouse button right pressed
+            m_uiManager.setMouseRPressed(m_graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_RIGHT));
         }
         else
         {

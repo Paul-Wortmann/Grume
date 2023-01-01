@@ -69,7 +69,8 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 {
     // Avoid unintended mouse clicks
     m_mouseOverMenu = false;
-    m_mouseClicked  = false;
+    m_mouseLClicked = false;
+    m_mouseRClicked = false;
 
     if (m_menu != nullptr)
     {
@@ -122,7 +123,7 @@ void cUIManager::process(void)
                                 m_menu[m].component[c].state = eComponentState::componentHover;
 
                                 // Mouse click
-                                if (m_mouseClicked)
+                                if (m_mouseLClicked)
                                 {
                                     // Game quit
                                     if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameQuit)
@@ -193,7 +194,7 @@ void cUIManager::process(void)
                                 }
 
                                 // Mouse pressed
-                                if (m_mousePressed)
+                                if (m_mouseLPressed)
                                 {
                                     // Music volume up
                                     if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicUp)
@@ -238,7 +239,8 @@ void cUIManager::process(void)
             }
         }
         // Reset mouse clicked, as processed above
-        m_mouseClicked = false;
+        m_mouseLClicked = false;
+        m_mouseRClicked = false;
     }
 }
 
