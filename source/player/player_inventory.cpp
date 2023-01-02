@@ -34,7 +34,13 @@ std::uint32_t cPlayerInventory::initialize(void)
 
 void cPlayerInventory::terminate(void)
 {
-    // free if necessary
+    // free if
+    freeData();
+}
+
+void cPlayerInventory::freeData(void)
+{
+    // free if it exists
     if (m_inventory.slot != nullptr)
     {
         delete[] m_inventory.slot;
@@ -50,7 +56,7 @@ void cPlayerInventory::setInventorySize(const std::uint32_t &_width, const std::
     m_inventory.height = _height;
 
     // free data if necessary
-    terminate();
+    freeData();
 
     // allocate new inventory array
     m_inventory.numSlot = m_inventory.width * m_inventory.height;
