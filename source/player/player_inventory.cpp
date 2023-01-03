@@ -47,6 +47,7 @@ void cPlayerInventory::freeData(void)
         m_inventory.slot = nullptr;
     }
     m_inventory.numSlot = 0;
+    m_inventory.numFreeSlot = 0;
 }
 
 void cPlayerInventory::setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height)
@@ -60,15 +61,23 @@ void cPlayerInventory::setInventorySize(const std::uint32_t &_width, const std::
 
     // allocate new inventory array
     m_inventory.numSlot = m_inventory.width * m_inventory.height;
+    m_inventory.numFreeSlot = m_inventory.numSlot;
     m_inventory.slot = new sPlayerInventorySlot[m_inventory.numSlot];
 }
 
-bool cPlayerInventory::pickupItem(const sEntity* &_entity)
+bool cPlayerInventory::pickupItem(sEntity* &_entity)
 {
+    if (m_inventory.numFreeSlot > 0)
+    {
+        m_inventory.numFreeSlot--;
+        return true;
+    }
+
     return false;
 }
 
-bool cPlayerInventory::dropItem(const sEntity* &_entity)
+bool cPlayerInventory::dropItem(sEntity* &_entity)
 {
-    return false;
+    m_inventory.numFreeSlot++;
+    return true;
 }

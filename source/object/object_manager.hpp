@@ -30,6 +30,7 @@
 #include "../loot/loot_manager.hpp"
 #include "../map/map_define.hpp"
 #include "../particles/particle_engine.hpp"
+#include "../player/player_manager.hpp"
 #include "../physics/physics_collision.hpp"
 #include "../resource/resource_manager.hpp"
 
@@ -45,6 +46,7 @@ class cObjectManager
         void          setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; };
         void          setEntityManagerPointer(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
         void          setParticleEnginePointer(cParticleEngine* _particleEngine) { m_particleEngine = _particleEngine; };
+        void          setPlayerManager(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
         void          setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
         void          setLootManagerPointer(cLootManager* _lootManager) { m_lootManager = _lootManager; };
 
@@ -56,6 +58,7 @@ class cObjectManager
         cAudioEngine*     m_audioEngine     = nullptr;
         cLootManager*     m_lootManager     = nullptr;
         cParticleEngine*  m_particleEngine  = nullptr;
+        cPlayerManager*   m_playerManager   = nullptr;
         cResourceManager* m_resourceManager = nullptr;
         sEntity*          m_entityHead      = nullptr;
         sEntity*          m_entityTemp      = nullptr;

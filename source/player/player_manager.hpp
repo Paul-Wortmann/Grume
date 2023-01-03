@@ -53,6 +53,11 @@ class cPlayerManager :tcTemplateEngine
         void          process(const std::int64_t &_dt) override;
         sPlayerEvent* getEvent(void) { return m_event.pop(); }
 
+        // Player Inventory
+        std::uint32_t getInventoryFreeSlotNum(void) { return m_playerInventory.freeSlotCount(); };
+        bool          pickupItem(sEntity* &_entity) { return m_playerInventory.pickupItem(_entity); };
+        bool          dropItem(sEntity* &_entity) { return m_playerInventory.dropItem(_entity); };
+
         // Set pointers
         void          setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; };
         void          setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; }

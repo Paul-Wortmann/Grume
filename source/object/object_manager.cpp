@@ -167,6 +167,14 @@ void cObjectManager::process(const std::int64_t &_dt)
                         if ((m_entityTemp->loot) && (m_entityTemp->loot->gold))
                         {
                             m_entityPlayer->character->gold += m_entityTemp->loot->gold_max;
+
+                            // Set entity state
+                            m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
+
+                            // Delete the entity from the game
+                            m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+                            m_entityTemp->base.dying = true;
+                            m_particleEngine->deleteEntity(m_entityTemp);
                         }
 
                         // item
@@ -174,15 +182,25 @@ void cObjectManager::process(const std::int64_t &_dt)
                         {
                             //std::cout << "Item clicked: " << m_entityTemp->base.textData << std::endl;
                             //std::cout << "Item ID: " << m_entityTemp->loot->itemID << std::endl;
+                            if (m_playerManager->getInventoryFreeSlotNum() > 0)
+                            {
+                                // Pickup item
+                                m_playerManager->pickupItem(m_entityTemp);
+
+                                // Set entity state
+                                m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
+
+                                // Delete the entity from the game
+                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+                                m_entityTemp->base.dying = true;
+                                m_particleEngine->deleteEntity(m_entityTemp);
+                            }
+                            else
+                            {
+                                // Can't pick up item, no free inventory space
+                            }
+
                         }
-
-                        // Set entity state
-                        m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
-
-                        // Delete the entity from the game
-                        m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-                        m_entityTemp->base.dying = true;
-                        m_particleEngine->deleteEntity(m_entityTemp);
                     }
 
                     // Handle custom interaction states

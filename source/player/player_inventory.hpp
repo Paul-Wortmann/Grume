@@ -37,10 +37,11 @@ struct sPlayerInventorySlot
 // Player inventory struct
 struct sPlayerInventory
 {
-    std::uint32_t         width   = 6;
-    std::uint32_t         height  = 9;
-    std::uint32_t         numSlot = 0;
-    sPlayerInventorySlot* slot    = nullptr;
+    std::uint32_t         width       = 6;
+    std::uint32_t         height      = 9;
+    std::uint32_t         numSlot     = 0;
+    std::uint32_t         numFreeSlot = 0;
+    sPlayerInventorySlot* slot        = nullptr;
 };
 
 class cPlayerInventory
@@ -50,8 +51,9 @@ class cPlayerInventory
         void          terminate(void);
         void          freeData(void);
         void          setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
-        bool          pickupItem(const sEntity* &_entity);
-        bool          dropItem(const sEntity* &_entity);
+        std::uint32_t freeSlotCount(void) { return m_inventory.numFreeSlot; };
+        bool          pickupItem(sEntity* &_entity);
+        bool          dropItem(sEntity* &_entity);
 
     protected:
     private:
