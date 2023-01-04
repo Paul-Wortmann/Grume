@@ -30,8 +30,9 @@
 // Player inventory slot struct
 struct sPlayerInventorySlot
 {
-    sEntity*           entity = nullptr;
-    std::uint32_t      data   = 0;
+    bool               occupied = false;
+    sEntity*           entity   = nullptr;
+    std::uint32_t      data     = 0;
 };
 
 // Player inventory struct

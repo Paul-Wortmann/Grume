@@ -69,8 +69,16 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
 {
     if (m_inventory.numFreeSlot > 0)
     {
-        m_inventory.numFreeSlot--;
-        return true;
+        for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
+        {
+            if (m_inventory.slot[i].occupied == false)
+            {
+                m_inventory.slot[i].entity = _entity;
+                m_inventory.slot[i].occupied = true;
+                m_inventory.numFreeSlot--;
+                return true;
+            }
+        }
     }
 
     return false;
@@ -78,6 +86,15 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
 
 bool cPlayerInventory::dropItem(sEntity* &_entity)
 {
-    m_inventory.numFreeSlot++;
-    return true;
+    for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
+    {
+        if ((m_inventory.slot[i].occupied == true) && (m_inventory.slot[i].entity == _entity))
+        {
+            m_inventory.slot[i].entity = nullptr;
+            m_inventory.slot[i].occupied = false;
+            m_inventory.numFreeSlot++;
+            return true;
+        }
+    }
+    return false;
 }

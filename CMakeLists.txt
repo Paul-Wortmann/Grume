@@ -4,7 +4,7 @@ project ("Grume")
 
 cmake_policy(SET CMP0072 NEW)
 
-set(CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -Wunused -Wshadow -Woverloaded-virtual -Wunreachable-code -Wconversion -static-libstdc++ -static-libgcc -fomit-frame-pointer -fexpensive-optimizations -flto -O3 -ffast-math ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -Wunused -Wshadow -Woverloaded-virtual -Wunreachable-code -Wconversion -static-libstdc++ -static-libgcc -fomit-frame-pointer -fexpensive-optimizations -flto -O3 -ffast-math${CMAKE_CXX_FLAGS}")
 
 include(FindPkgConfig)
 include(GNUInstallDirs)
