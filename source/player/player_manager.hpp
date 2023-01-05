@@ -31,7 +31,10 @@
 #include "../physics/physics_collision.hpp"
 #include "../resource/database_manager.hpp"
 
+#include "player_character.hpp"
 #include "player_inventory.hpp"
+#include "player_stash.hpp"
+#include "player_vendor.hpp"
 
 // Event type enum
 enum ePlayerEventType : std::uint32_t { playerEventType_none        = 0,    // null event

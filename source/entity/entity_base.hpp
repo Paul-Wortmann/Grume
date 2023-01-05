@@ -44,10 +44,11 @@ enum eEntityType  : std::uint32_t { entityType_none             =  0,    // none
                                     entityType_wallHole         = 14,    // wall hole
                                     entityType_particle         = 15 };  // particle
 
-enum eEntityOwner : std::uint32_t { entityOwner_none     = 0,    // none
-                                    entityOwner_player   = 1,    // player
-                                    entityOwner_map      = 2,    // map
-                                    entityOwner_particle = 3 };  // particle engine
+enum eEntityOwner : std::uint32_t { entityOwner_none      = 0,    // none
+                                    entityOwner_player    = 1,    // player
+                                    entityOwner_map       = 2,    // map
+                                    entityOwner_particle  = 3,    // particle engine
+                                    entityOwner_inventory = 4};   // inventory
 
 struct sEntityBase
 {
@@ -55,6 +56,7 @@ struct sEntityBase
     bool            enabled         = true;
     bool            dying           = false;
     bool            inRnge          = true;
+    bool            visible         = true;
     eEntityType     type            = eEntityType::entityType_none;
     eEntityOwner    owner           = eEntityOwner::entityOwner_none;
     std::uint32_t   tileOnMap       = 0;

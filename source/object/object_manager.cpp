@@ -191,13 +191,18 @@ void cObjectManager::process(const std::int64_t &_dt)
                                 m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
 
                                 // Delete the entity from the game
-                                m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-                                m_entityTemp->base.dying = true;
-                                m_particleEngine->deleteEntity(m_entityTemp);
+                                //m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
+                                //m_entityTemp->base.dying = true;
+                                //m_particleEngine->deleteEntity(m_entityTemp);
                             }
                             else
                             {
                                 // Can't pick up item, no free inventory space
+
+                                // pickup and drop.
+
+                                // Set entity state
+                                m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
                             }
 
                         }

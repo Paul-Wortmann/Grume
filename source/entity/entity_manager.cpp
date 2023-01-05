@@ -162,6 +162,13 @@ void cEntityManager::freeData(sEntity*& _pointer)
         _pointer->interaction = nullptr;
     }
 
+    // Item
+    if (_pointer->item != nullptr)
+    {
+        delete _pointer->item;
+        _pointer->item = nullptr;
+    }
+
     // Loot
     if (_pointer->loot != nullptr)
     {
@@ -293,7 +300,8 @@ void cEntityManager::process(const std::int64_t &_dt)
         for (sEntity* tEntity = getHead(); tEntity != nullptr; tEntity = tEntity->next)
         {
             // Range check and set
-            tEntity->base.inRnge = ((tEntity->base.position.x > range_x_min) &&
+            tEntity->base.inRnge = ((tEntity->base.visible == true) &&
+                                    (tEntity->base.position.x > range_x_min) &&
                                     (tEntity->base.position.x < range_x_max) &&
                                     (tEntity->base.position.z > range_z_min) &&
                                     (tEntity->base.position.z < range_z_max));
@@ -358,6 +366,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
 
         // Base
         tEntity->base.enabled        = true;
+        tEntity->base.visible        = true;
         tEntity->base.dying          = false;
         tEntity->base.initialized    = false;
         tEntity->base.name           = xmlEntityFile.getString("<base_name>");

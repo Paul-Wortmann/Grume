@@ -31,6 +31,7 @@
 #include "entity_footprint.hpp"
 #include "entity_graphics.hpp"
 #include "entity_interaction.hpp"
+#include "entity_item.hpp"
 #include "entity_loot.hpp"
 #include "entity_movement.hpp"
 #include "entity_particle.hpp"
@@ -52,6 +53,7 @@ struct sEntity
     sEntityFootprint*     footprint     = nullptr;
     sEntityGraphics*      graphics      = nullptr;
     sEntityInteraction*   interaction   = nullptr;
+    sEntityItem*          item          = nullptr;
     sEntityLoot*          loot          = nullptr;
     sEntityMovement*      movement      = nullptr;
     sEntityParticle*      particle      = nullptr;

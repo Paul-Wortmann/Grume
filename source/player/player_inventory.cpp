@@ -69,8 +69,14 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
 {
     if (m_inventory.numFreeSlot > 0)
     {
+        // Set the entity invisible and change ownership
+        _entity->base.visible = false;
+        _entity->base.inRnge = false;
+        _entity->base.owner = eEntityOwner::entityOwner_inventory;
+
         for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
         {
+            // Add the entity to a free slot
             if (m_inventory.slot[i].occupied == false)
             {
                 m_inventory.slot[i].entity = _entity;
@@ -86,8 +92,14 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
 
 bool cPlayerInventory::dropItem(sEntity* &_entity)
 {
+    // Set the entity visible and change ownership
+    _entity->base.visible = true;
+    _entity->base.inRnge = true;
+    _entity->base.owner = eEntityOwner::entityOwner_map;
+
     for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
     {
+        // Remove the entity from it's occupied slot
         if ((m_inventory.slot[i].occupied == true) && (m_inventory.slot[i].entity == _entity))
         {
             m_inventory.slot[i].entity = nullptr;

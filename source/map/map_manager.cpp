@@ -263,9 +263,6 @@ void cMapManager::m_playMapMusic(void)
 
 void cMapManager::m_unloadMap(void)
 {
-    // Temp free entity count
-    //std::uint32_t entityCount = 0;
-
     // If nullptr return
     if (m_map == nullptr)
     {
@@ -285,13 +282,7 @@ void cMapManager::m_unloadMap(void)
             tEntity->base.dying = false;
             m_entityManager->deleteEntity(tEntity);
         }
-        //else
-        //{
-        //    entityCount++;
-        //}
     }
-
-    //std::cout << "Unused entities: " << entityCount << std::endl;
 }
 
 std::uint32_t cMapManager::load(const std::string &_fileName)
