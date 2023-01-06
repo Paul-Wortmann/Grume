@@ -85,6 +85,20 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
                     m_menu[m].component[c].position += glm::vec3(m_menu[m].position.x, m_menu[m].position.y, 0.0f);
                     m_menu[m].component[c].size = xmlUiFile.getVec2("<component_size>", c + 1 + startComponent);
+
+                    // Component type
+                    std::string componentType = xmlUiFile.getString("<component_type>", c + 1 + startComponent);
+
+                    if (componentType.compare("TYPE_NORMAL") == 0)
+                    {
+                        m_menu[m].component[c].type = eComponentType::componentTypeNormal;
+                    }
+                    else if (componentType.compare("TYPE_ITEM") == 0)
+                    {
+                        m_menu[m].component[c].type = eComponentType::componentTypeItem;
+                    }
+
+                    // Component function
                     std::string componentFunction = xmlUiFile.getString("<component_function>", c + 1 + startComponent);
 
                     if (componentFunction.compare("MENU_CLOSE") == 0)
@@ -182,6 +196,222 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     else if (componentFunction.compare("LOAD_MAP_TOWN_6") == 0)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionLoadMapTown_6;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_1") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_1;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_2") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_2;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_3") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_3;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_4") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_4;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_5") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_5;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_6") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_6;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_7") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_7;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_8") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_8;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_9") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_9;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_10") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_10;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_11") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_11;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_12") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_12;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_13") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_13;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_14") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_14;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_15") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_15;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_16") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_16;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_17") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_17;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_18") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_18;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_19") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_19;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_20") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_20;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_21") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_21;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_22") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_22;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_23") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_23;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_24") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_24;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_25") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_25;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_26") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_26;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_27") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_27;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_28") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_28;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_29") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_29;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_30") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_30;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_31") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_31;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_32") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_32;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_33") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_33;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_34") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_34;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_35") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_35;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_36") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_36;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_37") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_37;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_38") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_38;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_39") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_39;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_40") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_40;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_41") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_41;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_42") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_42;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_43") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_43;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_44") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_44;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_45") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_45;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_46") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_46;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_47") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_47;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_48") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_48;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_49") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_49;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_50") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_50;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_51") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_51;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_52") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_52;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_53") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_53;
+                    }
+                    else if (componentFunction.compare("INVENTORY_SLOT_54") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_54;
                     }
                     else
                     {

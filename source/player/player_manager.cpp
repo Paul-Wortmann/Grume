@@ -26,14 +26,17 @@
 std::uint32_t cPlayerManager::initialize(void)
 {
     std::uint32_t return_value = EXIT_SUCCESS;
-    return_value = m_playerInventory.initialize();
-    m_playerInventory.setInventorySize(6, 9);
+    return_value = m_playerInventory->initialize();
+    m_playerInventory->setInventorySize(6, 9);
     return return_value;
 }
 
 void cPlayerManager::terminate(void)
 {
-    m_playerInventory.terminate();
+    // Player inventory
+    m_playerInventory->terminate();
+    delete m_playerInventory;
+    m_playerInventory = nullptr;
 }
 
 std::uint32_t cPlayerManager::load(const std::string &_fileName)
@@ -56,6 +59,7 @@ std::uint32_t cPlayerManager::load(const std::string &_fileName)
         m_player->base.type  = eEntityType::entityType_player;
         m_player->base.owner = eEntityOwner::entityOwner_player;
         m_entityManager->updateModelMatrix(m_player);
+        m_playerInventory->setPlayerEntity(m_player);
     }
     else
     {

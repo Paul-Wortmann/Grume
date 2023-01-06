@@ -26,6 +26,7 @@
 
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
+#include "../ui/ui_manager.hpp"
 
 // Player inventory slot struct
 struct sPlayerInventorySlot
@@ -51,15 +52,24 @@ class cPlayerInventory
         std::uint32_t initialize(void);
         void          terminate(void);
         void          freeData(void);
+
+        // Set pointers
+        void          setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; };
+        void          setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
+
+        sEntity*      getEntity(const std::uint32_t _slot) { return m_inventory.slot[_slot].entity; };
         void          setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
         std::uint32_t freeSlotCount(void) { return m_inventory.numFreeSlot; };
         bool          pickupItem(sEntity* &_entity);
         bool          dropItem(sEntity* &_entity);
+        void          dropItem(const std::uint32_t &_slot);
 
     protected:
     private:
         // Pointers
+        sEntity*          m_playerEntity    = nullptr;
         cEntityManager*   m_entityManager   = nullptr;
+        cUIManager*       m_UIManager       = nullptr;
 
         // Data
         sPlayerInventory m_inventory        = {};

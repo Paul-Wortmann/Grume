@@ -39,6 +39,7 @@ class cGraphicsEngine :tcTemplateEngine
         // External system pointers
         void                   setGameConfigPointer(cGameConfig* _gameConfig) { m_GameConfig = _gameConfig; }
         void                   setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
+        void                   setPlayerInventoryPointer(cPlayerInventory* _playerInventory) { m_playerInventory = _playerInventory; }
         void                   setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
 
         // Engine config
@@ -96,6 +97,9 @@ class cGraphicsEngine :tcTemplateEngine
 
         // configuration management
         cGameConfig*       m_GameConfig         = nullptr;
+
+        // Player inventory
+        cPlayerInventory*  m_playerInventory    = nullptr;
 
         // Resource management
         cResourceManager*  m_resourceManager    = nullptr;

@@ -97,7 +97,7 @@ void cGraphicsEngine::m_pui_render(void)
             // render each ui menu's ui components
             for (std::uint32_t c = 0; c < menu[m].numComponent; ++c)
             {
-                //if (menu[m].component[c].enabled)
+                if (menu[m].component[c].enabled)
                 {
                     // Shader uniforms
                     m_pui_modelMatrix = glm::mat4(1);
@@ -172,18 +172,29 @@ void cGraphicsEngine::m_pui_render(void)
                     {
                         // Texture
                         glActiveTexture(GL_TEXTURE0);
-
-                        if (menu[m].component[c].state == eComponentState::componentActivated)
+                        // Component type: item
+                        if (menu[m].component[c].type == eComponentType::componentTypeItem)
                         {
-                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureActive);
+                            // Player inventory
+                            // slot 1, at index 0
+                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                            glBindTexture(GL_TEXTURE_2D, m_playerInventory->getEntity(slotNumber)->graphics->icon);
                         }
-                        else if (menu[m].component[c].state == eComponentState::componentHover)
-                        {
-                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureHover);
-                        }
+                        // Component type: normal
                         else
                         {
-                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
+                            if (menu[m].component[c].state == eComponentState::componentStateActivated)
+                            {
+                                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureActive);
+                            }
+                            else if (menu[m].component[c].state == eComponentState::componentStateHover)
+                            {
+                                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureHover);
+                            }
+                            else
+                            {
+                                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
+                            }
                         }
 
                         // VAO

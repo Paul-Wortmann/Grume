@@ -29,6 +29,7 @@
 #include "../entity/entity_define.hpp"
 #include "../map/map_define.hpp"
 #include "../ui/ui_manager.hpp"
+#include "../player/player_inventory.hpp"
 #include "../resource/resource_manager.hpp"
 #include "graphics_engine_camera.hpp"
 #include "graphics_engine_debug.hpp"

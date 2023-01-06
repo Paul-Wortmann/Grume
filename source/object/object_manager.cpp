@@ -178,7 +178,7 @@ void cObjectManager::process(const std::int64_t &_dt)
                         }
 
                         // item
-                        if (m_entityTemp->loot)// && (m_entityTemp->loot->itemID != 0))
+                        else if (m_entityTemp->loot)// && (m_entityTemp->loot->itemID != 0))
                         {
                             //std::cout << "Item clicked: " << m_entityTemp->base.textData << std::endl;
                             //std::cout << "Item ID: " << m_entityTemp->loot->itemID << std::endl;

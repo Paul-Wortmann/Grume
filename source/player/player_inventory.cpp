@@ -82,6 +82,10 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
                 m_inventory.slot[i].entity = _entity;
                 m_inventory.slot[i].occupied = true;
                 m_inventory.numFreeSlot--;
+
+                // Enable the UI Inventory slot
+                m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + i), true);
+
                 return true;
             }
         }
@@ -105,8 +109,37 @@ bool cPlayerInventory::dropItem(sEntity* &_entity)
             m_inventory.slot[i].entity = nullptr;
             m_inventory.slot[i].occupied = false;
             m_inventory.numFreeSlot++;
+
+            // Disable the UI Inventory slot
+            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + i), false);
+
             return true;
         }
     }
     return false;
+}
+
+void cPlayerInventory::dropItem(const std::uint32_t &_slot)
+{
+    // Get the entity pointer first
+    sEntity* entity = m_inventory.slot[_slot].entity;
+
+    // Set the entity visible and change ownership
+    entity->base.visible = true;
+    entity->base.inRnge = true;
+    entity->base.owner = eEntityOwner::entityOwner_map;
+
+    // Set its position to closest free tile near the player
+    entity->base.position = m_playerEntity->base.position;
+    m_entityManager->updateModelMatrix(entity);
+    //m_entityManager->stateSet(entity, eEntityState::entityState_interact); Segfaultn'
+
+    // Remove the entity from it's occupied slot
+    m_inventory.slot[_slot].entity = nullptr;
+    m_inventory.slot[_slot].occupied = false;
+    m_inventory.numFreeSlot++;
+
+    // Disable the UI Inventory slot
+    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), false);
+
 }

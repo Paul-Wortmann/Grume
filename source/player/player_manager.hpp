@@ -30,6 +30,7 @@
 #include "../map/map_manager_defines.hpp"
 #include "../physics/physics_collision.hpp"
 #include "../resource/database_manager.hpp"
+#include "../ui/ui_manager.hpp"
 
 #include "player_character.hpp"
 #include "player_inventory.hpp"
@@ -51,21 +52,25 @@ struct sPlayerEvent
 class cPlayerManager :tcTemplateEngine
 {
     public:
-        std::uint32_t initialize(void) override;
-        void          terminate(void) override;
-        void          process(const std::int64_t &_dt) override;
-        sPlayerEvent* getEvent(void) { return m_event.pop(); }
+        std::uint32_t     initialize(void) override;
+        void              terminate(void) override;
+        void              process(const std::int64_t &_dt) override;
+        sPlayerEvent*     getEvent(void) { return m_event.pop(); }
+        cPlayerInventory* getPlayerInventory(void) { return m_playerInventory; };
 
         // Player Inventory
-        std::uint32_t getInventoryFreeSlotNum(void) { return m_playerInventory.freeSlotCount(); };
-        bool          pickupItem(sEntity* &_entity) { return m_playerInventory.pickupItem(_entity); };
-        bool          dropItem(sEntity* &_entity) { return m_playerInventory.dropItem(_entity); };
+        sEntity*      getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getEntity(_slot);};
+        std::uint32_t getInventoryFreeSlotNum(void) { return m_playerInventory->freeSlotCount(); };
+        bool          pickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); };
+        bool          dropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); };
+        void          inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
 
         // Set pointers
         void          setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; };
         void          setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; }
         void          setDatabaseManager(cDatabaseManager *_databaseManager) { m_databaseManager = _databaseManager; }
         void          setMapPointer(sMap* _map) { m_mapPointer = _map; }
+        void          setInventoryUIManager(cUIManager* _UIManager) {m_playerInventory->setUIManager(_UIManager);}
         sEntity*      getEntityPlayer(void) { return m_player; }
 
         void          setMapPlayer(void);
@@ -94,7 +99,7 @@ class cPlayerManager :tcTemplateEngine
         sMap*             m_mapPointer      = nullptr;
 
         // systems
-        cPlayerInventory  m_playerInventory = {};
+        cPlayerInventory* m_playerInventory = new cPlayerInventory;
 
         // Data
         std::uint32_t     m_tileClicked     = 0;

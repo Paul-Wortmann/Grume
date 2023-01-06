@@ -84,6 +84,23 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
     }
 }
 
+void cUIManager::setMenuComponentEnabled(const eComponentFunction &_componentFunction ,const bool &_state)
+{
+    if (m_menu != nullptr)
+    {
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        {
+            for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+            {
+                if (m_menu[m].component[c].function == _componentFunction)
+                {
+                    m_menu[m].component[c].enabled = _state;
+                }
+            }
+        }
+    }
+}
+
 void cUIManager::process(void)
 {
     // If menu data structure exists
@@ -120,9 +137,9 @@ void cUIManager::process(void)
                                 (m_menu[m].component[c].positionMax.y > m_mousePosition.y))
                             {
                                 // Set mouse hover
-                                m_menu[m].component[c].state = eComponentState::componentHover;
+                                m_menu[m].component[c].state = eComponentState::componentStateHover;
 
-                                // Mouse click
+                                // Mouse left click
                                 if (m_mouseLClicked)
                                 {
                                     // Game quit
@@ -193,7 +210,7 @@ void cUIManager::process(void)
                                     }
                                 }
 
-                                // Mouse pressed
+                                // Mouse left pressed
                                 if (m_mouseLPressed)
                                 {
                                     // Music volume up
@@ -227,11 +244,23 @@ void cUIManager::process(void)
                                         m_uiEvent = m_menu[m].component[c].function;
                                     }
                                 }
+
+                                // Mouse right click
+                                if (m_mouseRClicked)
+                                {
+                                    // Inventory item drop
+                                    if ((m_menu[m].component[c].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
+                                        (m_menu[m].component[c].function <= eComponentFunction::componentFunctionInventorySlot_54))
+                                    {
+                                        m_uiEvent = m_menu[m].component[c].function;
+                                    }
+                                }
+
                             }
                             else
                             {
                                 // No hover or activate, mouse not over component
-                                m_menu[m].component[c].state = eComponentState::componentNormal;
+                                m_menu[m].component[c].state = eComponentState::componentStateNormal;
                             }
                         }
                     }

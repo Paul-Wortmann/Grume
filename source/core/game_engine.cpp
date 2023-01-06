@@ -103,6 +103,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_graphicsEngine.setEntityHead(m_entityManager.getHead());
     m_graphicsEngine.setGameConfigPointer(&m_gameConfig);
     m_graphicsEngine.setUIPointer(&m_uiManager);
+    m_graphicsEngine.setPlayerInventoryPointer(m_playerManager.getPlayerInventory());
     m_graphicsEngine.setResourceManagerPointer(&m_resourceManager);
     m_graphicsEngine.setMapPointer(m_mapManager.getMapPointer());
     m_physicsEngine.setEntityHead(m_entityManager.getHead());
@@ -140,6 +141,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_playerManager.setEntityManager(&m_entityManager);
     m_playerManager.setDatabaseManager(&m_databaseManager);
     m_playerManager.setMapPointer(m_mapManager.getMapPointer());
+    m_playerManager.setInventoryUIManager(&m_uiManager);
     m_uiManager.setResourceManager(&m_resourceManager);
     m_uiManager.setWindowSize(m_graphicsEngine.getWindow_w(), m_graphicsEngine.getWindow_h());
 
@@ -456,6 +458,14 @@ void cGameEngine::process(void)
             // Fullscreen modified
             case eComponentFunction::componentFunctionFullscreenModified:
             break;
+
+            // Inventory drop item
+            /// Non standard C++! only supported as a GNU GPP extension...
+            case eComponentFunction::componentFunctionInventorySlot_1 ... eComponentFunction::componentFunctionInventorySlot_54:
+                m_playerManager.inventoryDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1));
+                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+
             // Way-point map load town 1
             case eComponentFunction::componentFunctionLoadMapTown_1:
                 m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);

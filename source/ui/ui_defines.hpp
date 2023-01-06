@@ -55,14 +55,75 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionLoadMapTown_3      = 22, // Load map town 3
     componentFunctionLoadMapTown_4      = 23, // Load map town 4
     componentFunctionLoadMapTown_5      = 24, // Load map town 5
-    componentFunctionLoadMapTown_6      = 25  // Load map town 6
+    componentFunctionLoadMapTown_6      = 25, // Load map town 6
+    componentFunctionInventorySlot_1    = 26, // Inventory slot 1
+    componentFunctionInventorySlot_2    = 27, // Inventory slot 2
+    componentFunctionInventorySlot_3    = 28, // Inventory slot 3
+    componentFunctionInventorySlot_4    = 29, // Inventory slot 4
+    componentFunctionInventorySlot_5    = 30, // Inventory slot 5
+    componentFunctionInventorySlot_6    = 31, // Inventory slot 6
+    componentFunctionInventorySlot_7    = 32, // Inventory slot 7
+    componentFunctionInventorySlot_8    = 33, // Inventory slot 8
+    componentFunctionInventorySlot_9    = 34, // Inventory slot 9
+    componentFunctionInventorySlot_10   = 35, // Inventory slot 10
+    componentFunctionInventorySlot_11   = 36, // Inventory slot 11
+    componentFunctionInventorySlot_12   = 37, // Inventory slot 12
+    componentFunctionInventorySlot_13   = 38, // Inventory slot 13
+    componentFunctionInventorySlot_14   = 39, // Inventory slot 14
+    componentFunctionInventorySlot_15   = 40, // Inventory slot 15
+    componentFunctionInventorySlot_16   = 41, // Inventory slot 16
+    componentFunctionInventorySlot_17   = 42, // Inventory slot 17
+    componentFunctionInventorySlot_18   = 43, // Inventory slot 18
+    componentFunctionInventorySlot_19   = 44, // Inventory slot 19
+    componentFunctionInventorySlot_20   = 45, // Inventory slot 20
+    componentFunctionInventorySlot_21   = 46, // Inventory slot 21
+    componentFunctionInventorySlot_22   = 47, // Inventory slot 22
+    componentFunctionInventorySlot_23   = 48, // Inventory slot 23
+    componentFunctionInventorySlot_24   = 49, // Inventory slot 24
+    componentFunctionInventorySlot_25   = 50, // Inventory slot 25
+    componentFunctionInventorySlot_26   = 51, // Inventory slot 26
+    componentFunctionInventorySlot_27   = 52, // Inventory slot 27
+    componentFunctionInventorySlot_28   = 53, // Inventory slot 28
+    componentFunctionInventorySlot_29   = 54, // Inventory slot 29
+    componentFunctionInventorySlot_30   = 55, // Inventory slot 30
+    componentFunctionInventorySlot_31   = 56, // Inventory slot 31
+    componentFunctionInventorySlot_32   = 57, // Inventory slot 32
+    componentFunctionInventorySlot_33   = 58, // Inventory slot 33
+    componentFunctionInventorySlot_34   = 59, // Inventory slot 34
+    componentFunctionInventorySlot_35   = 60, // Inventory slot 35
+    componentFunctionInventorySlot_36   = 61, // Inventory slot 36
+    componentFunctionInventorySlot_37   = 62, // Inventory slot 37
+    componentFunctionInventorySlot_38   = 63, // Inventory slot 38
+    componentFunctionInventorySlot_39   = 64, // Inventory slot 39
+    componentFunctionInventorySlot_40   = 65, // Inventory slot 40
+    componentFunctionInventorySlot_41   = 66, // Inventory slot 41
+    componentFunctionInventorySlot_42   = 67, // Inventory slot 42
+    componentFunctionInventorySlot_43   = 68, // Inventory slot 43
+    componentFunctionInventorySlot_44   = 69, // Inventory slot 44
+    componentFunctionInventorySlot_45   = 70, // Inventory slot 45
+    componentFunctionInventorySlot_46   = 71, // Inventory slot 46
+    componentFunctionInventorySlot_47   = 72, // Inventory slot 47
+    componentFunctionInventorySlot_48   = 73, // Inventory slot 48
+    componentFunctionInventorySlot_49   = 74, // Inventory slot 49
+    componentFunctionInventorySlot_50   = 75, // Inventory slot 50
+    componentFunctionInventorySlot_51   = 76, // Inventory slot 51
+    componentFunctionInventorySlot_52   = 77, // Inventory slot 52
+    componentFunctionInventorySlot_53   = 78, // Inventory slot 53
+    componentFunctionInventorySlot_54   = 79  // Inventory slot 54
 };
 
 enum class eComponentState : std::uint16_t
 {
-    componentNormal    = 0, // Normal
-    componentHover     = 1, // Hover
-    componentActivated = 2  // Activated
+    componentStateNormal    = 0, // Normal
+    componentStateHover     = 1, // Hover
+    componentStateActivated = 2, // Activated
+    componentStateDragged   = 3  // Dragged
+};
+
+enum class eComponentType : std::uint16_t
+{
+    componentTypeNormal    = 0, // Normal
+    componentTypeItem      = 1  // Item
 };
 
 struct sUIComponent
@@ -75,7 +136,8 @@ struct sUIComponent
     std::string        name          = "";
     bool               enabled       = false;
     eComponentFunction function      = eComponentFunction::componentFunctionNone;
-    eComponentState    state         = eComponentState::componentNormal;
+    eComponentType     type          = eComponentType::componentTypeNormal;
+    eComponentState    state         = eComponentState::componentStateNormal;
 
     // Base
     glm::vec3          position      = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
