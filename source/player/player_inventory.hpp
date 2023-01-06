@@ -54,6 +54,7 @@ class cPlayerInventory
         void          freeData(void);
 
         // Set pointers
+        void          setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
         void          setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; };
         void          setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
 
