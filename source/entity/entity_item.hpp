@@ -28,7 +28,7 @@
 
 struct sEntityItem
 {
-
+    std::uint32_t goldValue = 0;
 };
 
 #endif // ENTITY_ITEM_HPP

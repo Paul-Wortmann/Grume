@@ -9,6 +9,7 @@
     <menu>
         <menu_name>action_bar</menu_name>
         <menu_enabled>1</menu_enabled>
+        <menu_type>TYPE_ACTIONBAR</menu_type>
         <menu_texture_normal>ui/action_bar/action_bar_003_back_001.png</menu_texture_normal>
         <menu_position>0.0f, -0.9f, -0.01f</menu_position>
         <menu_size>1.0f 0.1f</menu_size>
@@ -212,6 +213,7 @@
     <menu>
         <menu_name>main_menu</menu_name>
         <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_MAIN</menu_type>
         <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
@@ -367,6 +369,7 @@
     <menu>
         <menu_name>options</menu_name>
         <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_OPTIONS</menu_type>
         <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
@@ -593,6 +596,7 @@
     <menu>
         <menu_name>inventory</menu_name>
         <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_INVENTORY</menu_type>
         <menu_texture_normal>ui/menu/inventory_menu_002.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
@@ -1271,10 +1275,694 @@
         </component>
     </menu>
 
+# Vendor
+    <menu>
+        <menu_name>vendor</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_VENDOR</menu_type>
+        <menu_texture_normal>ui/menu/inventory_menu_002.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_size>0.254166667f 0.677777778f</menu_size>
+        <menu_component_count>56<menu_component_count>
+
+        <component>
+            <component_name>title_text</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_inventory_menu.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_inventory_menu.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_inventory_menu.png</component_texture_activated>
+            <component_position>0.0f, 0.60f, -0.02f</component_position>
+            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_function>NONE</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+        </component>
+        
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_close_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64f, -0.02f</component_position>
+            <component_size>0.021875f 0.038888889f</component_size>
+            <component_function>MENU_CLOSE</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_001</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_1</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_002</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_2</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_003</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_3</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_004</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_4</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_005</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_5</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_006</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_6</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_007</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_7</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_008</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_8</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_009</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_9</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_010</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_10</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_011</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_11</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_012</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_12</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_013</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_13</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_014</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_14</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_015</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_15</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_016</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_16</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_017</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_17</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_018</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_18</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_019</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_19</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_020</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_20</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_021</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_21</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_022</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_22</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_023</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_23</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_024</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_24</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_025</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_25</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_026</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_26</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_027</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_27</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_028</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_28</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_029</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_29</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_030</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.062f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_30</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_031</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_31</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_032</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_32</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_033</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_33</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_034</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_34</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_035</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_35</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_036</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.186f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_36</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_037</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_37</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_038</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_38</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_039</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_39</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_040</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_40</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_041</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_41</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_042</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.310f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_42</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_043</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_43</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_044</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_44</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_045</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_45</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_046</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_46</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_047</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_47</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_048</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_48</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_049</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.560f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_49</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_050</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.560f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_50</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_051</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.560f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_51</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_052</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.560f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_52</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_053</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.560f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_53</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>slot_054</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.560f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>VENDOR_SLOT_54</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+    </menu>
+
 # Character
     <menu>
         <menu_name>character</menu_name>
         <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_CHARACTER</menu_type>
         <menu_texture_normal>ui/menu/character_menu_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
@@ -1310,6 +1998,7 @@
     <menu>
         <menu_name>skills</menu_name>
         <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_SKILLS</menu_type>
         <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
@@ -1345,6 +2034,7 @@
     <menu>
         <menu_name>waypoints</menu_name>
         <menu_enabled>0</menu_enabled>
+        <menu_type>TYPE_WAYPOINTS</menu_type>
         <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>

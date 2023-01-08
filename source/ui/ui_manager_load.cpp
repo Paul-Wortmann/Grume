@@ -50,6 +50,44 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
             m_menu[m].position = xmlUiFile.getVec3("<menu_position>", m + 1);
             m_menu[m].size = xmlUiFile.getVec2("<menu_size>", m + 1);
 
+            std::string menuType = xmlUiFile.getString("<menu_type>", m + 1);
+            if (menuType.compare("TYPE_NONE") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeNone;
+            }
+            else if (menuType.compare("TYPE_ACTIONBAR") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeActionBar;
+            }
+            else if (menuType.compare("TYPE_CHARACTER") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeCharacter;
+            }
+            else if (menuType.compare("TYPE_INVENTORY") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeInventory;
+            }
+            else if (menuType.compare("TYPE_MAIN") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeMain;
+            }
+            else if (menuType.compare("TYPE_OPTIONS") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeOptions;
+            }
+            else if (menuType.compare("TYPE_VENDOR") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeVendor;
+            }
+            else if (menuType.compare("TYPE_WAYPOINTS") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeWayPoints;
+            }
+            else
+            {
+                m_menu[m].type = eMenuType::menuTypeNone;
+            }
+
             // Calculate menu scale
             m_menu[m].scale = glm::vec2(m_menu[m].size.x, m_menu[m].size.y);
 
@@ -460,6 +498,223 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     else if (componentFunction.compare("ACTION_BAR_SLOT_12") == 0)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_12;
+                    }
+
+                    else if (componentFunction.compare("VENDOR_SLOT_1") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_1;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_2") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_2;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_3") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_3;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_4") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_4;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_5") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_5;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_6") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_6;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_7") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_7;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_8") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_8;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_9") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_9;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_10") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_10;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_11") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_11;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_12") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_12;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_13") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_13;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_14") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_14;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_15") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_15;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_16") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_16;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_17") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_17;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_18") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_18;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_19") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_19;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_20") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_20;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_21") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_21;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_22") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_22;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_23") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_23;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_24") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_24;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_25") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_25;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_26") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_26;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_27") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_27;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_28") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_28;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_29") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_29;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_30") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_30;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_31") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_31;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_32") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_32;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_33") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_33;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_34") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_34;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_35") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_35;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_36") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_36;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_37") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_37;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_38") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_38;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_39") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_39;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_40") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_40;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_41") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_41;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_42") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_42;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_43") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_43;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_44") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_44;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_45") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_45;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_46") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_46;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_47") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_47;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_48") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_48;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_49") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_49;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_50") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_50;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_51") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_51;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_52") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_52;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_53") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_53;
+                    }
+                    else if (componentFunction.compare("VENDOR_SLOT_54") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_54;
                     }
 
                     else

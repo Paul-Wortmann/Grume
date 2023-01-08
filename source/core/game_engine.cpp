@@ -366,6 +366,26 @@ void cGameEngine::process(void)
             delete tEvent;
         }
 
+        // Process NPC manager events
+        for (sNPCManagerEvent* tEvent = m_npcManager.getEvent(); tEvent != nullptr; tEvent = m_npcManager.getEvent())
+        {
+            // Menu activated
+            if (tEvent->type == eNPCEventType::NPCEventType_menu)
+            {
+                if (tEvent->data == 0)
+                {
+                    // pop vendor menu
+                    bool menuState = !m_uiManager.getMenuEnabled("vendor");
+                    m_uiManager.setMenuEnabled("vendor", menuState);
+                    m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                    m_uiManager.setMouseClicked(false);
+                }
+            }
+
+            // Cleanup
+            delete tEvent;
+        }
+
         // Process player events
         for (sPlayerEvent* tEvent = m_playerManager.getEvent(); tEvent != nullptr; tEvent = m_playerManager.getEvent())
         {
@@ -464,6 +484,13 @@ void cGameEngine::process(void)
             case eComponentFunction::componentFunctionInventorySlot_1 ... eComponentFunction::componentFunctionInventorySlot_54:
                 m_playerManager.inventoryDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1));
                 m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+
+            // Vendor drop item
+            /// Non standard C++! only supported as a GNU GPP extension...
+            case eComponentFunction::componentFunctionVendorSlot_1 ... eComponentFunction::componentFunctionVendorSlot_54:
+                //m_playerManager.vendorDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1));
+                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
 
             // Way-point map load town 1

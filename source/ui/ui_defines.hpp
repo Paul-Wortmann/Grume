@@ -50,12 +50,14 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionVolumeMasterUp     = 17, // Master volume up
     componentFunctionVolumeMasterDown   = 18, // Master volume down
     componentFunctionVolumeMasterBar    = 19, // Master volume bar
+
     componentFunctionLoadMapTown_1      = 20, // Load map town 1
     componentFunctionLoadMapTown_2      = 21, // Load map town 2
     componentFunctionLoadMapTown_3      = 22, // Load map town 3
     componentFunctionLoadMapTown_4      = 23, // Load map town 4
     componentFunctionLoadMapTown_5      = 24, // Load map town 5
     componentFunctionLoadMapTown_6      = 25, // Load map town 6
+
     componentFunctionInventorySlot_1    = 26, // Inventory slot 1
     componentFunctionInventorySlot_2    = 27, // Inventory slot 2
     componentFunctionInventorySlot_3    = 28, // Inventory slot 3
@@ -122,7 +124,62 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionActionBarSlot_9    = 88, // Action Bar slot 9
     componentFunctionActionBarSlot_10   = 89, // Action Bar slot 10
     componentFunctionActionBarSlot_11   = 90, // Action Bar slot 11
-    componentFunctionActionBarSlot_12   = 91  // Action Bar slot 12
+    componentFunctionActionBarSlot_12   = 91, // Action Bar slot 12
+
+    componentFunctionVendorSlot_1       = 92, // Vendor slot 1
+    componentFunctionVendorSlot_2       = 93, // Vendor slot 2
+    componentFunctionVendorSlot_3       = 94, // Vendor slot 3
+    componentFunctionVendorSlot_4       = 95, // Vendor slot 4
+    componentFunctionVendorSlot_5       = 96, // Vendor slot 5
+    componentFunctionVendorSlot_6       = 97, // Vendor slot 6
+    componentFunctionVendorSlot_7       = 98, // Vendor slot 7
+    componentFunctionVendorSlot_8       = 99, // Vendor slot 8
+    componentFunctionVendorSlot_9       = 100, // Vendor slot 9
+    componentFunctionVendorSlot_10      = 101, // Vendor slot 10
+    componentFunctionVendorSlot_11      = 102, // Vendor slot 11
+    componentFunctionVendorSlot_12      = 103, // Vendor slot 12
+    componentFunctionVendorSlot_13      = 104, // Vendor slot 13
+    componentFunctionVendorSlot_14      = 105, // Vendor slot 14
+    componentFunctionVendorSlot_15      = 106, // Vendor slot 15
+    componentFunctionVendorSlot_16      = 107, // Vendor slot 16
+    componentFunctionVendorSlot_17      = 108, // Vendor slot 17
+    componentFunctionVendorSlot_18      = 109, // Vendor slot 18
+    componentFunctionVendorSlot_19      = 110, // Vendor slot 19
+    componentFunctionVendorSlot_20      = 111, // Vendor slot 20
+    componentFunctionVendorSlot_21      = 112, // Vendor slot 21
+    componentFunctionVendorSlot_22      = 113, // Vendor slot 22
+    componentFunctionVendorSlot_23      = 114, // Vendor slot 23
+    componentFunctionVendorSlot_24      = 115, // Vendor slot 24
+    componentFunctionVendorSlot_25      = 116, // Vendor slot 25
+    componentFunctionVendorSlot_26      = 117, // Vendor slot 26
+    componentFunctionVendorSlot_27      = 118, // Vendor slot 27
+    componentFunctionVendorSlot_28      = 119, // Vendor slot 28
+    componentFunctionVendorSlot_29      = 120, // Vendor slot 29
+    componentFunctionVendorSlot_30      = 121, // Vendor slot 30
+    componentFunctionVendorSlot_31      = 122, // Vendor slot 31
+    componentFunctionVendorSlot_32      = 123, // Vendor slot 32
+    componentFunctionVendorSlot_33      = 124, // Vendor slot 33
+    componentFunctionVendorSlot_34      = 125, // Vendor slot 34
+    componentFunctionVendorSlot_35      = 126, // Vendor slot 35
+    componentFunctionVendorSlot_36      = 127, // Vendor slot 36
+    componentFunctionVendorSlot_37      = 128, // Vendor slot 37
+    componentFunctionVendorSlot_38      = 129, // Vendor slot 38
+    componentFunctionVendorSlot_39      = 130, // Vendor slot 39
+    componentFunctionVendorSlot_40      = 131, // Vendor slot 40
+    componentFunctionVendorSlot_41      = 132, // Vendor slot 41
+    componentFunctionVendorSlot_42      = 133, // Vendor slot 42
+    componentFunctionVendorSlot_43      = 134, // Vendor slot 43
+    componentFunctionVendorSlot_44      = 135, // Vendor slot 44
+    componentFunctionVendorSlot_45      = 136, // Vendor slot 45
+    componentFunctionVendorSlot_46      = 137, // Vendor slot 46
+    componentFunctionVendorSlot_47      = 138, // Vendor slot 47
+    componentFunctionVendorSlot_48      = 139, // Vendor slot 48
+    componentFunctionVendorSlot_49      = 140, // Vendor slot 49
+    componentFunctionVendorSlot_50      = 141, // Vendor slot 50
+    componentFunctionVendorSlot_51      = 142, // Vendor slot 51
+    componentFunctionVendorSlot_52      = 143, // Vendor slot 52
+    componentFunctionVendorSlot_53      = 144, // Vendor slot 53
+    componentFunctionVendorSlot_54      = 145  // Vendor slot 54
 };
 
 enum class eComponentState : std::uint16_t
@@ -166,6 +223,18 @@ struct sUIComponent
     std::uint32_t      textureActive = 0;
 };
 
+enum class eMenuType : std::uint16_t
+{
+    menuTypeNone      = 0, // None
+    menuTypeActionBar = 1, // Action Bar
+    menuTypeMain      = 2, // Main
+    menuTypeOptions   = 3, // Options
+    menuTypeCharacter = 4, // Character
+    menuTypeInventory = 5, // Inventory
+    menuTypeVendor    = 6, // Vendor
+    menuTypeWayPoints = 7  // Way points
+};
+
 struct sUIMenu
 {
     // Components
@@ -175,6 +244,7 @@ struct sUIMenu
     // Information
     std::string       name          = "";
     bool              enabled       = false;
+    eMenuType         type          = eMenuType::menuTypeNone;
 
     // Base
     glm::vec3         position      = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)

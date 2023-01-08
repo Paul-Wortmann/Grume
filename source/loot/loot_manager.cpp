@@ -97,7 +97,7 @@ void cLootManager::getLoot(std::uint32_t &_itemID, std::string &_databaseName, s
     // Random
     if (_itemID == 0)
     {
-        std::uint64_t valueRand = rand() % m_lootTable.tableValue;
+        std::uint64_t valueRand = 1 + rand() % (m_lootTable.tableValue - 2);
         std::uint64_t valueCountMin = 0;
         std::uint64_t valueCountMax = 0;
         for (std::uint32_t i = 0; i < m_lootTable.numEntry; ++i)

@@ -37,50 +37,66 @@
 #include "../resource/database_manager.hpp"
 #include "../resource/resource_manager.hpp"
 
+// Event type enum
+enum eNPCEventType : std::uint32_t { NPCEventType_none = 0,    // null event
+                                     NPCEventType_menu = 1  }; // menu activate event
+
+// Event struct
+struct sNPCManagerEvent
+{
+    sNPCManagerEvent* next = nullptr;
+    eNPCEventType     type = eNPCEventType::NPCEventType_none;
+    std::uint32_t     data = 0;
+};
+
 class cNPCManager
 {
     public:
-        std::uint32_t initialize(void);
-        void          terminate(void);
-        void          process(const std::int64_t &_dt);
-        void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
-        void          setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
-        void          setMapPointer(sMap* _map) { m_mapPointer = _map; };
-        void          setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; };
-        void          setDatabaseManagerPointer(cDatabaseManager* _databaseManager) { m_databaseManager = _databaseManager; };
-        void          setEntityManagerPointer(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
-        void          setLootManagerPointer(cLootManager* _lootManager) { m_lootManager = _lootManager; };
-        void          setParticleEnginePointer(cParticleEngine* _particleEngine) { m_particleEngine = _particleEngine; };
-        void          setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
-        void          setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
-        void          setQuestManager(cQuestManager* _questManager) { m_questManager = _questManager; };
-        void          updatePaths(void) { m_updatePaths = true; };
+        std::uint32_t     initialize(void);
+        void              terminate(void);
+        void              process(const std::int64_t &_dt);
+        sNPCManagerEvent* getEvent(void) { return m_event.pop(); }
+
+        void              setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
+        void              setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
+        void              setMapPointer(sMap* _map) { m_mapPointer = _map; };
+        void              setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; };
+        void              setDatabaseManagerPointer(cDatabaseManager* _databaseManager) { m_databaseManager = _databaseManager; };
+        void              setEntityManagerPointer(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
+        void              setLootManagerPointer(cLootManager* _lootManager) { m_lootManager = _lootManager; };
+        void              setParticleEnginePointer(cParticleEngine* _particleEngine) { m_particleEngine = _particleEngine; };
+        void              setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
+        void              setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
+        void              setQuestManager(cQuestManager* _questManager) { m_questManager = _questManager; };
+        void              updatePaths(void) { m_updatePaths = true; };
 
     protected:
 
     private:
         // external pointers
-        cAudioEngine*     m_audioEngine       = nullptr;
-        cDatabaseManager* m_databaseManager   = nullptr;
-        cEntityManager*   m_entityManager     = nullptr;
-        cGraphicsEngine*  m_graphicsEngine    = nullptr;
-        cLootManager*     m_lootManager       = nullptr;
-        cParticleEngine*  m_particleEngine    = nullptr;
-        cQuestManager*    m_questManager      = nullptr;
-        cResourceManager* m_resourceManager   = nullptr;
-        sEntity*          m_entityHead        = nullptr;
-        sEntity*          m_entityTemp        = nullptr;
-        sEntity*          m_entityPlayer      = nullptr;
-        sMap*             m_mapPointer        = nullptr;
+        cAudioEngine*             m_audioEngine       = nullptr;
+        cDatabaseManager*         m_databaseManager   = nullptr;
+        cEntityManager*           m_entityManager     = nullptr;
+        cGraphicsEngine*          m_graphicsEngine    = nullptr;
+        cLootManager*             m_lootManager       = nullptr;
+        cParticleEngine*          m_particleEngine    = nullptr;
+        cQuestManager*            m_questManager      = nullptr;
+        cResourceManager*         m_resourceManager   = nullptr;
+        sEntity*                  m_entityHead        = nullptr;
+        sEntity*                  m_entityTemp        = nullptr;
+        sEntity*                  m_entityPlayer      = nullptr;
+        sMap*                     m_mapPointer        = nullptr;
 
-        bool              m_updatePaths       = false;
+        tcQueue<sNPCManagerEvent> m_event             = {};
 
-        std::uint32_t     m_updateAIFrequency = 50; // milliseconds
-        std::uint32_t     m_updateAICounter   = 0;
+        bool                      m_updatePaths       = false;
 
-        void              m_generateWaypoints(sEntity*& _entity);
-        void              m_entityDeath(sEntity*& _entity);
-        void              m_entityRevive(sEntity*& _entity);
+        std::uint32_t             m_updateAIFrequency = 50; // milliseconds
+        std::uint32_t             m_updateAICounter   = 0;
+
+        void                      m_generateWaypoints(sEntity*& _entity);
+        void                      m_entityDeath(sEntity*& _entity);
+        void                      m_entityRevive(sEntity*& _entity);
 };
 
 #endif //NPC_MANAGER_HPP
