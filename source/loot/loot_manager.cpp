@@ -112,6 +112,12 @@ void cLootManager::getLoot(std::uint32_t &_itemID, std::string &_databaseName, s
         }
     }
 
+    // Default to ID 1
+    if (_itemID == 0)
+    {
+        _itemID = 1;
+    }
+
     // Populate fields
     if ((!m_lootTable.entry[_itemID - 1].dropOnce) ||
         ((m_lootTable.entry[_itemID - 1].dropOnce) && (m_lootTable.entry[_itemID - 1].dropCount == 0)))
