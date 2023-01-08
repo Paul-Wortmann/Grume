@@ -118,12 +118,23 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
     entity->base.inRnge = true;
     entity->base.owner = eEntityOwner::entityOwner_map;
 
-    // Set its position to closest free tile near the player
-    entity->base.position = m_playerEntity->base.position;
-    //std::uint32_t tile = gMapPositionToTile(map?, entity->base.position);
-    //tile = gClosestFreeTile(map?, tile);
-    //entity->base.position = gMapTileToPosition(map?, tile);
+    // Position
 
+    std::uint32_t tile = gMapPositionToTile(m_map, m_playerEntity->base.position);
+    //tile = gClosestFreeTile(m_map, tile); // Closest free tile tends to throw the item too far....
+    glm::vec3 position = gMapTileToPosition(m_map, tile);
+    float positionOffset = 1.0f - (gRandFloatNormalized() * 2.0f);
+    entity->base.position.x = position.x + positionOffset;
+    positionOffset = 1.0f - (gRandFloatNormalized() * 2.0f);
+    entity->base.position.z = position.z + positionOffset;
+
+    // rotation
+    float rotation = gRandFloatNormalized() * static_cast<float>(M_PI) * 2.0f;
+    entity->base.rotation.x = rotation * entity->base.rotationAxis.x;
+    entity->base.rotation.y = rotation * entity->base.rotationAxis.y;
+    entity->base.rotation.z = rotation * entity->base.rotationAxis.z;
+
+    // Update the model matrix
     m_entityManager->updateModelMatrix(entity);
 
     // Set entity state

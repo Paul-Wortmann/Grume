@@ -413,6 +413,55 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionInventorySlot_54;
                     }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_1") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_1;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_2") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_2;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_3") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_3;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_4") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_4;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_5") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_5;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_6") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_6;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_7") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_7;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_8") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_8;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_9") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_9;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_10") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_10;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_11") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_11;
+                    }
+                    else if (componentFunction.compare("ACTION_BAR_SLOT_12") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionActionBarSlot_12;
+                    }
+
                     else
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;

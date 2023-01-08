@@ -172,6 +172,8 @@ void cGraphicsEngine::m_pui_render(void)
                     {
                         // Texture
                         glActiveTexture(GL_TEXTURE0);
+
+
                         // Component type: item
                         if (menu[m].component[c].type == eComponentType::componentTypeItem)
                         {
@@ -180,8 +182,10 @@ void cGraphicsEngine::m_pui_render(void)
                             std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
                             glBindTexture(GL_TEXTURE_2D, m_playerInventory->getEntity(slotNumber)->graphics->icon);
                         }
+
                         // Component type: normal
                         else
+
                         {
                             if (menu[m].component[c].state == eComponentState::componentStateActivated)
                             {

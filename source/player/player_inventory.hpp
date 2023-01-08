@@ -26,6 +26,7 @@
 
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
+#include "../map/map_define.hpp"
 #include "../ui/ui_manager.hpp"
 
 // Player inventory slot struct
@@ -57,6 +58,7 @@ class cPlayerInventory
         void          setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
         void          setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; };
         void          setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
+        void          setMapPointer(sMap* _map) { m_map = _map; }
 
         sEntity*      getEntity(const std::uint32_t _slot) { return m_inventory.slot[_slot].entity; };
         void          setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
@@ -71,6 +73,7 @@ class cPlayerInventory
         sEntity*          m_playerEntity    = nullptr;
         cEntityManager*   m_entityManager   = nullptr;
         cUIManager*       m_UIManager       = nullptr;
+        sMap*             m_map             = nullptr;
 
         // Data
         sPlayerInventory m_inventory        = {};

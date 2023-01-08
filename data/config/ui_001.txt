@@ -12,7 +12,7 @@
         <menu_texture_normal>ui/action_bar/action_bar_003_back_001.png</menu_texture_normal>
         <menu_position>0.0f, -0.9f, -0.01f</menu_position>
         <menu_size>1.0f 0.1f</menu_size>
-        <menu_component_count>4<menu_component_count>
+        <menu_component_count>16<menu_component_count>
 
         <component>
             <component_name>health_bar</component_name>
@@ -61,6 +61,151 @@
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
         </component>
+
+        <component>
+            <component_name>action_bar_slot_001</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.5477f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_1</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_002</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.452f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_2</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_003</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.3563f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_3</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_004</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.2606f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_4</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_005</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.1649f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_5</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_006</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.05225f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_6</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_007</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.05225f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_7</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_008</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.1649f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_8</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_009</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.2606f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_9</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_010</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.3563f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_10</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_011</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.452f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_11</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
+        <component>
+            <component_name>action_bar_slot_012</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.5477f, 0.02f, -0.04f</component_position>
+            <component_size>0.0435f 0.067f</component_size>
+            <component_function>ACTION_BAR_SLOT_12</component_function>
+            <component_type>TYPE_ITEM</component_type>
+        </component>
+
     </menu>
 
 # Main menu

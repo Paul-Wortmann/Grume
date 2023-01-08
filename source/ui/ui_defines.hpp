@@ -109,7 +109,20 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionInventorySlot_51   = 76, // Inventory slot 51
     componentFunctionInventorySlot_52   = 77, // Inventory slot 52
     componentFunctionInventorySlot_53   = 78, // Inventory slot 53
-    componentFunctionInventorySlot_54   = 79  // Inventory slot 54
+    componentFunctionInventorySlot_54   = 79, // Inventory slot 54
+
+    componentFunctionActionBarSlot_1    = 80, // Action Bar slot 1
+    componentFunctionActionBarSlot_2    = 81, // Action Bar slot 2
+    componentFunctionActionBarSlot_3    = 82, // Action Bar slot 3
+    componentFunctionActionBarSlot_4    = 83, // Action Bar slot 4
+    componentFunctionActionBarSlot_5    = 84, // Action Bar slot 5
+    componentFunctionActionBarSlot_6    = 85, // Action Bar slot 6
+    componentFunctionActionBarSlot_7    = 86, // Action Bar slot 7
+    componentFunctionActionBarSlot_8    = 87, // Action Bar slot 8
+    componentFunctionActionBarSlot_9    = 88, // Action Bar slot 9
+    componentFunctionActionBarSlot_10   = 89, // Action Bar slot 10
+    componentFunctionActionBarSlot_11   = 90, // Action Bar slot 11
+    componentFunctionActionBarSlot_12   = 91  // Action Bar slot 12
 };
 
 enum class eComponentState : std::uint16_t
