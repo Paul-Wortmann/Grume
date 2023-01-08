@@ -23,6 +23,10 @@
     # Coinpile
 	<item>coinpile              items/coins_2_001.txt</item>
 
+    # Potions
+	<item>potion_health         items/potion_health_1_001.txt</item>
+	<item>potion_mana           items/potion_mana_1_001.txt</item>
+
     # Runes
 	<item>rune                  items/rune_1_001.txt</item>
 	<item>rune                  items/rune_2_001.txt</item>

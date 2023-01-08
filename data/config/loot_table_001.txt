@@ -5,6 +5,22 @@
 <loot_table>
 
     <loot>
+        <entity_name>potion_health</entity_name>
+        <entity_number>1</entity_number>
+        <value>200</value>
+        <drop_once>0</drop_once>
+        <item_type>6</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>potion_mana</entity_name>
+        <entity_number>1</entity_number>
+        <value>100</value>
+        <drop_once>0</drop_once>
+        <item_type>6</item_type>
+    </loot>
+
+    <loot>
         <entity_name>rune</entity_name>
         <entity_number>1</entity_number>
         <value>10</value>

@@ -31,6 +31,8 @@
     <sound>beetle monster/beetle/beetle_1_002.ogg<sound>
     <sound>beetle monster/beetle/beetle_1_003.ogg<sound>
 
+    <sound>bottle object/bottle_1_001.ogg<sound>
+
 	<sound>break  environment/break/impact_crunch_001.ogg</sound>
 	<sound>break  environment/break/impact_crunch_002.ogg</sound>
 	<sound>break  environment/break/impact_crunch_003.ogg</sound>
@@ -67,6 +69,10 @@
 	<sound>break  environment/misc/bfh1_misc_05.ogg</sound>
 	<sound>break  environment/misc/bfh1_misc_06.ogg</sound>
 	<sound>break  environment/misc/bfh1_misc_07.ogg</sound>
+
+	<sound>coin        object/coin_1_001.ogg</sound>
+	<sound>coin        object/coin_1_002.ogg</sound>
+	<sound>coin        object/coin_1_003.ogg</sound>
 
     <sound>creature monster/creature/alien_01.ogg<sound>
     <sound>creature monster/creature/alien_02.ogg<sound>
@@ -119,6 +125,11 @@
     <sound>creature monster/creature/scream_02.ogg<sound>
     <sound>creature monster/creature/spit_01.ogg<sound>
     <sound>creature monster/creature/spit_02.ogg<sound>
+
+	<sound>door        object/door_1_001.ogg</sound>
+	<sound>door        object/door_1_002.ogg</sound>
+
+	<sound>gate        object/gate_1_001.ogg</sound>
 
     <sound>ghost monster/ghost/ghost_1_001.ogg<sound>
     <sound>ghost monster/ghost/ghost_1_002.ogg<sound>
@@ -355,11 +366,11 @@
     <sound>spider monster/spider/spider_01_001.ogg</sound>
     <sound>spider monster/spider/spider_01_002.ogg</sound>
 
-    <sound>trader npc/trader/trader_1_001.ogg</sound>
-    <sound>trader npc/trader/trader_1_002.ogg</sound>
-    <sound>trader npc/trader/trader_1_003.ogg</sound>
-    <sound>trader npc/trader/trader_1_004.ogg</sound>
-    <sound>trader npc/trader/trader_1_005.ogg</sound>
+	<sound>trader      npc/trader/trader_1_001.ogg</sound>
+	<sound>trader      npc/trader/trader_1_002.ogg</sound>
+	<sound>trader      npc/trader/trader_1_003.ogg</sound>
+	<sound>trader      npc/trader/trader_1_004.ogg</sound>
+	<sound>trader      npc/trader/trader_1_005.ogg</sound>
 
     <sound>wolfman monster/wolfman/wolfman_01_001.ogg<sound>
 
@@ -433,21 +444,6 @@
     <sound>zombie monster/zombie/zombie_1_001.ogg<sound>
     <sound>zombie monster/zombie/zombie_1_002.ogg<sound>
     <sound>zombie monster/zombie/zombie_1_003.ogg<sound>
-
-	<sound>coin        object/coin_1_001.ogg</sound>
-	<sound>coin        object/coin_1_002.ogg</sound>
-	<sound>coin        object/coin_1_003.ogg</sound>
-
-	<sound>door        object/door_1_001.ogg</sound>
-	<sound>door        object/door_1_002.ogg</sound>
-
-	<sound>gate        object/gate_1_001.ogg</sound>
-
-	<sound>trader      npc/trader/trader_1_001.ogg</sound>
-	<sound>trader      npc/trader/trader_1_002.ogg</sound>
-	<sound>trader      npc/trader/trader_1_003.ogg</sound>
-	<sound>trader      npc/trader/trader_1_004.ogg</sound>
-	<sound>trader      npc/trader/trader_1_005.ogg</sound>
 
 </sound_database>
 

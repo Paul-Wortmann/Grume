@@ -90,15 +90,29 @@ void cLootManager::getLoot(std::uint32_t &_itemID, std::string &_databaseName, s
     if ((_itemID > 0) &&
         (m_lootTable.entry[_itemID - 1].dropOnce == true) &&
         (m_lootTable.entry[_itemID - 1].dropCount > 0))
+    {
         _itemID = 0;
+    }
 
     // Random
     if (_itemID == 0)
     {
-        _itemID = rand() % m_lootTable.numEntry;
-        _itemID++;
+        std::uint64_t valueRand = rand() % m_lootTable.tableValue;
+        std::uint64_t valueCountMin = 0;
+        std::uint64_t valueCountMax = 0;
+        for (std::uint32_t i = 0; i < m_lootTable.numEntry; ++i)
+        {
+            valueCountMax += m_lootTable.entry[i].value;
+            if ((valueRand > valueCountMin) && (valueRand < valueCountMax))
+            {
+                _itemID = i + 1;
+                break;
+            }
+            valueCountMin += m_lootTable.entry[i].value;
+        }
     }
 
+    // Populate fields
     if ((!m_lootTable.entry[_itemID - 1].dropOnce) ||
         ((m_lootTable.entry[_itemID - 1].dropOnce) && (m_lootTable.entry[_itemID - 1].dropCount == 0)))
     {

@@ -119,7 +119,6 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
     entity->base.owner = eEntityOwner::entityOwner_map;
 
     // Position
-
     std::uint32_t tile = gMapPositionToTile(m_map, m_playerEntity->base.position);
     //tile = gClosestFreeTile(m_map, tile); // Closest free tile tends to throw the item too far....
     glm::vec3 position = gMapTileToPosition(m_map, tile);
