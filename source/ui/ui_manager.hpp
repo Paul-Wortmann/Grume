@@ -36,8 +36,9 @@ class cUIManager
 
         std::uint32_t      getNumMenu(void) { return m_numMenu; };
         sUIMenu*           getMenu(void) { return m_menu; };
-        bool               getMenuEnabled(const std::string &_name);
-        void               setMenuEnabled(const std::string &_name, const bool &_state);
+        bool               getMenuEnabled(const eMenuType &_type);
+        void               setMenuEnabled(const eMenuType &_type, const bool &_state);
+        void               SetAllMenusDisabled(void);
         void               setMenuComponentEnabled(const eComponentFunction &_componentFunction ,const bool &_state);
         bool               getMouseOverMenu(void) { return m_mouseOverMenu; };
         void               setMouseLClicked(const bool &_state) { m_mouseLClicked = _state; };

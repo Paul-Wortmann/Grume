@@ -341,20 +341,13 @@ void cGameEngine::process(void)
             // Menu activated
             else if (tEvent->type == sMapManagerEventType::sMapManagerEventType_menuActivate)
             {
-                bool menuState = !m_uiManager.getMenuEnabled("waypoints");
-                m_uiManager.setMenuEnabled("waypoints", menuState);
+                m_uiManager.SetAllMenusDisabled();
+                bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeWayPoints);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeWayPoints, menuState);
                 m_graphicsEngine.setKeyReadyState(GLFW_KEY_W, false);
                 m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 m_uiManager.setMouseClicked(false);
                 m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
-                if (menuState == true)
-                {
-                    m_uiManager.setMenuEnabled("main_menu", false);
-                    m_uiManager.setMenuEnabled("inventory", false);
-                    m_uiManager.setMenuEnabled("character", false);
-                    m_uiManager.setMenuEnabled("skills", false);
-                    m_uiManager.setMenuEnabled("options", false);
-                }
             }
             // Map loaded
             else if (tEvent->type == sMapManagerEventType::sMapManagerEventType_mapLoad)
@@ -372,11 +365,24 @@ void cGameEngine::process(void)
             // Menu activated
             if (tEvent->type == eNPCEventType::NPCEventType_menu)
             {
-                if (tEvent->data == 0)
+                if (tEvent->data == eNPCEventData::NPCEventData_menuCloseAll)
                 {
                     // pop vendor menu
-                    bool menuState = !m_uiManager.getMenuEnabled("vendor");
-                    m_uiManager.setMenuEnabled("vendor", menuState);
+                    m_uiManager.SetAllMenusDisabled();
+                    m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                    m_uiManager.setMouseClicked(false);
+                }
+                else if (tEvent->data == eNPCEventData::NPCEventData_menuVendor)
+                {
+                    // Open vendor menu
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeVendor, true);
+                    m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                    m_uiManager.setMouseClicked(false);
+                }
+                else if (tEvent->data == eNPCEventData::NPCEventData_menuInventory)
+                {
+                    // Open inventory menu
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeInventory, true);
                     m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                     m_uiManager.setMouseClicked(false);
                 }
@@ -404,7 +410,7 @@ void cGameEngine::process(void)
             delete tEvent;
         }
 
-        // UI management, event handeling
+        // UI management, event handling
         switch (m_uiManager.getUIEvent())
         {
             case eComponentFunction::componentFunctionCloseMenu:
@@ -418,7 +424,7 @@ void cGameEngine::process(void)
             case eComponentFunction::componentFunctionGameNew:
                 m_engineState = eEngineState::engineStateProc;
                 cGameEngine::m_game_new();
-                m_uiManager.setMenuEnabled("main_menu", false);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
                 //m_mapManager.setLoading(false);
                 m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
@@ -435,8 +441,8 @@ void cGameEngine::process(void)
             break;
             case eComponentFunction::componentFunctionMenuOptions:
                 m_engineState = eEngineState::engineStatePause;
-                m_uiManager.setMenuEnabled("main_menu", false);
-                m_uiManager.setMenuEnabled("options", true);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, true);
                 m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             // Master volume up
@@ -548,83 +554,69 @@ void cGameEngine::process(void)
         // Main menu - GLFW_KEY_ESCAPE
         if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_ESCAPE))
         {
-            bool menuState = !m_uiManager.getMenuEnabled("main_menu");
-            m_uiManager.setMenuEnabled("main_menu", menuState);
+            m_uiManager.SetAllMenusDisabled();
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeMain);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, menuState);
             m_graphicsEngine.setKeyReadyState(GLFW_KEY_ESCAPE, false);
             m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_uiManager.setMouseClicked(false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
-            if (menuState == true)
-            {
-                m_uiManager.setMenuEnabled("inventory", false);
-                m_uiManager.setMenuEnabled("character", false);
-                m_uiManager.setMenuEnabled("skills", false);
-                m_uiManager.setMenuEnabled("options", false);
-                m_uiManager.setMenuEnabled("waypoints", false);
-            }
         }
 
         // Waypoints menu - GLFW_KEY_W
         if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_W))
         {
-            bool menuState = !m_uiManager.getMenuEnabled("waypoints");
-            m_uiManager.setMenuEnabled("waypoints", menuState);
+            m_uiManager.SetAllMenusDisabled();
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeWayPoints);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeWayPoints, menuState);
             m_graphicsEngine.setKeyReadyState(GLFW_KEY_W, false);
             m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_uiManager.setMouseClicked(false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
-            if (menuState == true)
-            {
-                m_uiManager.setMenuEnabled("main_menu", false);
-                m_uiManager.setMenuEnabled("inventory", false);
-                m_uiManager.setMenuEnabled("character", false);
-                m_uiManager.setMenuEnabled("skills", false);
-                m_uiManager.setMenuEnabled("options", false);
-            }
         }
 
         // Inventory - GLFW_KEY_I
         if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_I))
         {
-            bool menuState = !m_uiManager.getMenuEnabled("inventory");
-            m_uiManager.setMenuEnabled("inventory", menuState);
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeInventory);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeInventory, menuState);
             m_graphicsEngine.setKeyReadyState(GLFW_KEY_I, false);
             m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_uiManager.setMouseClicked(false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
-                m_uiManager.setMenuEnabled("main_menu", false);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
         }
 
         // Character - GLFW_KEY_C
         if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_C))
         {
-            bool menuState = !m_uiManager.getMenuEnabled("character");
-            m_uiManager.setMenuEnabled("character", menuState);
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeCharacter);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeCharacter, menuState);
             m_graphicsEngine.setKeyReadyState(GLFW_KEY_C, false);
             m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_uiManager.setMouseClicked(false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
-                m_uiManager.setMenuEnabled("main_menu", false);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
         }
 
         // Skills - GLFW_KEY_S
         if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_S))
         {
-            bool menuState = !m_uiManager.getMenuEnabled("skills");
-            m_uiManager.setMenuEnabled("skills", menuState);
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeSkills);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeSkills, menuState);
             m_graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
             m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_uiManager.setMouseClicked(false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
-                m_uiManager.setMenuEnabled("main_menu", false);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
         }
 

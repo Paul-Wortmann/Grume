@@ -41,12 +41,18 @@
 enum eNPCEventType : std::uint32_t { NPCEventType_none = 0,    // null event
                                      NPCEventType_menu = 1  }; // menu activate event
 
+// Event data enum
+enum eNPCEventData : std::uint32_t { NPCEventData_none          = 0,    // null event
+                                     NPCEventData_menuCloseAll  = 1,    // menu close all
+                                     NPCEventData_menuVendor    = 2,    // menu activate vendor
+                                     NPCEventData_menuInventory = 3  }; // menu activate inventory
+
 // Event struct
 struct sNPCManagerEvent
 {
     sNPCManagerEvent* next = nullptr;
     eNPCEventType     type = eNPCEventType::NPCEventType_none;
-    std::uint32_t     data = 0;
+    eNPCEventData     data = eNPCEventData::NPCEventData_none;
 };
 
 class cNPCManager

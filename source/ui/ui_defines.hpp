@@ -231,8 +231,9 @@ enum class eMenuType : std::uint16_t
     menuTypeOptions   = 3, // Options
     menuTypeCharacter = 4, // Character
     menuTypeInventory = 5, // Inventory
-    menuTypeVendor    = 6, // Vendor
-    menuTypeWayPoints = 7  // Way points
+    menuTypeSkills    = 6, // Skills
+    menuTypeVendor    = 7, // Vendor
+    menuTypeWayPoints = 8  // Way points
 };
 
 struct sUIMenu

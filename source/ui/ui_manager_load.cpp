@@ -75,6 +75,10 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
             {
                 m_menu[m].type = eMenuType::menuTypeOptions;
             }
+            else if (menuType.compare("TYPE_SKILLS") == 0)
+            {
+                m_menu[m].type = eMenuType::menuTypeSkills;
+            }
             else if (menuType.compare("TYPE_VENDOR") == 0)
             {
                 m_menu[m].type = eMenuType::menuTypeVendor;

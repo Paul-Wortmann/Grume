@@ -50,13 +50,13 @@ void cUIManager::terminate(void)
     }
 }
 
-bool cUIManager::getMenuEnabled(const std::string &_name)
+bool cUIManager::getMenuEnabled(const eMenuType &_type)
 {
     if (m_menu != nullptr)
     {
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if (m_menu[m].name.compare(_name) == 0)
+            if (m_menu[m].type == _type)
             {
                 return m_menu[m].enabled;
             }
@@ -65,7 +65,7 @@ bool cUIManager::getMenuEnabled(const std::string &_name)
     return false;
 }
 
-void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
+void cUIManager::setMenuEnabled(const eMenuType &_type, const bool &_state)
 {
     // Avoid unintended mouse clicks
     m_mouseOverMenu = false;
@@ -76,9 +76,23 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
     {
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if (m_menu[m].name.compare(_name) == 0)
+            if (m_menu[m].type == _type)
             {
                 m_menu[m].enabled = _state;
+            }
+        }
+    }
+}
+
+void cUIManager::SetAllMenusDisabled(void)
+{
+    if (m_menu != nullptr)
+    {
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        {
+            if ((&m_menu[m] != nullptr) && (m_menu[m].type != eMenuType::menuTypeActionBar))
+            {
+                m_menu[m].enabled = false;
             }
         }
     }

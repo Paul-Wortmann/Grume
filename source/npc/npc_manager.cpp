@@ -1005,11 +1005,23 @@ void cNPCManager::process(const std::int64_t &_dt)
             // Set entity state : interact
             m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
 
-            // Do trade stuff here.....
-            sNPCManagerEvent* event = new sNPCManagerEvent;
-            event->type = eNPCEventType::NPCEventType_menu;
-            event->data = 0; // Vendor menu
-            m_event.push(event);
+            // Event: close all menus
+            sNPCManagerEvent* event_1 = new sNPCManagerEvent;
+            event_1->type = eNPCEventType::NPCEventType_menu;
+            event_1->data = eNPCEventData::NPCEventData_menuCloseAll;
+            m_event.push(event_1);
+
+            // Event: open vendor menu
+            sNPCManagerEvent* event_2 = new sNPCManagerEvent;
+            event_2->type = eNPCEventType::NPCEventType_menu;
+            event_2->data = eNPCEventData::NPCEventData_menuVendor;
+            m_event.push(event_2);
+
+            // Event: open inventory menu
+            sNPCManagerEvent* event_3 = new sNPCManagerEvent;
+            event_3->type = eNPCEventType::NPCEventType_menu;
+            event_3->data = eNPCEventData::NPCEventData_menuInventory;
+            m_event.push(event_3);
 
             // Lastly update the player's model matrix.
             m_entityManager->updateModelMatrix(m_entityPlayer);
