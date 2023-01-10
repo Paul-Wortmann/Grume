@@ -50,6 +50,13 @@ void cUIManager::terminate(void)
     }
 }
 
+void cUIManager::m_calculateScale(void)
+{
+    m_UIScale.x = static_cast<float>(m_UIResolution.x) / static_cast<float>(m_window_w);
+    m_UIScale.y = static_cast<float>(m_UIResolution.y) / static_cast<float>(m_window_h);
+}
+
+
 bool cUIManager::getMenuEnabled(const eMenuType &_type)
 {
     if (m_menu != nullptr)

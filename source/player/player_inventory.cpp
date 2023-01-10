@@ -34,7 +34,7 @@ std::uint32_t cPlayerInventory::initialize(void)
 
 void cPlayerInventory::terminate(void)
 {
-    // free if
+    // free all data
     freeData();
 }
 

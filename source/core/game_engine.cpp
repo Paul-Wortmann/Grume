@@ -170,7 +170,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 void cGameEngine::terminate(void)
 {
     // save the map
-    m_mapManager.save("map_data.txt");
+    //m_mapManager.save("map_data.txt");
 
     // Save the configuration file
     m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();

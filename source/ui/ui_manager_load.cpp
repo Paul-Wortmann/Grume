@@ -33,6 +33,13 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
     // If ui database file contains data:
     if (xmlUiFile.lineCount() > 0)
     {
+        // Load UI information
+        if (xmlUiFile.getInstanceCount("<ui_resolution>") > 0)
+        {
+            m_UIResolution = xmlUiFile.getIVec2("<ui_resolution>");
+            m_calculateScale();
+        }
+
         // used to index into the xml file for menu components
         std::uint32_t startComponent = 0;
 
@@ -92,22 +99,11 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                 m_menu[m].type = eMenuType::menuTypeNone;
             }
 
-            // Calculate menu scale
-            m_menu[m].scale = glm::vec2(m_menu[m].size.x, m_menu[m].size.y);
-
-            // Calculate menu size in pixels
-            std::uint32_t menuSizePixels_x = static_cast<std::uint32_t>(m_menu[m].size.x * static_cast<float>(m_window_w));
-            std::uint32_t menuSizePixels_y = static_cast<std::uint32_t>(m_menu[m].size.y * static_cast<float>(m_window_h));
-
-            // Calculate menu position in pixels
-            std::uint32_t menuPosPixels_x = static_cast<std::uint32_t>((1 - m_menu[m].position.x) * static_cast<float>(m_window_w) / 2.0f);
-            std::uint32_t menuPosPixels_y = static_cast<std::uint32_t>((1 - m_menu[m].position.y) * static_cast<float>(m_window_h) / 2.0f);
-
             // Calculate menu bounds
-            m_menu[m].positionMin.x = static_cast<float>(menuPosPixels_x - (menuSizePixels_x / 2));
-            m_menu[m].positionMin.y = static_cast<float>(menuPosPixels_y - (menuSizePixels_y / 2));
-            m_menu[m].positionMax.x = static_cast<float>(menuPosPixels_x + (menuSizePixels_x / 2));
-            m_menu[m].positionMax.y = static_cast<float>(menuPosPixels_y + (menuSizePixels_y / 2));
+            m_menu[m].positionMin.x = m_menu[m].position.x - m_menu[m].size.x;
+            m_menu[m].positionMax.x = m_menu[m].position.x + m_menu[m].size.x;
+            m_menu[m].positionMin.y = m_menu[m].position.y - m_menu[m].size.y;
+            m_menu[m].positionMax.y = m_menu[m].position.y + m_menu[m].size.y;
 
             // get a count of ui components for the current menu
             m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);
@@ -127,6 +123,12 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
                     m_menu[m].component[c].position += glm::vec3(m_menu[m].position.x, m_menu[m].position.y, 0.0f);
                     m_menu[m].component[c].size = xmlUiFile.getVec2("<component_size>", c + 1 + startComponent);
+
+                    // Calculate Component bounds
+                    m_menu[m].component[c].positionMin.x = m_menu[m].component[c].position.x - m_menu[m].component[c].size.x;
+                    m_menu[m].component[c].positionMax.x = m_menu[m].component[c].position.x + m_menu[m].component[c].size.x;
+                    m_menu[m].component[c].positionMin.y = m_menu[m].component[c].position.y - m_menu[m].component[c].size.y;
+                    m_menu[m].component[c].positionMax.y = m_menu[m].component[c].position.y + m_menu[m].component[c].size.y;
 
                     // Component type
                     std::string componentType = xmlUiFile.getString("<component_type>", c + 1 + startComponent);
@@ -725,23 +727,6 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;
                     }
-
-                    // Calculate menu component scale
-                    m_menu[m].component[c].scale = glm::vec2(m_menu[m].component[c].size.x, m_menu[m].component[c].size.y);
-
-                    // Calculate menu component size in pixels
-                    std::uint32_t menuCompSizePixels_x = static_cast<uint32_t>(m_menu[m].component[c].size.x * static_cast<float>(m_window_w));
-                    std::uint32_t menuCompSizePixels_y = static_cast<uint32_t>(m_menu[m].component[c].size.y * static_cast<float>(m_window_h));
-
-                    // Calculate menu component position in pixels
-                    std::uint32_t menuCompPosPixels_x = static_cast<uint32_t>((1 + (m_menu[m].component[c].position.x)) * static_cast<float>(m_window_w) / 2.0f);
-                    std::uint32_t menuCompPosPixels_y = static_cast<uint32_t>((1 - (m_menu[m].component[c].position.y)) * static_cast<float>(m_window_h) / 2.0f);
-
-                    // Calculate menu component bounds
-                    m_menu[m].component[c].positionMin.x = static_cast<float>(menuCompPosPixels_x - (menuCompSizePixels_x / 2));
-                    m_menu[m].component[c].positionMin.y = static_cast<float>(menuCompPosPixels_y - (menuCompSizePixels_y / 2));
-                    m_menu[m].component[c].positionMax.x = static_cast<float>(menuCompPosPixels_x + (menuCompSizePixels_x / 2));
-                    m_menu[m].component[c].positionMax.y = static_cast<float>(menuCompPosPixels_y + (menuCompSizePixels_y / 2));
                 }
             }
 

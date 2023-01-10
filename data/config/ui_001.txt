@@ -1,8 +1,9 @@
 <?xml version = "1.0" encoding = "UTF-8" ?>
 <ui>
     <information>
-        # size in pixels
+        # size in OpenGL coordinate space
         # position in OpenGL coordinate space
+        <ui_resolution>1920 1080</ui_resolution>
     </information>
 
 # Action bar
@@ -600,7 +601,7 @@
         <menu_texture_normal>ui/menu/inventory_menu_002.png</menu_texture_normal>
         <menu_position>0.5f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>56<menu_component_count>
+        <menu_component_count>57<menu_component_count>
 
         <component>
             <component_name>title_text</component_name>
@@ -624,6 +625,18 @@
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
+        </component>
+
+        <component>
+            <component_name>gold_text</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.1f, -0.65f, -0.02f</component_position>
+            <component_size>0.1f 0.02f</component_size>
+            <component_function>GOLD_TEXT</component_function>
+            <component_type>TYPE_TEXT</component_type>
         </component>
 
         <component>

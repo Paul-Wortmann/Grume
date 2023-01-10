@@ -85,6 +85,10 @@ void cGraphicsEngine::sm_glfwCursorPosCallback(GLFWwindow* _window, double _xpos
 
     graphicsEngine->m_mouseX = static_cast<float>(_xpos);
     graphicsEngine->m_mouseY = static_cast<float>(_ypos);
+
+    graphicsEngine->m_mouseGLX = ((_xpos / graphicsEngine->m_window_w) * 2.0f) - 1.0f;
+    graphicsEngine->m_mouseGLY = 1.0f - ((_ypos / graphicsEngine->m_window_h) * 2.0f);
+
 }
 
 // GLFW Mouse button callback
@@ -601,7 +605,7 @@ void cGraphicsEngine::process(const std::int64_t &_dt)
     }
 
     // UI
-    m_UIManager->setMousePosition(glm::vec2(m_mouseX, m_mouseY));
+    m_UIManager->setMousePosition(glm::vec2(m_mouseGLX, m_mouseGLY));
 
     // Camera
     m_camera.process(_dt);

@@ -74,6 +74,7 @@ class cGraphicsEngine :tcTemplateEngine
 
         // Mouse
         glm::vec2              getMousePosition(void) { return glm::vec2(m_mouseX, m_mouseY); };
+        glm::vec2              getMousePositionOpenGL(void) { return glm::vec2(m_mouseGLX, m_mouseGLY); };
 
         // Camera
         glm::vec3              getCameraPosition(void) { return m_camera.getPosition(); };
@@ -161,6 +162,8 @@ class cGraphicsEngine :tcTemplateEngine
         std::unordered_map<std::int32_t, bool> m_keyReadyMap = {};
         float                                  m_mouseX      = 0.0f;
         float                                  m_mouseY      = 0.0f;
+        float                                  m_mouseGLX    = 0.0f;
+        float                                  m_mouseGLY    = 0.0f;
 
         // Graphics engine light
         cGraphicsEngineLightManager m_lightManager;

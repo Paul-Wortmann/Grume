@@ -80,7 +80,7 @@ void cGraphicsEngine::m_pui_render(void)
             // Shader uniforms
             m_pui_modelMatrix = glm::mat4(1);
             m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].position);
-            m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].scale.x, menu[m].scale.y, 1.0f));
+            m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].size.x, menu[m].size.y, 1.0f));
             glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
             if (m_pc_fsq_VAO != 0)
@@ -105,66 +105,60 @@ void cGraphicsEngine::m_pui_render(void)
                     if (menu[m].component[c].function == eComponentFunction::componentFunctionBarHealth)
                     {
                         float     percent  = static_cast<float>(m_entityPlayer->character->attribute.health.current) / static_cast<float>(m_entityPlayer->character->attribute.health.max);
-                        glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, scaleVec);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
                     // Mana bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionBarMana)
                     {
                         float     percent  = static_cast<float>(m_entityPlayer->character->attribute.mana.current) / static_cast<float>(m_entityPlayer->character->attribute.mana.max);
-                        glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x += menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, scaleVec);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
                     // Experience bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionBarExp)
                     {
                         float     percent  = static_cast<float>(static_cast<double>(m_entityPlayer->character->level.exp) / static_cast<double>(m_entityPlayer->character->level.expNext));
-                        glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, scaleVec);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
                     // Volume master bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMasterBar)
                     {
                         float     percent  = static_cast<float>(m_GameConfig->m_volume_master) / static_cast<float>(m_GameConfig->m_volume_max);
-                        glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, scaleVec);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
                     // Volume music bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicBar)
                     {
                         float     percent  = static_cast<float>(m_GameConfig->m_volume_music) / static_cast<float>(m_GameConfig->m_volume_max);
-                        glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, scaleVec);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
                     // Volume sound bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionVolumeSoundBar)
                     {
                         float     percent  = static_cast<float>(m_GameConfig->m_volume_sfx) / static_cast<float>(m_GameConfig->m_volume_max);
-                        glm::vec3 scaleVec = glm::vec3(menu[m].component[c].scale.x * percent, menu[m].component[c].scale.y, 1.0f);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, scaleVec);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
                     else
                     {
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].scale.x, menu[m].component[c].scale.y, 1.0f));
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
                     }
                     glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
