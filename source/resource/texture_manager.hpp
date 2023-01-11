@@ -33,6 +33,7 @@ class cTextureManager : public tcLinkedList<sTexture>
     public:
         std::uint32_t initialize(void);
         void          terminate(void);
+        void          freeTexture(sTexture *&_texture) { setFreePointer(_texture); }
         sTexture*     load(const std::string &_fileName);
 
         // Font
@@ -45,7 +46,8 @@ class cTextureManager : public tcLinkedList<sTexture>
     private:
         cFontManager m_fontManager = {};
         void freeData(sTexture *&_pointer) override;
-
+        sTexture* getFreePointer(void);
+        void      setFreePointer(sTexture *&_pointer);
 };
 
 #endif // TEXTURE_MANAGER_HPP

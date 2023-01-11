@@ -25,6 +25,7 @@
 
 std::uint32_t cUIManager::initialize(void)
 {
+    m_textGold = m_resourceManager->generateTexture("0", glm::ivec4(230, 230, 230, 255));
     return EXIT_SUCCESS;
 }
 

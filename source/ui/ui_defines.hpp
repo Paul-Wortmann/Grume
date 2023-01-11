@@ -179,7 +179,10 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionVendorSlot_51      = 142, // Vendor slot 51
     componentFunctionVendorSlot_52      = 143, // Vendor slot 52
     componentFunctionVendorSlot_53      = 144, // Vendor slot 53
-    componentFunctionVendorSlot_54      = 145  // Vendor slot 54
+    componentFunctionVendorSlot_54      = 145, // Vendor slot 54
+
+    componentFunctionTextGold           = 146  // Gold text
+
 };
 
 enum class eComponentState : std::uint16_t
@@ -193,7 +196,8 @@ enum class eComponentState : std::uint16_t
 enum class eComponentType : std::uint16_t
 {
     componentTypeNormal    = 0, // Normal
-    componentTypeItem      = 1  // Item
+    componentTypeItem      = 1, // Item
+    componentTypeText      = 2  // Text
 };
 
 struct sUIComponent

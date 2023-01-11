@@ -629,7 +629,7 @@
 
         <component>
             <component_name>gold_text</component_name>
-            <component_enabled>0</component_enabled>
+            <component_enabled>1</component_enabled>
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>

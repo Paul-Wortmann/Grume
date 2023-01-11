@@ -101,6 +101,7 @@ void cGraphicsEngine::m_pui_render(void)
                 {
                     // Shader uniforms
                     m_pui_modelMatrix = glm::mat4(1);
+
                     // Health bar
                     if (menu[m].component[c].function == eComponentFunction::componentFunctionBarHealth)
                     {
@@ -155,6 +156,16 @@ void cGraphicsEngine::m_pui_render(void)
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x * percent, menu[m].component[c].size.y, 1.0f));
                     }
+                    // Gold text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextGold)
+                    {
+                        // Generate texture:
+                        sTexture* tempTexture = m_resourceManager->generateTexture("Gold: ", glm::ivec4(230, 230, 230, 255));
+                        menu[m].component[c].textureNormal = tempTexture->ID;
+
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
+                    }
                     else
                     {
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
@@ -167,7 +178,6 @@ void cGraphicsEngine::m_pui_render(void)
                         // Texture
                         glActiveTexture(GL_TEXTURE0);
 
-
                         // Component type: item
                         if (menu[m].component[c].type == eComponentType::componentTypeItem)
                         {
@@ -178,8 +188,7 @@ void cGraphicsEngine::m_pui_render(void)
                         }
 
                         // Component type: normal
-                        else
-
+                        else if (menu[m].component[c].type == eComponentType::componentTypeNormal)
                         {
                             if (menu[m].component[c].state == eComponentState::componentStateActivated)
                             {
@@ -193,6 +202,12 @@ void cGraphicsEngine::m_pui_render(void)
                             {
                                 glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
                             }
+                        }
+
+                        // Component type: text
+                        if (menu[m].component[c].type == eComponentType::componentTypeText)
+                        {
+                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
                         }
 
                         // VAO

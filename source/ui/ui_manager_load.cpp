@@ -141,6 +141,10 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].type = eComponentType::componentTypeItem;
                     }
+                    else if (componentType.compare("TYPE_TEXT") == 0)
+                    {
+                        m_menu[m].component[c].type = eComponentType::componentTypeText;
+                    }
 
                     // Component function
                     std::string componentFunction = xmlUiFile.getString("<component_function>", c + 1 + startComponent);
@@ -721,6 +725,10 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     else if (componentFunction.compare("VENDOR_SLOT_54") == 0)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_54;
+                    }
+                    else if (componentFunction.compare("GOLD_TEXT") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionTextGold;
                     }
 
                     else

@@ -47,6 +47,30 @@ void cTextureManager::terminate(void)
     m_fontManager.terminate();
 }
 
+sTexture* cTextureManager::getFreePointer(void)
+{
+    // If an unused pointer is available, reuse it
+    for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
+    {
+        if (temp->enabled == false)
+        {
+            temp->enabled = true;
+            return temp;
+        }
+    }
+
+    // Allocate memory and return a new pointer
+    sTexture* temp = getNew();
+    temp->enabled = true;
+    return temp;
+}
+
+void cTextureManager::setFreePointer(sTexture *&_pointer)
+{
+    freeData(_pointer);
+    _pointer->enabled = false;
+}
+
 sTexture* cTextureManager::load(const std::string &_fileName)
 {
     for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
@@ -84,7 +108,7 @@ sTexture* cTextureManager::load(const std::string &_fileName)
             format = GL_RGBA;
 
         // Create a new texture pointer
-        sTexture* texture   = getNew();
+        sTexture* texture   = getFreePointer();
         texture->fileName   = _fileName;
         texture->width      = static_cast<std::uint32_t>(width);
         texture->height     = static_cast<std::uint32_t>(height);
@@ -122,7 +146,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text)
     }
 
     // Create a new texture pointer
-    sTexture* texture   = getNew();
+    sTexture* texture   = getFreePointer();
     texture->fileName   = _text;
     texture->width      = 0;
     texture->height     = 0;
@@ -194,7 +218,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
     }
 
     // Create a new texture pointer
-    sTexture* texture   = getNew();
+    sTexture* texture   = getFreePointer();
     texture->fileName   = _text;
     texture->width      = 0;
     texture->height     = 0;

@@ -36,6 +36,12 @@
 // Thus the complexity of maintaining the head pointer by the class is desired.
 // When the list is empty m_count will be set to 0.
 
+// Next version:
+// An idea would be to introduce the reuse of allocated yet unused nodes, and
+// only create new nodes when an empty node is not available, also only free the
+// nodes when the destructor is called.
+// pointer->enabled == false ?
+
 template<class T> class tcLinkedList
 {
     public:
@@ -139,7 +145,7 @@ template<class T> class tcLinkedList
         }
         */
 
-        // Add pre existing pointerto the end of the the linked list
+        // Add a preexisting pointer to the end of the the linked list
         inline void addBack(T*& _T)
         {
             m_tail->next = _T;
@@ -148,7 +154,7 @@ template<class T> class tcLinkedList
             m_tail->UID = m_count;
         }
 
-        // Add pre existing pointer to the end of the the linked list
+        // Add preexisting pointer to the end of the the linked list
         // ! disabled for this project
         /*
         inline void addFront(T*& _T)
@@ -159,7 +165,7 @@ template<class T> class tcLinkedList
         }
         */
 
-        // Add pre existing pointer before a preexisting pointer
+        // Add preexisting pointer before a preexisting pointer
         // ! _existing shouldn't == m_head, for external classes
         inline void addBefore(T*& _new, T*& _existing)
         {
@@ -175,7 +181,7 @@ template<class T> class tcLinkedList
             _existing->UID = m_count;
         }
 
-        // Add pre existing pointer after specified pointer
+        // Add preexisting pointer after specified pointer
         inline void addAfter(T*& _new, T*& _existing)
         {
             m_temp = _existing->next;

@@ -55,6 +55,8 @@ class cUIManager
         void               setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
         void               setMapTitle(const std::string &_mapTitle);
         sTexture*          getTitleTexture(void) { return m_mapTitleTexture; }
+        sTexture*          getTextGoldTexture(void) { return m_textGold; }
+        void               setTextGoldTexture(sTexture*& _texture) { m_textGold = _texture; }
 
         // ui_manager_load.cpp
         std::uint32_t      load(const std::string &_fileName);
@@ -73,6 +75,7 @@ class cUIManager
         eComponentFunction  m_uiEvent           = eComponentFunction::componentFunctionNone;
         std::string         m_mapTitle          = "undefined";
         sTexture           *m_mapTitleTexture   = nullptr;
+        sTexture           *m_textGold          = nullptr;
 
         // Mouse
         bool                m_mouseOverMenu     = false;
