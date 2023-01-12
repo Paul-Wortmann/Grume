@@ -34,11 +34,25 @@
 #include "../physics/physics_collision.hpp"
 #include "../resource/resource_manager.hpp"
 
+// Event type enum
+enum eObjectEventType : std::uint32_t { objectEventType_none = 0,    // null event
+                                        objectEventType_gold = 1  }; // gold drop
+
+// Event struct
+struct sObjectManagerEvent
+{
+    sObjectManagerEvent* next = nullptr;
+    eObjectEventType     type = eObjectEventType::objectEventType_none;
+    std::uint64_t        data = 0;
+};
+
 class cObjectManager
 {
     public:
-        std::uint32_t initialize(void);
-        void          terminate(void);
+        std::uint32_t        initialize(void);
+        void                 terminate(void);
+        sObjectManagerEvent* getEvent(void) { return m_event.pop(); }
+
         void          process(const std::int64_t &_dt);
         void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; };
         void          setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; };
@@ -54,17 +68,18 @@ class cObjectManager
 
     private:
         // Entity management
-        cEntityManager*   m_entityManager   = nullptr;
-        cAudioEngine*     m_audioEngine     = nullptr;
-        cLootManager*     m_lootManager     = nullptr;
-        cParticleEngine*  m_particleEngine  = nullptr;
-        cPlayerManager*   m_playerManager   = nullptr;
-        cResourceManager* m_resourceManager = nullptr;
-        sEntity*          m_entityHead      = nullptr;
-        sEntity*          m_entityTemp      = nullptr;
-        sEntity*          m_entityPlayer    = nullptr;
+        cEntityManager*   m_entityManager    = nullptr;
+        cAudioEngine*     m_audioEngine      = nullptr;
+        cLootManager*     m_lootManager      = nullptr;
+        cParticleEngine*  m_particleEngine   = nullptr;
+        cPlayerManager*   m_playerManager    = nullptr;
+        cResourceManager* m_resourceManager  = nullptr;
+        sEntity*          m_entityHead       = nullptr;
+        sEntity*          m_entityTemp       = nullptr;
+        sEntity*          m_entityPlayer     = nullptr;
+        sMap*             m_mapPointer       = nullptr;
 
-        sMap*             m_mapPointer      = nullptr;
+        tcQueue<sObjectManagerEvent> m_event = {};
 };
 
 #endif //OBJECT_MANAGER_HPP

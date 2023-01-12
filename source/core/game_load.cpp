@@ -131,7 +131,9 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         tPlayer->character->attribute.mana.regen   = xmlSaveGameFile.getFloat("<mana_regen>");
 
         // Gold
-        tPlayer->character->gold = xmlSaveGameFile.getInteger("<gold_current>");
+        if (xmlSaveGameFile.getInstanceCount("<gold_current>") > 0)
+            tPlayer->character->gold = xmlSaveGameFile.getInteger("<gold_current>");
+        m_uiManager.setGold(tPlayer->character->gold);
 
         // Damage
         tPlayer->character->attribute.damagePhysical.base           = xmlSaveGameFile.getFloat("<damage_physical_base>");

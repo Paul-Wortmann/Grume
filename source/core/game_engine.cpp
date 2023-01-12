@@ -144,6 +144,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_playerManager.setInventoryUIManager(&m_uiManager);
     m_uiManager.setResourceManager(&m_resourceManager);
     m_uiManager.setWindowSize(m_graphicsEngine.getWindow_w(), m_graphicsEngine.getWindow_h());
+    m_uiManager.setGold(0);
 
     // Display loading screen
     m_graphicsEngine.process(0);
@@ -386,6 +387,20 @@ void cGameEngine::process(void)
                     m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                     m_uiManager.setMouseClicked(false);
                 }
+            }
+
+            // Cleanup
+            delete tEvent;
+        }
+
+        // Process object manager events
+        for (sObjectManagerEvent* tEvent = m_objectManager.getEvent(); tEvent != nullptr; tEvent = m_objectManager.getEvent())
+        {
+            // Menu activated
+            if (tEvent->type == eObjectEventType::objectEventType_gold)
+            {
+                // UI manager update gold
+                m_uiManager.setGold(tEvent->data);
             }
 
             // Cleanup

@@ -31,7 +31,7 @@ struct sTexture
     // Linked list management
     std::uint32_t UID     = 0;
     sTexture*     next    = nullptr;
-    bool          enabled = false;
+    bool          enabled = true;
 
     // Data
     std::string   fileName   = {};

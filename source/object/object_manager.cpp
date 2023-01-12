@@ -175,6 +175,13 @@ void cObjectManager::process(const std::int64_t &_dt)
                             m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
                             m_entityTemp->base.dying = true;
                             m_particleEngine->deleteEntity(m_entityTemp);
+
+                            // Event: gold drop
+                            sObjectManagerEvent* event = new sObjectManagerEvent;
+                            event->type = eObjectEventType::objectEventType_gold;
+                            event->data = m_entityPlayer->character->gold;
+                            m_event.push(event);
+
                         }
 
                         // item

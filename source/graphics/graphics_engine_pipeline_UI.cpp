@@ -160,11 +160,15 @@ void cGraphicsEngine::m_pui_render(void)
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextGold)
                     {
                         // Generate texture:
-                        sTexture* tempTexture = m_resourceManager->generateTexture("Gold: ", glm::ivec4(230, 230, 230, 255));
-                        menu[m].component[c].textureNormal = tempTexture->ID;
+                        sTexture* textureTextGold = m_UIManager->getTextGoldTexture();
+                        menu[m].component[c].textureNormal = textureTextGold->ID;
 
-                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextGold->height) * static_cast<float>(textureTextGold->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x -= (sizeX / 2.0f);
+
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                     }
                     else
                     {

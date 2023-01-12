@@ -634,7 +634,7 @@
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
             <component_position>-0.1f, -0.65f, -0.02f</component_position>
-            <component_size>0.1f 0.02f</component_size>
+            <component_size>0.1f 0.01f</component_size>
             <component_function>GOLD_TEXT</component_function>
             <component_type>TYPE_TEXT</component_type>
         </component>

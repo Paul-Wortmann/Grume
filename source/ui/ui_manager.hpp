@@ -55,6 +55,7 @@ class cUIManager
         void               setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
         void               setMapTitle(const std::string &_mapTitle);
         sTexture*          getTitleTexture(void) { return m_mapTitleTexture; }
+        void               setGold(const std::uint64_t &_gold);
         sTexture*          getTextGoldTexture(void) { return m_textGold; }
         void               setTextGoldTexture(sTexture*& _texture) { m_textGold = _texture; }
 

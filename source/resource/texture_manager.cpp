@@ -65,7 +65,7 @@ sTexture* cTextureManager::getFreePointer(void)
     return temp;
 }
 
-void cTextureManager::setFreePointer(sTexture *&_pointer)
+void cTextureManager::setPointerFree(sTexture *&_pointer)
 {
     freeData(_pointer);
     _pointer->enabled = false;
@@ -263,7 +263,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
         dataRGBA[(i * 4) + 0] = static_cast<unsigned char>((data[i] > 0) ? _color.x : 0); // Red
         dataRGBA[(i * 4) + 1] = static_cast<unsigned char>((data[i] > 0) ? _color.y : 0); // Green
         dataRGBA[(i * 4) + 2] = static_cast<unsigned char>((data[i] > 0) ? _color.z : 0); // Blue
-        dataRGBA[(i * 4) + 3] = static_cast<unsigned char>(_color.w);     // Alpha
+        dataRGBA[(i * 4) + 3] = static_cast<unsigned char>((data[i] > 0) ? _color.w : 0); // Alpha
     }
 
     // Disable 4 byte packing alignment

@@ -25,7 +25,6 @@
 
 std::uint32_t cUIManager::initialize(void)
 {
-    m_textGold = m_resourceManager->generateTexture("0", glm::ivec4(230, 230, 230, 255));
     return EXIT_SUCCESS;
 }
 
@@ -51,12 +50,25 @@ void cUIManager::terminate(void)
     }
 }
 
+void cUIManager::setGold(const std::uint64_t &_gold)
+{
+    glm::uvec4 goldColor = glm::uvec4(212, 175, 055, 255);
+    if (m_textGold == nullptr)
+    {
+        m_textGold = m_resourceManager->generateTexture(std::to_string(_gold), goldColor);
+    }
+    else
+    {
+        m_resourceManager->freeTexture(m_textGold);
+        m_textGold = m_resourceManager->generateTexture(std::to_string(_gold), goldColor);
+    }
+}
+
 void cUIManager::m_calculateScale(void)
 {
     m_UIScale.x = static_cast<float>(m_UIResolution.x) / static_cast<float>(m_window_w);
     m_UIScale.y = static_cast<float>(m_UIResolution.y) / static_cast<float>(m_window_h);
 }
-
 
 bool cUIManager::getMenuEnabled(const eMenuType &_type)
 {

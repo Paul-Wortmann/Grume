@@ -36,6 +36,7 @@ class cMaterialManager : public tcLinkedList<sMaterial>
         sMaterial*    load(const std::string &_fileName);
 
         // Texture
+        void          freeTexture(sTexture *&_texture) { m_textureManager.freeTexture(_texture); }
         sTexture*     loadTexture(const std::string &_fileName);
 
         // Font

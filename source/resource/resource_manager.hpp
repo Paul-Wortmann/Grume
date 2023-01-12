@@ -42,6 +42,7 @@ class cResourceManager :tcTemplateManager
         sMaterial*     loadMaterial(const std::string &_fileName);
 
         // Texture
+        void           freeTexture(sTexture *&_texture) { m_materialManager.freeTexture(_texture); }
         sTexture*      loadTexture(const std::string &_fileName);
 
         // GLFW Image
@@ -56,7 +57,7 @@ class cResourceManager :tcTemplateManager
         // Font
         std::uint32_t initializeFont(void) { return m_materialManager.initializeFont(); };
         sTexture*     generateTexture(const std::string &_text) { return m_materialManager.generateTexture(_text); };
-        sTexture*     generateTexture(const std::string &_text, const glm::vec4 &_color) { return m_materialManager.generateTexture(_text, _color); };
+        sTexture*     generateTexture(const std::string &_text, const glm::uvec4 &_color) { return m_materialManager.generateTexture(_text, _color); };
 
     protected:
 
