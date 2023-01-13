@@ -28,6 +28,8 @@
 
 struct sEntityItem
 {
+    std::uint32_t stackSize = 0;
+    std::uint32_t stackMax  = 1;
     std::uint32_t goldValue = 0;
 };
 

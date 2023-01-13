@@ -75,7 +75,7 @@ sTexture* cTextureManager::load(const std::string &_fileName)
 {
     for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        if (temp->fileName.compare(_fileName) == 0)
+        if ((temp->enabled == true) && (temp->fileName.compare(_fileName) == 0))
         {
             return temp;
         }
@@ -139,7 +139,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text)
     // If it already exists in memory, return a pointer to it
     for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        if (temp->fileName.compare(_text) == 0)
+        if ((temp->enabled == true) && (temp->fileName.compare(_text) == 0))
         {
             return temp;
         }
@@ -211,7 +211,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
     // If it already exists in memory, return a pointer to it
     for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        if (temp->fileName.compare(_text) == 0)
+        if ((temp->enabled == true) && (temp->fileName.compare(_text) == 0))
         {
             return temp;
         }

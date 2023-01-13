@@ -165,7 +165,7 @@ void cGraphicsEngine::m_pui_render(void)
 
                         float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextGold->height) * static_cast<float>(textureTextGold->width);
                         glm::vec3 position = menu[m].component[c].position;
-                        position.x -= (sizeX / 2.0f);
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
 
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));

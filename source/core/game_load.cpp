@@ -132,7 +132,7 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
 
         // Gold
         if (xmlSaveGameFile.getInstanceCount("<gold_current>") > 0)
-            tPlayer->character->gold = xmlSaveGameFile.getInteger("<gold_current>");
+            tPlayer->character->gold = xmlSaveGameFile.getInteger64("<gold_current>");
         m_uiManager.setGold(tPlayer->character->gold);
 
         // Damage
