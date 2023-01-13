@@ -34,6 +34,11 @@ class cUIManager
         void               terminate(void);
         void               process(void);
 
+        // external systems
+        void               setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; }
+        void               setDatabaseManager(cDatabaseManager* _databaseManager) { m_databaseManager = _databaseManager; }
+        void               setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
+
         std::uint32_t      getNumMenu(void) { return m_numMenu; }
         sUIMenu*           getMenu(void) { return m_menu; }
         bool               getMenuEnabled(const eMenuType &_type);
@@ -52,7 +57,6 @@ class cUIManager
         std::uint32_t      getActiveWindowCount(void) { return m_activeWindowCount; }
         eComponentFunction getUIEvent(void) { return m_uiEvent; }
         void               setUIEvent(eComponentFunction _uiEvent) { m_uiEvent = _uiEvent; }
-        void               setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
         void               setMapTitle(const std::string &_mapTitle);
         sTexture*          getTitleTexture(void) { return m_mapTitleTexture; }
         void               setGold(const std::uint64_t &_gold);
@@ -87,6 +91,8 @@ class cUIManager
         glm::vec2           m_mousePosition     = glm::vec2(0.0f, 0.0f);
 
         // member pointer handles
+        cAudioEngine*       m_audioEngine       = nullptr;
+        cDatabaseManager*   m_databaseManager   = nullptr;
         cResourceManager*   m_resourceManager   = nullptr;
 
         // internal member functions

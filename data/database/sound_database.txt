@@ -210,6 +210,10 @@
     <sound>menu         menu/menu_confirm_1_001.ogg</sound>
     <sound>menu         menu/menu_error_1_001.ogg</sound>
     <sound>menu         menu/menu_move_1_001.ogg</sound>
+    <sound>menu         menu/menu_rollover_1_001.ogg</sound>
+    <sound>menu         menu/menu_rollover_2_001.ogg</sound>
+    <sound>menu         menu/menu_click_1_001.ogg</sound>
+    <sound>menu         menu/menu_click_2_001.ogg</sound>
 
 	<sound>metal_fall   environment/metal/bfh1_metal_falling_01.ogg</sound>
 	<sound>metal_fall   environment/metal/bfh1_metal_falling_02.ogg</sound>

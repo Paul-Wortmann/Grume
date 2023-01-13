@@ -39,6 +39,13 @@ void cGraphicsEngine::m_pui_terminate(void)
 
 void cGraphicsEngine::m_pui_render(void)
 {
+    // Only proceed if we have a VAO
+    if (m_pc_fsq_VAO == 0)
+    {
+        gLogWrite(LOG_ERROR, "VAO not available.", __FILE__, __LINE__, __FUNCTION__);
+        return;
+    }
+
     // Setup the framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, m_pui_fbo);
     glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
@@ -83,16 +90,13 @@ void cGraphicsEngine::m_pui_render(void)
             m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].size.x, menu[m].size.y, 1.0f));
             glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
-            if (m_pc_fsq_VAO != 0)
-            {
-                // Texture
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, menu[m].textureNormal);
+            // Texture
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, menu[m].textureNormal);
 
-                // VAO
-                glBindVertexArray(m_pc_fsq_VAO);
-                glDrawArrays(GL_TRIANGLES, 0, 6);
-            }
+            // VAO
+            glBindVertexArray(m_pc_fsq_VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
 
             // render each ui menu's ui components
             for (std::uint32_t c = 0; c < menu[m].numComponent; ++c)
@@ -163,10 +167,12 @@ void cGraphicsEngine::m_pui_render(void)
                         sTexture* textureTextGold = m_UIManager->getTextGoldTexture();
                         menu[m].component[c].textureNormal = textureTextGold->ID;
 
+                        // Position and scaling
                         float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextGold->height) * static_cast<float>(textureTextGold->width);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x += (sizeX * m_aspectRatio / 2.0f);
 
+                        // Update the model matrix
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                     }
@@ -175,49 +181,48 @@ void cGraphicsEngine::m_pui_render(void)
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
                     }
+
+                    // Model matrix uniform
                     glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
-                    if (m_pc_fsq_VAO != 0)
+                    // Texture
+                    glActiveTexture(GL_TEXTURE0);
+
+                    // Component type: item
+                    if (menu[m].component[c].type == eComponentType::componentTypeItem)
                     {
-                        // Texture
-                        glActiveTexture(GL_TEXTURE0);
+                        // Player inventory
+                        // slot 1, at index 0
+                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                        glBindTexture(GL_TEXTURE_2D, m_playerInventory->getEntity(slotNumber)->graphics->icon);
+                    }
 
-                        // Component type: item
-                        if (menu[m].component[c].type == eComponentType::componentTypeItem)
+                    // Component type: normal
+                    else if (menu[m].component[c].type == eComponentType::componentTypeNormal)
+                    {
+                        if (menu[m].component[c].state == eComponentState::componentStateActivated)
                         {
-                            // Player inventory
-                            // slot 1, at index 0
-                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
-                            glBindTexture(GL_TEXTURE_2D, m_playerInventory->getEntity(slotNumber)->graphics->icon);
+                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureActive);
                         }
-
-                        // Component type: normal
-                        else if (menu[m].component[c].type == eComponentType::componentTypeNormal)
+                        else if (menu[m].component[c].state == eComponentState::componentStateHover)
                         {
-                            if (menu[m].component[c].state == eComponentState::componentStateActivated)
-                            {
-                                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureActive);
-                            }
-                            else if (menu[m].component[c].state == eComponentState::componentStateHover)
-                            {
-                                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureHover);
-                            }
-                            else
-                            {
-                                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
-                            }
+                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureHover);
                         }
-
-                        // Component type: text
-                        if (menu[m].component[c].type == eComponentType::componentTypeText)
+                        else
                         {
                             glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
                         }
-
-                        // VAO
-                        glBindVertexArray(m_pc_fsq_VAO);
-                        glDrawArrays(GL_TRIANGLES, 0, 6);
                     }
+
+                    // Component type: text
+                    if (menu[m].component[c].type == eComponentType::componentTypeText)
+                    {
+                        glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
+                    }
+
+                    // VAO
+                    glBindVertexArray(m_pc_fsq_VAO);
+                    glDrawArrays(GL_TRIANGLES, 0, 6);
                 }
             }
         }
@@ -239,15 +244,12 @@ void cGraphicsEngine::m_pui_render(void)
         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(scale_x, scale_y, 1.0f));
         glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
-        if (m_pc_fsq_VAO != 0)
-        {
-            // Texture
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, titleTexture->ID);
+        // Texture
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, titleTexture->ID);
 
-            // VAO
-            glBindVertexArray(m_pc_fsq_VAO);
-            glDrawArrays(GL_TRIANGLES, 0, 6);
-        }
+        // VAO
+        glBindVertexArray(m_pc_fsq_VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
     }
 }

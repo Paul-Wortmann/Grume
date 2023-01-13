@@ -14,9 +14,9 @@
     </graphics>
 
     <audio>
-        <volume_master>100</volume_master>
-        <volume_music>100</volume_music>
-        <volume_sfx>47</volume_sfx>
+        <volume_master>83</volume_master>
+        <volume_music>67</volume_music>
+        <volume_sfx>40</volume_sfx>
     </audio>
 
 </config>

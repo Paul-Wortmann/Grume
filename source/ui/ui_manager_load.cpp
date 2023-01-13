@@ -57,6 +57,96 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
             m_menu[m].position = xmlUiFile.getVec3("<menu_position>", m + 1);
             m_menu[m].size = xmlUiFile.getVec2("<menu_size>", m + 1);
 
+            // Menu audio
+            if (xmlUiFile.getInstanceCount("<menu_sound_open>") > m)
+            {
+                // Get data
+                std::string   dataString  = xmlUiFile.getString("<menu_sound_open>", m + 1);
+                              dataString += " "; // end of string marker
+                std::uint64_t dataStringLength = dataString.length();
+                std::uint32_t tStringNum  = 0;
+                std::string   tString     = "";
+
+                // Process data
+                /// # database name, database number
+                if (dataStringLength > 4)
+                {
+                    for (std::uint64_t i = 0; i < dataStringLength; ++i)
+                    {
+                        if (dataString[i] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                m_menu[m].audio_open.name = tString; // database name
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                m_menu[m].audio_open.number = std::stoi(tString); // database number
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += dataString[i];
+                        }
+                    }
+
+                    // Process data
+                    if (m_menu[m].audio_open.name.compare("NONE") != 0)
+                    {
+                        std::string fileName = m_databaseManager->getDatabaseEntryFileName(m_menu[m].audio_open.name, m_menu[m].audio_open.number, eDatabaseType::databaseTypeSound);
+                        m_menu[m].audio_open.sound = m_audioEngine->getNewSoundPointer();
+                        m_audioEngine->loadSound(fileName, m_menu[m].audio_open.sound->data);
+                    }
+                }
+            }
+
+            if (xmlUiFile.getInstanceCount("<menu_sound_close>") > m)
+            {
+                // Get data
+                std::string   dataString  = xmlUiFile.getString("<menu_sound_close>", m + 1);
+                              dataString += " "; // end of string marker
+                std::uint64_t dataStringLength = dataString.length();
+                std::uint32_t tStringNum  = 0;
+                std::string   tString     = "";
+
+                // Process data
+                /// # database name, database number
+                if (dataStringLength > 4)
+                {
+                    for (std::uint64_t i = 0; i < dataStringLength; ++i)
+                    {
+                        if (dataString[i] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                m_menu[m].audio_close.name = tString; // database name
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                m_menu[m].audio_close.number = std::stoi(tString); // database number
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += dataString[i];
+                        }
+                    }
+
+                    // Process data
+                    if (m_menu[m].audio_close.name.compare("NONE") != 0)
+                    {
+                        std::string fileName = m_databaseManager->getDatabaseEntryFileName(m_menu[m].audio_close.name, m_menu[m].audio_close.number, eDatabaseType::databaseTypeSound);
+                        m_menu[m].audio_close.sound = m_audioEngine->getNewSoundPointer();
+                        m_audioEngine->loadSound(fileName, m_menu[m].audio_close.sound->data);
+                    }
+                }
+            }
+
+            // Menu type
             std::string menuType = xmlUiFile.getString("<menu_type>", m + 1);
             if (menuType.compare("TYPE_NONE") == 0)
             {
@@ -129,6 +219,96 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     m_menu[m].component[c].positionMax.x = m_menu[m].component[c].position.x + m_menu[m].component[c].size.x;
                     m_menu[m].component[c].positionMin.y = m_menu[m].component[c].position.y - m_menu[m].component[c].size.y;
                     m_menu[m].component[c].positionMax.y = m_menu[m].component[c].position.y + m_menu[m].component[c].size.y;
+
+                    // Component audio: hover
+                    if (xmlUiFile.getInstanceCount("<component_sound_hover>") > c + 1 + startComponent)
+                    {
+                        // Get data
+                        std::string   dataString  = xmlUiFile.getString("<component_sound_hover>", c + 1 + startComponent);
+                                      dataString += " "; // end of string marker
+                        std::uint64_t dataStringLength = dataString.length();
+                        std::uint32_t tStringNum  = 0;
+                        std::string   tString     = "";
+
+                        // Process data
+                        /// # database name, database number
+                        if (dataStringLength > 4)
+                        {
+                            for (std::uint64_t i = 0; i < dataStringLength; ++i)
+                            {
+                                if (dataString[i] == ' ')
+                                {
+                                    if (tStringNum == 0)
+                                    {
+                                        m_menu[m].component[c].audio_hover.name = tString; // database name
+                                    }
+                                    else if (tStringNum == 1)
+                                    {
+                                        m_menu[m].component[c].audio_hover.number = std::stoi(tString); // database number
+                                    }
+                                    tStringNum++;
+                                    tString = "";
+                                }
+                                else
+                                {
+                                    tString += dataString[i];
+                                }
+                            }
+
+                            // Process data
+                            if (m_menu[m].component[c].audio_hover.name.compare("NONE") != 0)
+                            {
+                                std::string fileName = m_databaseManager->getDatabaseEntryFileName(m_menu[m].component[c].audio_hover.name, m_menu[m].component[c].audio_hover.number, eDatabaseType::databaseTypeSound);
+                                m_menu[m].component[c].audio_hover.sound = m_audioEngine->getNewSoundPointer();
+                                m_audioEngine->loadSound(fileName, m_menu[m].component[c].audio_hover.sound->data);
+                            }
+                        }
+                    }
+
+                    // Component audio: activate
+                    if (xmlUiFile.getInstanceCount("<component_sound_activate>") > c + 1 + startComponent)
+                    {
+                        // Get data
+                        std::string   dataString  = xmlUiFile.getString("<component_sound_activate>", c + 1 + startComponent);
+                                      dataString += " "; // end of string marker
+                        std::uint64_t dataStringLength = dataString.length();
+                        std::uint32_t tStringNum  = 0;
+                        std::string   tString     = "";
+
+                        // Process data
+                        /// # database name, database number
+                        if (dataStringLength > 4)
+                        {
+                            for (std::uint64_t i = 0; i < dataStringLength; ++i)
+                            {
+                                if (dataString[i] == ' ')
+                                {
+                                    if (tStringNum == 0)
+                                    {
+                                        m_menu[m].component[c].audio_activate.name = tString; // database name
+                                    }
+                                    else if (tStringNum == 1)
+                                    {
+                                        m_menu[m].component[c].audio_activate.number = std::stoi(tString); // database number
+                                    }
+                                    tStringNum++;
+                                    tString = "";
+                                }
+                                else
+                                {
+                                    tString += dataString[i];
+                                }
+                            }
+
+                            // Process data
+                            if (m_menu[m].component[c].audio_activate.name.compare("NONE") != 0)
+                            {
+                                std::string fileName = m_databaseManager->getDatabaseEntryFileName(m_menu[m].component[c].audio_activate.name, m_menu[m].component[c].audio_activate.number, eDatabaseType::databaseTypeSound);
+                                m_menu[m].component[c].audio_activate.sound = m_audioEngine->getNewSoundPointer();
+                                m_audioEngine->loadSound(fileName, m_menu[m].component[c].audio_activate.sound->data);
+                            }
+                        }
+                    }
 
                     // Component type
                     std::string componentType = xmlUiFile.getString("<component_type>", c + 1 + startComponent);

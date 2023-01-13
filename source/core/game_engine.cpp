@@ -142,6 +142,8 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_playerManager.setDatabaseManager(&m_databaseManager);
     m_playerManager.setMapPointer(m_mapManager.getMapPointer());
     m_playerManager.setInventoryUIManager(&m_uiManager);
+    m_uiManager.setAudioEngine(&m_audioEngine);
+    m_uiManager.setDatabaseManager(&m_databaseManager);
     m_uiManager.setResourceManager(&m_resourceManager);
     m_uiManager.setWindowSize(m_graphicsEngine.getWindow_w(), m_graphicsEngine.getWindow_h());
     m_uiManager.setGold(0);

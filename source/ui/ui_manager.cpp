@@ -99,6 +99,17 @@ void cUIManager::setMenuEnabled(const eMenuType &_type, const bool &_state)
             if (m_menu[m].type == _type)
             {
                 m_menu[m].enabled = _state;
+
+                // Open menu audio
+                if ((_state == true) && (m_menu[m].audio_open.sound != nullptr))
+                {
+                    m_audioEngine->playSound(m_menu[m].audio_open.sound->data);
+                }
+                // Close menu audio
+                else if ((_state == false) && (m_menu[m].audio_close.sound != nullptr))
+                {
+                    m_audioEngine->playSound(m_menu[m].audio_close.sound->data);
+                }
             }
         }
     }
@@ -171,11 +182,26 @@ void cUIManager::process(void)
                                 (m_menu[m].component[c].positionMax.y > m_mousePosition.y))
                             {
                                 // Set mouse hover
-                                m_menu[m].component[c].state = eComponentState::componentStateHover;
+                                if (m_menu[m].component[c].state != eComponentState::componentStateHover)
+                                {
+                                    m_menu[m].component[c].state = eComponentState::componentStateHover;
+
+                                    // Play hover component audio
+                                    if (m_menu[m].component[c].audio_hover.sound != nullptr)
+                                    {
+                                        m_audioEngine->playSound(m_menu[m].component[c].audio_hover.sound->data);
+                                    }
+                                }
 
                                 // Mouse left click
                                 if (m_mouseLClicked)
                                 {
+                                    // activate component audio
+                                    if (m_menu[m].component[c].audio_activate.sound != nullptr)
+                                    {
+                                        m_audioEngine->playSound(m_menu[m].component[c].audio_activate.sound->data);
+                                    }
+
                                     // Game quit
                                     if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameQuit)
                                     {

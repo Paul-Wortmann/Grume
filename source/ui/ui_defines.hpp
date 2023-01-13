@@ -24,9 +24,19 @@
 #ifndef UI_DEFINES_HPP
 #define UI_DEFINES_HPP
 
+#include "../audio/audio_defines.hpp"
+#include "../audio/audio_engine.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_model.hpp"
+#include "../resource/database_manager.hpp"
 #include "../resource/resource_manager.hpp"
+
+struct sUIAudioData
+{
+    std::string   name     = {};
+    std::uint32_t number   = {};
+    sAudio*       sound    = nullptr;
+};
 
 enum class eComponentFunction : std::uint16_t
 {
@@ -224,6 +234,10 @@ struct sUIComponent
     std::uint32_t      textureNormal = 0;
     std::uint32_t      textureHover  = 0;
     std::uint32_t      textureActive = 0;
+
+    // Audio
+    sUIAudioData      audio_activate = {};
+    sUIAudioData      audio_hover    = {};
 };
 
 enum class eMenuType : std::uint16_t
@@ -259,6 +273,10 @@ struct sUIMenu
     // Graphics
     glm::mat4         modelMatrix    = glm::mat4(1);
     std::uint32_t     textureNormal  = 0;
+
+    // Audio
+    sUIAudioData      audio_open     = {};
+    sUIAudioData      audio_close    = {};
 };
 
 #endif //UI_DEFINES_HPP
