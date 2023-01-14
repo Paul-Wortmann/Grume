@@ -370,6 +370,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
         tEntity->base.dying          = false;
         tEntity->base.initialized    = false;
         tEntity->base.name           = xmlEntityFile.getString("<base_name>");
+        tEntity->base.fileName       = _fileName;
         tEntity->base.position       = xmlEntityFile.getVec3("<base_position>");
         tEntity->base.position.y    += m_mapPointer->info.terrainHeight;
         tEntity->base.scale          = xmlEntityFile.getVec3("<base_scale>");
@@ -1207,6 +1208,15 @@ sEntity* cEntityManager::load(const std::string &_fileName)
     }
     xmlEntityFile.free();
     return tEntity;
+}
+
+sEntity* cEntityManager::duplicateEntity(sEntity*& _entity)
+{
+    // pointer for duplicate entity
+    sEntity *newEntity = load(_entity->base.fileName);
+
+    // Return the duplicate entity
+    return newEntity;
 }
 
 std::uint32_t cEntityManager::m_nearestFreeTile(const std::uint32_t &_tile)

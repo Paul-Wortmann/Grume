@@ -47,6 +47,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         void                 setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
         void                 updateModelMatrix(sEntity*& _entity);
         sEntity*             load(const std::string &_fileName);
+        sEntity*             duplicateEntity(sEntity*& _entity);
         sEntity*             getEntity(const std::uint32_t &_ID);
         sEntity*             getEntityOnTile(const std::uint32_t &_tile);
         void                 deleteEntity(sEntity*& _pointer);

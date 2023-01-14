@@ -53,6 +53,7 @@ enum eEntityOwner : std::uint32_t { entityOwner_none      = 0,    // none
 struct sEntityBase
 {
     std::string     name            = {};
+    std::string     fileName        = {};
     bool            enabled         = true;
     bool            dying           = false;
     bool            inRnge          = true;

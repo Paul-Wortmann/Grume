@@ -74,19 +74,43 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
         _entity->base.inRnge = false;
         _entity->base.owner = eEntityOwner::entityOwner_inventory;
 
-        for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
+        bool stacked = false;
+
+        // If stackable item
+        if (_entity->item->stackMax > 1)
         {
-            // Add the entity to a free slot
-            if (m_inventory.slot[i].occupied == false)
+            for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
             {
-                m_inventory.slot[i].entity = _entity;
-                m_inventory.slot[i].occupied = true;
-                m_inventory.numFreeSlot--;
+                if ((m_inventory.slot[i].occupied == true) &&
+                    (m_inventory.slot[i].entity->item->type == _entity->item->type) &&
+                    (m_inventory.slot[i].entity->item->stackMax > 1) &&
+                    (m_inventory.slot[i].entity->item->stackSize < m_inventory.slot[i].entity->item->stackMax))
+                {
+                    m_inventory.slot[i].entity->item->stackSize++;
+                    _entity->base.dying = true;
+                    m_entityManager->deleteEntity(_entity);
 
-                // Enable the UI Inventory slot
-                m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + i), true);
+                    return true;
+                }
+            }
+        }
 
-                return true;
+        if (stacked == false)
+        {
+            for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
+            {
+                // Add the entity to a free slot
+                if (m_inventory.slot[i].occupied == false)
+                {
+                    m_inventory.slot[i].entity = _entity;
+                    m_inventory.slot[i].occupied = true;
+                    m_inventory.numFreeSlot--;
+
+                    // Enable the UI Inventory slot
+                    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + i), true);
+
+                    return true;
+                }
             }
         }
     }
@@ -112,6 +136,34 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
 {
     // Get the entity pointer first
     sEntity* entity = m_inventory.slot[_slot].entity;
+
+    bool duplicated = false;
+
+    // If stacked item, duplicate if > 1
+    if (entity->item->stackSize > 1)
+    {
+        // No need to remove later from the inventory if a duplicate
+        duplicated = true;
+
+        // backup original entity, reduce stack count
+        sEntity* originalEntity = entity;
+        originalEntity->item->stackSize--;
+
+        // Duplicate entity and set stack size
+        entity = m_entityManager->duplicateEntity(originalEntity);
+        entity->item->stackSize = 1;
+        entity->base.position.y = originalEntity->base.position.y;
+
+        // text tooltip
+        entity->base.textActive  = true;
+        entity->base.collectable = true;
+
+        // Add loot component
+        if (entity->loot == nullptr)
+        {
+            entity->loot = new sEntityLoot;
+        }
+    }
 
     // Set the entity visible and change ownership
     entity->base.visible = true;
@@ -139,12 +191,15 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
     // Set entity state
     m_entityManager->stateSet(entity, eEntityState::entityState_interact);
 
-    // Remove the entity from it's occupied slot
-    m_inventory.slot[_slot].entity = nullptr;
-    m_inventory.slot[_slot].occupied = false;
-    m_inventory.numFreeSlot++;
+    // Last in the stack remove
+    if (duplicated == false)
+    {
+        // Remove the entity from it's occupied slot
+        m_inventory.slot[_slot].entity = nullptr;
+        m_inventory.slot[_slot].occupied = false;
+        m_inventory.numFreeSlot++;
 
-    // Disable the UI Inventory slot
-    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), false);
-
+        // Disable the UI Inventory slot
+        m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), false);
+    }
 }

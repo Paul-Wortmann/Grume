@@ -191,16 +191,11 @@ void cObjectManager::process(const std::int64_t &_dt)
                             //std::cout << "Item ID: " << m_entityTemp->loot->itemID << std::endl;
                             if (m_playerManager->getInventoryFreeSlotNum() > 0)
                             {
-                                // Pickup item
-                                m_playerManager->pickupItem(m_entityTemp);
-
                                 // Set entity state
                                 m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
 
-                                // Delete the entity from the game
-                                //m_mapPointer->tile[m_entityTemp->base.tileOnMap].entity.type = eTileEntityType::tileEntityNone;
-                                //m_entityTemp->base.dying = true;
-                                //m_particleEngine->deleteEntity(m_entityTemp);
+                                // Pickup item
+                                m_playerManager->pickupItem(m_entityTemp);
                             }
                             else
                             {
