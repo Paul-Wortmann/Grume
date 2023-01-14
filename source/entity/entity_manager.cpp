@@ -745,8 +745,102 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             {
                 tEntity->item = new sEntityItem;
             }
+
+            // Data
             tEntity->item->goldValue = xmlEntityFile.getInteger("<item_gold_value>");
             tEntity->item->stackMax = xmlEntityFile.getInteger("<item_stack_max>");
+
+            // Type
+            std::string itemType = xmlEntityFile.getString("<item_type>");
+            if (itemType.compare("HEALTH_POTION") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_potionHP;
+            }
+            else if (itemType.compare("MANA_POTION") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_potionMP;
+            }
+            else if (itemType.compare("COIN") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_coin;
+            }
+            else if (itemType.compare("RUNE") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_rune;
+            }
+            else if (itemType.compare("ARMOR") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_armor;
+            }
+            else if (itemType.compare("BOOTS") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_boots;
+            }
+            else if (itemType.compare("GLOVES") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_gloves;
+            }
+            else if (itemType.compare("HELMET") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_helmet;
+            }
+            else if (itemType.compare("BOW") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_bow;
+            }
+            else if (itemType.compare("CROSSBOW") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_crossbow;
+            }
+            else if (itemType.compare("DAGGER") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_dagger;
+            }
+            else if (itemType.compare("GRIMOIRE") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_grimoire;
+            }
+            else if (itemType.compare("QUIVER") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_quiver;
+            }
+            else if (itemType.compare("SHIELD") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_shield;
+            }
+            else if (itemType.compare("STAFF") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_staff;
+            }
+            else if (itemType.compare("WAND") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_wand;
+            }
+            else if (itemType.compare("ONE_HANDED_AXE") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_axe_one;
+            }
+            else if (itemType.compare("TWO_HANDED_AXE") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_axe_two;
+            }
+            else if (itemType.compare("ONE_HANDED_MACE") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_mace_one;
+            }
+            else if (itemType.compare("TWO_HANDED_MACE") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_mace_two;
+            }
+            else if (itemType.compare("ONE_HANDED_SWORD") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_sword_one;
+            }
+            else if (itemType.compare("TWO_HANDED_SWORD") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_sword_two;
+            }
+
         }
 
         // Loot
