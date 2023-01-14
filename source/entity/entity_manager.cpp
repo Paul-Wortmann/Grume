@@ -737,6 +737,18 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             tEntity->interaction->distance = xmlEntityFile.getFloat("<interaction_distance>");
         }
 
+        // Item
+        if (xmlEntityFile.getInstanceCount("<item>") > 0)
+        {
+            // Pointer
+            if (tEntity->item == nullptr)
+            {
+                tEntity->item = new sEntityItem;
+            }
+            tEntity->item->goldValue = xmlEntityFile.getInteger("<item_gold_value>");
+            tEntity->item->stackMax = xmlEntityFile.getInteger("<item_stack_max>");
+        }
+
         // Loot
         if (xmlEntityFile.getInstanceCount("<loot>") > 0)
         {

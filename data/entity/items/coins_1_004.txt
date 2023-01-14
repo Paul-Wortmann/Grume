@@ -24,6 +24,11 @@
 	    <graphics_material>base/gold_1_001.txt</graphics_material>
     </graphics>
 
+    <item>
+	    <item_stack_max>1</item_stack_max>
+	    <item_gold_value>100</item_gold_value>
+    </item>
+
     <loot>
         # gold + experience are multiplied by the map modifier
 	    # gold is ammount min-max for NPC

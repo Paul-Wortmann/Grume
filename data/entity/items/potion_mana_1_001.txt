@@ -27,6 +27,11 @@
 	    <graphics_icon>icons/potion_mana_1_001.png</graphics_icon>
     </graphics>
 
+    <item>
+	    <item_stack_max>32</item_stack_max>
+	    <item_gold_value>100</item_gold_value>
+    </item>
+
     <physics>
         # none: 0
         # static: 1
