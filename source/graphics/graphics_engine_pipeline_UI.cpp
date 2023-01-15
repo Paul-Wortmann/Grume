@@ -194,7 +194,7 @@ void cGraphicsEngine::m_pui_render(void)
                         // Player inventory
                         // slot 1, at index 0
                         std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
-                        glBindTexture(GL_TEXTURE_2D, m_playerInventory->getEntity(slotNumber)->graphics->icon);
+                        glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
                     }
 
                     // Component type: normal

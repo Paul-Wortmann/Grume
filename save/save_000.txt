@@ -33,6 +33,11 @@
       <resistance_frost_base>1</resistance_frost_base>
    </player>
 
+   <inventory>
+      <slot>0 potion_health 1 5</slot>
+      <slot>1 potion_mana   1 2</slot>
+   </inventory>
+
    <quests>
       <quest>bug_boss_1_dead 0</quest>
       <quest>bug_boss_2_dead 0</quest>

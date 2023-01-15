@@ -200,6 +200,7 @@ void cMapManager::m_addObjects(void)
 
                         // Load the entity
                         tEntity = m_entityManager->load(entity_fileName);
+
                     }
 
                     // Only place the object if the entity was loaded

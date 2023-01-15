@@ -54,6 +54,9 @@ struct sEntityBase
 {
     std::string     name            = {};
     std::string     fileName        = {};
+    std::string     databaseName    = {};
+    std::uint32_t   databaseNumber  = 0;
+
     bool            enabled         = true;
     bool            dying           = false;
     bool            inRnge          = true;

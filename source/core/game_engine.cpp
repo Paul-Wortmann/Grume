@@ -160,7 +160,6 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     }
 
     //
-    m_entityManager.setPlayerEntity(m_playerManager.getEntityPlayer());
 
     // Start the game engine timer.
     m_timer.initialize();

@@ -108,6 +108,21 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
         saveFile << indent(iLevel) << "</player>" << std::endl;
         saveFile << std::endl;
 
+        // Inventory
+        saveFile << indent(iLevel) << "<inventory>" << std::endl;
+        iLevel++;
+        for (std::uint32_t i = 0; i < m_playerManager.getInventorySize(); ++i)
+        {
+            sEntity* tEntity = m_playerManager.getInventoryEntity(i);
+            if (tEntity != nullptr)
+            {
+                saveFile << indent(iLevel) << "<slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</slot>" << std::endl;
+            }
+        }
+        iLevel--;
+        saveFile << indent(iLevel) << "</inventory>" << std::endl;
+        saveFile << std::endl;
+
         // Quest
         saveFile << indent(iLevel) << "<quests>" << std::endl;
         iLevel++;

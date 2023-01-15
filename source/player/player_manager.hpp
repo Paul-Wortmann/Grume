@@ -59,7 +59,9 @@ class cPlayerManager :tcTemplateEngine
         cPlayerInventory* getPlayerInventory(void) { return m_playerInventory; }
 
         // Player Inventory
-        sEntity*      getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getEntity(_slot);}
+        sEntity*      getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getSlotEntity(_slot); }
+        void          setInventoryEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerInventory->setSlotEntity(_slot, _entity); };
+        std::uint32_t getInventorySize(void) { return m_playerInventory->getInventorySize(); }
         std::uint32_t getInventoryFreeSlotNum(void) { return m_playerInventory->freeSlotCount(); }
         bool          pickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); }
         bool          dropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); }

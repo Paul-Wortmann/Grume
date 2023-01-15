@@ -1323,6 +1323,8 @@ sEntity* cEntityManager::spawnEntity(const std::string &_name, const std::uint32
 {
     std::string fileName = m_databaseManager->getDatabaseEntryFileName(_name, _number, _type);
     sEntity* tEntity = load(fileName);
+    tEntity->base.databaseName = _name;
+    tEntity->base.databaseNumber = _number;
 
     if (tEntity != nullptr)
     {

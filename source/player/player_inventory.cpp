@@ -65,6 +65,28 @@ void cPlayerInventory::setInventorySize(const std::uint32_t &_width, const std::
     m_inventory.slot = new sPlayerInventorySlot[m_inventory.numSlot];
 }
 
+void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entity)
+{
+    // Add the entity to the slot
+    m_inventory.slot[_slot].entity = _entity;
+    m_inventory.slot[_slot].occupied = true;
+    m_inventory.numFreeSlot--;
+
+    // Enable the UI Inventory slot
+    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), true);
+
+    // Ensure relevant fields are populated
+    // text tooltip
+    _entity->base.textActive  = true;
+    _entity->base.collectable = true;
+
+    // Add loot component
+    if (_entity->loot == nullptr)
+    {
+        _entity->loot = new sEntityLoot;
+    }
+};
+
 bool cPlayerInventory::pickupItem(sEntity* &_entity)
 {
     if (m_inventory.numFreeSlot > 0)

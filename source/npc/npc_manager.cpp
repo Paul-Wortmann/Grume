@@ -1247,6 +1247,10 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                 // if loot could be spawned
                 if (tEntity != nullptr)
                 {
+                    // Save database data if an item
+                    tEntity->base.databaseName = itemDatabaseName;
+                    tEntity->base.databaseNumber = itemDatabaseNumber;
+
                     // variation: position
                     float posX = gRandFloatNormalized() - 1.0f;
                     float posZ = gRandFloatNormalized() - 1.0f;

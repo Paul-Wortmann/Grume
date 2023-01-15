@@ -44,9 +44,11 @@ std::uint32_t cGameEngine::m_game_load(void)
         return_value = (return_value == EXIT_SUCCESS) ? m_lootManager.loadLootTable(xmlGameFile.getString("<loot_table>")) : return_value;
         return_value = (return_value == EXIT_SUCCESS) ? m_playerManager.load(xmlGameFile.getString("<player>")) : return_value;
         return_value = (return_value == EXIT_SUCCESS) ? m_uiManager.load(xmlGameFile.getString("<ui>")) : return_value;
-        return_value = (return_value == EXIT_SUCCESS) ? m_mapManager.load(xmlGameFile.getString("<map>")) : return_value;
+        //return_value = (return_value == EXIT_SUCCESS) ? m_mapManager.load(xmlGameFile.getString("<map>")) : return_value;
         return_value = (return_value == EXIT_SUCCESS) ? m_questManager.load(xmlGameFile.getString("<quests>")) : return_value;
         m_mapManager.mapTown = xmlGameFile.getString("<map_town>");
+
+        m_game_new();
 
         // Setup and initialize
         if (return_value == EXIT_SUCCESS)
@@ -61,6 +63,7 @@ std::uint32_t cGameEngine::m_game_load(void)
             m_objectManager.setMapPointer(m_mapManager.getMapPointer());
             m_mapManager.setEntityPlayer(m_playerManager.getEntityPlayer());
             m_graphicsEngine.setEntityPlayer(m_playerManager.getEntityPlayer());
+            m_entityManager.setPlayerEntity(m_playerManager.getEntityPlayer());
 
             // Initialize data
             m_graphicsEngine.initializeEntities();
@@ -160,10 +163,11 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
             std::string tQuestData = xmlSaveGameFile.getString("<quest>", 1 + i);
             tQuestData += "    ";
             std::uint64_t tQuestDataLength = tQuestData.length();
-            std::string tQuestName       = "";
-            std::uint32_t tQuestState    = 0;
             std::uint32_t tStringNum = 0;
             std::string tString = "";
+
+            std::string tQuestName       = "";
+            std::uint32_t tQuestState    = 0;
             if (tQuestDataLength > 6)
             {
                 for (std::uint64_t j = 0; j < tQuestDataLength; ++j)
@@ -232,6 +236,71 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         std::string filenName = m_databaseManager.getDatabaseEntryFileName(currentMap, 1, eDatabaseType::databaseTypeMap);
 
         return_value = (return_value == EXIT_SUCCESS) ? m_mapManager.load(filenName) : return_value;
+
+        // Inventory (load after map)
+        std::uint32_t itemCount = xmlSaveGameFile.getInstanceCount("<slot>");
+        for (std::uint32_t i = 0; i < itemCount; ++i)
+        {
+            std::string tItemData = xmlSaveGameFile.getString("<slot>", 1 + i);
+            tItemData += "    ";
+            std::uint64_t tItemDataLength = tItemData.length();
+            std::uint32_t tStringNum = 0;
+            std::string tString = "";
+
+            std::uint32_t tSlotNumber = 0;
+            std::string   tItemName   = "";
+            std::uint32_t tItemNumber = 0;
+            std::uint32_t tItemCount  = 0;
+            if (tItemDataLength > 6)
+            {
+                for (std::uint64_t j = 0; j < tItemDataLength; ++j)
+                {
+                    if (tItemData[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tSlotNumber = std::stoi(tString);
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tItemName = tString;
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            tItemNumber = std::stoi(tString);
+                        }
+                        else if (tStringNum == 3)
+                        {
+                            tItemCount = std::stoi(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tItemData[j];
+                    }
+                }
+
+                // Retrieve the npc filename from the database
+                std::string entity_fileName = m_databaseManager.getDatabaseEntryFileName(tItemName, tItemNumber, eDatabaseType::databaseTypeItem);
+
+                // Load the entity
+                sEntity* tEntity = m_entityManager.load(entity_fileName);
+                tEntity->base.databaseName = tItemName;
+                tEntity->base.databaseNumber = tItemNumber;
+                tEntity->item->stackSize = tItemCount;
+
+                // Insert into the inventory
+                m_playerManager.setInventoryEntity(tSlotNumber, tEntity);
+                tEntity->base.visible = false;
+                tEntity->base.inRnge = false;
+                tEntity->base.owner = eEntityOwner::entityOwner_inventory;
+
+                // Update entity data
+                tEntity->base.position.y = m_mapManager.getMapPointer()->info.terrainHeight - 1.0f;
+            }
+        }
 
         // Setup and initialize
         if (return_value == EXIT_SUCCESS)
