@@ -192,9 +192,13 @@ void cGraphicsEngine::m_pui_render(void)
                     if (menu[m].component[c].type == eComponentType::componentTypeItem)
                     {
                         // Player inventory
-                        // slot 1, at index 0
-                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
-                        glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
+                        if ((menu[m].component[c].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
+                            (menu[m].component[c].function <= eComponentFunction::componentFunctionInventorySlot_54))
+                        {
+                            // slot 1, at index 0
+                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                            glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
+                        }
                     }
 
                     // Component type: normal
@@ -215,7 +219,7 @@ void cGraphicsEngine::m_pui_render(void)
                     }
 
                     // Component type: text
-                    if (menu[m].component[c].type == eComponentType::componentTypeText)
+                    else if (menu[m].component[c].type == eComponentType::componentTypeText)
                     {
                         glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
                     }
