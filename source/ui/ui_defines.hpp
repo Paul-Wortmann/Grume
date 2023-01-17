@@ -191,7 +191,62 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionVendorSlot_53      = 144, // Vendor slot 53
     componentFunctionVendorSlot_54      = 145, // Vendor slot 54
 
-    componentFunctionTextGold           = 146  // Gold text
+    componentFunctionInventoryStack_1   = 146, // Inventory slot 1 stack size text label
+    componentFunctionInventoryStack_2   = 147, // Inventory slot 2 stack size text label
+    componentFunctionInventoryStack_3   = 148, // Inventory slot 3 stack size text label
+    componentFunctionInventoryStack_4   = 149, // Inventory slot 4 stack size text label
+    componentFunctionInventoryStack_5   = 150, // Inventory slot 5 stack size text label
+    componentFunctionInventoryStack_6   = 151, // Inventory slot 6 stack size text label
+    componentFunctionInventoryStack_7   = 152, // Inventory slot 7 stack size text label
+    componentFunctionInventoryStack_8   = 153, // Inventory slot 8 stack size text label
+    componentFunctionInventoryStack_9   = 154, // Inventory slot 9 stack size text label
+    componentFunctionInventoryStack_10  = 155, // Inventory slot 10 stack size text label
+    componentFunctionInventoryStack_11  = 156, // Inventory slot 11 stack size text label
+    componentFunctionInventoryStack_12  = 157, // Inventory slot 12 stack size text label
+    componentFunctionInventoryStack_13  = 158, // Inventory slot 13 stack size text label
+    componentFunctionInventoryStack_14  = 159, // Inventory slot 14 stack size text label
+    componentFunctionInventoryStack_15  = 160, // Inventory slot 15 stack size text label
+    componentFunctionInventoryStack_16  = 161, // Inventory slot 16 stack size text label
+    componentFunctionInventoryStack_17  = 162, // Inventory slot 17 stack size text label
+    componentFunctionInventoryStack_18  = 163, // Inventory slot 18 stack size text label
+    componentFunctionInventoryStack_19  = 164, // Inventory slot 19 stack size text label
+    componentFunctionInventoryStack_20  = 165, // Inventory slot 20 stack size text label
+    componentFunctionInventoryStack_21  = 166, // Inventory slot 21 stack size text label
+    componentFunctionInventoryStack_22  = 167, // Inventory slot 22 stack size text label
+    componentFunctionInventoryStack_23  = 168, // Inventory slot 23 stack size text label
+    componentFunctionInventoryStack_24  = 169, // Inventory slot 24 stack size text label
+    componentFunctionInventoryStack_25  = 170, // Inventory slot 25 stack size text label
+    componentFunctionInventoryStack_26  = 171, // Inventory slot 26 stack size text label
+    componentFunctionInventoryStack_27  = 172, // Inventory slot 27 stack size text label
+    componentFunctionInventoryStack_28  = 173, // Inventory slot 28 stack size text label
+    componentFunctionInventoryStack_29  = 174, // Inventory slot 29 stack size text label
+    componentFunctionInventoryStack_30  = 175, // Inventory slot 30 stack size text label
+    componentFunctionInventoryStack_31  = 176, // Inventory slot 31 stack size text label
+    componentFunctionInventoryStack_32  = 177, // Inventory slot 32 stack size text label
+    componentFunctionInventoryStack_33  = 178, // Inventory slot 33 stack size text label
+    componentFunctionInventoryStack_34  = 179, // Inventory slot 34 stack size text label
+    componentFunctionInventoryStack_35  = 180, // Inventory slot 35 stack size text label
+    componentFunctionInventoryStack_36  = 181, // Inventory slot 36 stack size text label
+    componentFunctionInventoryStack_37  = 182, // Inventory slot 37 stack size text label
+    componentFunctionInventoryStack_38  = 183, // Inventory slot 38 stack size text label
+    componentFunctionInventoryStack_39  = 184, // Inventory slot 39 stack size text label
+    componentFunctionInventoryStack_40  = 185, // Inventory slot 40 stack size text label
+    componentFunctionInventoryStack_41  = 186, // Inventory slot 41 stack size text label
+    componentFunctionInventoryStack_42  = 187, // Inventory slot 42 stack size text label
+    componentFunctionInventoryStack_43  = 188, // Inventory slot 43 stack size text label
+    componentFunctionInventoryStack_44  = 189, // Inventory slot 44 stack size text label
+    componentFunctionInventoryStack_45  = 190, // Inventory slot 45 stack size text label
+    componentFunctionInventoryStack_46  = 191, // Inventory slot 46 stack size text label
+    componentFunctionInventoryStack_47  = 192, // Inventory slot 47 stack size text label
+    componentFunctionInventoryStack_48  = 193, // Inventory slot 48 stack size text label
+    componentFunctionInventoryStack_49  = 194, // Inventory slot 49 stack size text label
+    componentFunctionInventoryStack_50  = 195, // Inventory slot 50 stack size text label
+    componentFunctionInventoryStack_51  = 196, // Inventory slot 51 stack size text label
+    componentFunctionInventoryStack_52  = 197, // Inventory slot 52 stack size text label
+    componentFunctionInventoryStack_53  = 198, // Inventory slot 53 stack size text label
+    componentFunctionInventoryStack_54  = 199, // Inventory slot 54 stack size text label
+
+    componentFunctionTextGold           = 200  // Gold text
 
 };
 

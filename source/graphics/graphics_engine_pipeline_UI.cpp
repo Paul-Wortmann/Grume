@@ -176,6 +176,22 @@ void cGraphicsEngine::m_pui_render(void)
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                     }
+                    // Inventory slot stack text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionInventoryStack_1)
+                    {
+                        // Generate texture:
+                        sTexture* textureTextGold = m_UIManager->getTextGoldTexture();
+                        menu[m].component[c].textureNormal = textureTextGold->ID;
+
+                        // Position and scaling
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextGold->height) * static_cast<float>(textureTextGold->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                        // Update the model matrix
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                    }
                     else
                     {
                         // if dragged, mouse position, else component position
