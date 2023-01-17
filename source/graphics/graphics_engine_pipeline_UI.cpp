@@ -178,6 +178,7 @@ void cGraphicsEngine::m_pui_render(void)
                     }
                     else
                     {
+                        // if dragged, mouse position, else component position
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
                     }
@@ -191,6 +192,15 @@ void cGraphicsEngine::m_pui_render(void)
                     // Component type: item
                     if (menu[m].component[c].type == eComponentType::componentTypeItem)
                     {
+                        // Action bar
+                        if ((menu[m].component[c].function >= eComponentFunction::componentFunctionActionBarSlot_1) &&
+                            (menu[m].component[c].function <= eComponentFunction::componentFunctionActionBarSlot_12))
+                        {
+                            // slot 1, at index 0
+                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1);
+                            //glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
+                        }
+
                         // Player inventory
                         if ((menu[m].component[c].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
                             (menu[m].component[c].function <= eComponentFunction::componentFunctionInventorySlot_54))
@@ -198,6 +208,15 @@ void cGraphicsEngine::m_pui_render(void)
                             // slot 1, at index 0
                             std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
                             glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
+                        }
+
+                        // Vendor inventory
+                        if ((menu[m].component[c].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
+                            (menu[m].component[c].function <= eComponentFunction::componentFunctionVendorSlot_54))
+                        {
+                            // slot 1, at index 0
+                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
+                            //glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
                         }
                     }
 
