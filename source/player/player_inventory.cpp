@@ -112,6 +112,19 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
                     _entity->base.dying = true;
                     m_entityManager->deleteEntity(_entity);
 
+                    // Generate text label
+                    glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
+                    if (m_inventory.slot[i].stackLabel == nullptr)
+
+                    {
+                        m_inventory.slot[i].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[i].entity->item->stackSize), textColor);
+                    }
+                    else
+                    {
+                        m_resourceManager->freeTexture(m_inventory.slot[i].stackLabel);
+                        m_inventory.slot[i].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[i].entity->item->stackSize), textColor);
+                    }
+
                     return true;
                 }
             }
@@ -170,6 +183,19 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
         // backup original entity, reduce stack count
         sEntity* originalEntity = entity;
         originalEntity->item->stackSize--;
+
+        // generate text label
+        glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
+        if (m_inventory.slot[_slot].stackLabel == nullptr)
+
+        {
+            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(entity->item->stackSize), textColor);
+        }
+        else
+        {
+            m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
+            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(entity->item->stackSize), textColor);
+        }
 
         // Duplicate entity and set stack size
         entity = m_entityManager->duplicateEntity(originalEntity);

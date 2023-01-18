@@ -71,6 +71,7 @@ class cPlayerManager :tcTemplateEngine
         void          setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; }
         void          setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; m_playerInventory->setEntityManager(_entityManager); }
         void          setDatabaseManager(cDatabaseManager *_databaseManager) { m_databaseManager = _databaseManager; }
+        void          setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; m_playerInventory->setResourceManagerPointer(_resourceManager); }
         void          setMapPointer(sMap* _map) { m_mapPointer = _map; m_playerInventory->setMapPointer(_map); }
         void          setInventoryUIManager(cUIManager* _UIManager) { m_playerInventory->setUIManager(_UIManager); }
         sEntity*      getEntityPlayer(void) { return m_player; }
@@ -96,6 +97,7 @@ class cPlayerManager :tcTemplateEngine
         // Pointers
         cAudioEngine*     m_audioEngine     = nullptr;
         cDatabaseManager* m_databaseManager = nullptr;
+        cResourceManager* m_resourceManager = nullptr;
         cEntityManager*   m_entityManager   = nullptr;
         sEntity*          m_player          = nullptr;
         sMap*             m_mapPointer      = nullptr;

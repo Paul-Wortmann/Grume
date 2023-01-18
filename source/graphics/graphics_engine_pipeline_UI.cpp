@@ -177,20 +177,30 @@ void cGraphicsEngine::m_pui_render(void)
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                     }
                     // Inventory slot stack text
-                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionInventoryStack_1)
+                    else if ((menu[m].component[c].function >= eComponentFunction::componentFunctionInventoryStack_1) &&
+                             (menu[m].component[c].function <= eComponentFunction::componentFunctionInventoryStack_54))
                     {
-                        // Generate texture:
-                        sTexture* textureTextGold = m_UIManager->getTextGoldTexture();
-                        menu[m].component[c].textureNormal = textureTextGold->ID;
+                        // slot 1, at index 0
+                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1);
+                        sEntity* slotEntity = m_playerInventory->getSlotEntity(slotNumber);
+                        sPlayerInventorySlot* playerInventorySlot = m_playerInventory->getPlayerInventorySlot(slotNumber);
 
-                        // Position and scaling
-                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextGold->height) * static_cast<float>(textureTextGold->width);
-                        glm::vec3 position = menu[m].component[c].position;
-                        position.x += (sizeX * m_aspectRatio / 2.0f);
+                        if ((playerInventorySlot->occupied) &&
+                            (slotEntity->item->stackSize > 1))
+                        {
+                            // Generate texture:
+                            sTexture* textureTextSlotStack = playerInventorySlot->stackLabel;
+                            menu[m].component[c].textureNormal = textureTextSlotStack->ID;
 
-                        // Update the model matrix
-                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
-                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                            // Position and scaling
+                            float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextSlotStack->height) * static_cast<float>(textureTextSlotStack->width);
+                            glm::vec3 position = menu[m].component[c].position;
+                            position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                            // Update the model matrix
+                            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                            m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                        }
                     }
                     else
                     {

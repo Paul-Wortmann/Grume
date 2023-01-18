@@ -51,35 +51,38 @@ struct sPlayerInventory
 class cPlayerInventory
 {
     public:
-        std::uint32_t initialize(void);
-        void          terminate(void);
-        void          freeData(void);
+        std::uint32_t         initialize(void);
+        void                  terminate(void);
+        void                  freeData(void);
 
         // Set pointers
-        void          setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
-        void          setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; };
-        void          setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
-        void          setMapPointer(sMap* _map) { m_map = _map; }
+        void                  setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
+        void                  setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
+        void                  setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; };
+        void                  setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
+        void                  setMapPointer(sMap* _map) { m_map = _map; }
 
-        sEntity*      getSlotEntity(const std::uint32_t _slot) { return m_inventory.slot[_slot].entity; };
-        void          setSlotEntity(const std::uint32_t _slot, sEntity* &_entity);
-        void          setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
-        std::uint32_t getInventorySize(void) { return m_inventory.numSlot; };
-        std::uint32_t freeSlotCount(void) { return m_inventory.numFreeSlot; };
-        bool          pickupItem(sEntity* &_entity);
-        bool          dropItem(sEntity* &_entity);
-        void          dropItem(const std::uint32_t &_slot);
+        sEntity*              getSlotEntity(const std::uint32_t _slot) { return m_inventory.slot[_slot].entity; };
+        void                  setSlotEntity(const std::uint32_t _slot, sEntity* &_entity);
+        void                  setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
+        std::uint32_t         getInventorySize(void) { return m_inventory.numSlot; };
+        std::uint32_t         freeSlotCount(void) { return m_inventory.numFreeSlot; };
+        sPlayerInventorySlot* getPlayerInventorySlot(const std::uint32_t _slot) { return &m_inventory.slot[_slot]; };
+        bool                  pickupItem(sEntity* &_entity);
+        bool                  dropItem(sEntity* &_entity);
+        void                  dropItem(const std::uint32_t &_slot);
 
     protected:
     private:
         // Pointers
-        sEntity*          m_playerEntity    = nullptr;
-        cEntityManager*   m_entityManager   = nullptr;
-        cUIManager*       m_UIManager       = nullptr;
-        sMap*             m_map             = nullptr;
+        sEntity*              m_playerEntity    = nullptr;
+        cEntityManager*       m_entityManager   = nullptr;
+        cResourceManager*     m_resourceManager = nullptr;
+        cUIManager*           m_UIManager       = nullptr;
+        sMap*                 m_map             = nullptr;
 
         // Data
-        sPlayerInventory m_inventory        = {};
+        sPlayerInventory      m_inventory       = {};
 };
 
 #endif // PLAYER_INVENTORY_HPP
