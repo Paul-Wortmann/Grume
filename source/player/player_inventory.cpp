@@ -80,6 +80,26 @@ void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entit
     _entity->base.textActive  = true;
     _entity->base.collectable = true;
 
+    // Stack label
+    if (_entity->item->stackSize > 1)
+    {
+        // Enable the UI Inventory slot stack text
+        m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + _slot), true);
+
+        // Generate text label
+        glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
+        if (m_inventory.slot[_slot].stackLabel == nullptr)
+
+        {
+            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[_slot].entity->item->stackSize), textColor);
+        }
+        else
+        {
+            m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
+            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[_slot].entity->item->stackSize), textColor);
+        }
+    }
+
     // Add loot component
     if (_entity->loot == nullptr)
     {
@@ -111,6 +131,9 @@ bool cPlayerInventory::pickupItem(sEntity* &_entity)
                     m_inventory.slot[i].entity->item->stackSize++;
                     _entity->base.dying = true;
                     m_entityManager->deleteEntity(_entity);
+
+                    // Enable the UI Inventory slot stack text
+                    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + i), true);
 
                     // Generate text label
                     glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
@@ -184,17 +207,20 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
         sEntity* originalEntity = entity;
         originalEntity->item->stackSize--;
 
+        // Set the UI Inventory slot stack text
+        m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + _slot), (originalEntity->item->stackSize > 1));
+
         // generate text label
         glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
         if (m_inventory.slot[_slot].stackLabel == nullptr)
 
         {
-            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(entity->item->stackSize), textColor);
+            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(originalEntity->item->stackSize), textColor);
         }
         else
         {
             m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
-            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(entity->item->stackSize), textColor);
+            m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(originalEntity->item->stackSize), textColor);
         }
 
         // Duplicate entity and set stack size

@@ -194,11 +194,11 @@ void cGraphicsEngine::m_pui_render(void)
 
                             // Position and scaling
                             float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextSlotStack->height) * static_cast<float>(textureTextSlotStack->width);
-                            glm::vec3 position = menu[m].component[c].position;
-                            position.x += (sizeX * m_aspectRatio / 2.0f);
+                            //glm::vec3 position = menu[m].component[c].position;
+                            //position.x += (sizeX * m_aspectRatio / 2.0f);
 
                             // Update the model matrix
-                            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
                             m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                         }
                     }
