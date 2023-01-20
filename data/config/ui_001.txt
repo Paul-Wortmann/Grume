@@ -1519,7 +1519,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.154f, 0.392f, -0.03f</component_position>
+            <component_position>-0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_1</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1533,7 +1533,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, 0.436f, -0.03f</component_position>
+            <component_position>-0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_2</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1547,7 +1547,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, 0.436f, -0.03f</component_position>
+            <component_position>-0.034f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_3</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1561,7 +1561,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, 0.436f, -0.03f</component_position>
+            <component_position>0.034f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_4</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1575,7 +1575,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, 0.436f, -0.03f</component_position>
+            <component_position>0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_5</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1589,7 +1589,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, 0.436f, -0.03f</component_position>
+            <component_position>0.172f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_6</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1603,7 +1603,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, 0.310f, -0.03f</component_position>
+            <component_position>-0.172f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_7</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1617,7 +1617,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, 0.310f, -0.03f</component_position>
+            <component_position>-0.102f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_8</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1631,7 +1631,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, 0.310f, -0.03f</component_position>
+            <component_position>-0.034f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_9</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1645,7 +1645,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, 0.310f, -0.03f</component_position>
+            <component_position>0.034f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_10</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1659,7 +1659,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, 0.310f, -0.03f</component_position>
+            <component_position>0.102f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_11</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1673,7 +1673,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, 0.310f, -0.03f</component_position>
+            <component_position>0.172f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_12</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1687,7 +1687,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, 0.186f, -0.03f</component_position>
+            <component_position>-0.172f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_13</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1701,7 +1701,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, 0.186f, -0.03f</component_position>
+            <component_position>-0.102f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_14</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1715,7 +1715,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, 0.186f, -0.03f</component_position>
+            <component_position>-0.034f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_15</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1729,7 +1729,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, 0.186f, -0.03f</component_position>
+            <component_position>0.034f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_16</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1743,7 +1743,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, 0.186f, -0.03f</component_position>
+            <component_position>0.102f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_17</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1757,7 +1757,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, 0.186f, -0.03f</component_position>
+            <component_position>0.172f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_18</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1771,7 +1771,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, 0.062f, -0.03f</component_position>
+            <component_position>-0.172f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_19</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1785,7 +1785,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, 0.062f, -0.03f</component_position>
+            <component_position>-0.102f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_20</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1799,7 +1799,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, 0.062f, -0.03f</component_position>
+            <component_position>-0.034f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_21</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1813,7 +1813,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, 0.062f, -0.03f</component_position>
+            <component_position>0.034f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_22</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1827,7 +1827,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, 0.062f, -0.03f</component_position>
+            <component_position>0.102f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_23</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1841,7 +1841,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, 0.062f, -0.03f</component_position>
+            <component_position>0.172f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_24</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1855,7 +1855,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, -0.062f, -0.03f</component_position>
+            <component_position>-0.172f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_25</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1869,7 +1869,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, -0.062f, -0.03f</component_position>
+            <component_position>-0.102f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_26</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1883,7 +1883,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, -0.062f, -0.03f</component_position>
+            <component_position>-0.034f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_27</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1897,7 +1897,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, -0.062f, -0.03f</component_position>
+            <component_position>0.034f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_28</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1911,7 +1911,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, -0.062f, -0.03f</component_position>
+            <component_position>0.102f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_29</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1925,7 +1925,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, -0.062f, -0.03f</component_position>
+            <component_position>0.172f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_30</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1939,7 +1939,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, -0.186f, -0.03f</component_position>
+            <component_position>-0.172f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_31</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1953,7 +1953,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, -0.186f, -0.03f</component_position>
+            <component_position>-0.102f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_32</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1967,7 +1967,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, -0.186f, -0.03f</component_position>
+            <component_position>-0.034f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_33</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1981,7 +1981,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, -0.186f, -0.03f</component_position>
+            <component_position>0.034f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_34</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -1995,7 +1995,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, -0.186f, -0.03f</component_position>
+            <component_position>0.102f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_35</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2009,7 +2009,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, -0.186f, -0.03f</component_position>
+            <component_position>0.172f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_36</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2023,7 +2023,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, -0.310f, -0.03f</component_position>
+            <component_position>-0.172f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_37</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2037,7 +2037,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, -0.310f, -0.03f</component_position>
+            <component_position>-0.102f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_38</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2051,7 +2051,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, -0.310f, -0.03f</component_position>
+            <component_position>-0.034f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_39</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2065,7 +2065,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, -0.310f, -0.03f</component_position>
+            <component_position>0.034f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_40</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2079,7 +2079,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, -0.310f, -0.03f</component_position>
+            <component_position>0.102f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_41</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2093,7 +2093,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, -0.310f, -0.03f</component_position>
+            <component_position>0.172f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_42</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2107,7 +2107,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, -0.436f, -0.03f</component_position>
+            <component_position>-0.172f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_43</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2121,7 +2121,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, -0.436f, -0.03f</component_position>
+            <component_position>-0.102f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_44</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2135,7 +2135,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, -0.436f, -0.03f</component_position>
+            <component_position>-0.034f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_45</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2149,7 +2149,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, -0.436f, -0.03f</component_position>
+            <component_position>0.034f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_46</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2163,7 +2163,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, -0.436f, -0.03f</component_position>
+            <component_position>0.102f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_47</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2177,7 +2177,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, -0.436f, -0.03f</component_position>
+            <component_position>0.172f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_48</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2191,7 +2191,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, -0.560f, -0.03f</component_position>
+            <component_position>-0.172f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_49</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2205,7 +2205,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, -0.560f, -0.03f</component_position>
+            <component_position>-0.102f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_50</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2219,7 +2219,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.034f, -0.560f, -0.03f</component_position>
+            <component_position>-0.034f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_51</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2233,7 +2233,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.034f, -0.560f, -0.03f</component_position>
+            <component_position>0.034f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_52</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2247,7 +2247,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.102f, -0.560f, -0.03f</component_position>
+            <component_position>0.102f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_53</component_function>
             <component_type>TYPE_TEXT</component_type>
@@ -2261,7 +2261,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>0.172f, -0.560f, -0.03f</component_position>
+            <component_position>0.172f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_54</component_function>
             <component_type>TYPE_TEXT</component_type>
