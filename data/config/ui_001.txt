@@ -2242,7 +2242,7 @@
         </component>
 
         <component>
-            <component_name>inventory_v_053</component_name>
+            <component_name>inventory_stack_053</component_name>
             <component_enabled>0</component_enabled>
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
