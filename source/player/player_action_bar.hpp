@@ -21,16 +21,16 @@
  * @date 2011-11-11
  */
 
-#ifndef PLAYER_INVENTORY_HPP
-#define PLAYER_INVENTORY_HPP
+#ifndef PLAYER_ACTION_BAR_HPP
+#define PLAYER_ACTION_BAR_HPP
 
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
 #include "../map/map_define.hpp"
 #include "../ui/ui_manager.hpp"
 
-// Player inventory slot struct
-struct sPlayerInventorySlot
+// Player action bar slot struct
+struct sPlayerActionBarSlot
 {
     bool               occupied   = false;
     sEntity*           entity     = nullptr;
@@ -38,17 +38,17 @@ struct sPlayerInventorySlot
     sTexture*          stackLabel = nullptr;
 };
 
-// Player inventory struct
-struct sPlayerInventory
+// Player action bar struct
+struct sPlayerActionBar
 {
     std::uint32_t         width       = 6;
     std::uint32_t         height      = 9;
     std::uint32_t         numSlot     = 0;
     std::uint32_t         numFreeSlot = 0;
-    sPlayerInventorySlot* slot        = nullptr;
+    sPlayerActionBarSlot* slot        = nullptr;
 };
 
-class cPlayerInventory
+class cPlayerActionBar
 {
     public:
         std::uint32_t         initialize(void);
@@ -56,20 +56,20 @@ class cPlayerInventory
         void                  freeData(void);
 
         // Set pointers
-        void                  setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; }
-        void                  setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
-        void                  setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; }
+        void                  setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; };
+        void                  setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
+        void                  setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; };
         void                  setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
         void                  setMapPointer(sMap* _map) { m_map = _map; }
 
         // member functions
-        sEntity*              getSlotEntity(const std::uint32_t _slot) { return m_inventory.slot[_slot].entity; }
+        sEntity*              getSlotEntity(const std::uint32_t _slot) { return m_actionBar.slot[_slot].entity; };
         void                  setSlotEntity(const std::uint32_t _slot, sEntity* &_entity);
-        void                  setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
-        std::uint32_t         getInventorySize(void) { return m_inventory.numSlot; }
-        std::uint32_t         freeSlotCount(void) { return m_inventory.numFreeSlot; }
-        sPlayerInventory*     getPlayerInventory(void) { return &m_inventory; }
-        sPlayerInventorySlot* getPlayerInventorySlot(const std::uint32_t _slot) { return &m_inventory.slot[_slot]; }
+        void                  setActionBarSize(const std::uint32_t &_width, const std::uint32_t &_height);
+        std::uint32_t         getActionBarSize(void) { return m_actionBar.numSlot; };
+        std::uint32_t         freeSlotCount(void) { return m_actionBar.numFreeSlot; };
+        sPlayerActionBar*     getPlayerActionBar(void) { return &m_actionBar; };
+        sPlayerActionBarSlot* getPlayerActionBarSlot(const std::uint32_t _slot) { return &m_actionBar.slot[_slot]; };
         bool                  pickupItem(sEntity* &_entity);
         bool                  dropItem(sEntity* &_entity);
         void                  dropItem(const std::uint32_t &_slot);
@@ -87,9 +87,9 @@ class cPlayerInventory
         sMap*                 m_map             = nullptr;
 
         // Data
-        sPlayerInventory      m_inventory       = {};
+        sPlayerActionBar      m_actionBar       = {};
 
         glm::uvec4            m_stackTextColor  = glm::uvec4(200, 200, 200, 255);
 };
 
-#endif // PLAYER_INVENTORY_HPP
+#endif // PLAYER_ACTION_BAR_HPP

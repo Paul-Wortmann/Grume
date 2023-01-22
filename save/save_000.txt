@@ -34,8 +34,8 @@
    </player>
 
    <inventory>
-      <slot>0 potion_health 1 5</slot>
-      <slot>1 potion_mana   1 2</slot>
+      <inventory_slot>0 potion_health 1 5</inventory_slot>
+      <inventory_slot>1 potion_mana   1 2</inventory_slot>
    </inventory>
 
    <quests>

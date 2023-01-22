@@ -195,7 +195,7 @@ void cObjectManager::process(const std::int64_t &_dt)
                                 m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_interact);
 
                                 // Pickup item
-                                m_playerManager->pickupItem(m_entityTemp);
+                                m_playerManager->inventoryPickupItem(m_entityTemp);
                             }
                             else
                             {

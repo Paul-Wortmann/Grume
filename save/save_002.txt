@@ -34,13 +34,13 @@
    </player>
 
    <inventory>
-      <slot>0 potion_health 1 32</slot>
-      <slot>1 potion_mana 1 19</slot>
-      <slot>2 magic_helmet 1 1</slot>
-      <slot>3 medium_helmet 1 1</slot>
-      <slot>4 rune 3 1</slot>
-      <slot>5 magic_helmet 1 1</slot>
-      <slot>6 potion_health 1 3</slot>
+      <inventory_slot>0 potion_health 1 32</inventory_slot>
+      <inventory_slot>1 potion_mana 1 19</inventory_slot>
+      <inventory_slot>2 magic_helmet 1 1</inventory_slot>
+      <inventory_slot>3 medium_helmet 1 1</inventory_slot>
+      <inventory_slot>4 rune 3 1</inventory_slot>
+      <inventory_slot>5 magic_helmet 1 1</inventory_slot>
+      <inventory_slot>6 potion_health 1 3</inventory_slot>
    </inventory>
 
    <quests>

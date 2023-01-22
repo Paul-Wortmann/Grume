@@ -116,7 +116,7 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
             sEntity* tEntity = m_playerManager.getInventoryEntity(i);
             if (tEntity != nullptr)
             {
-                saveFile << indent(iLevel) << "<slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</slot>" << std::endl;
+                saveFile << indent(iLevel) << "<inventory_slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</inventory_slot>" << std::endl;
             }
         }
         iLevel--;

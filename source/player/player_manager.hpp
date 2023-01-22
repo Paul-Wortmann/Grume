@@ -24,30 +24,7 @@
 #ifndef PLAYER_MANAGER_HPP
 #define PLAYER_MANAGER_HPP
 
-#include "../audio/audio_engine.hpp"
-#include "../core/includes.hpp"
-#include "../entity/entity_manager.hpp"
-#include "../map/map_manager_defines.hpp"
-#include "../physics/physics_collision.hpp"
-#include "../resource/database_manager.hpp"
-#include "../ui/ui_manager.hpp"
-
-#include "player_character.hpp"
-#include "player_inventory.hpp"
-#include "player_stash.hpp"
-#include "player_vendor.hpp"
-
-// Event type enum
-enum ePlayerEventType : std::uint32_t { playerEventType_none        = 0,    // null event
-                                        playerEventType_newPosition = 1 };  // player has been repositioned
-
-// Event struct
-struct sPlayerEvent
-{
-    sPlayerEvent*      next = nullptr;
-    ePlayerEventType   type = ePlayerEventType::playerEventType_none;
-    std::uint32_t      data = 0;
-};
+#include "player_manager_defines.hpp"
 
 class cPlayerManager :tcTemplateEngine
 {
@@ -56,38 +33,48 @@ class cPlayerManager :tcTemplateEngine
         void              terminate(void) override;
         void              process(const std::int64_t &_dt) override;
         sPlayerEvent*     getEvent(void) { return m_event.pop(); }
-        cPlayerInventory* getPlayerInventory(void) { return m_playerInventory; }
+
+        // Player Action bar
+        cPlayerActionBar* getPlayerActionBar(void) { return m_playerActionBar; }
+        sEntity*          getActionBarEntity(const std::uint32_t _slot) { return m_playerActionBar->getSlotEntity(_slot); }
+        void              setActionBarEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerActionBar->setSlotEntity(_slot, _entity); };
+        std::uint32_t     getActionBarSize(void) { return m_playerActionBar->getActionBarSize(); }
+        std::uint32_t     getActionBarFreeSlotNum(void) { return m_playerActionBar->freeSlotCount(); }
+        bool              actionBarPickupItem(sEntity* &_entity) { return m_playerActionBar->pickupItem(_entity); }
+        bool              actionBarDropItem(sEntity* &_entity) { return m_playerActionBar->dropItem(_entity); }
+        void              actionBarDrop(const std::uint32_t &_slot) { m_playerActionBar->dropItem(_slot); }
 
         // Player Inventory
-        sEntity*      getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getSlotEntity(_slot); }
-        void          setInventoryEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerInventory->setSlotEntity(_slot, _entity); };
-        std::uint32_t getInventorySize(void) { return m_playerInventory->getInventorySize(); }
-        std::uint32_t getInventoryFreeSlotNum(void) { return m_playerInventory->freeSlotCount(); }
-        bool          pickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); }
-        bool          dropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); }
-        void          inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
+        cPlayerInventory* getPlayerInventory(void) { return m_playerInventory; }
+        sEntity*          getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getSlotEntity(_slot); }
+        void              setInventoryEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerInventory->setSlotEntity(_slot, _entity); };
+        std::uint32_t     getInventorySize(void) { return m_playerInventory->getInventorySize(); }
+        std::uint32_t     getInventoryFreeSlotNum(void) { return m_playerInventory->freeSlotCount(); }
+        bool              inventoryPickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); }
+        bool              inventoryDropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); }
+        void              inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
 
         // Set pointers
-        void          setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; }
-        void          setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; m_playerInventory->setEntityManager(_entityManager); }
-        void          setDatabaseManager(cDatabaseManager *_databaseManager) { m_databaseManager = _databaseManager; }
-        void          setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; m_playerInventory->setResourceManagerPointer(_resourceManager); }
-        void          setMapPointer(sMap* _map) { m_mapPointer = _map; m_playerInventory->setMapPointer(_map); }
-        void          setInventoryUIManager(cUIManager* _UIManager) { m_playerInventory->setUIManager(_UIManager); }
-        sEntity*      getEntityPlayer(void) { return m_player; }
+        void              setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; }
+        void              setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; m_playerInventory->setEntityManager(_entityManager); }
+        void              setDatabaseManager(cDatabaseManager *_databaseManager) { m_databaseManager = _databaseManager; }
+        void              setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; m_playerInventory->setResourceManagerPointer(_resourceManager); }
+        void              setMapPointer(sMap* _map) { m_mapPointer = _map; m_playerInventory->setMapPointer(_map); }
+        void              setInventoryUIManager(cUIManager* _UIManager) { m_playerInventory->setUIManager(_UIManager); }
+        sEntity*          getEntityPlayer(void) { return m_player; }
 
-        void          setMapPlayer(void);
-        std::uint32_t getPlayerID(void) { return m_player->UID; }
-        glm::vec3     getPosition(void) { return m_player->base.position; }
-        std::uint32_t getCurrentTile(void) { return m_player->movement->mapPath.currentTile; }
-        std::uint32_t load(const std::string &_fileName);
-        void          targetTile(const std::uint32_t &_tile);
-        void          setTileClicked(const std::uint32_t &_tile) { m_tileClicked = _tile; }
-        void          setObjectClicked(const std::uint32_t &_object) { m_objectClicked = _object; }
-        bool          getMoved(void) { return m_player->movement->pathing; }
+        void              setMapPlayer(void);
+        std::uint32_t     getPlayerID(void) { return m_player->UID; }
+        glm::vec3         getPosition(void) { return m_player->base.position; }
+        std::uint32_t     getCurrentTile(void) { return m_player->movement->mapPath.currentTile; }
+        std::uint32_t     load(const std::string &_fileName);
+        void              targetTile(const std::uint32_t &_tile);
+        void              setTileClicked(const std::uint32_t &_tile) { m_tileClicked = _tile; }
+        void              setObjectClicked(const std::uint32_t &_object) { m_objectClicked = _object; }
+        bool              getMoved(void) { return m_player->movement->pathing; }
 
-        void          setPlayerPosition(const std::uint32_t &_tile, const float &_rotation);
-        void          setPlayerPosition(const glm::vec3 &_position, const float &_rotation);
+        void              setPlayerPosition(const std::uint32_t &_tile, const float &_rotation);
+        void              setPlayerPosition(const glm::vec3 &_position, const float &_rotation);
 
     protected:
     private:
@@ -103,11 +90,14 @@ class cPlayerManager :tcTemplateEngine
         sMap*             m_mapPointer      = nullptr;
 
         // systems
+        cPlayerActionBar* m_playerActionBar = new cPlayerActionBar;
         cPlayerInventory* m_playerInventory = new cPlayerInventory;
 
         // Data
         std::uint32_t     m_tileClicked     = 0;
         std::uint32_t     m_objectClicked   = 0;
+
+        const glm::uvec4  m_stackTextColor  = glm::uvec4(200, 200, 200, 255);
 };
 
 #endif // PLAYER_MANAGER_HPP

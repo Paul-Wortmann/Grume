@@ -26,13 +26,27 @@
 std::uint32_t cPlayerManager::initialize(void)
 {
     std::uint32_t return_value = EXIT_SUCCESS;
+
+    // action bar
+    return_value = m_playerActionBar->initialize();
+    m_playerActionBar->setActionBarSize(12, 1);
+    m_playerActionBar->setStackColor(m_stackTextColor);
+
+    // inventory
     return_value = m_playerInventory->initialize();
     m_playerInventory->setInventorySize(6, 9);
+    m_playerInventory->setStackColor(m_stackTextColor);
+
     return return_value;
 }
 
 void cPlayerManager::terminate(void)
 {
+    // Player action bar
+    m_playerActionBar->terminate();
+    delete m_playerActionBar;
+    m_playerActionBar = nullptr;
+
     // Player inventory
     m_playerInventory->terminate();
     delete m_playerInventory;
@@ -59,6 +73,7 @@ std::uint32_t cPlayerManager::load(const std::string &_fileName)
         m_player->base.type  = eEntityType::entityType_player;
         m_player->base.owner = eEntityOwner::entityOwner_player;
         m_entityManager->updateModelMatrix(m_player);
+        m_playerActionBar->setPlayerEntity(m_player);
         m_playerInventory->setPlayerEntity(m_player);
     }
     else

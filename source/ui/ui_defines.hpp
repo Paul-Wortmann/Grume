@@ -246,7 +246,20 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionInventoryStack_53  = 198, // Inventory slot 53 stack size text label
     componentFunctionInventoryStack_54  = 199, // Inventory slot 54 stack size text label
 
-    componentFunctionTextGold           = 200  // Gold text
+    componentFunctionActionBarStack_1   = 200, // Action Bar slot 1 stack size text label
+    componentFunctionActionBarStack_2   = 201, // Action Bar slot 2 stack size text label
+    componentFunctionActionBarStack_3   = 202, // Action Bar slot 3 stack size text label
+    componentFunctionActionBarStack_4   = 203, // Action Bar slot 4 stack size text label
+    componentFunctionActionBarStack_5   = 204, // Action Bar slot 5 stack size text label
+    componentFunctionActionBarStack_6   = 205, // Action Bar slot 6 stack size text label
+    componentFunctionActionBarStack_7   = 206, // Action Bar slot 7 stack size text label
+    componentFunctionActionBarStack_8   = 207, // Action Bar slot 8 stack size text label
+    componentFunctionActionBarStack_9   = 208, // Action Bar slot 9 stack size text label
+    componentFunctionActionBarStack_10  = 209, // Action Bar slot 10 stack size text label
+    componentFunctionActionBarStack_11  = 210, // Action Bar slot 11 stack size text label
+    componentFunctionActionBarStack_12  = 211, // Action Bar slot 12 stack size text label
+
+    componentFunctionTextGold           = 212  // Gold text
 
 };
 

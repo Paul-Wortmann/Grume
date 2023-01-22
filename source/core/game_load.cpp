@@ -238,10 +238,10 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         return_value = (return_value == EXIT_SUCCESS) ? m_mapManager.load(filenName) : return_value;
 
         // Inventory (load after map)
-        std::uint32_t itemCount = xmlSaveGameFile.getInstanceCount("<slot>");
+        std::uint32_t itemCount = xmlSaveGameFile.getInstanceCount("<inventory_slot>");
         for (std::uint32_t i = 0; i < itemCount; ++i)
         {
-            std::string tItemData = xmlSaveGameFile.getString("<slot>", 1 + i);
+            std::string tItemData = xmlSaveGameFile.getString("<inventory_slot>", 1 + i);
             tItemData += "    ";
             std::uint64_t tItemDataLength = tItemData.length();
             std::uint32_t tStringNum = 0;
