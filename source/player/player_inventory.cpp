@@ -87,12 +87,11 @@ void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entit
         m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + _slot), true);
 
         // Generate text label
-        glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
         if (m_inventory.slot[_slot].stackLabel != nullptr)
         {
             m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
         }
-        m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[_slot].entity->item->stackSize), textColor);
+        m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[_slot].entity->item->stackSize), m_stackTextColor);
     }
 
     // Add loot component
@@ -104,65 +103,68 @@ void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entit
 
 bool cPlayerInventory::pickupItem(sEntity* &_entity)
 {
-    if (m_inventory.numFreeSlot > 0)
+    // If possible first add the item to a stack
+    if (_entity->item->stackMax > 1)
     {
-        // Set the entity invisible and change ownership
-        _entity->base.visible = false;
-        _entity->base.inRnge = false;
-        _entity->base.owner = eEntityOwner::entityOwner_inventory;
-
-        bool stacked = false;
-
-        // If stackable item
-        if (_entity->item->stackMax > 1)
+        for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
         {
-            for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
+            if ((m_inventory.slot[i].occupied == true) &&
+                (m_inventory.slot[i].entity->item->type == _entity->item->type) &&
+                (m_inventory.slot[i].entity->item->stackMax > 1) &&
+                (m_inventory.slot[i].entity->item->stackSize < m_inventory.slot[i].entity->item->stackMax))
             {
-                if ((m_inventory.slot[i].occupied == true) &&
-                    (m_inventory.slot[i].entity->item->type == _entity->item->type) &&
-                    (m_inventory.slot[i].entity->item->stackMax > 1) &&
-                    (m_inventory.slot[i].entity->item->stackSize < m_inventory.slot[i].entity->item->stackMax))
+                m_inventory.slot[i].entity->item->stackSize++;
+                _entity->base.dying = true;
+                m_entityManager->deleteEntity(_entity);
+
+                // Enable the UI Inventory slot stack text
+                m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + i), true);
+
+                // Generate text label
+                if (m_inventory.slot[i].stackLabel != nullptr)
                 {
-                    m_inventory.slot[i].entity->item->stackSize++;
-                    _entity->base.dying = true;
-                    m_entityManager->deleteEntity(_entity);
-
-                    // Enable the UI Inventory slot stack text
-                    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + i), true);
-
-                    // Generate text label
-                    glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
-                    if (m_inventory.slot[i].stackLabel != nullptr)
-                    {
-                        m_resourceManager->freeTexture(m_inventory.slot[i].stackLabel);
-                    }
-                    m_inventory.slot[i].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[i].entity->item->stackSize), textColor);
-
-                    return true;
+                    m_resourceManager->freeTexture(m_inventory.slot[i].stackLabel);
                 }
-            }
-        }
+                m_inventory.slot[i].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[i].entity->item->stackSize), m_stackTextColor);
 
-        if (stacked == false)
-        {
-            for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
-            {
-                // Add the entity to a free slot
-                if (m_inventory.slot[i].occupied == false)
-                {
-                    m_inventory.slot[i].entity = _entity;
-                    m_inventory.slot[i].occupied = true;
-                    m_inventory.numFreeSlot--;
+                // Set the entity invisible and change ownership
+                _entity->base.visible = false;
+                _entity->base.inRnge = false;
+                _entity->base.owner = eEntityOwner::entityOwner_inventory;
 
-                    // Enable the UI Inventory slot
-                    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + i), true);
-
-                    return true;
-                }
+                // return if we stacked the item
+                return true;
             }
         }
     }
 
+    // If there is a free slot, add the item
+    if (m_inventory.numFreeSlot > 0)
+    {
+        for (std::uint32_t i = 0; i < m_inventory.numSlot; ++i)
+        {
+            // Add the entity to a free slot
+            if (m_inventory.slot[i].occupied == false)
+            {
+                m_inventory.slot[i].entity = _entity;
+                m_inventory.slot[i].occupied = true;
+                m_inventory.numFreeSlot--;
+
+                // Enable the UI Inventory slot
+                m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + i), true);
+
+                // Set the entity invisible and change ownership
+                _entity->base.visible = false;
+                _entity->base.inRnge = false;
+                _entity->base.owner = eEntityOwner::entityOwner_inventory;
+
+                // Return if we added the item
+                return true;
+            }
+        }
+    }
+
+    // unable to stack or add the item
     return false;
 }
 
@@ -201,12 +203,11 @@ void cPlayerInventory::dropItem(const std::uint32_t &_slot)
         m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + _slot), (originalEntity->item->stackSize > 1));
 
         // generate text label
-        glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
         if (m_inventory.slot[_slot].stackLabel != nullptr)
         {
             m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
         }
-        m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(originalEntity->item->stackSize), textColor);
+        m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(originalEntity->item->stackSize), m_stackTextColor);
 
         // Duplicate entity and set stack size
         entity = m_entityManager->duplicateEntity(originalEntity);

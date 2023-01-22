@@ -84,6 +84,8 @@ class cPlayerInventory
 
         // Data
         sPlayerInventory      m_inventory       = {};
+
+        const glm::uvec4      m_stackTextColor  = glm::uvec4(200, 200, 200, 255);
 };
 
 #endif // PLAYER_INVENTORY_HPP

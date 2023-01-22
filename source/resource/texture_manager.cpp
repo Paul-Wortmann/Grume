@@ -70,7 +70,8 @@ sTexture* cTextureManager::getFreePointer(void)
 void cTextureManager::setPointerFree(sTexture *&_pointer)
 {
     // decrement the instance count
-    _pointer->numInstance--;
+    if (_pointer->numInstance > 0)
+        _pointer->numInstance--;
 
     // if there are still instances in use, early exit
     if (_pointer->numInstance > 0)
