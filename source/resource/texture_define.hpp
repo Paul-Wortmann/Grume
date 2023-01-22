@@ -29,16 +29,17 @@
 struct sTexture
 {
     // Linked list management
-    std::uint32_t UID     = 0;
-    sTexture*     next    = nullptr;
-    bool          enabled = true;
+    std::uint32_t UID         = 0;
+    sTexture*     next        = nullptr;
+    bool          enabled     = true;
+    std::uint32_t numInstance = 0;
 
     // Data
-    std::string   fileName   = {};
-    std::uint32_t ID         = 0;
-    std::uint32_t width      = 0;
-    std::uint32_t height     = 0;
-    std::uint32_t numChannel = 0;
+    std::string   fileName    = {};
+    std::uint32_t ID          = 0;
+    std::uint32_t width       = 0;
+    std::uint32_t height      = 0;
+    std::uint32_t numChannel  = 0;
 };
 
 #endif // TEXTURE_DEFINE_HPP

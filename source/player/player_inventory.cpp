@@ -88,7 +88,7 @@ void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entit
 
         // Generate text label
         glm::uvec4 textColor = glm::uvec4(212, 175, 055, 255);
-        if (m_inventory.slot[_slot].stackLabel == nullptr)
+        if (m_inventory.slot[_slot].stackLabel != nullptr)
         {
             m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
         }

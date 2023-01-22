@@ -67,6 +67,7 @@ class cPlayerInventory
         void                  setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height);
         std::uint32_t         getInventorySize(void) { return m_inventory.numSlot; };
         std::uint32_t         freeSlotCount(void) { return m_inventory.numFreeSlot; };
+        sPlayerInventory*     getPlayerInventory(void) { return &m_inventory; };
         sPlayerInventorySlot* getPlayerInventorySlot(const std::uint32_t _slot) { return &m_inventory.slot[_slot]; };
         bool                  pickupItem(sEntity* &_entity);
         bool                  dropItem(sEntity* &_entity);

@@ -1519,7 +1519,7 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.102f, 0.392f, -0.03f</component_position>
+            <component_position>-0.172f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_1</component_function>
             <component_type>TYPE_TEXT</component_type>

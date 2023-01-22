@@ -50,23 +50,35 @@ void cTextureManager::terminate(void)
 sTexture* cTextureManager::getFreePointer(void)
 {
     // If an unused pointer is available, reuse it
-    for (sTexture* temp = getHead(); temp != nullptr; temp = temp->next)
+    for (sTexture* tempReuse = getHead(); tempReuse != nullptr; tempReuse = tempReuse->next)
     {
-        if (temp->enabled == false)
+        if (tempReuse->enabled == false)
         {
-            temp->enabled = true;
-            return temp;
+            tempReuse->enabled = true;
+            tempReuse->numInstance++;
+            return tempReuse;
         }
     }
 
     // Allocate memory and return a new pointer
-    sTexture* temp = getNew();
-    temp->enabled = true;
-    return temp;
+    sTexture* tempNew = getNew();
+    tempNew->enabled = true;
+    tempNew->numInstance++;
+    return tempNew;
 }
 
 void cTextureManager::setPointerFree(sTexture *&_pointer)
 {
+    // decrement the instance count
+    _pointer->numInstance--;
+
+    // if there are still instances in use, early exit
+    if (_pointer->numInstance > 0)
+    {
+        return;
+    }
+
+    // free data and disabled
     freeData(_pointer);
     _pointer->enabled = false;
 }
@@ -77,6 +89,7 @@ sTexture* cTextureManager::load(const std::string &_fileName)
     {
         if ((temp->enabled == true) && (temp->fileName.compare(_fileName) == 0))
         {
+            temp->numInstance++;
             return temp;
         }
     }
@@ -141,6 +154,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text)
     {
         if ((temp->enabled == true) && (temp->fileName.compare(_text) == 0))
         {
+            temp->numInstance++;
             return temp;
         }
     }
@@ -213,6 +227,7 @@ sTexture* cTextureManager::generateTexture(const std::string &_text, const glm::
     {
         if ((temp->enabled == true) && (temp->fileName.compare(_text) == 0))
         {
+            temp->numInstance++;
             return temp;
         }
     }

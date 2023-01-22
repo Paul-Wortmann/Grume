@@ -183,13 +183,13 @@ void cGraphicsEngine::m_pui_render(void)
                         // slot 1, at index 0
                         std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1);
                         sEntity* slotEntity = m_playerInventory->getSlotEntity(slotNumber);
-                        sPlayerInventorySlot* playerInventorySlot = m_playerInventory->getPlayerInventorySlot(slotNumber);
+                        sPlayerInventory* playerInventory = m_playerInventory->getPlayerInventory();
 
-                        if ((playerInventorySlot->occupied) &&
+                        if ((playerInventory->slot[slotNumber].occupied) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:
-                            sTexture* textureTextSlotStack = playerInventorySlot->stackLabel;
+                            sTexture* textureTextSlotStack = playerInventory->slot[slotNumber].stackLabel;
                             menu[m].component[c].textureNormal = textureTextSlotStack->ID;
 
                             // Position and scaling
