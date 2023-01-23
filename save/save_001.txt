@@ -34,65 +34,18 @@
    </player>
 
    <action_bar>
-      <action_bar>0 potion_health 1 32</action_bar>
-      <action_bar>1 potion_mana 1 32</action_bar>
+      <action_bar_slot>0 potion_health 1 32</action_bar_slot>
+      <action_bar_slot>1 potion_mana 1 30</action_bar_slot>
    </action_bar>
 
    <inventory>
       <inventory_slot>0 potion_health 1 32</inventory_slot>
-      <inventory_slot>1 potion_health 1 32</inventory_slot>
-      <inventory_slot>2 potion_health 1 32</inventory_slot>
-      <inventory_slot>3 potion_health 1 32</inventory_slot>
-      <inventory_slot>4 potion_health 1 32</inventory_slot>
-      <inventory_slot>5 potion_health 1 32</inventory_slot>
-      <inventory_slot>6 potion_health 1 32</inventory_slot>
-      <inventory_slot>7 potion_health 1 32</inventory_slot>
-      <inventory_slot>8 potion_health 1 32</inventory_slot>
-      <inventory_slot>9 potion_health 1 32</inventory_slot>
-      <inventory_slot>10 potion_health 1 32</inventory_slot>
-      <inventory_slot>11 potion_health 1 32</inventory_slot>
-      <inventory_slot>12 potion_health 1 32</inventory_slot>
-      <inventory_slot>13 potion_health 1 32</inventory_slot>
-      <inventory_slot>14 potion_health 1 32</inventory_slot>
-      <inventory_slot>15 potion_health 1 32</inventory_slot>
-      <inventory_slot>16 potion_health 1 32</inventory_slot>
-      <inventory_slot>17 potion_health 1 32</inventory_slot>
-      <inventory_slot>18 potion_health 1 32</inventory_slot>
-      <inventory_slot>19 potion_health 1 32</inventory_slot>
-      <inventory_slot>20 potion_health 1 32</inventory_slot>
-      <inventory_slot>21 potion_health 1 32</inventory_slot>
-      <inventory_slot>22 potion_health 1 32</inventory_slot>
-      <inventory_slot>23 potion_health 1 32</inventory_slot>
-      <inventory_slot>24 potion_health 1 32</inventory_slot>
-      <inventory_slot>25 potion_health 1 32</inventory_slot>
-      <inventory_slot>26 potion_health 1 32</inventory_slot>
-      <inventory_slot>27 potion_health 1 32</inventory_slot>
-      <inventory_slot>28 potion_health 1 32</inventory_slot>
-      <inventory_slot>29 potion_health 1 32</inventory_slot>
-      <inventory_slot>30 potion_health 1 32</inventory_slot>
-      <inventory_slot>31 potion_health 1 32</inventory_slot>
-      <inventory_slot>32 potion_health 1 32</inventory_slot>
-      <inventory_slot>33 potion_health 1 32</inventory_slot>
-      <inventory_slot>34 potion_health 1 32</inventory_slot>
-      <inventory_slot>35 potion_health 1 32</inventory_slot>
-      <inventory_slot>36 potion_health 1 32</inventory_slot>
-      <inventory_slot>37 potion_health 1 32</inventory_slot>
-      <inventory_slot>38 potion_health 1 32</inventory_slot>
-      <inventory_slot>39 potion_health 1 32</inventory_slot>
-      <inventory_slot>40 potion_health 1 32</inventory_slot>
-      <inventory_slot>41 potion_health 1 32</inventory_slot>
-      <inventory_slot>42 potion_health 1 32</inventory_slot>
-      <inventory_slot>43 potion_health 1 32</inventory_slot>
-      <inventory_slot>44 potion_health 1 32</inventory_slot>
-      <inventory_slot>45 potion_health 1 32</inventory_slot>
-      <inventory_slot>46 potion_health 1 32</inventory_slot>
-      <inventory_slot>47 potion_health 1 32</inventory_slot>
-      <inventory_slot>48 potion_health 1 32</inventory_slot>
-      <inventory_slot>49 potion_health 1 32</inventory_slot>
-      <inventory_slot>50 potion_health 1 32</inventory_slot>
-      <inventory_slot>51 potion_health 1 32</inventory_slot>
-      <inventory_slot>52 potion_health 1 32</inventory_slot>
-      <inventory_slot>53 potion_health 1 32</inventory_slot>
+      <inventory_slot>1 potion_mana 1 19</inventory_slot>
+      <inventory_slot>2 magic_helmet 1 1</inventory_slot>
+      <inventory_slot>3 medium_helmet 1 1</inventory_slot>
+      <inventory_slot>4 rune 3 1</inventory_slot>
+      <inventory_slot>5 magic_helmet 1 1</inventory_slot>
+      <inventory_slot>6 potion_health 1 3</inventory_slot>
    </inventory>
 
    <quests>

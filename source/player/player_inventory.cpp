@@ -27,6 +27,7 @@ std::uint32_t cPlayerInventory::initialize(void)
 {
     // set inventory to default size 6 x 9
     setInventorySize(m_inventory.width, m_inventory.height);
+    m_inventory.numSlot = m_inventory.width * m_inventory.height;
 
     // Return
     return EXIT_SUCCESS;

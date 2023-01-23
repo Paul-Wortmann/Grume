@@ -27,6 +27,7 @@ std::uint32_t cPlayerActionBar::initialize(void)
 {
     // set action bar to default size 6 x 9
     setActionBarSize(m_actionBar.width, m_actionBar.height);
+    m_actionBar.numSlot = m_actionBar.width * m_actionBar.height;
 
     // Return
     return EXIT_SUCCESS;

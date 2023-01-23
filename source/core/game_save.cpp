@@ -116,7 +116,7 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
             sEntity* tEntity = m_playerManager.getActionBarEntity(i);
             if (tEntity != nullptr)
             {
-                saveFile << indent(iLevel) << "<action_bar>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</action_bar>" << std::endl;
+                saveFile << indent(iLevel) << "<action_bar_slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</action_bar_slot>" << std::endl;
             }
         }
         iLevel--;
