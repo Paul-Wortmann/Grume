@@ -55,12 +55,12 @@ class cPlayerManager :tcTemplateEngine
         void              inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
 
         // Set pointers
-        void              setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; }
-        void              setEntityManager(cEntityManager *_entityManager) { m_entityManager = _entityManager; m_playerInventory->setEntityManager(_entityManager); }
-        void              setDatabaseManager(cDatabaseManager *_databaseManager) { m_databaseManager = _databaseManager; }
-        void              setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; m_playerInventory->setResourceManagerPointer(_resourceManager); }
-        void              setMapPointer(sMap* _map) { m_mapPointer = _map; m_playerInventory->setMapPointer(_map); }
-        void              setInventoryUIManager(cUIManager* _UIManager) { m_playerInventory->setUIManager(_UIManager); }
+        void              setAudioEngine(cAudioEngine* _audioEngine);
+        void              setEntityManager(cEntityManager *_entityManager);
+        void              setDatabaseManager(cDatabaseManager *_databaseManager);
+        void              setResourceManagerPointer(cResourceManager* _resourceManager);
+        void              setMapPointer(sMap* _map);
+        void              setUIManager(cUIManager* _UIManager);
         sEntity*          getEntityPlayer(void) { return m_player; }
 
         void              setMapPlayer(void);

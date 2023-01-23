@@ -53,6 +53,43 @@ void cPlayerManager::terminate(void)
     m_playerInventory = nullptr;
 }
 
+void cPlayerManager::setAudioEngine(cAudioEngine* _audioEngine)
+{
+    m_audioEngine = _audioEngine;
+}
+
+void cPlayerManager::setDatabaseManager(cDatabaseManager *_databaseManager)
+{
+    m_databaseManager = _databaseManager;
+}
+
+void cPlayerManager::setEntityManager(cEntityManager *_entityManager)
+{
+    m_entityManager = _entityManager;
+    m_playerActionBar->setEntityManager(_entityManager);
+    m_playerInventory->setEntityManager(_entityManager);
+}
+
+void cPlayerManager::setUIManager(cUIManager* _UIManager)
+{
+    m_playerActionBar->setUIManager(_UIManager);
+    m_playerInventory->setUIManager(_UIManager);
+}
+
+void cPlayerManager::setMapPointer(sMap* _map)
+{
+    m_mapPointer = _map;
+    m_playerActionBar->setMapPointer(_map);
+    m_playerInventory->setMapPointer(_map);
+}
+
+void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManager)
+{
+    m_resourceManager = _resourceManager;
+    m_playerActionBar->setResourceManagerPointer(_resourceManager);
+    m_playerInventory->setResourceManagerPointer(_resourceManager);
+}
+
 std::uint32_t cPlayerManager::load(const std::string &_fileName)
 {
     std::uint32_t return_value = EXIT_SUCCESS;

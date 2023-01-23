@@ -33,6 +33,11 @@
       <resistance_frost_base>13</resistance_frost_base>
    </player>
 
+   <action_bar>
+      <action_bar_slot>0 potion_health 1 32</action_bar_slot>
+      <action_bar_slot>1 potion_mana 1 32</action_bar_slot>
+   </action_bar>
+
    <inventory>
       <inventory_slot>0 potion_health 1 32</inventory_slot>
       <inventory_slot>1 potion_mana 1 19</inventory_slot>

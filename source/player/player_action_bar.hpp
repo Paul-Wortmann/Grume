@@ -41,8 +41,8 @@ struct sPlayerActionBarSlot
 // Player action bar struct
 struct sPlayerActionBar
 {
-    std::uint32_t         width       = 6;
-    std::uint32_t         height      = 9;
+    std::uint32_t         width       = 12;
+    std::uint32_t         height      = 1;
     std::uint32_t         numSlot     = 0;
     std::uint32_t         numFreeSlot = 0;
     sPlayerActionBarSlot* slot        = nullptr;

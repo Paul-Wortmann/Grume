@@ -142,7 +142,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_playerManager.setEntityManager(&m_entityManager);
     m_playerManager.setDatabaseManager(&m_databaseManager);
     m_playerManager.setMapPointer(m_mapManager.getMapPointer());
-    m_playerManager.setInventoryUIManager(&m_uiManager);
+    m_playerManager.setUIManager(&m_uiManager);
     m_playerManager.setResourceManagerPointer(&m_resourceManager);
     m_uiManager.setAudioEngine(&m_audioEngine);
     m_uiManager.setDatabaseManager(&m_databaseManager);
