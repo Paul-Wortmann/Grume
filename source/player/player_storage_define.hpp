@@ -21,31 +21,27 @@
  * @date 2011-11-11
  */
 
-#ifndef PLAYER_MANAGER_DEFINES_HPP
-#define PLAYER_MANAGER_DEFINES_HPP
+#ifndef PLAYER_STORAGE_DEFINE_HPP
+#define PLAYER_STORAGE_DEFINE_HPP
 
-#include "../core/includes.hpp"
-
-#include "../audio/audio_engine.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
-#include "../map/map_manager_defines.hpp"
-#include "../physics/physics_collision.hpp"
-#include "../resource/database_manager.hpp"
-#include "../ui/ui_manager.hpp"
 
-#include "player_storage.hpp"
-
-// Event type enum
-enum ePlayerEventType : std::uint32_t { playerEventType_none        = 0,    // null event
-                                        playerEventType_newPosition = 1 };  // player has been repositioned
-
-// Event struct
-struct sPlayerEvent
+// Player storage slot struct
+struct sPlayerStorageSlot
 {
-    sPlayerEvent*      next = nullptr;
-    ePlayerEventType   type = ePlayerEventType::playerEventType_none;
-    std::uint32_t      data = 0;
+    bool               occupied   = false;
+    sEntity*           entity     = nullptr;
+    std::uint32_t      data       = 0;
+    sTexture*          stackLabel = nullptr;
 };
 
-#endif // PLAYER_MANAGER_DEFINES_HPP
+// Player storage struct
+struct sPlayerStorage
+{
+    std::uint32_t       numSlot     = 0;
+    std::uint32_t       numFreeSlot = 0;
+    sPlayerStorageSlot* slot        = nullptr;
+};
+
+#endif // PLAYER_STORAGE_DEFINE_HPP

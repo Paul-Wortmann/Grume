@@ -29,18 +29,24 @@ std::uint32_t cPlayerManager::initialize(void)
 
     // action bar
     return_value = m_playerActionBar->initialize();
-    m_playerActionBar->setActionBarSize(12, 1);
+    m_playerActionBar->setStorageSize(12);
     m_playerActionBar->setStackColor(m_stackTextColor);
+    m_playerActionBar->setSlot1(eComponentFunction::componentFunctionActionBarSlot_1);
+    m_playerActionBar->setStack1(eComponentFunction::componentFunctionActionBarStack_1);
 
     // inventory
     return_value = m_playerInventory->initialize();
     m_playerInventory->setStorageSize(54);
     m_playerInventory->setStackColor(m_stackTextColor);
+    m_playerInventory->setSlot1(eComponentFunction::componentFunctionInventorySlot_1);
+    m_playerInventory->setStack1(eComponentFunction::componentFunctionInventoryStack_1);
 
     // vendor
     return_value = m_playerVendor->initialize();
-    m_playerVendor->setVendorSize(6, 9);
+    m_playerVendor->setStorageSize(54);
     m_playerVendor->setStackColor(m_stackTextColor);
+    m_playerVendor->setSlot1(eComponentFunction::componentFunctionVendorSlot_1);
+    m_playerVendor->setStack1(eComponentFunction::componentFunctionVendorStack_1);
 
     return return_value;
 }
@@ -91,17 +97,17 @@ void cPlayerManager::setUIManager(cUIManager* _UIManager)
 void cPlayerManager::setMapPointer(sMap* _map)
 {
     m_mapPointer = _map;
-    m_playerActionBar->setMapPointer(_map);
-    m_playerInventory->setMapPointer(_map);
-    m_playerVendor->setMapPointer(_map);
+    m_playerActionBar->setMap(_map);
+    m_playerInventory->setMap(_map);
+    m_playerVendor->setMap(_map);
 }
 
 void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManager)
 {
     m_resourceManager = _resourceManager;
-    m_playerActionBar->setResourceManagerPointer(_resourceManager);
-    m_playerInventory->setResourceManagerPointer(_resourceManager);
-    m_playerVendor->setResourceManagerPointer(_resourceManager);
+    m_playerActionBar->setResourceManager(_resourceManager);
+    m_playerInventory->setResourceManager(_resourceManager);
+    m_playerVendor->setResourceManager(_resourceManager);
 }
 
 std::uint32_t cPlayerManager::load(const std::string &_fileName)

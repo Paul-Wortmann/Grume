@@ -26,7 +26,9 @@
 std::uint32_t cPlayerInventory::initialize(void)
 {
     // set inventory to default size 6 x 9
-    setStorageSize(m_inventory.numSlot);
+    setStorageSize(m_storage.getStorageSize(m_storageSize);
+    m_storage.setSlot1(eComponentFunction::componentFunctionInventorySlot_1);
+    m_storage.setStack1(eComponentFunction::componentFunctionInventoryStack_1);
 
     // Return
     return EXIT_SUCCESS;
@@ -40,66 +42,40 @@ void cPlayerInventory::terminate(void)
 
 void cPlayerInventory::freeData(void)
 {
-    // free if it exists
-    if (m_inventory.slot != nullptr)
-    {
-        delete[] m_inventory.slot;
-        m_inventory.slot = nullptr;
-    }
-    m_inventory.numSlot = 0;
-    m_inventory.numFreeSlot = 0;
+    // free storage
+    m_storage.freeData();
+
 }
 
-void cPlayerInventory::setStorageSize(const std::uint32_t &_size)
+void cPlayerInventory::setEntityManager(cEntityManager* _entityManager)
 {
-    // No size change, early exit
-    if (_size == m_inventory.numSlot)
-        return;
-
-    // free data if necessary
-    freeData();
-
-    // allocate new inventory array
-    m_inventory.numSlot = _size;
-    m_inventory.numFreeSlot = m_inventory.numSlot;
-    m_inventory.slot = new sPlayerStorageSlot[m_inventory.numSlot];
+    m_entityManager = _entityManager;
+    m_storage.setEntityManager(_entityManager);
 }
 
-void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entity)
+void cPlayerInventory::setResourceManager(cResourceManager* _resourceManager)
 {
-    // Add the entity to the slot
-    m_inventory.slot[_slot].entity = _entity;
-    m_inventory.slot[_slot].occupied = true;
-    m_inventory.numFreeSlot--;
+    m_resourceManager = _resourceManager;
+    m_storage.setResourceManager(_resourceManager);
+}
 
-    // Enable the UI Inventory slot
-    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), true);
+void cPlayerInventory::setUIManager(cUIManager* _UIManager)
+{
+    m_UIManager = _UIManager;
+    m_storage.setUIManager(_UIManager);
+}
 
-    // Ensure relevant fields are populated
-    // text tooltip
-    _entity->base.textActive  = true;
-    _entity->base.collectable = true;
+void cPlayerInventory::setPlayerEntity(sEntity* _entity)
+{
+    m_playerEntity = _entity;
+    m_storage.setPlayerEntity(_entity);
+}
 
-    // Stack label
-    if (_entity->item->stackSize > 1)
-    {
-        // Enable the UI Inventory slot stack text
-        m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventoryStack_1) + _slot), true);
-
-        // Generate text label
-        if (m_inventory.slot[_slot].stackLabel != nullptr)
-        {
-            m_resourceManager->freeTexture(m_inventory.slot[_slot].stackLabel);
-        }
-        m_inventory.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(m_inventory.slot[_slot].entity->item->stackSize), m_stackTextColor);
-    }
-
-    // Add loot component
-    if (_entity->loot == nullptr)
-    {
-        _entity->loot = new sEntityLoot;
-    }
-};
+void cPlayerInventory::setMap(sMap* _map)
+{
+    m_map = _map;
+    m_storage.setMap(_map);
+}
 
 bool cPlayerInventory::pickupItem(sEntity* &_entity)
 {

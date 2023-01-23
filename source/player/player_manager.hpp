@@ -25,6 +25,7 @@
 #define PLAYER_MANAGER_HPP
 
 #include "player_manager_defines.hpp"
+#include "player_storage.hpp"
 
 class cPlayerManager :tcTemplateEngine
 {
@@ -35,17 +36,17 @@ class cPlayerManager :tcTemplateEngine
         sPlayerEvent*     getEvent(void) { return m_event.pop(); }
 
         // Player Action bar
-        cPlayerActionBar* getPlayerActionBar(void) { return m_playerActionBar; }
+        cPlayerStorage*   getPlayerActionBar(void) { return m_playerActionBar; }
         sEntity*          getActionBarEntity(const std::uint32_t _slot) { return m_playerActionBar->getSlotEntity(_slot); }
         void              setActionBarEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerActionBar->setSlotEntity(_slot, _entity); };
-        std::uint32_t     getActionBarSize(void) { return m_playerActionBar->getActionBarSize(); }
+        std::uint32_t     getActionBarSize(void) { return m_playerActionBar->getStorageSize(); }
         std::uint32_t     getActionBarFreeSlotNum(void) { return m_playerActionBar->freeSlotCount(); }
         bool              actionBarPickupItem(sEntity* &_entity) { return m_playerActionBar->pickupItem(_entity); }
         bool              actionBarDropItem(sEntity* &_entity) { return m_playerActionBar->dropItem(_entity); }
         void              actionBarDrop(const std::uint32_t &_slot) { m_playerActionBar->dropItem(_slot); }
 
         // Player Inventory
-        cPlayerInventory* getPlayerInventory(void) { return m_playerInventory; }
+        cPlayerStorage*   getPlayerInventory(void) { return m_playerInventory; }
         sEntity*          getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getSlotEntity(_slot); }
         void              setInventoryEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerInventory->setSlotEntity(_slot, _entity); };
         std::uint32_t     getInventorySize(void) { return m_playerInventory->getStorageSize(); }
@@ -55,10 +56,10 @@ class cPlayerManager :tcTemplateEngine
         void              inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
 
         // Player Vendor
-        cPlayerVendor*    getPlayerVendor(void) { return m_playerVendor; }
+        cPlayerStorage*   getPlayerVendor(void) { return m_playerVendor; }
         sEntity*          getVendorEntity(const std::uint32_t _slot) { return m_playerVendor->getSlotEntity(_slot); }
         void              setVendorEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerVendor->setSlotEntity(_slot, _entity); };
-        std::uint32_t     getVendorSize(void) { return m_playerVendor->getVendorSize(); }
+        std::uint32_t     getVendorSize(void) { return m_playerVendor->getStorageSize(); }
         std::uint32_t     getVendorFreeSlotNum(void) { return m_playerVendor->freeSlotCount(); }
         bool              vendorPickupItem(sEntity* &_entity) { return m_playerVendor->pickupItem(_entity); }
         bool              vendorDropItem(sEntity* &_entity) { return m_playerVendor->dropItem(_entity); }
@@ -100,9 +101,9 @@ class cPlayerManager :tcTemplateEngine
         sMap*             m_mapPointer      = nullptr;
 
         // systems
-        cPlayerActionBar* m_playerActionBar = new cPlayerActionBar;
-        cPlayerInventory* m_playerInventory = new cPlayerInventory;
-        cPlayerVendor*    m_playerVendor    = new cPlayerVendor;
+        cPlayerStorage*   m_playerActionBar = new cPlayerStorage;
+        cPlayerStorage*   m_playerInventory = new cPlayerStorage;
+        cPlayerStorage*   m_playerVendor    = new cPlayerStorage;
 
         // Data
         std::uint32_t     m_tileClicked     = 0;

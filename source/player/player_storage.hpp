@@ -21,32 +21,17 @@
  * @date 2011-11-11
  */
 
-#ifndef PLAYER_INVENTORY_HPP
-#define PLAYER_INVENTORY_HPP
+#ifndef PLAYER_STORAGE_HPP
+#define PLAYER_STORAGE_HPP
 
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
 #include "../map/map_define.hpp"
 #include "../ui/ui_manager.hpp"
 
-// Player storage slot struct
-struct sPlayerStorageSlot
-{
-    bool               occupied   = false;
-    sEntity*           entity     = nullptr;
-    std::uint32_t      data       = 0;
-    sTexture*          stackLabel = nullptr;
-};
+#include "player_storage_define.hpp"
 
-// Player storage struct
-struct sPlayerStorage
-{
-    std::uint32_t       numSlot     = 0;
-    std::uint32_t       numFreeSlot = 0;
-    sPlayerStorageSlot* slot        = nullptr;
-};
-
-class cPlayerInventory
+class cPlayerStorage
 {
     public:
         std::uint32_t       initialize(void);
@@ -55,25 +40,27 @@ class cPlayerInventory
 
         // Set pointers
         void                setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; }
-        void                setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
+        void                setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
         void                setUIManager(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void                setPlayerEntity(sEntity* _entity) { m_playerEntity = _entity; }
-        void                setMapPointer(sMap* _map) { m_map = _map; }
+        void                setMap(sMap* _map) { m_map = _map; }
 
         // member functions
-        sEntity*            getSlotEntity(const std::uint32_t _slot) { return m_inventory.slot[_slot].entity; }
+        sEntity*            getSlotEntity(const std::uint32_t _slot) { return m_storage.slot[_slot].entity; }
         void                setSlotEntity(const std::uint32_t _slot, sEntity* &_entity);
         void                setStorageSize(const std::uint32_t &_size);
-        std::uint32_t       getStorageSize(void) { return m_inventory.numSlot; }
-        std::uint32_t       freeSlotCount(void) { return m_inventory.numFreeSlot; }
-        sPlayerStorage*     getStorage(void) { return &m_inventory; }
-        sPlayerStorageSlot* getStorageSlot(const std::uint32_t _slot) { return &m_inventory.slot[_slot]; }
+        std::uint32_t       getStorageSize(void) { return m_storage.numSlot; }
+        std::uint32_t       freeSlotCount(void) { return m_storage.numFreeSlot; }
+        sPlayerStorage*     getStorage(void) { return &m_storage; }
+        sPlayerStorageSlot* getStorageSlot(const std::uint32_t _slot) { return &m_storage.slot[_slot]; }
         bool                pickupItem(sEntity* &_entity);
         bool                dropItem(sEntity* &_entity);
         void                dropItem(const std::uint32_t &_slot);
 
         // other
         void                setStackColor(const glm::uvec4 &_color) { m_stackTextColor = _color; }
+        void                setSlot1(const eComponentFunction &_slot_1) { m_slot_1 = _slot_1; }
+        void                setStack1(const eComponentFunction &_stack_1) { m_stack_1 = _stack_1; }
 
     protected:
     private:
@@ -85,9 +72,11 @@ class cPlayerInventory
         sMap*               m_map             = nullptr;
 
         // Data
-        sPlayerStorage      m_inventory       = {};
+        sPlayerStorage      m_storage         = {};
 
+        eComponentFunction  m_slot_1          = eComponentFunction::componentFunctionNone;
+        eComponentFunction  m_stack_1         = eComponentFunction::componentFunctionNone;
         glm::uvec4          m_stackTextColor  = glm::uvec4(200, 200, 200, 255);
 };
 
-#endif // PLAYER_INVENTORY_HPP
+#endif // PLAYER_STORAGE_HPP

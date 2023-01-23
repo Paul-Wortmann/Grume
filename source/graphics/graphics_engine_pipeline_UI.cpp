@@ -183,7 +183,7 @@ void cGraphicsEngine::m_pui_render(void)
                         // slot 1, at index 0
                         std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarStack_1);
                         sEntity* slotEntity = m_playerActionBar->getSlotEntity(slotNumber);
-                        sPlayerActionBar* playerActionBar = m_playerActionBar->getPlayerActionBar();
+                        sPlayerStorage* playerActionBar = m_playerActionBar->getStorage();
 
                         if ((playerActionBar->slot[slotNumber].occupied) &&
                             (slotEntity->item->stackSize > 1))
