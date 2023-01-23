@@ -26,8 +26,7 @@
 std::uint32_t cPlayerInventory::initialize(void)
 {
     // set inventory to default size 6 x 9
-    setInventorySize(m_inventory.width, m_inventory.height);
-    m_inventory.numSlot = m_inventory.width * m_inventory.height;
+    setStorageSize(m_inventory.numSlot);
 
     // Return
     return EXIT_SUCCESS;
@@ -51,19 +50,19 @@ void cPlayerInventory::freeData(void)
     m_inventory.numFreeSlot = 0;
 }
 
-void cPlayerInventory::setInventorySize(const std::uint32_t &_width, const std::uint32_t &_height)
+void cPlayerInventory::setStorageSize(const std::uint32_t &_size)
 {
-    // update inventory size
-    m_inventory.width  = _width;
-    m_inventory.height = _height;
+    // No size change, early exit
+    if (_size == m_inventory.numSlot)
+        return;
 
     // free data if necessary
     freeData();
 
     // allocate new inventory array
-    m_inventory.numSlot = m_inventory.width * m_inventory.height;
+    m_inventory.numSlot = _size;
     m_inventory.numFreeSlot = m_inventory.numSlot;
-    m_inventory.slot = new sPlayerInventorySlot[m_inventory.numSlot];
+    m_inventory.slot = new sPlayerStorageSlot[m_inventory.numSlot];
 }
 
 void cPlayerInventory::setSlotEntity(const std::uint32_t _slot, sEntity* &_entity)

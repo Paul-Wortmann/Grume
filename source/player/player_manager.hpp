@@ -48,11 +48,21 @@ class cPlayerManager :tcTemplateEngine
         cPlayerInventory* getPlayerInventory(void) { return m_playerInventory; }
         sEntity*          getInventoryEntity(const std::uint32_t _slot) { return m_playerInventory->getSlotEntity(_slot); }
         void              setInventoryEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerInventory->setSlotEntity(_slot, _entity); };
-        std::uint32_t     getInventorySize(void) { return m_playerInventory->getInventorySize(); }
+        std::uint32_t     getInventorySize(void) { return m_playerInventory->getStorageSize(); }
         std::uint32_t     getInventoryFreeSlotNum(void) { return m_playerInventory->freeSlotCount(); }
         bool              inventoryPickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); }
         bool              inventoryDropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); }
         void              inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
+
+        // Player Vendor
+        cPlayerVendor*    getPlayerVendor(void) { return m_playerVendor; }
+        sEntity*          getVendorEntity(const std::uint32_t _slot) { return m_playerVendor->getSlotEntity(_slot); }
+        void              setVendorEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerVendor->setSlotEntity(_slot, _entity); };
+        std::uint32_t     getVendorSize(void) { return m_playerVendor->getVendorSize(); }
+        std::uint32_t     getVendorFreeSlotNum(void) { return m_playerVendor->freeSlotCount(); }
+        bool              vendorPickupItem(sEntity* &_entity) { return m_playerVendor->pickupItem(_entity); }
+        bool              vendorDropItem(sEntity* &_entity) { return m_playerVendor->dropItem(_entity); }
+        void              vendorDrop(const std::uint32_t &_slot) { m_playerVendor->dropItem(_slot); }
 
         // Set pointers
         void              setAudioEngine(cAudioEngine* _audioEngine);
@@ -92,6 +102,7 @@ class cPlayerManager :tcTemplateEngine
         // systems
         cPlayerActionBar* m_playerActionBar = new cPlayerActionBar;
         cPlayerInventory* m_playerInventory = new cPlayerInventory;
+        cPlayerVendor*    m_playerVendor    = new cPlayerVendor;
 
         // Data
         std::uint32_t     m_tileClicked     = 0;

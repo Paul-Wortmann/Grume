@@ -34,8 +34,13 @@ std::uint32_t cPlayerManager::initialize(void)
 
     // inventory
     return_value = m_playerInventory->initialize();
-    m_playerInventory->setInventorySize(6, 9);
+    m_playerInventory->setStorageSize(54);
     m_playerInventory->setStackColor(m_stackTextColor);
+
+    // vendor
+    return_value = m_playerVendor->initialize();
+    m_playerVendor->setVendorSize(6, 9);
+    m_playerVendor->setStackColor(m_stackTextColor);
 
     return return_value;
 }
@@ -51,6 +56,11 @@ void cPlayerManager::terminate(void)
     m_playerInventory->terminate();
     delete m_playerInventory;
     m_playerInventory = nullptr;
+
+    // Player vendor
+    m_playerVendor->terminate();
+    delete m_playerVendor;
+    m_playerVendor = nullptr;
 }
 
 void cPlayerManager::setAudioEngine(cAudioEngine* _audioEngine)
@@ -68,12 +78,14 @@ void cPlayerManager::setEntityManager(cEntityManager *_entityManager)
     m_entityManager = _entityManager;
     m_playerActionBar->setEntityManager(_entityManager);
     m_playerInventory->setEntityManager(_entityManager);
+    m_playerVendor->setEntityManager(_entityManager);
 }
 
 void cPlayerManager::setUIManager(cUIManager* _UIManager)
 {
     m_playerActionBar->setUIManager(_UIManager);
     m_playerInventory->setUIManager(_UIManager);
+    m_playerVendor->setUIManager(_UIManager);
 }
 
 void cPlayerManager::setMapPointer(sMap* _map)
@@ -81,6 +93,7 @@ void cPlayerManager::setMapPointer(sMap* _map)
     m_mapPointer = _map;
     m_playerActionBar->setMapPointer(_map);
     m_playerInventory->setMapPointer(_map);
+    m_playerVendor->setMapPointer(_map);
 }
 
 void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManager)
@@ -88,6 +101,7 @@ void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManage
     m_resourceManager = _resourceManager;
     m_playerActionBar->setResourceManagerPointer(_resourceManager);
     m_playerInventory->setResourceManagerPointer(_resourceManager);
+    m_playerVendor->setResourceManagerPointer(_resourceManager);
 }
 
 std::uint32_t cPlayerManager::load(const std::string &_fileName)

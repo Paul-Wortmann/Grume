@@ -259,7 +259,62 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionActionBarStack_11  = 210, // Action Bar slot 11 stack size text label
     componentFunctionActionBarStack_12  = 211, // Action Bar slot 12 stack size text label
 
-    componentFunctionTextGold           = 212  // Gold text
+    componentFunctionVendorStack_1      = 212, // Vendor slot 1 stack size text label
+    componentFunctionVendorStack_2      = 213, // Vendor slot 2 stack size text label
+    componentFunctionVendorStack_3      = 214, // Vendor slot 3 stack size text label
+    componentFunctionVendorStack_4      = 215, // Vendor slot 4 stack size text label
+    componentFunctionVendorStack_5      = 216, // Vendor slot 5 stack size text label
+    componentFunctionVendorStack_6      = 217, // Vendor slot 6 stack size text label
+    componentFunctionVendorStack_7      = 218, // Vendor slot 7 stack size text label
+    componentFunctionVendorStack_8      = 219, // Vendor slot 8 stack size text label
+    componentFunctionVendorStack_9      = 220, // Vendor slot 9 stack size text label
+    componentFunctionVendorStack_10     = 221, // Vendor slot 10 stack size text label
+    componentFunctionVendorStack_11     = 222, // Vendor slot 11 stack size text label
+    componentFunctionVendorStack_12     = 223, // Vendor slot 12 stack size text label
+    componentFunctionVendorStack_13     = 224, // Vendor slot 13 stack size text label
+    componentFunctionVendorStack_14     = 225, // Vendor slot 14 stack size text label
+    componentFunctionVendorStack_15     = 226, // Vendor slot 15 stack size text label
+    componentFunctionVendorStack_16     = 227, // Vendor slot 16 stack size text label
+    componentFunctionVendorStack_17     = 228, // Vendor slot 17 stack size text label
+    componentFunctionVendorStack_18     = 229, // Vendor slot 18 stack size text label
+    componentFunctionVendorStack_19     = 230, // Vendor slot 19 stack size text label
+    componentFunctionVendorStack_20     = 231, // Vendor slot 20 stack size text label
+    componentFunctionVendorStack_21     = 232, // Vendor slot 21 stack size text label
+    componentFunctionVendorStack_22     = 233, // Vendor slot 22 stack size text label
+    componentFunctionVendorStack_23     = 234, // Vendor slot 23 stack size text label
+    componentFunctionVendorStack_24     = 235, // Vendor slot 24 stack size text label
+    componentFunctionVendorStack_25     = 236, // Vendor slot 25 stack size text label
+    componentFunctionVendorStack_26     = 237, // Vendor slot 26 stack size text label
+    componentFunctionVendorStack_27     = 238, // Vendor slot 27 stack size text label
+    componentFunctionVendorStack_28     = 239, // Vendor slot 28 stack size text label
+    componentFunctionVendorStack_29     = 240, // Vendor slot 29 stack size text label
+    componentFunctionVendorStack_30     = 241, // Vendor slot 30 stack size text label
+    componentFunctionVendorStack_31     = 242, // Vendor slot 31 stack size text label
+    componentFunctionVendorStack_32     = 243, // Vendor slot 32 stack size text label
+    componentFunctionVendorStack_33     = 244, // Vendor slot 33 stack size text label
+    componentFunctionVendorStack_34     = 245, // Vendor slot 34 stack size text label
+    componentFunctionVendorStack_35     = 246, // Vendor slot 35 stack size text label
+    componentFunctionVendorStack_36     = 247, // Vendor slot 36 stack size text label
+    componentFunctionVendorStack_37     = 248, // Vendor slot 37 stack size text label
+    componentFunctionVendorStack_38     = 249, // Vendor slot 38 stack size text label
+    componentFunctionVendorStack_39     = 250, // Vendor slot 39 stack size text label
+    componentFunctionVendorStack_40     = 251, // Vendor slot 40 stack size text label
+    componentFunctionVendorStack_41     = 252, // Vendor slot 41 stack size text label
+    componentFunctionVendorStack_42     = 253, // Vendor slot 42 stack size text label
+    componentFunctionVendorStack_43     = 254, // Vendor slot 43 stack size text label
+    componentFunctionVendorStack_44     = 255, // Vendor slot 44 stack size text label
+    componentFunctionVendorStack_45     = 256, // Vendor slot 45 stack size text label
+    componentFunctionVendorStack_46     = 257, // Vendor slot 46 stack size text label
+    componentFunctionVendorStack_47     = 258, // Vendor slot 47 stack size text label
+    componentFunctionVendorStack_48     = 259, // Vendor slot 48 stack size text label
+    componentFunctionVendorStack_49     = 260, // Vendor slot 49 stack size text label
+    componentFunctionVendorStack_50     = 261, // Vendor slot 50 stack size text label
+    componentFunctionVendorStack_51     = 262, // Vendor slot 51 stack size text label
+    componentFunctionVendorStack_52     = 263, // Vendor slot 52 stack size text label
+    componentFunctionVendorStack_53     = 264, // Vendor slot 53 stack size text label
+    componentFunctionVendorStack_54     = 265, // Vendor slot 54 stack size text label
+
+    componentFunctionTextGold           = 266  // Gold text
 
 };
 
