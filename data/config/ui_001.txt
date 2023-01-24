@@ -7,6 +7,7 @@
 
 # Action bar
     <menu>
+    
         <menu_name>action_bar</menu_name>
         <menu_enabled>1</menu_enabled>
         <menu_type>TYPE_ACTIONBAR</menu_type>
@@ -413,6 +414,7 @@
 
 # Main menu
     <menu>
+    
         <menu_name>main_menu</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_MAIN</menu_type>
@@ -595,6 +597,7 @@
     
 # Options
     <menu>
+    
         <menu_name>options</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_OPTIONS</menu_type>
@@ -858,6 +861,7 @@
     
 # Inventory
     <menu>
+    
         <menu_name>inventory</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_INVENTORY</menu_type>
@@ -2436,17 +2440,19 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
+        
     </menu>
 
 # Vendor
     <menu>
+    
         <menu_name>vendor</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_VENDOR</menu_type>
         <menu_texture_normal>ui/menu/inventory_menu_002.png</menu_texture_normal>
         <menu_position>-0.5f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>56<menu_component_count>
+        <menu_component_count>110<menu_component_count>
         <menu_sound_open>menu 5</menu_sound_open>
         <menu_sound_close>NONE 0</menu_sound_close>
 
@@ -3233,10 +3239,768 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
+
+        <component>
+            <component_name>vendor_stack_001</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.392f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_1</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_002</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.392f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_2</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_003</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.392f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_3</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_004</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.392f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_4</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_005</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.392f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_5</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_006</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.392f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_6</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_007</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.268f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_7</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_008</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.268f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_8</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_009</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.268f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_9</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_010</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.268f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_10</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_011</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.268f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_11</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_012</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.268f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_12</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_013</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.146f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_13</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_014</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.146f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_14</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_015</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.146f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_15</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_016</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.146f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_16</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_017</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.146f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_17</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_018</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.146f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_18</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_019</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.022f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_19</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_020</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, 0.022f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_20</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_021</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, 0.022f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_21</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_022</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, 0.022f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_22</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_023</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, 0.022f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_23</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_024</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, 0.022f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_24</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_025</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.102f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_25</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_026</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.102f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_26</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_027</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.102f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_27</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_028</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.102f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_28</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_029</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.102f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_29</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_030</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.102f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_30</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_031</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.226f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_31</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_032</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.226f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_32</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_033</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.226f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_33</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_034</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.226f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_34</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_035</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.226f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_35</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_036</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.226f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_36</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_037</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.350f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_37</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_038</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.350f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_38</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_039</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.350f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_39</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_040</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.350f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_40</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_041</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.350f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_41</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_042</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.350f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_42</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_043</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.476f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_43</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_044</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.476f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_44</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_045</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.476f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_45</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_046</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.476f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_46</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stackt_047</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.476f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_47</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_048</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.476f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_48</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_049</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, -0.600f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_49</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_050</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.102f, -0.600f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_50</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_051</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.034f, -0.600f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_51</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_052</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.034f, -0.600f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_52</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_053</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.102f, -0.600f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_53</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>vendor_stack_054</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.172f, -0.600f, -0.03f</component_position>
+            <component_size>0.008f 0.008f</component_size>
+            <component_function>VENDOR_STACK_54</component_function>
+            <component_type>TYPE_TEXT</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
     </menu>
 
 # Character
     <menu>
+    
         <menu_name>character</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_CHARACTER</menu_type>
@@ -3279,6 +4043,7 @@
 
 # Skills
     <menu>
+    
         <menu_name>skills</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_SKILLS</menu_type>
@@ -3321,6 +4086,7 @@
 
 # Way-points
     <menu>
+    
         <menu_name>waypoints</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_WAYPOINTS</menu_type>

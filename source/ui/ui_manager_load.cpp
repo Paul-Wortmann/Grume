@@ -1174,6 +1174,224 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorSlot_54;
                     }
 
+                    // Vendor stack
+                    else if (componentFunction.compare("VENDOR_STACK_1") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_1;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_2") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_2;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_3") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_3;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_4") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_4;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_5") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_5;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_6") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_6;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_7") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_7;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_8") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_8;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_9") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_9;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_10") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_10;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_11") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_11;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_12") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_12;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_13") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_13;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_14") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_14;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_15") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_15;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_16") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_16;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_17") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_17;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_18") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_18;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_19") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_19;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_20") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_20;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_21") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_21;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_22") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_22;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_23") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_23;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_24") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_24;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_25") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_25;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_26") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_26;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_27") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_27;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_28") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_28;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_29") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_29;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_30") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_30;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_31") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_31;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_32") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_32;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_33") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_33;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_34") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_34;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_35") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_35;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_36") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_36;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_37") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_37;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_38") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_38;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_39") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_39;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_40") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_40;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_41") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_41;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_42") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_42;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_43") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_43;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_44") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_44;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_45") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_45;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_46") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_46;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_47") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_47;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_48") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_48;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_49") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_49;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_50") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_50;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_51") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_51;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_52") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_52;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_53") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_53;
+                    }
+                    else if (componentFunction.compare("VENDOR_STACK_54") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVendorStack_54;
+                    }
+
                     // Gold text
                     else if (componentFunction.compare("GOLD_TEXT") == 0)
                     {

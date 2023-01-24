@@ -367,6 +367,71 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
             }
         }
 
+        // Vendor (load after map)
+        itemCount = xmlSaveGameFile.getInstanceCount("<vendor_slot>");
+        for (std::uint32_t i = 0; i < itemCount; ++i)
+        {
+            std::string tItemData = xmlSaveGameFile.getString("<vendor_slot>", 1 + i);
+            tItemData += "    ";
+            std::uint64_t tItemDataLength = tItemData.length();
+            std::uint32_t tStringNum = 0;
+            std::string tString = "";
+
+            std::uint32_t tSlotNumber = 0;
+            std::string   tItemName   = "";
+            std::uint32_t tItemNumber = 0;
+            std::uint32_t tItemCount  = 0;
+            if (tItemDataLength > 6)
+            {
+                for (std::uint64_t j = 0; j < tItemDataLength; ++j)
+                {
+                    if (tItemData[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tSlotNumber = std::stoi(tString);
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tItemName = tString;
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            tItemNumber = std::stoi(tString);
+                        }
+                        else if (tStringNum == 3)
+                        {
+                            tItemCount = std::stoi(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tItemData[j];
+                    }
+                }
+
+                // Retrieve the item filename from the database
+                std::string entity_fileName = m_databaseManager.getDatabaseEntryFileName(tItemName, tItemNumber, eDatabaseType::databaseTypeItem);
+
+                // Load the entity
+                sEntity* tEntity = m_entityManager.load(entity_fileName);
+                tEntity->base.databaseName = tItemName;
+                tEntity->base.databaseNumber = tItemNumber;
+                tEntity->item->stackSize = tItemCount;
+
+                // Insert into the vendor
+                m_playerManager.setVendorEntity(tSlotNumber, tEntity);
+                tEntity->base.visible = false;
+                tEntity->base.inRnge = false;
+                tEntity->base.owner = eEntityOwner::entityOwner_inventory;
+
+                // Update entity data
+                tEntity->base.position.y = m_mapManager.getMapPointer()->info.terrainHeight - 1.0f;
+            }
+        }
+
         // Setup and initialize
         if (return_value == EXIT_SUCCESS)
         {

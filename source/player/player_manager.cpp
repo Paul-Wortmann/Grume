@@ -29,6 +29,7 @@ std::uint32_t cPlayerManager::initialize(void)
 
     // action bar
     return_value = m_playerActionBar->initialize();
+    m_playerActionBar->setStorageType(ePlayerStorageType::playerStorageTypeActionBar);
     m_playerActionBar->setStorageSize(12);
     m_playerActionBar->setStackColor(m_stackTextColor);
     m_playerActionBar->setSlot1(eComponentFunction::componentFunctionActionBarSlot_1);
@@ -36,6 +37,7 @@ std::uint32_t cPlayerManager::initialize(void)
 
     // inventory
     return_value = m_playerInventory->initialize();
+    m_playerActionBar->setStorageType(ePlayerStorageType::playerStorageTypeInventory);
     m_playerInventory->setStorageSize(54);
     m_playerInventory->setStackColor(m_stackTextColor);
     m_playerInventory->setSlot1(eComponentFunction::componentFunctionInventorySlot_1);
@@ -43,6 +45,7 @@ std::uint32_t cPlayerManager::initialize(void)
 
     // vendor
     return_value = m_playerVendor->initialize();
+    m_playerActionBar->setStorageType(ePlayerStorageType::playerStorageTypeVendor);
     m_playerVendor->setStorageSize(54);
     m_playerVendor->setStackColor(m_stackTextColor);
     m_playerVendor->setSlot1(eComponentFunction::componentFunctionVendorSlot_1);

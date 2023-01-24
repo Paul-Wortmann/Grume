@@ -48,6 +48,7 @@ class cPlayerStorage
         // member functions
         sEntity*            getSlotEntity(const std::uint32_t _slot) { return m_storage.slot[_slot].entity; }
         void                setSlotEntity(const std::uint32_t _slot, sEntity* &_entity);
+        void                purgeSlotEntity(const std::uint32_t _slot);
         void                setStorageSize(const std::uint32_t &_size);
         std::uint32_t       getStorageSize(void) { return m_storage.numSlot; }
         std::uint32_t       freeSlotCount(void) { return m_storage.numFreeSlot; }
@@ -61,6 +62,7 @@ class cPlayerStorage
         void                setStackColor(const glm::uvec4 &_color) { m_stackTextColor = _color; }
         void                setSlot1(const eComponentFunction &_slot_1) { m_slot_1 = _slot_1; }
         void                setStack1(const eComponentFunction &_stack_1) { m_stack_1 = _stack_1; }
+        void                setStorageType(const ePlayerStorageType &_type) { m_storage.type = _type; }
 
     protected:
     private:

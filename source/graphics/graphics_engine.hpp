@@ -41,7 +41,7 @@ class cGraphicsEngine :tcTemplateEngine
         void                   setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void                   setPlayerActionBarPointer(cPlayerStorage* _playerActionBar) { m_playerActionBar = _playerActionBar; }
         void                   setPlayerInventoryPointer(cPlayerStorage* _playerInventory) { m_playerInventory = _playerInventory; }
-        //void                   setPlayerVendorPointer(cPlayerVendor* _playerVendor) { m_playerVendor = _playerVendor; }
+        void                   setPlayerVendorPointer(cPlayerStorage* _playerVendor) { m_playerVendor = _playerVendor; }
         void                   setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
 
         // Engine config
@@ -104,7 +104,7 @@ class cGraphicsEngine :tcTemplateEngine
         // Player inventory, action bar, vendor
         cPlayerStorage*    m_playerActionBar    = nullptr;
         cPlayerStorage*    m_playerInventory    = nullptr;
-        //cPlayerStorage*       m_playerVendor       = nullptr;
+        cPlayerStorage*    m_playerVendor       = nullptr;
 
         // Resource management
         cResourceManager*  m_resourceManager    = nullptr;

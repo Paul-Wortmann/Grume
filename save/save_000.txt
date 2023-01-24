@@ -43,6 +43,10 @@
       <inventory_slot>1 potion_mana   1 2</inventory_slot>
    </inventory>
 
+   <vendor>
+      <vendor_slot>0 potion_health 1 32</vendor_slot>
+   <vendor>
+
    <quests>
       <quest>bug_boss_1_dead 0</quest>
       <quest>bug_boss_2_dead 0</quest>

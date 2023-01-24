@@ -99,7 +99,24 @@ void cPlayerStorage::setSlotEntity(const std::uint32_t _slot, sEntity* &_entity)
     {
         _entity->loot = new sEntityLoot;
     }
-};
+}
+
+void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
+{
+    // slot empty, early exit
+    if (m_storage.slot[_slot].occupied != true)
+        return;
+
+    // set slot fields
+    m_storage.slot[_slot].occupied = false;
+    m_resourceManager->freeTexture(m_storage.slot[_slot].stackLabel);
+
+    // Free the entity
+    if (m_storage.slot[_slot].entity != nullptr)
+    {
+        m_entityManager->deleteEntity(m_storage.slot[_slot].entity);
+    }
+}
 
 bool cPlayerStorage::pickupItem(sEntity* &_entity)
 {

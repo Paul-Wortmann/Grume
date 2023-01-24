@@ -27,6 +27,17 @@
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
 
+enum class ePlayerStorageType : std::uint16_t
+{
+    playerStorageTypeNone      = 0, // None
+    playerStorageTypeActionBar = 1, // Action-bar
+    playerStorageTypeCharacter = 2, // Character
+    playerStorageTypeInventory = 3, // Inventory
+    playerStorageTypeSkills    = 4, // Skills
+    playerStorageTypeVendor    = 5, // Vendor
+    playerStorageTypeWaypoints = 6  // Way-points
+};
+
 // Player storage slot struct
 struct sPlayerStorageSlot
 {
@@ -39,6 +50,7 @@ struct sPlayerStorageSlot
 // Player storage struct
 struct sPlayerStorage
 {
+    ePlayerStorageType  type        = ePlayerStorageType::playerStorageTypeNone;
     std::uint32_t       numSlot     = 0;
     std::uint32_t       numFreeSlot = 0;
     sPlayerStorageSlot* slot        = nullptr;

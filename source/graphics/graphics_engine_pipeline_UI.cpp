@@ -228,6 +228,32 @@ void cGraphicsEngine::m_pui_render(void)
                             m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                         }
                     }
+                    // Vendor slot stack text
+                    else if ((menu[m].component[c].function >= eComponentFunction::componentFunctionVendorStack_1) &&
+                             (menu[m].component[c].function <= eComponentFunction::componentFunctionVendorStack_54))
+                    {
+                        // slot 1, at index 0
+                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorStack_1);
+                        sEntity* slotEntity = m_playerVendor->getSlotEntity(slotNumber);
+                        sPlayerStorage* playerVendor = m_playerVendor->getStorage();
+
+                        if ((playerVendor->slot[slotNumber].occupied) &&
+                            (slotEntity->item->stackSize > 1))
+                        {
+                            // Generate texture:
+                            sTexture* textureTextSlotStack = playerVendor->slot[slotNumber].stackLabel;
+                            menu[m].component[c].textureNormal = textureTextSlotStack->ID;
+
+                            // Position and scaling
+                            float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextSlotStack->height) * static_cast<float>(textureTextSlotStack->width);
+                            //glm::vec3 position = menu[m].component[c].position;
+                            //position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                            // Update the model matrix
+                            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
+                            m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                        }
+                    }
                     else
                     {
                         // if dragged, mouse position, else component position
@@ -262,13 +288,13 @@ void cGraphicsEngine::m_pui_render(void)
                             glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
                         }
 
-                        // Vendor inventory
+                        // Vendor vendor
                         if ((menu[m].component[c].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
                             (menu[m].component[c].function <= eComponentFunction::componentFunctionVendorSlot_54))
                         {
                             // slot 1, at index 0
                             std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
-                            //glBindTexture(GL_TEXTURE_2D, m_playerVendor->getSlotEntity(slotNumber)->graphics->icon);
+                            glBindTexture(GL_TEXTURE_2D, m_playerVendor->getSlotEntity(slotNumber)->graphics->icon);
                         }
                     }
 
