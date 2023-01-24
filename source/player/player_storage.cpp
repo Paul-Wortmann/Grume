@@ -70,6 +70,7 @@ void cPlayerStorage::setSlotEntity(const std::uint32_t _slot, sEntity* &_entity)
     // Add the entity to the slot
     m_storage.slot[_slot].entity = _entity;
     m_storage.slot[_slot].occupied = true;
+    m_storage.slot[_slot].dragged = false;
     m_storage.numFreeSlot--;
 
     // Enable the UI Storage slot
@@ -109,6 +110,7 @@ void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
 
     // set slot fields
     m_storage.slot[_slot].occupied = false;
+    m_storage.slot[_slot].dragged = false;
     m_resourceManager->freeTexture(m_storage.slot[_slot].stackLabel);
 
     // Free the entity
@@ -165,6 +167,7 @@ bool cPlayerStorage::pickupItem(sEntity* &_entity)
             {
                 m_storage.slot[i].entity = _entity;
                 m_storage.slot[i].occupied = true;
+                m_storage.slot[i].dragged = false;
                 m_storage.numFreeSlot--;
 
                 // Enable the UI Storage slot
@@ -274,6 +277,7 @@ void cPlayerStorage::dropItem(const std::uint32_t &_slot)
         // Remove the entity from it's occupied slot
         m_storage.slot[_slot].entity = nullptr;
         m_storage.slot[_slot].occupied = false;
+        m_storage.slot[_slot].dragged = false;
         m_storage.numFreeSlot++;
 
         // Disable the UI Storage slot

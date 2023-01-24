@@ -83,6 +83,7 @@ class cUIManager
         sTexture           *m_textGold          = nullptr;
 
         // Mouse
+        bool                m_mouseDragged      = false;
         bool                m_mouseOverMenu     = false;
         bool                m_mouseLClicked     = false;
         bool                m_mouseLPressed     = false;

@@ -41,6 +41,7 @@ enum class ePlayerStorageType : std::uint16_t
 // Player storage slot struct
 struct sPlayerStorageSlot
 {
+    bool               dragged    = false;
     bool               occupied   = false;
     sEntity*           entity     = nullptr;
     std::uint32_t      data       = 0;

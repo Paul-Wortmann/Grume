@@ -1683,7 +1683,6 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-    </menu>
 
         <component>
             <component_name>inventory_stack_001</component_name>
