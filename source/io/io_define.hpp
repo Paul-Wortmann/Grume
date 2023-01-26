@@ -26,4 +26,9 @@
 
 #include "../core/includes.hpp"
 
+struct sIO
+{
+    glm::vec2 mousePosition = {}
+};
+
 #endif // IO_DEFINE_HPP
