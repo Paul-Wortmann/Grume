@@ -61,20 +61,20 @@ void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, std::int32_t _key,
 
     if (_action == GLFW_PRESS)
     {
-        graphicsEngine->m_keyMap[_key] = true;
+        graphicsEngine->m_io->keyMap[_key] = true;
     }
     else if (_action == GLFW_RELEASE)
     {
-        graphicsEngine->m_keyMap[_key] = false;
-        graphicsEngine->m_keyReadyMap[_key] = true;
+        graphicsEngine->m_io->keyMap[_key] = false;
+        graphicsEngine->m_io->keyReadyMap[_key] = true;
     }
     else if (_action == GLFW_REPEAT)
     {
-        graphicsEngine->m_keyMap[_key] = true;
+        graphicsEngine->m_io->keyMap[_key] = true;
     }
     else
     {
-        graphicsEngine->m_keyMap[_key] = false;
+        graphicsEngine->m_io->keyMap[_key] = false;
     }
 }
 
@@ -83,11 +83,11 @@ void cGraphicsEngine::sm_glfwCursorPosCallback(GLFWwindow* _window, double _xpos
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
-    graphicsEngine->m_mouseX = static_cast<float>(_xpos);
-    graphicsEngine->m_mouseY = static_cast<float>(_ypos);
+    graphicsEngine->m_io->mousePosition.x = static_cast<float>(_xpos);
+    graphicsEngine->m_io->mousePosition.y = static_cast<float>(_ypos);
 
-    graphicsEngine->m_mouseGLX = ((_xpos / graphicsEngine->m_window_w) * 2.0f) - 1.0f;
-    graphicsEngine->m_mouseGLY = 1.0f - ((_ypos / graphicsEngine->m_window_h) * 2.0f);
+    graphicsEngine->m_io->mousePositionGL.x = ((_xpos / graphicsEngine->m_window_w) * 2.0f) - 1.0f;
+    graphicsEngine->m_io->mousePositionGL.y = 1.0f - ((_ypos / graphicsEngine->m_window_h) * 2.0f);
 
 }
 
@@ -98,20 +98,20 @@ void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, std::int32
 
     if (_action == GLFW_PRESS)
     {
-        graphicsEngine->m_keyMap[_button] = true;
+        graphicsEngine->m_io->keyMap[_button] = true;
     }
     else if (_action == GLFW_RELEASE)
     {
-        graphicsEngine->m_keyMap[_button] = false;
-        graphicsEngine->m_keyReadyMap[_button] = true;
+        graphicsEngine->m_io->keyMap[_button] = false;
+        graphicsEngine->m_io->keyReadyMap[_button] = true;
     }
     else if (_action == GLFW_REPEAT)
     {
-        graphicsEngine->m_keyMap[_button] = true;
+        graphicsEngine->m_io->keyMap[_button] = true;
     }
     else
     {
-        graphicsEngine->m_keyMap[_button] = false;
+        graphicsEngine->m_io->keyMap[_button] = false;
     }
 }
 
@@ -603,9 +603,6 @@ void cGraphicsEngine::process(const std::int64_t &_dt)
         event->data = 1; // True
         m_event.push(event);
     }
-
-    // UI
-    m_UIManager->setMousePosition(glm::vec2(m_mouseGLX, m_mouseGLY));
 
     // Camera
     m_camera.process(_dt);

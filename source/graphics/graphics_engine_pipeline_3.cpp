@@ -396,7 +396,7 @@ void cGraphicsEngine::m_p3_render(void)
             // Tooltip
            if ((m_entityTemp->base.textActive != 0) && (m_pc_bbq_VAO != 0))
             {
-                if ((m_entityTemp->physics->mouseOver != 0) || (getKeyState(GLFW_KEY_LEFT_ALT)))
+                if ((m_entityTemp->physics->mouseOver != 0) || (m_io->keyMap[GLFW_KEY_LEFT_ALT]))
                 {
                     glEnable(GL_BLEND);
                     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

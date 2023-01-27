@@ -1068,6 +1068,12 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
     //Else die and give loot and experience
     else
     {
+        // Avoid unintended mouse clicks
+        m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+        m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+        m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+        m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
         // Update map mob count
         m_mapPointer->info.currentNumMob--;
 

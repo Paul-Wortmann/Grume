@@ -41,10 +41,14 @@ class cPhysicsEngine :tcTemplateEngine
         void            setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void            setEntityManager(cEntityManager* _entityManager) { m_entityManager = _entityManager; }
         void            setMapPointer(sMap* _map) { m_mapPointer = _map; };
+        void            setIOPointer(sIO* _io) { m_io = _io; }
 
-        void            setMousePosition(const glm::vec3 &_position) { m_mousePosition = _position; }
-        void            setMouseDirection(const glm::vec3 &_direction) { m_mouseDirection = _direction; }
-        void            setMouseClick(const bool &_mouseClick) { m_mouseClick = _mouseClick; }
+        // Camera
+        void            setCameraPosition(const glm::vec3 &_position) { m_cameraPosition = _position; }
+        void            setCameraDirection(const glm::vec3 &_direction) { m_cameraDirection = _direction; }
+
+        // UI
+        void            setMouseOverMenu(const bool &_state) { m_mouseOverMenu = _state; }
 
     protected:
 
@@ -56,9 +60,15 @@ class cPhysicsEngine :tcTemplateEngine
         sMap*           m_mapPointer           = nullptr;
         tcQueue<sPhysicsEvent> m_event         = {};
 
-        glm::vec3       m_mousePosition        = glm::vec3(0.0f, 0.0f, 0.0f);
-        glm::vec3       m_mouseDirection       = glm::vec3(0.0f, 0.0f, 0.0f);
-        bool            m_mouseClick           = false;
+        // IO
+        sIO*            m_io                   = nullptr;
+
+        // Camera
+        glm::vec3       m_cameraPosition        = glm::vec3(0.0f, 0.0f, 0.0f);
+        glm::vec3       m_cameraDirection       = glm::vec3(0.0f, 0.0f, 0.0f);
+
+        // UI
+        bool            m_mouseOverMenu         = false;
 };
 
 #endif // PHYSICS_ENGINE_HPP

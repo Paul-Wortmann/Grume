@@ -63,6 +63,7 @@ class cObjectManager
         void          setPlayerManager(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
         void          setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
         void          setLootManagerPointer(cLootManager* _lootManager) { m_lootManager = _lootManager; };
+        void          setIOPointer(sIO* _io) { m_io = _io; }
 
     protected:
 
@@ -78,6 +79,9 @@ class cObjectManager
         sEntity*          m_entityTemp       = nullptr;
         sEntity*          m_entityPlayer     = nullptr;
         sMap*             m_mapPointer       = nullptr;
+
+        // IO
+        sIO*              m_io               = nullptr;
 
         tcQueue<sObjectManagerEvent> m_event = {};
 };

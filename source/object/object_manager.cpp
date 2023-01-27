@@ -79,6 +79,12 @@ void cObjectManager::process(const std::int64_t &_dt)
                         }
                         if (m_entityTemp->base.hitPoints <= 0)
                         {
+                            // Avoid unintended mouse clicks
+                            m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+                            m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+                            m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+                            m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
                             // object death state
                             m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_die);
                             m_entityTemp->base.dying = true;
@@ -163,6 +169,12 @@ void cObjectManager::process(const std::int64_t &_dt)
                     // Collectable
                     if (m_entityTemp->base.collectable)
                     {
+                        // Avoid unintended mouse clicks
+                        m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+                        m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+                        m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+                        m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
                         // Gold
                         if ((m_entityTemp->loot) && (m_entityTemp->loot->gold))
                         {

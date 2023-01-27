@@ -28,6 +28,7 @@
 #include "../audio/audio_engine.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_model.hpp"
+#include "../io/io_define.hpp"
 #include "../resource/database_manager.hpp"
 #include "../resource/resource_manager.hpp"
 

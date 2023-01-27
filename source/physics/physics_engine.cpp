@@ -132,8 +132,8 @@ void cPhysicsEngine::process(const std::int64_t &_dt)
             }
 
             // 3D picking
-            if (gPhysicsCollision_ray_aabb(m_mousePosition.x, m_mousePosition.y, m_mousePosition.z,
-                                           m_mouseDirection.x, m_mouseDirection.y, m_mouseDirection.z,
+            if (gPhysicsCollision_ray_aabb(m_cameraPosition.x, m_cameraPosition.y, m_cameraPosition.z,
+                                           m_cameraDirection.x, m_cameraDirection.y, m_cameraDirection.z,
                                            tEntity->base.position.x, tEntity->base.position.y - m_mapPointer->info.terrainHeight, tEntity->base.position.z,
                                            tEntity->physics->halfDimentions.x, tEntity->physics->halfDimentions.y, tEntity->physics->halfDimentions.z,
                                            tmin))
@@ -153,7 +153,7 @@ void cPhysicsEngine::process(const std::int64_t &_dt)
     }
 
     // If mouse click object, create event
-    if (m_mouseClick)
+    if ((!m_mouseOverMenu) && (m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT]))
     {
         if (tminValue < std::numeric_limits<float>::max())
         {
@@ -165,7 +165,7 @@ void cPhysicsEngine::process(const std::int64_t &_dt)
         }
         else
         {
-            glm::vec3 planePoint = gPhysicsCollision_ray_plane(m_mouseDirection, m_mousePosition);
+            glm::vec3 planePoint = gPhysicsCollision_ray_plane(m_cameraDirection, m_cameraPosition);
             std::uint32_t tile = gMapPositionToTile(m_mapPointer, planePoint);
 
             if (tile < m_mapPointer->numTiles - 1)

@@ -71,11 +71,11 @@ void cGraphicsEngineCamera::m_calculateMartacies(void)
     m_view = glm::lookAt(m_position, m_target + m_shakeTarget, m_orientation);
 }
 
-glm::vec3 cGraphicsEngineCamera::getMouseRay(const float &_mouseX, const float &_mouseY)
+glm::vec3 cGraphicsEngineCamera::getMouseRay(const glm::vec2 &_mousePosition)
 {
     // Normalized device coordinates:
-    float posX = ((_mouseX * 2.0f) / static_cast<float>(m_width)) - 1.0f;
-    float posY = 1.0f - ((_mouseY * 2.0f) / static_cast<float>(m_height));
+    float posX = ((_mousePosition.x * 2.0f) / static_cast<float>(m_width)) - 1.0f;
+    float posY = 1.0f - ((_mousePosition.y * 2.0f) / static_cast<float>(m_height));
     //glm::vec3  normalizedDC = glm::vec3(posX, posY, 1.0f);
 
     // 3D Normalised Device Coordinates

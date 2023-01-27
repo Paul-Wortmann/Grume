@@ -56,6 +56,7 @@ class cGameEngine
         cDatabaseManager m_databaseManager = {};
         cEntityManager   m_entityManager   = {};
         cGameConfig      m_gameConfig      = {};
+        cIOManager       m_IOManager       = {};
         cLootManager     m_lootManager     = {};
         cMapManager      m_mapManager      = {};
         cNPCManager      m_npcManager      = {};

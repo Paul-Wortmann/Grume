@@ -37,6 +37,7 @@ class cGraphicsEngine :tcTemplateEngine
         sGraphicsEvent*        getEvent(void) { return m_event.pop(); }
 
         // External system pointers
+        void                   setIOPointer(sIO* _io) { m_io = _io; }
         void                   setGameConfigPointer(cGameConfig* _gameConfig) { m_GameConfig = _gameConfig; }
         void                   setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void                   setPlayerActionBarPointer(cPlayerStorage* _playerActionBar) { m_playerActionBar = _playerActionBar; }
@@ -68,20 +69,10 @@ class cGraphicsEngine :tcTemplateEngine
         // Map
         void                   setMapPointer(sMap* _map) { m_map = _map; }
 
-        // IO
-        bool                   getKeyState(const std::uint32_t &_key) { return m_keyMap[_key]; }
-        void                   setKeyState(const std::uint32_t &_key, const bool &_state) { m_keyMap[_key] = _state; }
-        bool                   getKeyReadyState(const std::uint32_t &_key) { return m_keyReadyMap[_key]; }
-        void                   setKeyReadyState(const std::uint32_t &_key, const bool &_state) { m_keyReadyMap[_key] = _state; }
-
-        // Mouse
-        glm::vec2              getMousePosition(void) { return glm::vec2(m_mouseX, m_mouseY); };
-        glm::vec2              getMousePositionOpenGL(void) { return glm::vec2(m_mouseGLX, m_mouseGLY); };
-
         // Camera
         glm::vec3              getCameraPosition(void) { return m_camera.getPosition(); };
         glm::vec3              getCameraTarget(void) { return m_camera.getTarget(); };
-        glm::vec3              getCameraDirection(void) {return m_camera.getMouseRay(m_mouseX, m_mouseY); }
+        glm::vec3              getCameraDirection(void) {return m_camera.getMouseRay(m_io->mousePosition); }
         void                   setCameraPosition(glm::vec3 &_position) { m_camera.setPosition(_position); };
         void                   setCameraTarget(glm::vec3 &_target) { m_camera.setTarget(_target); };
         void                   moveCamera(glm::vec3 &_position);
@@ -162,12 +153,7 @@ class cGraphicsEngine :tcTemplateEngine
         sMap*    m_map          = nullptr;
 
         // IO
-        std::unordered_map<std::int32_t, bool> m_keyMap      = {};
-        std::unordered_map<std::int32_t, bool> m_keyReadyMap = {};
-        float                                  m_mouseX      = 0.0f;
-        float                                  m_mouseY      = 0.0f;
-        float                                  m_mouseGLX    = 0.0f;
-        float                                  m_mouseGLY    = 0.0f;
+        sIO*     m_io           = nullptr;
 
         // Graphics engine light
         cGraphicsEngineLightManager m_lightManager;

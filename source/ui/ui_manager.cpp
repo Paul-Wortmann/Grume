@@ -88,9 +88,12 @@ bool cUIManager::getMenuEnabled(const eMenuType &_type)
 void cUIManager::setMenuEnabled(const eMenuType &_type, const bool &_state)
 {
     // Avoid unintended mouse clicks
+    m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+    m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
     m_mouseOverMenu = false;
-    m_mouseLClicked = false;
-    m_mouseRClicked = false;
 
     if (m_menu != nullptr)
     {
@@ -117,6 +120,12 @@ void cUIManager::setMenuEnabled(const eMenuType &_type, const bool &_state)
 
 void cUIManager::SetAllMenusDisabled(void)
 {
+    // Avoid unintended mouse clicks
+    m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+    m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
     if (m_menu != nullptr)
     {
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
@@ -148,13 +157,13 @@ void cUIManager::setMenuComponentEnabled(const eComponentFunction &_componentFun
 
 void cUIManager::process(void)
 {
+    // Reset state
+    m_mouseOverMenu = false;
+    m_activeWindowCount = 0;
+
     // If menu data structure exists
     if (m_menu != nullptr)
     {
-        // Reset state
-        m_mouseOverMenu = false;
-        m_activeWindowCount = 0;
-
         // Loop through all menus
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
@@ -163,10 +172,10 @@ void cUIManager::process(void)
                 m_activeWindowCount++;
 
                 // If mouse over window
-                if ((m_menu[m].positionMin.x < m_mousePosition.x) &&
-                    (m_menu[m].positionMax.x > m_mousePosition.x) &&
-                    (m_menu[m].positionMin.y < m_mousePosition.y) &&
-                    (m_menu[m].positionMax.y > m_mousePosition.y))
+                if ((m_menu[m].positionMin.x < m_io->mousePositionGL.x) &&
+                    (m_menu[m].positionMax.x > m_io->mousePositionGL.x) &&
+                    (m_menu[m].positionMin.y < m_io->mousePositionGL.y) &&
+                    (m_menu[m].positionMax.y > m_io->mousePositionGL.y))
                 {
                     m_mouseOverMenu = true;
 
@@ -176,10 +185,10 @@ void cUIManager::process(void)
                         if (m_menu[m].component[c].enabled)
                         {
                             // If mouse over component
-                            if ((m_menu[m].component[c].positionMin.x < m_mousePosition.x) &&
-                                (m_menu[m].component[c].positionMax.x > m_mousePosition.x) &&
-                                (m_menu[m].component[c].positionMin.y < m_mousePosition.y) &&
-                                (m_menu[m].component[c].positionMax.y > m_mousePosition.y))
+                            if ((m_menu[m].component[c].positionMin.x < m_io->mousePositionGL.x) &&
+                                (m_menu[m].component[c].positionMax.x > m_io->mousePositionGL.x) &&
+                                (m_menu[m].component[c].positionMin.y < m_io->mousePositionGL.y) &&
+                                (m_menu[m].component[c].positionMax.y > m_io->mousePositionGL.y))
                             {
                                 // Set mouse hover
                                 if (m_menu[m].component[c].state != eComponentState::componentStateHover)
@@ -194,12 +203,22 @@ void cUIManager::process(void)
                                 }
 
                                 // Mouse left click
-                                if (m_mouseLClicked)
+                                if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT])
                                 {
+                                    // avoid double click
+                                    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+
                                     // activate component audio
                                     if (m_menu[m].component[c].audio_activate.sound != nullptr)
                                     {
                                         m_audioEngine->playSound(m_menu[m].component[c].audio_activate.sound->data);
+                                    }
+
+                                    // Drop item if dragged
+                                    if ((m_io->mouseDrag) && (m_menu[m].component[c].type == eComponentType::componentTypeItem))
+                                    {
+                                        m_io->mouseDrag = false;
+                                        std::cout << "Exiting mouse drag." << std::endl;
                                     }
 
                                     // Game quit
@@ -270,9 +289,33 @@ void cUIManager::process(void)
                                     }
                                 }
 
-                                // Mouse left pressed
-                                if (m_mouseLPressed)
+                                // Mouse right click
+                                if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT])
                                 {
+                                    // avoid double click
+                                    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
+                                    // Inventory item drop
+                                    if ((m_menu[m].component[c].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
+                                        (m_menu[m].component[c].function <= eComponentFunction::componentFunctionInventorySlot_54))
+                                    {
+                                        m_uiEvent = m_menu[m].component[c].function;
+                                    }
+                                }
+
+                                // Mouse left pressed
+                                if (m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT])
+                                {
+
+                                    // Drop item if dragged
+                                    if ((!m_io->mouseDrag) && (m_menu[m].component[c].type == eComponentType::componentTypeItem))
+                                    {
+                                        m_io->mouseDrag = true;
+                                        m_dragMenu = m;
+                                        m_dragComponent = c;
+                                        std::cout << "Entering mouse drag." << std::endl;
+                                    }
+
                                     // Music volume up
                                     if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicUp)
                                     {
@@ -305,15 +348,9 @@ void cUIManager::process(void)
                                     }
                                 }
 
-                                // Mouse right click
-                                if (m_mouseRClicked)
+                                // Mouse right presses
+                                if (m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT])
                                 {
-                                    // Inventory item drop
-                                    if ((m_menu[m].component[c].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
-                                        (m_menu[m].component[c].function <= eComponentFunction::componentFunctionInventorySlot_54))
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
                                 }
 
                             }
@@ -327,9 +364,20 @@ void cUIManager::process(void)
                 }
             }
         }
-        // Reset mouse clicked, as processed above
-        m_mouseLClicked = false;
-        m_mouseRClicked = false;
+
+        // Drop item on the map if not vendor, else return the item to the store
+        if ((m_io->mouseDrag) && (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT]))
+        {
+            if (m_menu[m_dragMenu].type != eMenuType::menuTypeVendor)
+            {
+                // push event for the player inventory to drop the item
+            }
+            m_io->mouseDrag = false;
+        }
+
+        // avoid double click
+        m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+        m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
     }
 }
 

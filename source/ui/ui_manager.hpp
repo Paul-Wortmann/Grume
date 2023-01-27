@@ -35,6 +35,7 @@ class cUIManager
         void               process(void);
 
         // external systems
+        void               setIOPointer(sIO* _io) { m_io = _io; }
         void               setAudioEngine(cAudioEngine* _audioEngine) { m_audioEngine = _audioEngine; }
         void               setDatabaseManager(cDatabaseManager* _databaseManager) { m_databaseManager = _databaseManager; }
         void               setResourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
@@ -46,13 +47,6 @@ class cUIManager
         void               SetAllMenusDisabled(void);
         void               setMenuComponentEnabled(const eComponentFunction &_componentFunction ,const bool &_state);
         bool               getMouseOverMenu(void) { return m_mouseOverMenu; }
-        void               setMouseLClicked(const bool &_state) { m_mouseLClicked = _state; }
-        void               setMouseLPressed(const bool &_state) { m_mouseLPressed = _state; }
-        void               setMouseRClicked(const bool &_state) { m_mouseRClicked = _state; }
-        void               setMouseRPressed(const bool &_state) { m_mouseRPressed = _state; }
-        void               setMouseClicked(const bool &_state) { m_mouseLClicked = _state; m_mouseRClicked = _state; }
-        void               setMousePressed(const bool &_state) { m_mouseLPressed = _state; m_mouseRPressed = _state; }
-        void               setMousePosition(const glm::vec2 &_mousePosition) {m_mousePosition = _mousePosition; }
         void               setWindowSize(const std::uint32_t &_width, const std::uint32_t &_height) { m_window_w = _width; m_window_h = _height; m_calculateScale(); }
         std::uint32_t      getActiveWindowCount(void) { return m_activeWindowCount; }
         eComponentFunction getUIEvent(void) { return m_uiEvent; }
@@ -82,14 +76,13 @@ class cUIManager
         sTexture           *m_mapTitleTexture   = nullptr;
         sTexture           *m_textGold          = nullptr;
 
-        // Mouse
-        bool                m_mouseDragged      = false;
+        // IO
+        sIO*                m_io                = nullptr;
+
+        // menu
         bool                m_mouseOverMenu     = false;
-        bool                m_mouseLClicked     = false;
-        bool                m_mouseLPressed     = false;
-        bool                m_mouseRClicked     = false;
-        bool                m_mouseRPressed     = false;
-        glm::vec2           m_mousePosition     = glm::vec2(0.0f, 0.0f);
+        std::uint32_t       m_dragMenu          = 0; // Source
+        std::uint32_t       m_dragComponent     = 0; // Source
 
         // member pointer handles
         cAudioEngine*       m_audioEngine       = nullptr;

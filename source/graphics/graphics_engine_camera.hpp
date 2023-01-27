@@ -42,7 +42,7 @@ class cGraphicsEngineCamera
         void      setTarget(glm::vec3 _target) { m_target = _target; m_calculateMartacies(); }
         glm::vec3 getOrientation(void) { return m_orientation; }
         void      setOrientation(glm::vec3 _orientation) { m_orientation = _orientation; m_calculateMartacies(); }
-        glm::vec3 getMouseRay(const float &_mouseX, const float &_mouseY);
+        glm::vec3 getMouseRay(const glm::vec2 &_mousePosition);
         void      addScreenShake(const std::uint32_t &_st, const float &_sf) { m_shakeTime += _st; m_shakeForce = _sf; m_shakeActive = true; }
 
     protected:

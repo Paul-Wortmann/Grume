@@ -74,6 +74,8 @@ class cNPCManager
         void              setResourceManagerPointer(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; };
         void              setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
         void              setQuestManager(cQuestManager* _questManager) { m_questManager = _questManager; };
+        void              setIOPointer(sIO* _io) { m_io = _io; }
+
         void              updatePaths(void) { m_updatePaths = true; };
 
     protected:
@@ -92,6 +94,9 @@ class cNPCManager
         sEntity*                  m_entityTemp        = nullptr;
         sEntity*                  m_entityPlayer      = nullptr;
         sMap*                     m_mapPointer        = nullptr;
+
+        // IO
+        sIO*                      m_io                = nullptr;
 
         tcQueue<sNPCManagerEvent> m_event             = {};
 

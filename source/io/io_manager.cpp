@@ -21,18 +21,16 @@
  * @date 2011-11-11
  */
 
-#ifndef IO_DEFINE_HPP
-#define IO_DEFINE_HPP
+ #include "io_manager.hpp"
 
-#include "../core/includes.hpp"
-
-struct sIO
+void cIOManager::initialize(void)
 {
-    bool                                   mouseDrag       = false;
-    std::unordered_map<std::int32_t, bool> keyMap          = {};
-    std::unordered_map<std::int32_t, bool> keyReadyMap     = {};
-    glm::vec2                              mousePosition   = glm::vec2(0.0f, 0.0f);
-    glm::vec2                              mousePositionGL = glm::vec2(0.0f, 0.0f);
-};
+    if (m_io == nullptr)
+        m_io = new sIO;
+}
 
-#endif // IO_DEFINE_HPP
+void cIOManager::terminate(void)
+{
+    delete m_io;
+    m_io = nullptr;
+}

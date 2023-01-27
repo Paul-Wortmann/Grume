@@ -65,6 +65,9 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_graphicsEngine.setBasicRenderPath(m_gameConfig.m_basicRenderer);
     m_graphicsEngine.setDisplay(m_gameConfig.m_resolution_x, m_gameConfig.m_resolution_y, m_gameConfig.m_fullscreen);
 
+    //Initialize IO
+    m_IOManager.initialize();
+
     // Load database and initialize resource management
     return_value = (return_value == EXIT_SUCCESS) ? m_databaseManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_resourceManager.initialize() : return_value;
@@ -102,12 +105,14 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_animationEngine.setEntityHead(m_entityManager.getHead());
     m_graphicsEngine.setEntityHead(m_entityManager.getHead());
     m_graphicsEngine.setGameConfigPointer(&m_gameConfig);
+    m_graphicsEngine.setIOPointer(m_IOManager.getIOPointer());
     m_graphicsEngine.setUIPointer(&m_uiManager);
     m_graphicsEngine.setPlayerActionBarPointer(m_playerManager.getPlayerActionBar());
     m_graphicsEngine.setPlayerInventoryPointer(m_playerManager.getPlayerInventory());
     m_graphicsEngine.setPlayerVendorPointer(m_playerManager.getPlayerVendor());
     m_graphicsEngine.setResourceManagerPointer(&m_resourceManager);
     m_graphicsEngine.setMapPointer(m_mapManager.getMapPointer());
+    m_physicsEngine.setIOPointer(m_IOManager.getIOPointer());
     m_physicsEngine.setEntityHead(m_entityManager.getHead());
     m_physicsEngine.setEntityManager(&m_entityManager);
     m_physicsEngine.setMapPointer(m_mapManager.getMapPointer());
@@ -132,6 +137,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_npcManager.setParticleEnginePointer(&m_particleEngine);
     m_npcManager.setResourceManagerPointer(&m_resourceManager);
     m_npcManager.setQuestManager(&m_questManager);
+    m_npcManager.setIOPointer(m_IOManager.getIOPointer());
     m_objectManager.setAudioEngine(&m_audioEngine);
     m_objectManager.setEntityHead(m_entityManager.getHead());
     m_objectManager.setEntityManagerPointer(&m_entityManager);
@@ -139,12 +145,14 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_objectManager.setParticleEnginePointer(&m_particleEngine);
     m_objectManager.setPlayerManager(&m_playerManager);
     m_objectManager.setResourceManagerPointer(&m_resourceManager);
+    m_objectManager.setIOPointer(m_IOManager.getIOPointer());
     m_playerManager.setAudioEngine(&m_audioEngine);
     m_playerManager.setEntityManager(&m_entityManager);
     m_playerManager.setDatabaseManager(&m_databaseManager);
     m_playerManager.setMapPointer(m_mapManager.getMapPointer());
     m_playerManager.setUIManager(&m_uiManager);
     m_playerManager.setResourceManagerPointer(&m_resourceManager);
+    m_uiManager.setIOPointer(m_IOManager.getIOPointer());
     m_uiManager.setAudioEngine(&m_audioEngine);
     m_uiManager.setDatabaseManager(&m_databaseManager);
     m_uiManager.setResourceManager(&m_resourceManager);
@@ -201,6 +209,7 @@ void cGameEngine::terminate(void)
     m_mapManager.terminate();
     m_uiManager.terminate();
     m_entityManager.terminate();
+    m_IOManager.terminate();
 
     // Set engine state
     m_engineState = eEngineState::engineStateNone;
@@ -217,57 +226,23 @@ void cGameEngine::process(void)
         std::int64_t dt = m_timer.get_frameTime();
 
         // Process systems
+        m_uiManager.process();
+        m_physicsEngine.setMouseOverMenu(m_uiManager.getMouseOverMenu());
+        m_graphicsEngine.setPlayerLightPosition(m_playerManager.getPosition());
+        m_graphicsEngine.process(dt);
+        m_animationEngine.process(dt);
+        m_mapManager.process(dt);
+
         if (m_engineState != eEngineState::engineStatePause)
         {
-            m_physicsEngine.setMousePosition(m_graphicsEngine.getCameraPosition());
-            m_physicsEngine.setMouseDirection(m_graphicsEngine.getCameraDirection());
+            m_physicsEngine.setCameraPosition(m_graphicsEngine.getCameraPosition());
+            m_physicsEngine.setCameraDirection(m_graphicsEngine.getCameraDirection());
             m_physicsEngine.process(dt);
             m_particleEngine.process(dt);
             m_entityManager.process(dt);
             m_npcManager.process(dt);
             m_objectManager.process(dt);
             m_playerManager.process(dt);
-        }
-        m_uiManager.process();
-        m_graphicsEngine.setPlayerLightPosition(m_playerManager.getPosition());
-        m_graphicsEngine.process(dt);
-        m_animationEngine.process(dt);
-        m_mapManager.process(dt);
-
-        m_physicsEngine.setMouseClick(false);
-        // If mouse over UI
-        if (m_uiManager.getMouseOverMenu())
-        {
-            // Use input
-            // mouse button left click
-            if (m_graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_LEFT))
-            {
-                m_physicsEngine.setMouseClick(false);
-                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                m_uiManager.setMouseLClicked(true);
-            }
-            // mouse button right click
-            if (m_graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_RIGHT))
-            {
-                m_physicsEngine.setMouseClick(false);
-                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_RIGHT, false);
-                m_uiManager.setMouseRClicked(true);
-            }
-
-            // mouse button left pressed
-            m_uiManager.setMouseLPressed(m_graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT));
-            // mouse button right pressed
-            m_uiManager.setMouseRPressed(m_graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_RIGHT));
-        }
-        else
-        {
-            // Use input
-            if (m_graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
-            {
-                m_uiManager.setMouseClicked(false);
-                m_physicsEngine.setMouseClick(m_graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_LEFT));
-                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            }
         }
 
         // Process physics events
@@ -277,14 +252,14 @@ void cGameEngine::process(void)
             if (tEvent->type == ePhysicsEventType::physicsEventType_objectClick)
             {
                 //std::cout << "Physics event object clicked: " << tEvent->data << std::endl;
-                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             }
             // Tile clicked
             else if (tEvent->type == ePhysicsEventType::physicsEventType_tileClick)
             {
                 //std::cout << "Physics event tile clicked: " << tEvent->data << std::endl;
                 m_playerManager.targetTile(tEvent->data);
-                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                //m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             }
             // Collision detected
             else if (tEvent->type == ePhysicsEventType::physicsEventType_collision)
@@ -349,9 +324,8 @@ void cGameEngine::process(void)
                 m_uiManager.SetAllMenusDisabled();
                 bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeWayPoints);
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeWayPoints, menuState);
-                m_graphicsEngine.setKeyReadyState(GLFW_KEY_W, false);
-                m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                m_uiManager.setMouseClicked(false);
+                m_IOManager.setKeyReadyState(GLFW_KEY_W, false);
+                m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             }
             // Map loaded
@@ -374,22 +348,19 @@ void cGameEngine::process(void)
                 {
                     // pop vendor menu
                     m_uiManager.SetAllMenusDisabled();
-                    m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                    m_uiManager.setMouseClicked(false);
+                    m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 }
                 else if (tEvent->data == eNPCEventData::NPCEventData_menuVendor)
                 {
                     // Open vendor menu
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeVendor, true);
-                    m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                    m_uiManager.setMouseClicked(false);
+                    m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 }
                 else if (tEvent->data == eNPCEventData::NPCEventData_menuInventory)
                 {
                     // Open inventory menu
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeInventory, true);
-                    m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                    m_uiManager.setMouseClicked(false);
+                    m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 }
             }
 
@@ -504,6 +475,13 @@ void cGameEngine::process(void)
             case eComponentFunction::componentFunctionFullscreenModified:
             break;
 
+            // Action bar drop item
+            /// Non standard C++! only supported as a GNU GPP extension...
+            case eComponentFunction::componentFunctionActionBarSlot_1 ... eComponentFunction::componentFunctionActionBarSlot_12:
+                //m_playerManager.actionBarDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1));
+                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+
             // Inventory drop item
             /// Non standard C++! only supported as a GNU GPP extension...
             case eComponentFunction::componentFunctionInventorySlot_1 ... eComponentFunction::componentFunctionInventorySlot_54:
@@ -547,91 +525,61 @@ void cGameEngine::process(void)
             break;
         }
 
+
         // User input handling
         // -----------------------------------------
 
-        // Reload current map - GLFW_KEY_R
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_R))
-        {
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_R, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
-            m_physicsEngine.setMouseClick(false);
-            m_mapManager.reloadMap();
-        }
-
-        // Pause game - GLFW_KEY_P
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_P))
-        {
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_P, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
-            m_physicsEngine.setMouseClick(false);
-            m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
-        }
-
-        // Main menu - GLFW_KEY_ESCAPE
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_ESCAPE))
-        {
-            m_uiManager.SetAllMenusDisabled();
-            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeMain);
-            m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, menuState);
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_ESCAPE, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
-            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
-        }
-
-        // Waypoints menu - GLFW_KEY_W
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_W))
-        {
-            m_uiManager.SetAllMenusDisabled();
-            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeWayPoints);
-            m_uiManager.setMenuEnabled(eMenuType::menuTypeWayPoints, menuState);
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_W, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
-            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
-        }
-
-        // Inventory - GLFW_KEY_I
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_I))
-        {
-            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeInventory);
-            m_uiManager.setMenuEnabled(eMenuType::menuTypeInventory, menuState);
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_I, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
-            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
-            if (menuState == true)
-            {
-                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
-            }
-        }
-
         // Character - GLFW_KEY_C
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_C))
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_C))
         {
             bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeCharacter);
             m_uiManager.setMenuEnabled(eMenuType::menuTypeCharacter, menuState);
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_C, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
+            m_IOManager.setKeyReadyState(GLFW_KEY_C, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
+        }
+
+        // Inventory - GLFW_KEY_I
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_I))
+        {
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeInventory);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeInventory, menuState);
+            m_IOManager.setKeyReadyState(GLFW_KEY_I, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+            if (menuState == true)
+            {
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+            }
+        }
+
+        // Pause game - GLFW_KEY_P
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_P))
+        {
+            m_IOManager.setKeyReadyState(GLFW_KEY_P, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
+        }
+
+        // Reload current map - GLFW_KEY_R
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_R))
+        {
+            m_IOManager.setKeyReadyState(GLFW_KEY_R, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            m_mapManager.reloadMap();
         }
 
         // Skills - GLFW_KEY_S
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_S))
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_S))
         {
             bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeSkills);
             m_uiManager.setMenuEnabled(eMenuType::menuTypeSkills, menuState);
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
+            m_IOManager.setKeyReadyState(GLFW_KEY_S, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
@@ -639,14 +587,37 @@ void cGameEngine::process(void)
             }
         }
 
+        // Waypoints menu - GLFW_KEY_W
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_W))
+        {
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeWayPoints);
+            m_uiManager.SetAllMenusDisabled();
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeWayPoints, menuState);
+            m_IOManager.setKeyReadyState(GLFW_KEY_W, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+        }
+
+        // Main menu - GLFW_KEY_ESCAPE
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_ESCAPE))
+        {
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeMain);
+            m_uiManager.SetAllMenusDisabled();
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, menuState);
+            m_IOManager.setKeyState(GLFW_KEY_ESCAPE, false);
+            m_IOManager.setKeyReadyState(GLFW_KEY_ESCAPE, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+        }
+
         // Screenshot - GLFW_KEY_F12
-        if (m_graphicsEngine.getKeyReadyState(GLFW_KEY_F12))
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_F12))
         {
             m_resourceManager.savePNG("screenshot.png");
-            m_graphicsEngine.setKeyReadyState(GLFW_KEY_F12, false);
-            m_graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_uiManager.setMouseClicked(false);
+            m_IOManager.setKeyReadyState(GLFW_KEY_F12, false);
         }
+
+        // -----------------------------------------
 
         // If player has moved update camera
         if ((m_engineState != eEngineState::engineStatePause) && (m_playerManager.getMoved()))

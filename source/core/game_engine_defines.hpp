@@ -32,6 +32,7 @@
 #include "../audio/audio_engine.hpp"
 #include "../entity/entity_manager.hpp"
 #include "../graphics/graphics_engine.hpp"
+#include "../io/io_manager.hpp"
 #include "../loot/loot_manager.hpp"
 #include "../map/map_manager.hpp"
 #include "../npc/npc_manager.hpp"
