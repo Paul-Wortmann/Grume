@@ -315,7 +315,37 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionVendorStack_53     = 264, // Vendor slot 53 stack size text label
     componentFunctionVendorStack_54     = 265, // Vendor slot 54 stack size text label
 
-    componentFunctionTextGold           = 266  // Gold text
+    componentFunctionCharacterSlot_1    = 266, // Character slot 1
+    componentFunctionCharacterSlot_2    = 267, // Character slot 2
+    componentFunctionCharacterSlot_3    = 268, // Character slot 3
+    componentFunctionCharacterSlot_4    = 269, // Character slot 4
+    componentFunctionCharacterSlot_5    = 270, // Character slot 5
+    componentFunctionCharacterSlot_6    = 271, // Character slot 6
+    componentFunctionCharacterSlot_7    = 272, // Character slot 7
+    componentFunctionCharacterSlot_8    = 273, // Character slot 8
+    componentFunctionCharacterSlot_9    = 274, // Character slot 9
+    componentFunctionCharacterSlot_10   = 275, // Character slot 10
+    componentFunctionCharacterSlot_11   = 276, // Character slot 11
+    componentFunctionCharacterSlot_12   = 277, // Character slot 12
+    componentFunctionCharacterSlot_13   = 278, // Character slot 13
+    componentFunctionCharacterSlot_14   = 279, // Character slot 14
+
+    componentFunctionCharacterStack_1   = 280, // Character slot 1 stack size text label
+    componentFunctionCharacterStack_2   = 281, // Character slot 2 stack size text label
+    componentFunctionCharacterStack_3   = 282, // Character slot 3 stack size text label
+    componentFunctionCharacterStack_4   = 283, // Character slot 4 stack size text label
+    componentFunctionCharacterStack_5   = 284, // Character slot 5 stack size text label
+    componentFunctionCharacterStack_6   = 285, // Character slot 6 stack size text label
+    componentFunctionCharacterStack_7   = 286, // Character slot 7 stack size text label
+    componentFunctionCharacterStack_8   = 287, // Character slot 8 stack size text label
+    componentFunctionCharacterStack_9   = 288, // Character slot 9 stack size text label
+    componentFunctionCharacterStack_10  = 289, // Character slot 10 stack size text label
+    componentFunctionCharacterStack_11  = 290, // Character slot 11 stack size text label
+    componentFunctionCharacterStack_12  = 291, // Character slot 12 stack size text label
+    componentFunctionCharacterStack_13  = 292, // Character slot 13 stack size text label
+    componentFunctionCharacterStack_14  = 293, // Character slot 14 stack size text label
+
+    componentFunctionTextGold           = 294  // Gold text
 
 };
 

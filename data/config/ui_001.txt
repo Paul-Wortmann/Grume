@@ -4006,7 +4006,7 @@
         <menu_texture_normal>ui/menu/character_menu_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>2<menu_component_count>
+        <menu_component_count>3<menu_component_count>
         <menu_sound_open>menu 5</menu_sound_open>
         <menu_sound_close>NONE 0</menu_sound_close>
 
@@ -4036,6 +4036,20 @@
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>character_slot_001</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.172f, 0.436f, -0.02f</component_position>
+            <component_size>0.032f 0.058f</component_size>
+            <component_function>CHARACTER_SLOT_1</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
         </component>
 
     </menu>

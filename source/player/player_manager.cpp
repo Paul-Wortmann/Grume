@@ -27,7 +27,7 @@ std::uint32_t cPlayerManager::initialize(void)
 {
     std::uint32_t return_value = EXIT_SUCCESS;
 
-    // action bar
+    // action bar storage
     return_value = m_playerActionBar->initialize();
     m_playerActionBar->setStorageType(ePlayerStorageType::playerStorageTypeActionBar);
     m_playerActionBar->setStorageSize(12);
@@ -35,7 +35,15 @@ std::uint32_t cPlayerManager::initialize(void)
     m_playerActionBar->setSlot1(eComponentFunction::componentFunctionActionBarSlot_1);
     m_playerActionBar->setStack1(eComponentFunction::componentFunctionActionBarStack_1);
 
-    // inventory
+    // character storage
+    return_value = m_playerCharacter->initialize();
+    m_playerCharacter->setStorageType(ePlayerStorageType::playerStorageTypeCharacter);
+    m_playerCharacter->setStorageSize(12);
+    m_playerCharacter->setStackColor(m_stackTextColor);
+    m_playerCharacter->setSlot1(eComponentFunction::componentFunctionCharacterSlot_1);
+    m_playerCharacter->setStack1(eComponentFunction::componentFunctionCharacterStack_1);
+
+    // inventory storage
     return_value = m_playerInventory->initialize();
     m_playerInventory->setStorageType(ePlayerStorageType::playerStorageTypeInventory);
     m_playerInventory->setStorageSize(54);
@@ -43,7 +51,7 @@ std::uint32_t cPlayerManager::initialize(void)
     m_playerInventory->setSlot1(eComponentFunction::componentFunctionInventorySlot_1);
     m_playerInventory->setStack1(eComponentFunction::componentFunctionInventoryStack_1);
 
-    // vendor
+    // vendor storage
     return_value = m_playerVendor->initialize();
     m_playerVendor->setStorageType(ePlayerStorageType::playerStorageTypeVendor);
     m_playerVendor->setStorageSize(54);
@@ -56,17 +64,22 @@ std::uint32_t cPlayerManager::initialize(void)
 
 void cPlayerManager::terminate(void)
 {
-    // Player action bar
+    // Player action bar storage
     m_playerActionBar->terminate();
     delete m_playerActionBar;
     m_playerActionBar = nullptr;
 
-    // Player inventory
+    // Player character storage
+    m_playerCharacter->terminate();
+    delete m_playerCharacter;
+    m_playerCharacter = nullptr;
+
+    // Player inventory storage
     m_playerInventory->terminate();
     delete m_playerInventory;
     m_playerInventory = nullptr;
 
-    // Player vendor
+    // Player vendor storage
     m_playerVendor->terminate();
     delete m_playerVendor;
     m_playerVendor = nullptr;
