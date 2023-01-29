@@ -3,34 +3,34 @@
 
    <information>
       <current_map>cemetery_1_001</current_map>
-      <current_position>2236</current_position>
+      <current_position>2102</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
-      <level_current>12</level_current>
-      <exp_current>131018</exp_current>
-      <exp_next>132859</exp_next>
-      <health_current>12974.6</health_current>
-      <health_max>12974.6</health_max>
-      <health_regen>420.853</health_regen>
-      <mana_current>12974.6</mana_current>
-      <mana_max>12974.6</mana_max>
-      <mana_regen>420.853</mana_regen>
-      <gold_current>29046</gold_current>
-      <damage_physical_base>13</damage_physical_base>
-      <damage_physical_crit_chance>13</damage_physical_crit_chance>
-      <damage_physical_crit_multiplier>3.25</damage_physical_crit_multiplier>
-      <damage_fire_base>13</damage_fire_base>
-      <damage_fire_crit_chance>13</damage_fire_crit_chance>
-      <damage_fire_crit_multiplier>3.25</damage_fire_crit_multiplier>
-      <damage_frost_base>13</damage_frost_base>
-      <damage_frost_crit_chance>13</damage_frost_crit_chance>
-      <damage_frost_crit_multiplier>3.25</damage_frost_crit_multiplier>
-      <armor_physical_base>13</armor_physical_base>
-      <resistance_fire_base>13</resistance_fire_base>
-      <resistance_frost_base>13</resistance_frost_base>
+      <level_current>13</level_current>
+      <exp_current>1978</exp_current>
+      <exp_next>199288</exp_next>
+      <health_current>19461.9</health_current>
+      <health_max>19461.9</health_max>
+      <health_regen>946.919</health_regen>
+      <mana_current>19461.9</mana_current>
+      <mana_max>19461.9</mana_max>
+      <mana_regen>946.919</mana_regen>
+      <gold_current>29350</gold_current>
+      <damage_physical_base>14</damage_physical_base>
+      <damage_physical_crit_chance>14</damage_physical_crit_chance>
+      <damage_physical_crit_multiplier>3.5</damage_physical_crit_multiplier>
+      <damage_fire_base>14</damage_fire_base>
+      <damage_fire_crit_chance>14</damage_fire_crit_chance>
+      <damage_fire_crit_multiplier>3.5</damage_fire_crit_multiplier>
+      <damage_frost_base>14</damage_frost_base>
+      <damage_frost_crit_chance>14</damage_frost_crit_chance>
+      <damage_frost_crit_multiplier>3.5</damage_frost_crit_multiplier>
+      <armor_physical_base>14</armor_physical_base>
+      <resistance_fire_base>14</resistance_fire_base>
+      <resistance_frost_base>14</resistance_frost_base>
    </player>
 
    <action_bar>
@@ -39,17 +39,33 @@
    </action_bar>
 
    <character>
-      <character_slot>0 medium_helmet 1 1</character_slot>
+      <character_slot>0 heavy_helmet 1 1</character_slot>
+      <character_slot>1 one_handed_sword 1 1</character_slot>
+      <character_slot>2 heavy_armor 1 1</character_slot>
+      <character_slot>3 shield 1 1</character_slot>
+      <character_slot>4 heavy_gloves 1 1</character_slot>
+      <character_slot>5 belt 1 1</character_slot>
+      <character_slot>6 heavy_boots 1 1</character_slot>
+      <character_slot>7 medium_helmet 1 1</character_slot>
+      <character_slot>8 medium_helmet 1 1</character_slot>
+      <character_slot>9 ring 1 1</character_slot>
+      <character_slot>10 ring 4 1</character_slot>
+      <character_slot>11 ring 8 1</character_slot>
+      <character_slot>12 ring 16 1</character_slot>
+      <character_slot>13 ring 3 1</character_slot>
    </character>
 
    <inventory>
       <inventory_slot>0 potion_health 1 32</inventory_slot>
-      <inventory_slot>1 potion_mana 1 19</inventory_slot>
+      <inventory_slot>1 potion_mana 1 21</inventory_slot>
       <inventory_slot>2 magic_helmet 1 1</inventory_slot>
       <inventory_slot>3 medium_helmet 1 1</inventory_slot>
       <inventory_slot>4 rune 3 1</inventory_slot>
       <inventory_slot>5 magic_helmet 1 1</inventory_slot>
-      <inventory_slot>6 potion_health 1 3</inventory_slot>
+      <inventory_slot>6 potion_health 1 6</inventory_slot>
+      <inventory_slot>7 ring 10 1</inventory_slot>
+      <inventory_slot>8 ring 3 1</inventory_slot>
+      <inventory_slot>9 ring 14 1</inventory_slot>
    </inventory>
 
    <vendor>

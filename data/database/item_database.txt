@@ -54,7 +54,7 @@
 	<item>medium_gloves         items/medium_gloves_1_001.txt</item>
 	<item>medium_helmet         items/medium_helmet_1_001.txt</item>
 
-	<item>medium_belt           items/medium_belt_1_001.txt</item>
+	<item>belt                  items/belt_1_001.txt</item>
 
     # Weapons
 	<item>bow                   items/bow_1_001.txt</item>
@@ -73,8 +73,24 @@
 	<item>wand                  items/wand_1_001.txt</item>
 
     # Rings / Amultes
-	<item>ring                  items/ring_1_001.txt</item>
 	<item>amulet                items/amulet_1_001.txt</item>
+	<item>ring                  items/ring_1_001.txt</item>
+	<item>ring                  items/ring_1_002.txt</item>
+	<item>ring                  items/ring_1_003.txt</item>
+	<item>ring                  items/ring_1_004.txt</item>
+	<item>ring                  items/ring_1_005.txt</item>
+	<item>ring                  items/ring_1_006.txt</item>
+	<item>ring                  items/ring_1_007.txt</item>
+	<item>ring                  items/ring_1_008.txt</item>
+	<item>ring                  items/ring_1_009.txt</item>
+	<item>ring                  items/ring_1_010.txt</item>
+	<item>ring                  items/ring_1_011.txt</item>
+	<item>ring                  items/ring_1_012.txt</item>
+	<item>ring                  items/ring_1_013.txt</item>
+	<item>ring                  items/ring_1_014.txt</item>
+	<item>ring                  items/ring_1_015.txt</item>
+	<item>ring                  items/ring_1_016.txt</item>
+	<item>ring                  items/ring_1_017.txt</item>
 
 </item_database>
 

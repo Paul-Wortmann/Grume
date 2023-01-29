@@ -785,6 +785,10 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             {
                 tEntity->item->type = eEntityItemType::entityItemType_helmet;
             }
+            else if (itemType.compare("BELT") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_belt;
+            }
             else if (itemType.compare("BOW") == 0)
             {
                 tEntity->item->type = eEntityItemType::entityItemType_bow;
@@ -840,6 +844,14 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             else if (itemType.compare("TWO_HANDED_SWORD") == 0)
             {
                 tEntity->item->type = eEntityItemType::entityItemType_sword_two;
+            }
+            else if (itemType.compare("RING") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_ring;
+            }
+            else if (itemType.compare("AMULET") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_amulet;
             }
 
         }

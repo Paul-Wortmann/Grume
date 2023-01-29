@@ -39,7 +39,21 @@
    </action_bar>
 
    <character>
-      <character_slot>0 medium_helmet 1 1</character_slot>
+      <character_slot>0 heavy_helmet 1 1</character_slot>
+      <character_slot>1 one_handed_sword 1 1</character_slot>
+      <character_slot>2 heavy_armor 1 1</character_slot>
+      <character_slot>3 shield 1 1</character_slot>
+      <character_slot>4 heavy_gloves 1 1</character_slot>
+      <character_slot>5 belt 1 1</character_slot>
+      <character_slot>6 heavy_boots 1 1</character_slot>
+      
+      <character_slot>7 medium_helmet 1 1</character_slot>
+      <character_slot>8 medium_helmet 1 1</character_slot>
+      <character_slot>9 ring 1 1</character_slot>
+      <character_slot>10 ring 4 1</character_slot>
+      <character_slot>11 ring 8 1</character_slot>
+      <character_slot>12 ring 16 1</character_slot>
+      <character_slot>13 ring 3 1</character_slot>
    </character>
 
    <inventory>

@@ -316,5 +316,149 @@
         <item_type>1</item_type>
     </loot>
 
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>3</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>4</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>5</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>6</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>7</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>8</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>9</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>10</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>11</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>12</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>13</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>14</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>15</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>16</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>ring</entity_name>
+        <entity_number>17</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>belt</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
 </loot_table>
 
