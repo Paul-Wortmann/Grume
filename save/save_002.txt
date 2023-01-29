@@ -38,6 +38,10 @@
       <action_bar_slot>1 potion_mana 1 32</action_bar_slot>
    </action_bar>
 
+   <character>
+      <character_slot>0 medium_helmet 1 1</character_slot>
+   </character>
+
    <inventory>
       <inventory_slot>0 potion_health 1 32</inventory_slot>
       <inventory_slot>1 potion_mana 1 19</inventory_slot>

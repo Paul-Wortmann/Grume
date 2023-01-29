@@ -108,6 +108,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_graphicsEngine.setIOPointer(m_IOManager.getIOPointer());
     m_graphicsEngine.setUIPointer(&m_uiManager);
     m_graphicsEngine.setPlayerActionBarPointer(m_playerManager.getPlayerActionBar());
+    m_graphicsEngine.setPlayerCharacterPointer(m_playerManager.getPlayerCharacter());
     m_graphicsEngine.setPlayerInventoryPointer(m_playerManager.getPlayerInventory());
     m_graphicsEngine.setPlayerVendorPointer(m_playerManager.getPlayerVendor());
     m_graphicsEngine.setResourceManagerPointer(&m_resourceManager);
@@ -477,13 +478,23 @@ void cGameEngine::process(void)
 
             // Action bar drop item
             /// Non standard C++! only supported as a GNU GPP extension...
+            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
             case eComponentFunction::componentFunctionActionBarSlot_1 ... eComponentFunction::componentFunctionActionBarSlot_12:
                 //m_playerManager.actionBarDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1));
                 //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
 
+            // Character drop item
+            /// Non standard C++! only supported as a GNU GPP extension...
+            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
+            case eComponentFunction::componentFunctionCharacterSlot_1 ... eComponentFunction::componentFunctionCharacterSlot_14:
+                //m_playerManager.characterDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionCharacterSlot_1));
+                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+
             // Inventory drop item
             /// Non standard C++! only supported as a GNU GPP extension...
+            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
             case eComponentFunction::componentFunctionInventorySlot_1 ... eComponentFunction::componentFunctionInventorySlot_54:
                 m_playerManager.inventoryDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1));
                 m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
@@ -491,6 +502,7 @@ void cGameEngine::process(void)
 
             // Vendor drop item
             /// Non standard C++! only supported as a GNU GPP extension...
+            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
             case eComponentFunction::componentFunctionVendorSlot_1 ... eComponentFunction::componentFunctionVendorSlot_54:
                 //m_playerManager.vendorDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1));
                 //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);

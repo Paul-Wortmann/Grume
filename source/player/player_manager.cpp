@@ -38,7 +38,7 @@ std::uint32_t cPlayerManager::initialize(void)
     // character storage
     return_value = m_playerCharacter->initialize();
     m_playerCharacter->setStorageType(ePlayerStorageType::playerStorageTypeCharacter);
-    m_playerCharacter->setStorageSize(12);
+    m_playerCharacter->setStorageSize(14);
     m_playerCharacter->setStackColor(m_stackTextColor);
     m_playerCharacter->setSlot1(eComponentFunction::componentFunctionCharacterSlot_1);
     m_playerCharacter->setStack1(eComponentFunction::componentFunctionCharacterStack_1);
@@ -99,6 +99,7 @@ void cPlayerManager::setEntityManager(cEntityManager *_entityManager)
 {
     m_entityManager = _entityManager;
     m_playerActionBar->setEntityManager(_entityManager);
+    m_playerCharacter->setEntityManager(_entityManager);
     m_playerInventory->setEntityManager(_entityManager);
     m_playerVendor->setEntityManager(_entityManager);
 }
@@ -106,6 +107,7 @@ void cPlayerManager::setEntityManager(cEntityManager *_entityManager)
 void cPlayerManager::setUIManager(cUIManager* _UIManager)
 {
     m_playerActionBar->setUIManager(_UIManager);
+    m_playerCharacter->setUIManager(_UIManager);
     m_playerInventory->setUIManager(_UIManager);
     m_playerVendor->setUIManager(_UIManager);
 }
@@ -114,6 +116,7 @@ void cPlayerManager::setMapPointer(sMap* _map)
 {
     m_mapPointer = _map;
     m_playerActionBar->setMap(_map);
+    m_playerCharacter->setMap(_map);
     m_playerInventory->setMap(_map);
     m_playerVendor->setMap(_map);
 }
@@ -122,6 +125,7 @@ void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManage
 {
     m_resourceManager = _resourceManager;
     m_playerActionBar->setResourceManager(_resourceManager);
+    m_playerCharacter->setResourceManager(_resourceManager);
     m_playerInventory->setResourceManager(_resourceManager);
     m_playerVendor->setResourceManager(_resourceManager);
 }
@@ -147,7 +151,9 @@ std::uint32_t cPlayerManager::load(const std::string &_fileName)
         m_player->base.owner = eEntityOwner::entityOwner_player;
         m_entityManager->updateModelMatrix(m_player);
         m_playerActionBar->setPlayerEntity(m_player);
+        m_playerCharacter->setPlayerEntity(m_player);
         m_playerInventory->setPlayerEntity(m_player);
+        m_playerVendor->setPlayerEntity(m_player);
     }
     else
     {

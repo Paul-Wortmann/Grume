@@ -4006,7 +4006,7 @@
         <menu_texture_normal>ui/menu/character_menu_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>3<menu_component_count>
+        <menu_component_count>16<menu_component_count>
         <menu_sound_open>menu 5</menu_sound_open>
         <menu_sound_close>NONE 0</menu_sound_close>
 
@@ -4037,16 +4037,212 @@
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
         </component>
-
+        
+        # Helm
         <component>
             <component_name>character_slot_001</component_name>
             <component_enabled>0</component_enabled>
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.172f, 0.436f, -0.02f</component_position>
-            <component_size>0.032f 0.058f</component_size>
+            <component_position>0.0f, 0.359f, -0.02f</component_position>
+            <component_size>0.059f 0.105f</component_size>
             <component_function>CHARACTER_SLOT_1</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Weapon
+        <component>
+            <component_name>character_slot_002</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.146f, 0.044f, -0.02f</component_position>
+            <component_size>0.059f 0.160f</component_size>
+            <component_function>CHARACTER_SLOT_2</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Armor
+        <component>
+            <component_name>character_slot_003</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.0f, 0.044f, -0.02f</component_position>
+            <component_size>0.059f 0.160f</component_size>
+            <component_function>CHARACTER_SLOT_3</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Shield
+        <component>
+            <component_name>character_slot_004</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.146f, 0.044f, -0.02f</component_position>
+            <component_size>0.059f 0.160f</component_size>
+            <component_function>CHARACTER_SLOT_4</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Boots
+        <component>
+            <component_name>character_slot_005</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.146f, -0.270f, -0.02f</component_position>
+            <component_size>0.059f 0.104f</component_size>
+            <component_function>CHARACTER_SLOT_5</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Belt
+        <component>
+            <component_name>character_slot_006</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.0f, -0.215f, -0.02f</component_position>
+            <component_size>0.059f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_6</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Gloves
+        <component>
+            <component_name>character_slot_007</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.146f, -0.270f, -0.02f</component_position>
+            <component_size>0.059f 0.104f</component_size>
+            <component_function>CHARACTER_SLOT_7</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Amulet 1
+        <component>
+            <component_name>character_slot_008</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.1145f, 0.304f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_8</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Amulet 2
+        <component>
+            <component_name>character_slot_009</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.1145f, 0.304f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_9</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Ring 1
+        <component>
+            <component_name>character_slot_010</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.177f, -0.474f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_10</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Ring 2
+        <component>
+            <component_name>character_slot_011</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>-0.094f, -0.474f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_11</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Ring 3
+        <component>
+            <component_name>character_slot_012</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.0f, -0.474f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_12</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Ring 4
+        <component>
+            <component_name>character_slot_013</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.094f, -0.474f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_13</component_function>
+            <component_type>TYPE_ITEM</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+        
+        # Ring 5
+        <component>
+            <component_name>character_slot_014</component_name>
+            <component_enabled>0</component_enabled>
+            <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
+            <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
+            <component_position>0.177f, -0.474f, -0.02f</component_position>
+            <component_size>0.0275f 0.049f</component_size>
+            <component_function>CHARACTER_SLOT_14</component_function>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>

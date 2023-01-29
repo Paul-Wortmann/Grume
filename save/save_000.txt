@@ -38,6 +38,24 @@
       <action_bar_slot>1 potion_mana 1 32</action_bar_slot>
    </action_bar>
 
+   <character>
+      <character_slot>0 heavy_helmet 1 1</character_slot>
+      <character_slot>1 one_handed_sword 1 1</character_slot>
+      <character_slot>2 heavy_armor 1 1</character_slot>
+      <character_slot>3 shield 1 1</character_slot>
+      <character_slot>4 heavy_gloves 1 1</character_slot>
+        <character_slot>5 medium_helmet 1 1</character_slot>
+      <character_slot>6 heavy_boots 1 1</character_slot>
+      
+      <character_slot>7 medium_helmet 1 1</character_slot>
+      <character_slot>8 medium_helmet 1 1</character_slot>
+      <character_slot>9 medium_helmet 1 1</character_slot>
+      <character_slot>10 medium_helmet 1 1</character_slot>
+      <character_slot>11 medium_helmet 1 1</character_slot>
+      <character_slot>12 medium_helmet 1 1</character_slot>
+      <character_slot>13 medium_helmet 1 1</character_slot>
+   </character>
+
    <inventory>
       <inventory_slot>0 potion_health 1 5</inventory_slot>
       <inventory_slot>1 potion_mana   1 2</inventory_slot>

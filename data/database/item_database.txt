@@ -54,6 +54,8 @@
 	<item>medium_gloves         items/medium_gloves_1_001.txt</item>
 	<item>medium_helmet         items/medium_helmet_1_001.txt</item>
 
+	<item>medium_belt           items/medium_belt_1_001.txt</item>
+
     # Weapons
 	<item>bow                   items/bow_1_001.txt</item>
 	<item>crossbow              items/crossbow_1_001.txt</item>
@@ -69,6 +71,10 @@
 	<item>two_handed_mace       items/two_handed_mace_1_001.txt</item>
 	<item>two_handed_sword      items/two_handed_sword_1_001.txt</item>
 	<item>wand                  items/wand_1_001.txt</item>
+
+    # Rings / Amultes
+	<item>ring                  items/ring_1_001.txt</item>
+	<item>amulet                items/amulet_1_001.txt</item>
 
 </item_database>
 
