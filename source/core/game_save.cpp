@@ -123,19 +123,19 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
         saveFile << indent(iLevel) << "</action_bar>" << std::endl;
         saveFile << std::endl;
 
-        // Character
-        saveFile << indent(iLevel) << "<character>" << std::endl;
+        // Equipment
+        saveFile << indent(iLevel) << "<equipment>" << std::endl;
         iLevel++;
-        for (std::uint32_t i = 0; i < m_playerManager.getCharacterSize(); ++i)
+        for (std::uint32_t i = 0; i < m_playerManager.getEquipmentSize(); ++i)
         {
-            sEntity* tEntity = m_playerManager.getCharacterEntity(i);
+            sEntity* tEntity = m_playerManager.getEquipmentEntity(i);
             if (tEntity != nullptr)
             {
-                saveFile << indent(iLevel) << "<character_slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</character_slot>" << std::endl;
+                saveFile << indent(iLevel) << "<equipment_slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</equipment_slot>" << std::endl;
             }
         }
         iLevel--;
-        saveFile << indent(iLevel) << "</character>" << std::endl;
+        saveFile << indent(iLevel) << "</equipment>" << std::endl;
         saveFile << std::endl;
 
         // Inventory
@@ -166,6 +166,21 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
         }
         iLevel--;
         saveFile << indent(iLevel) << "</vendor>" << std::endl;
+        saveFile << std::endl;
+
+        // Waypoints
+        saveFile << indent(iLevel) << "<waypoints>" << std::endl;
+        iLevel++;
+        for (std::uint32_t i = 0; i < m_playerManager.getWaypointsSize(); ++i)
+        {
+            sEntity* tEntity = m_playerManager.getWaypointsEntity(i);
+            if (tEntity != nullptr)
+            {
+                saveFile << indent(iLevel) << "<waypoints_slot>" << i << " " << tEntity->base.databaseName << " " << tEntity->base.databaseNumber << " " << tEntity->item->stackSize << "</waypoints_slot>" << std::endl;
+            }
+        }
+        iLevel--;
+        saveFile << indent(iLevel) << "</waypoints>" << std::endl;
         saveFile << std::endl;
 
         // Quest

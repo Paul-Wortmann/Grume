@@ -3,14 +3,14 @@
 
    <information>
       <current_map>cemetery_1_001</current_map>
-      <current_position>2102</current_position>
+      <current_position>2213</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
       <level_current>13</level_current>
-      <exp_current>1978</exp_current>
+      <exp_current>41917</exp_current>
       <exp_next>199288</exp_next>
       <health_current>19461.9</health_current>
       <health_max>19461.9</health_max>
@@ -18,7 +18,7 @@
       <mana_current>19461.9</mana_current>
       <mana_max>19461.9</mana_max>
       <mana_regen>946.919</mana_regen>
-      <gold_current>29350</gold_current>
+      <gold_current>31165</gold_current>
       <damage_physical_base>14</damage_physical_base>
       <damage_physical_crit_chance>14</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>3.5</damage_physical_crit_multiplier>
@@ -38,39 +38,65 @@
       <action_bar_slot>1 potion_mana 1 30</action_bar_slot>
    </action_bar>
 
-   <character>
-      <character_slot>0 heavy_helmet 1 1</character_slot>
-      <character_slot>1 one_handed_sword 1 1</character_slot>
-      <character_slot>2 heavy_armor 1 1</character_slot>
-      <character_slot>3 shield 1 1</character_slot>
-      <character_slot>4 heavy_gloves 1 1</character_slot>
-      <character_slot>5 belt 1 1</character_slot>
-      <character_slot>6 heavy_boots 1 1</character_slot>
-      <character_slot>7 medium_helmet 1 1</character_slot>
-      <character_slot>8 medium_helmet 1 1</character_slot>
-      <character_slot>9 ring 1 1</character_slot>
-      <character_slot>10 ring 4 1</character_slot>
-      <character_slot>11 ring 8 1</character_slot>
-      <character_slot>12 ring 16 1</character_slot>
-      <character_slot>13 ring 3 1</character_slot>
-   </character>
+   <equipment>
+      <equipment_slot>0 heavy_helmet 1 1</equipment_slot>
+      <equipment_slot>1 one_handed_sword 1 1</equipment_slot>
+      <equipment_slot>2 heavy_armor 1 1</equipment_slot>
+      <equipment_slot>3 shield 1 1</equipment_slot>
+      <equipment_slot>4 heavy_gloves 1 1</equipment_slot>
+      <equipment_slot>5 belt 1 1</equipment_slot>
+      <equipment_slot>6 heavy_boots 1 1</equipment_slot>
+      <equipment_slot>7 medium_helmet 1 1</equipment_slot>
+      <equipment_slot>8 medium_helmet 1 1</equipment_slot>
+      <equipment_slot>9 ring 1 1</equipment_slot>
+      <equipment_slot>10 ring 4 1</equipment_slot>
+      <equipment_slot>11 ring 8 1</equipment_slot>
+      <equipment_slot>12 ring 16 1</equipment_slot>
+      <equipment_slot>13 ring 3 1</equipment_slot>
+   </equipment>
 
    <inventory>
       <inventory_slot>0 potion_health 1 32</inventory_slot>
-      <inventory_slot>1 potion_mana 1 21</inventory_slot>
+      <inventory_slot>1 potion_mana 1 23</inventory_slot>
       <inventory_slot>2 magic_helmet 1 1</inventory_slot>
       <inventory_slot>3 medium_helmet 1 1</inventory_slot>
       <inventory_slot>4 rune 3 1</inventory_slot>
       <inventory_slot>5 magic_helmet 1 1</inventory_slot>
-      <inventory_slot>6 potion_health 1 6</inventory_slot>
+      <inventory_slot>6 potion_health 1 8</inventory_slot>
       <inventory_slot>7 ring 10 1</inventory_slot>
       <inventory_slot>8 ring 3 1</inventory_slot>
       <inventory_slot>9 ring 14 1</inventory_slot>
+      <inventory_slot>10 one_handed_sword 6 1</inventory_slot>
+      <inventory_slot>11 grimoire 1 1</inventory_slot>
+      <inventory_slot>12 one_handed_sword 4 1</inventory_slot>
+      <inventory_slot>13 two_handed_axe 1 1</inventory_slot>
+      <inventory_slot>14 shield 1 1</inventory_slot>
+      <inventory_slot>15 quiver 1 1</inventory_slot>
+      <inventory_slot>16 scroll 2 1</inventory_slot>
+      <inventory_slot>17 one_handed_sword 1 1</inventory_slot>
+      <inventory_slot>18 crossbow 1 1</inventory_slot>
+      <inventory_slot>19 two_handed_sword 1 1</inventory_slot>
+      <inventory_slot>20 one_handed_axe 2 1</inventory_slot>
+      <inventory_slot>21 staff 1 1</inventory_slot>
+      <inventory_slot>22 one_handed_axe 1 1</inventory_slot>
+      <inventory_slot>23 medium_boots 1 1</inventory_slot>
+      <inventory_slot>24 two_handed_axe 3 1</inventory_slot>
+      <inventory_slot>25 belt 1 1</inventory_slot>
+      <inventory_slot>26 dagger 1 1</inventory_slot>
+      <inventory_slot>27 two_handed_mace 1 1</inventory_slot>
+      <inventory_slot>28 bow 1 1</inventory_slot>
+      <inventory_slot>29 dagger 2 1</inventory_slot>
+      <inventory_slot>30 one_handed_sword 5 1</inventory_slot>
+      <inventory_slot>31 two_handed_axe 2 1</inventory_slot>
    </inventory>
 
    <vendor>
       <vendor_slot>0 potion_health 1 32</vendor_slot>
    </vendor>
+
+   <waypoints>
+      <waypoints_slot>0  rune 1 1</waypoints_slot>
+   <waypoints>
 
    <quests>
       <quest>bug_boss_1_dead 1</quest>

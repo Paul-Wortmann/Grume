@@ -46,16 +46,16 @@ class cPlayerManager :tcTemplateEngine
         bool              actionBarDropItem(sEntity* &_entity) { return m_playerActionBar->dropItem(_entity); }
         void              actionBarDrop(const std::uint32_t &_slot) { m_playerActionBar->dropItem(_slot); }
 
-        // Player Character
-        cPlayerStorage*   getPlayerCharacter(void) { return m_playerCharacter; }
-        sEntity*          getCharacterEntity(const std::uint32_t _slot) { return m_playerCharacter->getSlotEntity(_slot); }
-        void              setCharacterEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerCharacter->setSlotEntity(_slot, _entity); };
-        void              purgeCharacterEntity(const std::uint32_t _slot) { m_playerCharacter->purgeSlotEntity(_slot); }
-        std::uint32_t     getCharacterSize(void) { return m_playerCharacter->getStorageSize(); }
-        std::uint32_t     getCharacterFreeSlotNum(void) { return m_playerCharacter->freeSlotCount(); }
-        bool              characterPickupItem(sEntity* &_entity) { return m_playerCharacter->pickupItem(_entity); }
-        bool              characterDropItem(sEntity* &_entity) { return m_playerCharacter->dropItem(_entity); }
-        void              characterDrop(const std::uint32_t &_slot) { m_playerCharacter->dropItem(_slot); }
+        // Player Equipment
+        cPlayerStorage*   getPlayerEquipment(void) { return m_playerEquipment; }
+        sEntity*          getEquipmentEntity(const std::uint32_t _slot) { return m_playerEquipment->getSlotEntity(_slot); }
+        void              setEquipmentEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerEquipment->setSlotEntity(_slot, _entity); };
+        void              purgeEquipmentEntity(const std::uint32_t _slot) { m_playerEquipment->purgeSlotEntity(_slot); }
+        std::uint32_t     getEquipmentSize(void) { return m_playerEquipment->getStorageSize(); }
+        std::uint32_t     getEquipmentFreeSlotNum(void) { return m_playerEquipment->freeSlotCount(); }
+        bool              equipmentPickupItem(sEntity* &_entity) { return m_playerEquipment->pickupItem(_entity); }
+        bool              equipmentDropItem(sEntity* &_entity) { return m_playerEquipment->dropItem(_entity); }
+        void              equipmentDrop(const std::uint32_t &_slot) { m_playerEquipment->dropItem(_slot); }
 
         // Player Inventory
         cPlayerStorage*   getPlayerInventory(void) { return m_playerInventory; }
@@ -78,6 +78,17 @@ class cPlayerManager :tcTemplateEngine
         bool              vendorPickupItem(sEntity* &_entity) { return m_playerVendor->pickupItem(_entity); }
         bool              vendorDropItem(sEntity* &_entity) { return m_playerVendor->dropItem(_entity); }
         void              vendorDrop(const std::uint32_t &_slot) { m_playerVendor->dropItem(_slot); }
+
+        // Waypoint
+        cPlayerStorage*   getPlayerWaypoints(void) { return m_playerWaypoints; }
+        sEntity*          getWaypointsEntity(const std::uint32_t _slot) { return m_playerWaypoints->getSlotEntity(_slot); }
+        void              setWaypointsEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerWaypoints->setSlotEntity(_slot, _entity); };
+        void              purgeWaypointsEntity(const std::uint32_t _slot) { m_playerWaypoints->purgeSlotEntity(_slot); }
+        std::uint32_t     getWaypointsSize(void) { return m_playerWaypoints->getStorageSize(); }
+        std::uint32_t     getWaypointsFreeSlotNum(void) { return m_playerWaypoints->freeSlotCount(); }
+        bool              waypointsPickupItem(sEntity* &_entity) { return m_playerWaypoints->pickupItem(_entity); }
+        bool              waypointsDropItem(sEntity* &_entity) { return m_playerWaypoints->dropItem(_entity); }
+        void              waypointsDrop(const std::uint32_t &_slot) { m_playerWaypoints->dropItem(_slot); }
 
         // Set pointers
         void              setAudioEngine(cAudioEngine* _audioEngine);
@@ -116,9 +127,10 @@ class cPlayerManager :tcTemplateEngine
 
         // systems
         cPlayerStorage*   m_playerActionBar = new cPlayerStorage;
-        cPlayerStorage*   m_playerCharacter = new cPlayerStorage;
+        cPlayerStorage*   m_playerEquipment = new cPlayerStorage;
         cPlayerStorage*   m_playerInventory = new cPlayerStorage;
         cPlayerStorage*   m_playerVendor    = new cPlayerStorage;
+        cPlayerStorage*   m_playerWaypoints = new cPlayerStorage;
 
         // Data
         std::uint32_t     m_tileClicked     = 0;

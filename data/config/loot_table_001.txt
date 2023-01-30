@@ -93,6 +93,14 @@
     </loot>
 
     <loot>
+        <entity_name>dagger</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
         <entity_name>grimoire</entity_name>
         <entity_number>1</entity_number>
         <value>10</value>
@@ -109,6 +117,14 @@
     </loot>
 
     <loot>
+        <entity_name>one_handed_axe</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
         <entity_name>one_handed_mace</entity_name>
         <entity_number>1</entity_number>
         <value>10</value>
@@ -119,6 +135,46 @@
     <loot>
         <entity_name>one_handed_sword</entity_name>
         <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>one_handed_sword</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>one_handed_sword</entity_name>
+        <entity_number>3</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>one_handed_sword</entity_name>
+        <entity_number>4</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>one_handed_sword</entity_name>
+        <entity_number>5</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>one_handed_sword</entity_name>
+        <entity_number>6</entity_number>
         <value>10</value>
         <drop_once>0</drop_once>
         <item_type>1</item_type>
@@ -151,6 +207,22 @@
     <loot>
         <entity_name>two_handed_axe</entity_name>
         <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>two_handed_axe</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>two_handed_axe</entity_name>
+        <entity_number>3</entity_number>
         <value>10</value>
         <drop_once>0</drop_once>
         <item_type>1</item_type>
@@ -455,6 +527,22 @@
     <loot>
         <entity_name>belt</entity_name>
         <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>scroll</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>scroll</entity_name>
+        <entity_number>2</entity_number>
         <value>10</value>
         <drop_once>0</drop_once>
         <item_type>1</item_type>

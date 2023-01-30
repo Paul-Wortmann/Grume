@@ -31,7 +31,7 @@ enum class ePlayerStorageType : std::uint16_t
 {
     playerStorageTypeNone      = 0, // None
     playerStorageTypeActionBar = 1, // Action-bar
-    playerStorageTypeCharacter = 2, // Character
+    playerStorageTypeEquipment = 2, // Equipment
     playerStorageTypeInventory = 3, // Inventory
     playerStorageTypeSkills    = 4, // Skills
     playerStorageTypeVendor    = 5, // Vendor

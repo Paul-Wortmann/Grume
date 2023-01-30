@@ -315,37 +315,51 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionVendorStack_53     = 264, // Vendor slot 53 stack size text label
     componentFunctionVendorStack_54     = 265, // Vendor slot 54 stack size text label
 
-    componentFunctionCharacterSlot_1    = 266, // Character slot 1
-    componentFunctionCharacterSlot_2    = 267, // Character slot 2
-    componentFunctionCharacterSlot_3    = 268, // Character slot 3
-    componentFunctionCharacterSlot_4    = 269, // Character slot 4
-    componentFunctionCharacterSlot_5    = 270, // Character slot 5
-    componentFunctionCharacterSlot_6    = 271, // Character slot 6
-    componentFunctionCharacterSlot_7    = 272, // Character slot 7
-    componentFunctionCharacterSlot_8    = 273, // Character slot 8
-    componentFunctionCharacterSlot_9    = 274, // Character slot 9
-    componentFunctionCharacterSlot_10   = 275, // Character slot 10
-    componentFunctionCharacterSlot_11   = 276, // Character slot 11
-    componentFunctionCharacterSlot_12   = 277, // Character slot 12
-    componentFunctionCharacterSlot_13   = 278, // Character slot 13
-    componentFunctionCharacterSlot_14   = 279, // Character slot 14
+    componentFunctionEquipmentSlot_1    = 266, // Equipment slot 1
+    componentFunctionEquipmentSlot_2    = 267, // Equipment slot 2
+    componentFunctionEquipmentSlot_3    = 268, // Equipment slot 3
+    componentFunctionEquipmentSlot_4    = 269, // Equipment slot 4
+    componentFunctionEquipmentSlot_5    = 270, // Equipment slot 5
+    componentFunctionEquipmentSlot_6    = 271, // Equipment slot 6
+    componentFunctionEquipmentSlot_7    = 272, // Equipment slot 7
+    componentFunctionEquipmentSlot_8    = 273, // Equipment slot 8
+    componentFunctionEquipmentSlot_9    = 274, // Equipment slot 9
+    componentFunctionEquipmentSlot_10   = 275, // Equipment slot 10
+    componentFunctionEquipmentSlot_11   = 276, // Equipment slot 11
+    componentFunctionEquipmentSlot_12   = 277, // Equipment slot 12
+    componentFunctionEquipmentSlot_13   = 278, // Equipment slot 13
+    componentFunctionEquipmentSlot_14   = 279, // Equipment slot 14
 
-    componentFunctionCharacterStack_1   = 280, // Character slot 1 stack size text label
-    componentFunctionCharacterStack_2   = 281, // Character slot 2 stack size text label
-    componentFunctionCharacterStack_3   = 282, // Character slot 3 stack size text label
-    componentFunctionCharacterStack_4   = 283, // Character slot 4 stack size text label
-    componentFunctionCharacterStack_5   = 284, // Character slot 5 stack size text label
-    componentFunctionCharacterStack_6   = 285, // Character slot 6 stack size text label
-    componentFunctionCharacterStack_7   = 286, // Character slot 7 stack size text label
-    componentFunctionCharacterStack_8   = 287, // Character slot 8 stack size text label
-    componentFunctionCharacterStack_9   = 288, // Character slot 9 stack size text label
-    componentFunctionCharacterStack_10  = 289, // Character slot 10 stack size text label
-    componentFunctionCharacterStack_11  = 290, // Character slot 11 stack size text label
-    componentFunctionCharacterStack_12  = 291, // Character slot 12 stack size text label
-    componentFunctionCharacterStack_13  = 292, // Character slot 13 stack size text label
-    componentFunctionCharacterStack_14  = 293, // Character slot 14 stack size text label
+    componentFunctionEquipmentStack_1   = 280, // Equipment slot 1 stack size text label
+    componentFunctionEquipmentStack_2   = 281, // Equipment slot 2 stack size text label
+    componentFunctionEquipmentStack_3   = 282, // Equipment slot 3 stack size text label
+    componentFunctionEquipmentStack_4   = 283, // Equipment slot 4 stack size text label
+    componentFunctionEquipmentStack_5   = 284, // Equipment slot 5 stack size text label
+    componentFunctionEquipmentStack_6   = 285, // Equipment slot 6 stack size text label
+    componentFunctionEquipmentStack_7   = 286, // Equipment slot 7 stack size text label
+    componentFunctionEquipmentStack_8   = 287, // Equipment slot 8 stack size text label
+    componentFunctionEquipmentStack_9   = 288, // Equipment slot 9 stack size text label
+    componentFunctionEquipmentStack_10  = 289, // Equipment slot 10 stack size text label
+    componentFunctionEquipmentStack_11  = 290, // Equipment slot 11 stack size text label
+    componentFunctionEquipmentStack_12  = 291, // Equipment slot 12 stack size text label
+    componentFunctionEquipmentStack_13  = 292, // Equipment slot 13 stack size text label
+    componentFunctionEquipmentStack_14  = 293, // Equipment slot 14 stack size text label
 
-    componentFunctionTextGold           = 294  // Gold text
+    componentFunctionWaypointsSlot_1    = 294, // Waypoints slot 1
+    componentFunctionWaypointsSlot_2    = 295, // Waypoints slot 2
+    componentFunctionWaypointsSlot_3    = 296, // Waypoints slot 3
+    componentFunctionWaypointsSlot_4    = 297, // Waypoints slot 4
+    componentFunctionWaypointsSlot_5    = 298, // Waypoints slot 5
+    componentFunctionWaypointsSlot_6    = 299, // Waypoints slot 6
+
+    componentFunctionWaypointsStack_1   = 300, // Waypoints slot 1 stack size text label
+    componentFunctionWaypointsStack_2   = 301, // Waypoints slot 1 stack size text label
+    componentFunctionWaypointsStack_3   = 302, // Waypoints slot 1 stack size text label
+    componentFunctionWaypointsStack_4   = 303, // Waypoints slot 1 stack size text label
+    componentFunctionWaypointsStack_5   = 304, // Waypoints slot 1 stack size text label
+    componentFunctionWaypointsStack_6   = 305, // Waypoints slot 1 stack size text label
+
+    componentFunctionTextGold           = 306  // Gold text
 
 };
 
@@ -367,31 +381,31 @@ enum class eComponentType : std::uint16_t
 struct sUIComponent
 {
     // Linked list
-    sUIComponent*      next          = nullptr;
-    std::uint32_t      UID           = 0;
+    sUIComponent*      next           = nullptr;
+    std::uint32_t      UID            = 0;
 
     // Information
-    std::string        name          = "";
-    bool               enabled       = false;
-    eComponentFunction function      = eComponentFunction::componentFunctionNone;
-    eComponentType     type          = eComponentType::componentTypeNormal;
-    eComponentState    state         = eComponentState::componentStateNormal;
+    std::string        name           = "";
+    bool               enabled        = false;
+    eComponentFunction function       = eComponentFunction::componentFunctionNone;
+    eComponentType     type           = eComponentType::componentTypeNormal;
+    eComponentState    state          = eComponentState::componentStateNormal;
 
     // Base
-    glm::vec3         position       = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
-    glm::vec2         size           = glm::vec2(1, 1); // Size in OpenGL coordinate space
-    glm::vec2         positionMin    = glm::vec2(0, 0); // (In OpenGL coordinate space) calculated on load, min position (top left corner)
-    glm::vec2         positionMax    = glm::vec2(0, 0); // (In OpenGL coordinate space) calculated on load, max position (bottom right corner)
+    glm::vec3          position       = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
+    glm::vec2          size           = glm::vec2(1, 1); // Size in OpenGL coordinate space
+    glm::vec2          positionMin    = glm::vec2(0, 0); // (In OpenGL coordinate space) calculated on load, min position (top left corner)
+    glm::vec2          positionMax    = glm::vec2(0, 0); // (In OpenGL coordinate space) calculated on load, max position (bottom right corner)
 
     // Graphics
-    glm::mat4          modelMatrix   = glm::mat4(1);
-    std::uint32_t      textureNormal = 0;
-    std::uint32_t      textureHover  = 0;
-    std::uint32_t      textureActive = 0;
+    glm::mat4          modelMatrix    = glm::mat4(1);
+    std::uint32_t      textureNormal  = 0;
+    std::uint32_t      textureHover   = 0;
+    std::uint32_t      textureActive  = 0;
 
     // Audio
-    sUIAudioData      audio_activate = {};
-    sUIAudioData      audio_hover    = {};
+    sUIAudioData       audio_activate = {};
+    sUIAudioData       audio_hover    = {};
 };
 
 enum class eMenuType : std::uint16_t
@@ -401,10 +415,11 @@ enum class eMenuType : std::uint16_t
     menuTypeMain      = 2, // Main
     menuTypeOptions   = 3, // Options
     menuTypeCharacter = 4, // Character
-    menuTypeInventory = 5, // Inventory
-    menuTypeSkills    = 6, // Skills
-    menuTypeVendor    = 7, // Vendor
-    menuTypeWayPoints = 8  // Way points
+    menuTypeEquipment = 5, // Equipment
+    menuTypeInventory = 6, // Inventory
+    menuTypeSkills    = 7, // Skills
+    menuTypeVendor    = 8, // Vendor
+    menuTypeWayPoints = 9  // Way points
 };
 
 struct sUIMenu

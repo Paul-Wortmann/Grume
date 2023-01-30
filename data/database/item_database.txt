@@ -9,6 +9,26 @@
 
     #       catagory file_name
 
+    # Armor
+	<item>belt                  items/belt_1_001.txt</item>
+	<item>heavy_armor           items/heavy_armor_1_001.txt</item>
+	<item>heavy_boots           items/heavy_boots_1_001.txt</item>
+	<item>heavy_gloves          items/heavy_gloves_1_001.txt</item>
+	<item>heavy_helmet          items/heavy_helmet_1_001.txt</item>
+	<item>light_armor           items/light_armor_2_001.txt</item>
+	<item>light_armor           items/light_armor_3_001.txt</item>
+	<item>light_armor           items/light_armor_4_001.txt</item>
+	<item>light_boots           items/light_boots_2_001.txt</item>
+	<item>light_gloves          items/light_gloves_3_001.txt</item>
+	<item>magic_armor           items/magic_armor_1_001.txt</item>
+	<item>magic_boots           items/magic_boots_1_001.txt</item>
+	<item>magic_gloves          items/magic_gloves_1_001.txt</item>
+	<item>magic_helmet          items/magic_helmet_1_001.txt</item>
+	<item>medium_armor          items/medium_armor_1_001.txt</item>
+	<item>medium_boots          items/medium_boots_1_001.txt</item>
+	<item>medium_gloves         items/medium_gloves_1_001.txt</item>
+	<item>medium_helmet         items/medium_helmet_1_001.txt</item>
+
     # Coins
 	<item>coins                 items/coins_1_001.txt</item>
 	<item>coins                 items/coins_1_002.txt</item>
@@ -35,39 +55,31 @@
 	<item>rune                  items/rune_5_001.txt</item>
 	<item>rune                  items/rune_6_001.txt</item>
 
-    # Armor
-	<item>heavy_armor           items/heavy_armor_1_001.txt</item>
-	<item>heavy_boots           items/heavy_boots_1_001.txt</item>
-	<item>heavy_gloves          items/heavy_gloves_1_001.txt</item>
-	<item>heavy_helmet          items/heavy_helmet_1_001.txt</item>
-	<item>light_armor           items/light_armor_2_001.txt</item>
-	<item>light_armor           items/light_armor_3_001.txt</item>
-	<item>light_armor           items/light_armor_4_001.txt</item>
-	<item>light_boots           items/light_boots_2_001.txt</item>
-	<item>light_gloves          items/light_gloves_3_001.txt</item>
-	<item>magic_armor           items/magic_armor_1_001.txt</item>
-	<item>magic_boots           items/magic_boots_1_001.txt</item>
-	<item>magic_gloves          items/magic_gloves_1_001.txt</item>
-	<item>magic_helmet          items/magic_helmet_1_001.txt</item>
-	<item>medium_armor          items/medium_armor_1_001.txt</item>
-	<item>medium_boots          items/medium_boots_1_001.txt</item>
-	<item>medium_gloves         items/medium_gloves_1_001.txt</item>
-	<item>medium_helmet         items/medium_helmet_1_001.txt</item>
-
-	<item>belt                  items/belt_1_001.txt</item>
+    # Scrolls
+	<item>scroll                items/scroll_1_001.txt</item>
+	<item>scroll                items/scroll_1_002.txt</item>
 
     # Weapons
 	<item>bow                   items/bow_1_001.txt</item>
 	<item>crossbow              items/crossbow_1_001.txt</item>
 	<item>dagger                items/dagger_1_001.txt</item>
+	<item>dagger                items/dagger_1_002.txt</item>
 	<item>grimoire              items/grimoire_1_001.txt</item>
 	<item>one_handed_axe        items/one_handed_axe_1_001.txt</item>
+	<item>one_handed_axe        items/one_handed_axe_1_002.txt</item>
 	<item>one_handed_mace       items/one_handed_mace_1_001.txt</item>
 	<item>one_handed_sword      items/one_handed_sword_1_001.txt</item>
+	<item>one_handed_sword      items/one_handed_sword_1_002.txt</item>
+	<item>one_handed_sword      items/one_handed_sword_1_003.txt</item>
+	<item>one_handed_sword      items/one_handed_sword_1_004.txt</item>
+	<item>one_handed_sword      items/one_handed_sword_1_005.txt</item>
+	<item>one_handed_sword      items/one_handed_sword_1_006.txt</item>
 	<item>quiver                items/quiver_1_001.txt</item>
 	<item>shield                items/shield_1_001.txt</item>
 	<item>staff                 items/staff_1_001.txt</item>
 	<item>two_handed_axe        items/two_handed_axe_1_001.txt</item>
+	<item>two_handed_axe        items/two_handed_axe_1_002.txt</item>
+	<item>two_handed_axe        items/two_handed_axe_1_003.txt</item>
 	<item>two_handed_mace       items/two_handed_mace_1_001.txt</item>
 	<item>two_handed_sword      items/two_handed_sword_1_001.txt</item>
 	<item>wand                  items/wand_1_001.txt</item>

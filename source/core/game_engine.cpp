@@ -108,9 +108,10 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_graphicsEngine.setIOPointer(m_IOManager.getIOPointer());
     m_graphicsEngine.setUIPointer(&m_uiManager);
     m_graphicsEngine.setPlayerActionBarPointer(m_playerManager.getPlayerActionBar());
-    m_graphicsEngine.setPlayerCharacterPointer(m_playerManager.getPlayerCharacter());
+    m_graphicsEngine.setPlayerEquipmentPointer(m_playerManager.getPlayerEquipment());
     m_graphicsEngine.setPlayerInventoryPointer(m_playerManager.getPlayerInventory());
     m_graphicsEngine.setPlayerVendorPointer(m_playerManager.getPlayerVendor());
+    m_graphicsEngine.setPlayerWaypointsPointer(m_playerManager.getPlayerWaypoints());
     m_graphicsEngine.setResourceManagerPointer(&m_resourceManager);
     m_graphicsEngine.setMapPointer(m_mapManager.getMapPointer());
     m_physicsEngine.setIOPointer(m_IOManager.getIOPointer());
@@ -347,7 +348,7 @@ void cGameEngine::process(void)
             {
                 if (tEvent->data == eNPCEventData::NPCEventData_menuCloseAll)
                 {
-                    // pop vendor menu
+                    // Close all menus
                     m_uiManager.SetAllMenusDisabled();
                     m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 }
@@ -356,12 +357,14 @@ void cGameEngine::process(void)
                     // Open vendor menu
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeVendor, true);
                     m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                    m_engineState = eEngineState::engineStatePause;
                 }
                 else if (tEvent->data == eNPCEventData::NPCEventData_menuInventory)
                 {
                     // Open inventory menu
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeInventory, true);
                     m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                    m_engineState = eEngineState::engineStatePause;
                 }
             }
 
@@ -484,11 +487,11 @@ void cGameEngine::process(void)
                 //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
 
-            // Character drop item
+            // Equipment drop item
             /// Non standard C++! only supported as a GNU GPP extension...
             /// (This will be addressed later during a polish phase, right now it is convenient for testing)
-            case eComponentFunction::componentFunctionCharacterSlot_1 ... eComponentFunction::componentFunctionCharacterSlot_14:
-                //m_playerManager.characterDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionCharacterSlot_1));
+            case eComponentFunction::componentFunctionEquipmentSlot_1 ... eComponentFunction::componentFunctionEquipmentSlot_14:
+                //m_playerManager.equipmentDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1));
                 //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
 
@@ -505,6 +508,14 @@ void cGameEngine::process(void)
             /// (This will be addressed later during a polish phase, right now it is convenient for testing)
             case eComponentFunction::componentFunctionVendorSlot_1 ... eComponentFunction::componentFunctionVendorSlot_54:
                 //m_playerManager.vendorDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1));
+                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+
+            // Waypoints drop item
+            /// Non standard C++! only supported as a GNU GPP extension...
+            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
+            case eComponentFunction::componentFunctionWaypointsSlot_1 ... eComponentFunction::componentFunctionWaypointsSlot_6:
+                //m_playerManager.waypoinsDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsSlot_1));
                 //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
 
@@ -551,6 +562,22 @@ void cGameEngine::process(void)
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, false);
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+            }
+        }
+
+        // Character - GLFW_KEY_E
+        if (m_IOManager.getKeyReadyState(GLFW_KEY_E))
+        {
+            bool menuState = !m_uiManager.getMenuEnabled(eMenuType::menuTypeEquipment);
+            m_uiManager.setMenuEnabled(eMenuType::menuTypeEquipment, menuState);
+            m_IOManager.setKeyReadyState(GLFW_KEY_E, false);
+            m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+            if (menuState == true)
+            {
+                m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, false);
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
         }

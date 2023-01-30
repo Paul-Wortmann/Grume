@@ -204,20 +204,20 @@ void cGraphicsEngine::m_pui_render(void)
                         }
                     }
 
-                    // Character slot stack text
-                    else if ((menu[m].component[c].function >= eComponentFunction::componentFunctionCharacterStack_1) &&
-                             (menu[m].component[c].function <= eComponentFunction::componentFunctionCharacterStack_14))
+                    // Equipment slot stack text
+                    else if ((menu[m].component[c].function >= eComponentFunction::componentFunctionEquipmentStack_1) &&
+                             (menu[m].component[c].function <= eComponentFunction::componentFunctionEquipmentStack_14))
                     {
                         // slot 1, at index 0
-                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionCharacterStack_1);
-                        sEntity* slotEntity = m_playerCharacter->getSlotEntity(slotNumber);
-                        sPlayerStorage* playerCharacter = m_playerCharacter->getStorage();
+                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentStack_1);
+                        sEntity* slotEntity = m_playerEquipment->getSlotEntity(slotNumber);
+                        sPlayerStorage* playerEquipment = m_playerEquipment->getStorage();
 
-                        if ((playerCharacter->slot[slotNumber].occupied) &&
+                        if ((playerEquipment->slot[slotNumber].occupied) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:
-                            sTexture* textureTextSlotStack = playerCharacter->slot[slotNumber].stackLabel;
+                            sTexture* textureTextSlotStack = playerEquipment->slot[slotNumber].stackLabel;
                             menu[m].component[c].textureNormal = textureTextSlotStack->ID;
 
                             // Position and scaling
@@ -284,6 +284,33 @@ void cGraphicsEngine::m_pui_render(void)
                             m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                         }
                     }
+
+                    // Waypoints slot stack text
+                    else if ((menu[m].component[c].function >= eComponentFunction::componentFunctionWaypointsStack_1) &&
+                             (menu[m].component[c].function <= eComponentFunction::componentFunctionWaypointsStack_6))
+                    {
+                        // slot 1, at index 0
+                        std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsStack_1);
+                        sEntity* slotEntity = m_playerWaypoints->getSlotEntity(slotNumber);
+                        sPlayerStorage* playerWaypoints = m_playerWaypoints->getStorage();
+
+                        if ((playerWaypoints->slot[slotNumber].occupied) &&
+                            (slotEntity->item->stackSize > 1))
+                        {
+                            // Generate texture:
+                            sTexture* textureTextSlotStack = playerWaypoints->slot[slotNumber].stackLabel;
+                            menu[m].component[c].textureNormal = textureTextSlotStack->ID;
+
+                            // Position and scaling
+                            float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextSlotStack->height) * static_cast<float>(textureTextSlotStack->width);
+                            //glm::vec3 position = menu[m].component[c].position;
+                            //position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                            // Update the model matrix
+                            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
+                            m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                        }
+                    }
                     else
                     {
                         // if dragged, mouse position, else component position
@@ -309,13 +336,13 @@ void cGraphicsEngine::m_pui_render(void)
                             glBindTexture(GL_TEXTURE_2D, m_playerActionBar->getSlotEntity(slotNumber)->graphics->icon);
                         }
 
-                        // Character
-                        if ((menu[m].component[c].function >= eComponentFunction::componentFunctionCharacterSlot_1) &&
-                            (menu[m].component[c].function <= eComponentFunction::componentFunctionCharacterSlot_14))
+                        // Equipment
+                        if ((menu[m].component[c].function >= eComponentFunction::componentFunctionEquipmentSlot_1) &&
+                            (menu[m].component[c].function <= eComponentFunction::componentFunctionEquipmentSlot_14))
                         {
                             // slot 1, at index 0
-                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionCharacterSlot_1);
-                            glBindTexture(GL_TEXTURE_2D, m_playerCharacter->getSlotEntity(slotNumber)->graphics->icon);
+                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1);
+                            glBindTexture(GL_TEXTURE_2D, m_playerEquipment->getSlotEntity(slotNumber)->graphics->icon);
                         }
 
                         // Player inventory
@@ -327,13 +354,22 @@ void cGraphicsEngine::m_pui_render(void)
                             glBindTexture(GL_TEXTURE_2D, m_playerInventory->getSlotEntity(slotNumber)->graphics->icon);
                         }
 
-                        // Vendor vendor
+                        // Vendor
                         if ((menu[m].component[c].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
                             (menu[m].component[c].function <= eComponentFunction::componentFunctionVendorSlot_54))
                         {
                             // slot 1, at index 0
                             std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
                             glBindTexture(GL_TEXTURE_2D, m_playerVendor->getSlotEntity(slotNumber)->graphics->icon);
+                        }
+
+                        // Waypoints
+                        if ((menu[m].component[c].function >= eComponentFunction::componentFunctionWaypointsSlot_1) &&
+                            (menu[m].component[c].function <= eComponentFunction::componentFunctionWaypointsSlot_6))
+                        {
+                            // slot 1, at index 0
+                            std::uint32_t slotNumber = static_cast<std::uint32_t>(menu[m].component[c].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsSlot_1);
+                            glBindTexture(GL_TEXTURE_2D, m_playerWaypoints->getSlotEntity(slotNumber)->graphics->icon);
                         }
                     }
 
