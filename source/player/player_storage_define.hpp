@@ -27,6 +27,12 @@
 #include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
 
+enum class ePlayerStorageSlotType : std::uint16_t
+{
+    playerStorageSlotTypeNone      = 0, // None
+    playerStorageSlotTypeRune      = 1  // Rune
+};
+
 enum class ePlayerStorageType : std::uint16_t
 {
     playerStorageTypeNone      = 0, // None
@@ -41,11 +47,12 @@ enum class ePlayerStorageType : std::uint16_t
 // Player storage slot struct
 struct sPlayerStorageSlot
 {
-    bool               dragged    = false;
-    bool               occupied   = false;
-    sEntity*           entity     = nullptr;
-    std::uint32_t      data       = 0;
-    sTexture*          stackLabel = nullptr;
+    ePlayerStorageSlotType type       =  ePlayerStorageSlotType::playerStorageSlotTypeNone;
+    bool                   dragged    = false;
+    bool                   occupied   = false;
+    sEntity*               entity     = nullptr;
+    std::uint32_t          data       = 0;
+    sTexture*              stackLabel = nullptr;
 };
 
 // Player storage struct
