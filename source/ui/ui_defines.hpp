@@ -448,5 +448,43 @@ struct sUIMenu
     sUIAudioData      audio_close    = {};
 };
 
+// Event type enum
+enum eUIEventType : std::uint32_t { UIEventType_none        = 0,    // null event
+                                    UIEventType_click       = 1,    // click event
+                                    UIEventType_drag        = 2,    // drag event
+                                    UIEventType_drop        = 3 };  // drop event
+
+// Event function enum
+enum eUIEventFunction : std::uint32_t { UIEventFunction_none               =  0,  // null event
+                                        UIEventfunction_drop               =  1,  // drop event
+                                        UIEventFunction_closeMenu          =  2,  // Close menu
+                                        UIEventFunction_gameQuit           =  3,  // Game quit
+                                        UIEventFunction_gameNew            =  4,  // Game new
+                                        UIEventFunction_gameSave           =  5,  // Game save
+                                        UIEventFunction_gameLoad           =  6,  // Game load
+                                        UIEventFunction_menuOptions        =  7,  // Menu Options
+                                        UIEventFunction_fullscreenModified =  8,  // Fullscreen modified
+                                        UIEventFunction_volumeMusicUp      =  9,  // Music volume up
+                                        UIEventFunction_volumeMusicDown    = 10,  // Music volume down
+                                        UIEventFunction_volumeSoundUp      = 11,  // Sound volume up
+                                        UIEventFunction_volumeSoundDown    = 12,  // Sound volume down
+                                        UIEventFunction_volumeMasterUp     = 13,  // Master volume up
+                                        UIEventFunction_volumeMasterDown   = 14,  // Master volume down
+                                        UIEventFunction_loadMapTown        = 15,  // Load map town
+                                        UIEventFunction_inventorySlot      = 16,  // Inventory slot
+                                        UIEventFunction_actionBarSlot      = 17,  // Action Bar slot
+                                        UIEventFunction_vendorSlot         = 18,  // Vendor slot
+                                        UIEventFunction_equipmentSlot      = 19,  // Equipment slot
+                                        UIEventFunction_waypointsSlot      = 20}; // Waypoints slot
+
+// Event struct
+struct sUIEvent
+{
+    sUIEvent*        next     = nullptr;
+    eUIEventType     type     = eUIEventType::UIEventType_none;
+    eUIEventFunction function = eUIEventFunction::UIEventFunction_none;
+    std::uint32_t    data     = 0;
+};
+
 #endif //UI_DEFINES_HPP
 

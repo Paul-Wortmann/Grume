@@ -404,150 +404,160 @@ void cGameEngine::process(void)
             delete tEvent;
         }
 
-        // UI management, event handling
-        switch (m_uiManager.getUIEvent())
+        // Process UI events
+        for (sUIEvent* tEvent = m_uiManager.getEvent(); tEvent != nullptr; tEvent = m_uiManager.getEvent())
         {
-            case eComponentFunction::componentFunctionCloseMenu:
-                m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
-            case eComponentFunction::componentFunctionGameQuit:
-                m_engineState = eEngineState::engineStateTerm;
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
-            case eComponentFunction::componentFunctionGameNew:
-                m_engineState = eEngineState::engineStateProc;
-                cGameEngine::m_game_new();
-                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
-                //m_mapManager.setLoading(false);
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
-            case eComponentFunction::componentFunctionGameSave:
-                m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
-                cGameEngine::m_game_save(1);
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
-            case eComponentFunction::componentFunctionGameLoad:
-                m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
-                cGameEngine::m_game_load(1);
-                //m_mapManager.setLoading(false);
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
-            case eComponentFunction::componentFunctionMenuOptions:
-                m_engineState = eEngineState::engineStatePause;
-                m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
-                m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, true);
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
-            // Master volume up
-            case eComponentFunction::componentFunctionVolumeMasterUp:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_audioEngine.setVolumeMasterUp();
-                m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();
-            break;
-            // Master volume down
-            case eComponentFunction::componentFunctionVolumeMasterDown:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_audioEngine.setVolumeMasterDown();
-                m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();
-            break;
-            // Music volume up
-            case eComponentFunction::componentFunctionVolumeMusicUp:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_audioEngine.setVolumeMusicUp();
-                m_gameConfig.m_volume_music = m_audioEngine.getVolumeMusic();
-            break;
-            // Music volume down
-            case eComponentFunction::componentFunctionVolumeMusicDown:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_audioEngine.setVolumeMusicDown();
-                m_gameConfig.m_volume_music = m_audioEngine.getVolumeMusic();
-            break;
-            // Sound volume up
-            case eComponentFunction::componentFunctionVolumeSoundUp:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_audioEngine.setVolumeSoundUp();
-                m_gameConfig.m_volume_sfx = m_audioEngine.getVolumeSound();
-            break;
-            // Sound volume down
-            case eComponentFunction::componentFunctionVolumeSoundDown:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_audioEngine.setVolumeSoundDown();
-                m_gameConfig.m_volume_sfx = m_audioEngine.getVolumeSound();
-            break;
-            // Fullscreen modified
-            case eComponentFunction::componentFunctionFullscreenModified:
-            break;
+            // Component clicked
+            if (tEvent->type == eUIEventType::UIEventType_click)
+            {
+                // Close menu
+                if (tEvent->function == eUIEventFunction::UIEventFunction_closeMenu)
+                {
+                    m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
+                }
 
-            // Action bar drop item
-            /// Non standard C++! only supported as a GNU GPP extension...
-            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
-            case eComponentFunction::componentFunctionActionBarSlot_1 ... eComponentFunction::componentFunctionActionBarSlot_12:
-                //m_playerManager.actionBarDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1));
-                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
+                // Game quit
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameQuit)
+                {
+                    m_engineState = eEngineState::engineStateTerm;
+                }
 
-            // Equipment drop item
-            /// Non standard C++! only supported as a GNU GPP extension...
-            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
-            case eComponentFunction::componentFunctionEquipmentSlot_1 ... eComponentFunction::componentFunctionEquipmentSlot_14:
-                //m_playerManager.equipmentDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1));
-                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
+                // Game new
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameNew)
+                {
+                    m_engineState = eEngineState::engineStateProc;
+                    cGameEngine::m_game_new();
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+                    //m_mapManager.setLoading(false);
+                }
 
-            // Inventory drop item
-            /// Non standard C++! only supported as a GNU GPP extension...
-            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
-            case eComponentFunction::componentFunctionInventorySlot_1 ... eComponentFunction::componentFunctionInventorySlot_54:
-                m_playerManager.inventoryDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1));
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
+                // Game load
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameLoad)
+                {
+                    m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
+                    cGameEngine::m_game_load(1);
+                    //m_mapManager.setLoading(false);
+                }
 
-            // Vendor drop item
-            /// Non standard C++! only supported as a GNU GPP extension...
-            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
-            case eComponentFunction::componentFunctionVendorSlot_1 ... eComponentFunction::componentFunctionVendorSlot_54:
-                //m_playerManager.vendorDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1));
-                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
+                // Game save
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameSave)
+                {
+                    m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
+                    cGameEngine::m_game_save(1);
+                }
 
-            // Waypoints drop item
-            /// Non standard C++! only supported as a GNU GPP extension...
-            /// (This will be addressed later during a polish phase, right now it is convenient for testing)
-            case eComponentFunction::componentFunctionWaypointsSlot_1 ... eComponentFunction::componentFunctionWaypointsSlot_6:
-                //m_playerManager.waypoinsDrop(static_cast<std::uint32_t>(m_uiManager.getUIEvent()) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsSlot_1));
-                //m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
+                // options menu
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_menuOptions)
+                {
+                    m_engineState = eEngineState::engineStatePause;
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, true);
+                }
 
-            // Way-point map load town 1
-            case eComponentFunction::componentFunctionLoadMapTown_1:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_mapManager.setSpawnPortal(2);
-                m_mapManager.load(m_databaseManager.getDatabaseEntryFileName("town_1_001", 1, eDatabaseType::databaseTypeMap));
-                m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
-            break;
-            // Way-point map load town 2
-            case eComponentFunction::componentFunctionLoadMapTown_2:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_mapManager.setSpawnPortal(2);
-                m_mapManager.load(m_databaseManager.getDatabaseEntryFileName("town_2_001", 1, eDatabaseType::databaseTypeMap));
-                m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
-            break;
-            // Way-point map load town 3
-            case eComponentFunction::componentFunctionLoadMapTown_3:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                m_mapManager.setSpawnPortal(2);
-                m_mapManager.load(m_databaseManager.getDatabaseEntryFileName("town_3_001", 1, eDatabaseType::databaseTypeMap));
-                m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
-            break;
+                // Master volume up
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMasterUp)
+                {
+                    m_audioEngine.setVolumeMasterUp();
+                    m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();
+                }
 
-            // None
-            case eComponentFunction::componentFunctionNone:
-            default:
-                m_uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-            break;
+                // Master volume down
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMasterDown)
+                {
+                    m_audioEngine.setVolumeMasterDown();
+                    m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();
+                }
+
+                // Music volume up
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMusicUp)
+                {
+                    m_audioEngine.setVolumeMusicUp();
+                    m_gameConfig.m_volume_music = m_audioEngine.getVolumeMusic();
+                }
+
+                // Music volume down
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMusicDown)
+                {
+                    m_audioEngine.setVolumeMusicDown();
+                    m_gameConfig.m_volume_music = m_audioEngine.getVolumeMusic();
+                }
+
+                // Sound volume up
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeSoundUp)
+                {
+                    m_audioEngine.setVolumeSoundUp();
+                    m_gameConfig.m_volume_sfx = m_audioEngine.getVolumeSound();
+                }
+
+                // Sound volume down
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeSoundDown)
+                {
+                    m_audioEngine.setVolumeSoundDown();
+                    m_gameConfig.m_volume_sfx = m_audioEngine.getVolumeSound();
+                }
+
+                // Fullscreen modified
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_fullscreenModified)
+                {
+                    // NA
+                }
+
+                // Way-point map load town
+                else if (tEvent->function == eUIEventFunction::UIEventFunction_loadMapTown)
+                {
+                    std::string mapName = "town_" + std::to_string(tEvent->data) + "_001";
+                    m_mapManager.setSpawnPortal(2);
+                    m_mapManager.load(m_databaseManager.getDatabaseEntryFileName(mapName, 1, eDatabaseType::databaseTypeMap));
+                    m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
+                }
+
+            }
+
+            // Component drag
+            else if (tEvent->type == eUIEventType::UIEventType_drag)
+            {
+
+            }
+
+            // Component drop
+            else if (tEvent->type == eUIEventType::UIEventType_drop)
+            {
+                // Action-bar drop
+                if (tEvent->function == eUIEventFunction::UIEventFunction_actionBarSlot)
+                {
+                    m_playerManager.actionBarDrop(tEvent->data);
+                }
+                // Equipment drop
+                if (tEvent->function == eUIEventFunction::UIEventFunction_equipmentSlot)
+                {
+                    m_playerManager.equipmentDrop(tEvent->data);
+                }
+                // Inventory drop
+                if (tEvent->function == eUIEventFunction::UIEventFunction_inventorySlot)
+                {
+                    m_playerManager.inventoryDrop(tEvent->data);
+                }
+                // Vendor drop
+                if (tEvent->function == eUIEventFunction::UIEventFunction_vendorSlot)
+                {
+                    m_playerManager.vendorDrop(tEvent->data);
+                }
+                // Waypoints drop
+                if (tEvent->function == eUIEventFunction::UIEventFunction_waypointsSlot)
+                {
+                    m_playerManager.waypointsDrop(tEvent->data);
+                }
+
+            }
+
+            else
+            {
+                std::cout << "Unhandled ui event: " << tEvent->data << std::endl;
+            }
+
+            // Cleanup
+            delete tEvent;
         }
-
 
         // User input handling
         // -----------------------------------------

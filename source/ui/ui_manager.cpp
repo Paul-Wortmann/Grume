@@ -159,15 +159,18 @@ void cUIManager::process(void)
 {
     // Reset state
     m_mouseOverMenu = false;
+    m_mouseOverComponent = false;
+    std::uint32_t menuNum = 0;
+    std::uint32_t componentNum = 0;
     m_activeWindowCount = 0;
 
     // If menu data structure exists
     if (m_menu != nullptr)
     {
-        // Loop through all menus
+        // determine which menu and component the mouse is over
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if (m_menu[m].enabled)
+            if ((!m_mouseOverMenu) && (m_menu[m].enabled))
             {
                 m_activeWindowCount++;
 
@@ -178,6 +181,7 @@ void cUIManager::process(void)
                     (m_menu[m].positionMax.y > m_io->mousePositionGL.y))
                 {
                     m_mouseOverMenu = true;
+                    menuNum = m;
 
                     // Loop through all menu components
                     for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
@@ -190,8 +194,12 @@ void cUIManager::process(void)
                                 (m_menu[m].component[c].positionMin.y < m_io->mousePositionGL.y) &&
                                 (m_menu[m].component[c].positionMax.y > m_io->mousePositionGL.y))
                             {
+                                m_mouseOverComponent = true;
+                                componentNum = c;
+
                                 // Set mouse hover
-                                if (m_menu[m].component[c].state != eComponentState::componentStateHover)
+                                if ((m_menu[m].component[c].state != eComponentState::componentStateHover) &&
+                                    (m_menu[m].component[c].state != eComponentState::componentStateDragged))
                                 {
                                     m_menu[m].component[c].state = eComponentState::componentStateHover;
 
@@ -201,163 +209,16 @@ void cUIManager::process(void)
                                         m_audioEngine->playSound(m_menu[m].component[c].audio_hover.sound->data);
                                     }
                                 }
-
-                                // Mouse left click
-                                if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT])
-                                {
-                                    // avoid double click
-                                    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
-
-                                    // activate component audio
-                                    if (m_menu[m].component[c].audio_activate.sound != nullptr)
-                                    {
-                                        m_audioEngine->playSound(m_menu[m].component[c].audio_activate.sound->data);
-                                    }
-
-                                    // Drop item if dragged
-                                    if ((m_io->mouseDrag) && (m_menu[m].component[c].type == eComponentType::componentTypeItem))
-                                    {
-                                        m_io->mouseDrag = false;
-                                        std::cout << "Exiting mouse drag." << std::endl;
-                                    }
-
-                                    // Game quit
-                                    if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameQuit)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                        m_menu[m].enabled = false;
-                                        m_mouseOverMenu = false;
-                                        m_activeWindowCount--;
-                                    }
-                                    // Close menu
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionCloseMenu)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                        m_menu[m].enabled = false;
-                                        m_mouseOverMenu = false;
-                                        m_activeWindowCount--;
-                                    }
-                                    // Game new
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameNew)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Game save
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameSave)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                        m_menu[m].enabled = false;
-                                        m_mouseOverMenu = false;
-                                        m_activeWindowCount--;
-                                    }
-                                    // Game load
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameLoad)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                        m_menu[m].enabled = false;
-                                        m_mouseOverMenu = false;
-                                        m_activeWindowCount--;
-                                    }
-                                    // Menu Options
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionMenuOptions)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                        m_mouseOverMenu = false;
-                                    }
-                                    // Fullscreen modified
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionFullscreenModified)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Load map waypoint town
-                                    else if ((m_menu[m].component[c].function == eComponentFunction::componentFunctionLoadMapTown_1) ||
-                                             (m_menu[m].component[c].function == eComponentFunction::componentFunctionLoadMapTown_2) ||
-                                             (m_menu[m].component[c].function == eComponentFunction::componentFunctionLoadMapTown_3) ||
-                                             (m_menu[m].component[c].function == eComponentFunction::componentFunctionLoadMapTown_4) ||
-                                             (m_menu[m].component[c].function == eComponentFunction::componentFunctionLoadMapTown_5) ||
-                                             (m_menu[m].component[c].function == eComponentFunction::componentFunctionLoadMapTown_6))
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                        m_menu[m].enabled = false;
-                                        m_mouseOverMenu = false;
-                                        m_activeWindowCount--;
-                                    }
-                                    else
-                                    {
-                                        // Do nothing
-                                        m_uiEvent = eComponentFunction::componentFunctionNone;
-                                    }
-                                }
-
-                                // Mouse right click
-                                if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT])
-                                {
-                                    // avoid double click
-                                    m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
-
-                                    // Inventory item drop
-                                    if ((m_menu[m].component[c].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
-                                        (m_menu[m].component[c].function <= eComponentFunction::componentFunctionInventorySlot_54))
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                }
-
-                                // Mouse left pressed
-                                if (m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT])
-                                {
-
-                                    // Drop item if dragged
-                                    if ((!m_io->mouseDrag) && (m_menu[m].component[c].type == eComponentType::componentTypeItem))
-                                    {
-                                        m_io->mouseDrag = true;
-                                        m_dragMenu = m;
-                                        m_dragComponent = c;
-                                        std::cout << "Entering mouse drag." << std::endl;
-                                    }
-
-                                    // Music volume up
-                                    if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicUp)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Music volume down
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicDown)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Sound volume up
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeSoundUp)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Sound volume down
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeSoundDown)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Master volume up
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMasterUp)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                    // Master volume down
-                                    else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMasterDown)
-                                    {
-                                        m_uiEvent = m_menu[m].component[c].function;
-                                    }
-                                }
-
-                                // Mouse right presses
-                                if (m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT])
-                                {
-                                }
-
                             }
+
+                            // disable hover
                             else
                             {
-                                // No hover or activate, mouse not over component
-                                m_menu[m].component[c].state = eComponentState::componentStateNormal;
+                                // No hover as mouse not over component
+                                if (m_menu[m].component[c].state != eComponentState::componentStateDragged)
+                                {
+                                    m_menu[m].component[c].state = eComponentState::componentStateNormal;
+                                }
                             }
                         }
                     }
@@ -365,14 +226,308 @@ void cUIManager::process(void)
             }
         }
 
-        // Drop item on the map if not vendor, else return the item to the store
+        // Drop item if dragged
         if ((m_io->mouseDrag) && (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT]))
         {
-            if (m_menu[m_dragMenu].type != eMenuType::menuTypeVendor)
-            {
-                // push event for the player inventory to drop the item
-            }
+            // create event
+            sUIEvent* event = new sUIEvent;
+            event->type = eUIEventType::UIEventType_drop;
+            event->function = eUIEventFunction::UIEventFunction_inventorySlot; // inventory ?
+            event->data = m_dragSlot;
+            m_event.push(event);
+
+            m_menu[m_dragMenu].component[m_dragComponent].state = eComponentState::componentStateNormal;
             m_io->mouseDrag = false;
+            std::cout << "Exiting mouse drag." << std::endl;
+        }
+
+        // Handle mouse component interaction
+        else
+        {
+            // Mouse left click
+            if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT])
+            {
+                // avoid double click
+                m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT] = false;
+
+                // activate component audio
+                if (m_menu[menuNum].component[componentNum].audio_activate.sound != nullptr)
+                {
+                    m_audioEngine->playSound(m_menu[menuNum].component[componentNum].audio_activate.sound->data);
+                }
+
+                // Game quit
+                if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionGameQuit)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_gameQuit;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                    m_menu[menuNum].enabled = false;
+                    m_mouseOverMenu = false;
+                    m_activeWindowCount--;
+                }
+                // Close menu
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionCloseMenu)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_closeMenu;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                    m_menu[menuNum].enabled = false;
+                    m_mouseOverMenu = false;
+                    m_activeWindowCount--;
+                }
+                // Game new
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionGameNew)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_gameNew;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                }
+                // Game save
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionGameSave)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_gameSave;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                    m_menu[menuNum].enabled = false;
+                    m_mouseOverMenu = false;
+                    m_activeWindowCount--;
+                }
+                // Game load
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionGameLoad)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_gameLoad;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                    m_menu[menuNum].enabled = false;
+                    m_mouseOverMenu = false;
+                    m_activeWindowCount--;
+                }
+                // Menu Options
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionMenuOptions)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_menuOptions;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                    m_mouseOverMenu = false;
+                }
+                // Fullscreen modified
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionFullscreenModified)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_fullscreenModified;
+                    event->data = 0;
+                    m_event.push(event);
+
+                    // set data
+                }
+                // Load map waypoint town
+                else if ((m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLoadMapTown_1) ||
+                         (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLoadMapTown_2) ||
+                         (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLoadMapTown_3) ||
+                         (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLoadMapTown_4) ||
+                         (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLoadMapTown_5) ||
+                         (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLoadMapTown_6))
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_loadMapTown;
+                    event->data = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionLoadMapTown_1);
+                    m_event.push(event);
+
+                    // set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateNormal;
+                    m_menu[menuNum].enabled = false;
+                    m_mouseOverMenu = false;
+                    m_activeWindowCount--;
+                }
+            }
+
+            // Mouse right click
+            if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT])
+            {
+                // avoid double click
+                m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
+
+                // Inventory item drop
+                if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
+                    (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionInventorySlot_54))
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_drop;
+                    event->function = eUIEventFunction::UIEventFunction_inventorySlot;
+                    event->data = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                    m_event.push(event);
+                }
+            }
+
+            // Mouse left pressed
+            if (m_io->keyMap[GLFW_MOUSE_BUTTON_LEFT])
+            {
+
+                // Enter mouse drag if item
+                if ((!m_io->mouseDrag) && (m_menu[menuNum].component[componentNum].type == eComponentType::componentTypeItem))
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_drag;
+
+                    // Set data
+                    m_menu[menuNum].component[componentNum].state = eComponentState::componentStateDragged;
+                    m_io->mouseDrag = true;
+                    m_dragMenu = menuNum;
+                    m_dragComponent = componentNum;
+
+                    // slot number (inventory)
+                    if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
+                        (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionInventorySlot_54))
+                    {
+                        m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                        event->function = eUIEventFunction::UIEventFunction_inventorySlot;
+                    }
+                    // slot number (action bar)
+                    else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionActionBarSlot_1) &&
+                             (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionActionBarSlot_12))
+                    {
+                        m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1);
+                        event->function = eUIEventFunction::UIEventFunction_actionBarSlot;
+                    }
+                    // slot number (vendor)
+                    else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
+                             (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionVendorSlot_54))
+                    {
+                        m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
+                        event->function = eUIEventFunction::UIEventFunction_vendorSlot;
+                    }
+                    // slot number (equipment)
+                    else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionEquipmentSlot_1) &&
+                             (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionEquipmentSlot_14))
+                    {
+                        m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1);
+                        event->function = eUIEventFunction::UIEventFunction_equipmentSlot;
+                    }
+                    // slot number (waypoints)
+                    else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionWaypointsSlot_1) &&
+                             (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionWaypointsSlot_6))
+                    {
+                        m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsSlot_1);
+                        event->function = eUIEventFunction::UIEventFunction_waypointsSlot;
+                    }
+
+                    // push event
+                    event->data = m_dragSlot;
+                    m_event.push(event);
+
+                    std::cout << "Entering mouse drag." << std::endl;
+                }
+
+                // Music volume up
+                if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionVolumeMusicUp)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_volumeMusicUp;
+                    event->data = 0;
+                    m_event.push(event);
+                }
+                // Music volume down
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionVolumeMusicDown)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_volumeMusicDown;
+                    event->data = 0;
+                    m_event.push(event);
+                }
+                // Sound volume up
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionVolumeSoundUp)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_volumeSoundUp;
+                    event->data = 0;
+                    m_event.push(event);
+                }
+                // Sound volume down
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionVolumeSoundDown)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_volumeSoundDown;
+                    event->data = 0;
+                    m_event.push(event);
+                }
+                // Master volume up
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionVolumeMasterUp)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_volumeMasterUp;
+                    event->data = 0;
+                    m_event.push(event);
+                }
+                // Master volume down
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionVolumeMasterDown)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function = eUIEventFunction::UIEventFunction_volumeMasterDown;
+                    event->data = 0;
+                    m_event.push(event);
+                }
+            }
+
+            // Mouse right presses
+            if (m_io->keyMap[GLFW_MOUSE_BUTTON_RIGHT])
+            {
+            }
+
         }
 
         // avoid double click

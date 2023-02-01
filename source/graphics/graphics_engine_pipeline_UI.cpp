@@ -311,9 +311,17 @@ void cGraphicsEngine::m_pui_render(void)
                             m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                         }
                     }
+
+                    // Dragged items
+                    else if (menu[m].component[c].state == eComponentState::componentStateDragged)
+                    {
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, glm::vec3(m_io->mousePositionGL.x, m_io->mousePositionGL.y, menu[m].component[c].position.z));
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
+                    }
+
+                    // Other components, and non-dragged
                     else
                     {
-                        // if dragged, mouse position, else component position
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
                     }
@@ -321,7 +329,7 @@ void cGraphicsEngine::m_pui_render(void)
                     // Model matrix uniform
                     glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
-                    // Texture
+                    /// Texture ///
                     glActiveTexture(GL_TEXTURE0);
 
                     // Component type: item
