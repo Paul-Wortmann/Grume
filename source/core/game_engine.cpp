@@ -582,45 +582,41 @@ void cGameEngine::process(void)
             // Component drop menu
             else if (tEvent->type == eUIEventType::UIEventType_dropMenu)
             {
-                // Storage swap
+                // default source + destination states
+                ePlayerStorageType source = ePlayerStorageType::playerStorageTypeNone;
+                ePlayerStorageType destination = ePlayerStorageType::playerStorageTypeNone;
 
-
-                // Action-bar drop
+                // convert from eUIEventFunction to ePlayerStorageType -> source
                 if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
-                {
-                    m_playerManager.actionBarSetDrag(tEvent->data_1, false);
-                    m_playerManager.actionBarDrop(tEvent->data_1);
-                }
-                // Equipment drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
-                {
-                    m_playerManager.equipmentSetDrag(tEvent->data_1, false);
-                    m_playerManager.equipmentDrop(tEvent->data_1);
-                }
-                // Inventory drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
-                {
-                    m_playerManager.inventorySetDrag(tEvent->data_1, false);
-                    m_playerManager.inventoryDrop(tEvent->data_1);
-                }
-                // Vendor drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
-                {
-                    m_playerManager.vendorSetDrag(tEvent->data_1, false);
-                    m_playerManager.vendorDrop(tEvent->data_1);
-                }
-                // Waypoints drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
-                {
-                    m_playerManager.waypointsSetDrag(tEvent->data_1, false);
-                    m_playerManager.waypointsDrop(tEvent->data_1);
-                }
+                    source = ePlayerStorageType::playerStorageTypeActionBar;
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
+                    source = ePlayerStorageType::playerStorageTypeEquipment;
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
+                    source = ePlayerStorageType::playerStorageTypeInventory;
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
+                    source = ePlayerStorageType::playerStorageTypeVendor;
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
+                    source = ePlayerStorageType::playerStorageTypeWaypoints;
 
+                // convert from eUIEventFunction to ePlayerStorageType -> destination
+                if (tEvent->function_2 == eUIEventFunction::UIEventFunction_actionBar)
+                    destination = ePlayerStorageType::playerStorageTypeActionBar;
+                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_equipment)
+                    destination = ePlayerStorageType::playerStorageTypeEquipment;
+                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_inventory)
+                    destination = ePlayerStorageType::playerStorageTypeInventory;
+                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_vendor)
+                    destination = ePlayerStorageType::playerStorageTypeVendor;
+                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_waypoints)
+                    destination = ePlayerStorageType::playerStorageTypeWaypoints;
+
+                // Storage move / swap
+                m_playerManager.moveStorage(source, tEvent->data_1, destination, tEvent->data_2);
             }
 
             else
             {
-                std::cout << "Unhandled ui event: " << tEvent->data_1 << std::endl;
+                std::cout << "Unhandled ui event: " << static_cast<std::uint32_t>(tEvent->type) << std::endl;
             }
 
             // Cleanup

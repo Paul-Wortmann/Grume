@@ -147,8 +147,32 @@ void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManage
     m_playerWaypoints->setResourceManager(_resourceManager);
 }
 
-bool cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2)
+void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2)
 {
+
+    // Disable drag flags -> source
+    if (_type1 == ePlayerStorageType::playerStorageTypeActionBar)
+        actionBarSetDrag(_slot1, false);
+    else if (_type1 == ePlayerStorageType::playerStorageTypeEquipment)
+        equipmentSetDrag(_slot1, false);
+    else if (_type1 == ePlayerStorageType::playerStorageTypeInventory)
+        inventorySetDrag(_slot1, false);
+    else if (_type1 == ePlayerStorageType::playerStorageTypeVendor)
+        vendorSetDrag(_slot1, false);
+    else if (_type1 == ePlayerStorageType::playerStorageTypeWaypoints)
+        waypointsSetDrag(_slot1, false);
+
+    // Disable drag flags -> destination
+    if (_type2 == ePlayerStorageType::playerStorageTypeActionBar)
+        actionBarSetDrag(_slot2, false);
+    else if (_type2 == ePlayerStorageType::playerStorageTypeEquipment)
+        equipmentSetDrag(_slot2, false);
+    else if (_type2 == ePlayerStorageType::playerStorageTypeInventory)
+        inventorySetDrag(_slot2, false);
+    else if (_type2 == ePlayerStorageType::playerStorageTypeVendor)
+        vendorSetDrag(_slot2, false);
+    else if (_type2 == ePlayerStorageType::playerStorageTypeWaypoints)
+        waypointsSetDrag(_slot2, false);
 
 }
 

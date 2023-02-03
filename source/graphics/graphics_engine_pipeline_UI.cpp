@@ -320,7 +320,7 @@ void cGraphicsEngine::m_pui_render(void)
                     // Dragged items
                     else if (menu[m].component[c].state == eComponentState::componentStateDragged)
                     {
-                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, glm::vec3(m_io->mousePositionGL.x, m_io->mousePositionGL.y, menu[m].component[c].position.z));
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, glm::vec3(m_io->mousePositionGL.x, m_io->mousePositionGL.y, menu[m].component[c].position.z - 0.9f));
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].size.x, menu[m].component[c].size.y, 1.0f));
                     }
 

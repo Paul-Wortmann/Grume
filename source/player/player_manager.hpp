@@ -45,7 +45,7 @@ class cPlayerManager :tcTemplateEngine
         sEntity*          getEntityPlayer(void) { return m_player; }
 
         // Storage
-        bool              moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2);
+        void              moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2);
 
         // Player Action bar
         cPlayerStorage*   getPlayerActionBar(void) { return m_playerActionBar; }

@@ -186,39 +186,37 @@ void cUIManager::process(void)
                     // Loop through all menu components
                     for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
                     {
-                        if (m_menu[m].component[c].enabled)
+                        // If mouse over component
+                        if ((m_menu[m].component[c].positionMin.x < m_io->mousePositionGL.x) &&
+                            (m_menu[m].component[c].positionMax.x > m_io->mousePositionGL.x) &&
+                            (m_menu[m].component[c].positionMin.y < m_io->mousePositionGL.y) &&
+                            (m_menu[m].component[c].positionMax.y > m_io->mousePositionGL.y))
                         {
-                            // If mouse over component
-                            if ((m_menu[m].component[c].positionMin.x < m_io->mousePositionGL.x) &&
-                                (m_menu[m].component[c].positionMax.x > m_io->mousePositionGL.x) &&
-                                (m_menu[m].component[c].positionMin.y < m_io->mousePositionGL.y) &&
-                                (m_menu[m].component[c].positionMax.y > m_io->mousePositionGL.y))
+                            m_mouseOverComponent = true;
+                            componentNum = c;
+
+                            // Set mouse hover
+                            if ((m_menu[m].component[c].enabled) &&
+                                (m_menu[m].component[c].state != eComponentState::componentStateHover) &&
+                                (m_menu[m].component[c].state != eComponentState::componentStateDragged))
                             {
-                                m_mouseOverComponent = true;
-                                componentNum = c;
+                                m_menu[m].component[c].state = eComponentState::componentStateHover;
 
-                                // Set mouse hover
-                                if ((m_menu[m].component[c].state != eComponentState::componentStateHover) &&
-                                    (m_menu[m].component[c].state != eComponentState::componentStateDragged))
+                                // Play hover component audio
+                                if (m_menu[m].component[c].audio_hover.sound != nullptr)
                                 {
-                                    m_menu[m].component[c].state = eComponentState::componentStateHover;
-
-                                    // Play hover component audio
-                                    if (m_menu[m].component[c].audio_hover.sound != nullptr)
-                                    {
-                                        m_audioEngine->playSound(m_menu[m].component[c].audio_hover.sound->data);
-                                    }
+                                    m_audioEngine->playSound(m_menu[m].component[c].audio_hover.sound->data);
                                 }
                             }
+                        }
 
-                            // disable hover
-                            else
+                        // disable hover
+                        else
+                        {
+                            // No hover as mouse not over component
+                            if (m_menu[m].component[c].state != eComponentState::componentStateDragged)
                             {
-                                // No hover as mouse not over component
-                                if (m_menu[m].component[c].state != eComponentState::componentStateDragged)
-                                {
-                                    m_menu[m].component[c].state = eComponentState::componentStateNormal;
-                                }
+                                m_menu[m].component[c].state = eComponentState::componentStateNormal;
                             }
                         }
                     }
@@ -229,30 +227,47 @@ void cUIManager::process(void)
         // Drop item if dragged
         if ((m_io->mouseDrag) && (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT]))
         {
-            // create event
-            sUIEvent* event = new sUIEvent;
-            event->type = eUIEventType::UIEventType_dropMenu;
+            // event struct
+            sUIEvent* event = nullptr;
 
-            // Function 1
-            if (m_menu[m_dragMenu].type == eMenuType::menuTypeActionBar)
-                event->function_1 = eUIEventFunction::UIEventFunction_actionBar;
-            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeEquipment)
-                event->function_1 = eUIEventFunction::UIEventFunction_equipment;
-            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeInventory)
-                event->function_1 = eUIEventFunction::UIEventFunction_inventory;
-            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeVendor)
-                event->function_1 = eUIEventFunction::UIEventFunction_vendor;
-            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeWayPoints)
-                event->function_1 = eUIEventFunction::UIEventFunction_waypoints;
-            else
-                event->function_1 = eUIEventFunction::UIEventFunction_none;
+            bool dropGround = false;
+            bool dropMenu = false;
 
-            // Data 1
-            event->data_1 = m_dragSlot;
+            if (!m_mouseOverMenu)
+                dropGround = true;
+            else if (m_mouseOverMenu && m_mouseOverComponent && (m_menu[menuNum].component[componentNum].type == eComponentType::componentTypeItem))
+                dropMenu = true;
 
-            // Function 2
-            if (m_mouseOverMenu && m_mouseOverComponent)
+            // Drop ground
+            if (dropGround || dropMenu)
             {
+                // create event
+                event = new sUIEvent;
+                event->type = eUIEventType::UIEventType_dropGround;
+
+                // Function 1
+                if (m_menu[m_dragMenu].type == eMenuType::menuTypeActionBar)
+                    event->function_1 = eUIEventFunction::UIEventFunction_actionBar;
+                else if (m_menu[m_dragMenu].type == eMenuType::menuTypeEquipment)
+                    event->function_1 = eUIEventFunction::UIEventFunction_equipment;
+                else if (m_menu[m_dragMenu].type == eMenuType::menuTypeInventory)
+                    event->function_1 = eUIEventFunction::UIEventFunction_inventory;
+                else if (m_menu[m_dragMenu].type == eMenuType::menuTypeVendor)
+                    event->function_1 = eUIEventFunction::UIEventFunction_vendor;
+                else if (m_menu[m_dragMenu].type == eMenuType::menuTypeWayPoints)
+                    event->function_1 = eUIEventFunction::UIEventFunction_waypoints;
+                else
+                    event->function_1 = eUIEventFunction::UIEventFunction_none;
+
+                // Data 1
+                event->data_1 = m_dragSlot;
+            }
+
+            // Drop menu
+            if (dropMenu)
+            {
+                event->type = eUIEventType::UIEventType_dropMenu;
+
                 m_dropMenu = menuNum;
                 m_dropComponent = componentNum;
 
@@ -292,27 +307,27 @@ void cUIManager::process(void)
                     event->function_2 = eUIEventFunction::UIEventFunction_waypoints;
                 }
 
+                // Data 2
+                event->data_2 = m_dropSlot;
 
             }
-            else
-            {
-                event->function_2 = eUIEventFunction::UIEventFunction_none;
-            }
-
-            // Data 2
-            event->data_2 = m_dropSlot;
-
 
             // Push event
-            m_event.push(event);
+            if (event != nullptr)
+                m_event.push(event);
 
             m_menu[m_dragMenu].component[m_dragComponent].state = eComponentState::componentStateNormal;
             m_io->mouseDrag = false;
-            std::cout << "Exiting mouse drag." << std::endl;
+            if ((event != nullptr) && (event->type == eUIEventType::UIEventType_dropGround))
+                std::cout << "Exiting mouse drag: drop ground." << std::endl;
+            else if ((event != nullptr) && (event->type == eUIEventType::UIEventType_dropMenu))
+                std::cout << "Exiting mouse drag: drop menu." << std::endl;
+            else
+                std::cout << "Exiting mouse drag" << std::endl;
         }
 
         // Handle mouse component interaction
-        else
+        else if (m_menu[menuNum].component[componentNum].enabled && !m_io->mouseDrag)
         {
             // Mouse left click
             if (m_io->keyReadyMap[GLFW_MOUSE_BUTTON_LEFT])
