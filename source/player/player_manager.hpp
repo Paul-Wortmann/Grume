@@ -35,6 +35,18 @@ class cPlayerManager :tcTemplateEngine
         void              process(const std::int64_t &_dt) override;
         sPlayerEvent*     getEvent(void) { return m_event.pop(); }
 
+        // Set pointers
+        void              setAudioEngine(cAudioEngine* _audioEngine);
+        void              setEntityManager(cEntityManager *_entityManager);
+        void              setDatabaseManager(cDatabaseManager *_databaseManager);
+        void              setResourceManagerPointer(cResourceManager* _resourceManager);
+        void              setMapPointer(sMap* _map);
+        void              setUIManager(cUIManager* _UIManager);
+        sEntity*          getEntityPlayer(void) { return m_player; }
+
+        // Storage
+        bool              moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2);
+
         // Player Action bar
         cPlayerStorage*   getPlayerActionBar(void) { return m_playerActionBar; }
         sEntity*          getActionBarEntity(const std::uint32_t _slot) { return m_playerActionBar->getSlotEntity(_slot); }
@@ -45,6 +57,7 @@ class cPlayerManager :tcTemplateEngine
         bool              actionBarPickupItem(sEntity* &_entity) { return m_playerActionBar->pickupItem(_entity); }
         bool              actionBarDropItem(sEntity* &_entity) { return m_playerActionBar->dropItem(_entity); }
         void              actionBarDrop(const std::uint32_t &_slot) { m_playerActionBar->dropItem(_slot); }
+        void              actionBarSetDrag(const std::uint32_t _slot, const bool &_state) { m_playerActionBar->setDrag(_slot, _state); }
 
         // Player Equipment
         cPlayerStorage*   getPlayerEquipment(void) { return m_playerEquipment; }
@@ -56,6 +69,7 @@ class cPlayerManager :tcTemplateEngine
         bool              equipmentPickupItem(sEntity* &_entity) { return m_playerEquipment->pickupItem(_entity); }
         bool              equipmentDropItem(sEntity* &_entity) { return m_playerEquipment->dropItem(_entity); }
         void              equipmentDrop(const std::uint32_t &_slot) { m_playerEquipment->dropItem(_slot); }
+        void              equipmentSetDrag(const std::uint32_t _slot, const bool &_state) { m_playerEquipment->setDrag(_slot, _state); }
 
         // Player Inventory
         cPlayerStorage*   getPlayerInventory(void) { return m_playerInventory; }
@@ -67,6 +81,7 @@ class cPlayerManager :tcTemplateEngine
         bool              inventoryPickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); }
         bool              inventoryDropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); }
         void              inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
+        void              inventorySetDrag(const std::uint32_t _slot, const bool &_state) { m_playerInventory->setDrag(_slot, _state); }
 
         // Player Vendor
         cPlayerStorage*   getPlayerVendor(void) { return m_playerVendor; }
@@ -78,6 +93,7 @@ class cPlayerManager :tcTemplateEngine
         bool              vendorPickupItem(sEntity* &_entity) { return m_playerVendor->pickupItem(_entity); }
         bool              vendorDropItem(sEntity* &_entity) { return m_playerVendor->dropItem(_entity); }
         void              vendorDrop(const std::uint32_t &_slot) { m_playerVendor->dropItem(_slot); }
+        void              vendorSetDrag(const std::uint32_t _slot, const bool &_state) { m_playerVendor->setDrag(_slot, _state); }
 
         // Waypoint
         cPlayerStorage*   getPlayerWaypoints(void) { return m_playerWaypoints; }
@@ -89,16 +105,9 @@ class cPlayerManager :tcTemplateEngine
         bool              waypointsPickupItem(sEntity* &_entity) { return m_playerWaypoints->pickupItem(_entity); }
         bool              waypointsDropItem(sEntity* &_entity) { return m_playerWaypoints->dropItem(_entity); }
         void              waypointsDrop(const std::uint32_t &_slot) { m_playerWaypoints->dropItem(_slot); }
+        void              waypointsSetDrag(const std::uint32_t _slot, const bool &_state) { m_playerWaypoints->setDrag(_slot, _state); }
 
-        // Set pointers
-        void              setAudioEngine(cAudioEngine* _audioEngine);
-        void              setEntityManager(cEntityManager *_entityManager);
-        void              setDatabaseManager(cDatabaseManager *_databaseManager);
-        void              setResourceManagerPointer(cResourceManager* _resourceManager);
-        void              setMapPointer(sMap* _map);
-        void              setUIManager(cUIManager* _UIManager);
-        sEntity*          getEntityPlayer(void) { return m_player; }
-
+        // Other
         void              setMapPlayer(void);
         std::uint32_t     getPlayerID(void) { return m_player->UID; }
         glm::vec3         getPosition(void) { return m_player->base.position; }

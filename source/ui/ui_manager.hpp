@@ -84,9 +84,16 @@ class cUIManager
         // menu
         bool                  m_mouseOverMenu      = false;
         bool                  m_mouseOverComponent = false;
+
+        // Drag
         std::uint32_t         m_dragMenu           = 0; // Source menu
         std::uint32_t         m_dragComponent      = 0; // Source component
         std::uint32_t         m_dragSlot           = 0; // Source slot
+
+        // Drop
+        std::uint32_t         m_dropMenu           = 0; // Destination menu
+        std::uint32_t         m_dropComponent      = 0; // Destination component
+        std::uint32_t         m_dropSlot           = 0; // Destination slot
 
         // member pointer handles
         cAudioEngine*         m_audioEngine        = nullptr;

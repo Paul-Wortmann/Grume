@@ -57,6 +57,7 @@ class cPlayerStorage
         bool                pickupItem(sEntity* &_entity);
         bool                dropItem(sEntity* &_entity);
         void                dropItem(const std::uint32_t &_slot);
+        void                setDrag(const std::uint32_t _slot, const bool &_state) { m_storage.slot[_slot].dragged = _state; }
 
         // other
         void                setStackColor(const glm::uvec4 &_color) { m_stackTextColor = _color; }

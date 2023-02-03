@@ -231,9 +231,79 @@ void cUIManager::process(void)
         {
             // create event
             sUIEvent* event = new sUIEvent;
-            event->type = eUIEventType::UIEventType_drop;
-            event->function = eUIEventFunction::UIEventFunction_inventorySlot; // inventory ?
-            event->data = m_dragSlot;
+            event->type = eUIEventType::UIEventType_dropMenu;
+
+            // Function 1
+            if (m_menu[m_dragMenu].type == eMenuType::menuTypeActionBar)
+                event->function_1 = eUIEventFunction::UIEventFunction_actionBar;
+            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeEquipment)
+                event->function_1 = eUIEventFunction::UIEventFunction_equipment;
+            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeInventory)
+                event->function_1 = eUIEventFunction::UIEventFunction_inventory;
+            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeVendor)
+                event->function_1 = eUIEventFunction::UIEventFunction_vendor;
+            else if (m_menu[m_dragMenu].type == eMenuType::menuTypeWayPoints)
+                event->function_1 = eUIEventFunction::UIEventFunction_waypoints;
+            else
+                event->function_1 = eUIEventFunction::UIEventFunction_none;
+
+            // Data 1
+            event->data_1 = m_dragSlot;
+
+            // Function 2
+            if (m_mouseOverMenu && m_mouseOverComponent)
+            {
+                m_dropMenu = menuNum;
+                m_dropComponent = componentNum;
+
+                // slot number (inventory)
+                if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
+                    (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionInventorySlot_54))
+                {
+                    m_dropSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                    event->function_2 = eUIEventFunction::UIEventFunction_inventory;
+                }
+                // slot number (action bar)
+                else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionActionBarSlot_1) &&
+                         (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionActionBarSlot_12))
+                {
+                    m_dropSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1);
+                    event->function_2 = eUIEventFunction::UIEventFunction_actionBar;
+                }
+                // slot number (vendor)
+                else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
+                         (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionVendorSlot_54))
+                {
+                    m_dropSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
+                    event->function_2 = eUIEventFunction::UIEventFunction_vendor;
+                }
+                // slot number (equipment)
+                else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionEquipmentSlot_1) &&
+                         (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionEquipmentSlot_14))
+                {
+                    m_dropSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1);
+                    event->function_2 = eUIEventFunction::UIEventFunction_equipment;
+                }
+                // slot number (waypoints)
+                else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionWaypointsSlot_1) &&
+                         (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionWaypointsSlot_6))
+                {
+                    m_dropSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsSlot_1);
+                    event->function_2 = eUIEventFunction::UIEventFunction_waypoints;
+                }
+
+
+            }
+            else
+            {
+                event->function_2 = eUIEventFunction::UIEventFunction_none;
+            }
+
+            // Data 2
+            event->data_2 = m_dropSlot;
+
+
+            // Push event
             m_event.push(event);
 
             m_menu[m_dragMenu].component[m_dragComponent].state = eComponentState::componentStateNormal;
@@ -262,8 +332,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_gameQuit;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_gameQuit;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -278,8 +348,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_closeMenu;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_closeMenu;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -294,8 +364,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_gameNew;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_gameNew;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -307,8 +377,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_gameSave;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_gameSave;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -323,8 +393,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_gameLoad;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_gameLoad;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -339,8 +409,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_menuOptions;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_menuOptions;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -353,8 +423,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_fullscreenModified;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_fullscreenModified;
+                    event->data_1 = 0;
                     m_event.push(event);
 
                     // set data
@@ -370,8 +440,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_loadMapTown;
-                    event->data = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionLoadMapTown_1);
+                    event->function_1 = eUIEventFunction::UIEventFunction_loadMapTown;
+                    event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionLoadMapTown_1);
                     m_event.push(event);
 
                     // set data
@@ -394,9 +464,9 @@ void cUIManager::process(void)
                 {
                     // create event
                     sUIEvent* event = new sUIEvent;
-                    event->type = eUIEventType::UIEventType_drop;
-                    event->function = eUIEventFunction::UIEventFunction_inventorySlot;
-                    event->data = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                    event->type = eUIEventType::UIEventType_dropGround;
+                    event->function_1 = eUIEventFunction::UIEventFunction_inventory;
+                    event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
                     m_event.push(event);
                 }
             }
@@ -423,39 +493,39 @@ void cUIManager::process(void)
                         (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionInventorySlot_54))
                     {
                         m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
-                        event->function = eUIEventFunction::UIEventFunction_inventorySlot;
+                        event->function_1 = eUIEventFunction::UIEventFunction_inventory;
                     }
                     // slot number (action bar)
                     else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionActionBarSlot_1) &&
                              (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionActionBarSlot_12))
                     {
                         m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionActionBarSlot_1);
-                        event->function = eUIEventFunction::UIEventFunction_actionBarSlot;
+                        event->function_1 = eUIEventFunction::UIEventFunction_actionBar;
                     }
                     // slot number (vendor)
                     else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
                              (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionVendorSlot_54))
                     {
                         m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
-                        event->function = eUIEventFunction::UIEventFunction_vendorSlot;
+                        event->function_1 = eUIEventFunction::UIEventFunction_vendor;
                     }
                     // slot number (equipment)
                     else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionEquipmentSlot_1) &&
                              (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionEquipmentSlot_14))
                     {
                         m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1);
-                        event->function = eUIEventFunction::UIEventFunction_equipmentSlot;
+                        event->function_1 = eUIEventFunction::UIEventFunction_equipment;
                     }
                     // slot number (waypoints)
                     else if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionWaypointsSlot_1) &&
                              (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionWaypointsSlot_6))
                     {
                         m_dragSlot = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionWaypointsSlot_1);
-                        event->function = eUIEventFunction::UIEventFunction_waypointsSlot;
+                        event->function_1 = eUIEventFunction::UIEventFunction_waypoints;
                     }
 
                     // push event
-                    event->data = m_dragSlot;
+                    event->data_1 = m_dragSlot;
                     m_event.push(event);
 
                     std::cout << "Entering mouse drag." << std::endl;
@@ -467,8 +537,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_volumeMusicUp;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_volumeMusicUp;
+                    event->data_1 = 0;
                     m_event.push(event);
                 }
                 // Music volume down
@@ -477,8 +547,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_volumeMusicDown;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_volumeMusicDown;
+                    event->data_1 = 0;
                     m_event.push(event);
                 }
                 // Sound volume up
@@ -487,8 +557,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_volumeSoundUp;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_volumeSoundUp;
+                    event->data_1 = 0;
                     m_event.push(event);
                 }
                 // Sound volume down
@@ -497,8 +567,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_volumeSoundDown;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_volumeSoundDown;
+                    event->data_1 = 0;
                     m_event.push(event);
                 }
                 // Master volume up
@@ -507,8 +577,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_volumeMasterUp;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_volumeMasterUp;
+                    event->data_1 = 0;
                     m_event.push(event);
                 }
                 // Master volume down
@@ -517,8 +587,8 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
-                    event->function = eUIEventFunction::UIEventFunction_volumeMasterDown;
-                    event->data = 0;
+                    event->function_1 = eUIEventFunction::UIEventFunction_volumeMasterDown;
+                    event->data_1 = 0;
                     m_event.push(event);
                 }
             }

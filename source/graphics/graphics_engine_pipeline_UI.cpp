@@ -187,6 +187,7 @@ void cGraphicsEngine::m_pui_render(void)
                         sPlayerStorage* playerActionBar = m_playerActionBar->getStorage();
 
                         if ((playerActionBar->slot[slotNumber].occupied) &&
+                            (!playerActionBar->slot[slotNumber].dragged) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:
@@ -214,6 +215,7 @@ void cGraphicsEngine::m_pui_render(void)
                         sPlayerStorage* playerEquipment = m_playerEquipment->getStorage();
 
                         if ((playerEquipment->slot[slotNumber].occupied) &&
+                            (!playerEquipment->slot[slotNumber].dragged) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:
@@ -241,6 +243,7 @@ void cGraphicsEngine::m_pui_render(void)
                         sPlayerStorage* playerInventory = m_playerInventory->getStorage();
 
                         if ((playerInventory->slot[slotNumber].occupied) &&
+                            (!playerInventory->slot[slotNumber].dragged) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:
@@ -268,6 +271,7 @@ void cGraphicsEngine::m_pui_render(void)
                         sPlayerStorage* playerVendor = m_playerVendor->getStorage();
 
                         if ((playerVendor->slot[slotNumber].occupied) &&
+                            (!playerVendor->slot[slotNumber].dragged) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:
@@ -295,6 +299,7 @@ void cGraphicsEngine::m_pui_render(void)
                         sPlayerStorage* playerWaypoints = m_playerWaypoints->getStorage();
 
                         if ((playerWaypoints->slot[slotNumber].occupied) &&
+                            (!playerWaypoints->slot[slotNumber].dragged) &&
                             (slotEntity->item->stackSize > 1))
                         {
                             // Generate texture:

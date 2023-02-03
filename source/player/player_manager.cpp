@@ -147,6 +147,11 @@ void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManage
     m_playerWaypoints->setResourceManager(_resourceManager);
 }
 
+bool cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2)
+{
+
+}
+
 std::uint32_t cPlayerManager::load(const std::string &_fileName)
 {
     std::uint32_t return_value = EXIT_SUCCESS;

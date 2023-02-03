@@ -411,19 +411,19 @@ void cGameEngine::process(void)
             if (tEvent->type == eUIEventType::UIEventType_click)
             {
                 // Close menu
-                if (tEvent->function == eUIEventFunction::UIEventFunction_closeMenu)
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_closeMenu)
                 {
                     m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
                 }
 
                 // Game quit
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameQuit)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_gameQuit)
                 {
                     m_engineState = eEngineState::engineStateTerm;
                 }
 
                 // Game new
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameNew)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_gameNew)
                 {
                     m_engineState = eEngineState::engineStateProc;
                     cGameEngine::m_game_new();
@@ -432,7 +432,7 @@ void cGameEngine::process(void)
                 }
 
                 // Game load
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameLoad)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_gameLoad)
                 {
                     m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
                     cGameEngine::m_game_load(1);
@@ -440,14 +440,14 @@ void cGameEngine::process(void)
                 }
 
                 // Game save
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_gameSave)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_gameSave)
                 {
                     m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
                     cGameEngine::m_game_save(1);
                 }
 
                 // options menu
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_menuOptions)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_menuOptions)
                 {
                     m_engineState = eEngineState::engineStatePause;
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
@@ -455,57 +455,57 @@ void cGameEngine::process(void)
                 }
 
                 // Master volume up
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMasterUp)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_volumeMasterUp)
                 {
                     m_audioEngine.setVolumeMasterUp();
                     m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();
                 }
 
                 // Master volume down
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMasterDown)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_volumeMasterDown)
                 {
                     m_audioEngine.setVolumeMasterDown();
                     m_gameConfig.m_volume_master = m_audioEngine.getVolumeMaster();
                 }
 
                 // Music volume up
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMusicUp)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_volumeMusicUp)
                 {
                     m_audioEngine.setVolumeMusicUp();
                     m_gameConfig.m_volume_music = m_audioEngine.getVolumeMusic();
                 }
 
                 // Music volume down
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeMusicDown)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_volumeMusicDown)
                 {
                     m_audioEngine.setVolumeMusicDown();
                     m_gameConfig.m_volume_music = m_audioEngine.getVolumeMusic();
                 }
 
                 // Sound volume up
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeSoundUp)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_volumeSoundUp)
                 {
                     m_audioEngine.setVolumeSoundUp();
                     m_gameConfig.m_volume_sfx = m_audioEngine.getVolumeSound();
                 }
 
                 // Sound volume down
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_volumeSoundDown)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_volumeSoundDown)
                 {
                     m_audioEngine.setVolumeSoundDown();
                     m_gameConfig.m_volume_sfx = m_audioEngine.getVolumeSound();
                 }
 
                 // Fullscreen modified
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_fullscreenModified)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_fullscreenModified)
                 {
                     // NA
                 }
 
                 // Way-point map load town
-                else if (tEvent->function == eUIEventFunction::UIEventFunction_loadMapTown)
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_loadMapTown)
                 {
-                    std::string mapName = "town_" + std::to_string(tEvent->data) + "_001";
+                    std::string mapName = "town_" + std::to_string(tEvent->data_1) + "_001";
                     m_mapManager.setSpawnPortal(2);
                     m_mapManager.load(m_databaseManager.getDatabaseEntryFileName(mapName, 1, eDatabaseType::databaseTypeMap));
                     m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
@@ -516,43 +516,111 @@ void cGameEngine::process(void)
             // Component drag
             else if (tEvent->type == eUIEventType::UIEventType_drag)
             {
+                // Action-bar drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
+                {
+                    m_playerManager.actionBarSetDrag(tEvent->data_1, true);
+                }
+                // Equipment drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
+                {
+                    m_playerManager.equipmentSetDrag(tEvent->data_1, true);
+                }
+                // Inventory drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
+                {
+                    m_playerManager.inventorySetDrag(tEvent->data_1, true);
+                }
+                // Vendor drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
+                {
+                    m_playerManager.vendorSetDrag(tEvent->data_1, true);
+                }
+                // Waypoints drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
+                {
+                    m_playerManager.waypointsSetDrag(tEvent->data_1, true);
+                }
+            }
+
+            // Component drop ground
+            else if (tEvent->type == eUIEventType::UIEventType_dropGround)
+            {
+                // Action-bar drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
+                {
+                    m_playerManager.actionBarSetDrag(tEvent->data_1, false);
+                    m_playerManager.actionBarDrop(tEvent->data_1);
+                }
+                // Equipment drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
+                {
+                    m_playerManager.equipmentSetDrag(tEvent->data_1, false);
+                    m_playerManager.equipmentDrop(tEvent->data_1);
+                }
+                // Inventory drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
+                {
+                    m_playerManager.inventorySetDrag(tEvent->data_1, false);
+                    m_playerManager.inventoryDrop(tEvent->data_1);
+                }
+                // Vendor drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
+                {
+                    m_playerManager.vendorSetDrag(tEvent->data_1, false);
+                    m_playerManager.vendorDrop(tEvent->data_1);
+                }
+                // Waypoints drop
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
+                {
+                    m_playerManager.waypointsSetDrag(tEvent->data_1, false);
+                    m_playerManager.waypointsDrop(tEvent->data_1);
+                }
 
             }
 
-            // Component drop
-            else if (tEvent->type == eUIEventType::UIEventType_drop)
+            // Component drop menu
+            else if (tEvent->type == eUIEventType::UIEventType_dropMenu)
             {
+                // Storage swap
+
+
                 // Action-bar drop
-                if (tEvent->function == eUIEventFunction::UIEventFunction_actionBarSlot)
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
                 {
-                    m_playerManager.actionBarDrop(tEvent->data);
+                    m_playerManager.actionBarSetDrag(tEvent->data_1, false);
+                    m_playerManager.actionBarDrop(tEvent->data_1);
                 }
                 // Equipment drop
-                if (tEvent->function == eUIEventFunction::UIEventFunction_equipmentSlot)
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
                 {
-                    m_playerManager.equipmentDrop(tEvent->data);
+                    m_playerManager.equipmentSetDrag(tEvent->data_1, false);
+                    m_playerManager.equipmentDrop(tEvent->data_1);
                 }
                 // Inventory drop
-                if (tEvent->function == eUIEventFunction::UIEventFunction_inventorySlot)
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
                 {
-                    m_playerManager.inventoryDrop(tEvent->data);
+                    m_playerManager.inventorySetDrag(tEvent->data_1, false);
+                    m_playerManager.inventoryDrop(tEvent->data_1);
                 }
                 // Vendor drop
-                if (tEvent->function == eUIEventFunction::UIEventFunction_vendorSlot)
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
                 {
-                    m_playerManager.vendorDrop(tEvent->data);
+                    m_playerManager.vendorSetDrag(tEvent->data_1, false);
+                    m_playerManager.vendorDrop(tEvent->data_1);
                 }
                 // Waypoints drop
-                if (tEvent->function == eUIEventFunction::UIEventFunction_waypointsSlot)
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
                 {
-                    m_playerManager.waypointsDrop(tEvent->data);
+                    m_playerManager.waypointsSetDrag(tEvent->data_1, false);
+                    m_playerManager.waypointsDrop(tEvent->data_1);
                 }
 
             }
 
             else
             {
-                std::cout << "Unhandled ui event: " << tEvent->data << std::endl;
+                std::cout << "Unhandled ui event: " << tEvent->data_1 << std::endl;
             }
 
             // Cleanup
