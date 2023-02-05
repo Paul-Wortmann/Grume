@@ -248,6 +248,9 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
     if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
         (_type2 == ePlayerStorageType::playerStorageTypeVendor))
     {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        m_player->character->gold += (source->entity->item->goldValue * source->entity->item->stackSize);
+        m_UIManager->setGold(m_player->character->gold);
         swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
     }
 
@@ -255,7 +258,14 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
     else if ((_type1 == ePlayerStorageType::playerStorageTypeVendor) &&
              (_type2 == ePlayerStorageType::playerStorageTypeInventory))
     {
-        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        std::uint32_t buyValue = source->entity->item->goldValue * source->entity->item->stackSize;
+        if (buyValue <= m_player->character->gold)
+        {
+            m_player->character->gold -= (source->entity->item->goldValue * source->entity->item->stackSize);
+            m_UIManager->setGold(m_player->character->gold);
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
     }
 
     // Swap if same storage
