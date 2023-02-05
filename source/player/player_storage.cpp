@@ -102,6 +102,22 @@ void cPlayerStorage::setSlotEntity(const std::uint32_t _slot, sEntity* &_entity)
     }
 }
 
+void cPlayerStorage::setUISlotEnabled(const std::uint32_t &_slot, const bool &_state)
+{
+    // set slot
+    m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(m_slot_1) + _slot), _state);
+
+    // set stack
+    if ((_state == true) && (m_storage.slot[_slot].entity != nullptr) && (m_storage.slot[_slot].entity->item->stackSize > 1))
+    {
+        m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(m_stack_1) + _slot), true);
+    }
+    else
+    {
+        m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(m_stack_1) + _slot), false);
+    }
+}
+
 void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
 {
     // slot empty, early exit

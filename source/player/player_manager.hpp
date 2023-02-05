@@ -45,6 +45,7 @@ class cPlayerManager :tcTemplateEngine
         sEntity*          getEntityPlayer(void) { return m_player; }
 
         // Storage
+        void              swapStorage(cPlayerStorage *&_sourceStorage, const std::uint32_t &_slot1, cPlayerStorage *&_destinationStorage, const std::uint32_t &_slot2);
         void              moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2);
 
         // Player Action bar
@@ -131,6 +132,7 @@ class cPlayerManager :tcTemplateEngine
         cDatabaseManager* m_databaseManager = nullptr;
         cResourceManager* m_resourceManager = nullptr;
         cEntityManager*   m_entityManager   = nullptr;
+        cUIManager*       m_UIManager       = nullptr;
         sEntity*          m_player          = nullptr;
         sMap*             m_mapPointer      = nullptr;
 

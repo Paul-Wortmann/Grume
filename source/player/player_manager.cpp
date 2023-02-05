@@ -120,6 +120,7 @@ void cPlayerManager::setEntityManager(cEntityManager *_entityManager)
 
 void cPlayerManager::setUIManager(cUIManager* _UIManager)
 {
+    m_UIManager = _UIManager;
     m_playerActionBar->setUIManager(_UIManager);
     m_playerEquipment->setUIManager(_UIManager);
     m_playerInventory->setUIManager(_UIManager);
@@ -147,33 +148,122 @@ void cPlayerManager::setResourceManagerPointer(cResourceManager* _resourceManage
     m_playerWaypoints->setResourceManager(_resourceManager);
 }
 
+void cPlayerManager::swapStorage(cPlayerStorage *&_sourceStorage, const std::uint32_t &_slot1, cPlayerStorage *&_destinationStorage, const std::uint32_t &_slot2)
+{
+        sPlayerStorageSlot* source = _sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = _destinationStorage->getStorageSlot(_slot2);
+        sPlayerStorageSlot tSlot = {};
+
+        // Backup
+        tSlot.data = source->data;
+        tSlot.dragged = source->dragged;
+        tSlot.entity = source->entity;
+        tSlot.occupied = source->occupied;
+        tSlot.stackLabel = source->stackLabel;
+        tSlot.type = source->type;
+
+        // To source
+        source->data = destination->data;
+        source->dragged = destination->dragged;
+        source->entity = destination->entity;
+        source->occupied = destination->occupied;
+        source->stackLabel = destination->stackLabel;
+        source->type = destination->type;
+
+        // To destination
+        destination->data = tSlot.data;
+        destination->dragged = tSlot.dragged;
+        destination->entity = tSlot.entity;
+        destination->occupied = tSlot.occupied;
+        destination->stackLabel = tSlot.stackLabel;
+        destination->type = tSlot.type;
+
+        // UI set slot state
+        _sourceStorage->setUISlotEnabled(_slot1, source->occupied);
+        _destinationStorage->setUISlotEnabled(_slot2, destination->occupied);
+
+        tSlot.entity = nullptr;
+}
+
 void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2)
 {
+    cPlayerStorage* sourceStorage = nullptr;
+    cPlayerStorage* destinationStorage = nullptr;
 
-    // Disable drag flags -> source
+    // Source
     if (_type1 == ePlayerStorageType::playerStorageTypeActionBar)
+    {
+        sourceStorage = m_playerActionBar;
         actionBarSetDrag(_slot1, false);
+    }
     else if (_type1 == ePlayerStorageType::playerStorageTypeEquipment)
+    {
+        sourceStorage = m_playerEquipment;
         equipmentSetDrag(_slot1, false);
+    }
     else if (_type1 == ePlayerStorageType::playerStorageTypeInventory)
+    {
+        sourceStorage = m_playerInventory;
         inventorySetDrag(_slot1, false);
+    }
     else if (_type1 == ePlayerStorageType::playerStorageTypeVendor)
+    {
+        sourceStorage = m_playerVendor;
         vendorSetDrag(_slot1, false);
+    }
     else if (_type1 == ePlayerStorageType::playerStorageTypeWaypoints)
+    {
+        sourceStorage = m_playerWaypoints;
         waypointsSetDrag(_slot1, false);
+    }
 
-    // Disable drag flags -> destination
+    // Destination
     if (_type2 == ePlayerStorageType::playerStorageTypeActionBar)
+    {
+        destinationStorage = m_playerActionBar;
         actionBarSetDrag(_slot2, false);
+    }
     else if (_type2 == ePlayerStorageType::playerStorageTypeEquipment)
+    {
+        destinationStorage = m_playerEquipment;
         equipmentSetDrag(_slot2, false);
+    }
     else if (_type2 == ePlayerStorageType::playerStorageTypeInventory)
+    {
+        destinationStorage = m_playerInventory;
         inventorySetDrag(_slot2, false);
+    }
     else if (_type2 == ePlayerStorageType::playerStorageTypeVendor)
+    {
+        destinationStorage = m_playerVendor;
         vendorSetDrag(_slot2, false);
+    }
     else if (_type2 == ePlayerStorageType::playerStorageTypeWaypoints)
+    {
+        destinationStorage = m_playerWaypoints;
         waypointsSetDrag(_slot2, false);
+    }
 
+    // Inventory to vendor -> sell item
+    if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
+        (_type2 == ePlayerStorageType::playerStorageTypeVendor))
+    {
+        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+    }
+
+    // Vendor to Inventory -> buy item
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeVendor) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeInventory))
+    {
+        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+    }
+
+    // Swap if same storage
+    //if (sourceStorage == destinationStorage)
+    else
+    {
+        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+    }
 }
 
 std::uint32_t cPlayerManager::load(const std::string &_fileName)
