@@ -363,30 +363,6 @@ enum class eComponentFunction : std::uint16_t
 
 };
 
-enum class eComponentSlotType : std::uint16_t
-{
-    componentSlotTypeNone   =  0, // None
-    componentSlotTypePotion =  1, // Potion
-    componentSlotTypeSkill  =  2, // Skill
-
-    componentSlotTypeWeapon =  3, // Weapon
-    componentSlotTypeShield =  4, // Shield
-    componentSlotTypeHelm   =  5, // Helm
-    componentSlotTypeArmor  =  6, // Armor
-    componentSlotTypeGloves =  7, // Gloves
-    componentSlotTypeBoots  =  8, // Boots
-    componentSlotTypeBelt   =  9, // Belt
-    componentSlotTypeAmulet = 10, // Amulet
-    componentSlotTypeRing   = 11, // Ring
-
-    componentSlotTypeRune_1 = 12, // Rune 1
-    componentSlotTypeRune_2 = 13, // Rune 2
-    componentSlotTypeRune_3 = 14, // Rune 3
-    componentSlotTypeRune_4 = 15, // Rune 4
-    componentSlotTypeRune_5 = 16, // Rune 5
-    componentSlotTypeRune_6 = 17  // Rune 6
-};
-
 enum class eComponentState : std::uint16_t
 {
     componentStateNormal    = 0, // Normal
@@ -412,7 +388,6 @@ struct sUIComponent
     std::string        name           = "";
     bool               enabled        = false;
     eComponentFunction function       = eComponentFunction::componentFunctionNone;
-    eComponentSlotType slotType       = eComponentSlotType::componentSlotTypeNone;
     eComponentType     type           = eComponentType::componentTypeNormal;
     eComponentState    state          = eComponentState::componentStateNormal;
 

@@ -34,6 +34,18 @@ std::uint32_t cPlayerManager::initialize(void)
     m_playerActionBar->setStackColor(m_stackTextColor);
     m_playerActionBar->setSlot1(eComponentFunction::componentFunctionActionBarSlot_1);
     m_playerActionBar->setStack1(eComponentFunction::componentFunctionActionBarStack_1);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypePotion, 0);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypePotion, 1);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 2);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 3);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 4);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 5);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 6);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 7);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 8);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill, 9);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill,10);
+    m_playerActionBar->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeSkill,11);
 
     // equipment storage
     return_value = m_playerEquipment->initialize();
@@ -42,6 +54,20 @@ std::uint32_t cPlayerManager::initialize(void)
     m_playerEquipment->setStackColor(m_stackTextColor);
     m_playerEquipment->setSlot1(eComponentFunction::componentFunctionEquipmentSlot_1);
     m_playerEquipment->setStack1(eComponentFunction::componentFunctionEquipmentStack_1);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeHelm, 0);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeWeapon, 1);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeArmor, 2);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeShield, 3);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeBoots, 4);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeBelt, 5);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeGloves, 6);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeAmulet, 7);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeAmulet, 8);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRing, 9);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRing,10);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRing,11);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRing,12);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRing,13);
 
     // inventory storage
     return_value = m_playerInventory->initialize();
@@ -66,6 +92,12 @@ std::uint32_t cPlayerManager::initialize(void)
     m_playerWaypoints->setStackColor(m_stackTextColor);
     m_playerWaypoints->setSlot1(eComponentFunction::componentFunctionWaypointsSlot_1);
     m_playerWaypoints->setStack1(eComponentFunction::componentFunctionWaypointsStack_1);
+    m_playerWaypoints->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRune_1, 0);
+    m_playerWaypoints->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRune_2, 1);
+    m_playerWaypoints->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRune_3, 2);
+    m_playerWaypoints->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRune_4, 3);
+    m_playerWaypoints->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRune_5, 4);
+    m_playerWaypoints->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRune_6, 5);
 
     return return_value;
 }
@@ -263,6 +295,47 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             m_UIManager->setGold(m_player->character->gold);
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
+    }
+
+    // Inventory to waypoints
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeWaypoints))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+        if (!destination->occupied)
+        {
+            if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRune_1) && (source->entity->item->type == eEntityItemType::entityItemType_rune_1))
+            {
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+                m_UIManager->setMenuComponentEnabled(eComponentFunction::componentFunctionLoadMapTown_1, true);
+            }
+            else if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRune_2) && (source->entity->item->type == eEntityItemType::entityItemType_rune_2))
+            {
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+                m_UIManager->setMenuComponentEnabled(eComponentFunction::componentFunctionLoadMapTown_2, true);
+            }
+            else if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRune_3) && (source->entity->item->type == eEntityItemType::entityItemType_rune_3))
+            {
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+                m_UIManager->setMenuComponentEnabled(eComponentFunction::componentFunctionLoadMapTown_3, true);
+            }
+            else if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRune_4) && (source->entity->item->type == eEntityItemType::entityItemType_rune_4))
+            {
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+                m_UIManager->setMenuComponentEnabled(eComponentFunction::componentFunctionLoadMapTown_4, true);
+            }
+            else if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRune_5) && (source->entity->item->type == eEntityItemType::entityItemType_rune_5))
+            {
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+                m_UIManager->setMenuComponentEnabled(eComponentFunction::componentFunctionLoadMapTown_5, true);
+            }
+            else if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRune_6) && (source->entity->item->type == eEntityItemType::entityItemType_rune_6))
+            {
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+                m_UIManager->setMenuComponentEnabled(eComponentFunction::componentFunctionLoadMapTown_6, true);
+            }
+         }
     }
 
     // Swap if same storage

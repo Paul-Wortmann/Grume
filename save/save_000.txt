@@ -63,6 +63,13 @@
       <inventory_slot>4  one_handed_axe   1  1</inventory_slot>
       <inventory_slot>5  one_handed_sword 1  1</inventory_slot>
       <inventory_slot>6  dagger           1  1</inventory_slot>
+
+      <inventory_slot>7  rune             1  1</inventory_slot>
+      <inventory_slot>8  rune             2  1</inventory_slot>
+      <inventory_slot>9  rune             3  1</inventory_slot>
+      <inventory_slot>10 rune             4  1</inventory_slot>
+      <inventory_slot>11 rune             5  1</inventory_slot>
+      <inventory_slot>12 rune             6  1</inventory_slot>
    </inventory>
 
    <vendor>
@@ -70,12 +77,6 @@
    <vendor>
 
    <waypoints>
-      <waypoints_slot>0  rune 1 1</waypoints_slot>
-      <waypoints_slot>1  rune 2 1</waypoints_slot>
-      <waypoints_slot>2  rune 3 1</waypoints_slot>
-      <waypoints_slot>3  rune 4 1</waypoints_slot>
-      <waypoints_slot>4  rune 5 1</waypoints_slot>
-      <waypoints_slot>5  rune 6 1</waypoints_slot>
    <waypoints>
 
    <quests>

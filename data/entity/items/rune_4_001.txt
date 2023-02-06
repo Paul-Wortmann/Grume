@@ -28,7 +28,7 @@
     </graphics>
 
     <item>
-	    <item_type>RUNE</item_type>
+	    <item_type>RUNE_4</item_type>
 	    <item_stack_max>1</item_stack_max>
 	    <item_gold_value>100</item_gold_value>
     </item>

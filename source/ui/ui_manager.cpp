@@ -491,7 +491,10 @@ void cUIManager::process(void)
             {
 
                 // Enter mouse drag if item
-                if ((!m_io->mouseDrag) && (m_menu[menuNum].component[componentNum].type == eComponentType::componentTypeItem))
+                if ((!m_io->mouseDrag) &&
+                   !((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionWaypointsSlot_1) &&
+                     (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionWaypointsSlot_6)) &&
+                     (m_menu[menuNum].component[componentNum].type == eComponentType::componentTypeItem))
                 {
                     // create event
                     sUIEvent* event = new sUIEvent;

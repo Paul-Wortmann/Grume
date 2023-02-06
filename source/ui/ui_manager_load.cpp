@@ -1575,101 +1575,11 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;
                     }
 
-                    // Component slot type
-                    std::string componentSlotType = xmlUiFile.getString("<component_slot_type>", componentNum + 1);
-
-                    if (componentSlotType.compare("TYPE_NONE") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeNone;
-                    }
-                    else if (componentSlotType.compare("TYPE_POTION") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypePotion;
-                    }
-                    else if (componentSlotType.compare("TYPE_SKILL") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeSkill;
-                    }
-                    else if (componentSlotType.compare("TYPE_WEAPON") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeWeapon;
-                    }
-                    else if (componentSlotType.compare("TYPE_SHIELD") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeShield;
-                    }
-                    else if (componentSlotType.compare("TYPE_HELM") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeHelm;
-                    }
-                    else if (componentSlotType.compare("TYPE_ARMOR") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeArmor;
-                    }
-                    else if (componentSlotType.compare("TYPE_GLOVES") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeGloves;
-                    }
-                    else if (componentSlotType.compare("TYPE_BOOTS") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeBoots;
-                    }
-                    else if (componentSlotType.compare("TYPE_BELT") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeBelt;
-                    }
-                    else if (componentSlotType.compare("TYPE_AMULET") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeAmulet;
-                    }
-                    else if (componentSlotType.compare("TYPE_RING") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRing;
-                    }
-                    else if (componentSlotType.compare("TYPE_RUNE_1") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRune_1;
-                    }
-                    else if (componentSlotType.compare("TYPE_RUNE_2") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRune_2;
-                    }
-                    else if (componentSlotType.compare("TYPE_RUNE_3") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRune_3;
-                    }
-                    else if (componentSlotType.compare("TYPE_RUNE_4") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRune_4;
-                    }
-                    else if (componentSlotType.compare("TYPE_RUNE_5") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRune_5;
-                    }
-                    else if (componentSlotType.compare("TYPE_RUNE_6") == 0)
-                    {
-                        m_menu[m].component[c].slotType = eComponentSlotType::componentSlotTypeRune_6;
-                    }
-
                     // Update the component index
                     componentNum++;
                 }
             }
 
-            // Push events to setup player storage slot types
-            for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
-            {
-                if (m_menu[m].component[c].slotType != eComponentSlotType::componentSlotTypeNone)
-                {
-                    // create event
-                    sUIEvent* event = new sUIEvent;
-                    event->type = eUIEventType::UIEventType_setSlotType;
-                    event->function_1 = eUIEventFunction::UIEventFunction_componentSlotType;
-                    event->data_1 = static_cast<std::uint32_t>(m_menu[m].component[c].function);
-                    event->data_2 = static_cast<std::uint32_t>(m_menu[m].component[c].slotType);
-                    m_event.push(event);
-                }
-            }
         }
     }
     else

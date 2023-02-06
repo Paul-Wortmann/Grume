@@ -765,9 +765,29 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             {
                 tEntity->item->type = eEntityItemType::entityItemType_coin;
             }
-            else if (itemType.compare("RUNE") == 0)
+            else if (itemType.compare("RUNE_1") == 0)
             {
-                tEntity->item->type = eEntityItemType::entityItemType_rune;
+                tEntity->item->type = eEntityItemType::entityItemType_rune_1;
+            }
+            else if (itemType.compare("RUNE_2") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_rune_2;
+            }
+            else if (itemType.compare("RUNE_3") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_rune_3;
+            }
+            else if (itemType.compare("RUNE_4") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_rune_4;
+            }
+            else if (itemType.compare("RUNE_5") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_rune_5;
+            }
+            else if (itemType.compare("RUNE_6") == 0)
+            {
+                tEntity->item->type = eEntityItemType::entityItemType_rune_6;
             }
             else if (itemType.compare("ARMOR") == 0)
             {

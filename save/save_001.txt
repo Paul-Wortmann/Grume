@@ -2,45 +2,45 @@
 <save_file>
 
    <information>
-      <current_map>cemetery_1_001</current_map>
-      <current_position>2213</current_position>
+      <current_map>town_1_001</current_map>
+      <current_position>2368</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
 
    <player>
-      <level_current>13</level_current>
-      <exp_current>41917</exp_current>
-      <exp_next>199288</exp_next>
-      <health_current>19461.9</health_current>
-      <health_max>19461.9</health_max>
-      <health_regen>946.919</health_regen>
-      <mana_current>19461.9</mana_current>
-      <mana_max>19461.9</mana_max>
-      <mana_regen>946.919</mana_regen>
-      <gold_current>31165</gold_current>
-      <damage_physical_base>14</damage_physical_base>
-      <damage_physical_crit_chance>14</damage_physical_crit_chance>
-      <damage_physical_crit_multiplier>3.5</damage_physical_crit_multiplier>
-      <damage_fire_base>14</damage_fire_base>
-      <damage_fire_crit_chance>14</damage_fire_crit_chance>
-      <damage_fire_crit_multiplier>3.5</damage_fire_crit_multiplier>
-      <damage_frost_base>14</damage_frost_base>
-      <damage_frost_crit_chance>14</damage_frost_crit_chance>
-      <damage_frost_crit_multiplier>3.5</damage_frost_crit_multiplier>
-      <armor_physical_base>14</armor_physical_base>
-      <resistance_fire_base>14</resistance_fire_base>
-      <resistance_frost_base>14</resistance_frost_base>
+      <level_current>0</level_current>
+      <exp_current>0</exp_current>
+      <exp_next>1024</exp_next>
+      <health_current>100</health_current>
+      <health_max>100</health_max>
+      <health_regen>0.025</health_regen>
+      <mana_current>100</mana_current>
+      <mana_max>100</mana_max>
+      <mana_regen>0.025</mana_regen>
+      <gold_current>0</gold_current>
+      <damage_physical_base>1</damage_physical_base>
+      <damage_physical_crit_chance>1</damage_physical_crit_chance>
+      <damage_physical_crit_multiplier>0.25</damage_physical_crit_multiplier>
+      <damage_fire_base>1</damage_fire_base>
+      <damage_fire_crit_chance>1</damage_fire_crit_chance>
+      <damage_fire_crit_multiplier>0.25</damage_fire_crit_multiplier>
+      <damage_frost_base>1</damage_frost_base>
+      <damage_frost_crit_chance>1</damage_frost_crit_chance>
+      <damage_frost_crit_multiplier>0.25</damage_frost_crit_multiplier>
+      <armor_physical_base>1</armor_physical_base>
+      <resistance_fire_base>1</resistance_fire_base>
+      <resistance_frost_base>1</resistance_frost_base>
    </player>
 
    <action_bar>
       <action_bar_slot>0 potion_health 1 32</action_bar_slot>
-      <action_bar_slot>1 potion_mana 1 30</action_bar_slot>
+      <action_bar_slot>1 potion_mana 1 32</action_bar_slot>
    </action_bar>
 
    <equipment>
       <equipment_slot>0 heavy_helmet 1 1</equipment_slot>
-      <equipment_slot>1 one_handed_sword 1 1</equipment_slot>
+      <equipment_slot>1 dagger 1 1</equipment_slot>
       <equipment_slot>2 heavy_armor 1 1</equipment_slot>
       <equipment_slot>3 shield 1 1</equipment_slot>
       <equipment_slot>4 heavy_gloves 1 1</equipment_slot>
@@ -56,38 +56,18 @@
    </equipment>
 
    <inventory>
-      <inventory_slot>0 potion_health 1 32</inventory_slot>
-      <inventory_slot>1 potion_mana 1 23</inventory_slot>
-      <inventory_slot>2 magic_helmet 1 1</inventory_slot>
-      <inventory_slot>3 medium_helmet 1 1</inventory_slot>
-      <inventory_slot>4 rune 3 1</inventory_slot>
-      <inventory_slot>5 magic_helmet 1 1</inventory_slot>
-      <inventory_slot>6 potion_health 1 8</inventory_slot>
-      <inventory_slot>7 ring 10 1</inventory_slot>
-      <inventory_slot>8 ring 3 1</inventory_slot>
-      <inventory_slot>9 ring 14 1</inventory_slot>
-      <inventory_slot>10 one_handed_sword 6 1</inventory_slot>
-      <inventory_slot>11 grimoire 1 1</inventory_slot>
-      <inventory_slot>12 one_handed_sword 4 1</inventory_slot>
-      <inventory_slot>13 two_handed_axe 1 1</inventory_slot>
-      <inventory_slot>14 shield 1 1</inventory_slot>
-      <inventory_slot>15 quiver 1 1</inventory_slot>
-      <inventory_slot>16 scroll 2 1</inventory_slot>
-      <inventory_slot>17 one_handed_sword 1 1</inventory_slot>
-      <inventory_slot>18 crossbow 1 1</inventory_slot>
-      <inventory_slot>19 two_handed_sword 1 1</inventory_slot>
-      <inventory_slot>20 one_handed_axe 2 1</inventory_slot>
-      <inventory_slot>21 staff 1 1</inventory_slot>
-      <inventory_slot>22 one_handed_axe 1 1</inventory_slot>
-      <inventory_slot>23 medium_boots 1 1</inventory_slot>
-      <inventory_slot>24 two_handed_axe 3 1</inventory_slot>
-      <inventory_slot>25 belt 1 1</inventory_slot>
-      <inventory_slot>26 dagger 1 1</inventory_slot>
-      <inventory_slot>27 two_handed_mace 1 1</inventory_slot>
-      <inventory_slot>28 bow 1 1</inventory_slot>
-      <inventory_slot>29 dagger 2 1</inventory_slot>
-      <inventory_slot>30 one_handed_sword 5 1</inventory_slot>
-      <inventory_slot>31 two_handed_axe 2 1</inventory_slot>
+      <inventory_slot>0 potion_health 1 5</inventory_slot>
+      <inventory_slot>1 potion_mana 1 2</inventory_slot>
+      <inventory_slot>2 belt 1 1</inventory_slot>
+      <inventory_slot>3 ring 1 1</inventory_slot>
+      <inventory_slot>4 one_handed_axe 1 1</inventory_slot>
+      <inventory_slot>5 one_handed_sword 1 1</inventory_slot>
+      <inventory_slot>6 dagger 1 1</inventory_slot>
+      <inventory_slot>7 rune 1 1</inventory_slot>
+      <inventory_slot>8 rune 2 1</inventory_slot>
+      <inventory_slot>9 rune 3 1</inventory_slot>
+      <inventory_slot>10 rune 4 1</inventory_slot>
+      <inventory_slot>11 rune 5 1</inventory_slot>
    </inventory>
 
    <vendor>
@@ -95,13 +75,13 @@
    </vendor>
 
    <waypoints>
-      <waypoints_slot>0  rune 1 1</waypoints_slot>
-   <waypoints>
+      <waypoints_slot>5 rune 6 1</waypoints_slot>
+   </waypoints>
 
    <quests>
-      <quest>bug_boss_1_dead 1</quest>
-      <quest>bug_boss_2_dead 1</quest>
-      <quest>bug_boss_3_dead 1</quest>
+      <quest>bug_boss_1_dead 0</quest>
+      <quest>bug_boss_2_dead 0</quest>
+      <quest>bug_boss_3_dead 0</quest>
       <quest>skeleton_boss_1_dead 0</quest>
       <quest>skeleton_boss_2_dead 0</quest>
       <quest>skeleton_boss_3_dead 0</quest>
@@ -114,35 +94,6 @@
    </quests>
 
    <map_data>
-      <map>cave_1_001 1410763947</map>
-      <map>cave_1_002 1244638362</map>
-      <map>cave_1_003 1469448356</map>
-      <map>cave_1_004 1156449392</map>
-      <map>cave_1_005 391023957</map>
-      <map>cave_1_006 573436450</map>
-      <map>cave_1_007 143283030</map>
-      <map>cave_2_001 574033019</map>
-      <map>cave_2_002 1965350239</map>
-      <map>cave_2_003 536943063</map>
-      <map>cave_2_004 1204830550</map>
-      <map>cave_2_005 1302799035</map>
-      <map>cave_2_006 2029293986</map>
-      <map>cave_2_007 1948817484</map>
-      <map>cave_2_010 821578852</map>
-      <map>cave_2_012 1952223623</map>
-      <map>cave_2_014 997173726</map>
-      <map>cave_2_015 1432078196</map>
-      <map>cave_2_016 24357509</map>
-      <map>cemetery_1_001 1107021466</map>
-      <map>cemetery_1_002 18679449</map>
-      <map>cemetery_1_003 556459085</map>
-      <map>cemetery_1_004 374311216</map>
-      <map>cemetery_1_005 2123613305</map>
-      <map>cemetery_1_006 499742200</map>
-      <map>cemetery_1_007 1028012679</map>
-      <map>cemetery_1_008 281710182</map>
-      <map>crypt_2_001 1880217799</map>
-      <map>ruins_1_001 266594286</map>
    </map_data>
 
 </save_file>

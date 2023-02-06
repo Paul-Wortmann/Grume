@@ -26,36 +26,41 @@
 
 #include "../core/includes.hpp"
 
-enum eEntityItemType : std::uint32_t { entityItemType_none      = 0,    // none
-                                       entityItemType_potionHP  = 1,    // health potion
-                                       entityItemType_potionMP  = 2,    // mana potion
-                                       entityItemType_coin      = 3,    // coin
-                                       entityItemType_rune      = 4,    // rune
+enum eEntityItemType : std::uint32_t { entityItemType_none      =  0,   // none
+                                       entityItemType_potionHP  =  1,   // health potion
+                                       entityItemType_potionMP  =  2,   // mana potion
+                                       entityItemType_coin      =  3,   // coin
+                                       entityItemType_rune_1    =  4,   // rune 1
+                                       entityItemType_rune_2    =  5,   // rune 2
+                                       entityItemType_rune_3    =  6,   // rune 3
+                                       entityItemType_rune_4    =  7,   // rune 4
+                                       entityItemType_rune_5    =  8,   // rune 5
+                                       entityItemType_rune_6    =  9,   // rune 6
 
-                                       entityItemType_armor     = 5,    // armor
-                                       entityItemType_boots     = 6,    // boots
-                                       entityItemType_gloves    = 7,    // gloves
-                                       entityItemType_helmet    = 8,    // helmet
-                                       entityItemType_belt      = 9,    // belt
+                                       entityItemType_armor     = 10,   // armor
+                                       entityItemType_boots     = 11,   // boots
+                                       entityItemType_gloves    = 12,   // gloves
+                                       entityItemType_helmet    = 13,   // helmet
+                                       entityItemType_belt      = 14,   // belt
 
-                                       entityItemType_bow       = 10,   // bow
-                                       entityItemType_crossbow  = 11,   // crossbow
-                                       entityItemType_dagger    = 12,   // dagger
-                                       entityItemType_grimoire  = 13,   // grimoire
-                                       entityItemType_quiver    = 14,   // quiver
-                                       entityItemType_shield    = 15,   // shield
-                                       entityItemType_staff     = 16,   // staff
-                                       entityItemType_wand      = 17,   // wand
+                                       entityItemType_bow       = 15,   // bow
+                                       entityItemType_crossbow  = 16,   // crossbow
+                                       entityItemType_dagger    = 17,   // dagger
+                                       entityItemType_grimoire  = 18,   // grimoire
+                                       entityItemType_quiver    = 19,   // quiver
+                                       entityItemType_shield    = 20,   // shield
+                                       entityItemType_staff     = 21,   // staff
+                                       entityItemType_wand      = 22,   // wand
 
-                                       entityItemType_axe_one   = 18,   // one handed axe
-                                       entityItemType_axe_two   = 19,   // two handed axe
-                                       entityItemType_mace_one  = 20,   // one handed mace
-                                       entityItemType_mace_two  = 21,   // two handed mace
-                                       entityItemType_sword_one = 22,   // one handed sword
-                                       entityItemType_sword_two = 23,   // two handed sword
+                                       entityItemType_axe_one   = 23,   // one handed axe
+                                       entityItemType_axe_two   = 24,   // two handed axe
+                                       entityItemType_mace_one  = 25,   // one handed mace
+                                       entityItemType_mace_two  = 26,   // two handed mace
+                                       entityItemType_sword_one = 27,   // one handed sword
+                                       entityItemType_sword_two = 28,   // two handed sword
 
-                                       entityItemType_ring      = 24,   // ring
-                                       entityItemType_amulet    = 25 }; // amulet
+                                       entityItemType_ring      = 29,   // ring
+                                       entityItemType_amulet    = 30 }; // amulet
 
 struct sEntityItem
 {
