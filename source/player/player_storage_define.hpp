@@ -29,8 +29,26 @@
 
 enum class ePlayerStorageSlotType : std::uint16_t
 {
-    playerStorageSlotTypeNone      = 0, // None
-    playerStorageSlotTypeRune      = 1  // Rune
+    playerStorageSlotTypeNone      =  0, // None
+    playerStorageSlotTypePotion    =  1, // Potion
+    playerStorageSlotTypeSkill     =  2, // Skill
+
+    playerStorageSlotTypeWeapon    =  3, // Weapon
+    playerStorageSlotTypeShield    =  4, // Shield
+    playerStorageSlotTypeHelm      =  5, // Helm
+    playerStorageSlotTypeArmor     =  6, // Armor
+    playerStorageSlotTypeGloves    =  7, // Gloves
+    playerStorageSlotTypeBoots     =  8, // Boots
+    playerStorageSlotTypeBelt      =  9, // Belt
+    playerStorageSlotTypeAmulet    = 10, // Amulet
+    playerStorageSlotTypeRing      = 11, // Ring
+
+    playerStorageSlotTypeRune_1    = 12, // Rune 1
+    playerStorageSlotTypeRune_2    = 13, // Rune 2
+    playerStorageSlotTypeRune_3    = 14, // Rune 3
+    playerStorageSlotTypeRune_4    = 15, // Rune 4
+    playerStorageSlotTypeRune_5    = 16, // Rune 5
+    playerStorageSlotTypeRune_6    = 17  // Rune 6
 };
 
 enum class ePlayerStorageType : std::uint16_t

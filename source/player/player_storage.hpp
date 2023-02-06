@@ -65,6 +65,7 @@ class cPlayerStorage
         void                setStack1(const eComponentFunction &_stack_1) { m_stack_1 = _stack_1; }
         void                setStorageType(const ePlayerStorageType &_type) { m_storage.type = _type; }
         void                setUISlotEnabled(const std::uint32_t &_slot, const bool &_state);
+        void                setSlotType(const ePlayerStorageSlotType &_type, const std::uint32_t &_slot) { m_storage.slot[_slot].type = _type; }
 
     protected:
     private:

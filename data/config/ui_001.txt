@@ -27,6 +27,7 @@
             <component_position>-0.797f, 0.02f, -0.02f</component_position>
             <component_size>0.179166667f 0.075925926f</component_size>
             <component_function>HEALTH_BAR</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -41,6 +42,7 @@
             <component_position>0.797f, 0.02f, -0.02f</component_position>
             <component_size>0.179166667f 0.075925926f</component_size>
             <component_function>MANA_BAR</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -55,6 +57,7 @@
             <component_position>0.0f, -0.075f, -0.02f</component_position>
             <component_size>0.991666667f 0.014814815f</component_size>
             <component_function>EXP_BAR</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -69,6 +72,7 @@
             <component_position>0.0f, 0.0f, -0.03f</component_position>
             <component_size>1.0f 0.1f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -83,6 +87,7 @@
             <component_position>-0.5477f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_1</component_function>
+            <component_slot_type>TYPE_POTION</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -97,6 +102,7 @@
             <component_position>-0.452f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_2</component_function>
+            <component_slot_type>TYPE_POTION</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -111,6 +117,7 @@
             <component_position>-0.3563f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_3</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -125,6 +132,7 @@
             <component_position>-0.2606f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_4</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -139,6 +147,7 @@
             <component_position>-0.1649f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_5</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -153,6 +162,7 @@
             <component_position>-0.05225f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_6</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -167,6 +177,7 @@
             <component_position>0.05225f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_7</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -181,6 +192,7 @@
             <component_position>0.1649f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_8</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -195,6 +207,7 @@
             <component_position>0.2606f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_9</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -209,6 +222,7 @@
             <component_position>0.3563f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_10</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -223,6 +237,7 @@
             <component_position>0.452f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_11</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -237,6 +252,7 @@
             <component_position>0.5477f, 0.02f, -0.04f</component_position>
             <component_size>0.0435f 0.067f</component_size>
             <component_function>ACTION_BAR_SLOT_12</component_function>
+            <component_slot_type>TYPE_SKILL</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -251,6 +267,7 @@
             <component_position>-0.5477f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_1</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -265,6 +282,7 @@
             <component_position>-0.452f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_2</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -279,6 +297,7 @@
             <component_position>-0.3563f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_3</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -293,6 +312,7 @@
             <component_position>-0.2606f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_4</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -307,6 +327,7 @@
             <component_position>-0.1649f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_5</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -321,6 +342,7 @@
             <component_position>-0.05225f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_6</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -335,6 +357,7 @@
             <component_position>0.05225f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_7</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -349,6 +372,7 @@
             <component_position>0.1649f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_8</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -363,6 +387,7 @@
             <component_position>0.2606f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_9</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -377,6 +402,7 @@
             <component_position>0.3563f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_10</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -391,6 +417,7 @@
             <component_position>0.452f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_11</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -405,6 +432,7 @@
             <component_position>0.5477f, -0.028f, -0.05f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>ACTION_BAR_STACK_12</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -434,6 +462,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -448,6 +477,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -462,6 +492,7 @@
             <component_position>0.0f, 0.35f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_NEW</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -476,6 +507,7 @@
             <component_position>0.0f, 0.175f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_LOAD</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -490,6 +522,7 @@
             <component_position>0.0f, 0.0f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_SAVE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -504,6 +537,7 @@
             <component_position>0.0f, -0.175f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>MENU_OPTIONS</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -518,6 +552,7 @@
             <component_position>0.0f, -0.475f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_QUIT</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -532,6 +567,7 @@
             <component_position>0.0f, 0.35f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_NEW</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -546,6 +582,7 @@
             <component_position>0.0f, 0.175f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_LOAD</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -560,6 +597,7 @@
             <component_position>0.0f, 0.0f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_SAVE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -574,6 +612,7 @@
             <component_position>0.0f, -0.175f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>MENU_OPTIONS</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -588,6 +627,7 @@
             <component_position>0.0f, -0.475f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>GAME_QUIT</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -617,6 +657,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -631,6 +672,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -647,6 +689,7 @@
             <component_position>-0.145f, 0.475f, -0.02f</component_position>
             <component_size>0.073697917f 0.02962963f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -661,6 +704,7 @@
             <component_position>-0.2f, 0.4f, -0.02f</component_position>
             <component_size>0.020833333f 0.043518519f</component_size>
             <component_function>MUSIC_VOLUME_DOWN</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -675,6 +719,7 @@
             <component_position>0.2f, 0.4f, -0.02f</component_position>
             <component_size>0.020833333f 0.043518519f</component_size>
             <component_function>MUSIC_VOLUME_UP</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -689,6 +734,7 @@
             <component_position>0.0f, 0.4f, -0.02f</component_position>
             <component_size>0.159895833f 0.039814815f</component_size>
             <component_function>MUSIC_VOLUME_BAR</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -703,6 +749,7 @@
             <component_position>0.0f, 0.4f, -0.03f</component_position>
             <component_size>0.1625f 0.043518519f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -719,6 +766,7 @@
             <component_position>-0.145f, 0.325f, -0.02f</component_position>
             <component_size>0.07578125f 0.02962963f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -733,6 +781,7 @@
             <component_position>-0.2f, 0.25f, -0.02f</component_position>
             <component_size>0.020833333f 0.043518519f</component_size>
             <component_function>SOUND_VOLUME_DOWN</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -747,6 +796,7 @@
             <component_position>0.2f, 0.25f, -0.02f</component_position>
             <component_size>0.020833333f 0.043518519f</component_size>
             <component_function>SOUND_VOLUME_UP</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -761,6 +811,7 @@
             <component_position>0.0f, 0.25f, -0.02f</component_position>
             <component_size>0.159895833f 0.039814815f</component_size>
             <component_function>SOUND_VOLUME_BAR</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -775,6 +826,7 @@
             <component_position>0.0f, 0.25f, -0.03f</component_position>
             <component_size>0.1625f 0.043518519f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -791,6 +843,7 @@
             <component_position>-0.145f, 0.175f, -0.02f</component_position>
             <component_size>0.07578125f 0.02962963f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -805,6 +858,7 @@
             <component_position>-0.2f, 0.1f, -0.02f</component_position>
             <component_size>0.020833333f 0.043518519f</component_size>
             <component_function>MASTER_VOLUME_DOWN</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -819,6 +873,7 @@
             <component_position>0.2f, 0.1f, -0.02f</component_position>
             <component_size>0.020833333f 0.043518519f</component_size>
             <component_function>MASTER_VOLUME_UP</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -833,6 +888,7 @@
             <component_position>0.0f, 0.1f, -0.02f</component_position>
             <component_size>0.159895833f 0.039814815f</component_size>
             <component_function>MASTER_VOLUME_BAR</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -847,6 +903,7 @@
             <component_position>0.0f, 0.1f, -0.03f</component_position>
             <component_size>0.1625f 0.043518519f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -881,6 +938,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -895,6 +953,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -909,6 +968,7 @@
             <component_position>-0.22f, -0.65f, -0.02f</component_position>
             <component_size>0.02f 0.02f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -923,6 +983,7 @@
             <component_position>-0.18f, -0.65f, -0.02f</component_position>
             <component_size>0.1f 0.01f</component_size>
             <component_function>GOLD_TEXT</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -937,6 +998,7 @@
             <component_position>-0.172f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_1</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -951,6 +1013,7 @@
             <component_position>-0.102f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_2</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -965,6 +1028,7 @@
             <component_position>-0.034f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_3</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -979,6 +1043,7 @@
             <component_position>0.034f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_4</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -993,6 +1058,7 @@
             <component_position>0.102f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_5</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1007,6 +1073,7 @@
             <component_position>0.172f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_6</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1021,6 +1088,7 @@
             <component_position>-0.172f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_7</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1035,6 +1103,7 @@
             <component_position>-0.102f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_8</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1049,6 +1118,7 @@
             <component_position>-0.034f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_9</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1063,6 +1133,7 @@
             <component_position>0.034f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_10</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1077,6 +1148,7 @@
             <component_position>0.102f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_11</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1091,6 +1163,7 @@
             <component_position>0.172f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_12</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1105,6 +1178,7 @@
             <component_position>-0.172f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_13</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1119,6 +1193,7 @@
             <component_position>-0.102f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_14</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1133,6 +1208,7 @@
             <component_position>-0.034f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_15</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1147,6 +1223,7 @@
             <component_position>0.034f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_16</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1161,6 +1238,7 @@
             <component_position>0.102f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_17</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1175,6 +1253,7 @@
             <component_position>0.172f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_18</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1189,6 +1268,7 @@
             <component_position>-0.172f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_19</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1203,6 +1283,7 @@
             <component_position>-0.102f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_20</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1217,6 +1298,7 @@
             <component_position>-0.034f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_21</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1231,6 +1313,7 @@
             <component_position>0.034f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_22</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1245,6 +1328,7 @@
             <component_position>0.102f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_23</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1259,6 +1343,7 @@
             <component_position>0.172f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_24</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1273,6 +1358,7 @@
             <component_position>-0.172f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_25</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1287,6 +1373,7 @@
             <component_position>-0.102f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_26</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1301,6 +1388,7 @@
             <component_position>-0.034f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_27</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1315,6 +1403,7 @@
             <component_position>0.034f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_28</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1329,6 +1418,7 @@
             <component_position>0.102f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_29</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1343,6 +1433,7 @@
             <component_position>0.172f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_30</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1357,6 +1448,7 @@
             <component_position>-0.172f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_31</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1371,6 +1463,7 @@
             <component_position>-0.102f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_32</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1385,6 +1478,7 @@
             <component_position>-0.034f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_33</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1399,6 +1493,7 @@
             <component_position>0.034f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_34</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1413,6 +1508,7 @@
             <component_position>0.102f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_35</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1427,6 +1523,7 @@
             <component_position>0.172f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_36</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1441,6 +1538,7 @@
             <component_position>-0.172f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_37</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1455,6 +1553,7 @@
             <component_position>-0.102f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_38</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1469,6 +1568,7 @@
             <component_position>-0.034f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_39</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1483,6 +1583,7 @@
             <component_position>0.034f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_40</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1497,6 +1598,7 @@
             <component_position>0.102f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_41</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1511,6 +1613,7 @@
             <component_position>0.172f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_42</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1525,6 +1628,7 @@
             <component_position>-0.172f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_43</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1539,6 +1643,7 @@
             <component_position>-0.102f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_44</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1553,6 +1658,7 @@
             <component_position>-0.034f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_45</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1567,6 +1673,7 @@
             <component_position>0.034f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_46</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1581,6 +1688,7 @@
             <component_position>0.102f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_47</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1595,6 +1703,7 @@
             <component_position>0.172f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_48</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1609,6 +1718,7 @@
             <component_position>-0.172f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_49</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1623,6 +1733,7 @@
             <component_position>-0.102f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_50</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1637,6 +1748,7 @@
             <component_position>-0.034f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_51</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1651,6 +1763,7 @@
             <component_position>0.034f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_52</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1665,6 +1778,7 @@
             <component_position>0.102f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_53</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1679,6 +1793,7 @@
             <component_position>0.172f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>INVENTORY_SLOT_54</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1693,6 +1808,7 @@
             <component_position>-0.172f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_1</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1707,6 +1823,7 @@
             <component_position>-0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_2</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1721,6 +1838,7 @@
             <component_position>-0.034f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_3</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1735,6 +1853,7 @@
             <component_position>0.034f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_4</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1749,6 +1868,7 @@
             <component_position>0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_5</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1763,6 +1883,7 @@
             <component_position>0.172f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_6</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1777,6 +1898,7 @@
             <component_position>-0.172f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_7</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1791,6 +1913,7 @@
             <component_position>-0.102f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_8</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1805,6 +1928,7 @@
             <component_position>-0.034f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_9</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1819,6 +1943,7 @@
             <component_position>0.034f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_10</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1833,6 +1958,7 @@
             <component_position>0.102f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_11</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1847,6 +1973,7 @@
             <component_position>0.172f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_12</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1861,6 +1988,7 @@
             <component_position>-0.172f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_13</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1875,6 +2003,7 @@
             <component_position>-0.102f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_14</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1889,6 +2018,7 @@
             <component_position>-0.034f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_15</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1903,6 +2033,7 @@
             <component_position>0.034f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_16</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1917,6 +2048,7 @@
             <component_position>0.102f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_17</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1931,6 +2063,7 @@
             <component_position>0.172f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_18</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1945,6 +2078,7 @@
             <component_position>-0.172f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_19</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1959,6 +2093,7 @@
             <component_position>-0.102f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_20</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1973,6 +2108,7 @@
             <component_position>-0.034f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_21</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -1987,6 +2123,7 @@
             <component_position>0.034f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_22</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2001,6 +2138,7 @@
             <component_position>0.102f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_23</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2015,6 +2153,7 @@
             <component_position>0.172f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_24</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2029,6 +2168,7 @@
             <component_position>-0.172f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_25</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2043,6 +2183,7 @@
             <component_position>-0.102f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_26</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2057,6 +2198,7 @@
             <component_position>-0.034f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_27</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2071,6 +2213,7 @@
             <component_position>0.034f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_28</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2085,6 +2228,7 @@
             <component_position>0.102f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_29</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2099,6 +2243,7 @@
             <component_position>0.172f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_30</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2113,6 +2258,7 @@
             <component_position>-0.172f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_31</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2127,6 +2273,7 @@
             <component_position>-0.102f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_32</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2141,6 +2288,7 @@
             <component_position>-0.034f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_33</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2155,6 +2303,7 @@
             <component_position>0.034f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_34</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2169,6 +2318,7 @@
             <component_position>0.102f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_35</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2183,6 +2333,7 @@
             <component_position>0.172f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_36</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2197,6 +2348,7 @@
             <component_position>-0.172f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_37</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2211,6 +2363,7 @@
             <component_position>-0.102f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_38</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2225,6 +2378,7 @@
             <component_position>-0.034f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_39</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2239,6 +2393,7 @@
             <component_position>0.034f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_40</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2253,6 +2408,7 @@
             <component_position>0.102f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_41</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2267,6 +2423,7 @@
             <component_position>0.172f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_42</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2281,6 +2438,7 @@
             <component_position>-0.172f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_43</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2295,6 +2453,7 @@
             <component_position>-0.102f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_44</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2309,6 +2468,7 @@
             <component_position>-0.034f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_45</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2323,6 +2483,7 @@
             <component_position>0.034f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_46</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2337,6 +2498,7 @@
             <component_position>0.102f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_47</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2351,6 +2513,7 @@
             <component_position>0.172f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_48</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2365,6 +2528,7 @@
             <component_position>-0.172f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_49</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2379,6 +2543,7 @@
             <component_position>-0.102f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_50</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2393,6 +2558,7 @@
             <component_position>-0.034f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_51</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2407,6 +2573,7 @@
             <component_position>0.034f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_52</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2421,6 +2588,7 @@
             <component_position>0.102f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_53</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2435,6 +2603,7 @@
             <component_position>0.172f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>INVENTORY_STACK_54</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2464,6 +2633,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2478,6 +2648,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -2492,6 +2663,7 @@
             <component_position>-0.172f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_1</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2506,6 +2678,7 @@
             <component_position>-0.102f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_2</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2520,6 +2693,7 @@
             <component_position>-0.034f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_3</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2534,6 +2708,7 @@
             <component_position>0.034f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_4</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2548,6 +2723,7 @@
             <component_position>0.102f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_5</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2562,6 +2738,7 @@
             <component_position>0.172f, 0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_6</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2576,6 +2753,7 @@
             <component_position>-0.172f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_7</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2590,6 +2768,7 @@
             <component_position>-0.102f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_8</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2604,6 +2783,7 @@
             <component_position>-0.034f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_9</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2618,6 +2798,7 @@
             <component_position>0.034f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_10</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2632,6 +2813,7 @@
             <component_position>0.102f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_11</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2646,6 +2828,7 @@
             <component_position>0.172f, 0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_12</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2660,6 +2843,7 @@
             <component_position>-0.172f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_13</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2674,6 +2858,7 @@
             <component_position>-0.102f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_14</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2688,6 +2873,7 @@
             <component_position>-0.034f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_15</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2702,6 +2888,7 @@
             <component_position>0.034f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_16</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2716,6 +2903,7 @@
             <component_position>0.102f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_17</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2730,6 +2918,7 @@
             <component_position>0.172f, 0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_18</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2744,6 +2933,7 @@
             <component_position>-0.172f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_19</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2758,6 +2948,7 @@
             <component_position>-0.102f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_20</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2772,6 +2963,7 @@
             <component_position>-0.034f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_21</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2786,6 +2978,7 @@
             <component_position>0.034f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_22</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2800,6 +2993,7 @@
             <component_position>0.102f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_23</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2814,6 +3008,7 @@
             <component_position>0.172f, 0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_24</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2828,6 +3023,7 @@
             <component_position>-0.172f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_25</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2842,6 +3038,7 @@
             <component_position>-0.102f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_26</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2856,6 +3053,7 @@
             <component_position>-0.034f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_27</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2870,6 +3068,7 @@
             <component_position>0.034f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_28</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2884,6 +3083,7 @@
             <component_position>0.102f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_29</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2898,6 +3098,7 @@
             <component_position>0.172f, -0.062f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_30</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2912,6 +3113,7 @@
             <component_position>-0.172f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_31</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2926,6 +3128,7 @@
             <component_position>-0.102f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_32</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2940,6 +3143,7 @@
             <component_position>-0.034f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_33</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2954,6 +3158,7 @@
             <component_position>0.034f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_34</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2968,6 +3173,7 @@
             <component_position>0.102f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_35</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2982,6 +3188,7 @@
             <component_position>0.172f, -0.186f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_36</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -2996,6 +3203,7 @@
             <component_position>-0.172f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_37</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3010,6 +3218,7 @@
             <component_position>-0.102f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_38</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3024,6 +3233,7 @@
             <component_position>-0.034f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_39</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3038,6 +3248,7 @@
             <component_position>0.034f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_40</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3052,6 +3263,7 @@
             <component_position>0.102f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_41</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3066,6 +3278,7 @@
             <component_position>0.172f, -0.310f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_42</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3080,6 +3293,7 @@
             <component_position>-0.172f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_43</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3094,6 +3308,7 @@
             <component_position>-0.102f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_44</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3108,6 +3323,7 @@
             <component_position>-0.034f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_45</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3122,6 +3338,7 @@
             <component_position>0.034f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_46</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3136,6 +3353,7 @@
             <component_position>0.102f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_47</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3150,6 +3368,7 @@
             <component_position>0.172f, -0.436f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_48</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3164,6 +3383,7 @@
             <component_position>-0.172f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_49</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3178,6 +3398,7 @@
             <component_position>-0.102f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_50</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3192,6 +3413,7 @@
             <component_position>-0.034f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_51</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3206,6 +3428,7 @@
             <component_position>0.034f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_52</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3220,6 +3443,7 @@
             <component_position>0.102f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_53</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3234,6 +3458,7 @@
             <component_position>0.172f, -0.560f, -0.02f</component_position>
             <component_size>0.032f 0.058f</component_size>
             <component_function>VENDOR_SLOT_54</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3248,6 +3473,7 @@
             <component_position>-0.172f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_1</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3262,6 +3488,7 @@
             <component_position>-0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_2</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3276,6 +3503,7 @@
             <component_position>-0.034f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_3</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3290,6 +3518,7 @@
             <component_position>0.034f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_4</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3304,6 +3533,7 @@
             <component_position>0.102f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_5</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3318,6 +3548,7 @@
             <component_position>0.172f, 0.392f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_6</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3332,6 +3563,7 @@
             <component_position>-0.172f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_7</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3346,6 +3578,7 @@
             <component_position>-0.102f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_8</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3360,6 +3593,7 @@
             <component_position>-0.034f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_9</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3374,6 +3608,7 @@
             <component_position>0.034f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_10</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3388,6 +3623,7 @@
             <component_position>0.102f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_11</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3402,6 +3638,7 @@
             <component_position>0.172f, 0.268f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_12</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3416,6 +3653,7 @@
             <component_position>-0.172f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_13</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3430,6 +3668,7 @@
             <component_position>-0.102f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_14</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3444,6 +3683,7 @@
             <component_position>-0.034f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_15</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3458,6 +3698,7 @@
             <component_position>0.034f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_16</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3472,6 +3713,7 @@
             <component_position>0.102f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_17</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3486,6 +3728,7 @@
             <component_position>0.172f, 0.146f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_18</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3500,6 +3743,7 @@
             <component_position>-0.172f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_19</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3514,6 +3758,7 @@
             <component_position>-0.102f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_20</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3528,6 +3773,7 @@
             <component_position>-0.034f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_21</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3542,6 +3788,7 @@
             <component_position>0.034f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_22</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3556,6 +3803,7 @@
             <component_position>0.102f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_23</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3570,6 +3818,7 @@
             <component_position>0.172f, 0.022f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_24</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3584,6 +3833,7 @@
             <component_position>-0.172f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_25</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3598,6 +3848,7 @@
             <component_position>-0.102f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_26</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3612,6 +3863,7 @@
             <component_position>-0.034f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_27</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3626,6 +3878,7 @@
             <component_position>0.034f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_28</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3640,6 +3893,7 @@
             <component_position>0.102f, -0.102f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_29</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3668,6 +3922,7 @@
             <component_position>-0.172f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_31</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3682,6 +3937,7 @@
             <component_position>-0.102f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_32</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3696,6 +3952,7 @@
             <component_position>-0.034f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_33</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3710,6 +3967,7 @@
             <component_position>0.034f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_34</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3724,6 +3982,7 @@
             <component_position>0.102f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_35</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3738,6 +3997,7 @@
             <component_position>0.172f, -0.226f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_36</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3752,6 +4012,7 @@
             <component_position>-0.172f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_37</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3766,6 +4027,7 @@
             <component_position>-0.102f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_38</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3780,6 +4042,7 @@
             <component_position>-0.034f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_39</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3794,6 +4057,7 @@
             <component_position>0.034f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_40</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3808,6 +4072,7 @@
             <component_position>0.102f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_41</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3822,6 +4087,7 @@
             <component_position>0.172f, -0.350f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_42</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3836,6 +4102,7 @@
             <component_position>-0.172f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_43</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3850,6 +4117,7 @@
             <component_position>-0.102f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_44</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3864,6 +4132,7 @@
             <component_position>-0.034f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_45</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3878,6 +4147,7 @@
             <component_position>0.034f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_46</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3892,6 +4162,7 @@
             <component_position>0.102f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_47</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3906,6 +4177,7 @@
             <component_position>0.172f, -0.476f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_48</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3920,6 +4192,7 @@
             <component_position>-0.172f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_49</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3934,6 +4207,7 @@
             <component_position>-0.102f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_50</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3948,6 +4222,7 @@
             <component_position>-0.034f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_51</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3962,6 +4237,7 @@
             <component_position>0.034f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_52</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3976,6 +4252,7 @@
             <component_position>0.102f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_53</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -3990,6 +4267,7 @@
             <component_position>0.172f, -0.600f, -0.03f</component_position>
             <component_size>0.008f 0.008f</component_size>
             <component_function>VENDOR_STACK_54</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4019,6 +4297,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4033,6 +4312,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4048,6 +4328,7 @@
             <component_position>0.0f, 0.359f, -0.02f</component_position>
             <component_size>0.059f 0.105f</component_size>
             <component_function>EQUIPMENT_SLOT_1</component_function>
+            <component_slot_type>TYPE_HELM</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4063,6 +4344,7 @@
             <component_position>-0.146f, 0.044f, -0.02f</component_position>
             <component_size>0.059f 0.160f</component_size>
             <component_function>EQUIPMENT_SLOT_2</component_function>
+            <component_slot_type>TYPE_WEAPON</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4078,6 +4360,7 @@
             <component_position>0.0f, 0.044f, -0.02f</component_position>
             <component_size>0.059f 0.160f</component_size>
             <component_function>EQUIPMENT_SLOT_3</component_function>
+            <component_slot_type>TYPE_ARMOR</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4093,6 +4376,7 @@
             <component_position>0.146f, 0.044f, -0.02f</component_position>
             <component_size>0.059f 0.160f</component_size>
             <component_function>EQUIPMENT_SLOT_4</component_function>
+            <component_slot_type>TYPE_SHIELD</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4108,6 +4392,7 @@
             <component_position>-0.146f, -0.270f, -0.02f</component_position>
             <component_size>0.059f 0.104f</component_size>
             <component_function>EQUIPMENT_SLOT_5</component_function>
+            <component_slot_type>TYPE_BOOTS</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4123,6 +4408,7 @@
             <component_position>0.0f, -0.215f, -0.02f</component_position>
             <component_size>0.059f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_6</component_function>
+            <component_slot_type>TYPE_BELT</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4138,6 +4424,7 @@
             <component_position>0.146f, -0.270f, -0.02f</component_position>
             <component_size>0.059f 0.104f</component_size>
             <component_function>EQUIPMENT_SLOT_7</component_function>
+            <component_slot_type>TYPE_GLOVES</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4153,6 +4440,7 @@
             <component_position>-0.1145f, 0.304f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_8</component_function>
+            <component_slot_type>TYPE_AMULET</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4168,6 +4456,7 @@
             <component_position>0.1145f, 0.304f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_9</component_function>
+            <component_slot_type>TYPE_AMULET</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4183,6 +4472,7 @@
             <component_position>-0.177f, -0.474f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_10</component_function>
+            <component_slot_type>TYPE_RING</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4198,6 +4488,7 @@
             <component_position>-0.094f, -0.474f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_11</component_function>
+            <component_slot_type>TYPE_RING</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4213,6 +4504,7 @@
             <component_position>0.0f, -0.474f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_12</component_function>
+            <component_slot_type>TYPE_RING</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4228,6 +4520,7 @@
             <component_position>0.094f, -0.474f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_13</component_function>
+            <component_slot_type>TYPE_RING</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4243,6 +4536,7 @@
             <component_position>0.177f, -0.474f, -0.02f</component_position>
             <component_size>0.0275f 0.049f</component_size>
             <component_function>EQUIPMENT_SLOT_14</component_function>
+            <component_slot_type>TYPE_RING</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4272,6 +4566,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4286,6 +4581,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4315,6 +4611,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4329,6 +4626,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4358,6 +4656,7 @@
             <component_position>0.0f, 0.60f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4372,6 +4671,7 @@
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4386,6 +4686,7 @@
             <component_position>0.0f, 0.12f, -0.02f</component_position>
             <component_size>0.228125f 0.388888889f</component_size>
             <component_function>NONE</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4400,6 +4701,7 @@
             <component_position>-0.11f, -0.32f, -0.02f</component_position>
             <component_size>0.104166667f 0.059259259f</component_size>
             <component_function>LOAD_MAP_TOWN_1</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4414,6 +4716,7 @@
             <component_position>0.11f, -0.32f, -0.02f</component_position>
             <component_size>0.104166667f 0.059259259f</component_size>
             <component_function>LOAD_MAP_TOWN_2</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4428,6 +4731,7 @@
             <component_position>-0.11f, -0.44f, -0.02f</component_position>
             <component_size>0.104166667f 0.059259259f</component_size>
             <component_function>LOAD_MAP_TOWN_3</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4442,6 +4746,7 @@
             <component_position>0.11f, -0.44f, -0.02f</component_position>
             <component_size>0.104166667f 0.059259259f</component_size>
             <component_function>LOAD_MAP_TOWN_4</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4456,6 +4761,7 @@
             <component_position>-0.11f, -0.56f, -0.02f</component_position>
             <component_size>0.104166667f 0.059259259f</component_size>
             <component_function>LOAD_MAP_TOWN_5</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4470,6 +4776,7 @@
             <component_position>0.11f, -0.56f, -0.02f</component_position>
             <component_size>0.104166667f 0.059259259f</component_size>
             <component_function>LOAD_MAP_TOWN_6</component_function>
+            <component_slot_type>TYPE_NONE</component_slot_type>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4484,6 +4791,7 @@
             <component_position>-0.110f, 0.318f, -0.03f</component_position>
             <component_size>0.018f 0.032f</component_size>
             <component_function>WAYPOINTS_SLOT_1</component_function>
+            <component_slot_type>TYPE_RUNE_1</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4498,6 +4806,7 @@
             <component_position>0.164f, -0.015f, -0.03f</component_position>
             <component_size>0.018f 0.032f</component_size>
             <component_function>WAYPOINTS_SLOT_2</component_function>
+            <component_slot_type>TYPE_RUNE_2</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4512,6 +4821,7 @@
             <component_position>-0.164f, -0.015f, -0.03f</component_position>
             <component_size>0.018f 0.032f</component_size>
             <component_function>WAYPOINTS_SLOT_3</component_function>
+            <component_slot_type>TYPE_RUNE_3</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4526,6 +4836,7 @@
             <component_position>0.110f, 0.318f, -0.03f</component_position>
             <component_size>0.018f 0.032f</component_size>
             <component_function>WAYPOINTS_SLOT_4</component_function>
+            <component_slot_type>TYPE_RUNE_4</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4540,6 +4851,7 @@
             <component_position>0.0f, -0.220f, -0.03f</component_position>
             <component_size>0.018f 0.032f</component_size>
             <component_function>WAYPOINTS_SLOT_5</component_function>
+            <component_slot_type>TYPE_RUNE_5</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
@@ -4554,6 +4866,7 @@
             <component_position>0.0f, 0.086f, -0.03f</component_position>
             <component_size>0.018f 0.032f</component_size>
             <component_function>WAYPOINTS_SLOT_6</component_function>
+            <component_slot_type>TYPE_RUNE_6</component_slot_type>
             <component_type>TYPE_ITEM</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>

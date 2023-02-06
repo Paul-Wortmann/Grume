@@ -160,7 +160,6 @@ void cPlayerManager::swapStorage(cPlayerStorage *&_sourceStorage, const std::uin
         tSlot.entity = source->entity;
         tSlot.occupied = source->occupied;
         tSlot.stackLabel = source->stackLabel;
-        tSlot.type = source->type;
 
         // To source
         source->data = destination->data;
@@ -168,7 +167,6 @@ void cPlayerManager::swapStorage(cPlayerStorage *&_sourceStorage, const std::uin
         source->entity = destination->entity;
         source->occupied = destination->occupied;
         source->stackLabel = destination->stackLabel;
-        source->type = destination->type;
 
         // To destination
         destination->data = tSlot.data;
@@ -176,7 +174,6 @@ void cPlayerManager::swapStorage(cPlayerStorage *&_sourceStorage, const std::uin
         destination->entity = tSlot.entity;
         destination->occupied = tSlot.occupied;
         destination->stackLabel = tSlot.stackLabel;
-        destination->type = tSlot.type;
 
         // UI set slot state
         _sourceStorage->setUISlotEnabled(_slot1, source->occupied);

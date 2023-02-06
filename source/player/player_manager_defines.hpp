@@ -37,8 +37,11 @@
 #include "player_storage.hpp"
 
 // Event type enum
-enum ePlayerEventType : std::uint32_t { playerEventType_none        = 0,    // null event
-                                        playerEventType_newPosition = 1 };  // player has been repositioned
+enum ePlayerEventType : std::uint32_t
+{
+    playerEventType_none        = 0,    // null event
+    playerEventType_newPosition = 1     // player has been repositioned
+};
 
 // Event struct
 struct sPlayerEvent
