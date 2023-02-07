@@ -68,6 +68,22 @@
 
    <vendor>
       <vendor_slot>0 potion_health 1 32</vendor_slot>
+      <vendor_slot>1 potion_mana 1 32</vendor_slot>
+
+      <vendor_slot>2 heavy_armor 1 1</vendor_slot>
+      <vendor_slot>3 shield 1 1</vendor_slot>
+      <vendor_slot>4 heavy_gloves 1 1</vendor_slot>
+      <vendor_slot>5 belt 1 1</vendor_slot>
+      <vendor_slot>6 heavy_boots 1 1</vendor_slot>
+      <vendor_slot>7 medium_helmet 1 1</vendor_slot>
+      <vendor_slot>8 medium_helmet 1 1</vendor_slot>
+      <vendor_slot>9 ring 1 1</vendor_slot>
+      <vendor_slot>10 ring 4 1</vendor_slot>
+      <vendor_slot>11 ring 8 1</vendor_slot>
+      <vendor_slot>12 ring 16 1</vendor_slot>
+      <vendor_slot>13 ring 3 1</vendor_slot>
+      <vendor_slot>14 heavy_helmet 1 1</vendor_slot>
+      <vendor_slot>15 one_handed_sword 1 1</vendor_slot>
    <vendor>
 
    <waypoints>
