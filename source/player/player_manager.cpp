@@ -273,8 +273,78 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
         waypointsSetDrag(_slot2, false);
     }
 
+    // Action-bar to vendor -> sell item
+    if ((_type1 == ePlayerStorageType::playerStorageTypeActionBar) &&
+        (_type2 == ePlayerStorageType::playerStorageTypeVendor))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        if (source->type == ePlayerStorageSlotType::playerStorageSlotTypePotion)
+        {
+            m_player->character->gold += (source->entity->item->goldValue * source->entity->item->stackSize);
+            m_UIManager->setGold(m_player->character->gold);
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+    }
+
+    // Vendor to Action-bar -> buy item
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeVendor) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeActionBar))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        std::uint32_t buyValue = source->entity->item->goldValue * source->entity->item->stackSize;
+        if ((source->type == ePlayerStorageSlotType::playerStorageSlotTypePotion) && (buyValue <= m_player->character->gold))
+        {
+            m_player->character->gold -= (source->entity->item->goldValue * source->entity->item->stackSize);
+            m_UIManager->setGold(m_player->character->gold);
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+    }
+
+    // Inventory to Action-bar
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeActionBar))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+        if ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypePotion) &&
+            ((source->entity->item->type == eEntityItemType::entityItemType_potionHP) ||
+             (source->entity->item->type == eEntityItemType::entityItemType_potionMP)))
+
+        {
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+    }
+
+    // Action-bar to Inventory
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeActionBar) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeInventory))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+        if ((source->type == ePlayerStorageSlotType::playerStorageSlotTypePotion) &&
+            (source->entity->item->type == destination->entity->item->type))
+        {
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+    }
+
+    // Action-bar to Action-bar
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeActionBar) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeActionBar))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+        if (source->type == destination->type)
+        {
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+    }
+
+
+
+
     // Inventory to vendor -> sell item
-    if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
         (_type2 == ePlayerStorageType::playerStorageTypeVendor))
     {
         sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
