@@ -338,6 +338,18 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
          }
     }
 
+    // Equipment to Equipment
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeEquipment) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeEquipment))
+    {
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+        if (source->type == destination->type)
+        {
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+    }
+
     // Equipment to Inventory
     else if ((_type1 == ePlayerStorageType::playerStorageTypeEquipment) &&
              (_type2 == ePlayerStorageType::playerStorageTypeInventory))
@@ -372,7 +384,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
         }
     }
 
-    // Inventory to equipment
+    // Inventory to Equipment
     else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
              (_type2 == ePlayerStorageType::playerStorageTypeEquipment))
     {
