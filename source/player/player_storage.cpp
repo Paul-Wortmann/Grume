@@ -300,3 +300,8 @@ void cPlayerStorage::dropItem(const std::uint32_t &_slot)
         m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(m_slot_1) + _slot), false);
     }
 }
+
+sPlayerStorageSlot* cPlayerStorage::getStorageSlot(const ePlayerStorageSlotType _type)
+{
+    return nullptr;
+}

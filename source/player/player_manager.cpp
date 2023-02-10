@@ -447,6 +447,9 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
     {
         sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
         sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+        sPlayerStorageSlot* weaponSlot = destinationStorage->getStorageSlot(ePlayerStorageSlotType::playerStorageSlotTypeWeapon);
+        sPlayerStorageSlot* shieldSlot = destinationStorage->getStorageSlot(ePlayerStorageSlotType::playerStorageSlotTypeShield);
+
         if ((source->occupied == false) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeAmulet) && (source->entity->item->type == eEntityItemType::entityItemType_amulet)) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeArmor) && (source->entity->item->type == eEntityItemType::entityItemType_armor)) ||

@@ -54,6 +54,7 @@ class cPlayerStorage
         std::uint32_t       freeSlotCount(void) { return m_storage.numFreeSlot; }
         sPlayerStorage*     getStorage(void) { return &m_storage; }
         sPlayerStorageSlot* getStorageSlot(const std::uint32_t _slot) { return &m_storage.slot[_slot]; }
+        sPlayerStorageSlot* getStorageSlot(const ePlayerStorageSlotType _type);
         bool                pickupItem(sEntity* &_entity);
         bool                dropItem(sEntity* &_entity);
         void                dropItem(const std::uint32_t &_slot);
