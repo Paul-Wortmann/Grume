@@ -127,7 +127,11 @@ void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
     // set slot fields
     m_storage.slot[_slot].occupied = false;
     m_storage.slot[_slot].dragged = false;
-    m_resourceManager->freeTexture(m_storage.slot[_slot].stackLabel);
+    if (m_storage.slot[_slot].stackLabel != nullptr)
+        m_resourceManager->freeTexture(m_storage.slot[_slot].stackLabel);
+
+    // Update free slot count
+    m_storage.numFreeSlot++;
 
     // Free the entity
     if (m_storage.slot[_slot].entity != nullptr)
@@ -301,7 +305,65 @@ void cPlayerStorage::dropItem(const std::uint32_t &_slot)
     }
 }
 
-sPlayerStorageSlot* cPlayerStorage::getStorageSlot(const ePlayerStorageSlotType _type)
+sPlayerStorageSlot* cPlayerStorage::getStorageSlot(const ePlayerStorageSlotType &_type)
 {
+    for (std::uint32_t i = 0; i < m_storage.numSlot; ++i)
+    {
+        // Return the slot it a match is found
+        if (m_storage.slot[i].type == _type)
+        {
+            return &m_storage.slot[i];
+        }
+    }
+    // If none found
     return nullptr;
+}
+
+std::uint32_t cPlayerStorage::getStorageSlotNumber(const ePlayerStorageSlotType &_type)
+{
+    for (std::uint32_t i = 0; i < m_storage.numSlot; ++i)
+    {
+        // Return the slot it a match is found
+        if (m_storage.slot[i].type == _type)
+        {
+            return i;
+        }
+    }
+    // If none found (Warning: if none found it will return the first slot regardless whether it is of the correct type or not)
+    // Check slots before calling!
+    return 0;
+}
+
+std::uint32_t cPlayerStorage::getFreeSlot(void)
+{
+    for (std::uint32_t i = 0; i < m_storage.numSlot; ++i)
+    {
+        // Return the slot it a match is found
+        if (m_storage.slot[i].occupied == false)
+        {
+            return i;
+        }
+    }
+    // If none found (Warning: if none found it will return the first slot regardless whether it is free or not)
+    // Check for free slots before calling!
+    return 0;
+}
+
+void cPlayerStorage::clearStorage(void)
+{
+    for (std::uint32_t i = 0; i < m_storage.numSlot; ++i)
+    {
+        purgeSlotEntity(i);
+    }
+    m_storage.numFreeSlot = m_storage.numSlot;
+}
+
+void cPlayerStorage::updateFreeSlotCount(void)
+{
+    m_storage.numFreeSlot = m_storage.numSlot;
+    for (std::uint32_t i = 0; i < m_storage.numSlot; ++i)
+    {
+        if (m_storage.slot[i].occupied)
+            m_storage.numFreeSlot--;
+    }
 }

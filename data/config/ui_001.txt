@@ -4098,7 +4098,7 @@
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
         
-        # Boots
+        # Gloves
         <component>
             <component_name>EQUIPMENT_SLOT_005</component_name>
             <component_enabled>0</component_enabled>
@@ -4128,7 +4128,7 @@
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
         
-        # Gloves
+        # Boots
         <component>
             <component_name>EQUIPMENT_SLOT_007</component_name>
             <component_enabled>0</component_enabled>

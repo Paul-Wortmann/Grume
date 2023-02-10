@@ -46,7 +46,10 @@ class cPlayerManager :tcTemplateEngine
 
         // Storage
         void              swapStorage(cPlayerStorage *&_sourceStorage, const std::uint32_t &_slot1, cPlayerStorage *&_destinationStorage, const std::uint32_t &_slot2);
+        void              unequip(const std::uint32_t &_slot);
         void              moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2);
+        void              clearStorage(void);
+        void              updateFreeSlotCount(void);
 
         // Player Action bar
         cPlayerStorage*   getPlayerActionBar(void) { return m_playerActionBar; }
@@ -54,7 +57,7 @@ class cPlayerManager :tcTemplateEngine
         void              setActionBarEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerActionBar->setSlotEntity(_slot, _entity); };
         void              purgeActionBarEntity(const std::uint32_t _slot) { m_playerActionBar->purgeSlotEntity(_slot); }
         std::uint32_t     getActionBarSize(void) { return m_playerActionBar->getStorageSize(); }
-        std::uint32_t     getActionBarFreeSlotNum(void) { return m_playerActionBar->freeSlotCount(); }
+        std::uint32_t     getActionBarFreeSlotNum(void) { return m_playerActionBar->getFreeSlotCount(); }
         bool              actionBarPickupItem(sEntity* &_entity) { return m_playerActionBar->pickupItem(_entity); }
         bool              actionBarDropItem(sEntity* &_entity) { return m_playerActionBar->dropItem(_entity); }
         void              actionBarDrop(const std::uint32_t &_slot) { m_playerActionBar->dropItem(_slot); }
@@ -66,7 +69,7 @@ class cPlayerManager :tcTemplateEngine
         void              setEquipmentEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerEquipment->setSlotEntity(_slot, _entity); };
         void              purgeEquipmentEntity(const std::uint32_t _slot) { m_playerEquipment->purgeSlotEntity(_slot); }
         std::uint32_t     getEquipmentSize(void) { return m_playerEquipment->getStorageSize(); }
-        std::uint32_t     getEquipmentFreeSlotNum(void) { return m_playerEquipment->freeSlotCount(); }
+        std::uint32_t     getEquipmentFreeSlotNum(void) { return m_playerEquipment->getFreeSlotCount(); }
         bool              equipmentPickupItem(sEntity* &_entity) { return m_playerEquipment->pickupItem(_entity); }
         bool              equipmentDropItem(sEntity* &_entity) { return m_playerEquipment->dropItem(_entity); }
         void              equipmentDrop(const std::uint32_t &_slot) { m_playerEquipment->dropItem(_slot); }
@@ -78,7 +81,7 @@ class cPlayerManager :tcTemplateEngine
         void              setInventoryEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerInventory->setSlotEntity(_slot, _entity); };
         void              purgeInventoryEntity(const std::uint32_t _slot) { m_playerInventory->purgeSlotEntity(_slot); }
         std::uint32_t     getInventorySize(void) { return m_playerInventory->getStorageSize(); }
-        std::uint32_t     getInventoryFreeSlotNum(void) { return m_playerInventory->freeSlotCount(); }
+        std::uint32_t     getInventoryFreeSlotNum(void) { return m_playerInventory->getFreeSlotCount(); }
         bool              inventoryPickupItem(sEntity* &_entity) { return m_playerInventory->pickupItem(_entity); }
         bool              inventoryDropItem(sEntity* &_entity) { return m_playerInventory->dropItem(_entity); }
         void              inventoryDrop(const std::uint32_t &_slot) { m_playerInventory->dropItem(_slot); }
@@ -90,7 +93,7 @@ class cPlayerManager :tcTemplateEngine
         void              setVendorEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerVendor->setSlotEntity(_slot, _entity); };
         void              purgeVendorEntity(const std::uint32_t _slot) { m_playerVendor->purgeSlotEntity(_slot); }
         std::uint32_t     getVendorSize(void) { return m_playerVendor->getStorageSize(); }
-        std::uint32_t     getVendorFreeSlotNum(void) { return m_playerVendor->freeSlotCount(); }
+        std::uint32_t     getVendorFreeSlotNum(void) { return m_playerVendor->getFreeSlotCount(); }
         bool              vendorPickupItem(sEntity* &_entity) { return m_playerVendor->pickupItem(_entity); }
         bool              vendorDropItem(sEntity* &_entity) { return m_playerVendor->dropItem(_entity); }
         void              vendorDrop(const std::uint32_t &_slot) { m_playerVendor->dropItem(_slot); }
@@ -102,7 +105,7 @@ class cPlayerManager :tcTemplateEngine
         void              setWaypointsEntity(const std::uint32_t _slot, sEntity* &_entity) { m_playerWaypoints->setSlotEntity(_slot, _entity); };
         void              purgeWaypointsEntity(const std::uint32_t _slot) { m_playerWaypoints->purgeSlotEntity(_slot); }
         std::uint32_t     getWaypointsSize(void) { return m_playerWaypoints->getStorageSize(); }
-        std::uint32_t     getWaypointsFreeSlotNum(void) { return m_playerWaypoints->freeSlotCount(); }
+        std::uint32_t     getWaypointsFreeSlotNum(void) { return m_playerWaypoints->getFreeSlotCount(); }
         bool              waypointsPickupItem(sEntity* &_entity) { return m_playerWaypoints->pickupItem(_entity); }
         bool              waypointsDropItem(sEntity* &_entity) { return m_playerWaypoints->dropItem(_entity); }
         void              waypointsDrop(const std::uint32_t &_slot) { m_playerWaypoints->dropItem(_slot); }

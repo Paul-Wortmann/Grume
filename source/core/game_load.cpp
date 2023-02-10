@@ -99,7 +99,7 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
     m_graphicsEngine.setLoading(true);
     m_graphicsEngine.process(0);
 
-    // Load the game startup file
+    // Load the save game file
     cXML xmlSaveGameFile;
     std::string fileName = std::string("save_00") + std::to_string(_slotNum) + std::string(".txt");
     xmlSaveGameFile.load(std::string(FILE_PATH_SAVE) + fileName);
@@ -107,6 +107,9 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
     // Only continue if we can load the game startup file
     if (xmlSaveGameFile.lineCount() > 0)
     {
+        // Clear player storage
+        m_playerManager.clearStorage();
+
         // Information
         std::string   currentMap      = xmlSaveGameFile.getString("<current_map>");
         std::uint32_t currentPosition = xmlSaveGameFile.getInteger("<current_position>");

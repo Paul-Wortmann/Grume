@@ -58,9 +58,9 @@ std::uint32_t cPlayerManager::initialize(void)
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeWeapon, 1);
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeArmor, 2);
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeShield, 3);
-    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeBoots, 4);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeGloves, 4);
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeBelt, 5);
-    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeGloves, 6);
+    m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeBoots, 6);
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeAmulet, 7);
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeAmulet, 8);
     m_playerEquipment->setSlotType(ePlayerStorageSlotType::playerStorageSlotTypeRing, 9);
@@ -211,7 +211,25 @@ void cPlayerManager::swapStorage(cPlayerStorage *&_sourceStorage, const std::uin
         _sourceStorage->setUISlotEnabled(_slot1, source->occupied);
         _destinationStorage->setUISlotEnabled(_slot2, destination->occupied);
 
+        // Update storage item counts
+        updateFreeSlotCount();
+
         tSlot.entity = nullptr;
+}
+
+void cPlayerManager::unequip(const std::uint32_t &_slot)
+{
+    // move to inventory
+    if (m_playerInventory->getFreeSlotCount() > 0)
+    {
+        std::uint32_t freeSlot = m_playerInventory->getFreeSlot();
+        swapStorage(m_playerEquipment, _slot, m_playerInventory, freeSlot);
+    }
+    // drop on ground
+    else
+    {
+        m_playerEquipment->dropItem(_slot);
+    }
 }
 
 void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2)
@@ -350,6 +368,13 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
 
 
 
+    // Inventory to Inventory
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
+        (_type2 == ePlayerStorageType::playerStorageTypeInventory))
+    {
+        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+    }
+
     // Inventory to vendor -> sell item
     else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
         (_type2 == ePlayerStorageType::playerStorageTypeVendor))
@@ -449,41 +474,113 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
         sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
         sPlayerStorageSlot* weaponSlot = destinationStorage->getStorageSlot(ePlayerStorageSlotType::playerStorageSlotTypeWeapon);
         sPlayerStorageSlot* shieldSlot = destinationStorage->getStorageSlot(ePlayerStorageSlotType::playerStorageSlotTypeShield);
+        const std::uint32_t weaponSlotNumber = destinationStorage->getStorageSlotNumber(ePlayerStorageSlotType::playerStorageSlotTypeWeapon);
+        const std::uint32_t shiledSlotNumber = destinationStorage->getStorageSlotNumber(ePlayerStorageSlotType::playerStorageSlotTypeShield);
 
-        if ((source->occupied == false) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeAmulet) && (source->entity->item->type == eEntityItemType::entityItemType_amulet)) ||
+        // Non weapon or shield slot
+        if (((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeAmulet) && (source->entity->item->type == eEntityItemType::entityItemType_amulet)) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeArmor) && (source->entity->item->type == eEntityItemType::entityItemType_armor)) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeBelt) && (source->entity->item->type == eEntityItemType::entityItemType_belt)) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeBoots) && (source->entity->item->type == eEntityItemType::entityItemType_boots)) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeGloves) && (source->entity->item->type == eEntityItemType::entityItemType_gloves)) ||
             ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeHelm) && (source->entity->item->type == eEntityItemType::entityItemType_helmet)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRing) && (source->entity->item->type == eEntityItemType::entityItemType_ring)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeShield) && (source->entity->item->type == eEntityItemType::entityItemType_shield)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeShield) && (source->entity->item->type == eEntityItemType::entityItemType_grimoire)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeShield) && (source->entity->item->type == eEntityItemType::entityItemType_quiver)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_axe_one)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_axe_two)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_bow)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_crossbow)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_dagger)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_mace_one)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_mace_two)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_staff)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_sword_one)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_sword_two)) ||
-            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_wand)))
-
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRing) && (source->entity->item->type == eEntityItemType::entityItemType_ring)))
         {
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
-    }
+        // one handed shield slot
+        else if (((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeShield) && (source->entity->item->type == eEntityItemType::entityItemType_shield)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeShield) && (source->entity->item->type == eEntityItemType::entityItemType_grimoire)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeShield) && (source->entity->item->type == eEntityItemType::entityItemType_quiver)))
+        {
+            // shield
+            if ((weaponSlot->occupied == true) &&
+                (source->entity->item->type == eEntityItemType::entityItemType_shield) &&
+               ((weaponSlot->entity->item->type == eEntityItemType::entityItemType_bow) ||
+                (weaponSlot->entity->item->type == eEntityItemType::entityItemType_crossbow) ||
+                (weaponSlot->entity->item->type == eEntityItemType::entityItemType_staff) ||
+                (weaponSlot->entity->item->type == eEntityItemType::entityItemType_wand) ||
+                (weaponSlot->entity->item->type == eEntityItemType::entityItemType_axe_two) ||
+                (weaponSlot->entity->item->type == eEntityItemType::entityItemType_mace_two) ||
+                (weaponSlot->entity->item->type == eEntityItemType::entityItemType_sword_two)))
+            {
+                unequip(weaponSlotNumber);
+            }
 
-    // Swap if same storage
-    //if (sourceStorage == destinationStorage)
-    else
-    {
-        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+            // grimoire
+            else if (((weaponSlot->occupied == true) &&
+                      (source->entity->item->type == eEntityItemType::entityItemType_grimoire) &&
+                     ((weaponSlot->entity->item->type == eEntityItemType::entityItemType_bow) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_crossbow) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_staff) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_axe_one) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_mace_one) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_sword_one) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_axe_two) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_mace_two) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_sword_two))))
+            {
+                unequip(weaponSlotNumber);
+            }
+
+            // quiver
+            else if (((weaponSlot->occupied == true) &&
+                      (source->entity->item->type == eEntityItemType::entityItemType_quiver) &&
+                     ((weaponSlot->entity->item->type == eEntityItemType::entityItemType_wand) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_staff) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_axe_one) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_mace_one) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_sword_one) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_axe_two) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_mace_two) ||
+                      (weaponSlot->entity->item->type == eEntityItemType::entityItemType_sword_two))))
+            {
+                unequip(weaponSlotNumber);
+            }
+
+            // Swap
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+        // one handed weapon slot
+        else if (((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_axe_one)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_bow)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_crossbow)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_dagger)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_mace_one)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_sword_one)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_wand)))
+        {
+
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+        // two handed weapon slot
+        else if (((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_axe_two)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_mace_two)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_staff)) ||
+                 ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeWeapon) && (source->entity->item->type == eEntityItemType::entityItemType_sword_two)))
+        {
+
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
     }
+}
+
+void cPlayerManager::clearStorage(void)
+{
+    m_playerActionBar->clearStorage();
+    m_playerEquipment->clearStorage();
+    m_playerInventory->clearStorage();
+    m_playerVendor->clearStorage();
+    m_playerWaypoints->clearStorage();
+}
+
+void cPlayerManager::updateFreeSlotCount(void)
+{
+    m_playerActionBar->updateFreeSlotCount();
+    m_playerEquipment->updateFreeSlotCount();
+    m_playerInventory->updateFreeSlotCount();
+    m_playerVendor->updateFreeSlotCount();
+    m_playerWaypoints->updateFreeSlotCount();
 }
 
 std::uint32_t cPlayerManager::load(const std::string &_fileName)
