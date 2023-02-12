@@ -121,7 +121,7 @@ void cPlayerStorage::setUISlotEnabled(const std::uint32_t &_slot, const bool &_s
 void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
 {
     // slot empty, early exit
-    if (m_storage.slot[_slot].occupied != true)
+    if (m_storage.slot[_slot].occupied == false)
         return;
 
     // set slot fields

@@ -100,9 +100,9 @@ sMaterial* cMaterialManager::load(const std::string &_fileName)
     if (tMaterial->diffuse == nullptr)
         tMaterial->diffuse = m_textureManager.load(std::string(FILE_DEFAULT_TEXTURE) + "_d.png");
     if (tMaterial->normal == nullptr)
-    tMaterial->normal = m_textureManager.load(std::string(FILE_DEFAULT_TEXTURE) + "_n.png");
+        tMaterial->normal = m_textureManager.load(std::string(FILE_DEFAULT_TEXTURE) + "_n.png");
     if (tMaterial->specular == nullptr)
-    tMaterial->specular = m_textureManager.load(std::string(FILE_DEFAULT_TEXTURE) + "_s.png");
+        tMaterial->specular = m_textureManager.load(std::string(FILE_DEFAULT_TEXTURE) + "_s.png");
 
     return tMaterial;
 }
