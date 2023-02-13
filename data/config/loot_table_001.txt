@@ -525,6 +525,22 @@
     </loot>
 
     <loot>
+        <entity_name>amulet</entity_name>
+        <entity_number>1</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
+        <entity_name>amulet</entity_name>
+        <entity_number>2</entity_number>
+        <value>10</value>
+        <drop_once>0</drop_once>
+        <item_type>1</item_type>
+    </loot>
+
+    <loot>
         <entity_name>belt</entity_name>
         <entity_number>1</entity_number>
         <value>10</value>

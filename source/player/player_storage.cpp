@@ -127,9 +127,10 @@ void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
     // set slot fields
     m_storage.slot[_slot].occupied = false;
     m_storage.slot[_slot].dragged = false;
+    /*
     if (m_storage.slot[_slot].stackLabel != nullptr)
         m_resourceManager->freeTexture(m_storage.slot[_slot].stackLabel);
-
+*/
     // Update free slot count
     m_storage.numFreeSlot++;
 

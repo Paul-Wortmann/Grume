@@ -46,9 +46,8 @@
       <equipment_slot>4 heavy_gloves 1 1</equipment_slot>
       <equipment_slot>5 belt 1 1</equipment_slot>
       <equipment_slot>6 heavy_boots 1 1</equipment_slot>
-      
-      <equipment_slot>7 medium_helmet 1 1</equipment_slot>
-      <equipment_slot>8 medium_helmet 1 1</equipment_slot>
+      <equipment_slot>7 amulet 1 1</equipment_slot>
+      <equipment_slot>8 amulet 2 1</equipment_slot>
       <equipment_slot>9 ring 1 1</equipment_slot>
       <equipment_slot>10 ring 4 1</equipment_slot>
       <equipment_slot>11 ring 8 1</equipment_slot>

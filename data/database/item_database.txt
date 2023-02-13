@@ -85,7 +85,9 @@
 	<item>wand                  items/wand_1_001.txt</item>
 
     # Rings / Amultes
-	<item>amulet                items/amulet_1_001.txt</item>
+	<item>amulet                items/necklace_1_001.txt</item>
+	<item>amulet                items/necklace_1_002.txt</item>
+
 	<item>ring                  items/ring_1_001.txt</item>
 	<item>ring                  items/ring_1_002.txt</item>
 	<item>ring                  items/ring_1_003.txt</item>
