@@ -374,23 +374,47 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
 
     // Inventory to vendor -> sell item
     else if ((_type1 == ePlayerStorageType::playerStorageTypeInventory) &&
-        (_type2 == ePlayerStorageType::playerStorageTypeVendor))
+             (_type2 == ePlayerStorageType::playerStorageTypeVendor))
     {
+        // Get slot storage
         sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
-        m_player->character->gold += (source->entity->item->goldValue * source->entity->item->stackSize);
-        m_UIManager->setGold(m_player->character->gold);
-        swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+
+        // Determine item value
+        std::uint32_t sellValue = source->entity->item->goldValue * source->entity->item->stackSize;
+        std::uint32_t buyValue = 0;
+        if (destination->occupied)
+            buyValue = destination->entity->item->goldValue * destination->entity->item->stackSize;
+
+        // If player has enough coin, proceed
+        if (buyValue <= (m_player->character->gold + sellValue))
+        {
+            m_player->character->gold -= buyValue;
+            m_player->character->gold += sellValue;
+            m_UIManager->setGold(m_player->character->gold);
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
     }
 
     // Vendor to Inventory -> buy item
     else if ((_type1 == ePlayerStorageType::playerStorageTypeVendor) &&
              (_type2 == ePlayerStorageType::playerStorageTypeInventory))
     {
+        // Get slot storage
         sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+
+        // Determine item value
         std::uint32_t buyValue = source->entity->item->goldValue * source->entity->item->stackSize;
-        if (buyValue <= m_player->character->gold)
+        std::uint32_t sellValue = 0;
+        if (destination->occupied)
+            sellValue = destination->entity->item->goldValue * destination->entity->item->stackSize;
+
+        // If player has enough coin, proceed
+        if (buyValue <= (m_player->character->gold + sellValue))
         {
-            m_player->character->gold -= (source->entity->item->goldValue * source->entity->item->stackSize);
+            m_player->character->gold -= buyValue;
+            m_player->character->gold += sellValue;
             m_UIManager->setGold(m_player->character->gold);
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
