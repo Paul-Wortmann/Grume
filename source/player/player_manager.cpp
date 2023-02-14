@@ -232,6 +232,11 @@ void cPlayerManager::unequip(const std::uint32_t &_slot)
     }
 }
 
+void cPlayerManager::equip(sEntity* &_entity)
+{
+
+}
+
 void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2)
 {
     cPlayerStorage* sourceStorage = nullptr;
