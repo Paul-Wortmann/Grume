@@ -139,6 +139,9 @@ void cPlayerStorage::purgeSlotEntity(const std::uint32_t _slot)
     {
         m_entityManager->deleteEntity(m_storage.slot[_slot].entity);
     }
+
+    // Set the UI slot state
+    setUISlotEnabled(_slot, false);
 }
 
 bool cPlayerStorage::pickupItem(sEntity* &_entity)
@@ -367,4 +370,14 @@ void cPlayerStorage::updateFreeSlotCount(void)
         if (m_storage.slot[i].occupied)
             m_storage.numFreeSlot--;
     }
+}
+
+void cPlayerStorage::updateStackLabel(const std::uint32_t &_slot)
+{
+    // generate text label
+    if (m_storage.slot[_slot].stackLabel != nullptr)
+    {
+        m_resourceManager->freeTexture(m_storage.slot[_slot].stackLabel);
+    }
+    m_storage.slot[_slot].stackLabel = m_resourceManager->generateTexture(std::to_string(m_storage.slot[_slot].entity->item->stackSize), m_stackTextColor);
 }

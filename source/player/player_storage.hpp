@@ -72,6 +72,7 @@ class cPlayerStorage
         void                setUISlotEnabled(const std::uint32_t &_slot, const bool &_state);
         void                setSlotType(const ePlayerStorageSlotType &_type, const std::uint32_t &_slot) { m_storage.slot[_slot].type = _type; }
         void                clearStorage(void);
+        void                updateStackLabel(const std::uint32_t &_slot);
 
     protected:
     private:

@@ -70,6 +70,13 @@
       <inventory_slot>10 rune             4  1</inventory_slot>
       <inventory_slot>11 rune             5  1</inventory_slot>
       <inventory_slot>12 rune             6  1</inventory_slot>
+
+      <inventory_slot>14 potion_health    1 13</inventory_slot>
+      <inventory_slot>15 potion_health    1 17</inventory_slot>
+      <inventory_slot>16 potion_health    1 15</inventory_slot>
+      <inventory_slot>17 potion_health    1 27</inventory_slot>
+      <inventory_slot>18 potion_health    1 23</inventory_slot>
+      <inventory_slot>19 potion_health    1 25</inventory_slot>
    </inventory>
 
    <vendor>
