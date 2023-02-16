@@ -26,6 +26,7 @@
 	<music>dark_rainy_night_1 dark_rainy_night.ogg</music>
 	<music>menu_1             menu_001.ogg</music>
 	<music>persistence_1      persistence.ogg</music>
+	<music>post_apocalyptic_wastelands_1 post_apocalyptic_wastelands.ogg</music>
 	<music>rat_sewer_1        rat_sewer.ogg</music>
 	<music>town_in_ruins_1    town_in_ruins.ogg</music>
 	<music>unrest_theme_1     unrest_theme.ogg</music>
