@@ -41,8 +41,11 @@ class cIOManager
         void      setKeyReadyState(const std::uint32_t &_key, const bool &_state) { m_io->keyReadyMap[_key] = _state; }
 
         // Mouse
-        glm::vec2 getMousePosition(void) { return m_io->mousePosition; };
-        glm::vec2 getMousePositionOpenGL(void) { return m_io->mousePositionGL; };
+        glm::vec2 getMousePosition(void) { return m_io->mousePosition; }
+        glm::vec2 getMousePositionOpenGL(void) { return m_io->mousePositionGL; }
+
+        // Drag
+        bool      getmouseDrag(void) { return m_io->mouseDrag; }
 
     protected:
     private:

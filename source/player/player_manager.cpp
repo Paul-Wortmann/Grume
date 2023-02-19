@@ -976,25 +976,22 @@ void cPlayerManager::setMapPlayer(void)
 
 void cPlayerManager::targetTile(const std::uint32_t &_tile)
 {
-    // If no object and no NPC, then path find to tile
-    //if ((m_mapPointer->tile[_tile].object == 0) && (m_mapPointer->tile[_tile].npc == 0))
+    // Only path to new destination if it is different
+    if (m_player->movement->mapPath.destinationTile != _tile)
     {
-        // Only path to new destination if it is different
-        if (m_player->movement->mapPath.destinationTile != _tile)
+        m_player->movement->mapPath.destinationTile = _tile;
+        m_player->movement->mapPath.currentTile     = gMapPositionToTile(m_mapPointer, m_player->base.position);
+        m_player->movement->mapPath.startTile       = m_player->movement->mapPath.currentTile;
+        gAStar(m_mapPointer, m_player->movement->mapPath, m_player->base.flying, m_player->base.overSize);
+
+        if (m_player->movement->mapPath.pathLength > 0)
         {
-            m_player->movement->mapPath.destinationTile = _tile;
-            m_player->movement->mapPath.currentTile     = gMapPositionToTile(m_mapPointer, m_player->base.position);
-            m_player->movement->mapPath.startTile       = m_player->movement->mapPath.currentTile;
-            gAStar(m_mapPointer, m_player->movement->mapPath, m_player->base.flying, m_player->base.overSize);
+            m_player->movement->mapPath.currentPosition = 1;
+            m_player->movement->pathing = true;
 
-            if (m_player->movement->mapPath.pathLength > 0)
-            {
-                m_player->movement->mapPath.currentPosition = 1;
-                m_player->movement->pathing = true;
-
-                // Set entity state : move
+            // Set entity state : move
+            if (m_player->state->stateCurrent != eEntityState::entityState_move)
                 m_entityManager->stateSet(m_player, eEntityState::entityState_move);
-            }
         }
     }
 
@@ -1003,9 +1000,31 @@ void cPlayerManager::targetTile(const std::uint32_t &_tile)
         m_player->movement->pathing = false;
 
         // Set entity state : idle
-        m_entityManager->stateSet(m_player, eEntityState::entityState_idle);
+        if (m_player->state->stateCurrent != eEntityState::entityState_idle)
+            m_entityManager->stateSet(m_player, eEntityState::entityState_idle);
     }
+}
 
+void cPlayerManager::targetHalt(void)
+{
+    m_player->movement->mapPath.pathLength = 0;
+    m_player->movement->pathing = false;
+
+    // Set entity state : idle
+    if (m_player->state->stateCurrent != eEntityState::entityState_idle)
+        m_entityManager->stateSet(m_player, eEntityState::entityState_idle);
+}
+
+void cPlayerManager::setUIdrag(const bool &_state)
+{
+    // set flag
+    m_UIdrag = _state;
+
+    // stop moving if a drag is initiated
+    if (_state)
+    {
+        targetHalt();
+    }
 }
 
 void cPlayerManager::process(const std::int64_t &_dt)
@@ -1025,6 +1044,13 @@ void cPlayerManager::process(const std::int64_t &_dt)
 
     if (m_player->movement->pathing == true)
     {
+        // If a UI active, halt movement
+        if ((m_UIdrag == true) || (m_activeWindowCount > 1))
+        {
+            targetHalt();
+            return;
+        }
+
         std::uint32_t currentTile    = m_player->movement->mapPath.path[m_player->movement->mapPath.currentPosition];
         glm::vec3     currentTilePos = gMapTileToPosition(m_mapPointer, currentTile);
 

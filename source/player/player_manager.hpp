@@ -112,46 +112,52 @@ class cPlayerManager :tcTemplateEngine
         void              waypointsDrop(const std::uint32_t &_slot) { m_playerWaypoints->dropItem(_slot); }
         void              waypointsSetDrag(const std::uint32_t _slot, const bool &_state) { m_playerWaypoints->setDrag(_slot, _state); }
 
-        // Other
-        void              setMapPlayer(void);
-        std::uint32_t     getPlayerID(void) { return m_player->UID; }
+        // Player position / movement
         glm::vec3         getPosition(void) { return m_player->base.position; }
         std::uint32_t     getCurrentTile(void) { return m_player->movement->mapPath.currentTile; }
-        std::uint32_t     load(const std::string &_fileName);
         void              targetTile(const std::uint32_t &_tile);
+        void              targetHalt(void);
         void              setTileClicked(const std::uint32_t &_tile) { m_tileClicked = _tile; }
         void              setObjectClicked(const std::uint32_t &_object) { m_objectClicked = _object; }
         bool              getMoved(void) { return m_player->movement->pathing; }
-
         void              setPlayerPosition(const std::uint32_t &_tile, const float &_rotation);
         void              setPlayerPosition(const glm::vec3 &_position, const float &_rotation);
+
+        // Other
+        void              setMapPlayer(void);
+        std::uint32_t     getPlayerID(void) { return m_player->UID; }
+        std::uint32_t     load(const std::string &_fileName);
+        void              setUIdrag(const bool &_state);
+        void              setActiveWindowCount(const std::uint32_t &_count) { m_activeWindowCount = _count; }
 
     protected:
     private:
         // Event
-        tcQueue<sPlayerEvent> m_event       = {};
+        tcQueue<sPlayerEvent> m_event         = {};
 
         // Pointers
-        cAudioEngine*     m_audioEngine     = nullptr;
-        cDatabaseManager* m_databaseManager = nullptr;
-        cResourceManager* m_resourceManager = nullptr;
-        cEntityManager*   m_entityManager   = nullptr;
-        cUIManager*       m_UIManager       = nullptr;
-        sEntity*          m_player          = nullptr;
-        sMap*             m_mapPointer      = nullptr;
+        cAudioEngine*     m_audioEngine       = nullptr;
+        cDatabaseManager* m_databaseManager   = nullptr;
+        cResourceManager* m_resourceManager   = nullptr;
+        cEntityManager*   m_entityManager     = nullptr;
+        cUIManager*       m_UIManager         = nullptr;
+        sEntity*          m_player            = nullptr;
+        sMap*             m_mapPointer        = nullptr;
 
         // systems
-        cPlayerStorage*   m_playerActionBar = new cPlayerStorage;
-        cPlayerStorage*   m_playerEquipment = new cPlayerStorage;
-        cPlayerStorage*   m_playerInventory = new cPlayerStorage;
-        cPlayerStorage*   m_playerVendor    = new cPlayerStorage;
-        cPlayerStorage*   m_playerWaypoints = new cPlayerStorage;
+        cPlayerStorage*   m_playerActionBar   = new cPlayerStorage;
+        cPlayerStorage*   m_playerEquipment   = new cPlayerStorage;
+        cPlayerStorage*   m_playerInventory   = new cPlayerStorage;
+        cPlayerStorage*   m_playerVendor      = new cPlayerStorage;
+        cPlayerStorage*   m_playerWaypoints   = new cPlayerStorage;
 
         // Data
-        std::uint32_t     m_tileClicked     = 0;
-        std::uint32_t     m_objectClicked   = 0;
+        bool              m_UIdrag            = false;
+        std::uint32_t     m_activeWindowCount = 0;
+        std::uint32_t     m_tileClicked       = 0;
+        std::uint32_t     m_objectClicked     = 0;
 
-        const glm::uvec4  m_stackTextColor  = glm::uvec4(200, 200, 200, 255);
+        const glm::uvec4  m_stackTextColor    = glm::uvec4(200, 200, 200, 255);
 };
 
 #endif // PLAYER_MANAGER_HPP

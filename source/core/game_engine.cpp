@@ -366,6 +366,9 @@ void cGameEngine::process(void)
                     m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                     m_engineState = eEngineState::engineStatePause;
                 }
+
+                // Stop player movement
+                m_playerManager.targetHalt();
             }
 
             // Cleanup
@@ -375,7 +378,7 @@ void cGameEngine::process(void)
         // Process object manager events
         for (sObjectManagerEvent* tEvent = m_objectManager.getEvent(); tEvent != nullptr; tEvent = m_objectManager.getEvent())
         {
-            // Menu activated
+            // Gold change event
             if (tEvent->type == eObjectEventType::objectEventType_gold)
             {
                 // UI manager update gold
@@ -385,6 +388,10 @@ void cGameEngine::process(void)
             // Cleanup
             delete tEvent;
         }
+
+        // Player
+        m_playerManager.setUIdrag(m_IOManager.getmouseDrag());
+        m_playerManager.setActiveWindowCount(m_uiManager.getActiveWindowCount());
 
         // Process player events
         for (sPlayerEvent* tEvent = m_playerManager.getEvent(); tEvent != nullptr; tEvent = m_playerManager.getEvent())
@@ -636,6 +643,7 @@ void cGameEngine::process(void)
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
+                m_playerManager.targetHalt();
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, false);
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
@@ -651,6 +659,7 @@ void cGameEngine::process(void)
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
+                m_playerManager.targetHalt();
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, false);
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
@@ -666,6 +675,7 @@ void cGameEngine::process(void)
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
+                m_playerManager.targetHalt();
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
         }
@@ -676,6 +686,7 @@ void cGameEngine::process(void)
             m_IOManager.setKeyReadyState(GLFW_KEY_P, false);
             m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
+            m_playerManager.targetHalt();
         }
 
         // Reload current map - GLFW_KEY_R
@@ -684,6 +695,7 @@ void cGameEngine::process(void)
             m_IOManager.setKeyReadyState(GLFW_KEY_R, false);
             m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_mapManager.reloadMap();
+            m_playerManager.targetHalt();
         }
 
         // Skills - GLFW_KEY_S
@@ -696,6 +708,7 @@ void cGameEngine::process(void)
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
             if (menuState == true)
             {
+                m_playerManager.targetHalt();
                 m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
             }
         }
@@ -709,6 +722,10 @@ void cGameEngine::process(void)
             m_IOManager.setKeyReadyState(GLFW_KEY_W, false);
             m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+            if (menuState == true)
+            {
+                m_playerManager.targetHalt();
+            }
         }
 
         // Main menu - GLFW_KEY_ESCAPE
@@ -721,6 +738,10 @@ void cGameEngine::process(void)
             m_IOManager.setKeyReadyState(GLFW_KEY_ESCAPE, false);
             m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+            if (menuState == true)
+            {
+                m_playerManager.targetHalt();
+            }
         }
 
         // Screenshot - GLFW_KEY_F12
