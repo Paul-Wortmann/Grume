@@ -4299,7 +4299,7 @@
         <menu_name>skills</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_SKILLS</menu_type>
-        <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
+        <menu_texture_normal>ui/menu/skills_menu_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
         <menu_component_count>2<menu_component_count>
