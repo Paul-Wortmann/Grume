@@ -838,6 +838,108 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
     }
+
+    // Equipment to vendor -> sell item
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeEquipment) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeVendor))
+    {
+        // Get slot storage
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+
+        // pure sell
+        if (!destination->occupied)
+        {
+            // Determine item value
+            std::uint32_t sellValue = source->entity->item->goldValue * source->entity->item->stackSize;
+
+            m_player->character->gold += sellValue;
+            m_UIManager->setGold(m_player->character->gold);
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+
+        // sell identical items
+        else if ((source->entity->item->type == destination->entity->item->type) &&
+                 (source->entity->item->stackMax > 1) &&
+                 (destination->entity->item->stackMax > 1))
+        {
+            // Determine sell quantity
+            std::uint32_t sellNum = source->entity->item->stackSize;
+            if ((destination->entity->item->stackSize + sellNum) > destination->entity->item->stackMax)
+            {
+                sellNum = destination->entity->item->stackMax - destination->entity->item->stackSize;
+            }
+
+            // Determine item value
+            std::uint32_t sellValue = source->entity->item->goldValue * sellNum;
+            m_player->character->gold += sellValue;
+            m_UIManager->setGold(m_player->character->gold);
+
+            // Swap -> merge stack
+            swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+        }
+
+    }
+
+    // Vendor to Equipment -> buy item
+    else if ((_type1 == ePlayerStorageType::playerStorageTypeVendor) &&
+             (_type2 == ePlayerStorageType::playerStorageTypeEquipment))
+    {
+        // Get slot storage
+        sPlayerStorageSlot* source = sourceStorage->getStorageSlot(_slot1);
+        sPlayerStorageSlot* destination = destinationStorage->getStorageSlot(_slot2);
+/*
+        // Only proceed if there is a slot and item type match
+        if (((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeAmulet) && (source->entity->item->type == eEntityItemType::entityItemType_amulet)) ||
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeArmor) && (source->entity->item->type == eEntityItemType::entityItemType_armor)) ||
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeBelt) && (source->entity->item->type == eEntityItemType::entityItemType_belt)) ||
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeBoots) && (source->entity->item->type == eEntityItemType::entityItemType_boots)) ||
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeGloves) && (source->entity->item->type == eEntityItemType::entityItemType_gloves)) ||
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeHelm) && (source->entity->item->type == eEntityItemType::entityItemType_helmet)) ||
+            ((destination->type == ePlayerStorageSlotType::playerStorageSlotTypeRing) && (source->entity->item->type == eEntityItemType::entityItemType_ring)))
+        {
+*/
+        // pure buy
+        if (!destination->occupied)
+        {
+            // Determine item value
+            std::uint32_t buyValue = source->entity->item->goldValue * source->entity->item->stackSize;
+
+            // If player has enough coin, proceed
+            if (m_player->character->gold >= buyValue)
+            {
+                m_player->character->gold -= buyValue;
+                m_UIManager->setGold(m_player->character->gold);
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+            }
+        }
+
+        // buy identical, stack-able items
+        else if ((source->entity->item->type == destination->entity->item->type) &&
+                 (source->entity->item->stackMax > 1) &&
+                 (destination->entity->item->stackMax > 1))
+        {
+            // Determine buy quantity
+            std::uint32_t buyNum = source->entity->item->stackSize;
+            if ((destination->entity->item->stackSize + buyNum) > destination->entity->item->stackMax)
+            {
+                buyNum = destination->entity->item->stackMax - destination->entity->item->stackSize;
+            }
+
+            // Determine item value
+            std::uint32_t buyValue = source->entity->item->goldValue * buyNum;
+
+            // If player has enough coin, proceed
+            if (m_player->character->gold >= buyValue)
+            {
+                m_player->character->gold -= buyValue;
+                m_UIManager->setGold(m_player->character->gold);
+                swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
+            }
+        }
+
+    }
+
 }
 
 void cPlayerManager::clearStorage(void)
