@@ -27,6 +27,7 @@
 #include "../core/includes.hpp"
 #include "../resource/material_define.hpp"
 #include "entity_character_attributes.hpp"
+#include "entity_character_core_stats.hpp"
 #include "entity_character_level.hpp"
 #include "entity_character_skills.hpp"
 #include "entity_model.hpp"
@@ -48,7 +49,7 @@ struct sEntityCharacter
     sCharacterLevel      level             = {};
     sEntityCharAttrib    attribute         = {};
     sEntityCharSkill     skill             = {};
-
+    sCharacterCoreStats  coreStats         = {};
 
     // These need to be expanded
     float damage = 10.0f;
