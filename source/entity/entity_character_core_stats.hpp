@@ -28,6 +28,8 @@
 
 struct sCharacterCoreStats
 {
+    std::uint32_t points    = 0; // Unspent attribute points
+
     std::uint32_t might     = 0; // strength
     std::uint32_t agility   = 0; // dexterity
     std::uint32_t vitality  = 0;
