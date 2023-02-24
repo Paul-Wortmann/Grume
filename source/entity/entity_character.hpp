@@ -27,13 +27,22 @@
 #include "../core/includes.hpp"
 #include "../resource/material_define.hpp"
 #include "entity_character_attributes.hpp"
-#include "entity_character_core_stats.hpp"
 #include "entity_character_level.hpp"
 #include "entity_character_skills.hpp"
 #include "entity_model.hpp"
 
-enum eCharacterImportance : std::uint32_t { characterImportance_noob = 0,    // noob
-                                            characterImportance_boss = 1 };  // boss
+enum eCharacterClassType : std::uint32_t
+{
+    characterClass_magic  = 0,    // magic type character
+    characterClass_melee  = 1,    // melee type character
+    characterClass_ranged = 2     // ranged type character
+};
+
+enum eCharacterImportance : std::uint32_t
+{
+    characterImportance_noob = 0,    // noob
+    characterImportance_boss = 1     // boss
+};
 
 struct sEntityCharacter
 {
@@ -43,13 +52,15 @@ struct sEntityCharacter
     sMaterial**          healthBarmaterial = nullptr;
     glm::vec2            healthBarScale    = glm::vec2(1.0f, 1.0f);
     float                healthBarOffset   = 0.0f;
+
+    eCharacterClassType  type              = eCharacterClassType::characterClass_melee;
     eCharacterImportance importance        = eCharacterImportance::characterImportance_noob;
 
     std::uint64_t        gold              = 0;
     sCharacterLevel      level             = {};
     sEntityCharAttrib    attribute         = {};
+
     sEntityCharSkill     skill             = {};
-    sCharacterCoreStats  coreStats         = {};
 
     // These need to be expanded
     float damage = 10.0f;

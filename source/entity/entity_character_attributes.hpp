@@ -47,6 +47,13 @@ struct sCharacterAttributeArmor
 
 struct sEntityCharAttrib // Character attributes
 {
+    // Core stats / attributes
+    std::uint32_t points    = 0; // unspent attribute points
+    std::uint32_t strength  = 0;
+    std::uint32_t dexterity = 0;
+    std::uint32_t vitality  = 0;
+    std::uint32_t energy    = 0;
+
     // Depletable types
     sCharacterAttributeRegen  health         = {};
     sCharacterAttributeRegen  mana           = {};
@@ -61,24 +68,11 @@ struct sEntityCharAttrib // Character attributes
     sCharacterAttributeArmor resistanceFire  = {};
     sCharacterAttributeArmor resistanceFrost = {};
 
-    // gen points with base attack, when enough spend points on uber attack ?
-    //
 };
 
 #endif // ENTITY_CHARACTER_ATTRIBUTES_HPP
 
 /*
- Attack:
-   melee:
-     weapon, ie. sword, axe, scythe
-
-   ranged:
-     weapon, ie. bow
-
-   magic:
-     spell, ie. projectile/s
-
-
 
    passive skill: (augment attack)
      imbue -> weapon / spell with attribute, ie. fire

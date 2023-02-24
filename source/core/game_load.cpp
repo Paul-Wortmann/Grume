@@ -126,6 +126,13 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         tPlayer->character->level.exp     = xmlSaveGameFile.getInteger64("<exp_current>");
         tPlayer->character->level.expNext = xmlSaveGameFile.getInteger64("<exp_next>");
 
+        // Core stats / abilities
+        tPlayer->character->attribute.points    = xmlSaveGameFile.getInteger("<points>");
+        tPlayer->character->attribute.strength  = xmlSaveGameFile.getInteger("<strength>");
+        tPlayer->character->attribute.dexterity = xmlSaveGameFile.getInteger("<dexterity>");
+        tPlayer->character->attribute.vitality  = xmlSaveGameFile.getInteger("<vitality>");
+        tPlayer->character->attribute.energy    = xmlSaveGameFile.getInteger("<energy>");
+
         // Health
         tPlayer->character->attribute.health.current = xmlSaveGameFile.getFloat("<health_current>");
         tPlayer->character->attribute.health.max     = xmlSaveGameFile.getFloat("<health_max>");
