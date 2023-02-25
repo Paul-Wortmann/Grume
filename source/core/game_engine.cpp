@@ -346,7 +346,12 @@ void cGameEngine::process(void)
             // Menu activated
             if (tEvent->type == eNPCEventType::NPCEventType_menu)
             {
-                if (tEvent->data == eNPCEventData::NPCEventData_menuCloseAll)
+                if (tEvent->data == eNPCEventData::NPCEventData_levelUp)
+                {
+                    // Player level up
+                    m_playerManager.levelUp();
+                }
+                else if (tEvent->data == eNPCEventData::NPCEventData_menuCloseAll)
                 {
                     // Close all menus
                     m_uiManager.SetAllMenusDisabled();

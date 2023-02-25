@@ -1163,7 +1163,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                     // If entity could be loaded
                     if (tEntity != nullptr)
                     {
-                        // text tooltip
+                        // text tool-tip
                         tEntity->base.textActive  = true;
                         tEntity->base.textData    = std::to_string(gold);
                         tEntity->base.collectable = true;
@@ -1194,47 +1194,14 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
                 std::uint32_t exp = _entity->loot->experience_min;
                 exp += rand() % (_entity->loot->experience_max - _entity->loot->experience_min);
                 m_entityPlayer->character->level.exp += exp;
+
+                // Check experience and push a level up event
                 if (m_entityPlayer->character->level.exp >= m_entityPlayer->character->level.expNext)
                 {
-                    // Level up
-                    m_entityPlayer->character->level.current++;
-                    m_entityPlayer->character->level.exp -= m_entityPlayer->character->level.expNext;
-                    m_entityPlayer->character->level.expNext = static_cast<std::uint64_t>(static_cast<double>(m_entityPlayer->character->level.expNext) * static_cast<double>(m_entityPlayer->character->level.expMultiplier));
-
-                    // Set entity state : levelUp
-                    m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_levelUp);
-
-                    // Increase attributes + skills
-                    // *** Currently automatic, could be player controlled in the future ***
-
-                    // Health
-                    m_entityPlayer->character->attribute.health.max += (m_entityPlayer->character->attribute.health.max / 2.0f);
-                    m_entityPlayer->character->attribute.health.current = m_entityPlayer->character->attribute.health.max;
-                    m_entityPlayer->character->attribute.health.regen += (m_entityPlayer->character->attribute.health.regen * 1.25f);
-
-                    // Mana
-                    m_entityPlayer->character->attribute.mana.max += (m_entityPlayer->character->attribute.mana.max / 2.0f);
-                    m_entityPlayer->character->attribute.mana.current = m_entityPlayer->character->attribute.mana.max;
-                    m_entityPlayer->character->attribute.mana.regen += (m_entityPlayer->character->attribute.mana.regen * 1.25f);
-
-                    // Damage
-                    m_entityPlayer->character->attribute.damagePhysical.base += 1;
-                    m_entityPlayer->character->attribute.damagePhysical.critChance += 1.0f;
-                    m_entityPlayer->character->attribute.damagePhysical.critMultiplier += 0.25f;
-                    m_entityPlayer->character->attribute.damageFire.base += 1;
-                    m_entityPlayer->character->attribute.damageFire.critChance += 1.0f;
-                    m_entityPlayer->character->attribute.damageFire.critMultiplier += 0.25f;
-                    m_entityPlayer->character->attribute.damageFrost.base += 1;
-                    m_entityPlayer->character->attribute.damageFrost.critChance += 1.0f;
-                    m_entityPlayer->character->attribute.damageFrost.critMultiplier += 0.25f;
-
-                    // Armor
-                    m_entityPlayer->character->attribute.armorPhysical.base += 1;
-
-                    // Resistance
-                    m_entityPlayer->character->attribute.resistanceFire.base += 1;
-                    m_entityPlayer->character->attribute.resistanceFrost.base += 1;
-
+                    sNPCManagerEvent* event = new sNPCManagerEvent;
+                    event->type = eNPCEventType::NPCEventType_player;
+                    event->data = eNPCEventData::NPCEventData_levelUp;
+                    m_event.push(event);
                 }
             }
 

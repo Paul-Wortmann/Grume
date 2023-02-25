@@ -38,14 +38,22 @@
 #include "../resource/resource_manager.hpp"
 
 // Event type enum
-enum eNPCEventType : std::uint32_t { NPCEventType_none = 0,    // null event
-                                     NPCEventType_menu = 1  }; // menu activate event
+enum eNPCEventType : std::uint32_t
+{
+    NPCEventType_none   = 0, // null event
+    NPCEventType_menu   = 1, // menu activate event
+    NPCEventType_player = 2  // player event
+};
 
 // Event data enum
-enum eNPCEventData : std::uint32_t { NPCEventData_none          = 0,    // null event
-                                     NPCEventData_menuCloseAll  = 1,    // menu close all
-                                     NPCEventData_menuVendor    = 2,    // menu activate vendor
-                                     NPCEventData_menuInventory = 3  }; // menu activate inventory
+enum eNPCEventData : std::uint32_t
+{
+    NPCEventData_none          = 0, // null event
+    NPCEventData_levelUp       = 1, // Player level up
+    NPCEventData_menuCloseAll  = 2, // menu close all
+    NPCEventData_menuVendor    = 3, // menu activate vendor
+    NPCEventData_menuInventory = 4  // menu activate inventory
+};
 
 // Event struct
 struct sNPCManagerEvent

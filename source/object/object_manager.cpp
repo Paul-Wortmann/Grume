@@ -138,7 +138,7 @@ void cObjectManager::process(const std::int64_t &_dt)
                                             // Update model matrix
                                             m_entityManager->updateModelMatrix(tEntity);
 
-                                            // text tooltip
+                                            // text tool-tip
                                             tEntity->base.textActive = true;
                                             tEntity->base.textData = std::to_string(gold);
                                             tEntity->base.collectable = true;
@@ -166,7 +166,7 @@ void cObjectManager::process(const std::int64_t &_dt)
                         }
                     }
 
-                    // Collectable
+                    // Collectible
                     if (m_entityTemp->base.collectable)
                     {
                         // Avoid unintended mouse clicks

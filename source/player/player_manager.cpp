@@ -1223,3 +1223,46 @@ void cPlayerManager::process(const std::int64_t &_dt)
         m_entityManager->updateModelMatrix(m_player);
     }
 }
+
+void cPlayerManager::levelUp(void)
+{
+
+    // Level up
+    m_player->character->level.current++;
+    m_player->character->level.exp -= m_player->character->level.expNext;
+    m_player->character->level.expNext = static_cast<std::uint64_t>(static_cast<double>(m_player->character->level.expNext) * static_cast<double>(m_player->character->level.expMultiplier));
+
+    // Set entity state : levelUp
+    m_entityManager->stateSet(m_player, eEntityState::entityState_levelUp);
+
+    // Increase attributes + skills
+    // *** Currently automatic, could be player controlled in the future ***
+
+    // Health
+    m_player->character->attribute.health.max += (m_player->character->attribute.health.max / 2.0f);
+    m_player->character->attribute.health.current = m_player->character->attribute.health.max;
+    m_player->character->attribute.health.regen += (m_player->character->attribute.health.regen * 1.25f);
+
+    // Mana
+    m_player->character->attribute.mana.max += (m_player->character->attribute.mana.max / 2.0f);
+    m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
+    m_player->character->attribute.mana.regen += (m_player->character->attribute.mana.regen * 1.25f);
+
+    // Damage
+    m_player->character->attribute.damagePhysical.base += 1;
+    m_player->character->attribute.damagePhysical.critChance += 1.0f;
+    m_player->character->attribute.damagePhysical.critMultiplier += 0.25f;
+    m_player->character->attribute.damageFire.base += 1;
+    m_player->character->attribute.damageFire.critChance += 1.0f;
+    m_player->character->attribute.damageFire.critMultiplier += 0.25f;
+    m_player->character->attribute.damageFrost.base += 1;
+    m_player->character->attribute.damageFrost.critChance += 1.0f;
+    m_player->character->attribute.damageFrost.critMultiplier += 0.25f;
+
+    // Armor
+    m_player->character->attribute.armorPhysical.base += 1;
+
+    // Resistance
+    m_player->character->attribute.resistanceFire.base += 1;
+    m_player->character->attribute.resistanceFrost.base += 1;
+}
