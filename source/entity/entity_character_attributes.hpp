@@ -48,11 +48,12 @@ struct sCharacterAttributeArmor
 struct sEntityCharAttrib // Character attributes
 {
     // Core stats / attributes
-    std::uint32_t points    = 0; // unspent attribute points
-    std::uint32_t strength  = 0;
-    std::uint32_t dexterity = 0;
-    std::uint32_t vitality  = 0;
-    std::uint32_t energy    = 0;
+    std::uint32_t pointsOnLevel    = 5; // Attribute points awarded each level
+    std::uint32_t pointsCurrent    = 0; // unspent attribute points
+    std::uint32_t strength         = 0;
+    std::uint32_t dexterity        = 0;
+    std::uint32_t vitality         = 0;
+    std::uint32_t energy           = 0;
 
     // Depletable types
     sCharacterAttributeRegen  health         = {};

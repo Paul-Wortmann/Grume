@@ -74,7 +74,7 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
         saveFile << indent(iLevel) << "<exp_next>" << tPlayer->character->level.expNext << "</exp_next>" << std::endl;
 
         // Core stats / abilities
-        saveFile << indent(iLevel) << "<points>" << tPlayer->character->attribute.points << "</points>" << std::endl;
+        saveFile << indent(iLevel) << "<points>" << tPlayer->character->attribute.pointsCurrent << "</points>" << std::endl;
         saveFile << indent(iLevel) << "<strength>" << tPlayer->character->attribute.strength << "</strength>" << std::endl;
         saveFile << indent(iLevel) << "<dexterity>" << tPlayer->character->attribute.dexterity << "</dexterity>" << std::endl;
         saveFile << indent(iLevel) << "<vitality>" << tPlayer->character->attribute.vitality << "</vitality>" << std::endl;

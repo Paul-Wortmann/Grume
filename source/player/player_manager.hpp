@@ -130,6 +130,7 @@ class cPlayerManager :tcTemplateEngine
         void              setUIdrag(const bool &_state);
         void              setActiveWindowCount(const std::uint32_t &_count) { m_activeWindowCount = _count; }
         void              levelUp(void);
+        void              calculateAttributes(void);
 
     protected:
     private:

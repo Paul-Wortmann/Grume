@@ -1226,27 +1226,33 @@ void cPlayerManager::process(const std::int64_t &_dt)
 
 void cPlayerManager::levelUp(void)
 {
-
-    // Level up
+    // Adjust experience and level
     m_player->character->level.current++;
     m_player->character->level.exp -= m_player->character->level.expNext;
     m_player->character->level.expNext = static_cast<std::uint64_t>(static_cast<double>(m_player->character->level.expNext) * static_cast<double>(m_player->character->level.expMultiplier));
 
+    // Increase attributes + skills
+    m_player->character->attribute.pointsCurrent += m_player->character->attribute.pointsOnLevel;
+
+    // Calculate player attributes
+    calculateAttributes();
+
     // Set entity state : levelUp
     m_entityManager->stateSet(m_player, eEntityState::entityState_levelUp);
+}
 
-    // Increase attributes + skills
-    // *** Currently automatic, could be player controlled in the future ***
+void cPlayerManager::calculateAttributes(void)
+{
 
     // Health
+    m_player->character->attribute.health.regen += (m_player->character->attribute.health.regen * 1.25f);
     m_player->character->attribute.health.max += (m_player->character->attribute.health.max / 2.0f);
     m_player->character->attribute.health.current = m_player->character->attribute.health.max;
-    m_player->character->attribute.health.regen += (m_player->character->attribute.health.regen * 1.25f);
 
     // Mana
+    m_player->character->attribute.mana.regen += (m_player->character->attribute.mana.regen * 1.25f);
     m_player->character->attribute.mana.max += (m_player->character->attribute.mana.max / 2.0f);
     m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
-    m_player->character->attribute.mana.regen += (m_player->character->attribute.mana.regen * 1.25f);
 
     // Damage
     m_player->character->attribute.damagePhysical.base += 1;
