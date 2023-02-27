@@ -432,7 +432,7 @@
             <component_texture_hover>ui/menu/text_main_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_main_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -446,7 +446,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
@@ -615,13 +615,13 @@
             <component_texture_hover>ui/menu/text_options_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_options_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         <component>
             <component_name>button_0_close</component_name>
             <component_enabled>1</component_enabled>
@@ -629,7 +629,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
@@ -879,13 +879,13 @@
             <component_texture_hover>ui/menu/text_inventory_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_inventory_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         <component>
             <component_name>button_0_close</component_name>
             <component_enabled>1</component_enabled>
@@ -893,7 +893,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
@@ -2462,13 +2462,13 @@
             <component_texture_hover>ui/menu/text_store_001.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_store_001.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         <component>
             <component_name>button_0_close</component_name>
             <component_enabled>1</component_enabled>
@@ -2476,7 +2476,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
@@ -4017,7 +4017,7 @@
             <component_texture_hover>ui/menu/text_equipment_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_equipment_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4031,7 +4031,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
@@ -4256,10 +4256,10 @@
         <menu_name>character</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_CHARACTER</menu_type>
-        <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
+        <menu_texture_normal>ui/menu/character_menu_001.png</menu_texture_normal>
         <menu_position>-0.5f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>2<menu_component_count>
+        <menu_component_count>6<menu_component_count>
         <menu_sound_open>menu 5</menu_sound_open>
         <menu_sound_close>NONE 0</menu_sound_close>
 
@@ -4270,7 +4270,7 @@
             <component_texture_hover>ui/menu/text_character_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_character_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4284,8 +4284,68 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+            <component_sound_hover>menu 6</component_sound_hover>
+            <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
+        # + Strength button
+        <component>
+            <component_name>button_1_strength</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_003_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_003_a.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_003_a.png</component_texture_activated>
+            <component_position>-0.027f, 0.459f, -0.02f</component_position>
+            <component_size>0.0152f 0.03f</component_size>
+            <component_function>PLUS_STRENGTH</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+            <component_sound_hover>menu 6</component_sound_hover>
+            <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
+        # + Dexterity button
+        <component>
+            <component_name>button_1_dexterity</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_003_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_003_a.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_003_a.png</component_texture_activated>
+            <component_position>-0.027f, 0.38f, -0.02f</component_position>
+            <component_size>0.0152f 0.03f</component_size>
+            <component_function>PLUS_DEXTERITY</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+            <component_sound_hover>menu 6</component_sound_hover>
+            <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
+        # + Energy button
+        <component>
+            <component_name>button_1_energy</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_003_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_003_a.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_003_a.png</component_texture_activated>
+            <component_position>-0.027f, 0.304f, -0.02f</component_position>
+            <component_size>0.0152f 0.03f</component_size>
+            <component_function>PLUS_ENERGY</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+            <component_sound_hover>menu 6</component_sound_hover>
+            <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
+        # + Vitality button
+        <component>
+            <component_name>button_1_vitality</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/button_003_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_003_a.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_003_a.png</component_texture_activated>
+            <component_position>-0.027f, 0.226f, -0.02f</component_position>
+            <component_size>0.0152f 0.03f</component_size>
+            <component_function>PLUS_VITALITY</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
@@ -4313,7 +4373,7 @@
             <component_texture_hover>ui/menu/text_skills_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_skills_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4327,7 +4387,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
@@ -4356,7 +4416,7 @@
             <component_texture_hover>ui/menu/text_waypoint_menu.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_waypoint_menu.png</component_texture_activated>
             <component_position>0.0f, 0.60f, -0.02f</component_position>
-            <component_size>0.152083333f 0.059259259f</component_size>
+            <component_size>0.09125f 0.035555f</component_size>
             <component_function>NONE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4370,7 +4430,7 @@
             <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
             <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
             <component_position>0.2325f, 0.64f, -0.02f</component_position>
-            <component_size>0.021875f 0.038888889f</component_size>
+            <component_size>0.01458333f 0.025925926f</component_size>
             <component_function>MENU_CLOSE</component_function>
             <component_type>TYPE_NORMAL</component_type>
             <component_sound_hover>menu 6</component_sound_hover>
