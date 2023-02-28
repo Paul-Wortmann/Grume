@@ -251,6 +251,13 @@ void cPlayerManager::swapStorage(cPlayerStorage *&_sourceStorage, const std::uin
 
         tSlot.entity = nullptr;
     }
+
+    // Update player attributes if equipment
+    if ((_sourceStorage->getStorageType() == ePlayerStorageType::playerStorageTypeEquipment) ||
+        (_destinationStorage->getStorageType() == ePlayerStorageType::playerStorageTypeEquipment))
+    {
+        calculateAttributes();
+    }
 }
 
 void cPlayerManager::unequip(const std::uint32_t &_slot)
@@ -1243,32 +1250,41 @@ void cPlayerManager::levelUp(void)
 
 void cPlayerManager::calculateAttributes(void)
 {
+    /// *** Until the player can freely distribute points, we do it automatically *** ///
+    m_player->character->attribute.strength  = m_player->character->level.current;
+    m_player->character->attribute.dexterity = m_player->character->level.current;
+    m_player->character->attribute.energy    = m_player->character->level.current;
+    m_player->character->attribute.vitality  = m_player->character->level.current;
+
+
+
+
 
     // Health
-    m_player->character->attribute.health.regen += (m_player->character->attribute.health.regen * 1.25f);
-    m_player->character->attribute.health.max += (m_player->character->attribute.health.max / 2.0f);
+    m_player->character->attribute.health.regen = 0.025f + (1.25f * m_player->character->attribute.vitality);
+    m_player->character->attribute.health.max = m_player->character->attribute.health.base + (m_player->character->attribute.health.base /  m_player->character->attribute.vitality);
     m_player->character->attribute.health.current = m_player->character->attribute.health.max;
 
     // Mana
-    m_player->character->attribute.mana.regen += (m_player->character->attribute.mana.regen * 1.25f);
-    m_player->character->attribute.mana.max += (m_player->character->attribute.mana.max / 2.0f);
+    m_player->character->attribute.mana.regen = 0.025f + (1.25f * m_player->character->attribute.energy);
+    m_player->character->attribute.mana.max = m_player->character->attribute.mana.base + (m_player->character->attribute.mana.base /  m_player->character->attribute.energy);
     m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
 
     // Damage
-    m_player->character->attribute.damagePhysical.base += 1;
-    m_player->character->attribute.damagePhysical.critChance += 1.0f;
-    m_player->character->attribute.damagePhysical.critMultiplier += 0.25f;
-    m_player->character->attribute.damageFire.base += 1;
-    m_player->character->attribute.damageFire.critChance += 1.0f;
-    m_player->character->attribute.damageFire.critMultiplier += 0.25f;
-    m_player->character->attribute.damageFrost.base += 1;
-    m_player->character->attribute.damageFrost.critChance += 1.0f;
-    m_player->character->attribute.damageFrost.critMultiplier += 0.25f;
+    m_player->character->attribute.damagePhysical.base = m_player->character->attribute.strength;
+    m_player->character->attribute.damagePhysical.critChance = (1.0f * m_player->character->attribute.strength);
+    m_player->character->attribute.damagePhysical.critMultiplier = (0.25f * m_player->character->attribute.strength);
+    m_player->character->attribute.damageFire.base = m_player->character->attribute.strength;
+    m_player->character->attribute.damageFire.critChance = (1.0f * m_player->character->attribute.strength);
+    m_player->character->attribute.damageFire.critMultiplier = (0.25f * m_player->character->attribute.strength);
+    m_player->character->attribute.damageFrost.base = m_player->character->attribute.strength;
+    m_player->character->attribute.damageFrost.critChance = (1.0f * m_player->character->attribute.strength);
+    m_player->character->attribute.damageFrost.critMultiplier = (0.25f * m_player->character->attribute.strength);
 
     // Armor
-    m_player->character->attribute.armorPhysical.base += 1;
+    m_player->character->attribute.armorPhysical.base = m_player->character->attribute.dexterity;
 
     // Resistance
-    m_player->character->attribute.resistanceFire.base += 1;
-    m_player->character->attribute.resistanceFrost.base += 1;
+    m_player->character->attribute.resistanceFire.base = m_player->character->attribute.dexterity;
+    m_player->character->attribute.resistanceFrost.base = m_player->character->attribute.dexterity;
 }

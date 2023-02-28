@@ -28,6 +28,7 @@
 
 struct sCharacterAttributeRegen
 {
+    float base           = 100;     // Base
     float max            = 100;     // Maximum
     float current        = 100;     // Current
     float regen          = 0.025f;  // Amount per second

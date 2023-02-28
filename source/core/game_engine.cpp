@@ -626,6 +626,14 @@ void cGameEngine::process(void)
                 m_playerManager.moveStorage(source, tEvent->data_1, destination, tEvent->data_2);
             }
 
+            // Equipment change
+            else if (tEvent->type == eUIEventType::UIEventType_equipmentChange)
+            {
+                // Have the player manager re-calculate player attributes
+                m_playerManager.calculateAttributes();
+            }
+
+            // Unhandled event
             else
             {
                 std::cout << "Unhandled ui event: " << static_cast<std::uint32_t>(tEvent->type) << std::endl;
