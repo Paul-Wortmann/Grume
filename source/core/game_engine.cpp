@@ -159,7 +159,12 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_uiManager.setDatabaseManager(&m_databaseManager);
     m_uiManager.setResourceManager(&m_resourceManager);
     m_uiManager.setWindowSize(m_graphicsEngine.getWindow_w(), m_graphicsEngine.getWindow_h());
-    m_uiManager.setGold(0);
+    m_uiManager.setTextGold(0);
+    m_uiManager.setTextStrength(0);
+    m_uiManager.setTextDexterity(0);
+    m_uiManager.setTextEnergy(0);
+    m_uiManager.setTextVitality(0);
+    m_uiManager.setTextPoints(0);
 
     // Display loading screen
     m_graphicsEngine.process(0);
@@ -346,12 +351,7 @@ void cGameEngine::process(void)
             // Menu activated
             if (tEvent->type == eNPCEventType::NPCEventType_menu)
             {
-                if (tEvent->data == eNPCEventData::NPCEventData_levelUp)
-                {
-                    // Player level up
-                    m_playerManager.levelUp();
-                }
-                else if (tEvent->data == eNPCEventData::NPCEventData_menuCloseAll)
+                if (tEvent->data == eNPCEventData::NPCEventData_menuCloseAll)
                 {
                     // Close all menus
                     m_uiManager.SetAllMenusDisabled();
@@ -376,6 +376,17 @@ void cGameEngine::process(void)
                 m_playerManager.targetHalt();
             }
 
+            // Player type event
+            else if (tEvent->type == eNPCEventType::NPCEventType_player)
+            {
+                // Level up event
+                if (tEvent->data == eNPCEventData::NPCEventData_levelUp)
+                {
+                    // Player level up
+                    m_playerManager.levelUp();
+                }
+            }
+
             // Cleanup
             delete tEvent;
         }
@@ -387,7 +398,7 @@ void cGameEngine::process(void)
             if (tEvent->type == eObjectEventType::objectEventType_gold)
             {
                 // UI manager update gold
-                m_uiManager.setGold(tEvent->data);
+                m_uiManager.setTextGold(tEvent->data);
             }
 
             // Cleanup
@@ -511,6 +522,16 @@ void cGameEngine::process(void)
                 // Fullscreen modified
                 else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_fullscreenModified)
                 {
+                    // NA
+                }
+
+                // Strength attribute modified
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusStrength)
+                {
+//                    regenerate ui text label
+ //                   recalculate player attributes.
+
+//                    strength, dexterity, energy, vitality too
                     // NA
                 }
 

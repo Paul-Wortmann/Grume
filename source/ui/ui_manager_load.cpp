@@ -1564,10 +1564,48 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionWaypointsStack_6;
                     }
 
-                    // Gold text
-                    else if (componentFunction.compare("GOLD_TEXT") == 0)
+                    // Attribute point modifier button
+                    else if (componentFunction.compare("PLUS_STRENGTH") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionPlusStrength;
+                    }
+                    else if (componentFunction.compare("PLUS_DEXTERITY") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionPlusDexterity;
+                    }
+                    else if (componentFunction.compare("PLUS_ENERGY") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionPlusEnergy;
+                    }
+                    else if (componentFunction.compare("PLUS_VITALITY") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionPlusVitality;
+                    }
+
+                    // Text label
+                    else if (componentFunction.compare("TEXT_GOLD") == 0)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionTextGold;
+                    }
+                    else if (componentFunction.compare("TEXT_STRENGTH") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionTextStrength;
+                    }
+                    else if (componentFunction.compare("TEXT_DEXTERITY") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionTextDexterity;
+                    }
+                    else if (componentFunction.compare("TEXT_ENERGY") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionTextEnergy;
+                    }
+                    else if (componentFunction.compare("TEXT_VITALITY") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionTextVitality;
+                    }
+                    else if (componentFunction.compare("TEXT_POINTS") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionTextPoints;
                     }
 
                     else

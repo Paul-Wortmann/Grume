@@ -359,7 +359,17 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionWaypointsStack_5   = 304, // Waypoints slot 1 stack size text label
     componentFunctionWaypointsStack_6   = 305, // Waypoints slot 1 stack size text label
 
-    componentFunctionTextGold           = 306  // Gold text
+    componentFunctionPlusStrength       = 306, // Plus Strength
+    componentFunctionPlusDexterity      = 307, // Plus Dexterity
+    componentFunctionPlusEnergy         = 308, // Plus Energy
+    componentFunctionPlusVitality       = 309, // Plus Vitality
+
+    componentFunctionTextGold           = 310, // Gold text
+    componentFunctionTextStrength       = 311, // Strength text
+    componentFunctionTextDexterity      = 312, // Dexterity text
+    componentFunctionTextEnergy         = 313, // Energy text
+    componentFunctionTextVitality       = 314, // Vitality text
+    componentFunctionTextPoints         = 315  // Points text
 
 };
 
@@ -483,7 +493,11 @@ enum eUIEventFunction : std::uint32_t
     UIEventFunction_inventory          = 17,  // inventory storage
     UIEventFunction_vendor             = 18,  // vendor storage
     UIEventFunction_waypoints          = 19,  // waypoints storage
-    UIEventFunction_componentSlotType  = 20   // component slot type
+    UIEventFunction_componentSlotType  = 20,  // component slot type
+    UIEventFunction_plusStrength       = 21,  // plus Strength
+    UIEventFunction_plusDexterity      = 22,  // plus Dexterity
+    UIEventFunction_plusEnergy         = 23,  // plus Energy
+    UIEventFunction_plusVitality       = 24   // plus Vitality
 };
 
 // Event struct

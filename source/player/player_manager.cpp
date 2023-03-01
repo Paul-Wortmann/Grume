@@ -355,7 +355,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             std::uint32_t sellValue = source->entity->item->goldValue * source->entity->item->stackSize;
 
             m_player->character->gold += sellValue;
-            m_UIManager->setGold(m_player->character->gold);
+            m_UIManager->setTextGold(m_player->character->gold);
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
 
@@ -374,7 +374,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             // Determine item value
             std::uint32_t sellValue = source->entity->item->goldValue * sellNum;
             m_player->character->gold += sellValue;
-            m_UIManager->setGold(m_player->character->gold);
+            m_UIManager->setTextGold(m_player->character->gold);
 
             // Swap -> merge stack
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
@@ -395,7 +395,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             {
                 m_player->character->gold -= buyValue;
                 m_player->character->gold += sellValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -420,7 +420,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             if (m_player->character->gold >= buyValue)
             {
                 m_player->character->gold -= buyValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -444,7 +444,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             if (m_player->character->gold >= buyValue)
             {
                 m_player->character->gold -= buyValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -464,7 +464,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             {
                 m_player->character->gold -= buyValue;
                 m_player->character->gold += sellValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -539,7 +539,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             std::uint32_t sellValue = source->entity->item->goldValue * source->entity->item->stackSize;
 
             m_player->character->gold += sellValue;
-            m_UIManager->setGold(m_player->character->gold);
+            m_UIManager->setTextGold(m_player->character->gold);
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
 
@@ -558,7 +558,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             // Determine item value
             std::uint32_t sellValue = source->entity->item->goldValue * sellNum;
             m_player->character->gold += sellValue;
-            m_UIManager->setGold(m_player->character->gold);
+            m_UIManager->setTextGold(m_player->character->gold);
 
             // Swap -> merge stack
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
@@ -576,7 +576,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             {
                 m_player->character->gold -= buyValue;
                 m_player->character->gold += sellValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -600,7 +600,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             if (m_player->character->gold >= buyValue)
             {
                 m_player->character->gold -= buyValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -624,7 +624,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             if (m_player->character->gold >= buyValue)
             {
                 m_player->character->gold -= buyValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -641,7 +641,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             {
                 m_player->character->gold -= buyValue;
                 m_player->character->gold += sellValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -861,7 +861,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             std::uint32_t sellValue = source->entity->item->goldValue * source->entity->item->stackSize;
 
             m_player->character->gold += sellValue;
-            m_UIManager->setGold(m_player->character->gold);
+            m_UIManager->setTextGold(m_player->character->gold);
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
         }
 
@@ -880,7 +880,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             // Determine item value
             std::uint32_t sellValue = source->entity->item->goldValue * sellNum;
             m_player->character->gold += sellValue;
-            m_UIManager->setGold(m_player->character->gold);
+            m_UIManager->setTextGold(m_player->character->gold);
 
             // Swap -> merge stack
             swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
@@ -916,7 +916,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             if (m_player->character->gold >= buyValue)
             {
                 m_player->character->gold -= buyValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -940,7 +940,7 @@ void cPlayerManager::moveStorage(const ePlayerStorageType &_type1, const std::ui
             if (m_player->character->gold >= buyValue)
             {
                 m_player->character->gold -= buyValue;
-                m_UIManager->setGold(m_player->character->gold);
+                m_UIManager->setTextGold(m_player->character->gold);
                 swapStorage(sourceStorage, _slot1, destinationStorage, _slot2);
             }
         }
@@ -1244,6 +1244,10 @@ void cPlayerManager::levelUp(void)
     // Calculate player attributes
     calculateAttributes();
 
+    // Set health and mana to max
+    m_player->character->attribute.health.current = m_player->character->attribute.health.max;
+    m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
+
     // Set entity state : levelUp
     m_entityManager->stateSet(m_player, eEntityState::entityState_levelUp);
 }
@@ -1256,30 +1260,30 @@ void cPlayerManager::calculateAttributes(void)
     m_player->character->attribute.energy    = m_player->character->level.current;
     m_player->character->attribute.vitality  = m_player->character->level.current;
 
+    // * We should load and save these base values in the game config
 
 
 
+    // --- Set to base values ---
 
     // Health
-    m_player->character->attribute.health.regen = 0.025f + (1.25f * m_player->character->attribute.vitality);
-    m_player->character->attribute.health.max = m_player->character->attribute.health.base + (m_player->character->attribute.health.base /  m_player->character->attribute.vitality);
-    m_player->character->attribute.health.current = m_player->character->attribute.health.max;
+    m_player->character->attribute.health.regen = 0.025f;
+    m_player->character->attribute.health.max = 100.0f;
 
     // Mana
-    m_player->character->attribute.mana.regen = 0.025f + (1.25f * m_player->character->attribute.energy);
-    m_player->character->attribute.mana.max = m_player->character->attribute.mana.base + (m_player->character->attribute.mana.base /  m_player->character->attribute.energy);
-    m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
+    m_player->character->attribute.mana.regen = 0.025f;
+    m_player->character->attribute.mana.max = 100.0f;
 
     // Damage
-    m_player->character->attribute.damagePhysical.base = m_player->character->attribute.strength;
-    m_player->character->attribute.damagePhysical.critChance = (1.0f * m_player->character->attribute.strength);
-    m_player->character->attribute.damagePhysical.critMultiplier = (0.25f * m_player->character->attribute.strength);
-    m_player->character->attribute.damageFire.base = m_player->character->attribute.strength;
-    m_player->character->attribute.damageFire.critChance = (1.0f * m_player->character->attribute.strength);
-    m_player->character->attribute.damageFire.critMultiplier = (0.25f * m_player->character->attribute.strength);
-    m_player->character->attribute.damageFrost.base = m_player->character->attribute.strength;
-    m_player->character->attribute.damageFrost.critChance = (1.0f * m_player->character->attribute.strength);
-    m_player->character->attribute.damageFrost.critMultiplier = (0.25f * m_player->character->attribute.strength);
+    m_player->character->attribute.damagePhysical.base = 1.0f;
+    m_player->character->attribute.damagePhysical.critChance = 1.0f;
+    m_player->character->attribute.damagePhysical.critMultiplier = 0.25f;
+    m_player->character->attribute.damageFire.base = 1.0f;
+    m_player->character->attribute.damageFire.critChance = 1.0f;
+    m_player->character->attribute.damageFire.critMultiplier = 0.25f;
+    m_player->character->attribute.damageFrost.base = 1.0f;
+    m_player->character->attribute.damageFrost.critChance = 1.0f;
+    m_player->character->attribute.damageFrost.critMultiplier = 0.25f;
 
     // Armor
     m_player->character->attribute.armorPhysical.base = m_player->character->attribute.dexterity;
@@ -1287,4 +1291,18 @@ void cPlayerManager::calculateAttributes(void)
     // Resistance
     m_player->character->attribute.resistanceFire.base = m_player->character->attribute.dexterity;
     m_player->character->attribute.resistanceFrost.base = m_player->character->attribute.dexterity;
+
+
+    // Calculate values based on level
+    for (std::uint32_t i = 0; i < m_player->character->level.current; ++i)
+    {
+        // Health
+        m_player->character->attribute.health.regen += m_player->character->attribute.vitality * m_player->character->attribute.health.regen;
+        m_player->character->attribute.health.max += m_player->character->attribute.vitality * i;
+
+        // Mana
+        m_player->character->attribute.mana.regen += m_player->character->attribute.energy * m_player->character->attribute.mana.regen;
+        m_player->character->attribute.mana.max += m_player->character->attribute.energy * i;
+    }
+
 }

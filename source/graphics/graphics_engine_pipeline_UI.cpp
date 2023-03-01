@@ -176,6 +176,86 @@ void cGraphicsEngine::m_pui_render(void)
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
                         m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
                     }
+                    // Strength text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextStrength)
+                    {
+                        // Generate texture:
+                        sTexture* textureTextStrength = m_UIManager->getTextStrengthTexture();
+                        menu[m].component[c].textureNormal = textureTextStrength->ID;
+
+                        // Position and scaling
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextStrength->height) * static_cast<float>(textureTextStrength->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                        // Update the model matrix
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                    }
+                    // Dexterity text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextDexterity)
+                    {
+                        // Generate texture:
+                        sTexture* textureTextDexterity = m_UIManager->getTextDexterityTexture();
+                        menu[m].component[c].textureNormal = textureTextDexterity->ID;
+
+                        // Position and scaling
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextDexterity->height) * static_cast<float>(textureTextDexterity->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                        // Update the model matrix
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                    }
+                    // Energy text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextEnergy)
+                    {
+                        // Generate texture:
+                        sTexture* textureTextEnergy = m_UIManager->getTextEnergyTexture();
+                        menu[m].component[c].textureNormal = textureTextEnergy->ID;
+
+                        // Position and scaling
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextEnergy->height) * static_cast<float>(textureTextEnergy->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                        // Update the model matrix
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                    }
+                    // Vitality text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextVitality)
+                    {
+                        // Generate texture:
+                        sTexture* textureTextVitality = m_UIManager->getTextVitalityTexture();
+                        menu[m].component[c].textureNormal = textureTextVitality->ID;
+
+                        // Position and scaling
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextVitality->height) * static_cast<float>(textureTextVitality->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                        // Update the model matrix
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                    }
+                    // Points text
+                    else if (menu[m].component[c].function == eComponentFunction::componentFunctionTextPoints)
+                    {
+                        // Generate texture:
+                        sTexture* textureTextPoints = m_UIManager->getTextPointsTexture();
+                        menu[m].component[c].textureNormal = textureTextPoints->ID;
+
+                        // Position and scaling
+                        float sizeX = menu[m].component[c].size.y / static_cast<float>(textureTextPoints->height) * static_cast<float>(textureTextPoints->width);
+                        glm::vec3 position = menu[m].component[c].position;
+                        position.x += (sizeX * m_aspectRatio / 2.0f);
+
+                        // Update the model matrix
+                        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
+                        m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(sizeX, menu[m].component[c].size.y, 1.0f));
+                    }
 
                     // Action bar slot stack text
                     else if ((menu[m].component[c].function >= eComponentFunction::componentFunctionActionBarStack_1) &&

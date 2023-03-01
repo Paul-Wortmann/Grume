@@ -51,11 +51,34 @@ class cUIManager
         bool               getMouseOverMenu(void) { return m_mouseOverMenu; }
         void               setWindowSize(const std::uint32_t &_width, const std::uint32_t &_height) { m_window_w = _width; m_window_h = _height; m_calculateScale(); }
         std::uint32_t      getActiveWindowCount(void) { return m_activeWindowCount; }
+
+        // Dynamic textures
         void               setMapTitle(const std::string &_mapTitle);
         sTexture*          getTitleTexture(void) { return m_mapTitleTexture; }
-        void               setGold(const std::uint64_t &_gold);
+
+        void               setTextGold(const std::uint64_t &_gold) { m_setTextValue(m_textGold, _gold, glm::uvec4(212, 175, 055, 255)); }
         sTexture*          getTextGoldTexture(void) { return m_textGold; }
         void               setTextGoldTexture(sTexture*& _texture) { m_textGold = _texture; }
+
+        void               setTextStrength(const std::uint64_t &_strength) { m_setTextValue(m_textStrength, _strength, glm::uvec4(212, 175, 055, 255)); }
+        sTexture*          getTextStrengthTexture(void) { return m_textStrength; }
+        void               setTextStrengthTexture(sTexture*& _texture) { m_textStrength = _texture; }
+
+        void               setTextDexterity(const std::uint64_t &_dexterity) { m_setTextValue(m_textDexterity, _dexterity, glm::uvec4(212, 175, 055, 255)); }
+        sTexture*          getTextDexterityTexture(void) { return m_textDexterity; }
+        void               setTextDexterityTexture(sTexture*& _texture) { m_textDexterity = _texture; }
+
+        void               setTextEnergy(const std::uint64_t &_energy) { m_setTextValue(m_textEnergy, _energy, glm::uvec4(212, 175, 055, 255)); }
+        sTexture*          getTextEnergyTexture(void) { return m_textEnergy; }
+        void               setTextEnergyTexture(sTexture*& _texture) { m_textEnergy = _texture; }
+
+        void               setTextVitality(const std::uint64_t &_vitality) { m_setTextValue(m_textVitality, _vitality, glm::uvec4(212, 175, 055, 255)); }
+        sTexture*          getTextVitalityTexture(void) { return m_textVitality; }
+        void               setTextVitalityTexture(sTexture*& _texture) { m_textVitality = _texture; }
+
+        void               setTextPoints(const std::uint64_t &_points) { m_setTextValue(m_textPoints, _points, glm::uvec4(212, 175, 055, 255)); }
+        sTexture*          getTextPointsTexture(void) { return m_textPoints; }
+        void               setTextPointsTexture(sTexture*& _texture) { m_textPoints = _texture; }
 
         // ui_manager_load.cpp
         std::uint32_t      load(const std::string &_fileName);
@@ -75,8 +98,15 @@ class cUIManager
         glm::vec2             m_UIScale            = glm::vec2(1.0f, 1.0f);
         std::uint32_t         m_activeWindowCount  = 0;
         std::string           m_mapTitle           = "undefined";
+
+        // UI textures
         sTexture*             m_mapTitleTexture    = nullptr;
         sTexture*             m_textGold           = nullptr;
+        sTexture*             m_textStrength       = nullptr;
+        sTexture*             m_textDexterity      = nullptr;
+        sTexture*             m_textEnergy         = nullptr;
+        sTexture*             m_textVitality       = nullptr;
+        sTexture*             m_textPoints         = nullptr;
 
         // IO
         sIO*                  m_io                 = nullptr;
@@ -104,6 +134,7 @@ class cUIManager
         void m_freeAll(void);
         void m_freeData(sUIComponent*& _pointer);
         void m_calculateScale(void);
+        void m_setTextValue(sTexture *&_texture ,const std::uint64_t &_value, const glm::uvec4 &_color);
 };
 
 #endif //UI_MANAGER_HPP

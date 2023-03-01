@@ -50,17 +50,16 @@ void cUIManager::terminate(void)
     }
 }
 
-void cUIManager::setGold(const std::uint64_t &_gold)
+void cUIManager::m_setTextValue(sTexture *&_texture ,const std::uint64_t &_value, const glm::uvec4 &_color)
 {
-    glm::uvec4 goldColor = glm::uvec4(212, 175, 055, 255);
-    if (m_textGold == nullptr)
+    if (_texture == nullptr)
     {
-        m_textGold = m_resourceManager->generateTexture(std::to_string(_gold), goldColor);
+        _texture = m_resourceManager->generateTexture(std::to_string(_value), _color);
     }
     else
     {
-        m_resourceManager->freeTexture(m_textGold);
-        m_textGold = m_resourceManager->generateTexture(std::to_string(_gold), goldColor);
+        m_resourceManager->freeTexture(_texture);
+        _texture = m_resourceManager->generateTexture(std::to_string(_value), _color);
     }
 }
 
@@ -318,12 +317,6 @@ void cUIManager::process(void)
 
             m_menu[m_dragMenu].component[m_dragComponent].state = eComponentState::componentStateNormal;
             m_io->mouseDrag = false;
-            if ((event != nullptr) && (event->type == eUIEventType::UIEventType_dropGround))
-                std::cout << "Exiting mouse drag: drop ground." << std::endl;
-            else if ((event != nullptr) && (event->type == eUIEventType::UIEventType_dropMenu))
-                std::cout << "Exiting mouse drag: drop menu." << std::endl;
-            else
-                std::cout << "Exiting mouse drag" << std::endl;
         }
 
         // Handle mouse component interaction
@@ -464,6 +457,46 @@ void cUIManager::process(void)
                     m_menu[menuNum].enabled = false;
                     m_mouseOverMenu = false;
                     m_activeWindowCount--;
+                }
+                // Strength points modified
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionPlusStrength)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function_1 = eUIEventFunction::UIEventFunction_plusStrength;
+                    event->data_1 = 0;
+                    m_event.push(event);
+                }
+                // Dexterity points modified
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionPlusDexterity)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function_1 = eUIEventFunction::UIEventFunction_plusDexterity;
+                    event->data_1 = 0;
+                    m_event.push(event);
+                }
+                // Energy points modified
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionPlusEnergy)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function_1 = eUIEventFunction::UIEventFunction_plusEnergy;
+                    event->data_1 = 0;
+                    m_event.push(event);
+                }
+                // Vitality points modified
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionPlusVitality)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function_1 = eUIEventFunction::UIEventFunction_plusVitality;
+                    event->data_1 = 0;
+                    m_event.push(event);
                 }
             }
 

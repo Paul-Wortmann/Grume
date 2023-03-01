@@ -127,11 +127,16 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         tPlayer->character->level.expNext = xmlSaveGameFile.getInteger64("<exp_next>");
 
         // Core stats / abilities
-        tPlayer->character->attribute.pointsCurrent = xmlSaveGameFile.getInteger("<points>");
         tPlayer->character->attribute.strength      = xmlSaveGameFile.getInteger("<strength>");
+        m_uiManager.setTextStrength(tPlayer->character->attribute.strength);
         tPlayer->character->attribute.dexterity     = xmlSaveGameFile.getInteger("<dexterity>");
-        tPlayer->character->attribute.vitality      = xmlSaveGameFile.getInteger("<vitality>");
+        m_uiManager.setTextDexterity(tPlayer->character->attribute.dexterity);
         tPlayer->character->attribute.energy        = xmlSaveGameFile.getInteger("<energy>");
+        m_uiManager.setTextEnergy(tPlayer->character->attribute.energy);
+        tPlayer->character->attribute.vitality      = xmlSaveGameFile.getInteger("<vitality>");
+        m_uiManager.setTextVitality(tPlayer->character->attribute.vitality);
+        tPlayer->character->attribute.pointsCurrent = xmlSaveGameFile.getInteger("<points>");
+        m_uiManager.setTextPoints(tPlayer->character->attribute.pointsCurrent);
 
         // Health
         tPlayer->character->attribute.health.current = xmlSaveGameFile.getFloat("<health_current>");
@@ -146,7 +151,7 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         // Gold
         if (xmlSaveGameFile.getInstanceCount("<gold_current>") > 0)
             tPlayer->character->gold = xmlSaveGameFile.getInteger64("<gold_current>");
-        m_uiManager.setGold(tPlayer->character->gold);
+        m_uiManager.setTextGold(tPlayer->character->gold);
 
         // Damage
         tPlayer->character->attribute.damagePhysical.base           = xmlSaveGameFile.getFloat("<damage_physical_base>");
