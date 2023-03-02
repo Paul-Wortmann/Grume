@@ -1240,6 +1240,7 @@ void cPlayerManager::levelUp(void)
 
     // Increase attributes + skills
     m_player->character->attribute.pointsCurrent += m_player->character->attribute.pointsOnLevel;
+    setAttributePoints(m_player->character->attribute.pointsCurrent);
 
     // Calculate player attributes
     calculateAttributes();
@@ -1255,10 +1256,10 @@ void cPlayerManager::levelUp(void)
 void cPlayerManager::calculateAttributes(void)
 {
     /// *** Until the player can freely distribute points, we do it automatically *** ///
-    m_player->character->attribute.strength  = m_player->character->level.current;
-    m_player->character->attribute.dexterity = m_player->character->level.current;
-    m_player->character->attribute.energy    = m_player->character->level.current;
-    m_player->character->attribute.vitality  = m_player->character->level.current;
+    //m_player->character->attribute.strength  = m_player->character->level.current;
+    //m_player->character->attribute.dexterity = m_player->character->level.current;
+    //m_player->character->attribute.energy    = m_player->character->level.current;
+    //m_player->character->attribute.vitality  = m_player->character->level.current;
 
     // * We should load and save these base values in the game config
 

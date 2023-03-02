@@ -384,6 +384,7 @@ void cGameEngine::process(void)
                 {
                     // Player level up
                     m_playerManager.levelUp();
+                    m_uiManager.setTextPoints(m_playerManager.getAttributePoints());
                 }
             }
 
@@ -528,11 +529,69 @@ void cGameEngine::process(void)
                 // Strength attribute modified
                 else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusStrength)
                 {
-//                    regenerate ui text label
- //                   recalculate player attributes.
+                    std::uint32_t points = m_playerManager.getAttributePoints();
+                    if (points > 0)
+                    {
+                        points--;
+                        m_playerManager.setAttributePoints(points);
+                        m_uiManager.setTextPoints(points);
+                        std::uint32_t strength = m_playerManager.getAttributeStrength();
+                        strength++;
+                        m_playerManager.setAttributeStrength(strength);
+                        m_uiManager.setTextStrength(strength);
+                        m_playerManager.calculateAttributes();
+                    }
+                }
 
-//                    strength, dexterity, energy, vitality too
-                    // NA
+                // Dexterity attribute modified
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusDexterity)
+                {
+                    std::uint32_t points = m_playerManager.getAttributePoints();
+                    if (points > 0)
+                    {
+                        points--;
+                        m_playerManager.setAttributePoints(points);
+                        m_uiManager.setTextPoints(points);
+                        std::uint32_t dexterity = m_playerManager.getAttributeDexterity();
+                        dexterity++;
+                        m_playerManager.setAttributeDexterity(dexterity);
+                        m_uiManager.setTextDexterity(dexterity);
+                        m_playerManager.calculateAttributes();
+                    }
+                }
+
+                // Energy attribute modified
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusEnergy)
+                {
+                    std::uint32_t points = m_playerManager.getAttributePoints();
+                    if (points > 0)
+                    {
+                        points--;
+                        m_playerManager.setAttributePoints(points);
+                        m_uiManager.setTextPoints(points);
+                        std::uint32_t energy = m_playerManager.getAttributeEnergy();
+                        energy++;
+                        m_playerManager.setAttributeEnergy(energy);
+                        m_uiManager.setTextEnergy(energy);
+                        m_playerManager.calculateAttributes();
+                    }
+                }
+
+                // Vitality attribute modified
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusVitality)
+                {
+                    std::uint32_t points = m_playerManager.getAttributePoints();
+                    if (points > 0)
+                    {
+                        points--;
+                        m_playerManager.setAttributePoints(points);
+                        m_uiManager.setTextPoints(points);
+                        std::uint32_t vitality = m_playerManager.getAttributeVitality();
+                        vitality++;
+                        m_playerManager.setAttributeVitality(vitality);
+                        m_uiManager.setTextVitality(vitality);
+                        m_playerManager.calculateAttributes();
+                    }
                 }
 
                 // Way-point map load town

@@ -132,6 +132,18 @@ class cPlayerManager :tcTemplateEngine
         void              levelUp(void);
         void              calculateAttributes(void);
 
+        // Attributes
+        std::uint32_t     getAttributeStrength(void) { return m_player->character->attribute.strength; }
+        std::uint32_t     getAttributeDexterity(void) { return m_player->character->attribute.dexterity; }
+        std::uint32_t     getAttributeEnergy(void) { return m_player->character->attribute.energy; }
+        std::uint32_t     getAttributeVitality(void) { return m_player->character->attribute.vitality; }
+        std::uint32_t     getAttributePoints(void) { return m_player->character->attribute.pointsCurrent; }
+        void              setAttributeStrength(const std::uint32_t &_strength) { m_player->character->attribute.strength = _strength; }
+        void              setAttributeDexterity(const std::uint32_t &_dexterity) { m_player->character->attribute.dexterity = _dexterity; }
+        void              setAttributeEnergy(const std::uint32_t &_energy) { m_player->character->attribute.energy = _energy; }
+        void              setAttributeVitality(const std::uint32_t &_vitality) { m_player->character->attribute.vitality = _vitality; }
+        void              setAttributePoints(const std::uint32_t &_points) { m_player->character->attribute.pointsCurrent = _points; }
+
     protected:
     private:
         // Event

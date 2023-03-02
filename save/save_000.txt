@@ -12,6 +12,11 @@
       <level_current>0</level_current>
       <exp_current>0</exp_current>
       <exp_next>1024</exp_next>
+      <points>5</points>
+      <strength>1</strength>
+      <dexterity>1</dexterity>
+      <vitality>1</vitality>
+      <energy>1</energy>
       <health_current>100</health_current>
       <health_max>100</health_max>
       <health_regen>0.025</health_regen>
