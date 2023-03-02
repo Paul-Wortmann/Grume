@@ -578,8 +578,6 @@ void cUIManager::process(void)
                     // push event
                     event->data_1 = m_dragSlot;
                     m_event.push(event);
-
-                    std::cout << "Entering mouse drag." << std::endl;
                 }
 
                 // Music volume up

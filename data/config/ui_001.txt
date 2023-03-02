@@ -7,7 +7,7 @@
 
 # Action bar
     <menu>
-    
+
         <menu_name>action_bar</menu_name>
         <menu_enabled>1</menu_enabled>
         <menu_type>TYPE_ACTIONBAR</menu_type>
@@ -414,7 +414,7 @@
 
 # Main menu
     <menu>
-    
+
         <menu_name>main_menu</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_MAIN</menu_type>
@@ -594,10 +594,10 @@
         </component>
 
     </menu>
-    
+
 # Options
     <menu>
-    
+
         <menu_name>options</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_OPTIONS</menu_type>
@@ -637,7 +637,7 @@
         </component>
 
         # Music volume
-        
+
         <component>
             <component_name>text_music_volume</component_name>
             <component_enabled>1</component_enabled>
@@ -709,7 +709,7 @@
         </component>
 
         # Sound volume
-        
+
         <component>
             <component_name>text_sound_volume</component_name>
             <component_enabled>1</component_enabled>
@@ -781,7 +781,7 @@
         </component>
 
         # Master volume
-        
+
         <component>
             <component_name>text_master_volume</component_name>
             <component_enabled>1</component_enabled>
@@ -858,10 +858,10 @@
 
 
     </menu>
-    
+
 # Inventory
     <menu>
-    
+
         <menu_name>inventory</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_INVENTORY</menu_type>
@@ -2439,12 +2439,12 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
     </menu>
 
 # Vendor
     <menu>
-    
+
         <menu_name>vendor</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_VENDOR</menu_type>
@@ -3999,7 +3999,7 @@
 
 # Equipment
     <menu>
-    
+
         <menu_name>equipment</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_EQUIPMENT</menu_type>
@@ -4037,7 +4037,7 @@
             <component_sound_hover>menu 6</component_sound_hover>
             <component_sound_activate>menu 8</component_sound_activate>
         </component>
-        
+
         # Helm
         <component>
             <component_name>EQUIPMENT_SLOT_001</component_name>
@@ -4052,7 +4052,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Weapon
         <component>
             <component_name>EQUIPMENT_SLOT_002</component_name>
@@ -4067,7 +4067,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Armor
         <component>
             <component_name>EQUIPMENT_SLOT_003</component_name>
@@ -4082,7 +4082,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Shield
         <component>
             <component_name>EQUIPMENT_SLOT_004</component_name>
@@ -4097,7 +4097,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Gloves
         <component>
             <component_name>EQUIPMENT_SLOT_005</component_name>
@@ -4112,7 +4112,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Belt
         <component>
             <component_name>EQUIPMENT_SLOT_006</component_name>
@@ -4127,7 +4127,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Boots
         <component>
             <component_name>EQUIPMENT_SLOT_007</component_name>
@@ -4142,7 +4142,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Amulet 1
         <component>
             <component_name>EQUIPMENT_SLOT_008</component_name>
@@ -4157,7 +4157,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Amulet 2
         <component>
             <component_name>EQUIPMENT_SLOT_009</component_name>
@@ -4172,7 +4172,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Ring 1
         <component>
             <component_name>EQUIPMENT_SLOT_010</component_name>
@@ -4187,7 +4187,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Ring 2
         <component>
             <component_name>EQUIPMENT_SLOT_011</component_name>
@@ -4202,7 +4202,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Ring 3
         <component>
             <component_name>EQUIPMENT_SLOT_012</component_name>
@@ -4217,7 +4217,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Ring 4
         <component>
             <component_name>EQUIPMENT_SLOT_013</component_name>
@@ -4232,7 +4232,7 @@
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
-        
+
         # Ring 5
         <component>
             <component_name>EQUIPMENT_SLOT_014</component_name>
@@ -4252,7 +4252,7 @@
 
 # Character
     <menu>
-    
+
         <menu_name>character</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_CHARACTER</menu_type>
@@ -4313,8 +4313,8 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.084f, 0.459f, -0.02f</component_position>
-            <component_size>0.025f 0.025f</component_size>
+            <component_position>-0.106f, 0.459f, -0.02f</component_position>
+            <component_size>0.012f 0.012f</component_size>
             <component_function>TEXT_STRENGTH</component_function>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4343,8 +4343,8 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.084f, 0.38f, -0.02f</component_position>
-            <component_size>0.025f 0.025f</component_size>
+            <component_position>-0.106f, 0.38f, -0.02f</component_position>
+            <component_size>0.012f 0.012f</component_size>
             <component_function>TEXT_DEXTERITY</component_function>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4373,8 +4373,8 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.084f, 0.304f, -0.02f</component_position>
-            <component_size>0.025f 0.025f</component_size>
+            <component_position>-0.106f, 0.304f, -0.02f</component_position>
+            <component_size>0.012f 0.012f</component_size>
             <component_function>TEXT_ENERGY</component_function>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4403,23 +4403,23 @@
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.084f, 0.226f, -0.02f</component_position>
-            <component_size>0.025f 0.025f</component_size>
+            <component_position>-0.106f, 0.226f, -0.02f</component_position>
+            <component_size>0.012f 0.012f</component_size>
             <component_function>TEXT_VITALITY</component_function>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
 
-        # Remaining points left to ditribute text label
+        # Remaining points left to distribute text label
         <component>
             <component_name>points_text</component_name>
             <component_enabled>1</component_enabled>
             <component_texture_normal>ui/inventory/test_001_n.png</component_texture_normal>
             <component_texture_hover>ui/inventory/test_001_h.png</component_texture_hover>
             <component_texture_activated>ui/inventory/test_001_h.png</component_texture_activated>
-            <component_position>-0.084f, 0.148f, -0.02f</component_position>
-            <component_size>0.025f 0.025f</component_size>
+            <component_position>-0.106f, 0.148f, -0.02f</component_position>
+            <component_size>0.012f 0.012f</component_size>
             <component_function>TEXT_POINTS</component_function>
             <component_type>TYPE_TEXT</component_type>
             <component_sound_hover>NONE 0</component_sound_hover>
@@ -4430,7 +4430,7 @@
 
 # Skills
     <menu>
-    
+
         <menu_name>skills</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_SKILLS</menu_type>
@@ -4473,7 +4473,7 @@
 
 # Way-points
     <menu>
-    
+
         <menu_name>waypoints</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_WAYPOINTS</menu_type>

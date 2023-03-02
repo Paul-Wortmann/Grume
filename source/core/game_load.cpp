@@ -69,6 +69,9 @@ std::uint32_t cGameEngine::m_game_load(void)
             m_graphicsEngine.initializeEntities();
             m_animationEngine.initializeEntities();
 
+            // Calculate player attributes
+            m_playerManager.calculateAttributes();
+
             // Map process after placing entities
             m_mapManager.process(16); // 60 fps, 1 frame
 
@@ -613,6 +616,9 @@ std::uint32_t cGameEngine::m_game_load(const std::uint32_t &_slotNum)
         // Initialize systems
         m_graphicsEngine.initializeEntities();
         m_animationEngine.initializeEntities();
+
+        // Calculate player attributes
+        m_playerManager.calculateAttributes();
 
     }
     else

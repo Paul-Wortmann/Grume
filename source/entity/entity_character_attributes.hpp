@@ -31,6 +31,7 @@ struct sCharacterAttributeRegen
     float base           = 100;     // Base
     float max            = 100;     // Maximum
     float current        = 100;     // Current
+    float regenBase      = 0.025f;  // Base amount per second
     float regen          = 0.025f;  // Amount per second
 };
 
@@ -44,6 +45,8 @@ struct sCharacterAttributeDamage
 struct sCharacterAttributeArmor
 {
     float base           = 1.0f;    // Base armor
+    //block chance
+    //block %
 };
 
 struct sEntityCharAttrib // Character attributes

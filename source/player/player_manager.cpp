@@ -1255,25 +1255,33 @@ void cPlayerManager::levelUp(void)
 
 void cPlayerManager::calculateAttributes(void)
 {
-    /// *** Until the player can freely distribute points, we do it automatically *** ///
-    //m_player->character->attribute.strength  = m_player->character->level.current;
-    //m_player->character->attribute.dexterity = m_player->character->level.current;
-    //m_player->character->attribute.energy    = m_player->character->level.current;
-    //m_player->character->attribute.vitality  = m_player->character->level.current;
-
-    // * We should load and save these base values in the game config
-
-
-
-    // --- Set to base values ---
-
     // Health
-    m_player->character->attribute.health.regen = 0.025f;
-    m_player->character->attribute.health.max = 100.0f;
+    // HP = baseHP + (level * 50%) + ((level * 250%) * vitality)
+    m_player->character->attribute.health.max = m_player->character->attribute.health.base +
+                                                (m_player->character->level.current * 0.5) +
+                                                ((m_player->character->level.current * 2.5) *
+                                                 m_player->character->attribute.vitality);
+std::cout << "HP: " << m_player->character->attribute.health.max << std::endl;
+    // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
+    m_player->character->attribute.health.regen = m_player->character->attribute.health.regenBase +
+                                                  (m_player->character->level.current * 0.005) +
+                                                  ((m_player->character->level.current * 0.0025) *
+                                                   m_player->character->attribute.vitality);
 
     // Mana
-    m_player->character->attribute.mana.regen = 0.025f;
-    m_player->character->attribute.mana.max = 100.0f;
+    // MP = baseMP + (level * 50%) + ((level * 250%) * energy)
+    m_player->character->attribute.mana.max = m_player->character->attribute.mana.base +
+                                              (m_player->character->level.current * 0.5) +
+                                              ((m_player->character->level.current * 2.5) *
+                                               m_player->character->attribute.energy);
+
+    // MP regen = baseMPregen + (level * 50%) + ((level * 250%) * energy)
+    m_player->character->attribute.mana.regen = m_player->character->attribute.mana.regenBase +
+                                                (m_player->character->level.current * 0.005) +
+                                                ((m_player->character->level.current * 0.0025) *
+                                                 m_player->character->attribute.energy);
+
+    // --- Set to base values ---
 
     // Damage
     m_player->character->attribute.damagePhysical.base = 1.0f;
@@ -1293,17 +1301,13 @@ void cPlayerManager::calculateAttributes(void)
     m_player->character->attribute.resistanceFire.base = m_player->character->attribute.dexterity;
     m_player->character->attribute.resistanceFrost.base = m_player->character->attribute.dexterity;
 
-
-    // Calculate values based on level
-    for (std::uint32_t i = 0; i < m_player->character->level.current; ++i)
-    {
-        // Health
-        m_player->character->attribute.health.regen += m_player->character->attribute.vitality * m_player->character->attribute.health.regen;
-        m_player->character->attribute.health.max += m_player->character->attribute.vitality * i;
-
-        // Mana
-        m_player->character->attribute.mana.regen += m_player->character->attribute.energy * m_player->character->attribute.mana.regen;
-        m_player->character->attribute.mana.max += m_player->character->attribute.energy * i;
-    }
-
+    // Adjust values based on equipment
 }
+
+//melee damage
+//armor class
+//crit-multiplier
+//crit-change
+
+
+
