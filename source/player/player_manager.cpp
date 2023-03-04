@@ -1290,16 +1290,20 @@ std::cout << "HP: " << m_player->character->attribute.health.max << std::endl;
     m_player->character->attribute.damageFire.base = 1.0f;
     m_player->character->attribute.damageFire.critChance = 1.0f;
     m_player->character->attribute.damageFire.critMultiplier = 0.25f;
-    m_player->character->attribute.damageFrost.base = 1.0f;
-    m_player->character->attribute.damageFrost.critChance = 1.0f;
-    m_player->character->attribute.damageFrost.critMultiplier = 0.25f;
+    m_player->character->attribute.damageIce.base = 1.0f;
+    m_player->character->attribute.damageIce.critChance = 1.0f;
+    m_player->character->attribute.damageIce.critMultiplier = 0.25f;
+    m_player->character->attribute.damageLightning.base = 1.0f;
+    m_player->character->attribute.damageLightning.critChance = 1.0f;
+    m_player->character->attribute.damageLightning.critMultiplier = 0.25f;
 
     // Armor
     m_player->character->attribute.armorPhysical.base = m_player->character->attribute.dexterity;
 
     // Resistance
     m_player->character->attribute.resistanceFire.base = m_player->character->attribute.dexterity;
-    m_player->character->attribute.resistanceFrost.base = m_player->character->attribute.dexterity;
+    m_player->character->attribute.resistanceIce.base = m_player->character->attribute.dexterity;
+    m_player->character->attribute.resistanceLightning.base = m_player->character->attribute.dexterity;
 
     // Adjust values based on equipment
 }

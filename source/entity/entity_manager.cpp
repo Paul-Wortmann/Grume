@@ -630,20 +630,29 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             if (xmlEntityFile.getInstanceCount("<character_damage_fire_crit_multiplier>") > 0)
                 tEntity->character->attribute.damageFire.critMultiplier = xmlEntityFile.getFloat("<character_damage_fire_crit_multiplier>");
 
-            if (xmlEntityFile.getInstanceCount("<character_damage_frost_base>") > 0)
-                tEntity->character->attribute.damageFrost.base = xmlEntityFile.getFloat("<character_damage_frost_base>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_frost_crit_chance>") > 0)
-                tEntity->character->attribute.damageFrost.critChance = xmlEntityFile.getFloat("<character_damage_frost_crit_chance>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_frost_crit_multiplier>") > 0)
-                tEntity->character->attribute.damageFrost.critMultiplier = xmlEntityFile.getFloat("<character_damage_frost_crit_multiplier>");
+            if (xmlEntityFile.getInstanceCount("<character_damage_ice_base>") > 0)
+                tEntity->character->attribute.damageIce.base = xmlEntityFile.getFloat("<character_damage_ice_base>");
+            if (xmlEntityFile.getInstanceCount("<character_damage_ice_crit_chance>") > 0)
+                tEntity->character->attribute.damageIce.critChance = xmlEntityFile.getFloat("<character_damage_ice_crit_chance>");
+            if (xmlEntityFile.getInstanceCount("<character_damage_ice_crit_multiplier>") > 0)
+                tEntity->character->attribute.damageIce.critMultiplier = xmlEntityFile.getFloat("<character_damage_ice_crit_multiplier>");
+
+            if (xmlEntityFile.getInstanceCount("<character_damage_lightning_base>") > 0)
+                tEntity->character->attribute.damageLightning.base = xmlEntityFile.getFloat("<character_damage_lightning_base>");
+            if (xmlEntityFile.getInstanceCount("<character_damage_lightning_crit_chance>") > 0)
+                tEntity->character->attribute.damageLightning.critChance = xmlEntityFile.getFloat("<character_damage_lightning_crit_chance>");
+            if (xmlEntityFile.getInstanceCount("<character_damage_lightning_crit_multiplier>") > 0)
+                tEntity->character->attribute.damageLightning.critMultiplier = xmlEntityFile.getFloat("<character_damage_lightning_crit_multiplier>");
 
             // Armor
             if (xmlEntityFile.getInstanceCount("<character_armor_physical_base>") > 0)
                 tEntity->character->attribute.armorPhysical.base = xmlEntityFile.getFloat("<character_armor_physical_base>");
             if (xmlEntityFile.getInstanceCount("<character_armor_fire_base>") > 0)
                 tEntity->character->attribute.resistanceFire.base = xmlEntityFile.getFloat("<character_armor_fire_base>");
-            if (xmlEntityFile.getInstanceCount("<character_armor_frost_base>") > 0)
-                tEntity->character->attribute.resistanceFrost.base = xmlEntityFile.getFloat("<character_armor_frost_base>");
+            if (xmlEntityFile.getInstanceCount("<character_armor_ice_base>") > 0)
+                tEntity->character->attribute.resistanceIce.base = xmlEntityFile.getFloat("<character_armor_ice_base>");
+            if (xmlEntityFile.getInstanceCount("<character_armor_lightning_base>") > 0)
+                tEntity->character->attribute.resistanceLightning.base = xmlEntityFile.getFloat("<character_armor_lightning_base>");
 
             // Skills
             if (xmlEntityFile.getInstanceCount("<character_skill_heal_enabled>") > 0)

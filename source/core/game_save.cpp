@@ -100,16 +100,20 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
         saveFile << indent(iLevel) << "<damage_fire_base>" << tPlayer->character->attribute.damageFire.base << "</damage_fire_base>" << std::endl;
         saveFile << indent(iLevel) << "<damage_fire_crit_chance>" << tPlayer->character->attribute.damageFire.critChance << "</damage_fire_crit_chance>" << std::endl;
         saveFile << indent(iLevel) << "<damage_fire_crit_multiplier>" << tPlayer->character->attribute.damageFire.critMultiplier << "</damage_fire_crit_multiplier>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_frost_base>" << tPlayer->character->attribute.damageFrost.base << "</damage_frost_base>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_frost_crit_chance>" << tPlayer->character->attribute.damageFrost.critChance << "</damage_frost_crit_chance>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_frost_crit_multiplier>" << tPlayer->character->attribute.damageFrost.critMultiplier << "</damage_frost_crit_multiplier>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_ice_base>" << tPlayer->character->attribute.damageIce.base << "</damage_ice_base>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_ice_crit_chance>" << tPlayer->character->attribute.damageIce.critChance << "</damage_ice_crit_chance>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_ice_crit_multiplier>" << tPlayer->character->attribute.damageIce.critMultiplier << "</damage_ice_crit_multiplier>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_lightning_base>" << tPlayer->character->attribute.damageLightning.base << "</damage_lightning_base>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_lightning_crit_chance>" << tPlayer->character->attribute.damageLightning.critChance << "</damage_lightning_crit_chance>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_lightning_crit_multiplier>" << tPlayer->character->attribute.damageLightning.critMultiplier << "</damage_lightning_crit_multiplier>" << std::endl;
 
         // Armor
         saveFile << indent(iLevel) << "<armor_physical_base>" << tPlayer->character->attribute.armorPhysical.base << "</armor_physical_base>" << std::endl;
 
         // Resistance
         saveFile << indent(iLevel) << "<resistance_fire_base>" << tPlayer->character->attribute.resistanceFire.base << "</resistance_fire_base>" << std::endl;
-        saveFile << indent(iLevel) << "<resistance_frost_base>" << tPlayer->character->attribute.resistanceFrost.base << "</resistance_frost_base>" << std::endl;
+        saveFile << indent(iLevel) << "<resistance_ice_base>" << tPlayer->character->attribute.resistanceIce.base << "</resistance_ice_base>" << std::endl;
+        saveFile << indent(iLevel) << "<resistance_lightning_base>" << tPlayer->character->attribute.resistanceLightning.base << "</resistance_lightning_base>" << std::endl;
 
         iLevel--;
         saveFile << indent(iLevel) << "</player>" << std::endl;

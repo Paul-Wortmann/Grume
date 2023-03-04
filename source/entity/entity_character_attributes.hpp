@@ -45,8 +45,8 @@ struct sCharacterAttributeDamage
 struct sCharacterAttributeArmor
 {
     float base           = 1.0f;    // Base armor
-    //block chance
-    //block %
+    float blockChance    = 0.1f;    // Block chance
+    float blockAmount    = 0.1f;    // Block amount
 };
 
 struct sEntityCharAttrib // Character attributes
@@ -60,18 +60,20 @@ struct sEntityCharAttrib // Character attributes
     std::uint32_t energy           = 0;
 
     // Depletable types
-    sCharacterAttributeRegen  health         = {};
-    sCharacterAttributeRegen  mana           = {};
+    sCharacterAttributeRegen  health             = {};
+    sCharacterAttributeRegen  mana               = {};
 
     // Damage types
-    sCharacterAttributeDamage damagePhysical = {};
-    sCharacterAttributeDamage damageFire     = {};
-    sCharacterAttributeDamage damageFrost    = {};
+    sCharacterAttributeDamage damagePhysical     = {};
+    sCharacterAttributeDamage damageFire         = {};
+    sCharacterAttributeDamage damageIce          = {};
+    sCharacterAttributeDamage damageLightning    = {};
 
     // Armor types
-    sCharacterAttributeArmor armorPhysical   = {};
-    sCharacterAttributeArmor resistanceFire  = {};
-    sCharacterAttributeArmor resistanceFrost = {};
+    sCharacterAttributeArmor armorPhysical       = {};
+    sCharacterAttributeArmor resistanceFire      = {};
+    sCharacterAttributeArmor resistanceIce       = {};
+    sCharacterAttributeArmor resistanceLightning = {};
 
 };
 
