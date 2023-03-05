@@ -27,28 +27,34 @@
 #include "entity_particle.hpp"
 #include "../core/includes.hpp"
 
-enum eEntityType  : std::uint32_t { entityType_none             =  0,    // none
-                                    entityType_player           =  1,    // player
-                                    entityType_objectDynamic    =  2,    // object dynamic
-                                    entityType_objectStatic     =  3,    // object static
-                                    entityType_objectDynamicLow =  4,    // object dynamic, low
-                                    entityType_objectStaticLow  =  5,    // object static, low
-                                    entityType_npc              =  6,    // npc
-                                    entityType_npc_fly          =  7,    // npc flying
-                                    entityType_npc_boss         =  8,    // npc boss
-                                    entityType_npc_trader       =  9,    // npc trader
-                                    entityType_npc_quest        = 10,    // npc quest
-                                    entityType_floor            = 11,    // floor
-                                    entityType_wallHigh         = 12,    // wall high
-                                    entityType_wallLow          = 13,    // wall low
-                                    entityType_wallHole         = 14,    // wall hole
-                                    entityType_particle         = 15 };  // particle
+enum eEntityType  : std::uint32_t
+{
+    entityType_none             =  0,    // none
+    entityType_player           =  1,    // player
+    entityType_objectDynamic    =  2,    // object dynamic
+    entityType_objectStatic     =  3,    // object static
+    entityType_objectDynamicLow =  4,    // object dynamic, low
+    entityType_objectStaticLow  =  5,    // object static, low
+    entityType_npc              =  6,    // npc
+    entityType_npc_fly          =  7,    // npc flying
+    entityType_npc_boss         =  8,    // npc boss
+    entityType_npc_trader       =  9,    // npc trader
+    entityType_npc_quest        = 10,    // npc quest
+    entityType_floor            = 11,    // floor
+    entityType_wallHigh         = 12,    // wall high
+    entityType_wallLow          = 13,    // wall low
+    entityType_wallHole         = 14,    // wall hole
+    entityType_particle         = 15     // particle
+ };
 
-enum eEntityOwner : std::uint32_t { entityOwner_none      = 0,    // none
-                                    entityOwner_player    = 1,    // player
-                                    entityOwner_map       = 2,    // map
-                                    entityOwner_particle  = 3,    // particle engine
-                                    entityOwner_inventory = 4};   // inventory
+enum eEntityOwner : std::uint32_t
+{
+    entityOwner_none      = 0,    // none
+    entityOwner_player    = 1,    // player
+    entityOwner_map       = 2,    // map
+    entityOwner_particle  = 3,    // particle engine
+    entityOwner_inventory = 4     // inventory
+};
 
 struct sEntityBase
 {
