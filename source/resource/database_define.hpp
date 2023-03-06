@@ -27,21 +27,24 @@
 // Includes
 #include "../core/includes.hpp"
 
-enum eDatabaseType : std::uint32_t {databaseTypeNone      = 0,
-                                    databaseTypeBiome     = 1,
-                                    databaseTypeItem      = 2,
-                                    databaseTypeMap       = 3,
-                                    databaseTypeMapPrefab = 4,
-                                    databaseTypeMusic     = 5,
-                                    databaseTypeNpc       = 6,
-                                    databaseTypeObject    = 7,
-                                    databaseTypeParticle  = 8,
-                                    databaseTypeSound     = 9};
+enum eDatabaseType : std::uint32_t
+{
+    databaseTypeNone      = 0,
+    databaseTypeBiome     = 1,
+    databaseTypeItem      = 2,
+    databaseTypeMap       = 3,
+    databaseTypeMapPrefab = 4,
+    databaseTypeMusic     = 5,
+    databaseTypeNpc       = 6,
+    databaseTypeObject    = 7,
+    databaseTypeParticle  = 8,
+    databaseTypeSound     = 9
+};
 
 struct sDatabaseEntry
 {
-    std::string   category = {};
-    std::string   fileName = {};
+    std::string     category     = {};
+    std::string     fileName     = {};
 };
 
 struct sDatabase

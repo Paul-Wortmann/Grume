@@ -26,7 +26,9 @@
 void cIOManager::initialize(void)
 {
     if (m_io == nullptr)
+    {
         m_io = new sIO;
+    }
 }
 
 void cIOManager::terminate(void)

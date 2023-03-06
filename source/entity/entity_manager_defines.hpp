@@ -27,9 +27,12 @@
 #include "../core/includes.hpp"
 
 // Event type enum
-enum sEntityManagerEventType : std::uint32_t { entityManagerEventType_none          = 0,    // null event
-                                               entityManagerEventType_modCollisions = 1,    // Map collision data has changed
-                                               entityManagerEventType_spawnEntity   = 2 };  // An entity was spawned
+enum sEntityManagerEventType : std::uint32_t
+{
+    entityManagerEventType_none          = 0,    // null event
+    entityManagerEventType_modCollisions = 1,    // Map collision data has changed
+    entityManagerEventType_spawnEntity   = 2     // An entity was spawned
+};
 
 // Event struct
 struct sEntityManagerEvent

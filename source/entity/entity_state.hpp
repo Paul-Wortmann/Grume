@@ -28,17 +28,20 @@
 #include "entity_audio.hpp"
 #include "entity_physics.hpp"
 
-enum eEntityState : std::uint32_t { entityState_none     = 0,    // none
-                                    entityState_attack   = 1,    // attack
-                                    entityState_defend   = 2,    // defend
-                                    entityState_die      = 3,    // die
-                                    entityState_idle     = 4,    // idle
-                                    entityState_interact = 5,    // interact
-                                    entityState_move     = 6,    // move
-                                    entityState_spawn    = 7,    // spawn
-                                    entityState_open     = 8,    // open
-                                    entityState_close    = 9,    // close
-                                    entityState_levelUp  = 10};  // level up state
+enum eEntityState : std::uint32_t
+{
+    entityState_none     = 0,    // none
+    entityState_attack   = 1,    // attack
+    entityState_defend   = 2,    // defend
+    entityState_die      = 3,    // die
+    entityState_idle     = 4,    // idle
+    entityState_interact = 5,    // interact
+    entityState_move     = 6,    // move
+    entityState_spawn    = 7,    // spawn
+    entityState_open     = 8,    // open
+    entityState_close    = 9,    // close
+    entityState_levelUp  = 10    // level up state
+};
 
 struct sEntityStateData
 {

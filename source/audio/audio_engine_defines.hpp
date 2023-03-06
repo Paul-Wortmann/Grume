@@ -32,8 +32,11 @@
 #include "audio_defines.hpp"
 
 // Event
-enum eEventAudioType : std::uint32_t { eventAudioType_none      = 0,    // null event
-                                       eventAudioType_collision = 1 };  // collision event
+enum eEventAudioType : std::uint32_t
+{
+    eventAudioType_none      = 0,    // null event
+    eventAudioType_collision = 1     // collision event
+};
 
 struct sEventAudioData
 {

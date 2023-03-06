@@ -26,13 +26,16 @@
 
 #include "../core/includes.hpp"
 
-enum eParticleType  : std::uint32_t { particleType_none     = 0,    // none
-                                      particleType_blood    = 1,    // blood
-                                      particleType_fire     = 2,    // fire
-                                      particleType_smoke    = 3,    // smoke
-                                      particleType_dust     = 4,    // dust
-                                      particleType_slime    = 5,    // slime
-                                      particleType_ice      = 6 };  // ice
+enum eParticleType  : std::uint32_t
+{
+    particleType_none     = 0,    // none
+    particleType_blood    = 1,    // blood
+    particleType_fire     = 2,    // fire
+    particleType_smoke    = 3,    // smoke
+    particleType_dust     = 4,    // dust
+    particleType_slime    = 5,    // slime
+    particleType_ice      = 6     // ice
+};
 
 struct sEntityParticle
 {

@@ -33,10 +33,13 @@
 
 
 // Event type enum
-enum ePhysicsEventType : std::uint32_t { physicsEventType_none        = 0,    // null event
-                                         physicsEventType_collision   = 1,    // collision event
-                                         physicsEventType_objectClick = 2,    // object click event
-                                         physicsEventType_tileClick   = 3 };  // tile click event
+enum ePhysicsEventType : std::uint32_t
+{
+    physicsEventType_none        = 0,    // null event
+    physicsEventType_collision   = 1,    // collision event
+    physicsEventType_objectClick = 2,    // object click event
+    physicsEventType_tileClick   = 3     // tile click event
+};
 
 // Event struct
 struct sPhysicsEvent

@@ -40,8 +40,11 @@
 #include "graphics_engine_utils.hpp"
 
 // Event type enum
-enum eGraphicsEventType : std::uint32_t { graphicsEventType_none        = 0,    // null event
-                                          graphicsEventType_windowClose = 1 };  // window close event
+enum eGraphicsEventType : std::uint32_t
+{
+    graphicsEventType_none        = 0,    // null event
+    graphicsEventType_windowClose = 1     // window close event
+};
 
 // Event struct
 struct sGraphicsEvent

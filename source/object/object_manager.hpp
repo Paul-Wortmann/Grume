@@ -35,8 +35,11 @@
 #include "../resource/resource_manager.hpp"
 
 // Event type enum
-enum eObjectEventType : std::uint32_t { objectEventType_none = 0,    // null event
-                                        objectEventType_gold = 1  }; // gold drop
+enum eObjectEventType : std::uint32_t
+{
+    objectEventType_none = 0,    // null event
+    objectEventType_gold = 1     // gold drop
+};
 
 // Event struct
 struct sObjectManagerEvent

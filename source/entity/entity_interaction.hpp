@@ -27,10 +27,13 @@
 #include "../core/includes.hpp"
 #include "entity_state.hpp"
 
-enum eEntityInteraction : std::uint32_t { entityInteraction_none     = 0,    // none
-                                          entityInteraction_set      = 1,    // set
-                                          entityInteraction_toggle   = 2,    // toggle
-                                          entityInteraction_activate = 3 };  // activate
+enum eEntityInteraction : std::uint32_t
+{
+    entityInteraction_none     = 0,    // none
+    entityInteraction_set      = 1,    // set
+    entityInteraction_toggle   = 2,    // toggle
+    entityInteraction_activate = 3     // activate
+};
 
 struct sEntityInteraction
 {

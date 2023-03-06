@@ -46,10 +46,13 @@
 #include "../ui/ui_manager.hpp"
 #include "../utils/timer.hpp"
 
-enum eEngineState : std::uint32_t {engineStateNone  = 0,
-                                   engineStateInit  = 1,
-                                   engineStateTerm  = 2,
-                                   engineStatePause = 3,
-                                   engineStateProc  = 4 };
+enum eEngineState : std::uint32_t
+{
+    engineStateNone  = 0,
+    engineStateInit  = 1,
+    engineStateTerm  = 2,
+    engineStatePause = 3,
+    engineStateProc  = 4
+};
 
 #endif // GAME_ENGINE_DEFINES_HPP

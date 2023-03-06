@@ -26,14 +26,20 @@
 
 #include "../core/includes.hpp"
 
-enum ePhysicsType : std::uint32_t { physicsTypeNone    = 0,
-                                    physicsTypeStatic  = 1,
-                                    physicsTypeDynamic = 2,
-                                    physicsTypeIgnore  = 3 };
+enum ePhysicsType : std::uint32_t
+{
+    physicsTypeNone    = 0,
+    physicsTypeStatic  = 1,
+    physicsTypeDynamic = 2,
+    physicsTypeIgnore  = 3
+};
 
-enum ePhysicsBoundingVolumeType : std::uint32_t { physicsBoundingVolumeTypeNone    = 0,
-                                                  physicsBoundingVolumeTypeAABS    = 1,
-                                                  physicsBoundingVolumeTypeCircle  = 2 };
+enum ePhysicsBoundingVolumeType : std::uint32_t
+{
+    physicsBoundingVolumeTypeNone    = 0,
+    physicsBoundingVolumeTypeAABS    = 1,
+    physicsBoundingVolumeTypeCircle  = 2
+};
 
 struct sEntityPhysics
 {

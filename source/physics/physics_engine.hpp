@@ -53,22 +53,22 @@ class cPhysicsEngine :tcTemplateEngine
     protected:
 
     private:
-        const float     m_timeStep             = 16.0f; // Simulation time step in ms
+        const float            m_timeStep        = 16.0f; // Simulation time step in ms
 
-        sEntity*        m_entityHead           = nullptr;
-        cEntityManager* m_entityManager        = nullptr;
-        sMap*           m_mapPointer           = nullptr;
-        tcQueue<sPhysicsEvent> m_event         = {};
+        sEntity*               m_entityHead      = nullptr;
+        cEntityManager*        m_entityManager   = nullptr;
+        sMap*                  m_mapPointer      = nullptr;
+        tcQueue<sPhysicsEvent> m_event           = {};
 
         // IO
-        sIO*            m_io                   = nullptr;
+        sIO*                   m_io              = nullptr;
 
         // Camera
-        glm::vec3       m_cameraPosition        = glm::vec3(0.0f, 0.0f, 0.0f);
-        glm::vec3       m_cameraDirection       = glm::vec3(0.0f, 0.0f, 0.0f);
+        glm::vec3              m_cameraPosition  = glm::vec3(0.0f, 0.0f, 0.0f);
+        glm::vec3              m_cameraDirection = glm::vec3(0.0f, 0.0f, 0.0f);
 
         // UI
-        bool            m_mouseOverMenu         = false;
+        bool                   m_mouseOverMenu   = false;
 };
 
 #endif // PHYSICS_ENGINE_HPP
