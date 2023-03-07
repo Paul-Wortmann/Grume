@@ -3,7 +3,7 @@
 
    <information>
       <current_map>town_1_001</current_map>
-      <current_position>2368</current_position>
+      <current_position>2256</current_position>
       <current_rotation>3.14159</current_rotation>
       <current_town>town_1_001</current_town>
    </information>
@@ -73,7 +73,6 @@
       <inventory_slot>5 one_handed_sword 1 1</inventory_slot>
       <inventory_slot>6 dagger 1 1</inventory_slot>
       <inventory_slot>7 rune 1 1</inventory_slot>
-      <inventory_slot>8 rune 2 1</inventory_slot>
       <inventory_slot>9 rune 3 1</inventory_slot>
       <inventory_slot>10 rune 4 1</inventory_slot>
       <inventory_slot>11 rune 5 1</inventory_slot>
@@ -116,6 +115,7 @@
    </vendor>
 
    <waypoints>
+      <waypoints_slot>1 rune 2 1</waypoints_slot>
    </waypoints>
 
    <quests>
@@ -131,6 +131,12 @@
       <quest>golem_ice_mini_boss_2_dead 0</quest>
       <quest>golem_ice_mini_boss_3_dead 0</quest>
       <quest>golem_ice_boss_1_dead 0</quest>
+      <quest>waypoint_rune_1 0</quest>
+      <quest>waypoint_rune_2 0</quest>
+      <quest>waypoint_rune_3 0</quest>
+      <quest>waypoint_rune_4 0</quest>
+      <quest>waypoint_rune_5 0</quest>
+      <quest>waypoint_rune_6 0</quest>
    </quests>
 
    <map_data>

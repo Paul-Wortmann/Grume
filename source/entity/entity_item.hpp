@@ -65,12 +65,22 @@ enum eEntityItemType : std::uint32_t
     entityItemType_amulet    = 30    // amulet
 };
 
+struct sEntityItemAttributes
+{
+    std::uint32_t         strength  = 0;
+    std::uint32_t         dexterity = 0;
+    std::uint32_t         vitality  = 0;
+    std::uint32_t         energy    = 0;
+};
+
 struct sEntityItem
 {
-    eEntityItemType type      = eEntityItemType::entityItemType_none;
-    std::uint32_t   stackSize = 1;
-    std::uint32_t   stackMax  = 1;
-    std::uint32_t   goldValue = 0;
+    eEntityItemType       type      = eEntityItemType::entityItemType_none;
+    std::uint32_t         stackSize = 1;
+    std::uint32_t         stackMax  = 1;
+
+    std::uint32_t         goldValue = 0;
+    sEntityItemAttributes attribute = {};
 };
 
 #endif // ENTITY_ITEM_HPP

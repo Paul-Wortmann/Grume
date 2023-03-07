@@ -1255,6 +1255,29 @@ void cPlayerManager::levelUp(void)
 
 void cPlayerManager::calculateAttributes(void)
 {
+    // Variables for totals
+    std::uint32_t totalStrength  = m_player->character->attribute.strength;
+    std::uint32_t totalDexterity = m_player->character->attribute.dexterity;
+    std::uint32_t totalVitality  = m_player->character->attribute.vitality;
+    std::uint32_t totalEnergy    = m_player->character->attribute.energy;
+
+    // Aggregate data from equipment
+    for (std::uint32_t i = 0; i < m_playerEquipment->getStorageSize(); ++i)
+    {
+        sEntity* tEntity = m_playerEquipment->getStorageSlot(i)->entity;
+        if (tEntity != nullptr)
+        {
+            totalStrength  += tEntity->item->attribute.strength;
+            totalDexterity += tEntity->item->attribute.dexterity;
+            totalVitality  += tEntity->item->attribute.vitality;
+            totalEnergy    += tEntity->item->attribute.energy;
+        }
+
+    }
+
+std::cout << "-----------------------------------------------------" << std::endl;
+std::cout << "Player level: " << m_player->character->level.current << std::endl;
+
     // Health
     // HP = baseHP + (level * 50%) + ((level * 250%) * vitality)
     m_player->character->attribute.health.max = m_player->character->attribute.health.base +
@@ -1262,11 +1285,13 @@ void cPlayerManager::calculateAttributes(void)
                                                 ((m_player->character->level.current * 2.5) *
                                                  m_player->character->attribute.vitality);
 std::cout << "HP: " << m_player->character->attribute.health.max << std::endl;
+
     // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
     m_player->character->attribute.health.regen = m_player->character->attribute.health.regenBase +
                                                   (m_player->character->level.current * 0.005) +
                                                   ((m_player->character->level.current * 0.0025) *
                                                    m_player->character->attribute.vitality);
+std::cout << "HP Regen: " << m_player->character->attribute.health.regen << std::endl;
 
     // Mana
     // MP = baseMP + (level * 50%) + ((level * 250%) * energy)
@@ -1274,12 +1299,14 @@ std::cout << "HP: " << m_player->character->attribute.health.max << std::endl;
                                               (m_player->character->level.current * 0.5) +
                                               ((m_player->character->level.current * 2.5) *
                                                m_player->character->attribute.energy);
+std::cout << "MP: " << m_player->character->attribute.mana.max << std::endl;
 
     // MP regen = baseMPregen + (level * 50%) + ((level * 250%) * energy)
     m_player->character->attribute.mana.regen = m_player->character->attribute.mana.regenBase +
                                                 (m_player->character->level.current * 0.005) +
                                                 ((m_player->character->level.current * 0.0025) *
                                                  m_player->character->attribute.energy);
+std::cout << "MP Regen: " << m_player->character->attribute.mana.regen << std::endl;
 
     // --- Set to base values ---
 

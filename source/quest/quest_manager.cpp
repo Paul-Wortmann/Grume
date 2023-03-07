@@ -52,7 +52,7 @@ void cQuestManager::setQuest(const std::string &_questName, const std::uint32_t 
         }
     }
 
-    // Add the quest if it doesn't exist
+    // Add the quest if it does not exist
     if (!questFound)
     {
         sQuest* temp = getNew();

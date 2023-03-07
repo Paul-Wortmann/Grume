@@ -449,7 +449,7 @@ void cUIManager::process(void)
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
                     event->function_1 = eUIEventFunction::UIEventFunction_loadMapTown;
-                    event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionLoadMapTown_1);
+                    event->data_1 = 1 + static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionLoadMapTown_1);
                     m_event.push(event);
 
                     // set data

@@ -131,6 +131,12 @@
       <quest>golem_ice_mini_boss_2_dead 0</quest>
       <quest>golem_ice_mini_boss_3_dead 0</quest>
       <quest>golem_ice_boss_1_dead 0</quest>
+      <quest>waypoint_rune_1 0</quest>
+      <quest>waypoint_rune_2 0</quest>
+      <quest>waypoint_rune_3 0</quest>
+      <quest>waypoint_rune_4 0</quest>
+      <quest>waypoint_rune_5 0</quest>
+      <quest>waypoint_rune_6 0</quest>
    </quests>
 
    <map_data>
