@@ -119,18 +119,18 @@ void cNPCManager::process(const std::int64_t &_dt)
             if ((m_entityTemp->character != nullptr) && (m_entityTemp->ai != nullptr) && (m_entityTemp->ai->state != eEntityAIState::entityAIStateCorpse))
             {
                 // Process health regen
-                m_entityTemp->character->attribute.health.current += m_entityTemp->character->attribute.health.regen;
-                if (m_entityTemp->character->attribute.health.current > m_entityTemp->character->attribute.health.max)
-                    m_entityTemp->character->attribute.health.current = m_entityTemp->character->attribute.health.max;
-                if (m_entityTemp->character->attribute.health.current < 0.0f)
-                    m_entityTemp->character->attribute.health.current = 0.0f;
+                m_entityTemp->character->attribute.health.current.amount += m_entityTemp->character->attribute.health.current.regen;
+                if (m_entityTemp->character->attribute.health.current.amount > m_entityTemp->character->attribute.health.current.max)
+                    m_entityTemp->character->attribute.health.current.amount = m_entityTemp->character->attribute.health.current.max;
+                if (m_entityTemp->character->attribute.health.current.amount < 0.0f)
+                    m_entityTemp->character->attribute.health.current.amount = 0.0f;
 
                 // Process mana regen
-                m_entityTemp->character->attribute.mana.current += m_entityTemp->character->attribute.mana.regen;
-                if (m_entityTemp->character->attribute.mana.current > m_entityTemp->character->attribute.mana.max)
-                    m_entityTemp->character->attribute.mana.current = m_entityTemp->character->attribute.mana.max;
-                if (m_entityTemp->character->attribute.mana.current < 0.0f)
-                    m_entityTemp->character->attribute.mana.current = 0.0f;
+                m_entityTemp->character->attribute.mana.current.amount += m_entityTemp->character->attribute.mana.current.regen;
+                if (m_entityTemp->character->attribute.mana.current.amount > m_entityTemp->character->attribute.mana.current.max)
+                    m_entityTemp->character->attribute.mana.current.amount = m_entityTemp->character->attribute.mana.current.max;
+                if (m_entityTemp->character->attribute.mana.current.amount < 0.0f)
+                    m_entityTemp->character->attribute.mana.current.amount = 0.0f;
             }
 
             // Update timer
@@ -163,8 +163,8 @@ void cNPCManager::process(const std::int64_t &_dt)
                     bool inRangePursue    = (distancetoPlayerSqr < (m_entityTemp->ai->moveRange) * (m_entityTemp->ai->moveRange));
                     bool inRangeAware     = (distancetoPlayerSqr < (m_entityTemp->ai->awareRange) * (m_entityTemp->ai->awareRange));
                     bool playerVisable    = gLineOfSight(m_mapPointer, playerTile, enemyTile);
-                    bool lowHealth        = (m_entityTemp->character->attribute.health.current < (m_entityTemp->character->attribute.health.max / 4.0));
-                    bool lowHealthRetreat = (m_entityTemp->character->attribute.health.current < (m_entityTemp->ai->retreatThreshold * m_entityTemp->character->attribute.health.max));
+                    bool lowHealth        = (m_entityTemp->character->attribute.health.current.amount < (m_entityTemp->character->attribute.health.current.max / 4.0));
+                    bool lowHealthRetreat = (m_entityTemp->character->attribute.health.current.amount < (m_entityTemp->ai->retreatThreshold * m_entityTemp->character->attribute.health.current.max));
 
 
                     // Enable health bar for visible entities near the player
@@ -175,11 +175,11 @@ void cNPCManager::process(const std::int64_t &_dt)
                     {
                         // if mana -> health spell mana need, heal
                         if ((m_entityTemp->character->skill.heal.enabled) &&
-                            (m_entityTemp->character->attribute.mana.current > m_entityTemp->character->skill.heal.manaCost))
+                            (m_entityTemp->character->attribute.mana.current.amount > m_entityTemp->character->skill.heal.manaCost))
                         {
                             //std::cout << "Low health, healing!" << i << std::endl;
-                            m_entityTemp->character->attribute.mana.current -= m_entityTemp->character->skill.heal.manaCost;
-                            m_entityTemp->character->attribute.health.current += static_cast<float>(m_entityTemp->character->attribute.health.max / 2.0f);
+                            m_entityTemp->character->attribute.mana.current.amount -= m_entityTemp->character->skill.heal.manaCost;
+                            m_entityTemp->character->attribute.health.current.amount += static_cast<float>(m_entityTemp->character->attribute.health.current.max / 2.0f);
 
 
                             // blood particles
@@ -220,21 +220,21 @@ void cNPCManager::process(const std::int64_t &_dt)
                                 // Minion is dead, revive
                                 if (minion->ai->state == eEntityAIState::entityAIStateCorpse)
                                 {
-                                    if (m_entityTemp->character->attribute.mana.current > static_cast<float>(m_entityTemp->ai->leader->reviveCost))
+                                    if (m_entityTemp->character->attribute.mana.current.amount > static_cast<float>(m_entityTemp->ai->leader->reviveCost))
                                     {
                                         //std::cout << "Minion is dead, reviving!" << i << std::endl;
-                                        m_entityTemp->character->attribute.mana.current -= static_cast<float>(m_entityTemp->ai->leader->reviveCost);
+                                        m_entityTemp->character->attribute.mana.current.amount -= static_cast<float>(m_entityTemp->ai->leader->reviveCost);
                                         m_entityRevive(minion);
                                     }
                                 }
                                 // Minion low health: heal minion
-                                else if (minion->character->attribute.health.current < (minion->ai->retreatThreshold * minion->character->attribute.health.max))
+                                else if (minion->character->attribute.health.current.amount < (minion->ai->retreatThreshold * minion->character->attribute.health.current.max))
                                 {
-                                    if (m_entityTemp->character->attribute.mana.current > static_cast<float>(m_entityTemp->ai->leader->healCost))
+                                    if (m_entityTemp->character->attribute.mana.current.amount > static_cast<float>(m_entityTemp->ai->leader->healCost))
                                     {
                                         //std::cout << "Minion has low health, healing!" << i << std::endl;
-                                        m_entityTemp->character->attribute.mana.current -= static_cast<float>(m_entityTemp->ai->leader->healCost);
-                                        minion->character->attribute.health.current = static_cast<float>(minion->character->attribute.health.max / 2.0f);
+                                        m_entityTemp->character->attribute.mana.current.amount -= static_cast<float>(m_entityTemp->ai->leader->healCost);
+                                        minion->character->attribute.health.current.amount = static_cast<float>(minion->character->attribute.health.current.max / 2.0f);
 
                                         // blood particles
                                         glm::vec3 minionPosition = glm::vec3(minion->base.position.x, minion->base.position.y + minion->base.particleHeight, minion->base.position.z);
@@ -246,13 +246,13 @@ void cNPCManager::process(const std::int64_t &_dt)
                         }
                         // If enough mana, spawn minions if not at max
                         if ((m_entityTemp->ai->leader->minionCurrent < m_entityTemp->ai->leader->minionMax) &&
-                            (m_entityTemp->character->attribute.mana.current > static_cast<float>(m_entityTemp->ai->leader->spawnCost)))
+                            (m_entityTemp->character->attribute.mana.current.amount > static_cast<float>(m_entityTemp->ai->leader->spawnCost)))
                         {
                             // Update minion count
                             m_entityTemp->ai->leader->minionCurrent++;
 
                             // Decrease mana by spawn cost
-                            m_entityTemp->character->attribute.mana.current -= static_cast<float>(m_entityTemp->ai->leader->spawnCost);
+                            m_entityTemp->character->attribute.mana.current.amount -= static_cast<float>(m_entityTemp->ai->leader->spawnCost);
 
                             // Set a managed entity to be spawned
                             if (m_entityTemp->ai->leader->minionManaged)
@@ -367,13 +367,13 @@ void cNPCManager::process(const std::int64_t &_dt)
                                 // Inflict damage on the player
                                 // **** this should be based on NPC strength and player defense, etc...
 
-                                float damage = m_entityTemp->character->attribute.damagePhysical.base / 2.0f;
-                                m_entityPlayer->character->attribute.health.current -= damage;
+                                float damage = m_entityTemp->character->attribute.damagePhysical.base.amount / 2.0f;
+                                m_entityPlayer->character->attribute.health.current.amount -= damage;
 
                                 // Player death
-                                if (m_entityPlayer->character->attribute.health.current <= 0)
+                                if (m_entityPlayer->character->attribute.health.current.amount <= 0)
                                 {
-                                    m_entityPlayer->character->attribute.health.current = 0;
+                                    m_entityPlayer->character->attribute.health.current.amount = 0;
                                     // Set state if not yet set
                                     if (m_entityPlayer->state->stateCurrent != eEntityState::entityState_idle)
                                     {
@@ -932,7 +932,7 @@ void cNPCManager::process(const std::int64_t &_dt)
                 if ((m_entityTemp->ai != nullptr) && (m_entityTemp->ai->state == eEntityAIState::entityAIStateCorpse))
                 {
                     // Corpses can't heal
-                    m_entityTemp->character->attribute.health.current = 0.0f;
+                    m_entityTemp->character->attribute.health.current.amount = 0.0f;
 
                     // Leader has been killed
                     if (m_entityTemp->ai->leaderEntity == nullptr)
@@ -954,26 +954,24 @@ void cNPCManager::process(const std::int64_t &_dt)
                     // Note: rand() for crit does not factor in max chance or player level
 
                     // Crit damage
-                    if (static_cast<float>(rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.critChance)
+                    if (static_cast<float>(rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.current.critChance)
                     {
-                        float damage = m_entityPlayer->character->attribute.damagePhysical.base * m_entityPlayer->character->attribute.damagePhysical.critMultiplier;
-                        damage += m_entityPlayer->character->attribute.damagePhysical.base;
-                        m_entityTemp->character->attribute.health.current -= (m_entityPlayer->character->damage * damage);
+                        float damage = m_entityPlayer->character->attribute.damagePhysical.current.amount * m_entityPlayer->character->attribute.damagePhysical.current.critMultiplier;
+                        damage += m_entityPlayer->character->attribute.damagePhysical.current.amount;
+                        m_entityTemp->character->attribute.health.current.amount -= damage;
                     }
                     else
                     // Normal damage
                     {
-                        m_entityTemp->character->attribute.health.current -= (m_entityPlayer->character->damage * m_entityPlayer->character->attribute.damagePhysical.base);
+                        float damage = m_entityPlayer->character->attribute.damagePhysical.current.amount;
+                        m_entityTemp->character->attribute.health.current.amount -= damage;
                     }
-
-                    // Set entity state : defend
-                    m_entityManager->stateSet(m_entityTemp, eEntityState::entityState_defend);
 
                     // Set player state : attack
                     m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_attack);
 
                     // Death
-                    if (m_entityTemp->character->attribute.health.current <= 0.01f)
+                    if (m_entityTemp->character->attribute.health.current.amount <= 0.01f)
                     {
                         // Die or become a corpse
                         m_entityDeath(m_entityTemp);
@@ -1269,7 +1267,7 @@ void cNPCManager::m_entityDeath(sEntity*& _entity)
 
 void cNPCManager::m_entityRevive(sEntity*& _entity)
 {
-    _entity->character->attribute.health.current = _entity->character->attribute.health.max;
+    _entity->character->attribute.health.current.amount = _entity->character->attribute.health.current.max;
     _entity->ai->state = eEntityAIState::entityAIStateIdle;
     _entity->graphics->model = m_resourceManager->loadModel(_entity->ai->modelAlive);
     m_graphicsEngine->initializeEntity(_entity);

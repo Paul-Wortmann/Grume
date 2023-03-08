@@ -20,13 +20,45 @@
     </base>
     
     <character>
+        # attributes
+	    <character_attribute_strength>1</character_attribute_strength>
+	    <character_attribute_dexterity>1</character_attribute_dexterity>
+	    <character_attribute_vitality>1</character_attribute_vitality>
+	    <character_attribute_energy>1</character_attribute_energy>
+	    <character_attribute_points>5</character_attribute_points>
+
+        # health
+	    <character_attribute_health_base>100</character_attribute_health_base>
+	    <character_attribute_health_regen_base>0.025</character_attribute_health_regen_base>
+
+        # mana
+	    <character_attribute_mana_base>100</character_attribute_mana_base>
+	    <character_attribute_mana_regen_base>0.025</character_attribute_mana_regen_base>
+
+        # damage: physical
+	    <character_attribute_damage_physical_base>5.0</character_attribute_damage_physical_base>
+	    <character_attribute_damage_physical_crit_multiplier_base>0.25</character_attribute_damage_physical_crit_multiplier_base>
+	    <character_attribute_damage_physical_crit_chance_base>1.0</character_attribute_damage_physical_crit_chance_base>
+
+        # damage: fire
+	    <character_attribute_damage_fire_base>5.0</character_attribute_damage_fire_base>
+	    <character_attribute_damage_fire_crit_multiplier_base>0.25</character_attribute_damage_fire_crit_multiplier_base>
+	    <character_attribute_damage_fire_crit_chance_base>1.0</character_attribute_damage_fire_crit_chance_base>
+
+        # damage: ice
+	    <character_attribute_damage_ice_base>5.0</character_attribute_damage_ice_base>
+	    <character_attribute_damage_ice_crit_multiplier_base>0.25</character_attribute_damage_ice_crit_multiplier_base>
+	    <character_attribute_damage_ice_crit_chance_base>1.0</character_attribute_damage_ice_crit_chance_base>
+
+        # damage: lightning
+	    <character_attribute_damage_lightning_base>5.0</character_attribute_damage_lightning_base>
+	    <character_attribute_damage_lightning_crit_multiplier_base>0.25</character_attribute_damage_lightning_crit_multiplier_base>
+	    <character_attribute_damage_lightning_crit_chance_base>1.0</character_attribute_damage_lightning_crit_chance_base>
+
+        # other
 	    <character_importance>0</character_importance>
 	    <character_billboard_model>ui/billboard_1_001.obj</character_billboard_model>
 	    <character_billboard_material>ui/health_billboard_001.txt</character_billboard_material>
-	    <character_health_max>100</character_health_max>
-	    <character_health_regen>0.025</character_health_regen>
-	    <character_mana_max>100</character_mana_max>
-	    <character_mana_regen>0.025</character_mana_regen>
     </character>
 
     <graphics>

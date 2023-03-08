@@ -20,6 +20,28 @@
         <base_textData>belt<base_textData>
         <base_type>3</base_type>
     </base>
+    
+    <character>
+        # attributes
+	    <character_attribute_strength>0</character_attribute_strength>
+	    <character_attribute_dexterity>0</character_attribute_dexterity>
+	    <character_attribute_vitality>0</character_attribute_vitality>
+	    <character_attribute_energy>0</character_attribute_energy>
+	    <character_attribute_points>0</character_attribute_points>
+
+        # health
+	    <character_attribute_health_base>100</character_attribute_health_base>
+	    <character_attribute_health_regen_base>0.025</character_attribute_health_regen_base>
+
+        # mana
+	    <character_attribute_mana_base>100</character_attribute_mana_base>
+	    <character_attribute_mana_regen_base>0.025</character_attribute_mana_regen_base>
+
+        # damage: physical
+	    <character_attribute_damage_physical_base>0</character_attribute_damage_physical_base>
+	    <character_attribute_damage_physical_crit_multiplier_base>0</character_attribute_damage_physical_crit_multiplier_base>
+	    <character_attribute_damage_physical_crit_chance_base>0</character_attribute_damage_physical_crit_chance_base>
+    </character>
 
     <graphics>
 	    <graphics_model>items/belt_1_001.obj</graphics_model>

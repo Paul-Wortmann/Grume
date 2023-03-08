@@ -109,7 +109,7 @@ void cGraphicsEngine::m_pui_render(void)
                     // Health bar
                     if (menu[m].component[c].function == eComponentFunction::componentFunctionBarHealth)
                     {
-                        float     percent  = static_cast<float>(m_entityPlayer->character->attribute.health.current) / static_cast<float>(m_entityPlayer->character->attribute.health.max);
+                        float     percent  = static_cast<float>(m_entityPlayer->character->attribute.health.current.amount) / static_cast<float>(m_entityPlayer->character->attribute.health.current.max);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x -= menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);
@@ -118,7 +118,7 @@ void cGraphicsEngine::m_pui_render(void)
                     // Mana bar
                     else if (menu[m].component[c].function == eComponentFunction::componentFunctionBarMana)
                     {
-                        float     percent  = static_cast<float>(m_entityPlayer->character->attribute.mana.current) / static_cast<float>(m_entityPlayer->character->attribute.mana.max);
+                        float     percent  = static_cast<float>(m_entityPlayer->character->attribute.mana.current.amount) / static_cast<float>(m_entityPlayer->character->attribute.mana.current.max);
                         glm::vec3 position = menu[m].component[c].position;
                         position.x += menu[m].component[c].size.x * (1.0f - percent);
                         m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, position);

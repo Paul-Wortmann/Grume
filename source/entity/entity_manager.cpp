@@ -593,57 +593,80 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             if (xmlEntityFile.getInstanceCount("<character_billboard_scale>") > 0)
                 tEntity->character->healthBarScale = xmlEntityFile.getVec2("<character_billboard_scale>");
 
-            // Health
-            if (xmlEntityFile.getInstanceCount("<character_health_max>") > 0)
+            // Attributes
+            if (xmlEntityFile.getInstanceCount("<character_attribute_strength>") > 0)
+                tEntity->character->attribute.strength = xmlEntityFile.getInteger("<character_attribute_strength>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_dexterity>") > 0)
+                tEntity->character->attribute.dexterity = xmlEntityFile.getInteger("<character_attribute_dexterity>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_vitality>") > 0)
+                tEntity->character->attribute.vitality = xmlEntityFile.getInteger("<character_attribute_vitality>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_energy>") > 0)
+                tEntity->character->attribute.energy = xmlEntityFile.getInteger("<character_attribute_energy>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_points>") > 0)
+                tEntity->character->attribute.pointsCurrent = xmlEntityFile.getInteger("<character_attribute_points>");
+
+            // Health attribute
+            if (xmlEntityFile.getInstanceCount("<character_attribute_health_base>") > 0)
             {
-                tEntity->character->attribute.health.max = xmlEntityFile.getFloat("<character_health_max>");
-                tEntity->character->attribute.health.current = tEntity->character->attribute.health.max;
+                tEntity->character->attribute.health.base.amount = xmlEntityFile.getFloat("<character_attribute_health_base>");
+                tEntity->character->attribute.health.base.max = tEntity->character->attribute.health.base.amount;
             }
-            if (xmlEntityFile.getInstanceCount("<character_health_current>") > 0)
-                tEntity->character->attribute.health.current = xmlEntityFile.getFloat("<character_health_current>");
-            if (xmlEntityFile.getInstanceCount("<character_health_regen>") > 0)
-                tEntity->character->attribute.health.regen = xmlEntityFile.getFloat("<character_health_regen>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_health_regen_base>") > 0)
+                tEntity->character->attribute.health.base.regen = xmlEntityFile.getFloat("<character_attribute_health_regen_base>");
 
-            // Mana
-            if (xmlEntityFile.getInstanceCount("<character_mana_max>") > 0)
+            tEntity->character->attribute.health.current = tEntity->character->attribute.health.base;
+
+            // mana attribute
+            if (xmlEntityFile.getInstanceCount("<character_attribute_mana_base>") > 0)
             {
-                tEntity->character->attribute.mana.max = xmlEntityFile.getFloat("<character_mana_max>");
-                tEntity->character->attribute.mana.current = tEntity->character->attribute.mana.max;
+                tEntity->character->attribute.mana.base.amount = xmlEntityFile.getFloat("<character_attribute_mana_base>");
+                tEntity->character->attribute.mana.base.max = tEntity->character->attribute.mana.base.amount;
             }
-            if (xmlEntityFile.getInstanceCount("<character_mana_current>") > 0)
-                tEntity->character->attribute.mana.current = xmlEntityFile.getFloat("<character_mana_current>");
-            if (xmlEntityFile.getInstanceCount("<character_mana_regen>") > 0)
-                tEntity->character->attribute.mana.regen = xmlEntityFile.getFloat("<character_mana_regen>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_mana_regen_base>") > 0)
+                tEntity->character->attribute.mana.base.regen = xmlEntityFile.getFloat("<character_attribute_mana_regen_base>");
 
-            // Damage
-            if (xmlEntityFile.getInstanceCount("<character_damage_physical_base>") > 0)
-                tEntity->character->attribute.damagePhysical.base = xmlEntityFile.getFloat("<character_damage_physical_base>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_physical_crit_chance>") > 0)
-                tEntity->character->attribute.damagePhysical.critChance = xmlEntityFile.getFloat("<character_damage_physical_crit_chance>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_physical_crit_multiplier>") > 0)
-                tEntity->character->attribute.damagePhysical.critMultiplier = xmlEntityFile.getFloat("<character_damage_physical_crit_multiplier>");
+            tEntity->character->attribute.mana.current = tEntity->character->attribute.mana.base;
 
-            if (xmlEntityFile.getInstanceCount("<character_damage_fire_base>") > 0)
-                tEntity->character->attribute.damageFire.base = xmlEntityFile.getFloat("<character_damage_fire_base>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_fire_crit_chance>") > 0)
-                tEntity->character->attribute.damageFire.critChance = xmlEntityFile.getFloat("<character_damage_fire_crit_chance>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_fire_crit_multiplier>") > 0)
-                tEntity->character->attribute.damageFire.critMultiplier = xmlEntityFile.getFloat("<character_damage_fire_crit_multiplier>");
+            // Damage physical
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_physical_base>") > 0)
+                tEntity->character->attribute.damagePhysical.base.amount = xmlEntityFile.getFloat("<character_attribute_damage_physical_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_physical_crit_chance_base>") > 0)
+                tEntity->character->attribute.damagePhysical.base.critChance = xmlEntityFile.getFloat("<character_attribute_damage_physical_crit_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_physical_crit_multiplier_base>") > 0)
+                tEntity->character->attribute.damagePhysical.base.critMultiplier = xmlEntityFile.getFloat("<character_attribute_damage_physical_crit_multiplier_base>");
 
-            if (xmlEntityFile.getInstanceCount("<character_damage_ice_base>") > 0)
-                tEntity->character->attribute.damageIce.base = xmlEntityFile.getFloat("<character_damage_ice_base>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_ice_crit_chance>") > 0)
-                tEntity->character->attribute.damageIce.critChance = xmlEntityFile.getFloat("<character_damage_ice_crit_chance>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_ice_crit_multiplier>") > 0)
-                tEntity->character->attribute.damageIce.critMultiplier = xmlEntityFile.getFloat("<character_damage_ice_crit_multiplier>");
+            tEntity->character->attribute.damagePhysical.current = tEntity->character->attribute.damagePhysical.base;
 
-            if (xmlEntityFile.getInstanceCount("<character_damage_lightning_base>") > 0)
-                tEntity->character->attribute.damageLightning.base = xmlEntityFile.getFloat("<character_damage_lightning_base>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_lightning_crit_chance>") > 0)
-                tEntity->character->attribute.damageLightning.critChance = xmlEntityFile.getFloat("<character_damage_lightning_crit_chance>");
-            if (xmlEntityFile.getInstanceCount("<character_damage_lightning_crit_multiplier>") > 0)
-                tEntity->character->attribute.damageLightning.critMultiplier = xmlEntityFile.getFloat("<character_damage_lightning_crit_multiplier>");
+            // Damage fire
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_fire_base>") > 0)
+                tEntity->character->attribute.damageFire.base.amount = xmlEntityFile.getFloat("<character_attribute_damage_fire_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_fire_crit_chance_base>") > 0)
+                tEntity->character->attribute.damageFire.base.critChance = xmlEntityFile.getFloat("<character_attribute_damage_fire_crit_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_fire_crit_multiplier_base>") > 0)
+                tEntity->character->attribute.damageFire.base.critMultiplier = xmlEntityFile.getFloat("<character_attribute_damage_fire_crit_multiplier_base>");
 
+            tEntity->character->attribute.damageFire.current = tEntity->character->attribute.damageFire.base;
+
+            // Damage ice
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_ice_base>") > 0)
+                tEntity->character->attribute.damageIce.base.amount = xmlEntityFile.getFloat("<character_attribute_damage_ice_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_ice_crit_chance_base>") > 0)
+                tEntity->character->attribute.damageIce.base.critChance = xmlEntityFile.getFloat("<character_attribute_damage_ice_crit_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_ice_crit_multiplier_base>") > 0)
+                tEntity->character->attribute.damageIce.base.critMultiplier = xmlEntityFile.getFloat("<character_attribute_damage_ice_crit_multiplier_base>");
+
+            tEntity->character->attribute.damageIce.current = tEntity->character->attribute.damageIce.base;
+
+            // Damage lightning
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_lightning_base>") > 0)
+                tEntity->character->attribute.damageLightning.base.amount = xmlEntityFile.getFloat("<character_attribute_damage_lightning_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_lightning_crit_chance_base>") > 0)
+                tEntity->character->attribute.damageLightning.base.critChance = xmlEntityFile.getFloat("<character_attribute_damage_lightning_crit_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_damage_lightning_crit_multiplier_base>") > 0)
+                tEntity->character->attribute.damageLightning.base.critMultiplier = xmlEntityFile.getFloat("<character_attribute_damage_lightning_crit_multiplier_base>");
+
+            tEntity->character->attribute.damageLightning.current = tEntity->character->attribute.damageLightning.base;
+/*
             // Armor
             if (xmlEntityFile.getInstanceCount("<character_armor_physical_base>") > 0)
                 tEntity->character->attribute.armorPhysical.base = xmlEntityFile.getFloat("<character_armor_physical_base>");
@@ -653,7 +676,7 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->character->attribute.resistanceIce.base = xmlEntityFile.getFloat("<character_armor_ice_base>");
             if (xmlEntityFile.getInstanceCount("<character_armor_lightning_base>") > 0)
                 tEntity->character->attribute.resistanceLightning.base = xmlEntityFile.getFloat("<character_armor_lightning_base>");
-
+*/
             // Skills
             if (xmlEntityFile.getInstanceCount("<character_skill_heal_enabled>") > 0)
                 tEntity->character->skill.heal.enabled = (xmlEntityFile.getInteger("<character_skill_heal_enabled>") > 0);

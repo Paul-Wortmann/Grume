@@ -26,27 +26,43 @@
 
 #include "../core/includes.hpp"
 
+struct sCharacterAttributeRegenType
+{
+    float max            = 100;     // Maximum
+    float amount         = 100;     // Current
+    float regen          = 0.025f;  // Amount per second
+};
+
 struct sCharacterAttributeRegen
 {
-    float base           = 100;     // Base
-    float max            = 100;     // Maximum
-    float current        = 100;     // Current
-    float regenBase      = 0.025f;  // Base amount per second
-    float regen          = 0.025f;  // Amount per second
+    sCharacterAttributeRegenType base    = {};
+    sCharacterAttributeRegenType current = {};
+};
+
+struct sCharacterAttributeDamageType
+{
+    float amount         = 1.0f;    // Damage amount
+    float critMultiplier = 0.25f;   // Critical hit multiplier
+    float critChance     = 1.0f;    // Critical hit chance percent
 };
 
 struct sCharacterAttributeDamage
 {
-    float base           = 1.0f;    // Base damage
-    float critMultiplier = 0.25f;   // Critical hit multiplier
-    float critChance     = 1.0f;    // Critical hit chance
+    sCharacterAttributeDamageType base    = {};
+    sCharacterAttributeDamageType current = {};
+};
+
+struct sCharacterAttributeArmorType
+{
+    float amount         = 1.0f;    // Armor amount
+    float blockChance    = 0.1f;    // Block chance
+    float blockPercent   = 0.1f;    // Block percent
 };
 
 struct sCharacterAttributeArmor
 {
-    float base           = 1.0f;    // Base armor
-    float blockChance    = 0.1f;    // Block chance
-    float blockAmount    = 0.1f;    // Block amount
+    sCharacterAttributeArmorType base    = {};
+    sCharacterAttributeArmorType current = {};
 };
 
 struct sEntityCharAttrib // Character attributes
@@ -89,4 +105,8 @@ struct sEntityCharAttrib // Character attributes
 
 */
 
-
+/*
+load the base,
+calculate the current,
+use the current.
+*/

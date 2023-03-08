@@ -18,28 +18,7 @@
       <vitality>1</vitality>
       <energy>1</energy>
       <health_current>100</health_current>
-      <health_max>100</health_max>
-      <health_regen>0.025</health_regen>
       <mana_current>100</mana_current>
-      <mana_max>100</mana_max>
-      <mana_regen>0.025</mana_regen>
-      <gold_current>0</gold_current>
-      <damage_physical_base>1</damage_physical_base>
-      <damage_physical_crit_chance>1</damage_physical_crit_chance>
-      <damage_physical_crit_multiplier>0.25</damage_physical_crit_multiplier>
-      <damage_fire_base>1</damage_fire_base>
-      <damage_fire_crit_chance>1</damage_fire_crit_chance>
-      <damage_fire_crit_multiplier>0.25</damage_fire_crit_multiplier>
-      <damage_ice_base>1</damage_ice_base>
-      <damage_ice_crit_chance>1</damage_ice_crit_chance>
-      <damage_ice_crit_multiplier>0.25</damage_ice_crit_multiplier>
-      <damage_lightning_base>1</damage_lightning_base>
-      <damage_lightning_crit_chance>1</damage_lightning_crit_chance>
-      <damage_lightning_crit_multiplier>0.25</damage_lightning_crit_multiplier>
-      <armor_physical_base>1</armor_physical_base>
-      <resistance_fire_base>1</resistance_fire_base>
-      <resistance_ice_base>1</resistance_ice_base>
-      <resistance_lightning_base>1</resistance_lightning_base>
    </player>
 
    <action_bar>

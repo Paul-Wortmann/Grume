@@ -1142,14 +1142,14 @@ void cPlayerManager::process(const std::int64_t &_dt)
     float frameDelta = static_cast<float>(_dt) / 16.0f; // 60 FPS == 16ms per frame
 
     // Health regeneration
-    m_player->character->attribute.health.current += (m_player->character->attribute.health.regen * frameDelta);
-    if (m_player->character->attribute.health.current > m_player->character->attribute.health.max)
-        m_player->character->attribute.health.current = m_player->character->attribute.health.max;
+    m_player->character->attribute.health.current.amount += (m_player->character->attribute.health.current.regen * frameDelta);
+    if (m_player->character->attribute.health.current.amount > m_player->character->attribute.health.current.max)
+        m_player->character->attribute.health.current.amount = m_player->character->attribute.health.current.max;
 
     // Mana regeneration
-    m_player->character->attribute.mana.current += (m_player->character->attribute.mana.regen * frameDelta);
-    if (m_player->character->attribute.mana.current > m_player->character->attribute.mana.max)
-        m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
+    m_player->character->attribute.mana.current.amount += (m_player->character->attribute.mana.current.regen * frameDelta);
+    if (m_player->character->attribute.mana.current.amount > m_player->character->attribute.mana.current.max)
+        m_player->character->attribute.mana.current.amount = m_player->character->attribute.mana.current.max;
 
     if (m_player->movement->pathing == true)
     {
@@ -1246,8 +1246,8 @@ void cPlayerManager::levelUp(void)
     calculateAttributes();
 
     // Set health and mana to max
-    m_player->character->attribute.health.current = m_player->character->attribute.health.max;
-    m_player->character->attribute.mana.current = m_player->character->attribute.mana.max;
+    m_player->character->attribute.health.current.amount = m_player->character->attribute.health.current.max;
+    m_player->character->attribute.mana.current.amount = m_player->character->attribute.mana.current.max;
 
     // Set entity state : levelUp
     m_entityManager->stateSet(m_player, eEntityState::entityState_levelUp);
@@ -1256,21 +1256,43 @@ void cPlayerManager::levelUp(void)
 void cPlayerManager::calculateAttributes(void)
 {
     // Variables for totals
-    std::uint32_t totalStrength  = m_player->character->attribute.strength;
-    std::uint32_t totalDexterity = m_player->character->attribute.dexterity;
-    std::uint32_t totalVitality  = m_player->character->attribute.vitality;
-    std::uint32_t totalEnergy    = m_player->character->attribute.energy;
+    std::uint32_t totalStrength   = m_player->character->attribute.strength;
+    std::uint32_t totalDexterity  = m_player->character->attribute.dexterity;
+    std::uint32_t totalVitality   = m_player->character->attribute.vitality;
+    std::uint32_t totalEnergy     = m_player->character->attribute.energy;
+
+    float physicalDamageTotal     = 0.0f;
+    float physicalCritMultipTotal = 0.0f;
+    float physicalCritChanceTotal = 0.0f;
+
+    float fireDamageTotal     = 0.0f;
+    float fireCritMultipTotal = 0.0f;
+    float fireCritChanceTotal = 0.0f;
+
+    float iceDamageTotal     = 0.0f;
+    float iceCritMultipTotal = 0.0f;
+    float iceCritChanceTotal = 0.0f;
+
+    float lightningDamageTotal     = 0.0f;
+    float lightningCritMultipTotal = 0.0f;
+    float lightningCritChanceTotal = 0.0f;
 
     // Aggregate data from equipment
     for (std::uint32_t i = 0; i < m_playerEquipment->getStorageSize(); ++i)
     {
         sEntity* tEntity = m_playerEquipment->getStorageSlot(i)->entity;
-        if (tEntity != nullptr)
+        if ((tEntity != nullptr) &&
+            (tEntity->character != nullptr) &&
+            (tEntity->item != nullptr))
         {
-            totalStrength  += tEntity->item->attribute.strength;
-            totalDexterity += tEntity->item->attribute.dexterity;
-            totalVitality  += tEntity->item->attribute.vitality;
-            totalEnergy    += tEntity->item->attribute.energy;
+            totalStrength  += tEntity->character->attribute.strength;
+            totalDexterity += tEntity->character->attribute.dexterity;
+            totalVitality  += tEntity->character->attribute.vitality;
+            totalEnergy    += tEntity->character->attribute.energy;
+
+            physicalDamageTotal     += tEntity->character->attribute.damagePhysical.base.amount;
+            physicalCritMultipTotal += tEntity->character->attribute.damagePhysical.base.critMultiplier;
+            physicalCritChanceTotal += tEntity->character->attribute.damagePhysical.base.critChance;
         }
 
     }
@@ -1280,40 +1302,157 @@ std::cout << "Player level: " << m_player->character->level.current << std::endl
 
     // Health
     // HP = baseHP + (level * 50%) + ((level * 250%) * vitality)
-    m_player->character->attribute.health.max = m_player->character->attribute.health.base +
-                                                (m_player->character->level.current * 0.5) +
-                                                ((m_player->character->level.current * 2.5) *
-                                                 totalVitality);
-std::cout << "HP: " << m_player->character->attribute.health.max << std::endl;
+    m_player->character->attribute.health.current.max = m_player->character->attribute.health.base.amount +
+                                                        (m_player->character->level.current * 0.5) +
+                                                        ((m_player->character->level.current * 2.5) *
+                                                        totalVitality);
+std::cout << "HP: " << m_player->character->attribute.health.current.max << std::endl;
 
     // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
-    m_player->character->attribute.health.regen = m_player->character->attribute.health.regenBase +
-                                                  (m_player->character->level.current * 0.005) +
-                                                  ((m_player->character->level.current * 0.0025) *
-                                                   totalVitality);
-std::cout << "HP Regen: " << m_player->character->attribute.health.regen << std::endl;
+    m_player->character->attribute.health.current.regen = m_player->character->attribute.health.base.regen +
+                                                          (m_player->character->level.current * 0.005) +
+                                                          ((m_player->character->level.current * 0.0025) *
+                                                          totalVitality);
+std::cout << "HP Regen: " << m_player->character->attribute.health.current.regen << std::endl;
 
     // Mana
     // MP = baseMP + (level * 50%) + ((level * 250%) * energy)
-    m_player->character->attribute.mana.max = m_player->character->attribute.mana.base +
-                                              (m_player->character->level.current * 0.5) +
-                                              ((m_player->character->level.current * 2.5) *
-                                               totalEnergy);
-std::cout << "MP: " << m_player->character->attribute.mana.max << std::endl;
+    m_player->character->attribute.mana.current.max = m_player->character->attribute.mana.base.amount +
+                                                      (m_player->character->level.current * 0.5) +
+                                                      ((m_player->character->level.current * 2.5) *
+                                                      totalEnergy);
+std::cout << "MP: " << m_player->character->attribute.mana.current.max << std::endl;
 
     // MP regen = baseMPregen + (level * 50%) + ((level * 250%) * energy)
-    m_player->character->attribute.mana.regen = m_player->character->attribute.mana.regenBase +
-                                                (m_player->character->level.current * 0.005) +
-                                                ((m_player->character->level.current * 0.0025) *
-                                                 totalEnergy);
-std::cout << "MP Regen: " << m_player->character->attribute.mana.regen << std::endl;
+    m_player->character->attribute.mana.current.regen = m_player->character->attribute.mana.base.regen +
+                                                        (m_player->character->level.current * 0.005) +
+                                                        ((m_player->character->level.current * 0.0025) *
+                                                        totalEnergy);
+std::cout << "MP Regen: " << m_player->character->attribute.mana.current.regen << std::endl;
 
+    // Physical damage
+    // Damage = (base x strength x bias_1) + (level x strength x bias_2)
+    float damageBias_1 = 1.0f;
+    float damageBias_2 = 0.5f;
+    physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
+    physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
+    m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
+
+std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+
+    // Physical damage crit multiplier
+    float critMultiplierBias_1 = 0.05f;
+    float critMultiplierBias_2 = 0.01f;
+    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
+    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
+    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
+
+std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+
+    // Physical damage crit chance
+    float critChanceBias_1 = 0.25f;
+    float critChanceBias_2 = 0.01f;
+    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
+    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
+    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
+
+std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
+/*
+    // Fire damage
+    // Damage = (base x strength x bias_1) + (level x strength x bias_2)
+    float damageBias_1 = 1.0f;
+    float damageBias_2 = 0.5f;
+    physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
+    physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
+    m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
+
+std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+
+    // Physical damage crit multiplier
+    float critMultiplierBias_1 = 0.05f;
+    float critMultiplierBias_2 = 0.01f;
+    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
+    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
+    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
+
+std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+
+    // Physical damage crit chance
+    float critChanceBias_1 = 0.25f;
+    float critChanceBias_2 = 0.01f;
+    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
+    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
+    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
+
+std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
+
+    // Ice damage
+    // Damage = (base x strength x bias_1) + (level x strength x bias_2)
+    float damageBias_1 = 1.0f;
+    float damageBias_2 = 0.5f;
+    physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
+    physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
+    m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
+
+std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+
+    // Physical damage crit multiplier
+    float critMultiplierBias_1 = 0.05f;
+    float critMultiplierBias_2 = 0.01f;
+    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
+    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
+    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
+
+std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+
+    // Physical damage crit chance
+    float critChanceBias_1 = 0.25f;
+    float critChanceBias_2 = 0.01f;
+    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
+    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
+    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
+
+std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
+
+    // Lightning damage
+    // Damage = (base x strength x bias_1) + (level x strength x bias_2)
+    float damageBias_1 = 1.0f;
+    float damageBias_2 = 0.5f;
+    physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
+    physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
+    m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
+
+std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+
+    // Physical damage crit multiplier
+    float critMultiplierBias_1 = 0.05f;
+    float critMultiplierBias_2 = 0.01f;
+    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
+    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
+    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
+
+std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+
+    // Physical damage crit chance
+    float critChanceBias_1 = 0.25f;
+    float critChanceBias_2 = 0.01f;
+    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
+    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
+    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
+
+std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
+*/
     // --- Set to base values ---
-
+/*
     // Damage
-    m_player->character->attribute.damagePhysical.base = 1.0f + totalStrength;
-    m_player->character->attribute.damagePhysical.critChance = 1.0f;
-    m_player->character->attribute.damagePhysical.critMultiplier = 0.25f;
     m_player->character->attribute.damageFire.base = 1.0f + totalEnergy;
     m_player->character->attribute.damageFire.critChance = 1.0f;
     m_player->character->attribute.damageFire.critMultiplier = 0.25f;
@@ -1331,7 +1470,7 @@ std::cout << "MP Regen: " << m_player->character->attribute.mana.regen << std::e
     m_player->character->attribute.resistanceFire.base = totalDexterity;
     m_player->character->attribute.resistanceIce.base = totalDexterity;
     m_player->character->attribute.resistanceLightning.base = totalDexterity;
-
+*/
     // Adjust values based on equipment
 }
 

@@ -364,7 +364,7 @@ void cGraphicsEngine::m_p3_render(void)
                     glDrawElements(GL_TRIANGLES, m_entityTemp->character->healthBarModel->mesh[0].numIndex, GL_UNSIGNED_INT, nullptr);
 
                     // Health bar
-                    float factor = m_entityTemp->character->attribute.health.current / m_entityTemp->character->attribute.health.max;
+                    float factor = m_entityTemp->character->attribute.health.current.amount / m_entityTemp->character->attribute.health.current.max;
                     float offset = ((billboardScaleRatioDiv) * factor * m_entityTemp->character->healthBarScale.x) - (billboardScaleRatioDiv * m_entityTemp->character->healthBarScale.x);
                     billboardPosition.x = m_entityTemp->base.position.x + offset;
                     billboardPosition.y = m_entityTemp->base.position.y + m_entityTemp->character->healthBarOffset;
