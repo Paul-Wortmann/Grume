@@ -80,7 +80,7 @@ struct sEntityItem
     std::uint32_t         stackMax  = 1;
 
     std::uint32_t         goldValue = 0;
-    sEntityItemAttributes attribute = {};
+    sEntityItemAttributes attribute = {}; // use char attrib instead?
 };
 
 #endif // ENTITY_ITEM_HPP

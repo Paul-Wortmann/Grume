@@ -1283,14 +1283,14 @@ std::cout << "Player level: " << m_player->character->level.current << std::endl
     m_player->character->attribute.health.max = m_player->character->attribute.health.base +
                                                 (m_player->character->level.current * 0.5) +
                                                 ((m_player->character->level.current * 2.5) *
-                                                 m_player->character->attribute.vitality);
+                                                 totalVitality);
 std::cout << "HP: " << m_player->character->attribute.health.max << std::endl;
 
     // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
     m_player->character->attribute.health.regen = m_player->character->attribute.health.regenBase +
                                                   (m_player->character->level.current * 0.005) +
                                                   ((m_player->character->level.current * 0.0025) *
-                                                   m_player->character->attribute.vitality);
+                                                   totalVitality);
 std::cout << "HP Regen: " << m_player->character->attribute.health.regen << std::endl;
 
     // Mana
@@ -1298,39 +1298,39 @@ std::cout << "HP Regen: " << m_player->character->attribute.health.regen << std:
     m_player->character->attribute.mana.max = m_player->character->attribute.mana.base +
                                               (m_player->character->level.current * 0.5) +
                                               ((m_player->character->level.current * 2.5) *
-                                               m_player->character->attribute.energy);
+                                               totalEnergy);
 std::cout << "MP: " << m_player->character->attribute.mana.max << std::endl;
 
     // MP regen = baseMPregen + (level * 50%) + ((level * 250%) * energy)
     m_player->character->attribute.mana.regen = m_player->character->attribute.mana.regenBase +
                                                 (m_player->character->level.current * 0.005) +
                                                 ((m_player->character->level.current * 0.0025) *
-                                                 m_player->character->attribute.energy);
+                                                 totalEnergy);
 std::cout << "MP Regen: " << m_player->character->attribute.mana.regen << std::endl;
 
     // --- Set to base values ---
 
     // Damage
-    m_player->character->attribute.damagePhysical.base = 1.0f;
+    m_player->character->attribute.damagePhysical.base = 1.0f + totalStrength;
     m_player->character->attribute.damagePhysical.critChance = 1.0f;
     m_player->character->attribute.damagePhysical.critMultiplier = 0.25f;
-    m_player->character->attribute.damageFire.base = 1.0f;
+    m_player->character->attribute.damageFire.base = 1.0f + totalEnergy;
     m_player->character->attribute.damageFire.critChance = 1.0f;
     m_player->character->attribute.damageFire.critMultiplier = 0.25f;
-    m_player->character->attribute.damageIce.base = 1.0f;
+    m_player->character->attribute.damageIce.base = 1.0f + totalEnergy;
     m_player->character->attribute.damageIce.critChance = 1.0f;
     m_player->character->attribute.damageIce.critMultiplier = 0.25f;
-    m_player->character->attribute.damageLightning.base = 1.0f;
+    m_player->character->attribute.damageLightning.base = 1.0f + totalEnergy;
     m_player->character->attribute.damageLightning.critChance = 1.0f;
     m_player->character->attribute.damageLightning.critMultiplier = 0.25f;
 
     // Armor
-    m_player->character->attribute.armorPhysical.base = m_player->character->attribute.dexterity;
+    m_player->character->attribute.armorPhysical.base = totalDexterity;
 
     // Resistance
-    m_player->character->attribute.resistanceFire.base = m_player->character->attribute.dexterity;
-    m_player->character->attribute.resistanceIce.base = m_player->character->attribute.dexterity;
-    m_player->character->attribute.resistanceLightning.base = m_player->character->attribute.dexterity;
+    m_player->character->attribute.resistanceFire.base = totalDexterity;
+    m_player->character->attribute.resistanceIce.base = totalDexterity;
+    m_player->character->attribute.resistanceLightning.base = totalDexterity;
 
     // Adjust values based on equipment
 }
