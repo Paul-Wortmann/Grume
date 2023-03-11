@@ -1344,7 +1344,7 @@ std::cout << "Physical damage amount: " << m_player->character->attribute.damage
     float critMultiplierBias_1 = 0.05f;
     float critMultiplierBias_2 = 0.01f;
     physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
-    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
+    physicalCritMultipTotal += totalStrength * critMultiplierBias_1;
     physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
     m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
 
@@ -1354,7 +1354,7 @@ std::cout << "Physical damage crit multiplier: " << m_player->character->attribu
     float critChanceBias_1 = 0.25f;
     float critChanceBias_2 = 0.01f;
     physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
-    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
+    physicalCritChanceTotal += totalStrength * critChanceBias_1;
     physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
     m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
 
@@ -1369,27 +1369,27 @@ std::cout << "Physical damage crit chance: " << m_player->character->attribute.d
     m_player->character->attribute.damageFire.current.amount = fireDamageTotal;
 
 std::cout << "Fire damage amount: " << m_player->character->attribute.damageFire.current.amount << std::endl;
+
+    // Fire damage crit multiplier
+    critMultiplierBias_1 = 0.05f;
+    critMultiplierBias_2 = 0.01f;
+    fireCritMultipTotal += m_player->character->attribute.damageFire.base.critMultiplier;
+    fireCritMultipTotal += totalEnergy * critMultiplierBias_1;
+    fireCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damageFire.current.critMultiplier = fireCritMultipTotal;
+
+std::cout << "Fire damage crit multiplier: " << m_player->character->attribute.damageFire.current.critMultiplier << std::endl;
+
+    // Fire damage crit chance
+    critChanceBias_1 = 0.25f;
+    critChanceBias_2 = 0.01f;
+    fireCritChanceTotal += m_player->character->attribute.damageFire.base.critChance;
+    fireCritChanceTotal += totalEnergy * critChanceBias_1;
+    fireCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damageFire.current.critChance = fireCritChanceTotal;
+
+std::cout << "Fire damage crit chance: " << m_player->character->attribute.damageFire.current.critChance << std::endl;
 /*
-    // Physical damage crit multiplier
-    float critMultiplierBias_1 = 0.05f;
-    float critMultiplierBias_2 = 0.01f;
-    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
-    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
-    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
-    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
-
-std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
-
-    // Physical damage crit chance
-    float critChanceBias_1 = 0.25f;
-    float critChanceBias_2 = 0.01f;
-    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
-    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
-    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
-    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
-
-std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
-
     // Ice damage
     // Damage = (base x strength x bias_1) + (level x strength x bias_2)
     float damageBias_1 = 1.0f;
