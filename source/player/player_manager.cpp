@@ -1389,16 +1389,16 @@ std::cout << "Fire damage crit multiplier: " << m_player->character->attribute.d
     m_player->character->attribute.damageFire.current.critChance = fireCritChanceTotal;
 
 std::cout << "Fire damage crit chance: " << m_player->character->attribute.damageFire.current.critChance << std::endl;
-/*
-    // Ice damage
-    // Damage = (base x strength x bias_1) + (level x strength x bias_2)
-    float damageBias_1 = 1.0f;
-    float damageBias_2 = 0.5f;
-    physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
-    physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
-    m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
 
-std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+    // Ice damage
+    // Damage = (base x energy x bias_1) + (level x energy x bias_2)
+    damageBias_1 = 1.0f;
+    damageBias_2 = 0.5f;
+    iceDamageTotal += (m_player->character->attribute.damageIce.base.amount * totalEnergy * damageBias_1);
+    iceDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
+    m_player->character->attribute.damageIce.current.amount = iceDamageTotal;
+/*
+std::cout << "Ice damage amount: " << m_player->character->attribute.damageIce.current.amount << std::endl;
 
     // Physical damage crit multiplier
     float critMultiplierBias_1 = 0.05f;
@@ -1421,7 +1421,7 @@ std::cout << "Physical damage crit multiplier: " << m_player->character->attribu
 std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
 
     // Lightning damage
-    // Damage = (base x strength x bias_1) + (level x strength x bias_2)
+    // Damage = (base x energy x bias_1) + (level x energy x bias_2)
     float damageBias_1 = 1.0f;
     float damageBias_2 = 0.5f;
     physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
