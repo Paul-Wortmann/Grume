@@ -1293,6 +1293,18 @@ void cPlayerManager::calculateAttributes(void)
             physicalDamageTotal     += tEntity->character->attribute.damagePhysical.base.amount;
             physicalCritMultipTotal += tEntity->character->attribute.damagePhysical.base.critMultiplier;
             physicalCritChanceTotal += tEntity->character->attribute.damagePhysical.base.critChance;
+
+            fireDamageTotal     += tEntity->character->attribute.damageFire.base.amount;
+            fireCritMultipTotal += tEntity->character->attribute.damageFire.base.critMultiplier;
+            fireCritChanceTotal += tEntity->character->attribute.damageFire.base.critChance;
+
+            iceDamageTotal     += tEntity->character->attribute.damageIce.base.amount;
+            iceCritMultipTotal += tEntity->character->attribute.damageIce.base.critMultiplier;
+            iceCritChanceTotal += tEntity->character->attribute.damageIce.base.critChance;
+
+            lightningDamageTotal     += tEntity->character->attribute.damageLightning.base.amount;
+            lightningCritMultipTotal += tEntity->character->attribute.damageLightning.base.critMultiplier;
+            lightningCritChanceTotal += tEntity->character->attribute.damageLightning.base.critChance;
         }
 
     }
@@ -1397,71 +1409,61 @@ std::cout << "Fire damage crit chance: " << m_player->character->attribute.damag
     iceDamageTotal += (m_player->character->attribute.damageIce.base.amount * totalEnergy * damageBias_1);
     iceDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageIce.current.amount = iceDamageTotal;
-/*
+
 std::cout << "Ice damage amount: " << m_player->character->attribute.damageIce.current.amount << std::endl;
 
-    // Physical damage crit multiplier
-    float critMultiplierBias_1 = 0.05f;
-    float critMultiplierBias_2 = 0.01f;
-    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
-    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
-    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
-    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
+    // Ice damage crit multiplier
+    critMultiplierBias_1 = 0.05f;
+    critMultiplierBias_2 = 0.01f;
+    iceCritMultipTotal += m_player->character->attribute.damageIce.base.critMultiplier;
+    iceCritMultipTotal += totalEnergy * critMultiplierBias_1;
+    iceCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damageIce.current.critMultiplier = iceCritMultipTotal;
 
-std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+std::cout << "Ice damage crit multiplier: " << m_player->character->attribute.damageIce.current.critMultiplier << std::endl;
 
-    // Physical damage crit chance
-    float critChanceBias_1 = 0.25f;
-    float critChanceBias_2 = 0.01f;
-    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
-    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
-    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
-    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
+    // Ice damage crit chance
+    critChanceBias_1 = 0.25f;
+    critChanceBias_2 = 0.01f;
+    iceCritChanceTotal += m_player->character->attribute.damageIce.base.critChance;
+    iceCritChanceTotal += totalEnergy * critChanceBias_1;
+    iceCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damageIce.current.critChance = iceCritChanceTotal;
 
-std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
+std::cout << "Ice damage crit chance: " << m_player->character->attribute.damageIce.current.critChance << std::endl;
 
     // Lightning damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
-    float damageBias_1 = 1.0f;
-    float damageBias_2 = 0.5f;
-    physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
-    physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
-    m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
+    damageBias_1 = 1.0f;
+    damageBias_2 = 0.5f;
+    lightningDamageTotal += (m_player->character->attribute.damageLightning.base.amount * totalEnergy * damageBias_1);
+    lightningDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
+    m_player->character->attribute.damageLightning.current.amount = lightningDamageTotal;
 
-std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+std::cout << "Lightning damage amount: " << m_player->character->attribute.damageLightning.current.amount << std::endl;
 
-    // Physical damage crit multiplier
-    float critMultiplierBias_1 = 0.05f;
-    float critMultiplierBias_2 = 0.01f;
-    physicalCritMultipTotal += m_player->character->attribute.damagePhysical.base.critMultiplier;
-    physicalCritMultipTotal += m_player->character->attribute.strength * critMultiplierBias_1;
-    physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
-    m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
+    // Lightning damage crit multiplier
+    critMultiplierBias_1 = 0.05f;
+    critMultiplierBias_2 = 0.01f;
+    lightningCritMultipTotal += m_player->character->attribute.damageLightning.base.critMultiplier;
+    lightningCritMultipTotal += totalEnergy * critMultiplierBias_1;
+    lightningCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
+    m_player->character->attribute.damageLightning.current.critMultiplier = lightningCritMultipTotal;
 
-std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+std::cout << "Lightning damage crit multiplier: " << m_player->character->attribute.damageLightning.current.critMultiplier << std::endl;
 
-    // Physical damage crit chance
-    float critChanceBias_1 = 0.25f;
-    float critChanceBias_2 = 0.01f;
-    physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
-    physicalCritChanceTotal += m_player->character->attribute.strength * critChanceBias_1;
-    physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
-    m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
+    // Lightning damage crit chance
+    critChanceBias_1 = 0.25f;
+    critChanceBias_2 = 0.01f;
+    lightningCritChanceTotal += m_player->character->attribute.damageLightning.base.critChance;
+    lightningCritChanceTotal += totalEnergy * critChanceBias_1;
+    lightningCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    m_player->character->attribute.damageLightning.current.critChance = lightningCritChanceTotal;
 
-std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
-*/
+std::cout << "Lightning damage crit chance: " << m_player->character->attribute.damageLightning.current.critChance << std::endl;
+
     // --- Set to base values ---
 /*
-    // Damage
-    m_player->character->attribute.damageFire.base = 1.0f + totalEnergy;
-    m_player->character->attribute.damageFire.critChance = 1.0f;
-    m_player->character->attribute.damageFire.critMultiplier = 0.25f;
-    m_player->character->attribute.damageIce.base = 1.0f + totalEnergy;
-    m_player->character->attribute.damageIce.critChance = 1.0f;
-    m_player->character->attribute.damageIce.critMultiplier = 0.25f;
-    m_player->character->attribute.damageLightning.base = 1.0f + totalEnergy;
-    m_player->character->attribute.damageLightning.critChance = 1.0f;
-    m_player->character->attribute.damageLightning.critMultiplier = 0.25f;
 
     // Armor
     m_player->character->attribute.armorPhysical.base = totalDexterity;
@@ -1473,11 +1475,3 @@ std::cout << "Physical damage crit chance: " << m_player->character->attribute.d
 */
     // Adjust values based on equipment
 }
-
-//melee damage
-//armor class
-//crit-multiplier
-//crit-change
-
-
-
