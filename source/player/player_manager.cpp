@@ -1261,6 +1261,7 @@ void cPlayerManager::calculateAttributes(void)
     std::uint32_t totalVitality   = m_player->character->attribute.vitality;
     std::uint32_t totalEnergy     = m_player->character->attribute.energy;
 
+    // Damage
     float physicalDamageTotal     = 0.0f;
     float physicalCritMultipTotal = 0.0f;
     float physicalCritChanceTotal = 0.0f;
@@ -1277,6 +1278,23 @@ void cPlayerManager::calculateAttributes(void)
     float lightningCritMultipTotal = 0.0f;
     float lightningCritChanceTotal = 0.0f;
 
+    // Armor / resistance
+    float physicalArmorTotal        = 0.0f;
+    float physicalBlockChanceTotal  = 0.0f;
+    float physicalBlockPercentTotal = 0.0f;
+
+    float fireArmorTotal        = 0.0f;
+    float fireBlockChanceTotal  = 0.0f;
+    float fireBlockPercentTotal = 0.0f;
+
+    float iceArmorTotal        = 0.0f;
+    float iceBlockChanceTotal  = 0.0f;
+    float iceBlockPercentTotal = 0.0f;
+
+    float lightningArmorTotal        = 0.0f;
+    float lightningBlockChanceTotal  = 0.0f;
+    float lightningBlockPercentTotal = 0.0f;
+
     // Aggregate data from equipment
     for (std::uint32_t i = 0; i < m_playerEquipment->getStorageSize(); ++i)
     {
@@ -1285,11 +1303,13 @@ void cPlayerManager::calculateAttributes(void)
             (tEntity->character != nullptr) &&
             (tEntity->item != nullptr))
         {
+            // Attributes
             totalStrength  += tEntity->character->attribute.strength;
             totalDexterity += tEntity->character->attribute.dexterity;
             totalVitality  += tEntity->character->attribute.vitality;
             totalEnergy    += tEntity->character->attribute.energy;
 
+            // Damage
             physicalDamageTotal     += tEntity->character->attribute.damagePhysical.base.amount;
             physicalCritMultipTotal += tEntity->character->attribute.damagePhysical.base.critMultiplier;
             physicalCritChanceTotal += tEntity->character->attribute.damagePhysical.base.critChance;
@@ -1305,6 +1325,23 @@ void cPlayerManager::calculateAttributes(void)
             lightningDamageTotal     += tEntity->character->attribute.damageLightning.base.amount;
             lightningCritMultipTotal += tEntity->character->attribute.damageLightning.base.critMultiplier;
             lightningCritChanceTotal += tEntity->character->attribute.damageLightning.base.critChance;
+
+            // Armor
+            physicalArmorTotal        += tEntity->character->attribute.armorPhysical.base.amount;
+            physicalBlockChanceTotal  += tEntity->character->attribute.armorPhysical.base.blockChance;
+            physicalBlockPercentTotal += tEntity->character->attribute.armorPhysical.base.blockPercent;
+
+            fireArmorTotal        += tEntity->character->attribute.resistanceFire.base.amount;
+            fireBlockChanceTotal  += tEntity->character->attribute.resistanceFire.base.blockChance;
+            fireBlockPercentTotal += tEntity->character->attribute.resistanceFire.base.blockPercent;
+
+            iceArmorTotal        += tEntity->character->attribute.resistanceIce.base.amount;
+            iceBlockChanceTotal  += tEntity->character->attribute.resistanceIce.base.blockChance;
+            iceBlockPercentTotal += tEntity->character->attribute.resistanceIce.base.blockPercent;
+
+            lightningArmorTotal        += tEntity->character->attribute.resistanceLightning.base.amount;
+            lightningBlockChanceTotal  += tEntity->character->attribute.resistanceLightning.base.blockChance;
+            lightningBlockPercentTotal += tEntity->character->attribute.resistanceLightning.base.blockPercent;
         }
 
     }
@@ -1461,6 +1498,36 @@ std::cout << "Lightning damage crit multiplier: " << m_player->character->attrib
     m_player->character->attribute.damageLightning.current.critChance = lightningCritChanceTotal;
 
 std::cout << "Lightning damage crit chance: " << m_player->character->attribute.damageLightning.current.critChance << std::endl;
+
+    // Physical armor
+    // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
+    float armorBias_1 = 0.5f;
+    float armorBias_2 = 0.25f;
+    physicalArmorTotal += (m_player->character->attribute.armorPhysical.base.amount * totalDexterity * armorBias_1);
+    physicalArmorTotal += (m_player->character->level.current * totalDexterity * armorBias_2);
+    m_player->character->attribute.armorPhysical.current.amount = physicalArmorTotal;
+
+std::cout << "Physical armor amount: " << m_player->character->attribute.armorPhysical.current.amount << std::endl;
+
+    // Physical armor block chance
+    float armorBlockChanceBias_1 = 0.025f;
+    float armorBlockChanceBias_2 = 0.005f;
+    physicalBlockChanceTotal += m_player->character->attribute.armorPhysical.base.blockChance;
+    physicalBlockChanceTotal += totalDexterity * armorBlockChanceBias_1;
+    physicalBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    m_player->character->attribute.armorPhysical.current.blockChance = physicalBlockChanceTotal;
+
+std::cout << "Physical armor block chance: " << m_player->character->attribute.armorPhysical.current.blockChance << std::endl;
+
+    // Physical armor block percent
+    float armorBlockPercentBias_1 = 0.125f;
+    float armorBlockPercentBias_2 = 0.005f;
+    physicalBlockPercentTotal += m_player->character->attribute.armorPhysical.base.blockPercent;
+    physicalBlockPercentTotal += totalDexterity * armorBlockPercentBias_1;
+    physicalBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
+    m_player->character->attribute.armorPhysical.current.blockPercent = physicalBlockPercentTotal;
+
+std::cout << "Physical armor block percent: " << m_player->character->attribute.armorPhysical.current.blockPercent << std::endl;
 
     // --- Set to base values ---
 /*

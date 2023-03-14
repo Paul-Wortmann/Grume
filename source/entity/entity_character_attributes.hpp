@@ -104,9 +104,3 @@ struct sEntityCharAttrib // Character attributes
 
 
 */
-
-/*
-load the base,
-calculate the current,
-use the current.
-*/
