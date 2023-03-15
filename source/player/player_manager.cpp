@@ -1529,6 +1529,36 @@ std::cout << "Physical armor block chance: " << m_player->character->attribute.a
 
 std::cout << "Physical armor block percent: " << m_player->character->attribute.armorPhysical.current.blockPercent << std::endl;
 
+    // Fire resistance
+    // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
+    armorBias_1 = 0.5f;
+    armorBias_2 = 0.25f;
+    fireArmorTotal += (m_player->character->attribute.resistanceFire.base.amount * totalEnergy * armorBias_1);
+    fireArmorTotal += (m_player->character->level.current * totalEnergy * armorBias_2);
+    m_player->character->attribute.resistanceFire.current.amount = fireArmorTotal;
+
+std::cout << "Fire resistance amount: " << m_player->character->attribute.resistanceFire.current.amount << std::endl;
+
+    // Fire resistance block chance
+    armorBlockChanceBias_1 = 0.025f;
+    armorBlockChanceBias_2 = 0.005f;
+    fireBlockChanceTotal += m_player->character->attribute.resistanceFire.base.blockChance;
+    fireBlockChanceTotal += totalEnergy * armorBlockChanceBias_1;
+    fireBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    m_player->character->attribute.resistanceFire.current.blockChance = fireBlockChanceTotal;
+
+std::cout << "Fire resistance block chance: " << m_player->character->attribute.resistanceFire.current.blockChance << std::endl;
+
+    // Fire resistance block percent
+    armorBlockPercentBias_1 = 0.125f;
+    armorBlockPercentBias_2 = 0.005f;
+    fireBlockPercentTotal += m_player->character->attribute.resistanceFire.base.blockPercent;
+    fireBlockPercentTotal += totalEnergy * armorBlockPercentBias_1;
+    fireBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
+    m_player->character->attribute.resistanceFire.current.blockPercent = fireBlockPercentTotal;
+
+std::cout << "Fire resistance block percent: " << m_player->character->attribute.resistanceFire.current.blockPercent << std::endl;
+
     // --- Set to base values ---
 /*
 
