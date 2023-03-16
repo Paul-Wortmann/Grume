@@ -1559,16 +1559,34 @@ std::cout << "Fire resistance block chance: " << m_player->character->attribute.
 
 std::cout << "Fire resistance block percent: " << m_player->character->attribute.resistanceFire.current.blockPercent << std::endl;
 
-    // --- Set to base values ---
-/*
+    // Ice resistance
+    // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
+    armorBias_1 = 0.5f;
+    armorBias_2 = 0.25f;
+    iceArmorTotal += (m_player->character->attribute.resistanceIce.base.amount * totalEnergy * armorBias_1);
+    iceArmorTotal += (m_player->character->level.current * totalEnergy * armorBias_2);
+    m_player->character->attribute.resistanceIce.current.amount = iceArmorTotal;
 
-    // Armor
-    m_player->character->attribute.armorPhysical.base = totalDexterity;
+std::cout << "Ice resistance amount: " << m_player->character->attribute.resistanceIce.current.amount << std::endl;
 
-    // Resistance
-    m_player->character->attribute.resistanceFire.base = totalDexterity;
-    m_player->character->attribute.resistanceIce.base = totalDexterity;
-    m_player->character->attribute.resistanceLightning.base = totalDexterity;
-*/
-    // Adjust values based on equipment
+    // Ice resistance block chance
+    armorBlockChanceBias_1 = 0.025f;
+    armorBlockChanceBias_2 = 0.005f;
+    iceBlockChanceTotal += m_player->character->attribute.resistanceIce.base.blockChance;
+    iceBlockChanceTotal += totalEnergy * armorBlockChanceBias_1;
+    iceBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    m_player->character->attribute.resistanceIce.current.blockChance = iceBlockChanceTotal;
+
+std::cout << "Ice resistance block chance: " << m_player->character->attribute.resistanceIce.current.blockChance << std::endl;
+
+    // Ice resistance block percent
+    armorBlockPercentBias_1 = 0.125f;
+    armorBlockPercentBias_2 = 0.005f;
+    iceBlockPercentTotal += m_player->character->attribute.resistanceIce.base.blockPercent;
+    iceBlockPercentTotal += totalEnergy * armorBlockPercentBias_1;
+    iceBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
+    m_player->character->attribute.resistanceIce.current.blockPercent = iceBlockPercentTotal;
+
+std::cout << "Ice resistance block percent: " << m_player->character->attribute.resistanceIce.current.blockPercent << std::endl;
+
 }
