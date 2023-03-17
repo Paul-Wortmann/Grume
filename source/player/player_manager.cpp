@@ -1261,6 +1261,13 @@ void cPlayerManager::calculateAttributes(void)
     std::uint32_t totalVitality   = m_player->character->attribute.vitality;
     std::uint32_t totalEnergy     = m_player->character->attribute.energy;
 
+    // Health / Mana
+    float totalHealth      = 0.0f;
+    float totalHealthRegen = 0.0f;
+
+    float totalMana        = 0.0f;
+    float totalManaRegen   = 0.0f;
+
     // Damage
     float physicalDamageTotal     = 0.0f;
     float physicalCritMultipTotal = 0.0f;
@@ -1308,6 +1315,13 @@ void cPlayerManager::calculateAttributes(void)
             totalDexterity += tEntity->character->attribute.dexterity;
             totalVitality  += tEntity->character->attribute.vitality;
             totalEnergy    += tEntity->character->attribute.energy;
+
+            // Health / Mana
+            totalHealth      += tEntity->character->attribute.health.base.amount;
+            totalHealthRegen += tEntity->character->attribute.health.base.regen;
+
+            totalMana        += tEntity->character->attribute.mana.base.amount;
+            totalManaRegen   += tEntity->character->attribute.mana.base.regen;
 
             // Damage
             physicalDamageTotal     += tEntity->character->attribute.damagePhysical.base.amount;
