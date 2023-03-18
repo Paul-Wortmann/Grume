@@ -1365,10 +1365,11 @@ std::cout << "Player level: " << m_player->character->level.current << std::endl
 
     // Health
     // HP = baseHP + (level * 50%) + ((level * 250%) * vitality)
-    m_player->character->attribute.health.current.max = m_player->character->attribute.health.base.amount +
-                                                        (m_player->character->level.current * 0.5) +
-                                                        ((m_player->character->level.current * 2.5) *
-                                                        totalVitality);
+    totalHealth += m_player->character->attribute.health.base.amount;
+    totalHealth += (m_player->character->level.current * 0.5);
+    totalHealth += ((m_player->character->level.current * 2.5) * totalVitality);
+    m_player->character->attribute.health.current.max = totalHealth;
+
 std::cout << "HP: " << m_player->character->attribute.health.current.max << std::endl;
 
     // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
