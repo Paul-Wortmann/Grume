@@ -1365,33 +1365,44 @@ std::cout << "Player level: " << m_player->character->level.current << std::endl
 
     // Health
     // HP = baseHP + (level * 50%) + ((level * 250%) * vitality)
+    float HPBias_1 = 0.5f;
+    float HPBias_2 = 2.5f;
     totalHealth += m_player->character->attribute.health.base.amount;
-    totalHealth += (m_player->character->level.current * 0.5);
-    totalHealth += ((m_player->character->level.current * 2.5) * totalVitality);
+    totalHealth += (m_player->character->level.current * HPBias_1);
+    totalHealth += ((m_player->character->level.current * HPBias_2) * totalVitality);
     m_player->character->attribute.health.current.max = totalHealth;
 
 std::cout << "HP: " << m_player->character->attribute.health.current.max << std::endl;
 
     // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
-    m_player->character->attribute.health.current.regen = m_player->character->attribute.health.base.regen +
-                                                          (m_player->character->level.current * 0.005) +
-                                                          ((m_player->character->level.current * 0.0025) *
-                                                          totalVitality);
+    float HPRegenBias_1 = 0.005f;
+    float HPRegenBias_2 = 0.0025f;
+    totalHealthRegen += m_player->character->attribute.health.base.regen;
+    totalHealthRegen += (m_player->character->level.current * HPRegenBias_1);
+    totalHealthRegen += ((m_player->character->level.current * HPRegenBias_2) * totalVitality);
+    m_player->character->attribute.health.current.regen = totalHealthRegen;
+
 std::cout << "HP Regen: " << m_player->character->attribute.health.current.regen << std::endl;
 
     // Mana
     // MP = baseMP + (level * 50%) + ((level * 250%) * energy)
-    m_player->character->attribute.mana.current.max = m_player->character->attribute.mana.base.amount +
-                                                      (m_player->character->level.current * 0.5) +
-                                                      ((m_player->character->level.current * 2.5) *
-                                                      totalEnergy);
+    float MPBias_1 = 0.5f;
+    float MPBias_2 = 2.5f;
+    totalMana += m_player->character->attribute.mana.base.amount;
+    totalMana += (m_player->character->level.current * MPBias_1);
+    totalMana += ((m_player->character->level.current * MPBias_2) * totalEnergy);
+    m_player->character->attribute.mana.current.max = totalMana;
+
 std::cout << "MP: " << m_player->character->attribute.mana.current.max << std::endl;
 
     // MP regen = baseMPregen + (level * 50%) + ((level * 250%) * energy)
-    m_player->character->attribute.mana.current.regen = m_player->character->attribute.mana.base.regen +
-                                                        (m_player->character->level.current * 0.005) +
-                                                        ((m_player->character->level.current * 0.0025) *
-                                                        totalEnergy);
+    float MPRegenBias_1 = 0.005f;
+    float MPRegenBias_2 = 0.0025f;
+    totalManaRegen += m_player->character->attribute.mana.base.regen;
+    totalManaRegen += (m_player->character->level.current * MPRegenBias_1);
+    totalManaRegen += ((m_player->character->level.current * MPRegenBias_2) * totalEnergy);
+    m_player->character->attribute.mana.current.regen = totalManaRegen;
+
 std::cout << "MP Regen: " << m_player->character->attribute.mana.current.regen << std::endl;
 
     // Physical damage
