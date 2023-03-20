@@ -33,11 +33,12 @@ Make sure you have all the relevant dependencies installed:
 
 While I endeavor to list all resource origins and give credit where possible, with frequent changes I may however make a mistake.
 If you find any resource that hasn't been correctly credited, please inform me so that mistakes can be rectified.
+Even though every effort has been made to use CC0 / Public Domain resources, I would like to give credit to the awesome people who have created the resources used.
 Many resources come from this amazing site: [OpenGameArt](https://opengameart.org) My resources on OpenGameArt: [OpenGameArt](https://opengameart.org/users/paul-wortmann)
 
 ## Contributions:
 
-Please note, I am not looking for contributions.
+Please note, I am not looking for code contributions.
 While I do appreciate the offer, this is a personal project I use for testing ideas and improving my code.
 However feel free to open issues.
 
@@ -58,7 +59,7 @@ Foundation, version 2 of the License
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the gpl.txt file for more details. 
+PARTICULAR PURPOSE.
 
 ## Contact:
 
