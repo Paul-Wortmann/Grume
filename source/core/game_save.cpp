@@ -88,32 +88,32 @@ std::uint32_t cGameEngine::m_game_save(const std::uint32_t &_slotNum)
 
         // Gold
         saveFile << indent(iLevel) << "<gold_current>" << tPlayer->character->gold << "</gold_current>" << std::endl;
-/*
+
+// ------------------- It maybe unnecessary to save these....
         // Damage
         saveFile << indent(iLevel) << "<damage_physical_base>" << tPlayer->character->attribute.damagePhysical.base.amount << "</damage_physical_base>" << std::endl;
         saveFile << indent(iLevel) << "<damage_physical_crit_chance>" << tPlayer->character->attribute.damagePhysical.base.critChance << "</damage_physical_crit_chance>" << std::endl;
         saveFile << indent(iLevel) << "<damage_physical_crit_multiplier>" << tPlayer->character->attribute.damagePhysical.base.critMultiplier << "</damage_physical_crit_multiplier>" << std::endl;
-*/
-/*
-        saveFile << indent(iLevel) << "<damage_fire_base>" << tPlayer->character->attribute.damageFire.base << "</damage_fire_base>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_fire_crit_chance>" << tPlayer->character->attribute.damageFire.critChance << "</damage_fire_crit_chance>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_fire_crit_multiplier>" << tPlayer->character->attribute.damageFire.critMultiplier << "</damage_fire_crit_multiplier>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_ice_base>" << tPlayer->character->attribute.damageIce.base << "</damage_ice_base>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_ice_crit_chance>" << tPlayer->character->attribute.damageIce.critChance << "</damage_ice_crit_chance>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_ice_crit_multiplier>" << tPlayer->character->attribute.damageIce.critMultiplier << "</damage_ice_crit_multiplier>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_lightning_base>" << tPlayer->character->attribute.damageLightning.base << "</damage_lightning_base>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_lightning_crit_chance>" << tPlayer->character->attribute.damageLightning.critChance << "</damage_lightning_crit_chance>" << std::endl;
-        saveFile << indent(iLevel) << "<damage_lightning_crit_multiplier>" << tPlayer->character->attribute.damageLightning.critMultiplier << "</damage_lightning_crit_multiplier>" << std::endl;
-*/
-/*
+
+        saveFile << indent(iLevel) << "<damage_fire_base>" << tPlayer->character->attribute.damageFire.base.amount << "</damage_fire_base>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_fire_crit_chance>" << tPlayer->character->attribute.damageFire.base.critChance << "</damage_fire_crit_chance>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_fire_crit_multiplier>" << tPlayer->character->attribute.damageFire.base.critMultiplier << "</damage_fire_crit_multiplier>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_ice_base>" << tPlayer->character->attribute.damageIce.base.amount << "</damage_ice_base>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_ice_crit_chance>" << tPlayer->character->attribute.damageIce.base.critChance << "</damage_ice_crit_chance>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_ice_crit_multiplier>" << tPlayer->character->attribute.damageIce.base.critMultiplier << "</damage_ice_crit_multiplier>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_lightning_base>" << tPlayer->character->attribute.damageLightning.base.amount << "</damage_lightning_base>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_lightning_crit_chance>" << tPlayer->character->attribute.damageLightning.base.critChance << "</damage_lightning_crit_chance>" << std::endl;
+        saveFile << indent(iLevel) << "<damage_lightning_crit_multiplier>" << tPlayer->character->attribute.damageLightning.base.critMultiplier << "</damage_lightning_crit_multiplier>" << std::endl;
+
         // Armor
-        saveFile << indent(iLevel) << "<armor_physical_base>" << tPlayer->character->attribute.armorPhysical.base << "</armor_physical_base>" << std::endl;
+        saveFile << indent(iLevel) << "<armor_physical_base>" << tPlayer->character->attribute.armorPhysical.base.amount << "</armor_physical_base>" << std::endl;
 
         // Resistance
-        saveFile << indent(iLevel) << "<resistance_fire_base>" << tPlayer->character->attribute.resistanceFire.base << "</resistance_fire_base>" << std::endl;
-        saveFile << indent(iLevel) << "<resistance_ice_base>" << tPlayer->character->attribute.resistanceIce.base << "</resistance_ice_base>" << std::endl;
-        saveFile << indent(iLevel) << "<resistance_lightning_base>" << tPlayer->character->attribute.resistanceLightning.base << "</resistance_lightning_base>" << std::endl;
-*/
+        saveFile << indent(iLevel) << "<resistance_fire_base>" << tPlayer->character->attribute.resistanceFire.base.amount << "</resistance_fire_base>" << std::endl;
+        saveFile << indent(iLevel) << "<resistance_ice_base>" << tPlayer->character->attribute.resistanceIce.base.amount << "</resistance_ice_base>" << std::endl;
+        saveFile << indent(iLevel) << "<resistance_lightning_base>" << tPlayer->character->attribute.resistanceLightning.base.amount << "</resistance_lightning_base>" << std::endl;
+// -------------------
+
         iLevel--;
         saveFile << indent(iLevel) << "</player>" << std::endl;
         saveFile << std::endl;
