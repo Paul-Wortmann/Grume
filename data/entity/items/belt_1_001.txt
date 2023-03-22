@@ -22,6 +22,8 @@
     </base>
     
     <character>
+        # item attributes are additive and not multiplicative
+
         # attributes
 	    <character_attribute_strength>0</character_attribute_strength>
 	    <character_attribute_dexterity>0</character_attribute_dexterity>
@@ -30,17 +32,52 @@
 	    <character_attribute_points>0</character_attribute_points>
 
         # health
-	    <character_attribute_health_base>100</character_attribute_health_base>
-	    <character_attribute_health_regen_base>0.025</character_attribute_health_regen_base>
+	    <character_attribute_health_base>0</character_attribute_health_base>
+	    <character_attribute_health_regen_base>0.0</character_attribute_health_regen_base>
 
         # mana
-	    <character_attribute_mana_base>100</character_attribute_mana_base>
-	    <character_attribute_mana_regen_base>0.025</character_attribute_mana_regen_base>
+	    <character_attribute_mana_base>0</character_attribute_mana_base>
+	    <character_attribute_mana_regen_base>0.0</character_attribute_mana_regen_base>
 
         # damage: physical
 	    <character_attribute_damage_physical_base>0</character_attribute_damage_physical_base>
 	    <character_attribute_damage_physical_crit_multiplier_base>0</character_attribute_damage_physical_crit_multiplier_base>
 	    <character_attribute_damage_physical_crit_chance_base>0</character_attribute_damage_physical_crit_chance_base>
+
+        # damage: fire
+	    <character_attribute_damage_fire_base>0</character_attribute_damage_fire_base>
+	    <character_attribute_damage_fire_crit_multiplier_base>0</character_attribute_damage_fire_crit_multiplier_base>
+	    <character_attribute_damage_fire_crit_chance_base>0</character_attribute_damage_fire_crit_chance_base>
+
+        # damage: ice
+	    <character_attribute_damage_ice_base>0</character_attribute_damage_ice_base>
+	    <character_attribute_damage_ice_crit_multiplier_base>0</character_attribute_damage_ice_crit_multiplier_base>
+	    <character_attribute_damage_ice_crit_chance_base>0</character_attribute_damage_ice_crit_chance_base>
+
+        # damage: lightning
+	    <character_attribute_damage_lightning_base>0</character_attribute_damage_lightning_base>
+	    <character_attribute_damage_lightning_crit_multiplier_base>0</character_attribute_damage_lightning_crit_multiplier_base>
+	    <character_attribute_damage_lightning_crit_chance_base>0</character_attribute_damage_lightning_crit_chance_base>
+
+        # armor: physical
+	    <character_attribute_armor_physical_base>0.0</character_attribute_armor_physical_base>
+	    <character_attribute_armor_physical_block_chance_base>0.0</character_attribute_armor_physical_block_chance_base>
+	    <character_attribute_armor_physical_block_percent_base>0.0</character_attribute_armor_physical_block_percent_base>
+
+        # resistance: fire
+	    <character_attribute_resistance_fire_base>0.0</character_attribute_resistance_fire_base>
+	    <character_attribute_resistance_fire_block_chance_base>0.0</character_attribute_resistance_fire_block_chance_base>
+	    <character_attribute_resistance_fire_block_percent_base>0.0</character_attribute_resistance_fire_block_percent_base>
+
+        # resistance: ice
+	    <character_attribute_resistance_ice_base>0.0</character_attribute_resistance_ice_base>
+	    <character_attribute_resistance_ice_block_chance_base>0.0</character_attribute_resistance_ice_block_chance_base>
+	    <character_attribute_resistance_ice_block_percent_base>0.0</character_attribute_resistance_ice_block_percent_base>
+
+        # resistance: lightning
+	    <character_attribute_resistance_lightning_base>0.0</character_attribute_resistance_lightning_base>
+	    <character_attribute_resistance_lightning_block_chance_base>0.0</character_attribute_resistance_lightning_block_chance_base>
+	    <character_attribute_resistance_lightning_block_percent_base>0.0</character_attribute_resistance_lightning_block_percent_base>
     </character>
 
     <graphics>

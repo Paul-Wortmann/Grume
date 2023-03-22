@@ -666,17 +666,39 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->character->attribute.damageLightning.base.critMultiplier = xmlEntityFile.getFloat("<character_attribute_damage_lightning_crit_multiplier_base>");
 
             tEntity->character->attribute.damageLightning.current = tEntity->character->attribute.damageLightning.base;
-/*
-            // Armor
-            if (xmlEntityFile.getInstanceCount("<character_armor_physical_base>") > 0)
-                tEntity->character->attribute.armorPhysical.base = xmlEntityFile.getFloat("<character_armor_physical_base>");
-            if (xmlEntityFile.getInstanceCount("<character_armor_fire_base>") > 0)
-                tEntity->character->attribute.resistanceFire.base = xmlEntityFile.getFloat("<character_armor_fire_base>");
-            if (xmlEntityFile.getInstanceCount("<character_armor_ice_base>") > 0)
-                tEntity->character->attribute.resistanceIce.base = xmlEntityFile.getFloat("<character_armor_ice_base>");
-            if (xmlEntityFile.getInstanceCount("<character_armor_lightning_base>") > 0)
-                tEntity->character->attribute.resistanceLightning.base = xmlEntityFile.getFloat("<character_armor_lightning_base>");
-*/
+
+            // Armor physical
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_physical_base>") > 0)
+                tEntity->character->attribute.armorPhysical.base.amount = xmlEntityFile.getFloat("<character_attribute_armor_physical_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_physical_block_chance_base>") > 0)
+                tEntity->character->attribute.armorPhysical.base.blockChance = xmlEntityFile.getFloat("<character_attribute_armor_physical_block_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_physical_block_percent_base>") > 0)
+                tEntity->character->attribute.armorPhysical.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_physical_block_percent_base>");
+
+            // Armor fire
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_fire_base>") > 0)
+                tEntity->character->attribute.resistanceFire.base.amount = xmlEntityFile.getFloat("<character_attribute_armor_fire_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_fire_block_chance_base>") > 0)
+                tEntity->character->attribute.resistanceFire.base.blockChance = xmlEntityFile.getFloat("<character_attribute_armor_fire_block_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_fire_block_percent_base>") > 0)
+                tEntity->character->attribute.resistanceFire.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_fire_block_percent_base>");
+
+            // Armor ice
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_ice_base>") > 0)
+                tEntity->character->attribute.resistanceIce.base.amount = xmlEntityFile.getFloat("<character_attribute_armor_ice_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_ice_block_chance_base>") > 0)
+                tEntity->character->attribute.resistanceIce.base.blockChance = xmlEntityFile.getFloat("<character_attribute_armor_ice_block_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_ice_block_percent_base>") > 0)
+                tEntity->character->attribute.resistanceIce.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_ice_block_percent_base>");
+
+            // Armor lightning
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_lightning_base>") > 0)
+                tEntity->character->attribute.resistanceLightning.base.amount = xmlEntityFile.getFloat("<character_attribute_armor_lightning_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_lightning_block_chance_base>") > 0)
+                tEntity->character->attribute.resistanceLightning.base.blockChance = xmlEntityFile.getFloat("<character_attribute_armor_lightning_block_chance_base>");
+            if (xmlEntityFile.getInstanceCount("<character_attribute_armor_lightning_block_percent_base>") > 0)
+                tEntity->character->attribute.resistanceLightning.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_lightning_block_percent_base>");
+
             // Skills
             if (xmlEntityFile.getInstanceCount("<character_skill_heal_enabled>") > 0)
                 tEntity->character->skill.heal.enabled = (xmlEntityFile.getInteger("<character_skill_heal_enabled>") > 0);
