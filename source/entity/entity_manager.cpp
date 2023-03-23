@@ -675,6 +675,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_physical_block_percent_base>") > 0)
                 tEntity->character->attribute.armorPhysical.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_physical_block_percent_base>");
 
+            tEntity->character->attribute.armorPhysical.current = tEntity->character->attribute.armorPhysical.base;
+
             // Armor fire
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_fire_base>") > 0)
                 tEntity->character->attribute.resistanceFire.base.amount = xmlEntityFile.getFloat("<character_attribute_armor_fire_base>");
@@ -682,6 +684,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->character->attribute.resistanceFire.base.blockChance = xmlEntityFile.getFloat("<character_attribute_armor_fire_block_chance_base>");
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_fire_block_percent_base>") > 0)
                 tEntity->character->attribute.resistanceFire.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_fire_block_percent_base>");
+
+            tEntity->character->attribute.resistanceFire.current = tEntity->character->attribute.resistanceFire.base;
 
             // Armor ice
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_ice_base>") > 0)
@@ -691,6 +695,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_ice_block_percent_base>") > 0)
                 tEntity->character->attribute.resistanceIce.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_ice_block_percent_base>");
 
+            tEntity->character->attribute.resistanceIce.current = tEntity->character->attribute.resistanceIce.base;
+
             // Armor lightning
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_lightning_base>") > 0)
                 tEntity->character->attribute.resistanceLightning.base.amount = xmlEntityFile.getFloat("<character_attribute_armor_lightning_base>");
@@ -698,6 +704,8 @@ sEntity* cEntityManager::load(const std::string &_fileName)
                 tEntity->character->attribute.resistanceLightning.base.blockChance = xmlEntityFile.getFloat("<character_attribute_armor_lightning_block_chance_base>");
             if (xmlEntityFile.getInstanceCount("<character_attribute_armor_lightning_block_percent_base>") > 0)
                 tEntity->character->attribute.resistanceLightning.base.blockPercent = xmlEntityFile.getFloat("<character_attribute_armor_lightning_block_percent_base>");
+
+            tEntity->character->attribute.resistanceLightning.current = tEntity->character->attribute.resistanceLightning.base;
 
             // Skills
             if (xmlEntityFile.getInstanceCount("<character_skill_heal_enabled>") > 0)
