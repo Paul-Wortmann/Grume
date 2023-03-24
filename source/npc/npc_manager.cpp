@@ -948,24 +948,11 @@ void cNPCManager::process(const std::int64_t &_dt)
                     m_entityTemp->character->healthBarEnabled = true;
                     m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
 
-                    // Note: this does not factor in npc armor / resistance
-                    // Note: this does not factor in damage types
-                    // Note: we should calculate total damage and total armor first before applying it
-                    // Note: rand() for crit does not factor in max chance or player level
+                    // Calculate damage to NPC
+                    float totalDamage = m_calculateDamage(m_entityTemp);
 
-                    // Crit damage
-                    if (static_cast<float>(rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.current.critChance)
-                    {
-                        float damage = m_entityPlayer->character->attribute.damagePhysical.current.amount * m_entityPlayer->character->attribute.damagePhysical.current.critMultiplier;
-                        damage += m_entityPlayer->character->attribute.damagePhysical.current.amount;
-                        m_entityTemp->character->attribute.health.current.amount -= damage;
-                    }
-                    else
-                    // Normal damage
-                    {
-                        float damage = m_entityPlayer->character->attribute.damagePhysical.current.amount;
-                        m_entityTemp->character->attribute.health.current.amount -= damage;
-                    }
+                    // Modify NPC health
+                    m_entityTemp->character->attribute.health.current.amount -= totalDamage;
 
                     // Set player state : attack
                     m_entityManager->stateSet(m_entityPlayer, eEntityState::entityState_attack);
@@ -1277,4 +1264,27 @@ void cNPCManager::m_entityRevive(sEntity*& _entity)
     glm::vec3 position = glm::vec3(_entity->base.position.x, _entity->base.position.y + _entity->base.particleHeight, _entity->base.position.z);
     m_particleEngine->spawnParticles(static_cast<eParticleType>(_entity->base.particleType), 40, position);
 
+}
+
+float cNPCManager::m_calculateDamage(sEntity* _entity)
+{
+    float totalDamage = 0.0f;
+
+    // Note: this does not factor in npc armor / resistance
+    // Note: this does not factor in damage types
+    // Note: we should calculate total damage and total armor first before applying it
+    // Note: rand() for crit does not factor in max chance or player level
+
+    // Crit damage
+    if (static_cast<float>(rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.current.critChance)
+    {
+        totalDamage = m_entityPlayer->character->attribute.damagePhysical.current.amount * m_entityPlayer->character->attribute.damagePhysical.current.critMultiplier;
+        totalDamage += m_entityPlayer->character->attribute.damagePhysical.current.amount;
+    }
+    else
+    // Normal damage
+    {
+        totalDamage = m_entityPlayer->character->attribute.damagePhysical.current.amount;
+    }
+    return totalDamage;
 }

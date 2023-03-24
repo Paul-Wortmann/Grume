@@ -116,6 +116,7 @@ class cNPCManager
         void                      m_generateWaypoints(sEntity*& _entity);
         void                      m_entityDeath(sEntity*& _entity);
         void                      m_entityRevive(sEntity*& _entity);
+        float                     m_calculateDamage(sEntity* _entity);
 };
 
 #endif //NPC_MANAGER_HPP
