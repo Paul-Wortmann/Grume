@@ -1268,7 +1268,19 @@ void cNPCManager::m_entityRevive(sEntity*& _entity)
 
 float cNPCManager::m_calculateDamage(sEntity* _entity)
 {
-    float totalDamage = 0.0f;
+    // Damage totals
+    float physicalDamage  = 0.0f;
+    float fireDamage      = 0.0f;
+    float iceDamage       = 0.0f;
+    float lightningDamage = 0.0f;
+    float totalDamage     = 0.0f;
+
+    // Defense totals
+    float physicalDefense  = 0.0f;
+    float fireDefense      = 0.0f;
+    float iceDefense       = 0.0f;
+    float lightningDefense = 0.0f;
+    float totalDefense     = 0.0f;
 
     // Note: this does not factor in npc armor / resistance
     // Note: this does not factor in damage types
