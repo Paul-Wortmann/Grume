@@ -1282,7 +1282,7 @@ float cNPCManager::m_calculateDamage(sEntity* _entity)
     float lightningDefense = 0.0f;
     float totalDefense     = 0.0f;
 
-    // Note: this does not factor in npc armor / resistance
+    // Note: this does not factor in NPC armor / resistance
     // Note: this does not factor in damage types
     // Note: we should calculate total damage and total armor first before applying it
     // Note: rand() for crit does not factor in max chance or player level
