@@ -949,7 +949,7 @@ void cNPCManager::process(const std::int64_t &_dt)
                     m_particleEngine->spawnParticles(static_cast<eParticleType>(m_entityTemp->base.particleType), 40, position);
 
                     // Calculate damage to NPC
-                    float totalDamage = m_calculateDamage(m_entityTemp);
+                    float totalDamage = m_calculateDamage(m_entityPlayer, m_entityTemp);
 
                     // Modify NPC health
                     m_entityTemp->character->attribute.health.current.amount -= totalDamage;
@@ -1266,7 +1266,7 @@ void cNPCManager::m_entityRevive(sEntity*& _entity)
 
 }
 
-float cNPCManager::m_calculateDamage(sEntity* _entity)
+float cNPCManager::m_calculateDamage(sEntity* _entity_1, sEntity* _entity_2)
 {
     // Damage totals
     float physicalDamage  = 0.0f;
@@ -1282,21 +1282,77 @@ float cNPCManager::m_calculateDamage(sEntity* _entity)
     float lightningDefense = 0.0f;
     float totalDefense     = 0.0f;
 
+    // Critical hit
+    bool  physicalCrit     = (static_cast<float>(rand() % 100) < _entity_1->character->attribute.damagePhysical.current.critChance);
+    bool  fireCrit         = (static_cast<float>(rand() % 100) < _entity_1->character->attribute.damageFire.current.critChance);
+    bool  iceCrit          = (static_cast<float>(rand() % 100) < _entity_1->character->attribute.damageIce.current.critChance);
+    bool  lightningCrit    = (static_cast<float>(rand() % 100) < _entity_1->character->attribute.damageLightning.current.critChance);
+
+    // Block hit
+    bool  physicalBlock    = (static_cast<float>(rand() % 100) < _entity_2->character->attribute.armorPhysical.current.blockChance);
+    bool  fireBlock        = (static_cast<float>(rand() % 100) < _entity_2->character->attribute.resistanceFire.current.blockChance);
+    bool  iceBlock         = (static_cast<float>(rand() % 100) < _entity_2->character->attribute.resistanceIce.current.blockChance);
+    bool  lightningBlock   = (static_cast<float>(rand() % 100) < _entity_2->character->attribute.resistanceLightning.current.blockChance);
+
+    // Physical damage
+    physicalDamage = _entity_1->character->attribute.damagePhysical.current.amount;
+    if (physicalCrit)
+        physicalDamage += _entity_1->character->attribute.damagePhysical.current.amount * _entity_1->character->attribute.damagePhysical.current.critMultiplier;
+
+    // Fire damage
+    fireDamage = _entity_1->character->attribute.damageFire.current.amount;
+    if (fireCrit)
+        fireDamage += _entity_1->character->attribute.damageFire.current.amount * _entity_1->character->attribute.damageFire.current.critMultiplier;
+
+    // Ice damage
+    iceDamage = _entity_1->character->attribute.damageIce.current.amount;
+    if (iceCrit)
+        iceDamage += _entity_1->character->attribute.damageIce.current.amount * _entity_1->character->attribute.damageIce.current.critMultiplier;
+
+    // Lightning damage
+    lightningDamage = _entity_1->character->attribute.damageLightning.current.amount;
+    if (lightningCrit)
+        lightningDamage += _entity_1->character->attribute.damageLightning.current.amount * _entity_1->character->attribute.damageLightning.current.critMultiplier;
+
+    // Armor / Resistance
+
+    // Physical armor
+    physicalDefense = _entity_2->character->attribute.armorPhysical.current.amount;
+    if (physicalBlock)
+        physicalDefense += _entity_2->character->attribute.armorPhysical.current.amount * _entity_2->character->attribute.armorPhysical.current.blockPercent;
+
+    // Fire armor
+    fireDefense = _entity_2->character->attribute.resistanceFire.current.amount;
+    if (fireBlock)
+        fireDefense += _entity_2->character->attribute.resistanceFire.current.amount * _entity_2->character->attribute.resistanceFire.current.blockPercent;
+
+    // Ice armor
+    iceDefense = _entity_2->character->attribute.resistanceIce.current.amount;
+    if (iceBlock)
+        iceDefense += _entity_2->character->attribute.resistanceIce.current.amount * _entity_2->character->attribute.resistanceIce.current.blockPercent;
+
+    // Lightning armor
+    lightningDefense = _entity_2->character->attribute.resistanceLightning.current.amount;
+    if (lightningBlock)
+        lightningDefense += _entity_2->character->attribute.resistanceLightning.current.amount * _entity_2->character->attribute.resistanceLightning.current.blockPercent;
+
+
+
     // Note: this does not factor in NPC armor / resistance
     // Note: this does not factor in damage types
     // Note: we should calculate total damage and total armor first before applying it
     // Note: rand() for crit does not factor in max chance or player level
 
     // Crit damage
-    if (static_cast<float>(rand() % 100) < m_entityPlayer->character->attribute.damagePhysical.current.critChance)
+    if (static_cast<float>(rand() % 100) < _entity_1->character->attribute.damagePhysical.current.critChance)
     {
-        totalDamage = m_entityPlayer->character->attribute.damagePhysical.current.amount * m_entityPlayer->character->attribute.damagePhysical.current.critMultiplier;
-        totalDamage += m_entityPlayer->character->attribute.damagePhysical.current.amount;
+        totalDamage = _entity_1->character->attribute.damagePhysical.current.amount * _entity_1->character->attribute.damagePhysical.current.critMultiplier;
+        totalDamage += _entity_1->character->attribute.damagePhysical.current.amount;
     }
     else
     // Normal damage
     {
-        totalDamage = m_entityPlayer->character->attribute.damagePhysical.current.amount;
+        totalDamage = _entity_1->character->attribute.damagePhysical.current.amount;
     }
     return totalDamage;
 }

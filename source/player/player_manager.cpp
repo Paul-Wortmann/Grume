@@ -1272,35 +1272,43 @@ void cPlayerManager::calculateAttributes(void)
     float physicalDamageTotal     = 0.0f;
     float physicalCritMultipTotal = 0.0f;
     float physicalCritChanceTotal = 0.0f;
+    float physicalCritChanceMax   = 90.0f;
 
     float fireDamageTotal     = 0.0f;
     float fireCritMultipTotal = 0.0f;
     float fireCritChanceTotal = 0.0f;
+    float fireCritChanceMax   = 90.0f;
 
     float iceDamageTotal     = 0.0f;
     float iceCritMultipTotal = 0.0f;
     float iceCritChanceTotal = 0.0f;
+    float iceCritChanceMax   = 90.0f;
 
     float lightningDamageTotal     = 0.0f;
     float lightningCritMultipTotal = 0.0f;
     float lightningCritChanceTotal = 0.0f;
+    float lightningCritChanceMax   = 90.0f;
 
     // Armor / resistance
     float physicalArmorTotal        = 0.0f;
     float physicalBlockChanceTotal  = 0.0f;
     float physicalBlockPercentTotal = 0.0f;
+    float physicalBlockChanceMax    = 90.0f;
 
     float fireArmorTotal        = 0.0f;
     float fireBlockChanceTotal  = 0.0f;
     float fireBlockPercentTotal = 0.0f;
+    float fireBlockChanceMax    = 90.0f;
 
     float iceArmorTotal        = 0.0f;
     float iceBlockChanceTotal  = 0.0f;
     float iceBlockPercentTotal = 0.0f;
+    float iceBlockChanceMax    = 90.0f;
 
     float lightningArmorTotal        = 0.0f;
     float lightningBlockChanceTotal  = 0.0f;
     float lightningBlockPercentTotal = 0.0f;
+    float lightningBlockChanceMax    = 90.0f;
 
     // Aggregate data from equipment
     for (std::uint32_t i = 0; i < m_playerEquipment->getStorageSize(); ++i)
@@ -1431,6 +1439,8 @@ std::cout << "Physical damage crit multiplier: " << m_player->character->attribu
     physicalCritChanceTotal += m_player->character->attribute.damagePhysical.base.critChance;
     physicalCritChanceTotal += totalStrength * critChanceBias_1;
     physicalCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    if (physicalCritChanceTotal > physicalCritChanceMax)
+        physicalCritChanceTotal = physicalCritChanceMax;
     m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
 
 std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
@@ -1461,6 +1471,8 @@ std::cout << "Fire damage crit multiplier: " << m_player->character->attribute.d
     fireCritChanceTotal += m_player->character->attribute.damageFire.base.critChance;
     fireCritChanceTotal += totalEnergy * critChanceBias_1;
     fireCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    if (fireCritChanceTotal > fireCritChanceMax)
+        fireCritChanceTotal = fireCritChanceMax;
     m_player->character->attribute.damageFire.current.critChance = fireCritChanceTotal;
 
 std::cout << "Fire damage crit chance: " << m_player->character->attribute.damageFire.current.critChance << std::endl;
@@ -1491,6 +1503,8 @@ std::cout << "Ice damage crit multiplier: " << m_player->character->attribute.da
     iceCritChanceTotal += m_player->character->attribute.damageIce.base.critChance;
     iceCritChanceTotal += totalEnergy * critChanceBias_1;
     iceCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    if (iceCritChanceTotal > iceCritChanceMax)
+        iceCritChanceTotal = iceCritChanceMax;
     m_player->character->attribute.damageIce.current.critChance = iceCritChanceTotal;
 
 std::cout << "Ice damage crit chance: " << m_player->character->attribute.damageIce.current.critChance << std::endl;
@@ -1521,6 +1535,8 @@ std::cout << "Lightning damage crit multiplier: " << m_player->character->attrib
     lightningCritChanceTotal += m_player->character->attribute.damageLightning.base.critChance;
     lightningCritChanceTotal += totalEnergy * critChanceBias_1;
     lightningCritChanceTotal += m_player->character->level.current * critChanceBias_2;
+    if (lightningCritChanceTotal > lightningCritChanceMax)
+        lightningCritChanceTotal = lightningCritChanceMax;
     m_player->character->attribute.damageLightning.current.critChance = lightningCritChanceTotal;
 
 std::cout << "Lightning damage crit chance: " << m_player->character->attribute.damageLightning.current.critChance << std::endl;
@@ -1541,6 +1557,8 @@ std::cout << "Physical armor amount: " << m_player->character->attribute.armorPh
     physicalBlockChanceTotal += m_player->character->attribute.armorPhysical.base.blockChance;
     physicalBlockChanceTotal += totalDexterity * armorBlockChanceBias_1;
     physicalBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    if (physicalBlockChanceTotal > physicalBlockChanceMax)
+        physicalBlockChanceTotal = physicalBlockChanceMax;
     m_player->character->attribute.armorPhysical.current.blockChance = physicalBlockChanceTotal;
 
 std::cout << "Physical armor block chance: " << m_player->character->attribute.armorPhysical.current.blockChance << std::endl;
@@ -1571,6 +1589,8 @@ std::cout << "Fire resistance amount: " << m_player->character->attribute.resist
     fireBlockChanceTotal += m_player->character->attribute.resistanceFire.base.blockChance;
     fireBlockChanceTotal += totalEnergy * armorBlockChanceBias_1;
     fireBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    if (fireBlockChanceTotal > fireBlockChanceMax)
+        fireBlockChanceTotal = fireBlockChanceMax;
     m_player->character->attribute.resistanceFire.current.blockChance = fireBlockChanceTotal;
 
 std::cout << "Fire resistance block chance: " << m_player->character->attribute.resistanceFire.current.blockChance << std::endl;
@@ -1601,6 +1621,8 @@ std::cout << "Ice resistance amount: " << m_player->character->attribute.resista
     iceBlockChanceTotal += m_player->character->attribute.resistanceIce.base.blockChance;
     iceBlockChanceTotal += totalEnergy * armorBlockChanceBias_1;
     iceBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    if (iceBlockChanceTotal > iceBlockChanceMax)
+        iceBlockChanceTotal = iceBlockChanceMax;
     m_player->character->attribute.resistanceIce.current.blockChance = iceBlockChanceTotal;
 
 std::cout << "Ice resistance block chance: " << m_player->character->attribute.resistanceIce.current.blockChance << std::endl;
@@ -1614,5 +1636,37 @@ std::cout << "Ice resistance block chance: " << m_player->character->attribute.r
     m_player->character->attribute.resistanceIce.current.blockPercent = iceBlockPercentTotal;
 
 std::cout << "Ice resistance block percent: " << m_player->character->attribute.resistanceIce.current.blockPercent << std::endl;
+
+    // Lightning resistance
+    // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
+    armorBias_1 = 0.5f;
+    armorBias_2 = 0.25f;
+    lightningArmorTotal += (m_player->character->attribute.resistanceLightning.base.amount * totalEnergy * armorBias_1);
+    lightningArmorTotal += (m_player->character->level.current * totalEnergy * armorBias_2);
+    m_player->character->attribute.resistanceLightning.current.amount = lightningArmorTotal;
+
+std::cout << "Lightning resistance amount: " << m_player->character->attribute.resistanceLightning.current.amount << std::endl;
+
+    // Lightning resistance block chance
+    armorBlockChanceBias_1 = 0.025f;
+    armorBlockChanceBias_2 = 0.005f;
+    lightningBlockChanceTotal += m_player->character->attribute.resistanceLightning.base.blockChance;
+    lightningBlockChanceTotal += totalEnergy * armorBlockChanceBias_1;
+    lightningBlockChanceTotal += m_player->character->level.current * armorBlockChanceBias_2;
+    if (lightningBlockChanceTotal > lightningBlockChanceMax)
+        lightningBlockChanceTotal = lightningBlockChanceMax;
+    m_player->character->attribute.resistanceLightning.current.blockChance = lightningBlockChanceTotal;
+
+std::cout << "Lightning resistance block chance: " << m_player->character->attribute.resistanceLightning.current.blockChance << std::endl;
+
+    // Lightning resistance block percent
+    armorBlockPercentBias_1 = 0.125f;
+    armorBlockPercentBias_2 = 0.005f;
+    lightningBlockPercentTotal += m_player->character->attribute.resistanceLightning.base.blockPercent;
+    lightningBlockPercentTotal += totalEnergy * armorBlockPercentBias_1;
+    lightningBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
+    m_player->character->attribute.resistanceLightning.current.blockPercent = lightningBlockPercentTotal;
+
+std::cout << "Lightning resistance block percent: " << m_player->character->attribute.resistanceLightning.current.blockPercent << std::endl;
 
 }
