@@ -1268,6 +1268,10 @@ void cNPCManager::m_entityRevive(sEntity*& _entity)
 
 float cNPCManager::m_calculateDamage(sEntity* _entity_1, sEntity* _entity_2)
 {
+    // Damage types should be based weapon type
+    // Currently they are all augmented together
+    // Player character is too OP....
+
     // Damage totals
     float physicalDamage  = 0.0f;
     float fireDamage      = 0.0f;
@@ -1336,23 +1340,26 @@ float cNPCManager::m_calculateDamage(sEntity* _entity_1, sEntity* _entity_2)
     if (lightningBlock)
         lightningDefense += _entity_2->character->attribute.resistanceLightning.current.amount * _entity_2->character->attribute.resistanceLightning.current.blockPercent;
 
+    // Subtract defense totals from damage totals
+    physicalDamage -= physicalDefense;
+    fireDamage -= fireDefense;
+    iceDamage -= iceDefense;
+    lightningDamage -= lightningDefense;
 
+    // Ensure non-negative values
+    if (physicalDamage < 0.0f)
+        physicalDamage = 0.0f;
+    if (fireDamage < 0.0f)
+        fireDamage = 0.0f;
+    if (iceDamage < 0.0f)
+        iceDamage = 0.0f;
+    if (lightningDamage < 0.0f)
+        lightningDamage = 0.0f;
 
-    // Note: this does not factor in NPC armor / resistance
-    // Note: this does not factor in damage types
-    // Note: we should calculate total damage and total armor first before applying it
-    // Note: rand() for crit does not factor in max chance or player level
+    // Calculate total damage
+    totalDamage = physicalDamage + fireDamage + iceDamage + lightningDamage;
 
-    // Crit damage
-    if (static_cast<float>(rand() % 100) < _entity_1->character->attribute.damagePhysical.current.critChance)
-    {
-        totalDamage = _entity_1->character->attribute.damagePhysical.current.amount * _entity_1->character->attribute.damagePhysical.current.critMultiplier;
-        totalDamage += _entity_1->character->attribute.damagePhysical.current.amount;
-    }
-    else
-    // Normal damage
-    {
-        totalDamage = _entity_1->character->attribute.damagePhysical.current.amount;
-    }
+    //std::cout << "Damage: " << totalDamage << std::endl;
+
     return totalDamage;
 }
