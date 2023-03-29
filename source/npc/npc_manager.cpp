@@ -1299,24 +1299,36 @@ float cNPCManager::m_calculateDamage(sEntity* _entity_1, sEntity* _entity_2)
     bool  lightningBlock   = (static_cast<float>(rand() % 100) < _entity_2->character->attribute.resistanceLightning.current.blockChance);
 
     // Physical damage
-    physicalDamage = _entity_1->character->attribute.damagePhysical.current.amount;
-    if (physicalCrit)
-        physicalDamage += _entity_1->character->attribute.damagePhysical.current.amount * _entity_1->character->attribute.damagePhysical.current.critMultiplier;
+    if (_entity_1->character->attribute.damagePhysical.inuse)
+    {
+        physicalDamage = _entity_1->character->attribute.damagePhysical.current.amount;
+        if (physicalCrit)
+            physicalDamage += _entity_1->character->attribute.damagePhysical.current.amount * _entity_1->character->attribute.damagePhysical.current.critMultiplier;
+    }
 
     // Fire damage
-    fireDamage = _entity_1->character->attribute.damageFire.current.amount;
-    if (fireCrit)
-        fireDamage += _entity_1->character->attribute.damageFire.current.amount * _entity_1->character->attribute.damageFire.current.critMultiplier;
+    if (_entity_1->character->attribute.damageFire.inuse)
+    {
+        fireDamage = _entity_1->character->attribute.damageFire.current.amount;
+        if (fireCrit)
+            fireDamage += _entity_1->character->attribute.damageFire.current.amount * _entity_1->character->attribute.damageFire.current.critMultiplier;
+    }
 
     // Ice damage
-    iceDamage = _entity_1->character->attribute.damageIce.current.amount;
-    if (iceCrit)
-        iceDamage += _entity_1->character->attribute.damageIce.current.amount * _entity_1->character->attribute.damageIce.current.critMultiplier;
+    if (_entity_1->character->attribute.damageIce.inuse)
+    {
+        iceDamage = _entity_1->character->attribute.damageIce.current.amount;
+        if (iceCrit)
+            iceDamage += _entity_1->character->attribute.damageIce.current.amount * _entity_1->character->attribute.damageIce.current.critMultiplier;
+    }
 
     // Lightning damage
-    lightningDamage = _entity_1->character->attribute.damageLightning.current.amount;
-    if (lightningCrit)
-        lightningDamage += _entity_1->character->attribute.damageLightning.current.amount * _entity_1->character->attribute.damageLightning.current.critMultiplier;
+    if (_entity_1->character->attribute.damageLightning.inuse)
+    {
+        lightningDamage = _entity_1->character->attribute.damageLightning.current.amount;
+        if (lightningCrit)
+            lightningDamage += _entity_1->character->attribute.damageLightning.current.amount * _entity_1->character->attribute.damageLightning.current.critMultiplier;
+    }
 
     // Armor / Resistance
 

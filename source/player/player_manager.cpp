@@ -1415,8 +1415,8 @@ std::cout << "MP Regen: " << m_player->character->attribute.mana.current.regen <
 
     // Physical damage
     // Damage = (base x strength x bias_1) + (level x strength x bias_2)
-    float damageBias_1 = 1.0f;
-    float damageBias_2 = 0.5f;
+    float damageBias_1 = 0.5f;
+    float damageBias_2 = 0.25f;
     physicalDamageTotal += (m_player->character->attribute.damagePhysical.base.amount * totalStrength * damageBias_1);
     physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
     m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
@@ -1447,8 +1447,8 @@ std::cout << "Physical damage crit chance: " << m_player->character->attribute.d
 
     // Fire damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
-    damageBias_1 = 1.0f;
-    damageBias_2 = 0.5f;
+    damageBias_1 = 0.5f;
+    damageBias_2 = 0.25f;
     fireDamageTotal += (m_player->character->attribute.damageFire.base.amount * totalEnergy * damageBias_1);
     fireDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageFire.current.amount = fireDamageTotal;
@@ -1479,8 +1479,8 @@ std::cout << "Fire damage crit chance: " << m_player->character->attribute.damag
 
     // Ice damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
-    damageBias_1 = 1.0f;
-    damageBias_2 = 0.5f;
+    damageBias_1 = 0.5f;
+    damageBias_2 = 0.25f;
     iceDamageTotal += (m_player->character->attribute.damageIce.base.amount * totalEnergy * damageBias_1);
     iceDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageIce.current.amount = iceDamageTotal;
@@ -1511,8 +1511,8 @@ std::cout << "Ice damage crit chance: " << m_player->character->attribute.damage
 
     // Lightning damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
-    damageBias_1 = 1.0f;
-    damageBias_2 = 0.5f;
+    damageBias_1 = 0.5f;
+    damageBias_2 = 0.25f;
     lightningDamageTotal += (m_player->character->attribute.damageLightning.base.amount * totalEnergy * damageBias_1);
     lightningDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageLightning.current.amount = lightningDamageTotal;

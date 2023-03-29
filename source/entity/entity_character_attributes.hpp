@@ -48,6 +48,7 @@ struct sCharacterAttributeDamageType
 
 struct sCharacterAttributeDamage
 {
+    bool                          inuse   = true;
     sCharacterAttributeDamageType base    = {};
     sCharacterAttributeDamageType current = {};
 };
