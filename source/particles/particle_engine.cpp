@@ -36,6 +36,9 @@ void cParticleEngine::terminate(void)
 
 void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
 {
+    // Camera position
+    glm::vec3 cameraPos = m_graphicsEngine->getCameraPosition();
+
     // Find the first entity particle, so we don't need to iterate from the list head each time
     sEntity* tFirstEntity = nullptr;
     for (sEntity* tEntity = m_entityHead; tEntity != nullptr; tEntity = tEntity->next)
@@ -47,6 +50,10 @@ void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
         }
     }
 
+    // If no particles, early exit
+    if (tFirstEntity == nullptr)
+        return;
+
     // Find the last entity particle, so we don't need to iterate to the list tail each time
     sEntity* tLastEntity = nullptr;
     for (sEntity* tEntity = tFirstEntity; tEntity != nullptr; tEntity = tEntity->next)
@@ -57,69 +64,70 @@ void cParticleEngine::m_sortParticles(std::uint32_t _maxIterations)
         }
     }
 
-    // If no particles, early exit
-    if (tFirstEntity == nullptr)
-        return;
-
-    bool          sorted         = true;
-    std::uint32_t iterationCount = 0;
-    glm::vec3     cameraPos      = m_graphicsEngine->getCameraPosition();
-
-    // Bubble sort... not my proudest moment >>
-    while ((sorted) && (iterationCount < _maxIterations))
+    // iterate and calculate particle distance to camera
+    for (sEntity* tEntity1 = tFirstEntity; tEntity1 != tLastEntity->next; tEntity1 = tEntity1->next)
     {
-        // iterate and sort furthest first
-        for (sEntity* tEntity1 = tFirstEntity; tEntity1 != tLastEntity->next; tEntity1 = tEntity1->next)
+        if (tEntity1->particle != nullptr)
         {
-            if (tEntity1->particle != nullptr)
+            // distance to camera
+            tEntity1->particle->distToCamera = ((cameraPos.x - tEntity1->base.position.x) * (cameraPos.x - tEntity1->base.position.x)) +
+                                               ((cameraPos.y - tEntity1->base.position.y) * (cameraPos.y - tEntity1->base.position.y)) +
+                                               ((cameraPos.z - tEntity1->base.position.z) * (cameraPos.z - tEntity1->base.position.z));
+        }
+    }
+
+    // Lambda function to swap data
+    auto swapData = [](sEntity* _entity1, sEntity* _entity2)
+    {
+        // swap position
+        glm::vec3 tPosition = _entity1->base.position;
+        _entity1->base.position = _entity2->base.position;
+        _entity2->base.position = tPosition;
+
+        // swap life
+        float tLife = _entity1->particle->life;
+        _entity1->particle->life = _entity2->particle->life;
+        _entity2->particle->life = tLife;
+
+        // swap z acceleration
+        float tAccelerationZ = _entity1->particle->accelerationZ;
+        _entity1->particle->accelerationZ = _entity2->particle->accelerationZ;
+        _entity2->particle->accelerationZ = tAccelerationZ;
+
+        // swap x acceleration
+        float tAccelerationX = _entity1->physics->acceleration;
+        _entity1->physics->acceleration = _entity2->physics->acceleration;
+        _entity2->physics->acceleration = tAccelerationX;
+
+        // swap velocity
+        glm::vec3 tVelocity = _entity1->physics->velocity;
+        _entity1->physics->velocity = _entity2->physics->velocity;
+        _entity2->physics->velocity = tVelocity;
+
+        // Swap distance to camera
+        float tDistToCamera = _entity1->particle->distToCamera;
+        _entity1->particle->distToCamera = _entity2->particle->distToCamera;
+        _entity2->particle->distToCamera = tDistToCamera;
+    };
+
+    // Use selection sort
+    for (sEntity* tEntity1 = tFirstEntity; tEntity1 != tLastEntity->next; tEntity1 = tEntity1->next)
+    {
+        if (tEntity1->particle != nullptr)
+        {
+            for (sEntity* tEntity2 = tEntity1->next; tEntity2 != tLastEntity->next; tEntity2 = tEntity2->next)
             {
-                for (sEntity* tEntity2 = tEntity1->next; tEntity2 != tLastEntity->next; tEntity2 = tEntity2->next)
+                if (tEntity2->particle != nullptr)
                 {
-                    if (tEntity2->particle != nullptr)
+                    // sort based on distance to camera
+                    if (tEntity1->particle->distToCamera > tEntity2->particle->distToCamera)
                     {
-                        // distance to camera
-                        float distSqrd1 = ((cameraPos.x - tEntity1->base.position.x) * (cameraPos.x - tEntity1->base.position.x)) +
-                                              ((cameraPos.y - tEntity1->base.position.y) * (cameraPos.y - tEntity1->base.position.y)) +
-                                              ((cameraPos.z - tEntity1->base.position.z) * (cameraPos.z - tEntity1->base.position.z));
-                        // distance to camera
-                        float distSqrd2 = ((cameraPos.x - tEntity2->base.position.x) * (cameraPos.x - tEntity2->base.position.x)) +
-                                              ((cameraPos.y - tEntity2->base.position.y) * (cameraPos.y - tEntity2->base.position.y)) +
-                                              ((cameraPos.z - tEntity2->base.position.z) * (cameraPos.z - tEntity2->base.position.z));
-
-                        if (distSqrd2 > distSqrd1)
-                        {
-                            // swap position
-                            glm::vec3 tPosition = tEntity1->base.position;
-                            tEntity1->base.position = tEntity2->base.position;
-                            tEntity2->base.position = tPosition;
-
-                            // swap life
-                            float tLife = tEntity1->particle->life;
-                            tEntity1->particle->life = tEntity2->particle->life;
-                            tEntity2->particle->life = tLife;
-
-                            // swap z acceleration
-                            float tAccelerationZ = tEntity1->particle->accelerationZ;
-                            tEntity1->particle->accelerationZ = tEntity2->particle->accelerationZ;
-                            tEntity2->particle->accelerationZ = tAccelerationZ;
-
-                            // swap x acceleration
-                            float tAccelerationX = tEntity1->physics->acceleration;
-                            tEntity1->physics->acceleration = tEntity2->physics->acceleration;
-                            tEntity2->physics->acceleration = tAccelerationX;
-
-                            // swap velocity
-                            glm::vec3 tVelocity = tEntity1->physics->velocity;
-                            tEntity1->physics->velocity = tEntity2->physics->velocity;
-                            tEntity2->physics->velocity = tVelocity;
-
-                            sorted = false;
-                        }
+                        // swap data
+                        swapData(tEntity1, tEntity2);
                     }
                 }
             }
         }
-        ++iterationCount;
     }
 }
 

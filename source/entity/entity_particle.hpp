@@ -42,6 +42,7 @@ struct sEntityParticle
     float life          = 0.0f;
     float accelerationZ = 0.0f;
     float gravity       = 1.0f;
+    float distToCamera  = 0.0f;
 };
 
 #endif // ENTITY_PARTICLE_HPP
