@@ -489,6 +489,19 @@ void cGraphicsEngine::m_pui_render(void)
                         glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
                     }
 
+                    // Component type: checkbox
+                    else if (menu[m].component[c].type == eComponentType::componentTypeCheckbox)
+                    {
+                        if (menu[m].component[c].activated)
+                        {
+                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureActive);
+                        }
+                        else
+                        {
+                            glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal);
+                        }
+                    }
+
                     // VAO
                     glBindVertexArray(m_pc_fsq_VAO);
                     glDrawArrays(GL_TRIANGLES, 0, 6);

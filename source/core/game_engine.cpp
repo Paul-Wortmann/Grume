@@ -177,7 +177,9 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
         return_value = m_game_load();
     }
 
-    //
+    // set menu component state
+    m_uiManager.setMenuComponentActivated(eComponentFunction::componentFunctionFullscreenModified, m_gameConfig.m_fullscreen);
+    m_uiManager.setMenuComponentActivated(eComponentFunction::componentFunctionLightingModified, !m_gameConfig.m_basicRenderer);
 
     // Start the game engine timer.
     m_timer.initialize();
@@ -523,7 +525,17 @@ void cGameEngine::process(void)
                 // Fullscreen modified
                 else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_fullscreenModified)
                 {
-                    // NA
+                    m_gameConfig.m_fullscreen = !m_gameConfig.m_fullscreen;
+                    m_graphicsEngine.setFullscreen(m_gameConfig.m_fullscreen);
+                    m_uiManager.setMenuComponentActivated(eComponentFunction::componentFunctionFullscreenModified, m_gameConfig.m_fullscreen);
+                }
+
+                // Lighting modified
+                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_lightingModified)
+                {
+                    m_gameConfig.m_basicRenderer = !m_gameConfig.m_basicRenderer;
+                    m_graphicsEngine.setBasicRenderPath(m_gameConfig.m_basicRenderer);
+                    m_uiManager.setMenuComponentActivated(eComponentFunction::componentFunctionLightingModified, !m_gameConfig.m_basicRenderer);
                 }
 
                 // Strength attribute modified

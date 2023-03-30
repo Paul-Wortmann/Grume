@@ -359,18 +359,19 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionWaypointsStack_5   = 304, // Waypoints slot 1 stack size text label
     componentFunctionWaypointsStack_6   = 305, // Waypoints slot 1 stack size text label
 
-    componentFunctionPlusStrength       = 306, // Plus Strength
-    componentFunctionPlusDexterity      = 307, // Plus Dexterity
-    componentFunctionPlusEnergy         = 308, // Plus Energy
-    componentFunctionPlusVitality       = 309, // Plus Vitality
+    componentFunctionLightingModified   = 306, // Fullscreen checkbox modified
 
-    componentFunctionTextGold           = 310, // Gold text
-    componentFunctionTextStrength       = 311, // Strength text
-    componentFunctionTextDexterity      = 312, // Dexterity text
-    componentFunctionTextEnergy         = 313, // Energy text
-    componentFunctionTextVitality       = 314, // Vitality text
-    componentFunctionTextPoints         = 315  // Points text
+    componentFunctionPlusStrength       = 307, // Plus Strength
+    componentFunctionPlusDexterity      = 308, // Plus Dexterity
+    componentFunctionPlusEnergy         = 309, // Plus Energy
+    componentFunctionPlusVitality       = 310, // Plus Vitality
 
+    componentFunctionTextGold           = 311, // Gold text
+    componentFunctionTextStrength       = 312, // Strength text
+    componentFunctionTextDexterity      = 313, // Dexterity text
+    componentFunctionTextEnergy         = 314, // Energy text
+    componentFunctionTextVitality       = 315, // Vitality text
+    componentFunctionTextPoints         = 316  // Points text
 };
 
 enum class eComponentState : std::uint16_t
@@ -385,7 +386,8 @@ enum class eComponentType : std::uint16_t
 {
     componentTypeNormal    = 0, // Normal
     componentTypeItem      = 1, // Item
-    componentTypeText      = 2  // Text
+    componentTypeText      = 2, // Text
+    componentTypeCheckbox  = 3  // Checkbox
 };
 
 struct sUIComponent
@@ -397,6 +399,7 @@ struct sUIComponent
     // Information
     std::string        name           = "";
     bool               enabled        = false;
+    bool               activated      = false;
     eComponentFunction function       = eComponentFunction::componentFunctionNone;
     eComponentType     type           = eComponentType::componentTypeNormal;
     eComponentState    state          = eComponentState::componentStateNormal;
@@ -497,7 +500,8 @@ enum eUIEventFunction : std::uint32_t
     UIEventFunction_plusStrength       = 21,  // plus Strength
     UIEventFunction_plusDexterity      = 22,  // plus Dexterity
     UIEventFunction_plusEnergy         = 23,  // plus Energy
-    UIEventFunction_plusVitality       = 24   // plus Vitality
+    UIEventFunction_plusVitality       = 24,  // plus Vitality
+    UIEventFunction_lightingModified   = 25   // Lighting modified
 };
 
 // Event struct

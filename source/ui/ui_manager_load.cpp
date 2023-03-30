@@ -323,6 +323,10 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].type = eComponentType::componentTypeText;
                     }
+                    else if (componentType.compare("TYPE_CHECKBOX") == 0)
+                    {
+                        m_menu[m].component[c].type = eComponentType::componentTypeCheckbox;
+                    }
 
                     // Component function
                     std::string componentFunction = xmlUiFile.getString("<component_function>", componentNum + 1);
@@ -399,6 +403,15 @@ std::uint32_t cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMasterBar;
                     }
+                    else if (componentFunction.compare("ENABLE_FULLSCREEN") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionFullscreenModified;
+                    }
+                    else if (componentFunction.compare("ENABLE_LIGHTING_CHECKBOX") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionLightingModified;
+                    }
+
                     else if (componentFunction.compare("LOAD_MAP_TOWN_1") == 0)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionLoadMapTown_1;

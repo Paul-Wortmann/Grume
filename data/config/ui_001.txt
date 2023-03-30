@@ -604,7 +604,7 @@
         <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>17<menu_component_count>
+        <menu_component_count>21<menu_component_count>
         <menu_sound_open>menu 5</menu_sound_open>
         <menu_sound_close>NONE 0</menu_sound_close>
 
@@ -852,7 +852,66 @@
             <component_sound_activate>NONE 0</component_sound_activate>
         </component>
 
-# Enable lighting checkbox
+        # Fullscreen check box
+
+        <component>
+            <component_name>text_fullscreen</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_master_volume_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_master_volume_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_master_volume_001.png</component_texture_activated>
+            <component_position>-0.1f, 0.0f, -0.02f</component_position>
+            <component_size>0.07578125f 0.02962963f</component_size>
+            <component_function>NONE</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>fullscreen_check_box</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/check_box_1_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/check_box_1_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/check_box_1_002.png</component_texture_activated>
+            <component_position>-0.2f, 0.0f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>ENABLE_FULLSCREEN</component_function>
+            <component_type>TYPE_CHECKBOX</component_type>
+            <component_sound_hover>menu 6</component_sound_hover>
+            <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
+        # Enable lighting check box
+
+        <component>
+            <component_name>text_enable_lighting</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/text_master_volume_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_master_volume_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_master_volume_001.png</component_texture_activated>
+            <component_position>-0.1f, -0.1f, -0.02f</component_position>
+            <component_size>0.07578125f 0.02962963f</component_size>
+            <component_function>NONE</component_function>
+            <component_type>TYPE_NORMAL</component_type>
+            <component_sound_hover>NONE 0</component_sound_hover>
+            <component_sound_activate>NONE 0</component_sound_activate>
+        </component>
+
+        <component>
+            <component_name>enable_lighting_check_box</component_name>
+            <component_enabled>1</component_enabled>
+            <component_texture_normal>ui/menu/check_box_1_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/check_box_1_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/check_box_1_002.png</component_texture_activated>
+            <component_position>-0.2f, -0.1f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>ENABLE_LIGHTING_CHECKBOX</component_function>
+            <component_type>TYPE_CHECKBOX</component_type>
+            <component_sound_hover>menu 6</component_sound_hover>
+            <component_sound_activate>menu 8</component_sound_activate>
+        </component>
+
 # Fullscreen checkbox
 # Resolution scrollbox
 
@@ -4434,7 +4493,7 @@
         <menu_name>skills</menu_name>
         <menu_enabled>0</menu_enabled>
         <menu_type>TYPE_SKILLS</menu_type>
-        <menu_texture_normal>ui/menu/skills_menu_001.png</menu_texture_normal>
+        <menu_texture_normal>ui/menu/skills_menu_002.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
         <menu_component_count>2<menu_component_count>

@@ -51,6 +51,7 @@ class cGraphicsEngine :tcTemplateEngine
         void setWireframeRender(bool _wireframeRender) { m_wireframe = _wireframeRender; }
         void setBasicRenderPath(bool _basicRenderer) { m_basicRender = _basicRenderer; }
         void setDisplay(std::uint32_t _resolution_x, std::uint32_t _resolution_y, bool _fullscreen) { m_window_w = _resolution_x; m_window_h = _resolution_y; m_fullscreen = _fullscreen; }
+        void setFullscreen(bool _fullscreen);
 
         // Window
         std::uint32_t          getWindow_w(void) { return m_window_w; }

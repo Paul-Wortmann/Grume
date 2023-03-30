@@ -52,6 +52,9 @@ class cUIManager
         void               setWindowSize(const std::uint32_t &_width, const std::uint32_t &_height) { m_window_w = _width; m_window_h = _height; m_calculateScale(); }
         std::uint32_t      getActiveWindowCount(void) { return m_activeWindowCount; }
 
+        void               setMenuComponentActivated(const eComponentFunction &_componentFunction ,const bool &_state);
+        bool               getMenuComponentActivated(const eComponentFunction &_componentFunction);
+
         // Dynamic textures
         void               setMapTitle(const std::string &_mapTitle);
         sTexture*          getTitleTexture(void) { return m_mapTitleTexture; }

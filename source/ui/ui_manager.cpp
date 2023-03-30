@@ -154,6 +154,41 @@ void cUIManager::setMenuComponentEnabled(const eComponentFunction &_componentFun
     }
 }
 
+void cUIManager::setMenuComponentActivated(const eComponentFunction &_componentFunction ,const bool &_state)
+{
+    if (m_menu != nullptr)
+    {
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        {
+            for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+            {
+                if (m_menu[m].component[c].function == _componentFunction)
+                {
+                    m_menu[m].component[c].activated = _state;
+                    //std::cout << "Setting UI state: " << ((_state) ? "true" : "false") << std::endl;
+                }
+            }
+        }
+    }
+}
+
+bool cUIManager::getMenuComponentActivated(const eComponentFunction &_componentFunction)
+{
+    if (m_menu != nullptr)
+    {
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        {
+            for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+            {
+                if (m_menu[m].component[c].function == _componentFunction)
+                {
+                    return m_menu[m].component[c].activated;
+                }
+            }
+        }
+    }
+}
+
 void cUIManager::process(void)
 {
     // Reset state
@@ -432,6 +467,18 @@ void cUIManager::process(void)
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
                     event->function_1 = eUIEventFunction::UIEventFunction_fullscreenModified;
+                    event->data_1 = 0;
+                    m_event.push(event);
+
+                    // set data
+                }
+                // Lighting modified
+                else if (m_menu[menuNum].component[componentNum].function == eComponentFunction::componentFunctionLightingModified)
+                {
+                    // create event
+                    sUIEvent* event = new sUIEvent;
+                    event->type = eUIEventType::UIEventType_click;
+                    event->function_1 = eUIEventFunction::UIEventFunction_lightingModified;
                     event->data_1 = 0;
                     m_event.push(event);
 

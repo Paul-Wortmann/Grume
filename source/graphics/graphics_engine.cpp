@@ -387,16 +387,10 @@ std::uint32_t cGraphicsEngine::initialize(void)
 */
 
             // Initialize render pipelines ------------------
-            if (m_basicRender)
-            {
-                m_pb_initialize();
-            }
-            else
-            {
-                m_p1_initialize();
-                m_p2_initialize();
-                m_p3_initialize();
-            }
+            m_pb_initialize();
+            m_p1_initialize();
+            m_p2_initialize();
+            m_p3_initialize();
             m_pc_initialize();
             m_pui_initialize();
             m_pls_initialize();
@@ -445,16 +439,10 @@ void cGraphicsEngine::terminate(void)
     }
 
     // Pipelines
-    if (m_basicRender)
-    {
-        m_pb_terminate();
-    }
-    else
-    {
-        m_p1_terminate();
-        m_p2_terminate();
-        m_p3_terminate();
-    }
+    m_pb_terminate();
+    m_p1_terminate();
+    m_p2_terminate();
+    m_p3_terminate();
     m_pc_terminate();
     m_pui_terminate();
     m_pls_terminate();
@@ -638,4 +626,26 @@ void cGraphicsEngine::process(const std::int64_t &_dt)
     // End frame
     glfwSwapBuffers(m_window);
     glfwPollEvents();
+}
+
+void cGraphicsEngine::setFullscreen(bool _fullscreen)
+{
+    // Early exit
+    if (_fullscreen == m_fullscreen)
+        return;
+
+    // change window mode
+    m_fullscreen = _fullscreen;
+
+    // Set fullscreen
+    if (m_fullscreen)
+    {
+        glfwSetWindowMonitor(m_window, m_monitor, 0, 0, m_currentVideoMode->width, m_currentVideoMode->height, m_currentVideoMode->refreshRate);
+    }
+
+    // Set windowed
+    else
+    {
+        glfwSetWindowMonitor(m_window, NULL, 0, 0, m_window_w, m_window_h, 0);
+    }
 }
