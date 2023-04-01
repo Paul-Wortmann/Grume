@@ -23,6 +23,16 @@
 
 #include "graphics_engine.hpp"
 
+std::uint32_t cGraphicsEngine::getWindow_w(void)
+{
+    return m_framebufferSize_w;
+}
+
+std::uint32_t cGraphicsEngine::getWindow_h(void)
+{
+    return m_framebufferSize_h;
+}
+
 // Move the camera to position
 void cGraphicsEngine::moveCamera(glm::vec3 &_position)
 {
@@ -86,9 +96,11 @@ void cGraphicsEngine::sm_glfwCursorPosCallback(GLFWwindow* _window, double _xpos
     graphicsEngine->m_io->mousePosition.x = static_cast<float>(_xpos);
     graphicsEngine->m_io->mousePosition.y = static_cast<float>(_ypos);
 
-    graphicsEngine->m_io->mousePositionGL.x = ((_xpos / graphicsEngine->m_window_w) * 2.0f) - 1.0f;
-    graphicsEngine->m_io->mousePositionGL.y = 1.0f - ((_ypos / graphicsEngine->m_window_h) * 2.0f);
+    // Width
+    graphicsEngine->m_io->mousePositionGL.x = ((_xpos / graphicsEngine->m_framebufferSize_w) * 2.0f) - 1.0f;
 
+    // Height
+    graphicsEngine->m_io->mousePositionGL.y = 1.0f - ((_ypos / graphicsEngine->m_framebufferSize_h) * 2.0f);
 }
 
 // GLFW Mouse button callback
@@ -118,12 +130,20 @@ void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, std::int32
 // GLFW Framebuffer size callback
 void cGraphicsEngine::sm_glfwFramebufferSizeCallback(GLFWwindow* _window, std::int32_t _width, std::int32_t _height)
 {
+    // Get user defined glfw pointer to this graphics engine class
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
+    // Set the framebuffer size
     glfwGetFramebufferSize(_window, &graphicsEngine->m_framebufferSize_w, &graphicsEngine->m_framebufferSize_h);
     glViewport(0, 0, graphicsEngine->m_framebufferSize_w, graphicsEngine->m_framebufferSize_h);
     graphicsEngine->m_aspectRatio = static_cast<float>(graphicsEngine->m_framebufferSize_w) / static_cast<float>(graphicsEngine->m_framebufferSize_h);
     graphicsEngine->m_camera.initialize(graphicsEngine->m_fieldOfView, graphicsEngine->m_framebufferSize_w, graphicsEngine->m_framebufferSize_h);
+
+    // Re-initialize pipeline FBOs
+    graphicsEngine->m_pb_createFBO();
+    graphicsEngine->m_p1_createFBO();
+    graphicsEngine->m_p2_createFBO();
+    graphicsEngine->m_p3_createFBO();
 }
 
 // GLFW Monitor callback
@@ -253,13 +273,11 @@ std::uint32_t cGraphicsEngine::initialize(void)
         else
         {
             // GLFW fullscreen window creation
-            m_window_w = m_currentVideoMode->width;
-            m_window_h = m_currentVideoMode->height;
             glfwWindowHint(GLFW_RED_BITS, m_currentVideoMode->redBits);
             glfwWindowHint(GLFW_GREEN_BITS, m_currentVideoMode->greenBits);
             glfwWindowHint(GLFW_BLUE_BITS, m_currentVideoMode->blueBits);
             glfwWindowHint(GLFW_REFRESH_RATE, m_currentVideoMode->refreshRate);
-            m_window = glfwCreateWindow(m_window_w, m_window_h, m_windowTitle.c_str(), glfwGetPrimaryMonitor(), nullptr);
+            m_window = glfwCreateWindow(m_currentVideoMode->width, m_currentVideoMode->height, m_windowTitle.c_str(), glfwGetPrimaryMonitor(), nullptr);
         }
 
         // Create an OpenGL context
@@ -314,8 +332,6 @@ std::uint32_t cGraphicsEngine::initialize(void)
 
             // Input --------------------------------
             glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-            //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-            glfwSetCursorPos(m_window, m_window_w/2, m_window_h/2);
             glfwSetCursorPos(m_window, m_framebufferSize_w / 2, m_framebufferSize_h / 2);
 
             // Lights ------------------------------------
@@ -647,5 +663,18 @@ void cGraphicsEngine::setFullscreen(bool _fullscreen)
     else
     {
         glfwSetWindowMonitor(m_window, NULL, 0, 0, m_window_w, m_window_h, 0);
+        //glfwSetWindowPos(m_window, (m_currentVideoMode->width - m_framebufferSize_w) / 2, (m_currentVideoMode->height - m_framebufferSize_h / 2));
     }
+
+    // Update framebuffer size
+    glfwGetFramebufferSize(m_window, &m_framebufferSize_w, &m_framebufferSize_h);
+    glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
+    m_aspectRatio = static_cast<float>(m_framebufferSize_w) / static_cast<float>(m_framebufferSize_h);
+    m_camera.initialize(m_fieldOfView, m_framebufferSize_w, m_framebufferSize_h);
+
+    // Re-initialize pipeline FBOs
+    m_pb_createFBO();
+    m_p1_createFBO();
+    m_p2_createFBO();
+    m_p3_createFBO();
 }

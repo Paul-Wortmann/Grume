@@ -39,8 +39,8 @@ void cGraphicsEngine::m_pls_terminate(void)
 
 void cGraphicsEngine::m_pls_render(void)
 {
-    // Setup the framebuffer
-    glBindFramebuffer(GL_FRAMEBUFFER, m_pls_fbo);
+    // Set the framebuffer to 0, ie. default framebuffer
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
     // Dont clear the buffers, just draw the UI on top.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

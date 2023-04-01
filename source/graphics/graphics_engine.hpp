@@ -54,8 +54,8 @@ class cGraphicsEngine :tcTemplateEngine
         void setFullscreen(bool _fullscreen);
 
         // Window
-        std::uint32_t          getWindow_w(void) { return m_window_w; }
-        std::uint32_t          getWindow_h(void) { return m_window_h; }
+        std::uint32_t          getWindow_w(void);
+        std::uint32_t          getWindow_h(void);
 
         // Loading screen texture, icon and cursor images
         void                   setWindowIcon(GLFWimage* _image);
@@ -176,6 +176,7 @@ class cGraphicsEngine :tcTemplateEngine
 
         // Render pipeline stage: Basic
         // graphics_engine_pipeline_basic.cpp
+        void m_pb_createFBO(void);
         void m_pb_initialize(void);
         void m_pb_terminate(void);
         void m_pb_render(void);
@@ -203,6 +204,7 @@ class cGraphicsEngine :tcTemplateEngine
 
         // Render pipeline stage 1 (directional shadow map)
         // graphics_engine_pipeline_1.cpp
+        void m_p1_createFBO(void);
         void m_p1_initialize(void);
         void m_p1_terminate(void);
         void m_p1_render(void);
@@ -224,6 +226,7 @@ class cGraphicsEngine :tcTemplateEngine
 
         // Render pipeline stage 2 (depth cube map)
         // graphics_engine_pipeline_2.cpp
+        void m_p2_createFBO(void);
         void m_p2_initialize(void);
         void m_p2_terminate(void);
         void m_p2_render(void);
@@ -249,6 +252,7 @@ class cGraphicsEngine :tcTemplateEngine
 
         // Render pipeline stage 3 (final scene render - lighting)
         // graphics_engine_pipeline_3.cpp
+        void m_p3_createFBO(void);
         void m_p3_initialize(void);
         void m_p3_terminate(void);
         void m_p3_setLightUniformLocations(void);
@@ -295,7 +299,6 @@ class cGraphicsEngine :tcTemplateEngine
         void m_pui_terminate(void);
         void m_pui_render(void);
         cGraphicsEngineShader m_pui_shader                                 = {};
-        const std::uint32_t   m_pui_fbo                                    = 0;
 
         glm::mat4             m_pui_modelMatrix                            = glm::mat4(1);
 
@@ -308,7 +311,6 @@ class cGraphicsEngine :tcTemplateEngine
         void m_pls_terminate(void);
         void m_pls_render(void);
         cGraphicsEngineShader m_pls_shader                                 = {};
-        const std::uint32_t   m_pls_fbo                                    = 0;
 
         std::uint32_t         m_pls_loc_diffuseMap                         = 0;
         std::uint32_t         m_pls_renderTextureID                        = 0;

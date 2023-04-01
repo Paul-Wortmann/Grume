@@ -23,32 +23,21 @@
 
 #include "graphics_engine.hpp"
 
-void cGraphicsEngine::m_p2_initialize(void)
+void cGraphicsEngine::m_p2_createFBO(void)
 {
-    // Initialize shader
-    m_p2_shader.initialize();
-    m_p2_shader.load("2_pointShadow");
-    glUseProgram(m_p2_shader.getID());
-    m_p2_loc_modelMatrix       = m_p2_shader.getUniformLocation("modelMatrix");
-    m_p2_loc_lightPosition     = m_p2_shader.getUniformLocation("lightPosition");
-    m_p2_loc_farPlane          = m_p2_shader.getUniformLocation("farPlane");
-    m_p2_loc_animationEnabled  = m_p2_shader.getUniformLocation("animationEnabled");
-
-    m_p2_loc_time             = m_p2_shader.getUniformLocation("time");
-    m_p2_loc_flexibility      = m_p2_shader.getUniformLocation("flexibility");
-
-    // Bone transformation matrices
-    for (std::uint32_t i = 0; i < MAX_BONES; ++i)
+    // Delete the FBOs if they already exists
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
-        m_p2_loc_boneMatrix[i] = m_p2_shader.getUniformLocation("boneMatrix[" + std::to_string(i) + "]");
+        // Delete the FBO
+        if ((m_p2_fbo != nullptr) && (m_p2_fbo[i] != 0))
+            glDeleteFramebuffers(1, &m_p2_fbo[i]);
+
+        // Delete any textures attached to the FBO
+        if (m_p2_depthCubemapID[i] != 0)
+            glDeleteTextures(1, &m_p2_depthCubemapID[i]);
     }
 
-    // Depth matrices
-    for (std::uint32_t i = 0; i < 6; ++i)
-    {
-        m_p2_loc_depthMatrix[i] = m_p2_shader.getUniformLocation("depthMatrix[" + std::to_string(i) + "]");
-    }
-
+    // Create FBOs
     for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         // Frame buffer Object
@@ -76,14 +65,53 @@ void cGraphicsEngine::m_p2_initialize(void)
         glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
         checkOpenGLFrameBuffer();
     }
+}
+
+void cGraphicsEngine::m_p2_initialize(void)
+{
+    // Create the FBOs
+    m_p2_createFBO();
+
+    // Initialize shader
+    m_p2_shader.initialize();
+    m_p2_shader.load("2_pointShadow");
+    glUseProgram(m_p2_shader.getID());
+    m_p2_loc_modelMatrix       = m_p2_shader.getUniformLocation("modelMatrix");
+    m_p2_loc_lightPosition     = m_p2_shader.getUniformLocation("lightPosition");
+    m_p2_loc_farPlane          = m_p2_shader.getUniformLocation("farPlane");
+    m_p2_loc_animationEnabled  = m_p2_shader.getUniformLocation("animationEnabled");
+
+    m_p2_loc_time             = m_p2_shader.getUniformLocation("time");
+    m_p2_loc_flexibility      = m_p2_shader.getUniformLocation("flexibility");
+
+    // Bone transformation matrices
+    for (std::uint32_t i = 0; i < MAX_BONES; ++i)
+    {
+        m_p2_loc_boneMatrix[i] = m_p2_shader.getUniformLocation("boneMatrix[" + std::to_string(i) + "]");
+    }
+
+    // Depth matrices
+    for (std::uint32_t i = 0; i < 6; ++i)
+    {
+        m_p2_loc_depthMatrix[i] = m_p2_shader.getUniformLocation("depthMatrix[" + std::to_string(i) + "]");
+    }
 };
 
 void cGraphicsEngine::m_p2_terminate(void)
 {
+    // Terminate the shader
     m_p2_shader.terminate();
+
+    // Delete the FBOs if they exists
     for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
-        glDeleteFramebuffers(1, &m_p2_fbo[i]);
+        // Delete the FBO
+        if ((m_p2_fbo != nullptr) && (m_p2_fbo[i] != 0))
+            glDeleteFramebuffers(1, &m_p2_fbo[i]);
+
+        // Delete any textures attached to the FBO
+        if (m_p2_depthCubemapID[i] != 0)
+            glDeleteTextures(1, &m_p2_depthCubemapID[i]);
     }
 };
 

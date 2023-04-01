@@ -23,8 +23,20 @@
 
 #include "graphics_engine.hpp"
 
-void cGraphicsEngine::m_pb_initialize(void)
+void cGraphicsEngine::m_pb_createFBO(void)
 {
+    // Delete the FBO if it already exists
+    if (m_pb_fbo != 0)
+        glDeleteFramebuffers(1, &m_pb_fbo);
+
+    // Delete any textures attached to the FBO
+    if (m_pb_renderTextureID != 0)
+        glDeleteTextures(1, &m_pb_renderTextureID);
+
+    // Delete any buffers attached to the FBO
+    if (m_pb_depthTextureID != 0)
+        glDeleteRenderbuffers(1, &m_pb_depthTextureID);
+
     // Frame buffer Object
     glGenFramebuffers(1, &m_pb_fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, m_pb_fbo);
@@ -51,6 +63,12 @@ void cGraphicsEngine::m_pb_initialize(void)
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
     checkOpenGLFrameBuffer();
+}
+
+void cGraphicsEngine::m_pb_initialize(void)
+{
+    // Create FBO
+    m_pb_createFBO();
 
     // Initialize shader
     m_pb_shader.initialize();
@@ -81,7 +99,20 @@ void cGraphicsEngine::m_pb_initialize(void)
 
 void cGraphicsEngine::m_pb_terminate(void)
 {
+    // Terminate the shader
     m_pb_shader.terminate();
+
+    // Delete the FBO if it exists
+    if (m_pb_fbo != 0)
+        glDeleteFramebuffers(1, &m_pb_fbo);
+
+    // Delete any textures attached to the FBO
+    if (m_pb_renderTextureID != 0)
+        glDeleteTextures(1, &m_pb_renderTextureID);
+
+    // Delete any buffers attached to the FBO
+    if (m_pb_depthTextureID != 0)
+        glDeleteRenderbuffers(1, &m_pb_depthTextureID);
 };
 
 void cGraphicsEngine::m_pb_render(void)
@@ -287,8 +318,8 @@ void cGraphicsEngine::m_pb_render(void)
 
                     // Scale
                     float scale  = 2.0f;
-                    float scaleX = static_cast<float>(m_window_w) / 1920.0f * (static_cast<float>(texture->width) * scale / static_cast<float>(m_window_w));
-                    float scaleY = static_cast<float>(m_window_h) / 1080.0f * (static_cast<float>(texture->height) * scale / static_cast<float>(m_window_h));
+                    float scaleX = static_cast<float>(m_framebufferSize_w) / 1920.0f * static_cast<float>(texture->width) * scale / static_cast<float>(m_framebufferSize_w);
+                    float scaleY = static_cast<float>(m_framebufferSize_h) / 1080.0f * static_cast<float>(texture->height) * scale / static_cast<float>(m_framebufferSize_h);
 
                     // position
                     tooltipPosition.x = m_entityTemp->base.position.x;

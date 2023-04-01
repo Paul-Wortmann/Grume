@@ -46,8 +46,8 @@ void cGraphicsEngine::m_pui_render(void)
         return;
     }
 
-    // Setup the framebuffer
-    glBindFramebuffer(GL_FRAMEBUFFER, m_pui_fbo);
+    // Setup the framebuffer to 0, ie. the default framebuffer
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
 
     // Dont clear the buffers, just draw the UI on top.
@@ -516,8 +516,8 @@ void cGraphicsEngine::m_pui_render(void)
     {
         //std::cout  << "Texture x: " << titleTexture->width << " - " << titleTexture->height << std::endl;
         // Shader uniforms
-        float scale_x = 1920.0f * (static_cast<float>(titleTexture->width) / static_cast<float>(m_window_w)) * 0.0001f;
-        float scale_y = 1080.0f * (static_cast<float>(titleTexture->height) / static_cast<float>(m_window_h)) * 0.0001f;
+        float scale_x = 1920.0f * (static_cast<float>(titleTexture->width) / static_cast<float>(m_framebufferSize_w)) * 0.0001f;
+        float scale_y = 1080.0f * (static_cast<float>(titleTexture->height) / static_cast<float>(m_framebufferSize_h)) * 0.0001f;
         glm::vec3 position = glm::vec3(1.0 - scale_x, 1.0 - scale_y, -1.0);
         //std::cout  << "Scale x: " << scale_x << " - " << scale_y << std::endl;
 

@@ -23,8 +23,44 @@
 
 #include "graphics_engine.hpp"
 
+void cGraphicsEngine::m_p1_createFBO(void)
+{
+    // Delete the FBO if it already exists
+    if (m_p1_fbo != 0)
+        glDeleteFramebuffers(1, &m_p1_fbo);
+
+    // Delete any textures attached to the FBO
+    if (m_p1_depthMapID != 0)
+        glDeleteTextures(1, &m_p1_depthMapID);
+
+    // Frame buffer Object
+    glGenFramebuffers(1, &m_p1_fbo);
+
+    // Depth map texture
+    glGenTextures(1, &m_p1_depthMapID);
+    glBindTexture(GL_TEXTURE_2D, m_p1_depthMapID);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, m_renderBufferSize_w, m_renderBufferSize_h, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    float borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+
+    // Attach the shadow map to the frame buffer
+    glBindFramebuffer(GL_FRAMEBUFFER, m_p1_fbo);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_p1_depthMapID, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 void cGraphicsEngine::m_p1_initialize(void)
 {
+    // Create the FBO
+    m_p1_createFBO();
+
     // Initialize shader
     m_p1_shader.initialize();
     m_p1_shader.load("1_directionalShadow");
@@ -49,34 +85,20 @@ void cGraphicsEngine::m_p1_initialize(void)
     //glm::mat4 lightView = glm::lookAt(m_lightManager.directionalLight.direction, m_camera.getTarget(), m_camera.getOrientation());
     //glm::mat4 lightView = glm::mat4(1);
     m_p1_lightMatrix = m_p1_projectionMatrix * m_p1_viewMatrix;
-
-    // Frame buffer Object
-    glGenFramebuffers(1, &m_p1_fbo);
-
-    // Depth map texture
-    glGenTextures(1, &m_p1_depthMapID);
-    glBindTexture(GL_TEXTURE_2D, m_p1_depthMapID);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, m_renderBufferSize_w, m_renderBufferSize_h, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    float borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
-    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
-
-    // Attach the shadow map to the frame buffer
-    glBindFramebuffer(GL_FRAMEBUFFER, m_p1_fbo);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_p1_depthMapID, 0);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glBindTexture(GL_TEXTURE_2D, 0);
 };
 
 void cGraphicsEngine::m_p1_terminate(void)
 {
+    // Terminate the shader
     m_p1_shader.terminate();
-    glDeleteFramebuffers(1, &m_p1_fbo);
+
+    // Delete the FBO if it exists
+    if (m_p1_fbo != 0)
+        glDeleteFramebuffers(1, &m_p1_fbo);
+
+    // Delete any textures attached to the FBO
+    if (m_p1_depthMapID != 0)
+        glDeleteTextures(1, &m_p1_depthMapID);
 };
 
 void cGraphicsEngine::m_p1_render(void)
