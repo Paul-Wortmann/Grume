@@ -553,16 +553,45 @@ void cUIManager::process(void)
                 // avoid double click
                 m_io->keyReadyMap[GLFW_MOUSE_BUTTON_RIGHT] = false;
 
-                // Inventory item drop
+                // inventory click
+                // if inventory and vendor menus active, sell item
+                // if inventory and equipment menus active, equip item
+                // else drop item
+
+                // Inventory item right clicked
                 if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionInventorySlot_1) &&
                     (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionInventorySlot_54))
                 {
-                    // create event
-                    sUIEvent* event = new sUIEvent;
-                    event->type = eUIEventType::UIEventType_dropGround;
-                    event->function_1 = eUIEventFunction::UIEventFunction_inventory;
-                    event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
-                    m_event.push(event);
+                    // sell item
+                    if (getMenuEnabled(eMenuType::menuTypeVendor))
+                    {
+                        // create event
+                        sUIEvent* event = new sUIEvent;
+                        event->type = eUIEventType::UIEventType_sellItem;
+                        event->function_1 = eUIEventFunction::UIEventFunction_inventory;
+                        event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                        m_event.push(event);
+                    }
+                    // equip item
+                    else if (getMenuEnabled(eMenuType::menuTypeEquipment))
+                    {
+                        // create event
+                        sUIEvent* event = new sUIEvent;
+                        event->type = eUIEventType::UIEventType_equipItem;
+                        event->function_1 = eUIEventFunction::UIEventFunction_inventory;
+                        event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                        m_event.push(event);
+                    }
+                    // Drop item
+                    else
+                    {
+                        // create event
+                        sUIEvent* event = new sUIEvent;
+                        event->type = eUIEventType::UIEventType_dropGround;
+                        event->function_1 = eUIEventFunction::UIEventFunction_inventory;
+                        event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1);
+                        m_event.push(event);
+                    }
                 }
             }
 

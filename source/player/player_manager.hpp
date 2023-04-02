@@ -48,6 +48,9 @@ class cPlayerManager :tcTemplateEngine
         void              swapStorage(cPlayerStorage *&_sourceStorage, const std::uint32_t &_slot1, cPlayerStorage *&_destinationStorage, const std::uint32_t &_slot2);
         void              unequip(const std::uint32_t &_slot);
         void              equip(sEntity* &_entity);
+        void              equipInventorySlot(const std::uint32_t &_slot);
+        void              sellInventorySlot(const std::uint32_t &_slot);
+        void              buyVendorSlot(const std::uint32_t &_slot);
         void              moveStorage(const ePlayerStorageType &_type1, const std::uint32_t &_slot1, const ePlayerStorageType &_type2, const std::uint32_t &_slot2);
         void              clearStorage(void);
         void              updateFreeSlotCount(void);

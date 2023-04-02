@@ -470,7 +470,10 @@ enum eUIEventType : std::uint32_t
     UIEventType_dropGround      = 3, // drop ground event
     UIEventType_dropMenu        = 4, // drop menu event
     UIEventType_setSlotType     = 5, // component slot type
-    UIEventType_equipmentChange = 6  // player has changed equipment
+    UIEventType_equipmentChange = 6, // player has changed equipment
+    UIEventType_sellItem        = 7, // sell item
+    UIEventType_buyItem         = 8, // buy item
+    UIEventType_equipItem       = 9  // equip item
 };
 
 // Event function enum

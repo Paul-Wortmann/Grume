@@ -680,7 +680,26 @@ void cGameEngine::process(void)
                     m_playerManager.waypointsSetDrag(tEvent->data_1, false);
                     m_playerManager.waypointsDrop(tEvent->data_1);
                 }
+            }
 
+            // Component sell item
+            else if (tEvent->type == eUIEventType::UIEventType_sellItem)
+            {
+                // Inventory
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
+                {
+                    m_playerManager.sellInventorySlot(tEvent->data_1);
+                }
+            }
+
+            // Component equip item
+            else if (tEvent->type == eUIEventType::UIEventType_equipItem)
+            {
+                // Inventory
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
+                {
+                    m_playerManager.equipInventorySlot(tEvent->data_1);
+                }
             }
 
             // Component drop menu
