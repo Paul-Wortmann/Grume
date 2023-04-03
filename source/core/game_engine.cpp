@@ -682,6 +682,16 @@ void cGameEngine::process(void)
                 }
             }
 
+            // Component buy item
+            else if (tEvent->type == eUIEventType::UIEventType_buyItem)
+            {
+                // Inventory
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
+                {
+                    m_playerManager.buyVendorSlot(tEvent->data_1);
+                }
+            }
+
             // Component sell item
             else if (tEvent->type == eUIEventType::UIEventType_sellItem)
             {

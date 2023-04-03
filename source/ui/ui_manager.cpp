@@ -593,6 +593,22 @@ void cUIManager::process(void)
                         m_event.push(event);
                     }
                 }
+
+                // Vendor item right clicked
+                if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionVendorSlot_1) &&
+                    (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionVendorSlot_54))
+                {
+                    // buy item
+                    if (getMenuEnabled(eMenuType::menuTypeInventory))
+                    {
+                        // create event
+                        sUIEvent* event = new sUIEvent;
+                        event->type = eUIEventType::UIEventType_buyItem;
+                        event->function_1 = eUIEventFunction::UIEventFunction_vendor;
+                        event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1);
+                        m_event.push(event);
+                    }
+                }
             }
 
             // Mouse left pressed
