@@ -273,6 +273,9 @@ void cPlayerManager::unequip(const std::uint32_t &_slot)
     {
         m_playerEquipment->dropItem(_slot);
     }
+
+    // Update plater attributes
+    calculateAttributes();
 }
 
 void cPlayerManager::equip(sEntity* &_entity)

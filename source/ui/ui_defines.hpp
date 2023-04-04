@@ -464,16 +464,17 @@ struct sUIMenu
 // Event type enum
 enum eUIEventType : std::uint32_t
 {
-    UIEventType_none            = 0, // null event
-    UIEventType_click           = 1, // click event
-    UIEventType_drag            = 2, // drag event
-    UIEventType_dropGround      = 3, // drop ground event
-    UIEventType_dropMenu        = 4, // drop menu event
-    UIEventType_setSlotType     = 5, // component slot type
-    UIEventType_equipmentChange = 6, // player has changed equipment
-    UIEventType_sellItem        = 7, // sell item
-    UIEventType_buyItem         = 8, // buy item
-    UIEventType_equipItem       = 9  // equip item
+    UIEventType_none            = 0,  // null event
+    UIEventType_click           = 1,  // click event
+    UIEventType_drag            = 2,  // drag event
+    UIEventType_dropGround      = 3,  // drop ground event
+    UIEventType_dropMenu        = 4,  // drop menu event
+    UIEventType_setSlotType     = 5,  // component slot type
+    UIEventType_equipmentChange = 6,  // player has changed equipment
+    UIEventType_sellItem        = 7,  // sell item
+    UIEventType_buyItem         = 8,  // buy item
+    UIEventType_equipItem       = 9,  // equip item
+    UIEventType_unequipItem     = 10  // unequip item
 };
 
 // Event function enum

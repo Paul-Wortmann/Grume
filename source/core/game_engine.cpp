@@ -712,6 +712,16 @@ void cGameEngine::process(void)
                 }
             }
 
+            // Component unequip item
+            else if (tEvent->type == eUIEventType::UIEventType_unequipItem)
+            {
+                // Equipment menu
+                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
+                {
+                    m_playerManager.unequip(tEvent->data_1);
+                }
+            }
+
             // Component drop menu
             else if (tEvent->type == eUIEventType::UIEventType_dropMenu)
             {

@@ -609,6 +609,22 @@ void cUIManager::process(void)
                         m_event.push(event);
                     }
                 }
+
+                // Equipment item right clicked
+                if ((m_menu[menuNum].component[componentNum].function >= eComponentFunction::componentFunctionEquipmentSlot_1) &&
+                    (m_menu[menuNum].component[componentNum].function <= eComponentFunction::componentFunctionEquipmentSlot_14))
+                {
+                    // unequip item
+                    if (getMenuEnabled(eMenuType::menuTypeInventory))
+                    {
+                        // create event
+                        sUIEvent* event = new sUIEvent;
+                        event->type = eUIEventType::UIEventType_unequipItem;
+                        event->function_1 = eUIEventFunction::UIEventFunction_equipment;
+                        event->data_1 = static_cast<std::uint32_t>(m_menu[menuNum].component[componentNum].function) - static_cast<std::uint32_t>(eComponentFunction::componentFunctionEquipmentSlot_1);
+                        m_event.push(event);
+                    }
+                }
             }
 
             // Mouse left pressed
