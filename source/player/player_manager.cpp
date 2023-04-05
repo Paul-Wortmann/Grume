@@ -290,7 +290,75 @@ void cPlayerManager::equipInventorySlot(const std::uint32_t &_slot)
 
 void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
 {
+    // Get a pointer to the inventory item
+    sEntity* sourceEntity = getInventoryEntity(_slot);
 
+    // Pointer to the vendor item
+    sEntity* destinationEntity = nullptr;
+
+    // Item added to the vendor
+    bool itemAdded = false;
+
+    // If stackable
+    if (sourceEntity->item->stackMax > 1)
+    {
+        // Find the first stack that we can add to, if there are any
+        for (std::uint32_t i = 0; i < m_playerVendor->getStorageSize(); ++i)
+        {
+            destinationEntity = getVendorEntity(i);
+            if ((itemAdded == false) &&
+                (destinationEntity != nullptr) &&
+                (destinationEntity->item->type == sourceEntity->item->type) &&
+                ((destinationEntity->item->stackSize + sourceEntity->item->stackSize - 1) < destinationEntity->item->stackMax))
+            {
+                // Modify quantities
+                destinationEntity->item->stackSize +=  + sourceEntity->item->stackSize;
+                sourceEntity->item->stackSize = 0;
+
+                // Update stack label
+                m_playerInventory->updateStackLabel(i);
+                m_playerVendor->updateStackLabel(_slot);
+
+                // Update itemAdded flag, set i to a loop exit value
+                itemAdded = true;
+                i = m_playerVendor->getStorageSize();
+            }
+        }
+    }
+
+    // Else non-stackable
+    else
+    {
+        // If there is a free slot
+        if (m_playerVendor->getFreeSlotCount() > 0)
+        {
+            std::uint32_t slotNum = m_playerVendor->getFreeSlot();
+            sPlayerStorageSlot* slot = m_playerVendor->getStorageSlot(slotNum);
+            slot->entity = sourceEntity;
+            slot->occupied = true;
+            slot->dragged = false;
+            m_playerVendor->setFreeSlotCount(m_playerVendor->getFreeSlotCount() - 1);
+
+            // Enable the UI Storage slot
+            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1) + slotNum), true);
+            itemAdded = true;
+        }
+    }
+
+    // if item added remove from the inventory if the stack size is 0 or non-stackable
+    if (itemAdded)
+    {
+        if ((sourceEntity->item->stackMax == 1) ||
+            (sourceEntity->item->stackSize == 0))
+        {
+            sPlayerStorageSlot* slot = m_playerInventory->getStorageSlot(_slot);
+            slot->entity = nullptr;
+            slot->occupied = false;
+            slot->dragged = false;
+            m_playerInventory->setFreeSlotCount(m_playerInventory->getFreeSlotCount() + 1);
+            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), false);
+        }
+    }
 }
 
 void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
