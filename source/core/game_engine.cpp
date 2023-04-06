@@ -668,12 +668,14 @@ void cGameEngine::process(void)
                     m_playerManager.inventorySetDrag(tEvent->data_1, false);
                     m_playerManager.inventoryDrop(tEvent->data_1);
                 }
+/*
                 // Vendor drop
                 if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
                 {
                     m_playerManager.vendorSetDrag(tEvent->data_1, false);
                     m_playerManager.vendorDrop(tEvent->data_1);
                 }
+*/
                 // Waypoints drop
                 if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
                 {
