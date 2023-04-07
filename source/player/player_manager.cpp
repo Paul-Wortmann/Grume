@@ -299,6 +299,9 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
     // Item added to the vendor
     bool itemAdded = false;
 
+    // Gold value
+    std::uint32_t goldValue = 0;
+
     // If stackable
     if (sourceEntity->item->stackMax > 1)
     {
@@ -319,6 +322,9 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
                 m_playerInventory->updateStackLabel(i);
                 m_playerVendor->updateStackLabel(_slot);
 
+                // Determine gold value
+                goldValue = sourceEntity->item->goldValue * sourceEntity->item->stackSize;
+
                 // Update itemAdded flag, set i to a loop exit value
                 itemAdded = true;
                 i = m_playerVendor->getStorageSize();
@@ -332,12 +338,16 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
         // If there is a free slot
         if (m_playerVendor->getFreeSlotCount() > 0)
         {
+            // Add to vendor storage
             std::uint32_t slotNum = m_playerVendor->getFreeSlot();
             sPlayerStorageSlot* slot = m_playerVendor->getStorageSlot(slotNum);
             slot->entity = sourceEntity;
             slot->occupied = true;
             slot->dragged = false;
             m_playerVendor->setFreeSlotCount(m_playerVendor->getFreeSlotCount() - 1);
+
+            // Determine gold value
+            goldValue = sourceEntity->item->goldValue;
 
             // Enable the UI Storage slot
             m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1) + slotNum), true);
@@ -351,6 +361,11 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
         if ((sourceEntity->item->stackMax == 1) ||
             (sourceEntity->item->stackSize == 0))
         {
+            // Update player gold
+            m_player->character->gold += goldValue;
+            m_UIManager->setTextGold(m_player->character->gold);
+
+            // Remove item from inventory
             sPlayerStorageSlot* slot = m_playerInventory->getStorageSlot(_slot);
             slot->entity = nullptr;
             slot->occupied = false;
@@ -376,6 +391,9 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
     // Item added to the inventory
     bool itemAdded = false;
 
+    // Gold value
+    std::uint32_t goldValue = 0;
+
     // If stackable
     if (sourceEntity->item->stackMax > 1)
     {
@@ -396,6 +414,9 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
                 m_playerInventory->updateStackLabel(i);
                 m_playerVendor->updateStackLabel(_slot);
 
+                // Determine gold value
+                goldValue = sourceEntity->item->goldValue * sourceEntity->item->stackSize;
+
                 // Update itemAdded flag, set i to a loop exit value
                 itemAdded = true;
                 i = m_playerInventory->getStorageSize();
@@ -409,12 +430,16 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
         // If there is a free slot
         if (m_playerInventory->getFreeSlotCount() > 0)
         {
+            // Add to inventory slot
             std::uint32_t slotNum = m_playerInventory->getFreeSlot();
             sPlayerStorageSlot* slot = m_playerInventory->getStorageSlot(slotNum);
             slot->entity = sourceEntity;
             slot->occupied = true;
             slot->dragged = false;
             m_playerInventory->setFreeSlotCount(m_playerInventory->getFreeSlotCount() - 1);
+
+            // Determine gold value
+            goldValue = sourceEntity->item->goldValue;
 
             // Enable the UI Storage slot
             m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + slotNum), true);
@@ -426,7 +451,7 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
     if (itemAdded)
     {
         // Update player gold
-        m_player->character->gold -= sourceEntity->item->goldValue;
+        m_player->character->gold -= goldValue;
         m_UIManager->setTextGold(m_player->character->gold);
 
         if ((sourceEntity->item->stackMax == 1) ||
