@@ -315,8 +315,8 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
                 ((destinationEntity->item->stackSize + sourceEntity->item->stackSize - 1) < destinationEntity->item->stackMax))
             {
                 // Modify quantities
-                destinationEntity->item->stackSize +=  + sourceEntity->item->stackSize;
-                sourceEntity->item->stackSize = 0;
+                destinationEntity->item->stackSize++;
+                sourceEntity->item->stackSize--;
 
                 // Update stack label
                 m_playerInventory->updateStackLabel(i);
@@ -415,7 +415,7 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
                 m_playerVendor->updateStackLabel(_slot);
 
                 // Determine gold value
-                goldValue = sourceEntity->item->goldValue * sourceEntity->item->stackSize;
+                goldValue = sourceEntity->item->goldValue;// * sourceEntity->item->stackSize;
 
                 // Update itemAdded flag, set i to a loop exit value
                 itemAdded = true;
