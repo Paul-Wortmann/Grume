@@ -60,6 +60,7 @@ class cPlayerStorage
         sPlayerStorageSlot* getStorageSlot(const ePlayerStorageSlotType &_type);
         std::uint32_t       getStorageSlotNumber(const ePlayerStorageSlotType &_type);
         std::uint32_t       getFreeSlot(void);
+        bool                isOccupied(const std::uint32_t _slot) { return &m_storage.slot[_slot].occupied; }
         bool                pickupItem(sEntity* &_entity);
         bool                dropItem(sEntity* &_entity);
         void                dropItem(const std::uint32_t &_slot);

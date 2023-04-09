@@ -402,6 +402,7 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
         {
             destinationEntity = getInventoryEntity(i);
             if ((itemAdded == false) &&
+                (m_playerInventory->isOccupied(i)) &&
                 (destinationEntity != nullptr) &&
                 (destinationEntity->item->type == sourceEntity->item->type) &&
                 (destinationEntity->item->stackSize < destinationEntity->item->stackMax))
@@ -421,6 +422,41 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
                 itemAdded = true;
                 i = m_playerInventory->getStorageSize();
             }
+        }
+
+        // If no available stack found, and a free slot is available
+        if ((!itemAdded) && (m_playerInventory->getFreeSlotCount() > 0))
+        {
+            // Duplicate source entity
+            destinationEntity = m_entityManager->duplicateEntity(sourceEntity);
+
+            // Modify quantities
+            destinationEntity->item->stackSize = 1;
+            sourceEntity->item->stackSize--;
+
+            // Add to inventory slot
+            std::uint32_t slotNum = m_playerInventory->getFreeSlot();
+            sPlayerStorageSlot* slot = m_playerInventory->getStorageSlot(slotNum);
+            slot->entity = destinationEntity;
+            slot->occupied = true;
+            slot->dragged = false;
+            m_playerInventory->setFreeSlotCount(m_playerInventory->getFreeSlotCount() - 1);
+
+            // Determine gold value
+            goldValue = destinationEntity->item->goldValue;
+
+            // Enable the UI Storage slot
+            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + slotNum), true);
+
+            // Update stack label
+            m_playerInventory->updateStackLabel(slotNum);
+            m_playerVendor->updateStackLabel(_slot);
+
+            // Determine gold value
+            goldValue = sourceEntity->item->goldValue;
+
+            // Update itemAdded flag, set i to a loop exit value
+            itemAdded = true;
         }
     }
 
