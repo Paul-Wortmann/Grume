@@ -400,9 +400,9 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
         // Find the first stack that we can add to, if there are any
         for (std::uint32_t i = 0; i < m_playerInventory->getStorageSize(); ++i)
         {
-            destinationEntity = getInventoryEntity(i);
+            std::cout << "Count: " << i << std::endl;
+            destinationEntity = (m_playerInventory->isOccupied(i)) ? getInventoryEntity(i) : nullptr;
             if ((itemAdded == false) &&
-                (m_playerInventory->isOccupied(i)) &&
                 (destinationEntity != nullptr) &&
                 (destinationEntity->item->type == sourceEntity->item->type) &&
                 (destinationEntity->item->stackSize < destinationEntity->item->stackMax))
@@ -445,8 +445,8 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
             // Determine gold value
             goldValue = destinationEntity->item->goldValue;
 
-            // Enable the UI Storage slot
-            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + slotNum), true);
+            // Enable the Imventory Storage slot
+            m_playerInventory->setUISlotEnabled(slotNum, true);
 
             // Update stack label
             m_playerInventory->updateStackLabel(slotNum);
@@ -478,7 +478,7 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
             goldValue = sourceEntity->item->goldValue;
 
             // Enable the UI Storage slot
-            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + slotNum), true);
+            m_playerInventory->setUISlotEnabled(slotNum, true);
             itemAdded = true;
         }
     }
@@ -493,12 +493,7 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
         if ((sourceEntity->item->stackMax == 1) ||
             (sourceEntity->item->stackSize == 0))
         {
-            sPlayerStorageSlot* slot = m_playerVendor->getStorageSlot(_slot);
-            slot->entity = nullptr;
-            slot->occupied = false;
-            slot->dragged = false;
-            m_playerVendor->setFreeSlotCount(m_playerVendor->getFreeSlotCount() + 1);
-            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionVendorSlot_1) + _slot), false);
+            m_playerVendor->purgeSlotEntity(_slot);
         }
     }
 }
