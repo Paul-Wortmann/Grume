@@ -400,7 +400,7 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
         // Find the first stack that we can add to, if there are any
         for (std::uint32_t i = 0; i < m_playerInventory->getStorageSize(); ++i)
         {
-            std::cout << "Count: " << i << std::endl;
+            //std::cout << "Count: " << i << ((m_playerInventory->isOccupied(i)) ? "occupied" : "not occupied") << std::endl;
             destinationEntity = (m_playerInventory->isOccupied(i)) ? getInventoryEntity(i) : nullptr;
             if ((itemAdded == false) &&
                 (destinationEntity != nullptr) &&
