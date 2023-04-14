@@ -366,12 +366,7 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
             m_UIManager->setTextGold(m_player->character->gold);
 
             // Remove item from inventory
-            sPlayerStorageSlot* slot = m_playerInventory->getStorageSlot(_slot);
-            slot->entity = nullptr;
-            slot->occupied = false;
-            slot->dragged = false;
-            m_playerInventory->setFreeSlotCount(m_playerInventory->getFreeSlotCount() + 1);
-            m_UIManager->setMenuComponentEnabled(static_cast<eComponentFunction>(static_cast<std::uint32_t>(eComponentFunction::componentFunctionInventorySlot_1) + _slot), false);
+            m_playerInventory->purgeSlotEntity(_slot);
         }
     }
 }
