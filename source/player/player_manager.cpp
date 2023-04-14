@@ -368,6 +368,10 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
             // Remove item from inventory
             m_playerInventory->purgeSlotEntity(_slot);
         }
+
+        // Update free slot counts
+        m_playerInventory->updateFreeSlotCount();
+        m_playerVendor->updateFreeSlotCount();
     }
 }
 
@@ -490,6 +494,10 @@ void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
         {
             m_playerVendor->purgeSlotEntity(_slot);
         }
+
+        // Update free slot counts
+        m_playerInventory->updateFreeSlotCount();
+        m_playerVendor->updateFreeSlotCount();
     }
 }
 
