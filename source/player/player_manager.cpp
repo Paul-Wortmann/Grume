@@ -374,6 +374,10 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
         m_playerVendor->updateFreeSlotCount();
     }
 }
+//kanarazu
+//narubeku
+//kininaru
+//subete
 
 void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
 {
