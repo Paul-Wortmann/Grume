@@ -37,7 +37,7 @@ struct sEntityModelVertex
 
 struct sEntityModelVertexBone
 {
-    glm::vec4  boneWeight  = glm::vec4(0.0);
+    glm::vec4  boneWeight  = glm::vec4(0.0f, 0.0f, 0.0f, 0.0f);
     glm::ivec4 boneID      = glm::ivec4(0);
 };
 
