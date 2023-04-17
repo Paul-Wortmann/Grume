@@ -178,6 +178,54 @@ std::string cXML::getString(const std::string &_key, const std::uint32_t _instan
     return rString;
 }
 
+std::string cXML::getStringKeyValue(const std::string &_key, const std::string &_keyID, const std::uint32_t  _instance)
+{
+    // Get the string to parse
+    std::uint32_t instanceCount = 0;
+    std::string   dataLine = "";
+    std::uint32_t dataLineLength = 0;
+    std::string   rString = "";
+    for (std::size_t i = 0; i < m_lineCount; ++i)
+    {
+        if (m_line[i].find(_key) != std::string::npos)
+        {
+            instanceCount++;
+            if (instanceCount == _instance)
+            {
+                dataLine = m_line[i];
+                dataLineLength = dataLine.length();
+            }
+        }
+    }
+
+    // Early exit no data
+    if (dataLineLength == 0)
+        return rString;
+
+    // find and return _keyID
+    std::string keyID = _keyID + "=" + '"';
+    if (dataLine.find(keyID) != std::string::npos)
+    {
+        std::size_t start = dataLine.find(keyID) + keyID.length();
+        for(std::size_t j = start; j < dataLine.length(); ++j)
+        {
+            if (dataLine[j] == '"')
+            {
+                j = dataLine.length();
+            }
+            else
+            {
+                if (dataLine[j] != '"')
+                {
+                    rString += dataLine[j];
+                }
+            }
+        }
+    }
+
+    return rString;
+}
+
 std::int32_t cXML::getInteger(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);

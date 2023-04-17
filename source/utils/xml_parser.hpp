@@ -39,6 +39,7 @@ class cXML
         std::string   line(std::uint32_t _lineNum) { return (_lineNum < m_lineCount) ? m_line[_lineNum] : ""; }
         std::uint32_t getInstanceCount(const std::string &_key);
         std::string   getString(const std::string &_key, const std::uint32_t  _instance = 1);
+        std::string   getStringKeyValue(const std::string &_key, const std::string &_keyID, const std::uint32_t  _instance = 1);
         std::int32_t  getInteger(const std::string &_key, const std::uint32_t  _instance = 1);
         std::uint64_t getInteger64(const std::string &_key, const std::uint32_t  _instance = 1);
         float         getFloat(const std::string &_key, const std::uint32_t  _instance = 1);
