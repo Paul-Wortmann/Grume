@@ -35,6 +35,13 @@
 #include "../3rd_party/stb_truetype.hpp"
 #include "../3rd_party/stb_vorbis.hpp"
 
+// Assimp
+#include <assimp/cimport.h>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/scene.h>
+#include <assimp/version.h>
+
 // GLM
 #define GLM_ENABLE_EXPERIMENTAL
 #define GLM_FORCE_RADIANS

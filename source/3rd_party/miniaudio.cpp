@@ -60748,11 +60748,11 @@ static void ma_engine_node_process_pcm_frames__sound(ma_node* pNode, const float
     ma_sound* pSound = (ma_sound*)pNode;
     ma_uint32 frameCount = *pFrameCountOut;
     ma_uint32 totalFramesRead = 0;
-    ma_format dataSourceFormat;
-    ma_uint32 dataSourceChannels;
+    ma_format dataSourceFormat = ma_format::ma_format_unknown;
+    ma_uint32 dataSourceChannels = 0;
     ma_uint8 temp[MA_DATA_CONVERTER_STACK_BUFFER_SIZE];
-    ma_uint32 tempCapInFrames;
-    ma_uint64 seekTarget;
+    ma_uint32 tempCapInFrames = 0;
+    ma_uint64 seekTarget = 0;
 
     /* This is a data source node which means no input buses. */
     (void)ppFramesIn;

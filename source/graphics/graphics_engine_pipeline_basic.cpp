@@ -193,28 +193,28 @@ void cGraphicsEngine::m_pb_render(void)
             }
 
             // Model
-            for (std::uint32_t j = 0; j < m_entityTemp->graphics->model->numMesh; ++j)
+            for (std::uint32_t i = 0; i < m_entityTemp->graphics->model->numMesh; ++i)
             {
-                if ((m_entityTemp->graphics->model->mesh[j].enabled) &&
-                    (m_entityTemp->graphics->model->mesh[j].VAO != 0))
+                if ((m_entityTemp->graphics->model->mesh[i].enabled) &&
+                    (m_entityTemp->graphics->model->mesh[i].VAO != 0))
                 {
                     // Use textures
                     if (m_entityTemp->graphics->material != nullptr)
                     {
                         glActiveTexture(GL_TEXTURE0);
-                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[j % m_entityTemp->graphics->numMaterial]->diffuse->ID);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->graphics->material[i % m_entityTemp->graphics->numMaterial]->diffuse->ID);
                     }
 
                     // VAO
-                    glBindVertexArray(m_entityTemp->graphics->model->mesh[j].VAO);
+                    glBindVertexArray(m_entityTemp->graphics->model->mesh[i].VAO);
                     if (m_wireframe)
                     {
-                        glDrawElements(GL_LINE_LOOP, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
+                        glDrawElements(GL_LINE_LOOP, m_entityTemp->graphics->model->mesh[i].numIndex, GL_UNSIGNED_INT, nullptr);
                     }
                     else
                     {
                         //glDrawArrays(GL_TRIANGLES, 0, 3);
-                        glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[j].numIndex, GL_UNSIGNED_INT, nullptr);
+                        glDrawElements(GL_TRIANGLES, m_entityTemp->graphics->model->mesh[i].numIndex, GL_UNSIGNED_INT, nullptr);
                     }
                 }
             }

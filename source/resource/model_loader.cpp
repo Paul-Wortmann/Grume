@@ -475,6 +475,13 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                 }
                 m_processNode(scene, scene->mRootNode, tModel);
 
+
+                if (m_boneMap.size() > 40)
+                {
+                    std::cout << "Player detected: " << tModel->fileName << std::endl;
+                    std::cout << "Num animations: " << tModel->numAnimations << std::endl;
+                }
+
                 // Clean up
                 m_boneMap.clear();
                 return tModel;

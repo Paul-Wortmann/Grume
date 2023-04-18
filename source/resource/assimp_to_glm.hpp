@@ -24,13 +24,6 @@
 #ifndef ASSIMP_TO_GLM_HPP
 #define ASSIMP_TO_GLM_HPP
 
-// Assimp
-#include <assimp/cimport.h>
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#include <assimp/scene.h>
-#include <assimp/version.h>
-
 #include "../core/includes.hpp"
 
 static inline glm::vec3 toVec3(const aiVector3D &v) { return glm::vec3(v.x, v.y, v.z); }

@@ -269,6 +269,7 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, std::int64_t _deltaTime
     // Processed animations
     if ((m_entityTemp->animation->finishedAnimation == false) && (m_entityTemp->graphics != nullptr) && (m_entityTemp->graphics->model != nullptr) && (m_entityTemp->graphics->model->animation != nullptr))
     {
+
         // Initialize the bone transforms if need be
         if (m_entityTemp->animation->boneTransform == nullptr)
         {
@@ -281,6 +282,7 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, std::int64_t _deltaTime
         m_entityTemp->animation->currentAnimTime += static_cast<float>(_deltaTime) / 1000.0f; // convert milliseconds to seconds
         if (m_entityTemp->animation->currentAnimTime > m_entityTemp->animation->stopAnimTime)
         {
+
             if (m_entityTemp->animation->repeatAnimation == true)
             {
                 m_entityTemp->animation->currentAnimTime = m_entityTemp->animation->startAnimTime;
@@ -300,5 +302,6 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, std::int64_t _deltaTime
         {
             m_entityTemp->animation->boneTransform[i] = m_entityTemp->graphics->model->bone[i].transformFinal;
         }
+
     }
 }
