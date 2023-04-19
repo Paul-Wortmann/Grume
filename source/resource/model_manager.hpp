@@ -35,8 +35,6 @@
 #include "../entity/entity_model.hpp"
 
 #include "../core/includes.hpp"
-#include "../utils/file_utils.hpp"
-#include "../utils/xml_parser.hpp"
 
 class cModelManager : public tcLinkedList<sEntityModel>
 {
