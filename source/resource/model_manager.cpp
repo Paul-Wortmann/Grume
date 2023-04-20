@@ -247,16 +247,16 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     sEntityModel* tModel = nullptr;
 
     // Use individual loaders based on file extension
-    //std::string fileExtension = gFileExtension(_fileName);
-    //if (strcmp(fileExtension.c_str(), "obj") == 0)
-    //{
-    //    model_obj_import(tModel, std::string(FILE_PATH_MODEL) + _fileName);
-    //}
+    std::string fileExtension = gFileExtension(_fileName);
+    if (strcmp(fileExtension.c_str(), "obj") == 0)
+    {
+        model_obj_import(tModel, std::string(FILE_PATH_MODEL) + _fileName);
+    }
     // Else try to load the model with assimp
-    //else
-    //{
+    else
+    {
         tModel = m_loadModel(_fileName);
-    //}
+    }
 
     // store the model if it is valid
     if (tModel != nullptr)

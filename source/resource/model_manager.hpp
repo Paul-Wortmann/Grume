@@ -24,9 +24,6 @@
 #ifndef MODEL_MANAGER_HPP
 #define MODEL_MANAGER_HPP
 
-#include <cstdint>
-#include <string>
-
 #include "assimp_to_glm.hpp"
 #include "material_define.hpp"
 #include "model_dae.hpp"
