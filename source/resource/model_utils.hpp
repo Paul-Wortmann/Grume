@@ -24,9 +24,6 @@
 #ifndef MODEL_UTILS_HPP
 #define MODEL_UTILS_HPP
 
-#include <cstdint>
-#include <string>
-
 #include "../core/includes.hpp"
 #include "../entity/entity_model.hpp"
 
