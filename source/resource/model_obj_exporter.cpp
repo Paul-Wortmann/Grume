@@ -26,6 +26,21 @@
 void model_obj_export(sEntityModel* &_model, const std::string &_fileName)
 {
 /*
+    // Create a temp obj
+    sOBJ *obj = nullptr;
+
+    // copy the game engine model data to the temp obj
+
+
+    // Export using the standalone obj exporter
+    gSaveOBJ(obj, _fileName);
+
+    // Free the temp obj data
+    gFreeOBJ(obj);
+*/
+
+
+/*
     // Early exit if no data
     if (_model == nullptr)
     {

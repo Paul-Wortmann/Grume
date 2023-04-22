@@ -262,6 +262,7 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     else
     {
         tModel = m_loadModel(_fileName);
+        std::cout << "Loading model: " << _fileName << std::endl;
     }
 
     // store the model if it is valid
