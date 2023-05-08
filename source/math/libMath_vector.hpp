@@ -31,13 +31,16 @@
 typedef vec2_t<float32> vec2;
 typedef vec2_t<float32> vec2f;
 typedef vec2_t<float64> vec2d;
+typedef vec2_t<int32>   ivec2;
 
 typedef vec3_t<float32> vec3;
 typedef vec3_t<float32> vec3f;
 typedef vec3_t<float64> vec3d;
+typedef vec3_t<int32>   ivec3;
 
 typedef vec4_t<float32> vec4;
 typedef vec4_t<float32> vec4f;
 typedef vec4_t<float64> vec4d;
+typedef vec4_t<int32>   ivec4;
 
 #endif // LIB_MATH_VECTOR_HPP

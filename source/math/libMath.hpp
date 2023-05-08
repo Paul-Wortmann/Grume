@@ -23,7 +23,7 @@
 
 #ifndef LIB_MATH_HPP
 #define LIB_MATH_HPP
-/*
+
 #include "libMath_conversion.hpp"
 #include "libMath_defines.hpp"
 #include "libMath_includes.hpp"
@@ -32,6 +32,6 @@
 #include "libMath_transform.hpp"
 #include "libMath_vector.hpp"
 #include "libMath_version.hpp"
-*/
+
 #endif //LIB_MATH_HPP
 

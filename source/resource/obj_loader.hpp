@@ -30,7 +30,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-
+/*
 #ifndef vec3
 struct vec3
 {
@@ -56,7 +56,7 @@ struct ivec3
     std::uint32_t t = 0;
 };
 #endif // ivec3
-
+*/
 struct sOBJMesh
 {
     std::string    name        = {};
