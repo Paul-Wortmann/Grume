@@ -56,18 +56,18 @@ void model_obj_import(sEntityModel *&_model, const std::string &_fileName)
             _model->mesh[m].index[v] = v;
 
             // Vertex positions
-            _model->mesh[m].vertex[v].position.x = obj->mesh[m].vertex[obj->mesh[m].index[v].v - 1].x;
-            _model->mesh[m].vertex[v].position.y = obj->mesh[m].vertex[obj->mesh[m].index[v].v - 1].y;
-            _model->mesh[m].vertex[v].position.z = obj->mesh[m].vertex[obj->mesh[m].index[v].v - 1].z;
+            _model->mesh[m].vertex[v].position.x = obj->mesh[m].vertex[obj->mesh[m].index[v].x - 1].x;
+            _model->mesh[m].vertex[v].position.y = obj->mesh[m].vertex[obj->mesh[m].index[v].x - 1].y;
+            _model->mesh[m].vertex[v].position.z = obj->mesh[m].vertex[obj->mesh[m].index[v].x - 1].z;
 
             // Vertex normals
-            _model->mesh[m].vertex[v].normal.x = obj->mesh[m].normal[obj->mesh[m].index[v].n - 1].x;
-            _model->mesh[m].vertex[v].normal.y = obj->mesh[m].normal[obj->mesh[m].index[v].n - 1].y;
-            _model->mesh[m].vertex[v].normal.z = obj->mesh[m].normal[obj->mesh[m].index[v].n - 1].z;
+            _model->mesh[m].vertex[v].normal.x = obj->mesh[m].normal[obj->mesh[m].index[v].y - 1].x;
+            _model->mesh[m].vertex[v].normal.y = obj->mesh[m].normal[obj->mesh[m].index[v].y - 1].y;
+            _model->mesh[m].vertex[v].normal.z = obj->mesh[m].normal[obj->mesh[m].index[v].y - 1].z;
 
             // Vertex texture coordinates
-            _model->mesh[m].vertex[v].texcoord.x = obj->mesh[m].texCoord[obj->mesh[m].index[v].t - 1].x;
-            _model->mesh[m].vertex[v].texcoord.y = obj->mesh[m].texCoord[obj->mesh[m].index[v].t - 1].y;
+            _model->mesh[m].vertex[v].texcoord.x = obj->mesh[m].texCoord[obj->mesh[m].index[v].z - 1].x;
+            _model->mesh[m].vertex[v].texcoord.y = obj->mesh[m].texCoord[obj->mesh[m].index[v].z - 1].y;
         }
 
         // Calculate tangent and bi-tangent vectors

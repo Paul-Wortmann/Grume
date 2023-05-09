@@ -30,6 +30,9 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+
+#include "../math/libMath.hpp"
+
 /*
 #ifndef vec3
 struct vec3
@@ -51,12 +54,13 @@ struct vec2
 #ifndef ivec3
 struct ivec3
 {
-    std::uint32_t v = 0;
-    std::uint32_t n = 0;
-    std::uint32_t t = 0;
+    std::uint32_t x = 0;
+    std::uint32_t y = 0;
+    std::uint32_t z = 0;
 };
 #endif // ivec3
 */
+
 struct sOBJMesh
 {
     std::string    name        = {};

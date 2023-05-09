@@ -174,16 +174,16 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
             if (_line[i] == ' ')
             {
                 if (sCount == _number)
-                    returnData.n = std::stoi(tData);
+                    returnData.y = std::stoi(tData);
                 sCount++;
                 tData = "";
             }
             else if ((_line[i] == '/') && (sCount == _number))
             {
                 if (dCount == 0)
-                    returnData.v = std::stoi(tData);
+                    returnData.x = std::stoi(tData);
                 else if (dCount == 1)
-                    returnData.t = std::stoi(tData);
+                    returnData.z = std::stoi(tData);
                 dCount++;
                 tData = "";
             }
@@ -412,17 +412,17 @@ void gSaveOBJ(sOBJ *&_obj, const std::string &_fileName)
         // For each triangle face
         for (std::uint32_t f = 0; f < _obj->mesh[m].numIndex; f += 3)
         {
-            objFile << "f " << _obj->mesh[m].index[f + 0].v << "/"
-                            << _obj->mesh[m].index[f + 0].t << "/"
-                            << _obj->mesh[m].index[f + 0].n << " "
+            objFile << "f " << _obj->mesh[m].index[f + 0].x << "/"
+                            << _obj->mesh[m].index[f + 0].y << "/"
+                            << _obj->mesh[m].index[f + 0].z << " "
 
-                            << _obj->mesh[m].index[f + 1].v << "/"
-                            << _obj->mesh[m].index[f + 1].t << "/"
-                            << _obj->mesh[m].index[f + 1].n << " "
+                            << _obj->mesh[m].index[f + 1].x << "/"
+                            << _obj->mesh[m].index[f + 1].y << "/"
+                            << _obj->mesh[m].index[f + 1].z << " "
 
-                            << _obj->mesh[m].index[f + 2].v << "/"
-                            << _obj->mesh[m].index[f + 2].t << "/"
-                            << _obj->mesh[m].index[f + 2].n << std::endl;
+                            << _obj->mesh[m].index[f + 2].x << "/"
+                            << _obj->mesh[m].index[f + 2].y << "/"
+                            << _obj->mesh[m].index[f + 2].z << std::endl;
         }
 
     }
