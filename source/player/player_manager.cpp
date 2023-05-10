@@ -374,10 +374,6 @@ void cPlayerManager::sellInventorySlot(const std::uint32_t &_slot)
         m_playerVendor->updateFreeSlotCount();
     }
 }
-//kanarazu
-//narubeku
-//kininaru
-//subete
 
 void cPlayerManager::buyVendorSlot(const std::uint32_t &_slot)
 {
@@ -1593,8 +1589,8 @@ void cPlayerManager::calculateAttributes(void)
 
     }
 
-std::cout << "-----------------------------------------------------" << std::endl;
-std::cout << "Player level: " << m_player->character->level.current << std::endl;
+//std::cout << "-----------------------------------------------------" << std::endl;
+//std::cout << "Player level: " << m_player->character->level.current << std::endl;
 
     // Health
     // HP = baseHP + (level * 50%) + ((level * 250%) * vitality)
@@ -1605,7 +1601,7 @@ std::cout << "Player level: " << m_player->character->level.current << std::endl
     totalHealth += ((m_player->character->level.current * HPBias_2) * totalVitality);
     m_player->character->attribute.health.current.max = totalHealth;
 
-std::cout << "HP: " << m_player->character->attribute.health.current.max << std::endl;
+//std::cout << "HP: " << m_player->character->attribute.health.current.max << std::endl;
 
     // HP regen = baseHPregen + (level * 50%) + ((level * 250%) * vitality)
     float HPRegenBias_1 = 0.005f;
@@ -1615,7 +1611,7 @@ std::cout << "HP: " << m_player->character->attribute.health.current.max << std:
     totalHealthRegen += ((m_player->character->level.current * HPRegenBias_2) * totalVitality);
     m_player->character->attribute.health.current.regen = totalHealthRegen;
 
-std::cout << "HP Regen: " << m_player->character->attribute.health.current.regen << std::endl;
+//std::cout << "HP Regen: " << m_player->character->attribute.health.current.regen << std::endl;
 
     // Mana
     // MP = baseMP + (level * 50%) + ((level * 250%) * energy)
@@ -1626,7 +1622,7 @@ std::cout << "HP Regen: " << m_player->character->attribute.health.current.regen
     totalMana += ((m_player->character->level.current * MPBias_2) * totalEnergy);
     m_player->character->attribute.mana.current.max = totalMana;
 
-std::cout << "MP: " << m_player->character->attribute.mana.current.max << std::endl;
+//std::cout << "MP: " << m_player->character->attribute.mana.current.max << std::endl;
 
     // MP regen = baseMPregen + (level * 50%) + ((level * 250%) * energy)
     float MPRegenBias_1 = 0.005f;
@@ -1636,7 +1632,7 @@ std::cout << "MP: " << m_player->character->attribute.mana.current.max << std::e
     totalManaRegen += ((m_player->character->level.current * MPRegenBias_2) * totalEnergy);
     m_player->character->attribute.mana.current.regen = totalManaRegen;
 
-std::cout << "MP Regen: " << m_player->character->attribute.mana.current.regen << std::endl;
+//std::cout << "MP Regen: " << m_player->character->attribute.mana.current.regen << std::endl;
 
     // Physical damage
     // Damage = (base x strength x bias_1) + (level x strength x bias_2)
@@ -1646,7 +1642,7 @@ std::cout << "MP Regen: " << m_player->character->attribute.mana.current.regen <
     physicalDamageTotal += (m_player->character->level.current * totalStrength * damageBias_2);
     m_player->character->attribute.damagePhysical.current.amount = physicalDamageTotal;
 
-std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
+//std::cout << "Physical damage amount: " << m_player->character->attribute.damagePhysical.current.amount << std::endl;
 
     // Physical damage crit multiplier
     float critMultiplierBias_1 = 0.05f;
@@ -1656,7 +1652,7 @@ std::cout << "Physical damage amount: " << m_player->character->attribute.damage
     physicalCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
     m_player->character->attribute.damagePhysical.current.critMultiplier = physicalCritMultipTotal;
 
-std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
+//std::cout << "Physical damage crit multiplier: " << m_player->character->attribute.damagePhysical.current.critMultiplier << std::endl;
 
     // Physical damage crit chance
     float critChanceBias_1 = 0.25f;
@@ -1668,7 +1664,7 @@ std::cout << "Physical damage crit multiplier: " << m_player->character->attribu
         physicalCritChanceTotal = physicalCritChanceMax;
     m_player->character->attribute.damagePhysical.current.critChance = physicalCritChanceTotal;
 
-std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
+//std::cout << "Physical damage crit chance: " << m_player->character->attribute.damagePhysical.current.critChance << std::endl;
 
     // Fire damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
@@ -1678,7 +1674,7 @@ std::cout << "Physical damage crit chance: " << m_player->character->attribute.d
     fireDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageFire.current.amount = fireDamageTotal;
 
-std::cout << "Fire damage amount: " << m_player->character->attribute.damageFire.current.amount << std::endl;
+//std::cout << "Fire damage amount: " << m_player->character->attribute.damageFire.current.amount << std::endl;
 
     // Fire damage crit multiplier
     critMultiplierBias_1 = 0.05f;
@@ -1688,7 +1684,7 @@ std::cout << "Fire damage amount: " << m_player->character->attribute.damageFire
     fireCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
     m_player->character->attribute.damageFire.current.critMultiplier = fireCritMultipTotal;
 
-std::cout << "Fire damage crit multiplier: " << m_player->character->attribute.damageFire.current.critMultiplier << std::endl;
+//std::cout << "Fire damage crit multiplier: " << m_player->character->attribute.damageFire.current.critMultiplier << std::endl;
 
     // Fire damage crit chance
     critChanceBias_1 = 0.25f;
@@ -1700,7 +1696,7 @@ std::cout << "Fire damage crit multiplier: " << m_player->character->attribute.d
         fireCritChanceTotal = fireCritChanceMax;
     m_player->character->attribute.damageFire.current.critChance = fireCritChanceTotal;
 
-std::cout << "Fire damage crit chance: " << m_player->character->attribute.damageFire.current.critChance << std::endl;
+//std::cout << "Fire damage crit chance: " << m_player->character->attribute.damageFire.current.critChance << std::endl;
 
     // Ice damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
@@ -1710,7 +1706,7 @@ std::cout << "Fire damage crit chance: " << m_player->character->attribute.damag
     iceDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageIce.current.amount = iceDamageTotal;
 
-std::cout << "Ice damage amount: " << m_player->character->attribute.damageIce.current.amount << std::endl;
+//std::cout << "Ice damage amount: " << m_player->character->attribute.damageIce.current.amount << std::endl;
 
     // Ice damage crit multiplier
     critMultiplierBias_1 = 0.05f;
@@ -1720,7 +1716,7 @@ std::cout << "Ice damage amount: " << m_player->character->attribute.damageIce.c
     iceCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
     m_player->character->attribute.damageIce.current.critMultiplier = iceCritMultipTotal;
 
-std::cout << "Ice damage crit multiplier: " << m_player->character->attribute.damageIce.current.critMultiplier << std::endl;
+//std::cout << "Ice damage crit multiplier: " << m_player->character->attribute.damageIce.current.critMultiplier << std::endl;
 
     // Ice damage crit chance
     critChanceBias_1 = 0.25f;
@@ -1732,7 +1728,7 @@ std::cout << "Ice damage crit multiplier: " << m_player->character->attribute.da
         iceCritChanceTotal = iceCritChanceMax;
     m_player->character->attribute.damageIce.current.critChance = iceCritChanceTotal;
 
-std::cout << "Ice damage crit chance: " << m_player->character->attribute.damageIce.current.critChance << std::endl;
+//std::cout << "Ice damage crit chance: " << m_player->character->attribute.damageIce.current.critChance << std::endl;
 
     // Lightning damage
     // Damage = (base x energy x bias_1) + (level x energy x bias_2)
@@ -1742,7 +1738,7 @@ std::cout << "Ice damage crit chance: " << m_player->character->attribute.damage
     lightningDamageTotal += (m_player->character->level.current * totalEnergy * damageBias_2);
     m_player->character->attribute.damageLightning.current.amount = lightningDamageTotal;
 
-std::cout << "Lightning damage amount: " << m_player->character->attribute.damageLightning.current.amount << std::endl;
+//std::cout << "Lightning damage amount: " << m_player->character->attribute.damageLightning.current.amount << std::endl;
 
     // Lightning damage crit multiplier
     critMultiplierBias_1 = 0.05f;
@@ -1752,7 +1748,7 @@ std::cout << "Lightning damage amount: " << m_player->character->attribute.damag
     lightningCritMultipTotal += m_player->character->level.current * critMultiplierBias_2;
     m_player->character->attribute.damageLightning.current.critMultiplier = lightningCritMultipTotal;
 
-std::cout << "Lightning damage crit multiplier: " << m_player->character->attribute.damageLightning.current.critMultiplier << std::endl;
+//std::cout << "Lightning damage crit multiplier: " << m_player->character->attribute.damageLightning.current.critMultiplier << std::endl;
 
     // Lightning damage crit chance
     critChanceBias_1 = 0.25f;
@@ -1764,7 +1760,7 @@ std::cout << "Lightning damage crit multiplier: " << m_player->character->attrib
         lightningCritChanceTotal = lightningCritChanceMax;
     m_player->character->attribute.damageLightning.current.critChance = lightningCritChanceTotal;
 
-std::cout << "Lightning damage crit chance: " << m_player->character->attribute.damageLightning.current.critChance << std::endl;
+//std::cout << "Lightning damage crit chance: " << m_player->character->attribute.damageLightning.current.critChance << std::endl;
 
     // Physical armor
     // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
@@ -1774,7 +1770,7 @@ std::cout << "Lightning damage crit chance: " << m_player->character->attribute.
     physicalArmorTotal += (m_player->character->level.current * totalDexterity * armorBias_2);
     m_player->character->attribute.armorPhysical.current.amount = physicalArmorTotal;
 
-std::cout << "Physical armor amount: " << m_player->character->attribute.armorPhysical.current.amount << std::endl;
+//std::cout << "Physical armor amount: " << m_player->character->attribute.armorPhysical.current.amount << std::endl;
 
     // Physical armor block chance
     float armorBlockChanceBias_1 = 0.025f;
@@ -1786,7 +1782,7 @@ std::cout << "Physical armor amount: " << m_player->character->attribute.armorPh
         physicalBlockChanceTotal = physicalBlockChanceMax;
     m_player->character->attribute.armorPhysical.current.blockChance = physicalBlockChanceTotal;
 
-std::cout << "Physical armor block chance: " << m_player->character->attribute.armorPhysical.current.blockChance << std::endl;
+//std::cout << "Physical armor block chance: " << m_player->character->attribute.armorPhysical.current.blockChance << std::endl;
 
     // Physical armor block percent
     float armorBlockPercentBias_1 = 0.125f;
@@ -1796,7 +1792,7 @@ std::cout << "Physical armor block chance: " << m_player->character->attribute.a
     physicalBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
     m_player->character->attribute.armorPhysical.current.blockPercent = physicalBlockPercentTotal;
 
-std::cout << "Physical armor block percent: " << m_player->character->attribute.armorPhysical.current.blockPercent << std::endl;
+//std::cout << "Physical armor block percent: " << m_player->character->attribute.armorPhysical.current.blockPercent << std::endl;
 
     // Fire resistance
     // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
@@ -1806,7 +1802,7 @@ std::cout << "Physical armor block percent: " << m_player->character->attribute.
     fireArmorTotal += (m_player->character->level.current * totalEnergy * armorBias_2);
     m_player->character->attribute.resistanceFire.current.amount = fireArmorTotal;
 
-std::cout << "Fire resistance amount: " << m_player->character->attribute.resistanceFire.current.amount << std::endl;
+//std::cout << "Fire resistance amount: " << m_player->character->attribute.resistanceFire.current.amount << std::endl;
 
     // Fire resistance block chance
     armorBlockChanceBias_1 = 0.025f;
@@ -1818,7 +1814,7 @@ std::cout << "Fire resistance amount: " << m_player->character->attribute.resist
         fireBlockChanceTotal = fireBlockChanceMax;
     m_player->character->attribute.resistanceFire.current.blockChance = fireBlockChanceTotal;
 
-std::cout << "Fire resistance block chance: " << m_player->character->attribute.resistanceFire.current.blockChance << std::endl;
+//std::cout << "Fire resistance block chance: " << m_player->character->attribute.resistanceFire.current.blockChance << std::endl;
 
     // Fire resistance block percent
     armorBlockPercentBias_1 = 0.125f;
@@ -1828,7 +1824,7 @@ std::cout << "Fire resistance block chance: " << m_player->character->attribute.
     fireBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
     m_player->character->attribute.resistanceFire.current.blockPercent = fireBlockPercentTotal;
 
-std::cout << "Fire resistance block percent: " << m_player->character->attribute.resistanceFire.current.blockPercent << std::endl;
+//std::cout << "Fire resistance block percent: " << m_player->character->attribute.resistanceFire.current.blockPercent << std::endl;
 
     // Ice resistance
     // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
@@ -1838,7 +1834,7 @@ std::cout << "Fire resistance block percent: " << m_player->character->attribute
     iceArmorTotal += (m_player->character->level.current * totalEnergy * armorBias_2);
     m_player->character->attribute.resistanceIce.current.amount = iceArmorTotal;
 
-std::cout << "Ice resistance amount: " << m_player->character->attribute.resistanceIce.current.amount << std::endl;
+//std::cout << "Ice resistance amount: " << m_player->character->attribute.resistanceIce.current.amount << std::endl;
 
     // Ice resistance block chance
     armorBlockChanceBias_1 = 0.025f;
@@ -1850,7 +1846,7 @@ std::cout << "Ice resistance amount: " << m_player->character->attribute.resista
         iceBlockChanceTotal = iceBlockChanceMax;
     m_player->character->attribute.resistanceIce.current.blockChance = iceBlockChanceTotal;
 
-std::cout << "Ice resistance block chance: " << m_player->character->attribute.resistanceIce.current.blockChance << std::endl;
+//std::cout << "Ice resistance block chance: " << m_player->character->attribute.resistanceIce.current.blockChance << std::endl;
 
     // Ice resistance block percent
     armorBlockPercentBias_1 = 0.125f;
@@ -1860,7 +1856,7 @@ std::cout << "Ice resistance block chance: " << m_player->character->attribute.r
     iceBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
     m_player->character->attribute.resistanceIce.current.blockPercent = iceBlockPercentTotal;
 
-std::cout << "Ice resistance block percent: " << m_player->character->attribute.resistanceIce.current.blockPercent << std::endl;
+//std::cout << "Ice resistance block percent: " << m_player->character->attribute.resistanceIce.current.blockPercent << std::endl;
 
     // Lightning resistance
     // Armor = (base x dexterity x bias_1) + (level x dexterity x bias_2)
@@ -1870,7 +1866,7 @@ std::cout << "Ice resistance block percent: " << m_player->character->attribute.
     lightningArmorTotal += (m_player->character->level.current * totalEnergy * armorBias_2);
     m_player->character->attribute.resistanceLightning.current.amount = lightningArmorTotal;
 
-std::cout << "Lightning resistance amount: " << m_player->character->attribute.resistanceLightning.current.amount << std::endl;
+//std::cout << "Lightning resistance amount: " << m_player->character->attribute.resistanceLightning.current.amount << std::endl;
 
     // Lightning resistance block chance
     armorBlockChanceBias_1 = 0.025f;
@@ -1882,7 +1878,7 @@ std::cout << "Lightning resistance amount: " << m_player->character->attribute.r
         lightningBlockChanceTotal = lightningBlockChanceMax;
     m_player->character->attribute.resistanceLightning.current.blockChance = lightningBlockChanceTotal;
 
-std::cout << "Lightning resistance block chance: " << m_player->character->attribute.resistanceLightning.current.blockChance << std::endl;
+//std::cout << "Lightning resistance block chance: " << m_player->character->attribute.resistanceLightning.current.blockChance << std::endl;
 
     // Lightning resistance block percent
     armorBlockPercentBias_1 = 0.125f;
@@ -1892,6 +1888,6 @@ std::cout << "Lightning resistance block chance: " << m_player->character->attri
     lightningBlockPercentTotal += m_player->character->level.current * armorBlockPercentBias_2;
     m_player->character->attribute.resistanceLightning.current.blockPercent = lightningBlockPercentTotal;
 
-std::cout << "Lightning resistance block percent: " << m_player->character->attribute.resistanceLightning.current.blockPercent << std::endl;
+//std::cout << "Lightning resistance block percent: " << m_player->character->attribute.resistanceLightning.current.blockPercent << std::endl;
 
 }

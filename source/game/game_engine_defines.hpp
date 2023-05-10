@@ -24,9 +24,9 @@
 #ifndef GAME_ENGINE_DEFINES_HPP
 #define GAME_ENGINE_DEFINES_HPP
 
-#include "includes.hpp"
+#include "../core/includes.hpp"
 #include "game_config.hpp"
-#include "version.hpp"
+#include "../core/version.hpp"
 
 #include "../animation/animation_engine.hpp"
 #include "../audio/audio_engine.hpp"

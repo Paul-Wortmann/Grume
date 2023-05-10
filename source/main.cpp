@@ -21,7 +21,7 @@
  * @date 2011-11-11
  */
 
-#include "core/game_engine.hpp"
+#include "game/game_engine.hpp"
 
 /**
  * @brief main function, entry point into the application

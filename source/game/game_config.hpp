@@ -26,7 +26,7 @@
 
 #define CONFIG_FILE "config_001.txt" // Default config file name.
 
-#include "includes.hpp"
+#include "../core/includes.hpp"
 #include "../utils/xml_parser.hpp"
 
 class cGameConfig

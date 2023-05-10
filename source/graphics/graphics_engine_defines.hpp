@@ -25,7 +25,7 @@
 #define GRAPHICS_ENGINE_DEFINES_HPP
 
 #include "../core/includes.hpp"
-#include "../core/game_config.hpp"
+#include "../game/game_config.hpp"
 #include "../entity/entity_define.hpp"
 #include "../io/io_define.hpp"
 #include "../map/map_define.hpp"
