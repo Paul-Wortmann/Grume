@@ -35,6 +35,7 @@
 #include "../io/io_manager.hpp"
 #include "../loot/loot_manager.hpp"
 #include "../map/map_manager.hpp"
+#include "../network/network_engine.hpp"
 #include "../npc/npc_manager.hpp"
 #include "../object/object_manager.hpp"
 #include "../particles/particle_engine.hpp"

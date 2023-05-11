@@ -70,6 +70,7 @@ class cGameEngine
         cAnimationEngine m_animationEngine = {};
         cAudioEngine     m_audioEngine     = {};
         cGraphicsEngine  m_graphicsEngine  = {};
+        cNetworkEngine   m_networkEngine   = {};
         cParticleEngine  m_particleEngine  = {};
         cPhysicsEngine   m_physicsEngine   = {};
 

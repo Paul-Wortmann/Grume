@@ -87,6 +87,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     return_value = (return_value == EXIT_SUCCESS) ? m_npcManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_objectManager.initialize() : return_value;
     return_value = (return_value == EXIT_SUCCESS) ? m_questManager.initialize() : return_value;
+    return_value = (return_value == EXIT_SUCCESS) ? m_networkEngine.initialize() : return_value;
 
     // Apply post-initialization configuration settings
     m_audioEngine.setVolumeMaster(m_gameConfig.m_volume_master);
@@ -202,6 +203,7 @@ void cGameEngine::terminate(void)
 
     // Terminate systems
     m_graphicsEngine.terminate();
+    m_networkEngine.terminate();
     m_audioEngine.terminate();
     m_animationEngine.terminate();
     m_particleEngine.terminate();
@@ -235,6 +237,7 @@ void cGameEngine::process(void)
         std::int64_t dt = m_timer.get_frameTime();
 
         // Process systems
+        m_networkEngine.process(dt);
         m_uiManager.process();
         m_physicsEngine.setMouseOverMenu(m_uiManager.getMouseOverMenu());
         m_graphicsEngine.setPlayerLightPosition(m_playerManager.getPosition());

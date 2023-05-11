@@ -35,7 +35,7 @@
 #include "../3rd_party/stb_truetype.hpp"
 #include "../3rd_party/stb_vorbis.hpp"
 
-// Assimp
+// Pain in the Assimp
 #include <assimp/cimport.h>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
@@ -56,6 +56,10 @@
 // OpenGL, GLFW
 //#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+
+// SDL
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_net.h>
 
 // Standard C++ headers
 #include <chrono>
