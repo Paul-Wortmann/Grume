@@ -14,14 +14,16 @@ include(CheckLibraryExists)
 find_package(OpenGL REQUIRED)
 PKG_SEARCH_MODULE(GLFW3 REQUIRED glfw3)
 PKG_SEARCH_MODULE(ASSIMP REQUIRED assimp)
+PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
+PKG_SEARCH_MODULE(SDL_NET REQUIRED SDL2_net)
 
 find_package(Threads REQUIRED)
 if(THREADS_HAVE_PTHREAD_ARG)
   target_compile_options(my_app PUBLIC "-pthread")
 endif()
 
-message(${CMAKE_THREAD_LIBS_INIT})#pthread library
-message(${CMAKE_DL_LIBS})#dl libs
+# message(${CMAKE_THREAD_LIBS_INIT})#pthread library
+# message(${CMAKE_DL_LIBS})#dl libs
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -38,6 +40,6 @@ file(GLOB_RECURSE GRUME_SOURCE "source/*.cpp")
 
 add_executable(grume ${GRUME_SOURCE} )
 
-target_Link_Libraries (grume ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS} ${ASSIMP_LIBRARIES} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES})
+target_Link_Libraries (grume ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS} ${ASSIMP_LIBRARIES} ${GLFW3_LIBRARIES} ${SDL2_LIBRARIES} ${SDL_NET_LIBRARIES} ${OPENGL_LIBRARIES})
 
 
