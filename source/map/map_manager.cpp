@@ -521,6 +521,9 @@ std::uint32_t cMapManager::load(const std::string &_fileName)
 
         // Load finished
         m_graphicsEngine->setLoading(false);
+
+        //std::cout << "Model count: " << m_resourceManager->getModelCount() << std::endl;
+
     }
     else
     {

@@ -42,6 +42,7 @@ class cMapManager :tcTemplateEngine
         void          setAnimationEngine(cAnimationEngine* _animationEngine) { m_animationEngine = _animationEngine; }
         void          setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
         void          setPlayerManager(cPlayerManager* _playerManager) { m_playerManager = _playerManager; }
+        void          setresourceManager(cResourceManager* _resourceManager) { m_resourceManager = _resourceManager; }
         void          setQuestManager(cQuestManager* _questManager) { m_questManager = _questManager; };
         sMap*         getMapPointer(void) { return m_map; };
         void          setSpawnPortal(const std::uint32_t &_portalNumber) { m_spawnPortal = _portalNumber; }
@@ -70,6 +71,7 @@ class cMapManager :tcTemplateEngine
         cGraphicsEngine*  m_graphicsEngine     = nullptr;
         cAnimationEngine* m_animationEngine    = nullptr;
         cPlayerManager*   m_playerManager      = nullptr;
+        cResourceManager* m_resourceManager    = nullptr;
         cQuestManager*    m_questManager       = nullptr;
         sEntity*          m_entityPlayer       = nullptr;
         sMap*             m_map                = new sMap;

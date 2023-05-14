@@ -270,6 +270,9 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     {
         //gLogWrite(LOG_INFO, "Loading model: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
 
+        // save model filename
+        tModel->fileName = _fileName;
+
         // Pass it to the model manager
         addBack(tModel);
     }

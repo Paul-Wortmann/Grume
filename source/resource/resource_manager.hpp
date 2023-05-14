@@ -37,6 +37,7 @@ class cResourceManager :tcTemplateManager
 
         // Model
         sEntityModel*  loadModel(const std::string &_fileName);
+        std::uint32_t  getModelCount(void) { return m_modelManager.getCount(); };
 
         // Material
         sMaterial*     loadMaterial(const std::string &_fileName);

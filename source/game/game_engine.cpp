@@ -130,6 +130,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_mapManager.setGraphicsEngine(&m_graphicsEngine);
     m_mapManager.setAnimationEngine(&m_animationEngine);
     m_mapManager.setPlayerManager(&m_playerManager);
+    m_mapManager.setresourceManager(&m_resourceManager);
     m_mapManager.setQuestManager(&m_questManager);
     m_npcManager.setAudioEngine(&m_audioEngine);
     m_npcManager.setGraphicsEnginePointer(&m_graphicsEngine);
