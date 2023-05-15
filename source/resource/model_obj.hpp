@@ -28,7 +28,7 @@
 #include <string>
 
 #include "model_utils.hpp"
-#include "obj_loader.hpp"
+#include "model_obj_loader.hpp"
 
 #include "../entity/entity_model.hpp"
 

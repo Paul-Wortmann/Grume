@@ -252,12 +252,10 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     {
         model_obj_import(tModel, std::string(FILE_PATH_MODEL) + _fileName);
     }
-    /*
     else if (strcmp(fileExtension.c_str(), "dae") == 0)
     {
         model_dae_import(tModel, std::string(FILE_PATH_MODEL) + _fileName);
     }
-    */
     // Else try to load the model with assimp
     else
     {

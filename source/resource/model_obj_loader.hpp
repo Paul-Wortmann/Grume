@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef OBJ_LOADER_HPP
-#define OBJ_LOADER_HPP
+#ifndef MODEL_OBJ_LOADER_HPP
+#define MODEL_OBJ_LOADER_HPP
 
 #include <cstdint>
 #include <cstdio>
@@ -85,4 +85,4 @@ void gFreeOBJ(sOBJ *&_obj);
 void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName);
 void gSaveOBJ(sOBJ *&_obj, const std::string &_fileName);
 
-#endif // OBJ_LOADER_HPP
+#endif // MODEL_OBJ_LOADER_HPP

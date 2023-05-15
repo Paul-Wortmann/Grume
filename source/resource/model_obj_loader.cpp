@@ -21,7 +21,7 @@
  * @date 2011-11-11
  */
 
-#include "obj_loader.hpp"
+#include "model_obj_loader.hpp"
 
 void gFreeOBJ(sOBJ *&_obj)
 {
