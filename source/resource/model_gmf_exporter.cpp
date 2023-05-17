@@ -21,19 +21,9 @@
  * @date 2011-11-11
  */
 
-#ifndef MODEL_DAE_HPP
-#define MODEL_DAE_HPP
+#include "model_gmf.hpp"
 
-#include <cstdint>
-#include <string>
+void gExportModelGMF(const std::string &_fileName, sModel *&_model)
+{
 
-#include "model_utils.hpp"
-#include "model_dae_loader.hpp"
-
-#include "../entity/entity_model.hpp"
-
-void model_dae_import(sEntityModel *&_model, const std::string &_fileName);
-void model_dae_export(sEntityModel* &_model, const std::string &_fileName);
-
-
-#endif // MODEL_DAE_HPP
+}

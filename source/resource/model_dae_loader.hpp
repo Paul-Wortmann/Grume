@@ -24,7 +24,7 @@
 #ifndef MODEL_DAE_LOADER_HPP
 #define MODEL_DAE_LOADER_HPP
 
-#include "includes.hpp"
+#include "../core/includes.hpp"
 #include "model_define.hpp"
 #include "model_tools.hpp"
 #include "xml_parser.hpp"

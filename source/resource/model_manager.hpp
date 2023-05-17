@@ -27,6 +27,7 @@
 #include "assimp_to_glm.hpp"
 #include "material_define.hpp"
 #include "model_dae.hpp"
+#include "model_gmf.hpp"
 #include "model_obj.hpp"
 #include "../templates/template_linked_list.hpp"
 #include "../entity/entity_model.hpp"
