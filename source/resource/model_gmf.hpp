@@ -24,11 +24,15 @@
 #ifndef MODEL_GMF_HPP
 #define MODEL_GMF_HPP
 
-#include "includes.hpp"
-#include "model_define.hpp"
+#include <cstdint>
+#include <string>
 
-void gExportModelGMF(const std::string &_fileName, sModel *&_model);
-void gImportModelGMF(const std::string &_fileName, sModel *&_model);
+#include "model_utils.hpp"
+
+#include "../entity/entity_model.hpp"
+
+void model_gmf_import(sEntityModel *&_model, const std::string &_fileName);
+void model_gmf_export(sEntityModel *&_model, const std::string &_fileName);
 
 #endif //MODEL_GMF_HPP
 

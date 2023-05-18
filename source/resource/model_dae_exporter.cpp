@@ -233,8 +233,8 @@ void model_dae_export(sEntityModel* &_model, const std::string &_fileName)
             daeFile << _il(il) << "<float_array id=\"" << meshID << "-mesh-map-0-array\" count=\"" << _model->mesh[m].numVertex << "\">";
             for (std::uint32_t i = 0; i < _model->mesh[m].numVertex; ++i)
             {
-                daeFile << std::to_string(_model->mesh[m].vertex[i].texCoord.x) << " ";
-                daeFile << std::to_string(_model->mesh[m].vertex[i].texCoord.y);
+                daeFile << std::to_string(_model->mesh[m].vertex[i].texcoord.x) << " ";
+                daeFile << std::to_string(_model->mesh[m].vertex[i].texcoord.y);
                 if (i < _model->mesh[m].numVertex - 1)
                     daeFile << " ";
             }

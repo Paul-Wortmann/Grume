@@ -40,6 +40,7 @@ struct sEntityModelMesh
     std::uint32_t           IBO          = 0;
 
     // Data
+    std::string             name         = {};
     bool                    enabled      = true;
     std::uint32_t           numVertex    = 0;
     sEntityModelVertex*     vertex       = nullptr;

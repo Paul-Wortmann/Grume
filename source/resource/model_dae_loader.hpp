@@ -24,10 +24,10 @@
 #ifndef MODEL_DAE_LOADER_HPP
 #define MODEL_DAE_LOADER_HPP
 
+#include "model_utils.hpp"
+
 #include "../core/includes.hpp"
-#include "model_define.hpp"
-#include "model_tools.hpp"
-#include "xml_parser.hpp"
+#include "../utils/xml_parser.hpp"
 
 struct sDAEMesh
 {
@@ -83,9 +83,6 @@ struct sDAEModel
 void gFreeDAE(sDAEModel *&_dae);
 void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName);
 void gSaveDAE(sDAEModel *&_dae, const std::string &_fileName);
-
-void gExportModelDAE(const std::string &_fileName, sModel *&_model);
-void gImportModelDAE(const std::string &_fileName, sModel *&_model);
 
 #endif //MODEL_DAE_LOADER_HPP
 

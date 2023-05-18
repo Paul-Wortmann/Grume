@@ -23,7 +23,7 @@
 
 #include "model_gmf.hpp"
 
-void gExportModelGMF(const std::string &_fileName, sModel *&_model)
+void model_gmf_export(sEntityModel *&_model, const std::string &_fileName)
 {
 
 }

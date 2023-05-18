@@ -29,6 +29,16 @@
 #include "entity_model_bone.hpp"
 #include "entity_model_mesh.hpp"
 
+enum eUpAxis : uint32_t
+{
+    xUp   = 0,
+    xDown = 1,
+    yUp   = 2,
+    yDown = 3,
+    zUp   = 4,
+    zDown = 5
+};
+
 struct sEntityModel
 {
     // Linked list management
@@ -38,6 +48,7 @@ struct sEntityModel
     // Information
     std::string            fileName         = {};
     std::string            modelName        = {};
+    eUpAxis                upAxis           = eUpAxis::yUp;
 
     // Animation
     bool                   animated         = false;
