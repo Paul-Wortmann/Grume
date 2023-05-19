@@ -34,12 +34,12 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         return;
 
     // convert dae data to to game engine specific format
-    _model = new sModel;
+    _model = new sEntityModel;
     _model->fileName = _fileName;
     _model->numMesh = dae->numMesh;
-    _model->mesh = new sModelMesh[_model->numMesh];
+    _model->mesh = new sEntityModelMesh[_model->numMesh];
 
-    // copy the vertex data
+    // copy the mesh data
     for (std::uint32_t m = 0; m < _model->numMesh; ++m)
     {
         // Name
@@ -47,7 +47,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
 
         // vertex
         _model->mesh[m].numVertex = dae->mesh[m].numIndex;
-        _model->mesh[m].vertex = new sModelVertex[_model->mesh[m].numVertex];
+        _model->mesh[m].vertex = new sEntityModelVertex[_model->mesh[m].numVertex];
 
         // index
         _model->mesh[m].numIndex = dae->mesh[m].numIndex;
@@ -57,8 +57,9 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         if (dae->numBone > 0)
         {
             // vertex bone
-            _model->mesh[m].numVertexBone = _model->mesh[m].numVertex;
-            _model->mesh[m].vertexBone    = new sModelVertexBone[_model->mesh[m].numVertexBone];
+            //_model->mesh[m].numVertexBone = _model->mesh[m].numVertex;
+            //_model->mesh[m].vertexBone    = new sModelVertexBone[_model->mesh[m].numVertexBone];
+            _model->mesh[m].vertexBone    = new sEntityModelVertexBone[_model->mesh[m].numVertex];
         }
 
         for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; ++v)
@@ -80,8 +81,8 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             _model->mesh[m].vertex[v].normal.z = dae->mesh[m].normal[dae->mesh[m].index[v].y].z;
 
             // Vertex texture coordinates
-            _model->mesh[m].vertex[v].texCoord.x = dae->mesh[m].texCoord[dae->mesh[m].index[v].z].x;
-            _model->mesh[m].vertex[v].texCoord.y = dae->mesh[m].texCoord[dae->mesh[m].index[v].z].y;
+            _model->mesh[m].vertex[v].texcoord.x = dae->mesh[m].texCoord[dae->mesh[m].index[v].z].x;
+            _model->mesh[m].vertex[v].texcoord.y = dae->mesh[m].texCoord[dae->mesh[m].index[v].z].y;
 
             // Skinning data
             if (dae->numBone > 0)
