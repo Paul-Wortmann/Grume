@@ -46,7 +46,7 @@ struct sDAEMesh
     std::uint32_t  numTexCoord   = 0;
     glm::vec2     *texCoord      = nullptr;
     std::uint32_t  numColor      = 0;
-    glm::ivec3    *color         = nullptr;
+    glm::ivec4    *color         = nullptr;
 
     std::uint32_t  numIndex      = 0;
     glm::ivec4    *index         = nullptr;

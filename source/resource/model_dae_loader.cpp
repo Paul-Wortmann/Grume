@@ -131,6 +131,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
     daeFile.load(_fileName);
     if (daeFile.isValid())
     {
+        std::cout << "Loading model: " << _fileName << std::endl;
 
         // free object if necessary
         if (_dae != nullptr)
@@ -304,40 +305,81 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             if (sData.length() > 0)
             {
                 _dae->mesh[m].numColor = stoi(sData);
-                _dae->mesh[m].color = new glm::ivec3[_dae->mesh[m].numColor];
+                _dae->mesh[m].color = new glm::ivec4[_dae->mesh[m].numColor];
 
-                // Parse normals data
-                std::string   colorsFloatArray = daeFile.getString(meshID + "-colors-Col-array" + '"' + " count=" + '"' + std::to_string(_dae->mesh[m].numColor * 3) + '"');
+                // get the data stride
+                std::uint32_t dStride = stoi(daeFile.getStringKeyValue("#" + meshID + "-colors-Col-array", "stride"));
+
+                // Parse colors data
+                std::string   colorsFloatArray = daeFile.getString(meshID + "-colors-Col-array" + '"' + " count=" + '"' + std::to_string(_dae->mesh[m].numColor * dStride) + '"');
                 colorsFloatArray += " ";
                 std::uint32_t colorsFloatArrayLength = colorsFloatArray.length();
                 std::uint32_t sCount = 0;
                 std::uint32_t iCount = 0;
                 std::string   tData  = {};
 
-                for (std::uint64_t i = 0; i < colorsFloatArrayLength; ++i)
+                // Stride of of 4-> RGBA
+                if (dStride == 4)
                 {
-                    if (colorsFloatArray[i] == ' ')
+                    for (std::uint64_t i = 0; i < colorsFloatArrayLength; ++i)
                     {
-                      // add data to array
-                        if (sCount % 3 == 0)
+                        if (colorsFloatArray[i] == ' ')
                         {
-                            _dae->mesh[m].color[iCount].x = stoi(tData);
+                          // add data to array
+                            if (sCount % dStride == 0)
+                            {
+                                _dae->mesh[m].color[iCount].x = stoi(tData);
+                            }
+                            if (sCount % dStride == 1)
+                            {
+                                _dae->mesh[m].color[iCount].y = stoi(tData);
+                            }
+                            if (sCount % dStride == 2)
+                            {
+                                _dae->mesh[m].color[iCount].z = stoi(tData);
+                            }
+                            if (sCount % dStride == 3)
+                            {
+                                _dae->mesh[m].color[iCount].w = stoi(tData);
+                                iCount++;
+                            }
+                            sCount++;
+                            tData = "";
                         }
-                        if (sCount % 3 == 1)
+                        else
                         {
-                            _dae->mesh[m].color[iCount].y = stoi(tData);
+                            tData += colorsFloatArray[i];
                         }
-                        if (sCount % 3 == 2)
-                        {
-                            _dae->mesh[m].color[iCount].z = stoi(tData);
-                            iCount++;
-                        }
-                        sCount++;
-                        tData = "";
                     }
-                    else
+                }
+                // Stride of of 3-> RGB
+                else
+                {
+                    for (std::uint64_t i = 0; i < colorsFloatArrayLength; ++i)
                     {
-                        tData += colorsFloatArray[i];
+                        if (colorsFloatArray[i] == ' ')
+                        {
+                          // add data to array
+                            if (sCount % dStride == 0)
+                            {
+                                _dae->mesh[m].color[iCount].x = stoi(tData);
+                            }
+                            if (sCount % dStride == 1)
+                            {
+                                _dae->mesh[m].color[iCount].y = stoi(tData);
+                            }
+                            if (sCount % dStride == 2)
+                            {
+                                _dae->mesh[m].color[iCount].z = stoi(tData);
+                                iCount++;
+                            }
+                            sCount++;
+                            tData = "";
+                        }
+                        else
+                        {
+                            tData += colorsFloatArray[i];
+                        }
                     }
                 }
             }
