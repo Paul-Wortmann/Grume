@@ -304,6 +304,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             sData = daeFile.getStringKeyValue("#" + meshID + "-colors-Col-array", "count");
             if (sData.length() > 0)
             {
+                // setup the array
                 _dae->mesh[m].numColor = stoi(sData);
                 _dae->mesh[m].color = new glm::ivec4[_dae->mesh[m].numColor];
 

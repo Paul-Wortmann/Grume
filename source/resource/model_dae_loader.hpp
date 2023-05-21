@@ -69,6 +69,7 @@ struct sDAEModel
     eUpAxis        upAxis        = eUpAxis::yUp;
     std::uint32_t  numMesh       = 0;
     sDAEMesh      *mesh          = nullptr;
+    glm::mat4      transform     = {};
 
     std::uint32_t  numSkinWeight = 0;
     float         *skinWeight    = nullptr;
