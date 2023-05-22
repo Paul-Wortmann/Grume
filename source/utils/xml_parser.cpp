@@ -132,7 +132,7 @@ std::uint32_t cXML::load(const std::string &_fileName)
     return EXIT_SUCCESS;
 }
 
-std::uint32_t cXML::getLine(const std::string &_key, const std::uint32_t  _instance = 1)
+std::uint32_t cXML::getLine(const std::string &_key, const std::uint32_t  _instance)
 {
     std::uint32_t instanceCount = 0;
     std::string rString = "";
