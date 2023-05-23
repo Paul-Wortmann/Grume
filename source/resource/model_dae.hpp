@@ -35,5 +35,4 @@
 void model_dae_import(sEntityModel *&_model, const std::string &_fileName);
 void model_dae_export(sEntityModel* &_model, const std::string &_fileName);
 
-
 #endif // MODEL_DAE_HPP

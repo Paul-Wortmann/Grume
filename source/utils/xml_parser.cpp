@@ -150,6 +150,24 @@ std::uint32_t cXML::getLine(const std::string &_key, const std::uint32_t  _insta
     return 0;
 }
 
+std::uint32_t cXML::getInstanceAfterLine(const std::string &_key, const std::uint32_t  _line)
+{
+    std::uint32_t instanceCount = 0;
+    std::string rString = "";
+    for (std::size_t i = 0; i < m_lineCount; ++i)
+    {
+        if (m_line[i].find(_key) != std::string::npos)
+        {
+            instanceCount++;
+            if (i > _line)
+            {
+                return instanceCount;
+            }
+        }
+    }
+    return 0;
+}
+
 std::uint32_t cXML::getInstanceCount(const std::string &_key)
 {
     std::uint32_t instanceCount = 0;

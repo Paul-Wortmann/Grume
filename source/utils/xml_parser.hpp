@@ -38,6 +38,7 @@ class cXML
         std::uint32_t lineCount(void) { return m_lineCount; }
         std::string   line(std::uint32_t _lineNum) { return (_lineNum < m_lineCount) ? m_line[_lineNum] : ""; }
         std::uint32_t getLine(const std::string &_key, const std::uint32_t  _instance = 1);
+        std::uint32_t getInstanceAfterLine(const std::string &_key, const std::uint32_t  _line);
         std::uint32_t getInstanceCount(const std::string &_key);
         std::string   getString(const std::string &_key, const std::uint32_t  _instance = 1);
         std::string   getStringKeyValue(const std::string &_key, const std::string &_keyID, const std::uint32_t  _instance = 1);
