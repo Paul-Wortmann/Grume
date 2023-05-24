@@ -457,12 +457,12 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             }
 
             // Node transform
-            _dae->mesh[m].transform = daeFile.getMat4("<matrix sid=\"transform\">", m + 1);
-            std::uint32_t lineNum = daeFile.getLine("");
-
-        <node id="Cube" name="Cube" type="NODE">
-          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
-
+            std::uint32_t lineNum = daeFile.getLine("<node id=\"" + meshID + "\" name=\"" + meshID + "\" type=\"NODE\">");
+            std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<matrix sid=\"transform\">", lineNum);
+            if (instanceNum > 0)
+            {
+                _dae->mesh[m].transform = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
+            }
         }
 
 
