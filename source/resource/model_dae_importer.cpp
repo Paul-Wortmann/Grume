@@ -101,6 +101,23 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             }
         }
 
+        // Bone data
+        if (_model->numBones > 0)
+        {
+            // Allocate memory
+            _model->bone = new sEntityBone[_model->numBones];
+
+            // copy bone data for each bone
+            for (std::uint32_t b = 0; b < _model->numBones; ++b)
+            {
+                _model->bone[b].ID = dae->bone[b].ID;
+                _model->bone[b].name = dae->bone[b].name;
+                _model->bone[b].parentID = dae->bone[b].parentID;
+                _model->bone[b].transformNode = dae->bone[b].transformNode;
+                _model->bone[b].transformPose = dae->bone[b].transformPose;
+            }
+        }
+
         // Calculate tangent and bi-tangent vectors
         for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; v += 3)
         {

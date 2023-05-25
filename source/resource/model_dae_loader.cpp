@@ -465,7 +465,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             }
         }
 
-
         // Load skinning data if available
         std::uint32_t controllerCount = daeFile.getInstanceCount("<controller id=");
         if (controllerCount > 0)
@@ -503,6 +502,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                         // add data to array
                         _dae->bone[sCount].ID = sCount;
                         _dae->bone[sCount].name = tData;
+                        std::cout << "Bone name: " << tData << std::endl;
                         sCount++;
                         tData = "";
                     }
@@ -510,6 +510,25 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     {
                         tData += boneNamesArray[i];
                     }
+                }
+            }
+
+            // Get the scene id
+            std::string sceneID = daeFile.getStringKeyValue("visual_scene id", "id");
+
+            // Get the bone transforms
+            for (std::uint32_t i = 0; i < _dae->numBone; ++i)
+            {
+                // bone id
+                std::string baneID = _dae->bone[i].name;
+                std::string boneSceneID = sceneID + "_" + baneID;
+
+                // Node transform
+                std::uint32_t lineNum = daeFile.getLine("<node id=\"" + boneSceneID + "\" name=\"" + baneID + "\" sid=\"" + baneID + "\" type=\"JOINT\">");
+                std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<matrix sid=\"transform\">", lineNum);
+                if (instanceNum > 0)
+                {
+                    _dae->bone[i].transformNode = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
                 }
             }
 

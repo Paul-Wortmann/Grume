@@ -209,7 +209,7 @@ void cModelManager::m_processNode(const aiScene*& _scene, const aiNode* _node, s
             m_processMesh(_scene, _scene->mMeshes[_node->mMeshes[i]] , _model);
         }
 
-        // recursivly process child nodes
+        // recursively process child nodes
         for (std::uint32_t i = 0; i < _node->mNumChildren; ++i)
         {
             m_processNode(_scene, _node->mChildren[i] , _model);
