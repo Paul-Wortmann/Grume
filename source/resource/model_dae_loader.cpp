@@ -474,9 +474,9 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             std::string controllerID = daeFile.getStringKeyValue("<controller id=", "id");
             std::string controllerName = daeFile.getStringKeyValue("<controller id=", "name");
 
-            std::cout << "Controller Count: " << controllerCount << std::endl;
-            std::cout << "Controller ID: " << controllerID << std::endl;
-            std::cout << "Controller Name: " << controllerName << std::endl;
+//            std::cout << "Controller Count: " << controllerCount << std::endl;
+//            std::cout << "Controller ID: " << controllerID << std::endl;
+//            std::cout << "Controller Name: " << controllerName << std::endl;
 
             // Controller bone names
             std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + controllerID + "-joints-array\" count=", "count"));
@@ -502,7 +502,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                         // add data to array
                         _dae->bone[sCount].ID = sCount;
                         _dae->bone[sCount].name = tData;
-                        std::cout << "Bone name: " << tData << std::endl;
+ //                       std::cout << "Bone name: " << tData << std::endl;
                         sCount++;
                         tData = "";
                     }
@@ -531,6 +531,21 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     _dae->bone[i].transformNode = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
                 }
             }
+
+            // Get the bone hierarchical order of parent nodes
+            std::int32_t currentParentID = -1;
+            std::int32_t *boneList[_dae->numBone];
+            std::uint32_t visualSceneslineNum = daeFile.getLine("<library_visual_scenes>");
+            for (std::uint32_t i = visualSceneslineNum; i < daeFile.lineCount(); ++i)
+            {
+                std::string tString = daeFile.line(i);
+                if ((tString.find("<node id=") != std::string::npos) && (tString.find("type=\"JOINT\">") != string::npos))
+                {
+                    std::string boneName = daeFile.getValueFromString(&tString, "sid");
+                }
+                if (tString.find("</node>") != string::npos);
+            }
+
 
             // Joint bind pose arrays
             std::string bindPosessArray = daeFile.getString("<float_array id=\"" + controllerID + "-bind_poses-array\" count=\"" + std::to_string(boneCount * 16) + "\"");

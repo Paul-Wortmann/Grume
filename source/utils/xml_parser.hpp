@@ -41,6 +41,7 @@ class cXML
         std::uint32_t getInstanceAfterLine(const std::string &_key, const std::uint32_t  _line);
         std::uint32_t getInstanceCount(const std::string &_key);
         std::string   getString(const std::string &_key, const std::uint32_t  _instance = 1);
+        std::string   getValueFromString(const std::string &_string, const std::string &_keyID);
         std::string   getStringKeyValue(const std::string &_key, const std::string &_keyID, const std::uint32_t  _instance = 1);
         std::int32_t  getInteger(const std::string &_key, const std::uint32_t  _instance = 1);
         std::uint64_t getInteger64(const std::string &_key, const std::uint32_t  _instance = 1);

@@ -214,6 +214,41 @@ std::string cXML::getString(const std::string &_key, const std::uint32_t _instan
     return rString;
 }
 
+std::string cXML::getValueFromString(const std::string &_string, const std::string &_keyID)
+{
+    // Get the string to parse
+    std::string   dataLine = _string;
+    std::uint32_t dataLineLength = _string.length();
+    std::string   rString = "";
+
+    // Early exit no data
+    if (dataLineLength == 0)
+        return rString;
+
+    // find and return _keyID
+    std::string keyID = _keyID + "=" + '"';
+    if (dataLine.find(keyID) != std::string::npos)
+    {
+        std::size_t start = dataLine.find(keyID) + keyID.length();
+        for(std::size_t j = start; j < dataLine.length(); ++j)
+        {
+            if (dataLine[j] == '"')
+            {
+                j = dataLine.length();
+            }
+            else
+            {
+                if (dataLine[j] != '"')
+                {
+                    rString += dataLine[j];
+                }
+            }
+        }
+    }
+
+    return rString;
+}
+
 std::string cXML::getStringKeyValue(const std::string &_key, const std::string &_keyID, const std::uint32_t  _instance)
 {
     // Get the string to parse
