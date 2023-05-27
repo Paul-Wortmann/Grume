@@ -533,19 +533,49 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             }
 
             // Get the bone hierarchical order of parent nodes
-            std::int32_t currentParentID = -1;
-            std::int32_t *boneList[_dae->numBone];
+            std::int32_t  boneList[_dae->numBone];
+            std::uint32_t boneListPos = 0;
+            std::uint32_t nodeDepth = -1;
             std::uint32_t visualSceneslineNum = daeFile.getLine("<library_visual_scenes>");
             for (std::uint32_t i = visualSceneslineNum; i < daeFile.lineCount(); ++i)
             {
                 std::string tString = daeFile.line(i);
-                if ((tString.find("<node id=") != std::string::npos) && (tString.find("type=\"JOINT\">") != string::npos))
+                if ((tString.find("<node id=") != std::string::npos) && (tString.find("type=\"JOINT\">") != std::string::npos))
                 {
-                    std::string boneName = daeFile.getValueFromString(&tString, "sid");
-                }
-                if (tString.find("</node>") != string::npos);
-            }
+                    // Node depth
+                    nodeDepth++;
 
+                    // bone name
+                    std::string boneName = daeFile.getValueFromString(tString, "sid");
+
+                    // bone ID
+                    std::int32_t boneID = -1;
+                    for (std::uint32_t b = 0; b < _dae->numBone; ++b)
+                    {
+                        if (boneName.find(_dae->bone[b].name) != std::string::npos)
+                        {
+                            boneID = b;
+                        }
+                    }
+
+                    // add to bone list
+                    boneList[boneListPos] = boneID;
+                    boneListPos++;
+
+                    // if not root bone, add parent
+                    if (boneID > 0)
+                    {
+                        _dae->bone[boneID].parentID = boneList[nodeDepth];
+                        //std::cout << "Parent ID: " << _dae->bone[boneID].parentID << std::endl;
+                    }
+
+                }
+                if (tString.find("</node>") != std::string::npos)
+                {
+                    // Node depth
+                    nodeDepth--;
+                }
+            }
 
             // Joint bind pose arrays
             std::string bindPosessArray = daeFile.getString("<float_array id=\"" + controllerID + "-bind_poses-array\" count=\"" + std::to_string(boneCount * 16) + "\"");
