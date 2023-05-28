@@ -485,6 +485,11 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 //            std::cout << "Bone count: " << boneCount << std::endl;
 //            std::cout << "Bone names: " << boneNamesArray << std::endl;
 
+            if (boneCount > MAX_BONES)
+            {
+                gLogWrite(LOG_WARNING, "3D model: " + _fileName + ", has too many bones: " + std::to_string(boneCount), __FILE__, __LINE__, __FUNCTION__);
+            }
+
             _dae->numBone = boneCount;
             _dae->bone = new sDAEBone[_dae->numBone];
 
@@ -765,6 +770,13 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                 }
                     std::cout << std::endl;
+
+            }
+
+
+            // Load animations
+            if (_dae->numBone > 0)
+            {
 
             }
 
