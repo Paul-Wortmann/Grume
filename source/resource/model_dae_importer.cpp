@@ -53,15 +53,6 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         _model->mesh[m].numIndex = dae->mesh[m].numIndex;
         _model->mesh[m].index = new std::uint32_t[_model->mesh[m].numIndex];
 
-        // skinning data
-        if (dae->numBone > 0)
-        {
-            // vertex bone
-            //_model->mesh[m].numVertexBone = _model->mesh[m].numVertex;
-            //_model->mesh[m].vertexBone    = new sModelVertexBone[_model->mesh[m].numVertexBone];
-            _model->mesh[m].vertexBone    = new sEntityModelVertexBone[_model->mesh[m].numVertex];
-        }
-
         for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; ++v)
         {
             // index
@@ -87,6 +78,9 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             // Skinning data
             if (dae->numBone > 0)
             {
+                // vertexBone
+                _model->mesh[m].vertexBone    = new sEntityModelVertexBone[_model->mesh[m].numVertex];
+
                 // bone IDs
                 _model->mesh[m].vertexBone[v].boneID.w = dae->mesh[m].boneID[dae->mesh[m].index[v].x].w;
                 _model->mesh[m].vertexBone[v].boneID.x = dae->mesh[m].boneID[dae->mesh[m].index[v].x].x;
@@ -116,6 +110,12 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                 _model->bone[b].transformNode = dae->bone[b].transformNode;
                 _model->bone[b].transformPose = dae->bone[b].transformPose;
             }
+        }
+
+        // Animation data
+        if ((_model->numBones > 0) && (_model->numAnimations > 0))
+        {
+
         }
 
         // Calculate tangent and bi-tangent vectors

@@ -482,7 +482,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + controllerID + "-joints-array\" count=", "count"));
             std::string boneNamesArray = daeFile.getString("<Name_array id=\"" + controllerID + "-joints-array\" count=\"" + std::to_string(boneCount) + "\"");
 
-//            std::cout << "Bone count: " << boneCount << std::endl;
+            std::cout << "Bone count: " << boneCount << std::endl;
 //            std::cout << "Bone names: " << boneNamesArray << std::endl;
 
             if (boneCount > MAX_BONES)
@@ -777,6 +777,23 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             // Load animations
             if (_dae->numBone > 0)
             {
+                // get animation count
+                std::uint32_t animationIDCount = daeFile.getInstanceCount("<animation id=\"");
+                std::cout << "Animation ID count: " << animationIDCount << std::endl;
+
+                // Discard empty animation IDs
+                std::uint32_t animationCount = 0;
+                for (std::uint32_t i = 0; i < animationIDCount; ++i)
+                {
+                    std::string tString = daeFile.getString("<animation id=\"", i + 1);
+                    if (tString.find("/>") == std::string::npos)
+                        animationCount++;
+                }
+                std::cout << "Animation count: " << animationCount << std::endl;
+
+//                _dae->numAnimations = daeFile.getInstanceCount()
+
+//<animation id="action_container-human_male" name="human_male">
 
             }
 
