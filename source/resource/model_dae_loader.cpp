@@ -773,27 +773,28 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
             }
 
-
             // Load animations
             if (_dae->numBone > 0)
             {
-                // get animation count
+                // get animation ID count
                 std::uint32_t animationIDCount = daeFile.getInstanceCount("<animation id=\"");
-                std::cout << "Animation ID count: " << animationIDCount << std::endl;
 
-                // Discard empty animation IDs
-                std::uint32_t animationCount = 0;
+                // get animated bone count
+                std::uint32_t animatedBoneCount = 0;
                 for (std::uint32_t i = 0; i < animationIDCount; ++i)
                 {
-                    std::string tString = daeFile.getString("<animation id=\"", i + 1);
-                    if (tString.find("/>") == std::string::npos)
-                        animationCount++;
+                    std::string tString = daeFile.getString("<animation id=\"", i);
+                    for (std::uint32_t b = 0; b < _dae->numBone; ++b)
+                    {
+                        if (tString.find(_dae->bone[b].name) != std::string::npos)
+                        {
+                            animatedBoneCount++;
+                        }
+                    }
+
                 }
-                std::cout << "Animation count: " << animationCount << std::endl;
+                //std::cout << "Animation count: " << animatedBoneCount << std::endl;
 
-//                _dae->numAnimations = daeFile.getInstanceCount()
-
-//<animation id="action_container-human_male" name="human_male">
 
             }
 

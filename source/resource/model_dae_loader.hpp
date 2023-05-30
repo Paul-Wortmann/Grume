@@ -54,13 +54,25 @@ struct sDAEMesh
 
 struct sDAEBone
 {
-    std::int32_t ID               = -1;
-    std::int32_t parentID         = -1;
+    std::int32_t ID               = -1; // -1 for none
+    std::int32_t parentID         = -1; // root bone -1
     std::string  name             = "";
     glm::mat4    transformNode    = glm::mat4(1); // node transformation matrix
     glm::mat4    transformPose    = glm::mat4(1); // inverse bind pose matrix
-    glm::mat4    transformFinal   = glm::mat4(1); // the final animated transform
-    glm::mat4    transformTemp    = glm::mat4(1); // an intermediary transform
+};
+
+struct sDAEAnimationNone
+{
+    std::uint32_t  numKeyFrame     = 0;
+    float         *keyFrame        = nullptr;
+    glm::mat4     *transform       = nullptr;
+
+};
+
+struct sDAEAnimation
+{
+    std::uint32_t      numNodes      = 0;
+    sDAEAnimationNone *animationNode = nullptr;
 };
 
 struct sDAEModel
@@ -79,6 +91,8 @@ struct sDAEModel
     std::uint32_t *boneCount     = nullptr;
     std::uint32_t  numBone       = 0;
     sDAEBone      *bone          = nullptr;
+
+    sDAEAnimation *animation     = nullptr;
 };
 
 void gFreeDAE(sDAEModel *&_dae);
