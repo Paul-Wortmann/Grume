@@ -117,6 +117,37 @@ void gFreeDAE(sDAEModel *&_dae)
             _dae->bone = nullptr;
         }
 
+        // Animation
+        if (_dae->animation != nullptr)
+        {
+            // animation nodes
+            if (_dae->animation->node != nullptr)
+            {
+                for (std::uint32_t i = 0; i < _dae->animation->numNodes; ++i)
+                {
+                    // keyframes
+                    if (_dae->animation->node->keyFrame != nullptr)
+                    {
+                        delete[] _dae->animation->node->keyFrame;
+                        _dae->animation->node->keyFrame = nullptr;
+                    }
+
+                    // transforms
+                    if (_dae->animation->node->transform != nullptr)
+                    {
+                        delete[] _dae->animation->node->transform;
+                        _dae->animation->node->transform = nullptr;
+                    }
+                }
+
+                delete[] _dae->animation->node;
+                _dae->animation->node = nullptr;
+            }
+
+            delete[] _dae->animation;
+            _dae->animation = nullptr;
+        }
+
         // free _dae memory
         delete _dae;
         _dae = nullptr;

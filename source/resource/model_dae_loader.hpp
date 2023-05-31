@@ -71,8 +71,8 @@ struct sDAEAnimationNone
 
 struct sDAEAnimation
 {
-    std::uint32_t      numNodes      = 0;
-    sDAEAnimationNone *animationNode = nullptr;
+    std::uint32_t      numNodes  = 0;
+    sDAEAnimationNone *node      = nullptr;
 };
 
 struct sDAEModel
