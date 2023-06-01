@@ -238,10 +238,7 @@ std::string cXML::getValueFromString(const std::string &_string, const std::stri
             }
             else
             {
-                if (dataLine[j] != '"')
-                {
-                    rString += dataLine[j];
-                }
+                rString += dataLine[j];
             }
         }
     }
@@ -286,10 +283,7 @@ std::string cXML::getStringKeyValue(const std::string &_key, const std::string &
             }
             else
             {
-                if (dataLine[j] != '"')
-                {
-                    rString += dataLine[j];
-                }
+                rString += dataLine[j];
             }
         }
     }

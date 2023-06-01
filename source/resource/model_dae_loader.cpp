@@ -800,8 +800,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
 
                 }
-                    std::cout << std::endl;
-
+                    //std::cout << std::endl;
             }
 
             // Load animations
@@ -812,21 +811,73 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                 // get animated bone count
                 std::uint32_t animatedBoneCount = 0;
-                for (std::uint32_t i = 0; i < animationIDCount; ++i)
+                for (std::uint32_t i = 0; i < animationIDCount - 1; ++i)
                 {
-                    std::string tString = daeFile.getString("<animation id=\"", i);
-                    for (std::uint32_t b = 0; b < _dae->numBone; ++b)
+                    std::string tAString = daeFile.line(daeFile.getLine("<animation id=\"", i + 1));
+                    if (tAString.find("/>") == std::string::npos)
                     {
-                        if (tString.find(_dae->bone[b].name) != std::string::npos)
+                        std::string animationIDName = daeFile.getValueFromString(tAString, "id");
+                        for (std::uint32_t b = 0; b < _dae->numBone; ++b)
                         {
-                            animatedBoneCount++;
+                            if (tAString.find(_dae->bone[b].name) != std::string::npos)
+                            {
+                                animatedBoneCount++;
+                            }
+                        }
+                    }
+                }
+
+                // parse animation data if available
+                if (animatedBoneCount > 0)
+                {
+                    // allocate memory
+                    _dae->animation = new sDAEAnimation;
+                    _dae->animation->numNodes = _dae->numBone;
+                    _dae->animation->node = new sDAEAnimationNode[_dae->animation->numNodes];
+
+                    //find and parse the animation data
+                    for (std::uint32_t i = 0; i < animationIDCount - 1; ++i)
+                    {
+                        std::string tAString = daeFile.line(daeFile.getLine("<animation id=\"", i + 1));
+                        if (tAString.find("/>") == std::string::npos)
+                        {
+                            std::string animationIDName = daeFile.getValueFromString(tAString, "id");
+                            for (std::uint32_t b = 0; b < _dae->numBone; ++b)
+                            {
+                                if (tAString.find(_dae->bone[b].name) != std::string::npos)
+                                {
+                                    // Get animation data
+                                    std::string   tIString   = daeFile.line(daeFile.getLine(animationIDName + "-input-array"));
+                                    std::uint32_t floatCount = std::stoi(daeFile.getValueFromString(tIString, "count"));
+                                    std::string   floatData  = daeFile.getString(animationIDName + "-input-array\" count=\"" + std::to_string(floatCount) + "\"");
+
+                                    std::string   tOString  = daeFile.line(daeFile.getLine(animationIDName + "-output-array"));
+                                    std::uint32_t mat4Count = std::stoi(daeFile.getValueFromString(tOString, "count")) / 16; // 4 x 4 matrix
+                                    std::string   mat4Data  = daeFile.getString(animationIDName + "-output-array\" count=\"" + std::to_string(mat4Count * 16) + "\"");
+
+                                    // Allocate memory
+                                    if ((_dae->animation->node->keyFrame == nullptr) && (_dae->animation->node->transform == nullptr))
+                                    {
+                                        _dae->animation->node->keyFrame  = new float[floatCount];
+                                        _dae->animation->node->transform = new glm::mat4[mat4Count];
+                                    }
+
+                                    //stringToFloatArray(_dae->animation->node->keyFrame, floatData);
+                                    //stringToMat4Attay(_dae->animation->node->transform, mat4Data);
+
+
+                        std::cout << "Data: '" << floatData << "'" << std::endl;
+                        //<float_array id="Armature_Frost_Bat_Body_Main_pose_matrix-input-array" count="9">0 0.04166662 0.08333331 0.125 0.1666666 0.2083333 0.25 0.2916666 0.3333333</float_array>
+                        //<float_array id="Armature_Frost_Bat_Body_Main_pose_matrix-output-array" count="144">0.9999961 -1.45519e-11 0.002783773 0 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1353314 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 0 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1353314 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 -7.27596e-12 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1792336 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.91038e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.231577 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 1.45519e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1807739 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.18279e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1211449 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 0 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.08340981 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.18279e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1111522 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.18279e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1227287 0 0 0 1</float_array>
+                                }
+                            }
                         }
                     }
 
                 }
+
+
                 //std::cout << "Animation count: " << animatedBoneCount << std::endl;
-
-
             }
 
         }

@@ -61,7 +61,7 @@ struct sDAEBone
     glm::mat4    transformPose    = glm::mat4(1); // inverse bind pose matrix
 };
 
-struct sDAEAnimationNone
+struct sDAEAnimationNode
 {
     std::uint32_t  numKeyFrame     = 0;
     float         *keyFrame        = nullptr;
@@ -72,7 +72,7 @@ struct sDAEAnimationNone
 struct sDAEAnimation
 {
     std::uint32_t      numNodes  = 0;
-    sDAEAnimationNone *node      = nullptr;
+    sDAEAnimationNode *node      = nullptr;
 };
 
 struct sDAEModel
