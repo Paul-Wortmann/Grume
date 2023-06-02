@@ -97,6 +97,7 @@
 #include "../utils/file_utils.hpp"
 #include "../utils/random.hpp"
 #include "../utils/thread_utils.hpp"
+#include "../utils/type_utils.hpp"
 #include "../utils/xml_parser.hpp"
 
 #endif // INCLUDES_HPP

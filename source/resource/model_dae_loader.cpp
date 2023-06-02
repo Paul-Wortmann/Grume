@@ -797,8 +797,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                     _dae->mesh[m].boneWeight[p].w = 0;
                     _dae->mesh[m].boneID[p].w     = 0;
-
-
                 }
                     //std::cout << std::endl;
             }
@@ -862,24 +860,17 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                                         _dae->animation->node->transform = new glm::mat4[mat4Count];
                                     }
 
-                                    //stringToFloatArray(_dae->animation->node->keyFrame, floatData);
-                                    //stringToMat4Attay(_dae->animation->node->transform, mat4Data);
+                                    // Parse the keyframe float data
+                                    gStringToFloatArray(floatData, floatCount, _dae->animation->node->keyFrame);
 
-
-                        std::cout << "Data: '" << floatData << "'" << std::endl;
-                        //<float_array id="Armature_Frost_Bat_Body_Main_pose_matrix-input-array" count="9">0 0.04166662 0.08333331 0.125 0.1666666 0.2083333 0.25 0.2916666 0.3333333</float_array>
-                        //<float_array id="Armature_Frost_Bat_Body_Main_pose_matrix-output-array" count="144">0.9999961 -1.45519e-11 0.002783773 0 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1353314 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 0 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1353314 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 -7.27596e-12 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1792336 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.91038e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.231577 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 1.45519e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1807739 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.18279e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1211449 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 0 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.08340981 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.18279e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1111522 0 0 0 1 0.9999961 -1.45519e-11 0.002783773 2.18279e-11 -1.70845e-4 0.998115 0.06137154 -0.5833055 -0.002778525 -0.06137178 0.9981111 -0.1227287 0 0 0 1</float_array>
+                                    // Parse the transform mat4 data
+                                    gStringToMat4Array(mat4Data, mat4Count, _dae->animation->node->transform);
                                 }
                             }
                         }
                     }
-
                 }
-
-
-                //std::cout << "Animation count: " << animatedBoneCount << std::endl;
             }
-
         }
 
         // Free dae file from memory
