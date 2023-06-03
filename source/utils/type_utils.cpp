@@ -28,7 +28,22 @@
 // Returns the float data in _array
 void gStringToFloatArray(const std::string &_string, const std::uint32_t &_dataCount, float *&_array)
 {
-
+    std::uint32_t arrayPos = 0;
+    std::string   tData = "";
+    std::uint32_t stringLength = _string.length();
+    for (std::uint32_t i = 0; i < stringLength; ++i)
+    {
+        if (_string[i] == ' ')
+        {
+            _array[arrayPos] = std::stof(tData);
+            tData = "";
+            arrayPos++;
+        }
+        else
+        {
+            tData += _string[i];
+        }
+    }
 }
 
 // A function to convert a string of space separated floats into a glm::mat4 array

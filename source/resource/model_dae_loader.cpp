@@ -848,10 +848,14 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                                     std::string   tIString   = daeFile.line(daeFile.getLine(animationIDName + "-input-array"));
                                     std::uint32_t floatCount = std::stoi(daeFile.getValueFromString(tIString, "count"));
                                     std::string   floatData  = daeFile.getString(animationIDName + "-input-array\" count=\"" + std::to_string(floatCount) + "\"");
+                                    if (floatData[floatData.length() - 1] != ' ')
+                                        floatData = floatData + ' ';
 
                                     std::string   tOString  = daeFile.line(daeFile.getLine(animationIDName + "-output-array"));
                                     std::uint32_t mat4Count = std::stoi(daeFile.getValueFromString(tOString, "count")) / 16; // 4 x 4 matrix
                                     std::string   mat4Data  = daeFile.getString(animationIDName + "-output-array\" count=\"" + std::to_string(mat4Count * 16) + "\"");
+                                    if (mat4Data[mat4Data.length() - 1] != ' ')
+                                        mat4Data = mat4Data + ' ';
 
                                     // Allocate memory
                                     if ((_dae->animation->node->keyFrame == nullptr) && (_dae->animation->node->transform == nullptr))
@@ -865,6 +869,12 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                                     // Parse the transform mat4 data
                                     gStringToMat4Array(mat4Data, mat4Count, _dae->animation->node->transform);
+
+
+                                    if (b == 0)
+                                    {
+                                        std::cout << "Float data: " << _dae->animation->node->keyFrame[70] << std::endl;
+                                    }
                                 }
                             }
                         }
