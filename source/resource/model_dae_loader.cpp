@@ -869,12 +869,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                                     // Parse the transform mat4 data
                                     gStringToMat4Array(mat4Data, mat4Count, _dae->animation->node->transform);
-
-
-                                    if (b == 0)
-                                    {
-                                        std::cout << "Float data: " << _dae->animation->node->keyFrame[70] << std::endl;
-                                    }
                                 }
                             }
                         }

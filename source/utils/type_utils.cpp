@@ -51,5 +51,26 @@ void gStringToFloatArray(const std::string &_string, const std::uint32_t &_dataC
 // Returns the glm::mat4 data in _array
 void gStringToMat4Array(const std::string &_string, const std::uint32_t &_dataCount, glm::mat4 *&_array)
 {
-
+    std::uint32_t arrayPos = 0;
+    std::uint32_t mat4Num = 0;
+    std::uint32_t mat4Col = 0;
+    std::uint32_t mat4Row = 0;
+    std::string   tData = "";
+    std::uint32_t stringLength = _string.length();
+    for (std::uint32_t i = 0; i < stringLength; ++i)
+    {
+        if (_string[i] == ' ')
+        {
+            mat4Num = arrayPos / 16;
+            mat4Col = (arrayPos - (mat4Num * 16)) / 4;
+            mat4Row = (arrayPos - (mat4Num * 16)) % 4;
+            _array[mat4Num][mat4Col][mat4Row] = std::stof(tData);
+            tData = "";
+            arrayPos++;
+        }
+        else
+        {
+            tData += _string[i];
+        }
+    }
 }
