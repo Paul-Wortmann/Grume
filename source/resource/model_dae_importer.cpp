@@ -39,6 +39,9 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
     _model->numMesh = dae->numMesh;
     _model->mesh = new sEntityModelMesh[_model->numMesh];
 
+    // model inverseTransform matrix
+    _model->inverseTransform = dae->inverseTransform;
+
     // copy the mesh data
     for (std::uint32_t m = 0; m < _model->numMesh; ++m)
     {

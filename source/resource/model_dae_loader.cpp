@@ -188,17 +188,18 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
         else if (upAxis.compare("Z_DOWN") == 0)
             _dae->upAxis = eUpAxis::zDown;
 
-        // Parse geometry meshes
+        // Parse <library_geometries>
         _dae->numMesh = daeFile.getInstanceCount("geometry id");
         _dae->mesh = new sDAEMesh[_dae->numMesh];
 
-        std::cout << "Number mesh: " << _dae->numMesh << std::endl;
+        //std::cout << "Number mesh: " << _dae->numMesh << std::endl;
 
         for(std::uint32_t m = 0; m < _dae->numMesh; ++m)
         {
             // Mesh name
             std::string meshID = daeFile.getStringKeyValue("geometry id", "id", m + 1);
             _dae->mesh[m].name = daeFile.getStringKeyValue("geometry id", "name", m + 1);
+            std::string controlerID = _dae->mesh[m].name + "-skin";
 
             //std::cout << "Mesh name: " << _dae->mesh[m].name << std::endl;
             //std::cout << "Mesh ID: " << meshID << std::endl;
@@ -245,7 +246,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     }
                 }
             }
-            std::cout << "Number positions: " << _dae->mesh[m].numPosition << std::endl;
+            //std::cout << "Number positions: " << _dae->mesh[m].numPosition << std::endl;
 
             // vertex normals data
             sData = daeFile.getStringKeyValue("#" + meshID + "-normals-array", "count");
@@ -418,73 +419,76 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             //std::cout << "Number colors: " << _dae->mesh[m].numColor << std::endl;
 
             // Parse index data
-            std::string   indexArray = daeFile.getString("<p>", m + 1);
-            indexArray += " ";
-            std::uint32_t indexArrayLength = indexArray.length();
-
-            // get data count
-            std::uint32_t sCount = 0;
-            std::string   tData  = {};
-
-            for (std::uint64_t i = 0; i < indexArrayLength; ++i)
+            std::string indexArray = daeFile.getString("<p>", m + 1);
+            if (indexArray.length() > 0)
             {
-                if (indexArray[i] == ' ')
-                {
-                    sCount++;
-                }
-            }
+                indexArray += " ";
+                std::uint32_t indexArrayLength = indexArray.length();
 
-            // Number of Data
-            std::uint32_t numData = 0;
-            if (_dae->mesh[m].numPosition > 0)
-                numData++;
-            if (_dae->mesh[m].numNormal > 0)
-                numData++;
-            if (_dae->mesh[m].numTexCoord > 0)
-                numData++;
-            if (_dae->mesh[m].numColor > 0)
-                numData++;
-
-            // Index data
-            _dae->mesh[m].numIndex = sCount / numData;
-
-            std::cout << "sCount: " << sCount << std::endl;
-            std::cout << "numData: " << numData << std::endl;
-            std::cout << "_dae->mesh[m].numIndex: " << _dae->mesh[m].numIndex << std::endl;
-
-            if (_dae->mesh[m].numIndex > 0)
-            {
-                _dae->mesh[m].index = new glm::ivec4[_dae->mesh[m].numIndex];
-
-                // parse the data into the index array
-                sCount = 0;
-                tData  = {};
+                // get data count
+                std::uint32_t sCount = 0;
+                std::string   tData  = {};
 
                 for (std::uint64_t i = 0; i < indexArrayLength; ++i)
                 {
                     if (indexArray[i] == ' ')
                     {
-                        // position
-                        if ((sCount % numData) == 0)
-                            _dae->mesh[m].index[sCount / numData].x = stoi(tData);
-                        // normal
-                        else if ((numData > 1) && ((sCount % numData) == 1))
-                            _dae->mesh[m].index[sCount / numData].y = stoi(tData);
-                        // texcoord
-                        else if ((numData > 2) && ((sCount % numData) == 2))
-                            _dae->mesh[m].index[sCount / numData].z = stoi(tData);
-                        // color
-                        else if ((numData > 3) && ((sCount % numData) == 3))
-                            _dae->mesh[m].index[sCount / numData].w = stoi(tData);
                         sCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += indexArray[i];
                     }
                 }
-                //std::cout << "Number index: " << _dae->mesh[m].numIndex << std::endl;
+
+                // Number of Data
+                std::uint32_t numData = 0;
+                if (_dae->mesh[m].numPosition > 0)
+                    numData++;
+                if (_dae->mesh[m].numNormal > 0)
+                    numData++;
+                if (_dae->mesh[m].numTexCoord > 0)
+                    numData++;
+                if (_dae->mesh[m].numColor > 0)
+                    numData++;
+
+                // Index data
+                _dae->mesh[m].numIndex = sCount / numData;
+
+                std::cout << "sCount: " << sCount << std::endl;
+                std::cout << "numData: " << numData << std::endl;
+                std::cout << "_dae->mesh[m].numIndex: " << _dae->mesh[m].numIndex << std::endl;
+
+                if (_dae->mesh[m].numIndex > 0)
+                {
+                    _dae->mesh[m].index = new glm::ivec4[_dae->mesh[m].numIndex];
+
+                    // parse the data into the index array
+                    sCount = 0;
+                    tData  = {};
+
+                    for (std::uint64_t i = 0; i < indexArrayLength; ++i)
+                    {
+                        if (indexArray[i] == ' ')
+                        {
+                            // position
+                            if ((sCount % numData) == 0)
+                                _dae->mesh[m].index[sCount / numData].x = stoi(tData);
+                            // normal
+                            else if ((numData > 1) && ((sCount % numData) == 1))
+                                _dae->mesh[m].index[sCount / numData].y = stoi(tData);
+                            // texcoord
+                            else if ((numData > 2) && ((sCount % numData) == 2))
+                                _dae->mesh[m].index[sCount / numData].z = stoi(tData);
+                            // color
+                            else if ((numData > 3) && ((sCount % numData) == 3))
+                                _dae->mesh[m].index[sCount / numData].w = stoi(tData);
+                            sCount++;
+                            tData = "";
+                        }
+                        else
+                        {
+                            tData += indexArray[i];
+                        }
+                    }
+                    //std::cout << "Number index: " << _dae->mesh[m].numIndex << std::endl;
+                }
             }
 
             // Node transform
@@ -494,157 +498,169 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             {
                 _dae->mesh[m].transform = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
             }
+
         }
 
-        // Load skinning data if available
+        // Parse <library_controllers>
         std::uint32_t controllerCount = daeFile.getInstanceCount("<controller id=");
         if (controllerCount > 0)
         {
-            glm::mat4 bindShapeMatrix = daeFile.getMat4("<bind_shape_matrix>");
+            for(std::uint32_t m = 0; m < _dae->numMesh; ++m)
+            {
+                if (_dae->numBone == 0)
+                {
+                    // Controller bone names
+                    std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + _dae->mesh[m].name + "-skin-joints-array\" count=", "count"));
+                    std::string boneNamesArray = daeFile.getString("<Name_array id=\"" + _dae->mesh[m].name + "-skin-joints-array\" count=\"" + std::to_string(boneCount) + "\">");
+
+                    // max bone check
+                    if (boneCount > MAX_BONES)
+                    {
+                        gLogWrite(LOG_WARNING, "3D model: " + _fileName + ", has too many bones: " + std::to_string(boneCount), __FILE__, __LINE__, __FUNCTION__);
+                    }
+
+                    // allocate memory
+                    _dae->numBone = boneCount;
+                    _dae->bone = new sDAEBone[_dae->numBone];
+
+                    // Parse the bone names array into the bone struct
+                    boneNamesArray += " ";
+                    std::uint64_t boneNamesArrayLength = boneNamesArray.length();
+                    if (boneNamesArrayLength > 1)
+                    {
+                        std::uint32_t sCount = 0;
+                        std::string   tData  = {};
+                        for (std::uint64_t i = 0; i < boneNamesArrayLength; ++i)
+                        {
+                            if (boneNamesArray[i] == ' ')
+                            {
+                                // add data to array
+                                _dae->bone[sCount].ID = sCount;
+                                _dae->bone[sCount].name = tData;
+                                sCount++;
+                                tData = "";
+                            }
+                            else
+                            {
+                                tData += boneNamesArray[i];
+                            }
+                        }
+                    }
+
+                    // Get the scene id
+                    std::string sceneID = daeFile.getStringKeyValue("visual_scene id", "id");
+
+                    // Get the bone transforms
+                    for (std::uint32_t i = 0; i < _dae->numBone; ++i)
+                    {
+                        // bone id
+                        std::string baneID = _dae->bone[i].name;
+                        std::string boneSceneID = sceneID + "_" + baneID;
+
+                        // Node transform
+                        std::uint32_t lineNum = daeFile.getLine("<node id=\"" + boneSceneID + "\" name=\"" + baneID + "\" sid=\"" + baneID + "\" type=\"JOINT\">");
+                        std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<matrix sid=\"transform\">", lineNum);
+                        if (instanceNum > 0)
+                        {
+                            _dae->bone[i].transformNode = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
+                        }
+                    }
+
+                    // Get the bone hierarchical order of parent nodes
+                    std::int32_t  boneList[_dae->numBone];
+                    std::uint32_t boneListPos = 0;
+                    std::uint32_t nodeDepth = -1;
+                    std::uint32_t visualSceneslineNum = daeFile.getLine("<library_visual_scenes>");
+                    for (std::uint32_t i = visualSceneslineNum; i < daeFile.lineCount(); ++i)
+                    {
+                        std::string tString = daeFile.line(i);
+                        if ((tString.find("<node id=") != std::string::npos) && (tString.find("type=\"JOINT\">") != std::string::npos))
+                        {
+                            // Node depth
+                            nodeDepth++;
+
+                            // bone name
+                            std::string boneName = daeFile.getValueFromString(tString, "sid");
+
+                            // bone ID
+                            std::int32_t boneID = -1;
+                            for (std::uint32_t b = 0; b < _dae->numBone; ++b)
+                            {
+                                if (boneName.find(_dae->bone[b].name) != std::string::npos)
+                                {
+                                    boneID = b;
+                                }
+                            }
+
+                            // add to bone list
+                            boneList[boneListPos] = boneID;
+                            boneListPos++;
+
+                            // if not root bone, add parent
+                            if (boneID > 0)
+                            {
+                                _dae->bone[boneID].parentID = boneList[nodeDepth];
+                                //std::cout << "Parent ID: " << _dae->bone[boneID].parentID << std::endl;
+                            }
+
+                        }
+                        if (tString.find("</node>") != std::string::npos)
+                        {
+                            // Node depth
+                            nodeDepth--;
+                        }
+                    }
+
+                    // Joint bind pose arrays
+                    std::string bindPosessArray = daeFile.getString("<float_array id=\"" + _dae->mesh[m].name + "-skin-bind_poses-array\" count=\"" + std::to_string(boneCount * 16) + "\"");
+
+                    // Parse the bind poses array into the bone struct
+                    bindPosessArray += " ";
+                    std::uint64_t bindPosessArrayLength = bindPosessArray.length();
+                    if (bindPosessArrayLength > 1)
+                    {
+                        std::uint32_t sCount = 0;
+                        std::string   tData  = {};
+                        for (std::uint64_t i = 0; i < bindPosessArrayLength; ++i)
+                        {
+                            if (bindPosessArray[i] == ' ')
+                            {
+                                // add data to array
+                                std::uint32_t matNum = sCount / 16;
+                                std::uint32_t matPos = sCount % 16;
+                                _dae->bone[matNum].transformPose[matPos / 4][matPos % 4] = std::stof(tData);
+                                sCount++;
+                                tData = "";
+                            }
+                            else
+                            {
+                                tData += bindPosessArray[i];
+                            }
+                        }
+                    }
+                }
+
+                // Skinning data
+
+
+            }
+        }
+
+
+
+
+        // Load skinning data if available
+        if (controllerCount > 0)
+        {
+            _dae->inverseTransform = daeFile.getMat4("<bind_shape_matrix>");
             // Controller ID and name
             std::string controllerID = daeFile.getStringKeyValue("<controller id=", "id");
             std::string controllerName = daeFile.getStringKeyValue("<controller id=", "name");
 
-//            std::cout << "Controller Count: " << controllerCount << std::endl;
-//            std::cout << "Controller ID: " << controllerID << std::endl;
-//            std::cout << "Controller Name: " << controllerName << std::endl;
 
-            // Controller bone names
-            std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + controllerID + "-joints-array\" count=", "count"));
-            std::string boneNamesArray = daeFile.getString("<Name_array id=\"" + controllerID + "-joints-array\" count=\"" + std::to_string(boneCount) + "\"");
-
-            std::cout << "Bone count: " << boneCount << std::endl;
-//            std::cout << "Bone names: " << boneNamesArray << std::endl;
-
-            if (boneCount > MAX_BONES)
-            {
-                gLogWrite(LOG_WARNING, "3D model: " + _fileName + ", has too many bones: " + std::to_string(boneCount), __FILE__, __LINE__, __FUNCTION__);
-            }
-
-            _dae->numBone = boneCount;
-            _dae->bone = new sDAEBone[_dae->numBone];
-
-            // Parse the bone names array into the bone struct
-            boneNamesArray += " ";
-            std::uint64_t boneNamesArrayLength = boneNamesArray.length();
-            if (boneNamesArrayLength > 1)
-            {
-                std::uint32_t sCount = 0;
-                std::string   tData  = {};
-                for (std::uint64_t i = 0; i < boneNamesArrayLength; ++i)
-                {
-                    if (boneNamesArray[i] == ' ')
-                    {
-                        // add data to array
-                        _dae->bone[sCount].ID = sCount;
-                        _dae->bone[sCount].name = tData;
- //                       std::cout << "Bone name: " << tData << std::endl;
-                        sCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += boneNamesArray[i];
-                    }
-                }
-            }
-
-            // Get the scene id
-            std::string sceneID = daeFile.getStringKeyValue("visual_scene id", "id");
-
-            // Get the bone transforms
-            for (std::uint32_t i = 0; i < _dae->numBone; ++i)
-            {
-                // bone id
-                std::string baneID = _dae->bone[i].name;
-                std::string boneSceneID = sceneID + "_" + baneID;
-
-                // Node transform
-                std::uint32_t lineNum = daeFile.getLine("<node id=\"" + boneSceneID + "\" name=\"" + baneID + "\" sid=\"" + baneID + "\" type=\"JOINT\">");
-                std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<matrix sid=\"transform\">", lineNum);
-                if (instanceNum > 0)
-                {
-                    _dae->bone[i].transformNode = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
-                }
-            }
-
-            // Get the bone hierarchical order of parent nodes
-            std::int32_t  boneList[_dae->numBone];
-            std::uint32_t boneListPos = 0;
-            std::uint32_t nodeDepth = -1;
-            std::uint32_t visualSceneslineNum = daeFile.getLine("<library_visual_scenes>");
-            for (std::uint32_t i = visualSceneslineNum; i < daeFile.lineCount(); ++i)
-            {
-                std::string tString = daeFile.line(i);
-                if ((tString.find("<node id=") != std::string::npos) && (tString.find("type=\"JOINT\">") != std::string::npos))
-                {
-                    // Node depth
-                    nodeDepth++;
-
-                    // bone name
-                    std::string boneName = daeFile.getValueFromString(tString, "sid");
-
-                    // bone ID
-                    std::int32_t boneID = -1;
-                    for (std::uint32_t b = 0; b < _dae->numBone; ++b)
-                    {
-                        if (boneName.find(_dae->bone[b].name) != std::string::npos)
-                        {
-                            boneID = b;
-                        }
-                    }
-
-                    // add to bone list
-                    boneList[boneListPos] = boneID;
-                    boneListPos++;
-
-                    // if not root bone, add parent
-                    if (boneID > 0)
-                    {
-                        _dae->bone[boneID].parentID = boneList[nodeDepth];
-                        //std::cout << "Parent ID: " << _dae->bone[boneID].parentID << std::endl;
-                    }
-
-                }
-                if (tString.find("</node>") != std::string::npos)
-                {
-                    // Node depth
-                    nodeDepth--;
-                }
-            }
-
-            // Joint bind pose arrays
-            std::string bindPosessArray = daeFile.getString("<float_array id=\"" + controllerID + "-bind_poses-array\" count=\"" + std::to_string(boneCount * 16) + "\"");
-
-            //std::cout << "Bind poses array: " << bindPosessArray << std::endl;
-
-            // Parse the bind poses array into the bone struct
-            bindPosessArray += " ";
-            std::uint64_t bindPosessArrayLength = bindPosessArray.length();
-            if (bindPosessArrayLength > 1)
-            {
-                std::uint32_t sCount = 0;
-                std::string   tData  = {};
-                for (std::uint64_t i = 0; i < bindPosessArrayLength; ++i)
-                {
-                    if (bindPosessArray[i] == ' ')
-                    {
-                        // add data to array
-                        std::uint32_t matNum = sCount / 16;
-                        std::uint32_t matPos = sCount % 16;
-                        _dae->bone[matNum].transformPose[matPos / 4][matPos % 4] = std::stof(tData);
-                        sCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += bindPosessArray[i];
-                    }
-                }
-            }
 
             // Vertex skin weight data count
-            _dae->numSkinWeight = std::stof(daeFile.getStringKeyValue("<float_array id=\"" + controllerID + "-weights-array\"", "count"));
+            _dae->numSkinWeight = std::stoi(daeFile.getStringKeyValue("<float_array id=\"" + controllerID + "-weights-array\"", "count"));
             std::cout << "Num skin weights: " << _dae->numSkinWeight << std::endl;
             // Vertex skin weight data
             std::string skinWeightArray = daeFile.getString("<float_array id=\"" + controllerID + "-weights-array\" count=\"" + std::to_string(_dae->numSkinWeight) + "\">");
