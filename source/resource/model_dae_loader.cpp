@@ -157,6 +157,20 @@ void gFreeDAE(sDAEModel *&_dae)
 // load dae data
 void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 {
+    // space count lambda
+    auto _stringSpaceCount = [](const std::string &_string)
+    {
+        std::uint32_t sCount = 0;
+        std::uint64_t sLength = _string.length();
+
+        for (std::uint64_t i = 0; i < sLength; ++i)
+        {
+            if (_string[i] == ' ')
+                sCount++;
+        }
+        return sCount;
+    };
+
     // open dae file
     cXML daeFile;
     daeFile.load(_fileName);
@@ -640,14 +654,51 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     }
                 }
 
-                // Skinning data
+                // Skinning data weights
+                std::uint32_t skinWeightsArrayCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=", "count"));
+                std::string floatData = daeFile.getString("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
+                if (floatData[floatData.length() - 1] != ' ')
+                    floatData = floatData + ' ';
+                float *skinWeightsArray = new float[skinWeightsArrayCount];
+                gStringToFloatArray(floatData, skinWeightsArrayCount, skinWeightsArray);
+
+                // weights per vertex
+                floatData = daeFile.getString("<vcount>", m + 1);
+                if (floatData[floatData.length() - 1] != ' ')
+                    floatData = floatData + ' ';
+                std::uint32_t skinJointsCount = _stringSpaceCount(floatData);
+                float *skinJointsArray = new float[skinJointsCount];
+                gStringToFloatArray(floatData, skinJointsCount, skinJointsArray);
+
+                // vertex joint weight pairs
+                floatData = daeFile.getString("<v>", m + 1);
+                if (floatData[floatData.length() - 1] != ' ')
+                    floatData = floatData + ' ';
+                std::uint32_t skinWeightJointCount = _stringSpaceCount(floatData);
+                float *skinWeightJointArray = new float[skinWeightJointCount];
+                gStringToFloatArray(floatData, skinWeightJointCount, skinWeightJointArray);
+
+                // Allocate memory
+                _dae->mesh[m].boneWeight = new glm::vec4[_dae->mesh[m].numPosition];
+                _dae->mesh[m].boneID     = new glm::ivec4[_dae->mesh[m].numPosition];
+
+                // set zero data
+                for(std::uint32_t p = 0; p < _dae->mesh[m].numPosition; ++p)
+                {
+                    _dae->mesh[m].boneWeight[p] = glm::vec4(0.0f, 0.0f, 0.0f, 0.0f);
+                    _dae->mesh[m].boneID[p]     = glm::ivec4(0, 0, 0, 0);
+                }
 
 
+
+                // cleanup
+                delete[] skinWeightsArray;
             }
         }
 
 
 
+/*------------------------*/
 
         // Load skinning data if available
         if (controllerCount > 0)
@@ -785,15 +836,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             // add skinning data to each mesh
             for(std::uint32_t m = 0; m < _dae->numMesh; ++m)
             {
-                _dae->mesh[m].boneWeight = new glm::vec4[_dae->mesh[m].numPosition];
-                _dae->mesh[m].boneID     = new glm::ivec4[_dae->mesh[m].numPosition];
-
-                // set zero data
-                for(std::uint32_t p = 0; p < _dae->mesh[m].numPosition; ++p)
-                {
-                    _dae->mesh[m].boneWeight[p] = glm::vec4(0.0f, 0.0f, 0.0f, 0.0f);
-                    _dae->mesh[m].boneID[p]     = glm::ivec4(0, 0, 0, 0);
-                }
 
 
                 // process bone - weight data for each vertex position
@@ -816,6 +858,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 }
                     //std::cout << std::endl;
             }
+/*------------------------*/
 
             // Load animations
             if (_dae->numBone > 0)

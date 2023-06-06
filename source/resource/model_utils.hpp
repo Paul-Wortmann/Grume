@@ -27,7 +27,8 @@
 #include "../core/includes.hpp"
 #include "../entity/entity_model.hpp"
 
-void gCalculateTangentBiTangent(sEntityModelVertex &_v1, sEntityModelVertex &_v2, sEntityModelVertex &_v3);
+void      gCalculateTangentBiTangent(sEntityModelVertex &_v1, sEntityModelVertex &_v2, sEntityModelVertex &_v3);
+glm::quat gMat4ToQuat(const glm::mat4 &_mat4);
 
 #endif // MODEL_UTILS_HPP
 
