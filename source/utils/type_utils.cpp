@@ -23,6 +23,29 @@
 
 #include "type_utils.hpp"
 
+// A function to convert a string of space separated uint32 into a uint32 array
+// Function is called with _string and pre-allocated array matching the uint32 count in the string
+// Returns the uint32 data in _array
+void gStringToInt32Array(const std::string &_string, const std::uint32_t &_dataCount, std::uint32_t *&_array)
+{
+    std::uint32_t arrayPos = 0;
+    std::string   tData = "";
+    std::uint32_t stringLength = _string.length();
+    for (std::uint32_t i = 0; i < stringLength; ++i)
+    {
+        if (_string[i] == ' ')
+        {
+            _array[arrayPos] = std::stoi(tData);
+            tData = "";
+            arrayPos++;
+        }
+        else
+        {
+            tData += _string[i];
+        }
+    }
+}
+
 // A function to convert a string of space separated floats into a float array
 // Function is called with _string and pre-allocated array matching the float count in the string
 // Returns the float data in _array

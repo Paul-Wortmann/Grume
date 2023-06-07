@@ -99,6 +99,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         }
 
         // Bone data
+        _model->numBones = dae->numBone;
         if (_model->numBones > 0)
         {
             // Allocate memory
@@ -116,6 +117,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         }
 
         // Animation data
+        _model->numAnimations = dae->numAnimations;
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
         {
 

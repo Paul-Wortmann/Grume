@@ -656,6 +656,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                 // Skinning data weights
                 std::uint32_t skinWeightsArrayCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=", "count"));
+                std::uint32_t dataLineStart = daeFile.getLine("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
                 std::string floatData = daeFile.getString("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
                 if (floatData[floatData.length() - 1] != ' ')
                     floatData = floatData + ' ';
@@ -663,12 +664,13 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 gStringToFloatArray(floatData, skinWeightsArrayCount, skinWeightsArray);
 
                 // weights per vertex
-                floatData = daeFile.getString("<vcount>", m + 1);
+                std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<vcount>", dataLineStart);
+                floatData = daeFile.getString("<vcount>", instanceNum);
                 if (floatData[floatData.length() - 1] != ' ')
                     floatData = floatData + ' ';
                 std::uint32_t skinJointsCount = _stringSpaceCount(floatData);
-                float *skinJointsArray = new float[skinJointsCount];
-                gStringToFloatArray(floatData, skinJointsCount, skinJointsArray);
+                std::uint32_t *skinJointsArray = new std::uint32_t[skinJointsCount];
+                gStringToInt32Array(floatData, skinJointsCount, skinJointsArray);
 
                 // vertex joint weight pairs
                 floatData = daeFile.getString("<v>", m + 1);
@@ -689,10 +691,17 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     _dae->mesh[m].boneID[p]     = glm::ivec4(0, 0, 0, 0);
                 }
 
+                // parse the skinning data for each vertex
+                for (std::uint32_t i = 0; i < skinJointsCount; ++i)
+                {
+
+                }
 
 
                 // cleanup
                 delete[] skinWeightsArray;
+                delete[] skinJointsArray;
+                delete[] skinWeightJointArray;
             }
         }
 
@@ -888,6 +897,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 if (animatedBoneCount > 0)
                 {
                     // allocate memory
+                    _dae->numAnimations = 1;
                     _dae->animation = new sDAEAnimation;
                     _dae->animation->numNodes = _dae->numBone;
                     _dae->animation->node = new sDAEAnimationNode[_dae->animation->numNodes];

@@ -93,6 +93,7 @@ struct sDAEModel
     std::uint32_t  numBone          = 0;
     sDAEBone      *bone             = nullptr;
 
+    std::uint32_t  numAnimations    = 0;
     sDAEAnimation *animation        = nullptr;
 };
 
