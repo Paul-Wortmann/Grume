@@ -205,9 +205,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
         // Parse <library_geometries>
         _dae->numMesh = daeFile.getInstanceCount("geometry id");
         _dae->mesh = new sDAEMesh[_dae->numMesh];
-
-        //std::cout << "Number mesh: " << _dae->numMesh << std::endl;
-
         for(std::uint32_t m = 0; m < _dae->numMesh; ++m)
         {
             // Mesh name
@@ -523,9 +520,18 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             {
                 if (_dae->numBone == 0)
                 {
+                    // get the controler ID for this mesh
+                    std::string controlerID = "";
+                    for(std::uint32_t c = 0; c < controllerCount; ++c)
+                    {
+                        std::string tData = daeFile.getString("<controller id=", c + 1);
+                        if (tData.find(_dae->mesh[m].name))
+                            controlerID = daeFile.getStringKeyValue("<controller id=", "id");
+                    }
+
                     // Controller bone names
-                    std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + _dae->mesh[m].name + "-skin-joints-array\" count=", "count"));
-                    std::string boneNamesArray = daeFile.getString("<Name_array id=\"" + _dae->mesh[m].name + "-skin-joints-array\" count=\"" + std::to_string(boneCount) + "\">");
+                    std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + controlerID + "-joints-array\" count=", "count"));
+                    std::string boneNamesArray = daeFile.getString("<Name_array id=\"" + controlerID + "-joints-array\" count=\"" + std::to_string(boneCount) + "\">");
 
                     // max bone check
                     if (boneCount > MAX_BONES)
@@ -614,7 +620,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                             if (boneID > 0)
                             {
                                 _dae->bone[boneID].parentID = boneList[nodeDepth];
-                                //std::cout << "Parent ID: " << _dae->bone[boneID].parentID << std::endl;
                             }
 
                         }
@@ -626,7 +631,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     }
 
                     // Joint bind pose arrays
-                    std::string bindPosessArray = daeFile.getString("<float_array id=\"" + _dae->mesh[m].name + "-skin-bind_poses-array\" count=\"" + std::to_string(boneCount * 16) + "\"");
+                    std::string bindPosessArray = daeFile.getString("<float_array id=\"" + controlerID + "-bind_poses-array\" count=\"" + std::to_string(boneCount * 16) + "\"");
 
                     // Parse the bind poses array into the bone struct
                     bindPosessArray += " ";
@@ -652,223 +657,80 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                             }
                         }
                     }
+
+                    // Skinning data weights
+                    std::uint32_t skinWeightsArrayCount = std::stoi(daeFile.getStringKeyValue("<float_array id=\"" + controlerID + "-weights-array\" count=", "count"));
+                    std::uint32_t dataLineStart = daeFile.getLine("<float_array id=\"" + controlerID + "-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
+                    std::string floatData = daeFile.getString("<float_array id=\"" + controlerID + "-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
+                    if (floatData[floatData.length() - 1] != ' ')
+                        floatData = floatData + ' ';
+                    float *skinWeightsArray = new float[skinWeightsArrayCount];
+                    gStringToFloatArray(floatData, skinWeightsArrayCount, skinWeightsArray);
+
+                    // weights per vertex
+                    std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<vcount>", dataLineStart);
+                    std::string integerData = daeFile.getString("<vcount>", instanceNum);
+                    if (integerData[integerData.length() - 1] != ' ')
+                        integerData = integerData + ' ';
+                    std::uint32_t skinJointsCount = _stringSpaceCount(integerData);
+                    std::uint32_t *skinJointsArray = new std::uint32_t[skinJointsCount];
+                    gStringToInt32Array(integerData, skinJointsCount, skinJointsArray);
+
+                    // vertex joint weight pairs
+                    floatData = daeFile.getString("<v>", m + 1);
+                    if (floatData[floatData.length() - 1] != ' ')
+                        floatData = floatData + ' ';
+                    std::uint32_t skinWeightJointCount = _stringSpaceCount(floatData);
+                    float *skinWeightJointArray = new float[skinWeightJointCount];
+                    gStringToFloatArray(floatData, skinWeightJointCount, skinWeightJointArray);
+
+                    // Allocate memory
+                    _dae->mesh[m].boneWeight = new glm::vec4[_dae->mesh[m].numPosition];
+                    _dae->mesh[m].boneID     = new glm::ivec4[_dae->mesh[m].numPosition];
+
+                    // set zero data
+                    for(std::uint32_t p = 0; p < _dae->mesh[m].numPosition; ++p)
+                    {
+                        _dae->mesh[m].boneWeight[p] = glm::vec4(0.0f, 0.0f, 0.0f, 0.0f);
+                        _dae->mesh[m].boneID[p]     = glm::ivec4(0, 0, 0, 0);
+                    }
+
+                    // parse the skinning data for each vertex
+                    std::uint32_t skinWeightJointPosition = 0;
+                    for (std::uint32_t i = 0; i < skinJointsCount; ++i)
+                    {
+                        for (std::uint32_t j = 0; j < skinJointsArray[i]; ++j)
+                        {
+                            if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].x)
+                            {
+                                // weight
+                                _dae->mesh[m].boneWeight[i].w = _dae->mesh[m].boneWeight[i].z;
+                                _dae->mesh[m].boneWeight[i].z = _dae->mesh[m].boneWeight[i].y;
+                                _dae->mesh[m].boneWeight[i].y = _dae->mesh[m].boneWeight[i].x;
+                                _dae->mesh[m].boneWeight[i].x = skinWeightJointArray[skinWeightJointPosition + 1];
+
+                                //boneID
+                                _dae->mesh[m].boneID[i].w = _dae->mesh[m].boneID[i].z;
+                                _dae->mesh[m].boneID[i].z = _dae->mesh[m].boneID[i].y;
+                                _dae->mesh[m].boneID[i].y = _dae->mesh[m].boneID[i].x;
+                                _dae->mesh[m].boneID[i].x = skinWeightJointArray[skinWeightJointPosition];
+                            }
+                            skinWeightJointPosition += 2;
+                        }
+                    }
+
+                    // cleanup
+                    delete[] skinWeightsArray;
+                    delete[] skinJointsArray;
+                    delete[] skinWeightJointArray;
                 }
-
-                // Skinning data weights
-                std::uint32_t skinWeightsArrayCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=", "count"));
-                std::uint32_t dataLineStart = daeFile.getLine("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
-                std::string floatData = daeFile.getString("<Name_array id=\"" + _dae->mesh[m].name + "-skin-weights-array\" count=\"" + std::to_string(skinWeightsArrayCount) + "\">");
-                if (floatData[floatData.length() - 1] != ' ')
-                    floatData = floatData + ' ';
-                float *skinWeightsArray = new float[skinWeightsArrayCount];
-                gStringToFloatArray(floatData, skinWeightsArrayCount, skinWeightsArray);
-
-                // weights per vertex
-                std::uint32_t instanceNum = daeFile.getInstanceAfterLine("<vcount>", dataLineStart);
-                floatData = daeFile.getString("<vcount>", instanceNum);
-                if (floatData[floatData.length() - 1] != ' ')
-                    floatData = floatData + ' ';
-                std::uint32_t skinJointsCount = _stringSpaceCount(floatData);
-                std::uint32_t *skinJointsArray = new std::uint32_t[skinJointsCount];
-                gStringToInt32Array(floatData, skinJointsCount, skinJointsArray);
-
-                // vertex joint weight pairs
-                floatData = daeFile.getString("<v>", m + 1);
-                if (floatData[floatData.length() - 1] != ' ')
-                    floatData = floatData + ' ';
-                std::uint32_t skinWeightJointCount = _stringSpaceCount(floatData);
-                float *skinWeightJointArray = new float[skinWeightJointCount];
-                gStringToFloatArray(floatData, skinWeightJointCount, skinWeightJointArray);
-
-                // Allocate memory
-                _dae->mesh[m].boneWeight = new glm::vec4[_dae->mesh[m].numPosition];
-                _dae->mesh[m].boneID     = new glm::ivec4[_dae->mesh[m].numPosition];
-
-                // set zero data
-                for(std::uint32_t p = 0; p < _dae->mesh[m].numPosition; ++p)
-                {
-                    _dae->mesh[m].boneWeight[p] = glm::vec4(0.0f, 0.0f, 0.0f, 0.0f);
-                    _dae->mesh[m].boneID[p]     = glm::ivec4(0, 0, 0, 0);
-                }
-
-                // parse the skinning data for each vertex
-                for (std::uint32_t i = 0; i < skinJointsCount; ++i)
-                {
-
-                }
-
-
-                // cleanup
-                delete[] skinWeightsArray;
-                delete[] skinJointsArray;
-                delete[] skinWeightJointArray;
             }
         }
 
-
-
-/*------------------------*/
-
-        // Load skinning data if available
-        if (controllerCount > 0)
+        // Parse <library_animations>
+        std::uint32_t animationCount = daeFile.getInstanceCount("<animation id=");
+        if (animationCount > 0)
         {
-            _dae->inverseTransform = daeFile.getMat4("<bind_shape_matrix>");
-            // Controller ID and name
-            std::string controllerID = daeFile.getStringKeyValue("<controller id=", "id");
-            std::string controllerName = daeFile.getStringKeyValue("<controller id=", "name");
-
-
-
-            // Vertex skin weight data count
-            _dae->numSkinWeight = std::stoi(daeFile.getStringKeyValue("<float_array id=\"" + controllerID + "-weights-array\"", "count"));
-            std::cout << "Num skin weights: " << _dae->numSkinWeight << std::endl;
-            // Vertex skin weight data
-            std::string skinWeightArray = daeFile.getString("<float_array id=\"" + controllerID + "-weights-array\" count=\"" + std::to_string(_dae->numSkinWeight) + "\">");
-            //std::cout << "skin-weights-array: " << skinWeightArray << std::endl;
-            std::uint64_t skinWeightArrayLength = skinWeightArray.length();
-            if (skinWeightArrayLength > 1)
-            {
-                if (skinWeightArray[skinWeightArrayLength-1] != ' ')
-                {
-                    skinWeightArray += " ";
-                    skinWeightArrayLength++;
-                }
-
-                std::uint32_t sCount = 0;
-                std::string tData  = "";
-                _dae->skinWeight = new float[_dae->numSkinWeight];
-                for (std::uint64_t i = 0; i < skinWeightArrayLength; ++i)
-                {
-                    if (skinWeightArray[i] == ' ')
-                    {
-                        _dae->skinWeight[sCount] = std::stof(tData);
-                        sCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += skinWeightArray[i];
-                    }
-                }
-            }
-
-            // Vertex joint count data
-            std::string jointCountArray = daeFile.getString("<vcount>");
-            //std::cout << "vcount: " << jointCountArray << std::endl;
-            std::uint64_t jointCountArrayLength = jointCountArray.length();
-            if (jointCountArrayLength > 1)
-            {
-                if (jointCountArray[jointCountArrayLength-1] != ' ')
-                {
-                    jointCountArray += " ";
-                    jointCountArrayLength++;
-                }
-
-                std::string tData  = {};
-                for (std::uint64_t i = 0; i < jointCountArrayLength; ++i)
-                {
-                    if (jointCountArray[i] == ' ')
-                    {
-                        _dae->numBoneCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += jointCountArray[i];
-                    }
-                }
-
-                std::cout << "Num Bone Count: " << _dae->numBoneCount << std::endl;
-                std::uint32_t sCount = 0;
-                tData  = "";
-                _dae->boneCount = new std::uint32_t[_dae->numBoneCount];
-                for (std::uint64_t i = 0; i < jointCountArrayLength; ++i)
-                {
-                    if (jointCountArray[i] == ' ')
-                    {
-                        _dae->boneCount[sCount] = std::stoi(tData);
-                        sCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += jointCountArray[i];
-                    }
-                }
-            }
-
-            // Vertex joint weight data
-            std::string jointWeightArray = daeFile.getString("<v>");
-            //std::cout << "vcount: " << jointWeightArray << std::endl;
-            std::uint64_t jointWeightArrayLength = jointWeightArray.length();
-            if (jointWeightArrayLength > 1)
-            {
-                if (jointWeightArray[jointWeightArrayLength-1] != ' ')
-                {
-                    jointWeightArray += " ";
-                    jointWeightArrayLength++;
-                }
-
-                std::string tData  = {};
-                for (std::uint64_t i = 0; i < jointWeightArrayLength; ++i)
-                {
-                    if (jointWeightArray[i] == ' ')
-                    {
-                        _dae->numBoneWeight++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += jointWeightArray[i];
-                    }
-                }
-
-                std::cout << "Num Bone + Weight: " << _dae->numBoneWeight << std::endl;
-                std::uint32_t sCount = 0;
-                tData  = "";
-                _dae->boneWeight = new std::uint32_t[_dae->numBoneWeight];
-                for (std::uint64_t i = 0; i < jointWeightArrayLength; ++i)
-                {
-                    if (jointWeightArray[i] == ' ')
-                    {
-                        _dae->boneWeight[sCount] = std::stoi(tData);
-                        sCount++;
-                        tData = "";
-                    }
-                    else
-                    {
-                        tData += jointWeightArray[i];
-                    }
-                }
-            }
-
-            // add skinning data to each mesh
-            for(std::uint32_t m = 0; m < _dae->numMesh; ++m)
-            {
-
-
-                // process bone - weight data for each vertex position
-                std::uint32_t startPosition = 0;
-                for(std::uint32_t p = 0; p < _dae->mesh[m].numPosition; ++p)
-                {
-                    std::uint32_t numData = _dae->boneCount[p];
-                    for (std::uint32_t i = 0; i < numData; ++i)
-                    {
-                        startPosition += 2;
-                    }
-                    if (startPosition > 0)
-                        startPosition--;
-
-                    //std::cout << numData << " ";
-
-
-                    _dae->mesh[m].boneWeight[p].w = 0;
-                    _dae->mesh[m].boneID[p].w     = 0;
-                }
-                    //std::cout << std::endl;
-            }
-/*------------------------*/
-
             // Load animations
             if (_dae->numBone > 0)
             {
@@ -911,18 +773,18 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                             std::string animationIDName = daeFile.getValueFromString(tAString, "id");
                             for (std::uint32_t b = 0; b < _dae->numBone; ++b)
                             {
-                                if (tAString.find(_dae->bone[b].name) != std::string::npos)
+                                if (animationIDName.find(_dae->bone[b].name) != std::string::npos)
                                 {
                                     // Get animation data
-                                    std::string   tIString   = daeFile.line(daeFile.getLine(animationIDName + "-input-array"));
+                                    std::string   tIString   = daeFile.line(daeFile.getLine("<float_array id=\"" + animationIDName + "-input-array\" count=\""));
                                     std::uint32_t floatCount = std::stoi(daeFile.getValueFromString(tIString, "count"));
-                                    std::string   floatData  = daeFile.getString(animationIDName + "-input-array\" count=\"" + std::to_string(floatCount) + "\"");
+                                    std::string   floatData  = daeFile.getString("<float_array id=\"" + animationIDName + "-input-array\" count=\"" + std::to_string(floatCount) + "\"");
                                     if (floatData[floatData.length() - 1] != ' ')
                                         floatData = floatData + ' ';
 
-                                    std::string   tOString  = daeFile.line(daeFile.getLine(animationIDName + "-output-array"));
+                                    std::string   tOString  = daeFile.line(daeFile.getLine("<float_array id=\"" + animationIDName + "-output-array"));
                                     std::uint32_t mat4Count = std::stoi(daeFile.getValueFromString(tOString, "count")) / 16; // 4 x 4 matrix
-                                    std::string   mat4Data  = daeFile.getString(animationIDName + "-output-array\" count=\"" + std::to_string(mat4Count * 16) + "\"");
+                                    std::string   mat4Data  = daeFile.getString("<float_array id=\"" + animationIDName + "-output-array\" count=\"" + std::to_string(mat4Count * 16) + "\"");
                                     if (mat4Data[mat4Data.length() - 1] != ' ')
                                         mat4Data = mat4Data + ' ';
 
