@@ -79,16 +79,10 @@ struct sDAEModel
 {
     std::string    name             = {};
     eUpAxis        upAxis           = eUpAxis::yUp;
-    std::uint32_t  numMesh          = 0;
-    sDAEMesh      *mesh             = nullptr;
     glm::mat4      inverseTransform = {};
 
-    std::uint32_t  numSkinWeight    = 0;
-    float         *skinWeight       = nullptr;
-    std::uint32_t  numBoneWeight    = 0;
-    std::uint32_t *boneWeight       = nullptr;
-    std::uint32_t  numBoneCount     = 0;
-    std::uint32_t *boneCount        = nullptr;
+    std::uint32_t  numMesh          = 0;
+    sDAEMesh      *mesh             = nullptr;
 
     std::uint32_t  numBone          = 0;
     sDAEBone      *bone             = nullptr;

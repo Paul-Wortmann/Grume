@@ -40,7 +40,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
     _model->mesh = new sEntityModelMesh[_model->numMesh];
 
     // model inverseTransform matrix
-    _model->inverseTransform = dae->inverseTransform;
+    //_model->inverseTransform = dae->inverseTransform;
 
     // copy the mesh data
     for (std::uint32_t m = 0; m < _model->numMesh; ++m)
@@ -82,20 +82,21 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             if (dae->numBone > 0)
             {
                 // vertexBone
-                _model->mesh[m].vertexBone    = new sEntityModelVertexBone[_model->mesh[m].numVertex];
+                _model->mesh[m].vertexBone = new sEntityModelVertexBone[_model->mesh[m].numVertex];
 
                 // bone IDs
-                _model->mesh[m].vertexBone[v].boneID.w = dae->mesh[m].boneID[dae->mesh[m].index[v].x].w;
                 _model->mesh[m].vertexBone[v].boneID.x = dae->mesh[m].boneID[dae->mesh[m].index[v].x].x;
                 _model->mesh[m].vertexBone[v].boneID.y = dae->mesh[m].boneID[dae->mesh[m].index[v].x].y;
                 _model->mesh[m].vertexBone[v].boneID.z = dae->mesh[m].boneID[dae->mesh[m].index[v].x].z;
+                _model->mesh[m].vertexBone[v].boneID.w = dae->mesh[m].boneID[dae->mesh[m].index[v].x].w;
 
                 // bone Weights
-                _model->mesh[m].vertexBone[v].boneWeight.w = dae->mesh[m].boneWeight[dae->mesh[m].index[v].x].w;
                 _model->mesh[m].vertexBone[v].boneWeight.x = dae->mesh[m].boneWeight[dae->mesh[m].index[v].x].x;
                 _model->mesh[m].vertexBone[v].boneWeight.y = dae->mesh[m].boneWeight[dae->mesh[m].index[v].x].y;
                 _model->mesh[m].vertexBone[v].boneWeight.z = dae->mesh[m].boneWeight[dae->mesh[m].index[v].x].z;
+                _model->mesh[m].vertexBone[v].boneWeight.w = dae->mesh[m].boneWeight[dae->mesh[m].index[v].x].w;
             }
+
         }
 
         // Bone data
@@ -130,8 +131,6 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                                        _model->mesh[m].vertex[v + 1],
                                        _model->mesh[m].vertex[v + 2]);
         }
-
-
 
     }
 
