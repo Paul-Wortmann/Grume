@@ -40,7 +40,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
     _model->mesh = new sEntityModelMesh[_model->numMesh];
 
     // model inverseTransform matrix
-    //_model->inverseTransform = dae->inverseTransform;
+    _model->inverseTransform = dae->inverseTransform;
 
     // copy the mesh data
     for (std::uint32_t m = 0; m < _model->numMesh; ++m)
@@ -116,7 +116,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                 _model->bone[b].transformPose = dae->bone[b].transformPose;
             }
         }
-
+/*
         // Animation data
         _model->numAnimations = dae->numAnimations;
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
@@ -131,7 +131,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                                        _model->mesh[m].vertex[v + 1],
                                        _model->mesh[m].vertex[v + 2]);
         }
-
+*/
     }
 
     // Free the temporary dae data

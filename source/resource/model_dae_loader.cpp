@@ -488,7 +488,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
             {
                 _dae->mesh[m].transform = daeFile.getMat4("<matrix sid=\"transform\">", instanceNum);
             }
-
         }
 
         // Parse <library_controllers>
