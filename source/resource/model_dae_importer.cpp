@@ -98,7 +98,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             }
 
         }
-
+/*
         // Bone data
         _model->numBones = dae->numBone;
         if (_model->numBones > 0)
@@ -114,16 +114,17 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                 _model->bone[b].parentID = dae->bone[b].parentID;
                 _model->bone[b].transformNode = dae->bone[b].transformNode;
                 _model->bone[b].transformPose = dae->bone[b].transformPose;
+                _model->bone[b].transformFinal = glm::mat4(1);
             }
         }
-/*
+
         // Animation data
         _model->numAnimations = dae->numAnimations;
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
         {
 
         }
-
+*/
         // Calculate tangent and bi-tangent vectors
         for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; v += 3)
         {
@@ -131,7 +132,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                                        _model->mesh[m].vertex[v + 1],
                                        _model->mesh[m].vertex[v + 2]);
         }
-*/
+
     }
 
     // Free the temporary dae data

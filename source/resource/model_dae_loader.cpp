@@ -341,7 +341,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 std::uint32_t iCount = 0;
                 std::string   tData  = {};
 
-                // Stride of of 4-> RGBA
+                // Stride of 4-> RGBA
                 if (dStride == 4)
                 {
                     for (std::uint64_t i = 0; i < colorsFloatArrayLength; ++i)
@@ -375,7 +375,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                         }
                     }
                 }
-                // Stride of of 3-> RGB
+                // Stride of 3-> RGB
                 else
                 {
                     for (std::uint64_t i = 0; i < colorsFloatArrayLength; ++i)
@@ -406,7 +406,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     }
                 }
             }
-            //std::cout << "Number colors: " << _dae->mesh[m].numColor << std::endl;
 
             // Parse index data
             std::string indexArray = daeFile.getString("<p>", m + 1);
@@ -477,7 +476,6 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                             tData += indexArray[i];
                         }
                     }
-                    //std::cout << "Number index: " << _dae->mesh[m].numIndex << std::endl;
                 }
             }
 
