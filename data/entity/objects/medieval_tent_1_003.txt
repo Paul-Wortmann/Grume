@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<entity>
+
+    <information>
+	    <world_orientation>0 0 1</world_orientation>
+    </information>
+
+    <base>
+	    <base_name>medieval_tent_1_003</base_name>
+	    <base_position>0.0 0.0 0.0</base_position>
+	    <base_scale>1.0 1.0 1.0</base_scale>
+	    <base_rotation>0.0 0.0 0.0</base_otation>
+    </base>
+
+    <graphics>
+	    <graphics_model>objects/medieval_tent_1_003.obj</graphics_model>
+	    <graphics_material>objects/medieval_tent_1_003.txt</graphics_material>
+    </graphics>
+
+    <physics>
+        # none: 0
+        # static: 1
+        # dynamic: 2
+	    <physics_type>1</physics_type>
+
+        # none: 0
+        # aabs: 1
+        # circle: 2
+	    <physics_bounding_volume_type>1</physics_bounding_volume_type>
+	    <physics_mass>0.005</physics_mass>
+	    <physics_collision_radius>0.9</physics_collision_radius>
+	    <physics_collision_half_dimentions>0.5 0.5 1.5</physics_collision_half_dimentions>
+	    <physics_acceleration>0.025</physics_acceleration>
+	    <physics_velocity>0.0 0.0 0.0</physics_velocity>
+	    <physics_max_velocity>0.25</physics_max_velocity>
+    </physics>
+
+    <tile_collision>
+        <tile_collision_size>4/tile_collision_size>
+        <tile_collision_data>1 1 1 1</tile_collision_data>
+        <tile_collision_data>1 1 1 1</tile_collision_data>
+        <tile_collision_data>1 1 1 1</tile_collision_data>
+        <tile_collision_data>1 1 1 1</tile_collision_data>
+    </tile_collision>
+    
+</entity>
+
+
