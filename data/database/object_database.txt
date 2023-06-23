@@ -718,6 +718,12 @@
     <object>medieval_prop         objects/medieval_wheelbarrow_1_001.txt</object>
     <object>medieval_prop         objects/medieval_outhouse_1_001.txt</object>
 
+    # Medieval_tent
+    <object>medieval_tent         objects/medieval_tent_1_001.txt</object>
+    <object>medieval_tent         objects/medieval_tent_1_002.txt</object>
+    <object>medieval_tent         objects/medieval_tent_1_003.txt</object>
+    <object>medieval_tent         objects/medieval_tent_1_004.txt</object>
+
     # Mausoleum
     <object>mausoleum             objects/mausoleum_1_001.txt</object>
 
