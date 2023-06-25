@@ -678,6 +678,9 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 {
                     for (std::uint32_t j = 0; j < skinJointsArray[i]; ++j)
                     {
+                        //order is incorrect -> wxyz
+
+
                         if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].x)
                         {
                             // weight
