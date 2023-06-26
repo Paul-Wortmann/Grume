@@ -15,7 +15,7 @@
 
     <graphics>
 	    <graphics_model>objects/medieval_tent_1_003.obj</graphics_model>
-	    <graphics_material>objects/medieval_tent_1_003.txt</graphics_material>
+	    <graphics_material>objects/medieval_tent_1_001.txt</graphics_material>
     </graphics>
 
     <physics>
