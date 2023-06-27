@@ -148,7 +148,7 @@
         <#npc_mob>golem_3          0 0.85 1.0  10</npc_mob>
         <#npc_mob>golem_4          0 0.85 1.0  10</npc_mob>
         <#npc_mob>ogre_1           0 0.85 1.0   5</npc_mob>
-        <npc_mob>monk_1           0 0.85 1.0   5</npc_mob>
+        <#npc_mob>monk_1           0 0.85 1.0   5</npc_mob>
         <#npc_mob>spider_1         0 0.85 1.0  10</npc_mob>
         <#npc_mob>spider_leader_1  0 0.85 1.0  10</npc_mob>
         <#npc_mob>skeleton_1       0 0.85 1.0   5</npc_mob>
