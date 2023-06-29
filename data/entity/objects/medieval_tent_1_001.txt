@@ -9,7 +9,7 @@
     <base>
 	    <base_name>medieval_tent_1_001</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
-	    <base_scale>1.0 1.0 1.0</base_scale>
+	    <base_scale>2.0 2.0 2.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
     </base>
 
