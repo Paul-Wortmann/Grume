@@ -9,12 +9,12 @@
         <resolution_w>800</resolution_w>
         <resolution_h>600</resolution_h>
         <fullscreen>1</fullscreen>
-        <basic_renderer>0</basic_renderer>
+        <basic_renderer>1</basic_renderer>
         <wireframe_render>0</wireframe_render>
     </graphics>
 
     <audio>
-        <volume_master>82</volume_master>
+        <volume_master>80</volume_master>
         <volume_music>48</volume_music>
         <volume_sfx>40</volume_sfx>
     </audio>
