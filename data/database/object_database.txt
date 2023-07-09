@@ -709,6 +709,11 @@
     <object>medieval_building     objects/medieval_house_2_001.txt</object>
     <object>medieval_building     objects/medieval_sawmill_1_001.txt</object>
 
+    # Medieval_dock
+    <object>medieval_dock         objects/medieval_dock_1_001.txt</object>
+    <object>medieval_dock         objects/medieval_dock_1_002.txt</object>
+    <object>medieval_dock         objects/medieval_dock_1_003.txt</object>
+
     # Medieval_prop
     <object>medieval_prop         objects/medieval_bench_1_001.txt</object>
     <object>medieval_prop         objects/medieval_cart_1_001.txt</object>
