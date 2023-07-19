@@ -7,15 +7,15 @@
     </information>
 
     <base>
-	    <base_name>dock_1_003</base_name>
+	    <base_name>medieval_dock_1_003</base_name>
 	    <base_position>0.0 0.0 0.0</base_position>
 	    <base_scale>2.0 2.0 2.0</base_scale>
 	    <base_rotation>0.0 0.0 0.0</base_otation>
     </base>
 
     <graphics>
-	    <graphics_model>objects/dock_1_003.obj</graphics_model>
-	    <graphics_material>objects/dock_1_001.txt</graphics_material>
+	    <graphics_model>objects/medieval_dock_1_003.obj</graphics_model>
+	    <graphics_material>objects/medieval_dock_1_001.txt</graphics_material>
     </graphics>
 
     <physics>
