@@ -678,19 +678,29 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 {
                     for (std::uint32_t j = 0; j < skinJointsArray[i]; ++j)
                     {
-                        //order is incorrect -> wxyz
 
-
-                        if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].x)
+                        if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].w)
                         {
                             // weight
-                            _dae->mesh[m].boneWeight[i].w = _dae->mesh[m].boneWeight[i].z;
+                            _dae->mesh[m].boneWeight[i].z = _dae->mesh[m].boneWeight[i].y;
+                            _dae->mesh[m].boneWeight[i].y = _dae->mesh[m].boneWeight[i].x;
+                            _dae->mesh[m].boneWeight[i].x = _dae->mesh[m].boneWeight[i].w;
+                            _dae->mesh[m].boneWeight[i].w = skinWeightJointArray[skinWeightJointPosition + 1];
+
+                            //boneID
+                            _dae->mesh[m].boneID[i].z = _dae->mesh[m].boneID[i].y;
+                            _dae->mesh[m].boneID[i].y = _dae->mesh[m].boneID[i].x;
+                            _dae->mesh[m].boneID[i].x = _dae->mesh[m].boneID[i].w;
+                            _dae->mesh[m].boneID[i].w = skinWeightJointArray[skinWeightJointPosition];
+                        }
+                        else if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].x)
+                        {
+                            // weight
                             _dae->mesh[m].boneWeight[i].z = _dae->mesh[m].boneWeight[i].y;
                             _dae->mesh[m].boneWeight[i].y = _dae->mesh[m].boneWeight[i].x;
                             _dae->mesh[m].boneWeight[i].x = skinWeightJointArray[skinWeightJointPosition + 1];
 
                             //boneID
-                            _dae->mesh[m].boneID[i].w = _dae->mesh[m].boneID[i].z;
                             _dae->mesh[m].boneID[i].z = _dae->mesh[m].boneID[i].y;
                             _dae->mesh[m].boneID[i].y = _dae->mesh[m].boneID[i].x;
                             _dae->mesh[m].boneID[i].x = skinWeightJointArray[skinWeightJointPosition];
@@ -698,32 +708,20 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                         else if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].y)
                         {
                             // weight
-                            _dae->mesh[m].boneWeight[i].w = _dae->mesh[m].boneWeight[i].z;
                             _dae->mesh[m].boneWeight[i].z = _dae->mesh[m].boneWeight[i].y;
                             _dae->mesh[m].boneWeight[i].y = skinWeightJointArray[skinWeightJointPosition + 1];
 
                             //boneID
-                            _dae->mesh[m].boneID[i].w = _dae->mesh[m].boneID[i].z;
                             _dae->mesh[m].boneID[i].z = _dae->mesh[m].boneID[i].y;
                             _dae->mesh[m].boneID[i].y = skinWeightJointArray[skinWeightJointPosition];
                         }
                         else if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].z)
                         {
                             // weight
-                            _dae->mesh[m].boneWeight[i].w = _dae->mesh[m].boneWeight[i].z;
                             _dae->mesh[m].boneWeight[i].z = skinWeightJointArray[skinWeightJointPosition + 1];
 
                             //boneID
-                            _dae->mesh[m].boneID[i].w = _dae->mesh[m].boneID[i].z;
                             _dae->mesh[m].boneID[i].z = skinWeightJointArray[skinWeightJointPosition];
-                        }
-                        else if (skinWeightJointArray[skinWeightJointPosition + 1] > _dae->mesh[m].boneWeight[i].w)
-                        {
-                            // weight
-                            _dae->mesh[m].boneWeight[i].w = skinWeightJointArray[skinWeightJointPosition + 1];
-
-                            //boneID
-                            _dae->mesh[m].boneID[i].w = skinWeightJointArray[skinWeightJointPosition];
                         }
                         skinWeightJointPosition += 2;
                     }
