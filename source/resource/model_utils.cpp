@@ -87,3 +87,13 @@ glm::quat gMat4ToQuat(const glm::mat4 &_mat4)
 
     return glm::quat(w, x , y, z);
 }
+
+glm::vec3 gMat4ToPosition(const glm::mat4 &_mat4)
+{
+    return glm::vec3(_mat4[3]);
+}
+
+glm::vec3 gMat4ToScale(const glm::mat4 &_mat4)
+{
+    return glm::vec3(glm::length(glm::vec3(_mat4[0])), glm::length(glm::vec3(_mat4[1])), glm::length(glm::vec3(_mat4[2])));
+}

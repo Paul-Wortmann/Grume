@@ -29,6 +29,8 @@
 
 void      gCalculateTangentBiTangent(sEntityModelVertex &_v1, sEntityModelVertex &_v2, sEntityModelVertex &_v3);
 glm::quat gMat4ToQuat(const glm::mat4 &_mat4);
+glm::vec3 gMat4ToPosition(const glm::mat4 &_mat4);
+glm::vec3 gMat4ToScale(const glm::mat4 &_mat4);
 
 #endif // MODEL_UTILS_HPP
 
