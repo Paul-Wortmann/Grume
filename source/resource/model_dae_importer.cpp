@@ -38,6 +38,8 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
     _model->fileName = _fileName;
     _model->numMesh = dae->numMesh;
     _model->mesh = new sEntityModelMesh[_model->numMesh];
+    _model->numBones = dae->numBone;
+    _model->numAnimations = dae->numAnimations;
 
     // model inverseTransform matrix
     _model->inverseTransform = dae->inverseTransform;
@@ -55,6 +57,13 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         // index
         _model->mesh[m].numIndex = dae->mesh[m].numIndex;
         _model->mesh[m].index = new std::uint32_t[_model->mesh[m].numIndex];
+
+        // skeleton
+        if (_model->numBones > 0)
+        {
+            // vertexBone
+            _model->mesh[m].vertexBone = new sEntityModelVertexBone[_model->mesh[m].numVertex];
+        }
 
         for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; ++v)
         {
@@ -79,11 +88,8 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             _model->mesh[m].vertex[v].texcoord.y = dae->mesh[m].texCoord[dae->mesh[m].index[v].z].y;
 
             // Skinning data
-            if (dae->numBone > 0)
+            if (_model->numBones > 0)
             {
-                // vertexBone
-                _model->mesh[m].vertexBone = new sEntityModelVertexBone[_model->mesh[m].numVertex];
-
                 // bone IDs
                 _model->mesh[m].vertexBone[v].boneID.x = dae->mesh[m].boneID[dae->mesh[m].index[v].x].x;
                 _model->mesh[m].vertexBone[v].boneID.y = dae->mesh[m].boneID[dae->mesh[m].index[v].x].y;
@@ -98,9 +104,8 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             }
 
         }
-/*
+
         // Bone data
-        _model->numBones = dae->numBone;
         if (_model->numBones > 0)
         {
             // Allocate memory
@@ -119,12 +124,11 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         }
 
         // Animation data
-        _model->numAnimations = dae->numAnimations;
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
         {
 
         }
-*/
+
         // Calculate tangent and bi-tangent vectors
         for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; v += 3)
         {

@@ -485,11 +485,6 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                 // Clean up
                 m_boneMap.clear();
 
-                // Test export
-                if ((_fileName.find("human_male") != std::string::npos) &&
-                    (_fileName.find(".dae") != std::string::npos))
-                    model_dae_export(tModel, "gmf_export.xml");
-
                 return tModel;
             }
             else

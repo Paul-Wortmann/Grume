@@ -205,7 +205,7 @@ void gLoadOBJ(sOBJ *&_obj, const std::string &_fileName)
     std::ifstream objFile(_fileName);
     if (objFile.is_open())
     {
-        std::cout << "Loading model: " << _fileName << std::endl;
+        //std::cout << "Loading model: " << _fileName << std::endl;
 
         // allocate memory for obj data
         _obj = new sOBJ;

@@ -279,6 +279,12 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
 
         // Pass it to the model manager
         addBack(tModel);
+
+        // Test export
+        if ((_fileName.find("human_male") != std::string::npos) &&
+            (_fileName.find(".dae") != std::string::npos))
+            model_gmf_export(tModel, "gmf_export.xml");
+
     }
     return tModel; // if loadModel() failed, tModel == nullptr
 }

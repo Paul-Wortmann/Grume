@@ -34,6 +34,8 @@ void model_gmf_export(sEntityModel *&_model, const std::string &_fileName)
     std::ofstream gmfFile (_fileName, std::ofstream::out | std::ios::trunc);
     if(gmfFile.is_open())
     {
+        std::cout << "Exporting model: " << _fileName << std::endl;
+
         // info
         gmfFile << "# Engine exported DAE" << std::endl;
         gmfFile << "# Name: " << _model->modelName << std::endl;
@@ -112,7 +114,21 @@ void model_gmf_export(sEntityModel *&_model, const std::string &_fileName)
             gmfFile << "Bones: " << std::endl;
             for (std::uint32_t b = 0; b < _model->numBones; ++b)
             {
-                //gmfFile << _model->mesh[i].index[j] << " ";
+                gmfFile << "Bone name: " << _model->bone[b].name << std::endl;
+                gmfFile << "Bone ID: " << _model->bone[b].ID << std::endl;
+                gmfFile << "Bone parent ID: " << _model->bone[b].parentID << std::endl;
+                gmfFile << "Bone transform node: " << std::endl;
+                gmfFile << _model->bone[b].transformNode[0][0] << " " << _model->bone[b].transformNode[0][1] << " " << _model->bone[b].transformNode[0][2] << " " << _model->bone[b].transformNode[0][3] << " ";
+                gmfFile << _model->bone[b].transformNode[1][0] << " " << _model->bone[b].transformNode[1][1] << " " << _model->bone[b].transformNode[1][2] << " " << _model->bone[b].transformNode[1][3] << " ";
+                gmfFile << _model->bone[b].transformNode[2][0] << " " << _model->bone[b].transformNode[2][1] << " " << _model->bone[b].transformNode[2][2] << " " << _model->bone[b].transformNode[2][3] << " ";
+                gmfFile << _model->bone[b].transformNode[3][0] << " " << _model->bone[b].transformNode[3][1] << " " << _model->bone[b].transformNode[3][2] << " " << _model->bone[b].transformNode[3][3] << " ";
+                gmfFile << std::endl;
+                gmfFile << "Bone transform pose: " << std::endl;
+                gmfFile << _model->bone[b].transformPose[0][0] << " " << _model->bone[b].transformPose[0][1] << " " << _model->bone[b].transformPose[0][2] << " " << _model->bone[b].transformPose[0][3] << " ";
+                gmfFile << _model->bone[b].transformPose[1][0] << " " << _model->bone[b].transformPose[1][1] << " " << _model->bone[b].transformPose[1][2] << " " << _model->bone[b].transformPose[1][3] << " ";
+                gmfFile << _model->bone[b].transformPose[2][0] << " " << _model->bone[b].transformPose[2][1] << " " << _model->bone[b].transformPose[2][2] << " " << _model->bone[b].transformPose[2][3] << " ";
+                gmfFile << _model->bone[b].transformPose[3][0] << " " << _model->bone[b].transformPose[3][1] << " " << _model->bone[b].transformPose[3][2] << " " << _model->bone[b].transformPose[3][3] << " ";
+                gmfFile << std::endl;
             }
         }
 
