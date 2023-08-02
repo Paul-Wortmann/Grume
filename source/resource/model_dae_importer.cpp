@@ -42,7 +42,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
     _model->numAnimations = dae->numAnimations;
 
     // model inverseTransform matrix
-    _model->inverseTransform = dae->inverseTransform;
+    _model->inverseTransform = glm::inverse(dae->inverseTransform);
 
     // copy the mesh data
     for (std::uint32_t m = 0; m < _model->numMesh; ++m)
@@ -105,6 +105,14 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
 
         }
 
+        // Calculate tangent and bi-tangent vectors
+        for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; v += 3)
+        {
+            gCalculateTangentBiTangent(_model->mesh[m].vertex[v + 0],
+                                       _model->mesh[m].vertex[v + 1],
+                                       _model->mesh[m].vertex[v + 2]);
+        }
+
         // Bone data
         if (_model->numBones > 0)
         {
@@ -126,15 +134,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         // Animation data
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
         {
-
-        }
-
-        // Calculate tangent and bi-tangent vectors
-        for (std::uint32_t v = 0; v < _model->mesh[m].numVertex; v += 3)
-        {
-            gCalculateTangentBiTangent(_model->mesh[m].vertex[v + 0],
-                                       _model->mesh[m].vertex[v + 1],
-                                       _model->mesh[m].vertex[v + 2]);
+            _model->animated = true;
         }
 
     }

@@ -519,8 +519,8 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     if (tData.find(_dae->mesh[m].name) != std::string::npos)
                     {
                         controllerID = daeFile.getStringKeyValue("<controller id=", "id", c + 1);
-                        std::cout << "Mesh[" << m << "] " << "Mesh Name: " << _dae->mesh[m].name << std::endl;
-                        std::cout << "controllerID: " << controllerID << std::endl;
+                        //std::cout << "Mesh[" << m << "] " << "Mesh Name: " << _dae->mesh[m].name << std::endl;
+                        //std::cout << "controllerID: " << controllerID << std::endl;
                     }
                 }
                 // if previous method failed, try the mesh ID
@@ -534,8 +534,8 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                         if (tData.find(meshData[m].ID) != std::string::npos)
                         {
                             controllerID = daeFile.getStringKeyValue("<controller id=", "id", c + 1);
-                            std::cout << "Mesh[" << m << "] " << "Mesh Name: " << _dae->mesh[m].name << std::endl;
-                            std::cout << "controllerID: " << controllerID << std::endl;
+                            //std::cout << "Mesh[" << m << "] " << "Mesh Name: " << _dae->mesh[m].name << std::endl;
+                            //std::cout << "controllerID: " << controllerID << std::endl;
                         }
                     }
                 }
@@ -544,7 +544,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                 if (_dae->numBone == 0)
                 {
                     // Controller bone names
-                    std::cout << "Bone count: " << daeFile.getStringKeyValue("<Name_array id=\"" + controllerID + "-joints-array\" count=", "count") << std::endl;
+                    //std::cout << "Bone count: " << daeFile.getStringKeyValue("<Name_array id=\"" + controllerID + "-joints-array\" count=", "count") << std::endl;
                     std::uint32_t boneCount = std::stoi(daeFile.getStringKeyValue("<Name_array id=\"" + controllerID + "-joints-array\" count=", "count"));
                     std::string boneNamesArray = daeFile.getString("<Name_array id=\"" + controllerID + "-joints-array\" count=\"" + std::to_string(boneCount) + "\">");
 
@@ -718,18 +718,15 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
 
                 //std::cout << "skinWeightsArrayCount :" << skinWeightsArrayCount << std::endl;
                 //std::cout << "skinWeightsArray :" << skinWeightsArrayfloatData << std::endl;
-                std::cout << "skinJointsCount :" << skinJointsCount << std::endl;
-                std::cout << "skinJoints :" << skinJointsArrayIntegerData << std::endl;
+                //std::cout << "skinJointsCount :" << skinJointsCount << std::endl;
+                //std::cout << "skinJoints :" << skinJointsArrayIntegerData << std::endl;
                 //std::cout << "skinWeightJointCount :" << skinWeightJointCount << std::endl;
                 //std::cout << "skinWeightJoint :" << skinWeightJointintegerData << std::endl;
 
                 // parse the skinning data for each vertex
                 std::uint32_t skinWeightJointPosition = 0;
-                std::cout << "skinJointsArray : ";
                 for (std::uint32_t i = 0; i < skinJointsCount; ++i)
                 {
-                    //std::cout << skinJointsArray[i] << " ";
-
                     for (std::uint32_t j = 0; j < skinJointsArray[i]; ++j)
                     {
                         //std::cout << "skinJointsArray[i] :" << skinJointsArray[i] << " " << skinWeightJointArray[skinWeightJointPosition] << "-" << skinWeightsArray[skinWeightJointArray[skinWeightJointPosition + 1]] << std::endl;
@@ -768,7 +765,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                             _dae->mesh[m].boneWeight[i].z = skinWeightsArray[skinWeightJointArray[skinWeightJointPosition + 1]];
 
                             //boneID
-                            _dae->mesh[m].boneID[i].w = _dae->mesh[m].boneID[i].y;
+                            _dae->mesh[m].boneID[i].w = _dae->mesh[m].boneID[i].z;
                             _dae->mesh[m].boneID[i].z = skinWeightJointArray[skinWeightJointPosition];
                         }
                         else if (skinWeightsArray[skinWeightJointArray[skinWeightJointPosition + 1]] > _dae->mesh[m].boneWeight[i].w)
@@ -783,10 +780,17 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                         // increment skinWeightJointPosition
                         skinWeightJointPosition += 2;
                     }
+
+                    //if (i == 3)
+                    //{
+                    //    std::cout << "Index: " << i << std::endl;
+                    //    std::cout << "Joint count: " << skinJointsArray[i] << std::endl;
+                    //    std::cout << "bone weights: " << _dae->mesh[m].boneWeight[i].x << " " << _dae->mesh[m].boneWeight[i].y << " " << _dae->mesh[m].boneWeight[i].z << " " << _dae->mesh[m].boneWeight[i].w << std::endl;
+                    //    std::cout << "bone IDs: " << _dae->mesh[m].boneID[i].x << " " << _dae->mesh[m].boneID[i].y << " " << _dae->mesh[m].boneID[i].z << " " << _dae->mesh[m].boneID[i].w << std::endl;
+                    //}
+
                     _dae->mesh[m].boneWeight[i] = glm::normalize(_dae->mesh[m].boneWeight[i]);
                 }
-                std::cout << std::endl;
-
 
                 // cleanup
                 if (skinWeightsArray != nullptr)
@@ -848,7 +852,7 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                     for (std::uint32_t i = 0; i < animationIDCount - 1; ++i)
                     {
                         std::string tAString = daeFile.line(daeFile.getLine("<animation id=\"", i + 1));
-                        if (tAString.find("/>") == std::string::npos)
+                        if (tAString.find("/>") == std::string::npos) // avoid empty nodes
                         {
                             std::string animationIDName = daeFile.getValueFromString(tAString, "id");
                             for (std::uint32_t b = 0; b < _dae->numBone; ++b)
@@ -869,17 +873,17 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                                         mat4Data = mat4Data + ' ';
 
                                     // Allocate memory
-                                    if ((_dae->animation->node->keyFrame == nullptr) && (_dae->animation->node->transform == nullptr))
+                                    if ((_dae->animation->node[_dae->bone[b].ID].keyFrame == nullptr) && (_dae->animation->node[_dae->bone[b].ID].transform == nullptr))
                                     {
-                                        _dae->animation->node->keyFrame  = new float[floatCount];
-                                        _dae->animation->node->transform = new glm::mat4[mat4Count];
+                                        _dae->animation->node[_dae->bone[b].ID].keyFrame  = new float[floatCount];
+                                        _dae->animation->node[_dae->bone[b].ID].transform = new glm::mat4[mat4Count];
                                     }
 
                                     // Parse the keyframe float data
-                                    gStringToFloatArray(floatData, floatCount, _dae->animation->node->keyFrame);
+                                    gStringToFloatArray(floatData, floatCount, _dae->animation->node[_dae->bone[b].ID].keyFrame);
 
                                     // Parse the transform mat4 data
-                                    gStringToMat4Array(mat4Data, mat4Count, _dae->animation->node->transform);
+                                    gStringToMat4Array(mat4Data, mat4Count, _dae->animation->node[_dae->bone[b].ID].transform);
                                 }
                             }
                         }
