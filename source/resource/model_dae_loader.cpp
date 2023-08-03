@@ -859,6 +859,8 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                             {
                                 if (animationIDName.find(_dae->bone[b].name) != std::string::npos)
                                 {
+                                    //std::cout << "Bone: " << _dae->bone[b].name << std::endl;
+
                                     // Get animation data
                                     std::string   tIString   = daeFile.line(daeFile.getLine("<float_array id=\"" + animationIDName + "-input-array\" count=\""));
                                     std::uint32_t floatCount = std::stoi(daeFile.getValueFromString(tIString, "count"));
