@@ -214,9 +214,9 @@
         <object>old_wagon          1  029 027  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object> # old wagon
         <object>skeleton           1  030 024  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object> # Skeleton horse
 
-        <object>dead_tree          1  037 042  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object> # Dead tree
+        <object>dead_tree_2        1  037 042  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object> # Dead tree
         <object>dead_tree          1  039 046  0.0000 0.0000 0.0000  0.0000 1.5708 0.0000 000 000 0 none 0</object> # Dead tree
-        <object>dead_tree          1  024 038  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object> # Dead tree
+        <object>dead_tree_3        1  024 038  0.0000 0.0000 0.0000  0.0000 3.1416 0.0000 000 000 0 none 0</object> # Dead tree
         <object>rock_1             1  038 037  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object> # Rock
 
         <#object>barrel             1  029 040  0.0000 0.0000 0.0000  0.0000 0.0000 0.0000 000 000 0 none 0</object>
