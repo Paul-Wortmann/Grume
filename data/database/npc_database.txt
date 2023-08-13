@@ -25,6 +25,8 @@
 
     <npc>forest_monster_1        npc/forest_monster_1/forest_monster_1_001.txt</npc>
 
+    <npc>giant_mutant_1          npc/giant_mutant_1/giant_mutant_1_001.txt</npc>
+
     <npc>goblin_1                npc/goblin_1/goblin_1_001.txt</npc>
     
     <npc>golem_1                 npc/golem_1/golem_1_001.txt</npc> # Rock
