@@ -135,6 +135,9 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
         {
             _model->animated = true;
+            _model->animation = new sEntityModelAnimation[_model->numAnimations];
+
+            // import data for each animation
         }
 
     }
