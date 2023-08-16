@@ -134,10 +134,18 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
         // Animation data
         if ((_model->numBones > 0) && (_model->numAnimations > 0))
         {
+            // allocate memory for animation data
             _model->animated = true;
             _model->animation = new sEntityModelAnimation[_model->numAnimations];
 
             // import data for each animation
+            for (std::uint32_t a = 0; a < _model->numAnimations; ++a)
+            {
+                // allocate memory for keyframe data
+                _model->animation[a].numChannels = dae->animation[a].numNodes;
+                _model->animation[a].channel = new sAnimationChannel[_model->animation[a].numChannels];
+
+            }
         }
 
     }
