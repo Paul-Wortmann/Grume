@@ -145,6 +145,9 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                 _model->animation[a].numChannels = dae->animation[a].numNodes;
                 _model->animation[a].channel = new sAnimationChannel[_model->animation[a].numChannels];
 
+                // allocate memory for transform data
+                _model->animation[a].numMeshChannels = dae->animation[a].numNodes;
+                _model->animation[a].meshChannel = new sAnimationMeshChannel[_model->animation[a].numMeshChannels];
             }
         }
 
