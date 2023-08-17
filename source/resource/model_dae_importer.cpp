@@ -145,9 +145,54 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                 _model->animation[a].numChannels = dae->animation[a].numNodes;
                 _model->animation[a].channel = new sAnimationChannel[_model->animation[a].numChannels];
 
+                // import data for each animation channel
+                for (std::uint32_t c = 0; c < _model->animation[a].numChannels; ++c)
+                {
+                    // bone id
+                    _model->animation[a].channel[c].boneID = c;
+
+                    // position keys
+                    _model->animation[a].channel[c].numPositionKeys = dae->animation[a].node[c].numKeyFrame;
+                    _model->animation[a].channel[c].positionKey = new sAnimationVecKey[_model->animation[a].channel[c].numPositionKeys];
+
+                    // import data for each position key
+                    for (std::uint32_t k = 0; k < _model->animation[a].channel[c].numPositionKeys; ++k)
+                    {
+                        _model->animation[a].channel[c].positionKey[k].vector = gMat4ToPosition(dae->animation[a].node[c].transform[k]);
+                    }
+
+                    // rotation keys
+                    _model->animation[a].channel[c].numRotationKeys = dae->animation[a].node[c].numKeyFrame;
+                    _model->animation[a].channel[c].rotationKey = new sAnimationQuatKey[_model->animation[a].channel[c].numRotationKeys];
+
+                    // import data for each rotation key
+                    for (std::uint32_t k = 0; k < _model->animation[a].channel[c].numRotationKeys; ++k)
+                    {
+                        _model->animation[a].channel[c].rotationKey[k].quat = gMat4ToQuat(dae->animation[a].node[c].transform[k]);
+                    }
+
+                    // scaling keys
+                    _model->animation[a].channel[c].numScalingKeys = dae->animation[a].node[c].numKeyFrame;
+                    _model->animation[a].channel[c].scalingKey = new sAnimationVecKey[_model->animation[a].channel[c].numScalingKeys];
+
+                    // import data for each scaling key
+                    for (std::uint32_t k = 0; k < _model->animation[a].channel[c].numScalingKeys; ++k)
+                    {
+                        _model->animation[a].channel[c].scalingKey[k].vector = gMat4ToScale(dae->animation[a].node[c].transform[k]);
+                    }
+
+                }
+
                 // allocate memory for transform data
                 _model->animation[a].numMeshChannels = dae->animation[a].numNodes;
                 _model->animation[a].meshChannel = new sAnimationMeshChannel[_model->animation[a].numMeshChannels];
+
+                // import data for each animation mesh channel
+                for (std::uint32_t c = 0; c < _model->animation[a].numMeshChannels; ++c)
+                {
+                    _model->animation[a].meshChannel[c].numKeys = 0;
+                }
+
             }
         }
 
