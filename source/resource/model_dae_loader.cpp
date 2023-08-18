@@ -874,6 +874,8 @@ void gLoadDAE(sDAEModel *&_dae, const std::string &_fileName)
                                     if (mat4Data[mat4Data.length() - 1] != ' ')
                                         mat4Data = mat4Data + ' ';
 
+                                    _dae->animation->node[_dae->bone[b].ID].numKeyFrame = floatCount;
+
                                     // Allocate memory
                                     if ((_dae->animation->node[_dae->bone[b].ID].keyFrame == nullptr) && (_dae->animation->node[_dae->bone[b].ID].transform == nullptr))
                                     {

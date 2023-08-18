@@ -141,7 +141,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
             // import data for each animation
             for (std::uint32_t a = 0; a < _model->numAnimations; ++a)
             {
-                // allocate memory for keyframe data
+                // allocate memory for key-frame data
                 _model->animation[a].numChannels = dae->animation[a].numNodes;
                 _model->animation[a].channel = new sAnimationChannel[_model->animation[a].numChannels];
 
@@ -158,6 +158,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                     // import data for each position key
                     for (std::uint32_t k = 0; k < _model->animation[a].channel[c].numPositionKeys; ++k)
                     {
+                        _model->animation[a].channel[c].positionKey[k].time = dae->animation[a].node[c].keyFrame[k];
                         _model->animation[a].channel[c].positionKey[k].vector = gMat4ToPosition(dae->animation[a].node[c].transform[k]);
                     }
 
@@ -168,6 +169,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                     // import data for each rotation key
                     for (std::uint32_t k = 0; k < _model->animation[a].channel[c].numRotationKeys; ++k)
                     {
+                        _model->animation[a].channel[c].rotationKey[k].time = dae->animation[a].node[c].keyFrame[k];
                         _model->animation[a].channel[c].rotationKey[k].quat = gMat4ToQuat(dae->animation[a].node[c].transform[k]);
                     }
 
@@ -178,6 +180,7 @@ void model_dae_import(sEntityModel *&_model, const std::string &_fileName)
                     // import data for each scaling key
                     for (std::uint32_t k = 0; k < _model->animation[a].channel[c].numScalingKeys; ++k)
                     {
+                        _model->animation[a].channel[c].scalingKey[k].time = dae->animation[a].node[c].keyFrame[k];
                         _model->animation[a].channel[c].scalingKey[k].vector = gMat4ToScale(dae->animation[a].node[c].transform[k]);
                     }
 
