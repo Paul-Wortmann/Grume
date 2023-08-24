@@ -1029,6 +1029,7 @@
 	<object>torture_device        objects/torture_device_13_001.txt</object>
 	<object>torture_device        objects/torture_device_14_001.txt</object>
 	<object>torture_device        objects/torture_device_15_001.txt</object>
+	<object>torture_device        objects/torture_device_16_001.txt</object>
 
     # Tower
     <object>tower                 objects/tower_1_001.txt</object> # broken tower
