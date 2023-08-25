@@ -2,24 +2,40 @@
 <save_file>
 
    <information>
-      <current_map>cave_1_005</current_map>
-      <current_position>3740</current_position>
+      <current_map>town_2_001</current_map>
+      <current_position>3362</current_position>
       <current_rotation>3.14159</current_rotation>
-      <current_town>town_1_001</current_town>
+      <current_town>town_2_001</current_town>
    </information>
 
    <player>
-      <level_current>4</level_current>
-      <exp_current>1011</exp_current>
-      <exp_next>5184</exp_next>
+      <level_current>0</level_current>
+      <exp_current>0</exp_current>
+      <exp_next>1024</exp_next>
       <points>5</points>
-      <strength>5</strength>
-      <dexterity>5</dexterity>
-      <vitality>9</vitality>
-      <energy>5</energy>
-      <health_current>292</health_current>
-      <mana_current>252</mana_current>
-      <gold_current>4134</gold_current>
+      <strength>1</strength>
+      <dexterity>1</dexterity>
+      <vitality>1</vitality>
+      <energy>1</energy>
+      <health_current>100</health_current>
+      <mana_current>100</mana_current>
+      <gold_current>0</gold_current>
+      <damage_physical_base>5</damage_physical_base>
+      <damage_physical_crit_chance>1</damage_physical_crit_chance>
+      <damage_physical_crit_multiplier>0.25</damage_physical_crit_multiplier>
+      <damage_fire_base>5</damage_fire_base>
+      <damage_fire_crit_chance>1</damage_fire_crit_chance>
+      <damage_fire_crit_multiplier>0.25</damage_fire_crit_multiplier>
+      <damage_ice_base>5</damage_ice_base>
+      <damage_ice_crit_chance>1</damage_ice_crit_chance>
+      <damage_ice_crit_multiplier>0.25</damage_ice_crit_multiplier>
+      <damage_lightning_base>5</damage_lightning_base>
+      <damage_lightning_crit_chance>1</damage_lightning_crit_chance>
+      <damage_lightning_crit_multiplier>0.25</damage_lightning_crit_multiplier>
+      <armor_physical_base>1</armor_physical_base>
+      <resistance_fire_base>1</resistance_fire_base>
+      <resistance_ice_base>1</resistance_ice_base>
+      <resistance_lightning_base>1</resistance_lightning_base>
    </player>
 
    <action_bar>
@@ -45,8 +61,8 @@
    </equipment>
 
    <inventory>
-      <inventory_slot>0 potion_health 1 15</inventory_slot>
-      <inventory_slot>1 potion_mana 1 5</inventory_slot>
+      <inventory_slot>0 potion_health 1 5</inventory_slot>
+      <inventory_slot>1 potion_mana 1 2</inventory_slot>
       <inventory_slot>2 belt 1 1</inventory_slot>
       <inventory_slot>3 ring 1 1</inventory_slot>
       <inventory_slot>4 one_handed_axe 1 1</inventory_slot>
@@ -58,33 +74,12 @@
       <inventory_slot>10 rune 4 1</inventory_slot>
       <inventory_slot>11 rune 5 1</inventory_slot>
       <inventory_slot>12 rune 6 1</inventory_slot>
-      <inventory_slot>13 magic_gloves 1 1</inventory_slot>
       <inventory_slot>14 potion_health 1 13</inventory_slot>
       <inventory_slot>15 potion_health 1 17</inventory_slot>
       <inventory_slot>16 potion_health 1 15</inventory_slot>
       <inventory_slot>17 potion_health 1 27</inventory_slot>
       <inventory_slot>18 potion_health 1 23</inventory_slot>
       <inventory_slot>19 potion_health 1 25</inventory_slot>
-      <inventory_slot>20 ring 8 1</inventory_slot>
-      <inventory_slot>21 heavy_gloves 1 1</inventory_slot>
-      <inventory_slot>22 medium_gloves 1 1</inventory_slot>
-      <inventory_slot>23 rune 6 1</inventory_slot>
-      <inventory_slot>24 heavy_helmet 1 1</inventory_slot>
-      <inventory_slot>25 rune 5 1</inventory_slot>
-      <inventory_slot>26 one_handed_sword 6 1</inventory_slot>
-      <inventory_slot>27 heavy_helmet 1 1</inventory_slot>
-      <inventory_slot>28 rune 6 1</inventory_slot>
-      <inventory_slot>29 heavy_armor 1 1</inventory_slot>
-      <inventory_slot>30 ring 6 1</inventory_slot>
-      <inventory_slot>31 ring 11 1</inventory_slot>
-      <inventory_slot>32 ring 14 1</inventory_slot>
-      <inventory_slot>33 grimoire 1 1</inventory_slot>
-      <inventory_slot>34 ring 5 1</inventory_slot>
-      <inventory_slot>35 magic_armor 1 1</inventory_slot>
-      <inventory_slot>36 light_armor 3 1</inventory_slot>
-      <inventory_slot>37 bow 1 1</inventory_slot>
-      <inventory_slot>38 heavy_boots 1 1</inventory_slot>
-      <inventory_slot>39 ring 2 1</inventory_slot>
    </inventory>
 
    <vendor>
@@ -141,11 +136,7 @@
    </quests>
 
    <map_data>
-      <map>cave_1_001 1410763947</map>
-      <map>cave_1_002 1805901116</map>
-      <map>cave_1_003 1341326500</map>
-      <map>cave_1_004 988678715</map>
-      <map>cave_1_005 613225021</map>
+      <map>town_2_001 1410763947</map>
    </map_data>
 
 </save_file>
