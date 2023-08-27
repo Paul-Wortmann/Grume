@@ -143,6 +143,7 @@ class cGraphicsEngine :tcTemplateEngine
         inline static void sm_glfwMouseButtonCallback(GLFWwindow* _window, std::int32_t _button, std::int32_t _action, std::int32_t _mods);
         inline static void sm_glfwFramebufferSizeCallback(GLFWwindow* _window, std::int32_t _width, std::int32_t _height);
         inline static void sm_glfwMonitorCallback(GLFWmonitor* _monitor, std::int32_t _event);
+        inline static void sm_glfwScrollCallback(GLFWwindow* _window, double _xoffset, double _yoffset);
 
         // Camera
         cGraphicsEngineCamera m_camera = {};

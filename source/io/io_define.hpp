@@ -33,6 +33,7 @@ struct sIO
     std::unordered_map<std::int32_t, bool> keyReadyMap     = {};
     glm::vec2                              mousePosition   = glm::vec2(0.0f, 0.0f);
     glm::vec2                              mousePositionGL = glm::vec2(0.0f, 0.0f);
+    glm::vec2                              mouseScroll     = glm::vec2(0.0f, 0.0f);
 };
 
 #endif // IO_DEFINE_HPP

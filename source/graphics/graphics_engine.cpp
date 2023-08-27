@@ -163,6 +163,16 @@ void cGraphicsEngine::sm_glfwMonitorCallback(GLFWmonitor* _monitor, std::int32_t
     }
 }
 
+// GLFW Scroll callback
+void cGraphicsEngine::sm_glfwScrollCallback(GLFWwindow* _window, double _xoffset, double _yoffset)
+{
+    // Get user defined glfw pointer to this graphics engine class
+    cGraphicsEngine* graphicsEngine = reinterpret_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
+
+    graphicsEngine->m_io->mouseScroll.x = _xoffset;
+    graphicsEngine->m_io->mouseScroll.y = _yoffset;
+}
+
 // Set window icon
 void cGraphicsEngine::setWindowIcon(GLFWimage* _image)
 {
