@@ -31,6 +31,7 @@
 void        gFileToString(const std::string &_fileName, std::string &_buffer);
 std::string gFileToString(const std::string &_fileName);
 bool        gFileExists(const std::string &_fileName);
+std::string gFileToBuffer(const std::string &_fileName);
 bool        gFileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer);
 std::string gFileExtension(const std::string &_fileName);
 std::string gStripPath(const std::string &_fileName);

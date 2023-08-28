@@ -83,6 +83,22 @@ bool gFileExists(const std::string &_fileName)
     return false;
 }
 
+std::string gFileToBuffer(const std::string &_fileName)
+{
+    std::ifstream inFile(_fileName);
+    if (inFile.good())
+    {
+        inFile.seekg(0, std::ios::end);
+        size_t size = inFile.tellg();
+        std::string buffer(size, ' ');
+        inFile.seekg(0);
+        inFile.read(&buffer[0], size);
+        inFile.close();
+        return buffer;
+    }
+    return nullptr;
+}
+
 // A function to read data from a file and copy it to a unsigned char vector
 // Function is called with _filename
 // Returns the data in _buffer
