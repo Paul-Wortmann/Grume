@@ -44,10 +44,10 @@ class cTextureManager : public tcLinkedList<sTexture>
     protected:
 
     private:
-        cFontManager m_fontManager = {};
-        void freeData(sTexture *&_pointer) override;
-        sTexture* getFreePointer(void);
-        void      setPointerFree(sTexture *&_pointer);
+        cFontManager  m_fontManager = {};
+        void          freeData(sTexture *&_pointer) override;
+        sTexture*     getFreePointer(void);
+        void          setPointerFree(sTexture *&_pointer);
 };
 
 #endif // TEXTURE_MANAGER_HPP
