@@ -53,7 +53,9 @@ enum eEngineState : std::uint32_t
     engineStateInit  = 1,
     engineStateTerm  = 2,
     engineStatePause = 3,
-    engineStateProc  = 4
+    engineStateProc  = 4,
+    engineStateMenu  = 5,
+    engineStateEdit  = 6
 };
 
 #endif // GAME_ENGINE_DEFINES_HPP
