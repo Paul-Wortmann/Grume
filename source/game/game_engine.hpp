@@ -34,10 +34,10 @@ class cGameEngine
     protected:
 
     private:
-        // Functions
+        // game_engine.cpp
         std::uint32_t    initialize(const std::uint32_t &_argc, char** _argv);
         void             terminate(void);
-        void             process();
+        void             process(void);
 
         // game_new.cpp
         std::uint32_t    m_game_new(void);
@@ -48,6 +48,15 @@ class cGameEngine
 
         // game_save.cpp
         std::uint32_t    m_game_save(const std::uint32_t &_slotNum);
+
+        // game_engine_editor.cpp
+        void             m_process_editor(std::int64_t _dt);
+
+        // game_engine_menu.cpp
+        void             m_process_menu(std::int64_t _dt);
+
+        // game_engine_play.cpp
+        void             m_process_play(std::int64_t _dt);
 
         // Variables
         eEngineState     m_engineState     = eEngineState::engineStateNone;
