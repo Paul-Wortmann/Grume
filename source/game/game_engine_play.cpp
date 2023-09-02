@@ -676,6 +676,11 @@ void cGameEngine::m_process_play(std::int64_t _dt)
             m_IOManager.setKeyReadyState(GLFW_KEY_ESCAPE, false);
             m_IOManager.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_engineState = eEngineState::engineStateTerm;
+            m_engineState = (menuState) ? eEngineState::engineStatePause : eEngineState::engineStateProc;
+            if (menuState == true)
+            {
+                m_playerManager.targetHalt();
+            }
         }
 
         // Screenshot - GLFW_KEY_F12
