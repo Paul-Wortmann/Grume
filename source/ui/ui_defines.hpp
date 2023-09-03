@@ -512,6 +512,7 @@ enum eUIEventFunction : std::uint32_t
 struct sUIEvent
 {
     sUIEvent*        next       = nullptr;
+    eMenuType        menuType   = eMenuType::menuTypeNone;
     eUIEventType     type       = eUIEventType::UIEventType_none;
     eUIEventFunction function_1 = eUIEventFunction::UIEventFunction_none;
     std::uint32_t    data_1     = 0;

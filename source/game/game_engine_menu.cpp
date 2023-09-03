@@ -52,7 +52,12 @@ void cGameEngine::m_process_menu(std::int64_t _dt)
                 // Close menu
                 if (tEvent->function_1 == eUIEventFunction::UIEventFunction_closeMenu)
                 {
-                    m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
+                    // close options menu
+                    if (tEvent->menuType == eMenuType::menuTypeOptions)
+                    {
+                        m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, true);
+                        m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, false);
+                    }
                 }
 
                 // Game quit
@@ -67,6 +72,8 @@ void cGameEngine::m_process_menu(std::int64_t _dt)
                     m_engineState = eEngineState::engineStateProc;
                     cGameEngine::m_game_new();
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeActionBar, true);
+                    m_uiManager.setMenuComponentEnabled(eComponentFunction::componentFunctionGameSave ,true);
                     //m_mapManager.setLoading(false);
                 }
 
@@ -75,20 +82,22 @@ void cGameEngine::m_process_menu(std::int64_t _dt)
                 {
                     m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
                     cGameEngine::m_game_load(1);
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
+                    m_uiManager.setMenuEnabled(eMenuType::menuTypeActionBar, true);
+                    m_uiManager.setMenuComponentEnabled(eComponentFunction::componentFunctionGameSave ,true);
                     //m_mapManager.setLoading(false);
                 }
 
                 // Game save
                 else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_gameSave)
                 {
-                    m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
-                    cGameEngine::m_game_save(1);
+                    //m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
+                    //cGameEngine::m_game_save(1);
                 }
 
                 // options menu
                 else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_menuOptions)
                 {
-                    m_engineState = eEngineState::engineStatePause;
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, false);
                     m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, true);
                 }
@@ -150,233 +159,6 @@ void cGameEngine::m_process_menu(std::int64_t _dt)
                     m_graphicsEngine.setBasicRenderPath(m_gameConfig.m_basicRenderer);
                     m_uiManager.setMenuComponentActivated(eComponentFunction::componentFunctionLightingModified, !m_gameConfig.m_basicRenderer);
                 }
-
-                // Strength attribute modified
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusStrength)
-                {
-                    std::uint32_t points = m_playerManager.getAttributePoints();
-                    if (points > 0)
-                    {
-                        points--;
-                        m_playerManager.setAttributePoints(points);
-                        m_uiManager.setTextPoints(points);
-                        std::uint32_t strength = m_playerManager.getAttributeStrength();
-                        strength++;
-                        m_playerManager.setAttributeStrength(strength);
-                        m_uiManager.setTextStrength(strength);
-                        m_playerManager.calculateAttributes();
-                    }
-                }
-
-                // Dexterity attribute modified
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusDexterity)
-                {
-                    std::uint32_t points = m_playerManager.getAttributePoints();
-                    if (points > 0)
-                    {
-                        points--;
-                        m_playerManager.setAttributePoints(points);
-                        m_uiManager.setTextPoints(points);
-                        std::uint32_t dexterity = m_playerManager.getAttributeDexterity();
-                        dexterity++;
-                        m_playerManager.setAttributeDexterity(dexterity);
-                        m_uiManager.setTextDexterity(dexterity);
-                        m_playerManager.calculateAttributes();
-                    }
-                }
-
-                // Energy attribute modified
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusEnergy)
-                {
-                    std::uint32_t points = m_playerManager.getAttributePoints();
-                    if (points > 0)
-                    {
-                        points--;
-                        m_playerManager.setAttributePoints(points);
-                        m_uiManager.setTextPoints(points);
-                        std::uint32_t energy = m_playerManager.getAttributeEnergy();
-                        energy++;
-                        m_playerManager.setAttributeEnergy(energy);
-                        m_uiManager.setTextEnergy(energy);
-                        m_playerManager.calculateAttributes();
-                    }
-                }
-
-                // Vitality attribute modified
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_plusVitality)
-                {
-                    std::uint32_t points = m_playerManager.getAttributePoints();
-                    if (points > 0)
-                    {
-                        points--;
-                        m_playerManager.setAttributePoints(points);
-                        m_uiManager.setTextPoints(points);
-                        std::uint32_t vitality = m_playerManager.getAttributeVitality();
-                        vitality++;
-                        m_playerManager.setAttributeVitality(vitality);
-                        m_uiManager.setTextVitality(vitality);
-                        m_playerManager.calculateAttributes();
-                    }
-                }
-
-                // Way-point map load town
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_loadMapTown)
-                {
-                    std::string mapName = "town_" + std::to_string(tEvent->data_1) + "_001";
-                    m_mapManager.setSpawnPortal(2);
-                    m_mapManager.load(m_databaseManager.getDatabaseEntryFileName(mapName, 1, eDatabaseType::databaseTypeMap));
-                    m_engineState = (m_engineState == eEngineState::engineStatePause) ? eEngineState::engineStateProc : eEngineState::engineStatePause;
-                }
-
-            }
-
-            // Component drag
-            else if (tEvent->type == eUIEventType::UIEventType_drag)
-            {
-                // Action-bar drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
-                {
-                    m_playerManager.actionBarSetDrag(tEvent->data_1, true);
-                }
-                // Equipment drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
-                {
-                    m_playerManager.equipmentSetDrag(tEvent->data_1, true);
-                }
-                // Inventory drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
-                {
-                    m_playerManager.inventorySetDrag(tEvent->data_1, true);
-                }
-                // Vendor drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
-                {
-                    m_playerManager.vendorSetDrag(tEvent->data_1, true);
-                }
-                // Waypoints drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
-                {
-                    m_playerManager.waypointsSetDrag(tEvent->data_1, true);
-                }
-            }
-
-            // Component drop ground
-            else if (tEvent->type == eUIEventType::UIEventType_dropGround)
-            {
-                // Action-bar drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
-                {
-                    m_playerManager.actionBarSetDrag(tEvent->data_1, false);
-                    m_playerManager.actionBarDrop(tEvent->data_1);
-                }
-                // Equipment drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
-                {
-                    m_playerManager.equipmentSetDrag(tEvent->data_1, false);
-                    m_playerManager.equipmentDrop(tEvent->data_1);
-                }
-                // Inventory drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
-                {
-                    m_playerManager.inventorySetDrag(tEvent->data_1, false);
-                    m_playerManager.inventoryDrop(tEvent->data_1);
-                }
-/*
-                // Vendor drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
-                {
-                    m_playerManager.vendorSetDrag(tEvent->data_1, false);
-                    m_playerManager.vendorDrop(tEvent->data_1);
-                }
-*/
-                // Waypoints drop
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
-                {
-                    m_playerManager.waypointsSetDrag(tEvent->data_1, false);
-                    m_playerManager.waypointsDrop(tEvent->data_1);
-                }
-            }
-
-            // Component buy item
-            else if (tEvent->type == eUIEventType::UIEventType_buyItem)
-            {
-                // Inventory
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
-                {
-                    m_playerManager.buyVendorSlot(tEvent->data_1);
-                }
-            }
-
-            // Component sell item
-            else if (tEvent->type == eUIEventType::UIEventType_sellItem)
-            {
-                // Inventory
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
-                {
-                    m_playerManager.sellInventorySlot(tEvent->data_1);
-                }
-            }
-
-            // Component equip item
-            else if (tEvent->type == eUIEventType::UIEventType_equipItem)
-            {
-                // Inventory
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
-                {
-                    m_playerManager.equipInventorySlot(tEvent->data_1);
-                }
-            }
-
-            // Component unequip item
-            else if (tEvent->type == eUIEventType::UIEventType_unequipItem)
-            {
-                // Equipment menu
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
-                {
-                    m_playerManager.unequip(tEvent->data_1);
-                }
-            }
-
-            // Component drop menu
-            else if (tEvent->type == eUIEventType::UIEventType_dropMenu)
-            {
-                // default source + destination states
-                ePlayerStorageType source = ePlayerStorageType::playerStorageTypeNone;
-                ePlayerStorageType destination = ePlayerStorageType::playerStorageTypeNone;
-
-                // convert from eUIEventFunction to ePlayerStorageType -> source
-                if (tEvent->function_1 == eUIEventFunction::UIEventFunction_actionBar)
-                    source = ePlayerStorageType::playerStorageTypeActionBar;
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_equipment)
-                    source = ePlayerStorageType::playerStorageTypeEquipment;
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_inventory)
-                    source = ePlayerStorageType::playerStorageTypeInventory;
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_vendor)
-                    source = ePlayerStorageType::playerStorageTypeVendor;
-                else if (tEvent->function_1 == eUIEventFunction::UIEventFunction_waypoints)
-                    source = ePlayerStorageType::playerStorageTypeWaypoints;
-
-                // convert from eUIEventFunction to ePlayerStorageType -> destination
-                if (tEvent->function_2 == eUIEventFunction::UIEventFunction_actionBar)
-                    destination = ePlayerStorageType::playerStorageTypeActionBar;
-                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_equipment)
-                    destination = ePlayerStorageType::playerStorageTypeEquipment;
-                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_inventory)
-                    destination = ePlayerStorageType::playerStorageTypeInventory;
-                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_vendor)
-                    destination = ePlayerStorageType::playerStorageTypeVendor;
-                else if (tEvent->function_2 == eUIEventFunction::UIEventFunction_waypoints)
-                    destination = ePlayerStorageType::playerStorageTypeWaypoints;
-
-                // Storage move / swap
-                m_playerManager.moveStorage(source, tEvent->data_1, destination, tEvent->data_2);
-            }
-
-            // Equipment change
-            else if (tEvent->type == eUIEventType::UIEventType_equipmentChange)
-            {
-                // Have the player manager re-calculate player attributes
-                m_playerManager.calculateAttributes();
             }
 
             // Unhandled event

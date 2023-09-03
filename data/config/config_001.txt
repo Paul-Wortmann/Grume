@@ -14,7 +14,7 @@
     </graphics>
 
     <audio>
-        <volume_master>80</volume_master>
+        <volume_master>78</volume_master>
         <volume_music>48</volume_music>
         <volume_sfx>40</volume_sfx>
     </audio>

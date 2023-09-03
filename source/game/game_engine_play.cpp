@@ -231,7 +231,17 @@ void cGameEngine::m_process_play(std::int64_t _dt)
                 // Close menu
                 if (tEvent->function_1 == eUIEventFunction::UIEventFunction_closeMenu)
                 {
-                    m_engineState = (m_uiManager.getActiveWindowCount() < 2) ? eEngineState::engineStateProc : m_engineState;
+                    // close options menu
+                    if (tEvent->menuType == eMenuType::menuTypeOptions)
+                    {
+                        m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, true);
+                        m_uiManager.setMenuEnabled(eMenuType::menuTypeOptions, false);
+                    }
+                    // close main menu
+                    else if (tEvent->menuType == eMenuType::menuTypeMain)
+                    {
+                        m_engineState = eEngineState::engineStateProc;
+                    }
                 }
 
                 // Game quit

@@ -176,6 +176,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     {
 
         // Load data
+        //return_value = m_game_load_ui();
         return_value = m_game_load();
     }
 
@@ -187,7 +188,10 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     m_timer.initialize();
 
     // Set engine state
-    m_engineState = (return_value == EXIT_SUCCESS) ? eEngineState::engineStateProc : eEngineState::engineStateTerm;
+    m_uiManager.setMenuEnabled(eMenuType::menuTypeActionBar, false);
+    m_uiManager.setMenuEnabled(eMenuType::menuTypeMain, true);
+    m_uiManager.setMenuComponentEnabled(eComponentFunction::componentFunctionGameSave ,false);
+    m_engineState = (return_value == EXIT_SUCCESS) ? eEngineState::engineStateMenu : eEngineState::engineStateTerm;
     return return_value;
 }
 

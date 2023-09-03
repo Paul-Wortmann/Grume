@@ -391,6 +391,7 @@ void cUIManager::process(void)
                     // create event
                     sUIEvent* event = new sUIEvent;
                     event->type = eUIEventType::UIEventType_click;
+                    event->menuType = m_menu[menuNum].type;
                     event->function_1 = eUIEventFunction::UIEventFunction_closeMenu;
                     event->data_1 = 0;
                     m_event.push(event);
