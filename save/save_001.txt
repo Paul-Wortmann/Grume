@@ -2,24 +2,24 @@
 <save_file>
 
    <information>
-      <current_map>town_2_001</current_map>
-      <current_position>3362</current_position>
+      <current_map>town_1_001</current_map>
+      <current_position>2256</current_position>
       <current_rotation>3.14159</current_rotation>
-      <current_town>town_2_001</current_town>
+      <current_town>town_1_001</current_town>
    </information>
 
    <player>
-      <level_current>0</level_current>
-      <exp_current>0</exp_current>
-      <exp_next>1024</exp_next>
-      <points>5</points>
-      <strength>1</strength>
-      <dexterity>1</dexterity>
-      <vitality>1</vitality>
-      <energy>1</energy>
-      <health_current>100</health_current>
-      <mana_current>100</mana_current>
-      <gold_current>0</gold_current>
+      <level_current>90</level_current>
+      <exp_current>4007727576792851485</exp_current>
+      <exp_next>7219508248458471424</exp_next>
+      <points>435</points>
+      <strength>12</strength>
+      <dexterity>4</dexterity>
+      <vitality>4</vitality>
+      <energy>4</energy>
+      <health_current>1045</health_current>
+      <mana_current>1045</mana_current>
+      <gold_current>30415</gold_current>
       <damage_physical_base>5</damage_physical_base>
       <damage_physical_crit_chance>1</damage_physical_crit_chance>
       <damage_physical_crit_multiplier>0.25</damage_physical_crit_multiplier>
@@ -61,25 +61,60 @@
    </equipment>
 
    <inventory>
-      <inventory_slot>0 potion_health 1 5</inventory_slot>
-      <inventory_slot>1 potion_mana 1 2</inventory_slot>
+      <inventory_slot>0 potion_health 1 29</inventory_slot>
+      <inventory_slot>1 potion_mana 1 12</inventory_slot>
       <inventory_slot>2 belt 1 1</inventory_slot>
       <inventory_slot>3 ring 1 1</inventory_slot>
       <inventory_slot>4 one_handed_axe 1 1</inventory_slot>
       <inventory_slot>5 one_handed_sword 1 1</inventory_slot>
-      <inventory_slot>6 dagger 1 1</inventory_slot>
-      <inventory_slot>7 rune 1 1</inventory_slot>
-      <inventory_slot>8 rune 2 1</inventory_slot>
-      <inventory_slot>9 rune 3 1</inventory_slot>
-      <inventory_slot>10 rune 4 1</inventory_slot>
-      <inventory_slot>11 rune 5 1</inventory_slot>
-      <inventory_slot>12 rune 6 1</inventory_slot>
+      <inventory_slot>6 one_handed_sword 5 1</inventory_slot>
+      <inventory_slot>7 medium_gloves 1 1</inventory_slot>
+      <inventory_slot>8 rune 5 1</inventory_slot>
+      <inventory_slot>9 ring 14 1</inventory_slot>
+      <inventory_slot>10 one_handed_axe 2 1</inventory_slot>
+      <inventory_slot>11 medium_armor 1 1</inventory_slot>
+      <inventory_slot>12 ring 10 1</inventory_slot>
+      <inventory_slot>13 ring 17 1</inventory_slot>
       <inventory_slot>14 potion_health 1 13</inventory_slot>
       <inventory_slot>15 potion_health 1 17</inventory_slot>
       <inventory_slot>16 potion_health 1 15</inventory_slot>
       <inventory_slot>17 potion_health 1 27</inventory_slot>
       <inventory_slot>18 potion_health 1 23</inventory_slot>
       <inventory_slot>19 potion_health 1 25</inventory_slot>
+      <inventory_slot>20 ring 16 1</inventory_slot>
+      <inventory_slot>21 scroll 1 1</inventory_slot>
+      <inventory_slot>22 ring 8 1</inventory_slot>
+      <inventory_slot>23 grimoire 1 1</inventory_slot>
+      <inventory_slot>24 ring 11 1</inventory_slot>
+      <inventory_slot>25 heavy_gloves 1 1</inventory_slot>
+      <inventory_slot>26 rune 6 1</inventory_slot>
+      <inventory_slot>27 staff 1 1</inventory_slot>
+      <inventory_slot>28 one_handed_sword 4 1</inventory_slot>
+      <inventory_slot>29 ring 17 1</inventory_slot>
+      <inventory_slot>30 one_handed_sword 2 1</inventory_slot>
+      <inventory_slot>31 ring 14 1</inventory_slot>
+      <inventory_slot>32 medium_gloves 1 1</inventory_slot>
+      <inventory_slot>33 ring 5 1</inventory_slot>
+      <inventory_slot>34 one_handed_sword 4 1</inventory_slot>
+      <inventory_slot>35 one_handed_sword 1 1</inventory_slot>
+      <inventory_slot>36 ring 8 1</inventory_slot>
+      <inventory_slot>37 ring 16 1</inventory_slot>
+      <inventory_slot>38 medium_armor 1 1</inventory_slot>
+      <inventory_slot>39 light_gloves 1 1</inventory_slot>
+      <inventory_slot>40 two_handed_axe 2 1</inventory_slot>
+      <inventory_slot>41 rune 3 1</inventory_slot>
+      <inventory_slot>42 two_handed_sword 1 1</inventory_slot>
+      <inventory_slot>43 heavy_gloves 1 1</inventory_slot>
+      <inventory_slot>44 heavy_armor 1 1</inventory_slot>
+      <inventory_slot>45 medium_armor 1 1</inventory_slot>
+      <inventory_slot>46 ring 6 1</inventory_slot>
+      <inventory_slot>47 medium_boots 1 1</inventory_slot>
+      <inventory_slot>48 magic_gloves 1 1</inventory_slot>
+      <inventory_slot>49 two_handed_mace 1 1</inventory_slot>
+      <inventory_slot>50 one_handed_axe 1 1</inventory_slot>
+      <inventory_slot>51 two_handed_sword 1 1</inventory_slot>
+      <inventory_slot>52 dagger 2 1</inventory_slot>
+      <inventory_slot>53 ring 11 1</inventory_slot>
    </inventory>
 
    <vendor>
@@ -109,24 +144,32 @@
       <vendor_slot>23 staff 1 1</vendor_slot>
       <vendor_slot>24 wand 1 1</vendor_slot>
       <vendor_slot>25 scroll 1 1</vendor_slot>
+      <vendor_slot>28 grimoire 1 1</vendor_slot>
+      <vendor_slot>31 dagger 1 1</vendor_slot>
    </vendor>
 
    <waypoints>
+      <waypoints_slot>0 rune 1 1</waypoints_slot>
+      <waypoints_slot>1 rune 2 1</waypoints_slot>
+      <waypoints_slot>2 rune 3 1</waypoints_slot>
+      <waypoints_slot>3 rune 4 1</waypoints_slot>
+      <waypoints_slot>4 rune 5 1</waypoints_slot>
+      <waypoints_slot>5 rune 6 1</waypoints_slot>
    </waypoints>
 
    <quests>
-      <quest>bug_boss_1_dead 0</quest>
-      <quest>bug_boss_2_dead 0</quest>
-      <quest>bug_boss_3_dead 0</quest>
-      <quest>skeleton_boss_1_dead 0</quest>
-      <quest>skeleton_boss_2_dead 0</quest>
-      <quest>skeleton_boss_3_dead 0</quest>
-      <quest>spider_boss_1_dead 0</quest>
-      <quest>golem_boss_1_dead 0</quest>
-      <quest>golem_ice_mini_boss_1_dead 0</quest>
-      <quest>golem_ice_mini_boss_2_dead 0</quest>
-      <quest>golem_ice_mini_boss_3_dead 0</quest>
-      <quest>golem_ice_boss_1_dead 0</quest>
+      <quest>bug_boss_1_dead 1</quest>
+      <quest>bug_boss_2_dead 1</quest>
+      <quest>bug_boss_3_dead 1</quest>
+      <quest>skeleton_boss_1_dead 1</quest>
+      <quest>skeleton_boss_2_dead 1</quest>
+      <quest>skeleton_boss_3_dead 1</quest>
+      <quest>spider_boss_1_dead 1</quest>
+      <quest>golem_boss_1_dead 1</quest>
+      <quest>golem_ice_mini_boss_1_dead 1</quest>
+      <quest>golem_ice_mini_boss_2_dead 1</quest>
+      <quest>golem_ice_mini_boss_3_dead 1</quest>
+      <quest>golem_ice_boss_1_dead 1</quest>
       <quest>waypoint_rune_1 0</quest>
       <quest>waypoint_rune_2 0</quest>
       <quest>waypoint_rune_3 0</quest>
@@ -136,7 +179,64 @@
    </quests>
 
    <map_data>
+      <map>cave_1_001 1599715446</map>
+      <map>cave_1_002 1186142688</map>
+      <map>cave_1_003 1933580226</map>
+      <map>cave_1_004 1077917309</map>
+      <map>cave_1_005 2026641052</map>
+      <map>cave_1_006 2098700818</map>
+      <map>cave_1_007 390881186</map>
+      <map>cave_2_001 582009332</map>
+      <map>cave_2_002 1867058873</map>
+      <map>cave_2_003 937100838</map>
+      <map>cave_2_004 1342702365</map>
+      <map>cave_2_005 1041889539</map>
+      <map>cave_2_006 978936194</map>
+      <map>cave_2_007 1326779286</map>
+      <map>cave_2_008 860008577</map>
+      <map>cave_2_010 879262031</map>
+      <map>cave_2_011 690958809</map>
+      <map>cave_2_012 1246822929</map>
+      <map>cave_2_014 1360299530</map>
+      <map>cave_2_015 1433138435</map>
+      <map>cave_2_016 1761442226</map>
+      <map>cave_4_001 21188342</map>
+      <map>cave_4_002 545525083</map>
+      <map>cave_4_004 1778894641</map>
+      <map>cave_4_006 1957661621</map>
+      <map>cave_4_007 1704783009</map>
+      <map>cave_4_008 638443627</map>
+      <map>cave_4_009 1020828833</map>
+      <map>cave_4_010 657309143</map>
+      <map>cave_4_011 657309143</map>
+      <map>cave_4_012 1931804436</map>
+      <map>cave_4_013 1059574355</map>
+      <map>cave_4_014 1984226502</map>
+      <map>cave_4_015 2119647767</map>
+      <map>cemetery_1_001 1202854932</map>
+      <map>cemetery_1_002 1053311591</map>
+      <map>cemetery_1_003 1102929095</map>
+      <map>cemetery_1_004 1175183603</map>
+      <map>cemetery_1_005 1216119650</map>
+      <map>cemetery_1_006 224028143</map>
+      <map>cemetery_1_007 1082663081</map>
+      <map>cemetery_1_008 323350610</map>
+      <map>crypt_1_001 1665913778</map>
+      <map>crypt_2_001 1565951830</map>
+      <map>crypt_3_001 499344400</map>
+      <map>dungeon_3_001 180290059</map>
+      <map>ruins_1_001 859628059</map>
+      <map>ruins_1_002 1094883125</map>
+      <map>ruins_1_003 823725237</map>
+      <map>ruins_1_006 1153659523</map>
+      <map>ruins_1_007 1478599928</map>
+      <map>ruins_2_001 905633815</map>
+      <map>ruins_2_002 184689207</map>
+      <map>ruins_2_003 1655816458</map>
+      <map>ruins_2_004 1655816458</map>
       <map>town_2_001 1410763947</map>
+      <map>town_3_001 1895510775</map>
+      <map>town_4_001 316677426</map>
    </map_data>
 
 </save_file>

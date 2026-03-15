@@ -92,6 +92,7 @@
 
 #include "../templates/template_bsp_tree.hpp"
 #include "../templates/template_engine.hpp"
+#include "../templates/template_linked_data.hpp"
 #include "../templates/template_linked_list.hpp"
 #include "../templates/template_manager.hpp"
 #include "../templates/template_queue.hpp"

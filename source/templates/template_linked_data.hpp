@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef LINKED_LIST_HPP
-#define LINKED_LIST_HPP
+#ifndef LINKED_DATA_HPP
+#define LINKED_DATA_HPP
 
 #include <cstdint>
 #include <mutex>
@@ -35,31 +35,36 @@
 // While external classes could keep updating their pointer to the list, it is
 // more efficient to avoid unnecessary function calls for performance critical systems.
 // Thus the complexity of maintaining the head pointer by the class is desired.
-// When the list is empty m_count will be set to 0.
 
-// Next version:
-// An idea would be to introduce the reuse of allocated yet unused nodes, and
-// only create new nodes when an empty node is not available, also only free the
-// nodes when the destructor is called.
-// pointer->enabled == false ?
+// The linked list creates a sentinel non on initialization, so that the head pointer
+// reference remains constant throughout the life of the linked list.
 
-template<class T> class tcLinkedList
+// Instead of deleting nodes, they are disabled and reused later
+// This avoids unnecessary memory allocation, deallocation and fragmentation.
+// If the exact number of required nodes is known, one may allocate them in advance.
+
+template<class T> class tcLinkedData
 {
     public:
         // Constructor
-        inline tcLinkedList(void)
+        tcLinkedData(void)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            m_head = new T;
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
+            // create the sentinel node
+            m_head = new std::unique_ptr<T>;
+            m_head->enabled = false;
             m_tail = m_head;
-            m_count = 0;
         }
 
         // Destructor
-        inline ~tcLinkedList(void)
+        ~tcLinkedData(void)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            for (m_temp = m_head; m_temp != nullptr;)
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
+            for (std::unique_ptr<T> m_temp = m_head; m_temp != nullptr;)
             {
                 m_head = m_temp;
                 m_temp = m_temp->next;
@@ -73,17 +78,19 @@ template<class T> class tcLinkedList
         }
 
         // Delete copy and move constructors and assignment operators
-        inline tcLinkedList(tcLinkedList& _other) = delete;                 // Copy constructor
-        inline tcLinkedList(const tcLinkedList& _other) = delete;           // Copy constructor
-        inline tcLinkedList(tcLinkedList&& _other) = delete;                // Move constructor
-        inline tcLinkedList& operator=(const tcLinkedList& other) = delete; // Copy assignment
-        inline tcLinkedList& operator=(tcLinkedList&& other) = delete;      // Move assignment
+        inline tcLinkedData(tcLinkedData& _other) = delete;                 // Copy constructor
+        inline tcLinkedData(const tcLinkedData& _other) = delete;           // Copy constructor
+        inline tcLinkedData(tcLinkedData&& _other) = delete;                // Move constructor
+        inline tcLinkedData& operator=(const tcLinkedData& other) = delete; // Copy assignment
+        inline tcLinkedData& operator=(tcLinkedData&& other) = delete;      // Move assignment
 
         // Free all data held by the linked list
         inline void freeAll(void)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            for (m_temp = m_head; m_temp != nullptr;)
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
+            for (std::unique_ptr<T> m_temp = m_head; m_temp != nullptr;)
             {
                 m_head = m_temp;
                 m_temp = m_temp->next;
@@ -97,126 +104,95 @@ template<class T> class tcLinkedList
         }
 
         // Free all data held by the pointer
-        virtual void freeData(T*& _pointer) = 0;
+        virtual void freeData(std::unique_ptr<T>& _pointer) = 0;
 
         // Get head
-        inline T* getHead(void)
+        inline std::unique_ptr<T> getHead(void)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
             return m_head;
         }
 
-        // Get count
-        inline std::uint32_t getCount(void)
+        // Get new
+        inline std::unique_ptr<T> getNew(void)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            return m_count;
-        }
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
 
-        // Get new (Back)
-        inline T* getNew(void)
-        {
-            return getNewBack();
-        }
-
-        // Get new Back
-        inline T* getNewBack(void)
-        {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            if (m_count == 0)
+            for (std::unique_ptr<T> m_temp = m_head; m_temp != nullptr;)
             {
-                m_count++;
-                m_head->UID = m_count;
-                return m_head;
+                if (m_temp->enabled == false)
+                {
+                    m_temp->enabled = true;
+                    return m_temp;
+                }
             }
             m_tail->next = new T;
             m_tail = m_tail->next;
-            m_count++;
-            m_tail->UID = m_count;
+            m_tail->enabled = true;
+
             return m_tail;
         }
 
-
-        // Get new from front
-        // ! disabled for this project
-        /*
-        inline T* getNewFront(void)
-        {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            if (m_count == 0)
-            {
-                m_count++;
-                return m_head;
-            }
-            T* Tnew = new T;
-            Tnew->next = m_head;
-            m_head = Tnew;
-            m_count++;
-            return m_head;
-        }
-        */
-
         // Add a preexisting pointer to the end of the the linked list
-        inline void addBack(T*& _T)
+        inline void addBack(std::unique_ptr<T>& _T)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
             m_tail->next = _T;
             m_tail = m_tail->next;
-            m_count++;
-            m_tail->UID = m_count;
+            m_tail->enabled = true;
         }
-
-        // Add preexisting pointer to the end of the the linked list
-        // ! disabled for this project
-        /*
-        inline void addFront(T*& _T)
-        {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            _T->next = m_head;
-            m_head = _T;
-            m_count++;
-        }
-        */
 
         // Add preexisting pointer before a preexisting pointer
         // ! _existing shouldn't == m_head, for external classes
-        inline void addBefore(T*& _new, T*& _existing)
+        inline void addBefore(std::unique_ptr<T>& _new, std::unique_ptr<T>& _existing)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            T* Tp = nullptr;
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
+            std::unique_ptr<T> Tp = nullptr;
             // Loop through the linked list to find previous pointer
-            for (m_temp = m_head; m_temp != nullptr; m_temp = m_temp->next)
+            for (std::unique_ptr<T> m_temp = m_head; m_temp != nullptr; m_temp = m_temp->next)
             {
                 Tp = (m_temp->next == _existing) ? m_temp : Tp;
             }
             Tp->next = _new;
             _new->next = _existing;
-            m_count++;
-            _existing->UID = m_count;
+            _existing->enabled = true;
         }
 
         // Add preexisting pointer after specified pointer
-        inline void addAfter(T*& _new, T*& _existing)
+        inline void addAfter(std::unique_ptr<T>& _new, std::unique_ptr<T>& _existing)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            m_temp = _existing->next;
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
+            std::unique_ptr<T> m_temp = _existing->next;
             _existing->next = _new;
             _new->next = m_temp;
-            m_count++;
-            _existing->UID = m_count;
+            _existing->enabled = true;
         }
 
         // Swap the location of 2 nodes
-        inline void swap(T* _T1, T* _T2)
+        inline void swap(std::unique_ptr<T> _T1, std::unique_ptr<T> _T2)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
             // If the pointers are the same or invalid, return
             if ((_T1 == nullptr) || (_T2 == nullptr) || (_T1 == _T2))
                 return;
 
+            // temp pointer
+            std::unique_ptr<T> m_temp = nullptr;
+
             // get previous pointers
-            T* T1p = nullptr;
-            T* T2p = nullptr;
+            std::unique_ptr<T> T1p = nullptr;
+            std::unique_ptr<T> T2p = nullptr;
 
             // Loop through the linked list to find previous pointers
             for (m_temp = m_head; m_temp != nullptr; m_temp = m_temp->next)
@@ -276,10 +252,15 @@ template<class T> class tcLinkedList
 
         // Remove a pointer from the list
         // !!!! MAKE SURE YOU HAVE FREED ALL DATA FROM THE NODE BEFOREHAND !!!!
-        inline void remove(T*& _T)
+        inline void remove(std::unique_ptr<T>& _T)
         {
-            std::lock_guard<std::mutex> lock(m_mutex); // Lock for thread safety
-            if ((_T == nullptr) || (m_count == 0)) // Corner cases
+            // Lock for thread safety
+            std::lock_guard<std::mutex> lock(m_mutex);
+
+            // temp pointer
+            std::unique_ptr<T> m_temp = nullptr;
+
+            if (_T == nullptr) // Corner case
             {
                 return;
             }
@@ -287,12 +268,11 @@ template<class T> class tcLinkedList
             {
                 if (m_head->next == nullptr)
                 {
-                    m_count = 0;
+                    m_head->enabled = false;
                 }
                 else
                 {
                     m_head = _T->next;
-                    m_count--;
                     delete _T;
                     _T = nullptr;
                 }
@@ -307,7 +287,6 @@ template<class T> class tcLinkedList
                 m_tail->next = nullptr;
                 delete _T;
                 _T = nullptr;
-                m_count--;
             }
             else // not head or tail
             {
@@ -319,7 +298,6 @@ template<class T> class tcLinkedList
                         m_temp->next = _T->next;
                         delete _T;
                         _T = nullptr;
-                        m_count--;
                         return;
                     }
                 }
@@ -329,11 +307,9 @@ template<class T> class tcLinkedList
     protected:
 
     private:
-        std::mutex    m_mutex = {};
-        std::uint32_t m_count = 0;
-        T*            m_head  = nullptr;
-        T*            m_tail  = nullptr;
-        T*            m_temp  = nullptr;
+        std::mutex         m_mutex = {};
+        std::unique_ptr<T> m_head  = nullptr;
+        std::unique_ptr<T> m_tail  = nullptr;
 };
 
 #endif // LINKED_LIST_HPP

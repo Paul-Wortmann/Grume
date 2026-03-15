@@ -246,6 +246,7 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     // model pointer
     sEntityModel* tModel = nullptr;
 
+/*
     // Use individual loaders based on file extension
     std::string fileExtension = gFileExtension(_fileName);
     if (strcmp(fileExtension.c_str(), "obj") == 0)
@@ -264,6 +265,7 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
 
     // Else try to load the model with assimp
     else
+*/
     {
         tModel = m_loadModel(_fileName);
         std::cout << "Loading model: " << _fileName << std::endl;
