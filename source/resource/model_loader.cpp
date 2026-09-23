@@ -50,62 +50,7 @@ void cModelManager::m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, s
                 break;
             }
         }
-/*
-        // process this mesh's materials
-        if (_scene->HasMaterials())
-        {
-            //Diffuse
-            aiString aiTextureDiffuse;
-            std::string textureDiffuse;
-            if (_scene->mMaterials[_mesh->mMaterialIndex]->GetTextureCount(aiTextureType_DIFFUSE) > 0)
-            {
-                _scene->mMaterials[_mesh->mMaterialIndex]->GetTexture(aiTextureType_DIFFUSE, 0, &aiTextureDiffuse);
-                textureDiffuse = aiTextureDiffuse.C_Str();
-            }
-            else
-            {
-                textureDiffuse = std::string(FILE_DEFAULT_TEXTURE) + "_d.png";
-            }
-            // Emissive
-            aiString aiTextureEmissive;
-            std::string textureEmissive;
-            if (_scene->mMaterials[_mesh->mMaterialIndex]->GetTextureCount(aiTextureType_EMISSIVE) > 0)
-            {
-                _scene->mMaterials[_mesh->mMaterialIndex]->GetTexture(aiTextureType_EMISSIVE, 0, &aiTextureEmissive);
-                textureEmissive = aiTextureEmissive.C_Str();
-            }
-            else
-            {
-                textureEmissive = std::string(FILE_DEFAULT_TEXTURE) + "_e.png";
-            }
-            // Normal
-            aiString aiTextureNormal;
-            std::string textureNormal;
-            if (_scene->mMaterials[_mesh->mMaterialIndex]->GetTextureCount(aiTextureType_NORMALS) > 0)
-            {
-                _scene->mMaterials[_mesh->mMaterialIndex]->GetTexture(aiTextureType_NORMALS, 0, &aiTextureNormal);
-                textureNormal = aiTextureNormal.C_Str();
-            }
-            else
-            {
-                textureNormal = std::string(FILE_DEFAULT_TEXTURE) + "_n.png";
-            }
-            // Specular
-            aiString aiTextureSpecular;
-            std::string textureSpecular;
-            if (_scene->mMaterials[_mesh->mMaterialIndex]->GetTextureCount(aiTextureType_SPECULAR) > 0)
-            {
-                _scene->mMaterials[_mesh->mMaterialIndex]->GetTexture(aiTextureType_SPECULAR, 0, &aiTextureSpecular);
-                textureSpecular = aiTextureSpecular.C_Str();
-            }
-            else
-            {
-                textureSpecular = std::string(FILE_DEFAULT_TEXTURE) + "_s.png";
-            }
-            // Get a pointer to the material
-            //_model->mesh[meshNum].material = materialManager.add(textureDiffuse, textureEmissive, textureNormal, textureSpecular);
-        }
-*/
+
         // fill the model mesh with data from the assimp mesh
         // vertex data
         _model->mesh[meshNum].numVertex = _mesh->mNumVertices;
@@ -194,8 +139,6 @@ void cModelManager::m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, s
                 }
             }
         }
-
-
     }
 }
 
@@ -247,7 +190,6 @@ void cModelManager::m_buildBoneMap(aiNode* _node, const aiScene* _scene)
         {
             aiBone* bone = mesh->mBones[j];
             m_addBoneMap(bone->mName.C_Str(), toMat4(bone->mOffsetMatrix));
-            //std::cout << "Found bone: " << m_boneMap[m_boneMap.size()-1].name << std::endl;
         }
     }
 
@@ -287,11 +229,9 @@ std::int32_t cModelManager::m_getBoneID(const std::string &_name)
 
 void cModelManager::m_buildBoneMapNodes(aiNode* _node)
 {
-    //std::cout << "Checking node: " << _node->mName.C_Str() << std::endl;
     std::int32_t boneID = m_getBoneID(_node->mName.C_Str());
     if (boneID > -1)
     {
-        //std::cout << "Loading node transform: " << _node->mName.C_Str() << std::endl;
         m_boneMap[boneID].transformNode = toMat4(_node->mTransformation);
     }
     for (std::size_t i = 0; i < _node->mNumChildren; ++i)
@@ -356,7 +296,6 @@ void cModelManager::m_loadBones(sEntityModel* _model, const aiScene* _scene)
         m_buildBoneMapParents(_scene->mRootNode, nullptr, _scene);
         _model->numBones     = static_cast<std::int32_t>(m_boneMap.size());
         _model->bone         = new sEntityBone[_model->numBones];
-        //std::cout << "Bone count: " << _model->numBones << std::endl;
         for (std::size_t i = 0; i < _model->numBones; ++i)
         {
             _model->bone[i].ID            = m_boneMap[i].ID;
@@ -387,6 +326,10 @@ void cModelManager::m_loadAnimations(sEntityModel* _model, const aiScene* _scene
             _model->animation[i].ticksPerSecond += (_model->animation[i].ticksPerSecond == 0) ? 24 : 0;
             _model->animation[i].animationTime   = _model->animation[i].duration / _model->animation[i].ticksPerSecond;
 
+            // Inverse ticks-per-second so we can convert key times (which come from
+            // Assimp in ticks) into seconds, to match animationTime/currentAnimTime.
+            const float ticksPerSecond = _model->animation[i].ticksPerSecond;
+
             _model->animation[i].numChannels     = _scene->mAnimations[i]->mNumChannels;
             _model->animation[i].channel         = new sAnimationChannel[_model->animation[i].numChannels];
             for (std::size_t j = 0; j < _model->animation[i].numChannels; ++j)
@@ -399,7 +342,7 @@ void cModelManager::m_loadAnimations(sEntityModel* _model, const aiScene* _scene
                 _model->animation[i].channel[j].positionKey = new sAnimationVecKey[_model->animation[i].channel[j].numPositionKeys];
                 for (std::size_t k = 0; k < _model->animation[i].channel[j].numPositionKeys; ++k)
                 {
-                    _model->animation[i].channel[j].positionKey[k].time = _scene->mAnimations[i]->mChannels[j]->mPositionKeys[k].mTime;
+                    _model->animation[i].channel[j].positionKey[k].time   = _scene->mAnimations[i]->mChannels[j]->mPositionKeys[k].mTime / ticksPerSecond;
                     _model->animation[i].channel[j].positionKey[k].vector = toVec3(_scene->mAnimations[i]->mChannels[j]->mPositionKeys[k].mValue);
                 }
 
@@ -408,7 +351,7 @@ void cModelManager::m_loadAnimations(sEntityModel* _model, const aiScene* _scene
                 _model->animation[i].channel[j].rotationKey = new sAnimationQuatKey[_model->animation[i].channel[j].numRotationKeys];
                 for (std::size_t k = 0; k < _model->animation[i].channel[j].numRotationKeys; ++k)
                 {
-                    _model->animation[i].channel[j].rotationKey[k].time = _scene->mAnimations[i]->mChannels[j]->mRotationKeys[k].mTime;
+                    _model->animation[i].channel[j].rotationKey[k].time = _scene->mAnimations[i]->mChannels[j]->mRotationKeys[k].mTime / ticksPerSecond;
                     _model->animation[i].channel[j].rotationKey[k].quat = toQuat(_scene->mAnimations[i]->mChannels[j]->mRotationKeys[k].mValue);
                 }
 
@@ -416,7 +359,7 @@ void cModelManager::m_loadAnimations(sEntityModel* _model, const aiScene* _scene
                 _model->animation[i].channel[j].scalingKey = new sAnimationVecKey[_model->animation[i].channel[j].numScalingKeys];
                 for (std::size_t k = 0; k < _model->animation[i].channel[j].numScalingKeys; ++k)
                 {
-                    _model->animation[i].channel[j].scalingKey[k].time = _scene->mAnimations[i]->mChannels[j]->mScalingKeys[k].mTime;
+                    _model->animation[i].channel[j].scalingKey[k].time   = _scene->mAnimations[i]->mChannels[j]->mScalingKeys[k].mTime / ticksPerSecond;
                     _model->animation[i].channel[j].scalingKey[k].vector = toVec3(_scene->mAnimations[i]->mChannels[j]->mScalingKeys[k].mValue);
                 }
             }
@@ -431,7 +374,7 @@ void cModelManager::m_loadAnimations(sEntityModel* _model, const aiScene* _scene
                 _model->animation[i].meshChannel[j].meshKey = new sAnimationMeshKey[_model->animation[i].meshChannel[j].numKeys];
                 for (std::size_t k = 0; k < _model->animation[i].meshChannel[j].numKeys; ++k)
                 {
-                    _model->animation[i].meshChannel[j].meshKey[k].time = _scene->mAnimations[i]->mMeshChannels[j]->mKeys[k].mTime;
+                    _model->animation[i].meshChannel[j].meshKey[k].time  = _scene->mAnimations[i]->mMeshChannels[j]->mKeys[k].mTime / ticksPerSecond;
                     _model->animation[i].meshChannel[j].meshKey[k].value = _scene->mAnimations[i]->mMeshChannels[j]->mKeys[k].mValue;
                 }
             }
@@ -458,7 +401,6 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                 sEntityModel* tModel = new sEntityModel;
                 tModel->fileName = _fileName;
                 tModel->numMesh = m_getNumMesh(scene->mRootNode);
-                //std::cout << "Num mesh: " << tModel->numMesh << std::endl;
                 tModel->mesh = new sEntityModelMesh[tModel->numMesh];
                 tModel->inverseTransform = toMat4(scene->mRootNode->mTransformation);
                 tModel->inverseTransform = glm::inverse(tModel->inverseTransform);
@@ -474,13 +416,6 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                     m_loadAnimations(tModel, scene);
                 }
                 m_processNode(scene, scene->mRootNode, tModel);
-
-
-                if (m_boneMap.size() > 40)
-                {
-                    std::cout << "Player detected: " << tModel->fileName << std::endl;
-                    std::cout << "Num animations: " << tModel->numAnimations << std::endl;
-                }
 
                 // Clean up
                 m_boneMap.clear();
